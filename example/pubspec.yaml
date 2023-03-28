@@ -1,0 +1,21 @@
+name: shopify_flutter_example
+description: A simple shopify example.
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  shopify_flutter:
+    path: ../
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

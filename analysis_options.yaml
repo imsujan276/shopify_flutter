@@ -1,0 +1,11 @@
+include: package:flutter_lints/flutter.yaml
+linter:
+  rules:
+    avoid_print: true
+    no_leading_underscores_for_local_identifiers: false
+    constant_identifier_names: false
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"

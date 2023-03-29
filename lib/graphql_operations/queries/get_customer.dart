@@ -1,3 +1,4 @@
+/// Query to get customer info
 const String getCustomerQuery = r'''
 query($customerAccessToken : String!){
   customer(customerAccessToken: $customerAccessToken) {

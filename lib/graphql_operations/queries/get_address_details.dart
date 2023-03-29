@@ -1,3 +1,4 @@
+/// Query to get address details from prediction id
 const String getAddressDetails = r'''
 query($predictionId: String!, $locale: String!) {
     address(id: $predictionId, locale: $locale) {

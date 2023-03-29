@@ -3,11 +3,13 @@ import 'package:shopify_flutter/shopify_flutter.dart';
 import 'product_detail_screen.dart';
 
 class HomeTab extends StatefulWidget {
+  const HomeTab({super.key});
+
   @override
-  _HomeTabState createState() => _HomeTabState();
+  HomeTabState createState() => HomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class HomeTabState extends State<HomeTab> {
   List<Product> products = [];
   bool _isLoading = true;
 

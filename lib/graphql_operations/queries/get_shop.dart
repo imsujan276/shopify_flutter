@@ -1,3 +1,4 @@
+/// Query to get shop info
 const String getShopQuery = r'''
 query getShop {
   shop {

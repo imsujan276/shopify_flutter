@@ -1,3 +1,4 @@
+/// Create valid mutation to update customer
 String createValidMutationString(Map variableMap) {
   String firstString = "";
   String secondString = "";

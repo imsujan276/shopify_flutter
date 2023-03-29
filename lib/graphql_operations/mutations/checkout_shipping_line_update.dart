@@ -1,3 +1,4 @@
+/// Mutation to update the shipping line of a checkout
 const String checkoutShippingLineUpdateMutation = r'''
 mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: String!) {
   checkoutShippingLineUpdate(checkoutId: $checkoutId, shippingRateHandle: $shippingRateHandle) {

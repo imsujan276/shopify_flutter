@@ -1,3 +1,4 @@
+/// Mutation  to complete a checkout with a visa payment
 const String completeCheckoutVisa = r'''
 mutation MyMutation {
   checkoutCompleteWithTokenizedPaymentV2(checkoutId: "Z2lkOi8vc2hvcGlmeS9DaGVja291dC83OTliZDNmNTBkZDJmMTgwYWRkYTcxNDIyNDliNmZlNT9rZXk9NzFlM2UzNDMyZGI1ZmIxNDdjYzIzZGRhMjEyOGZhMzg=", payment: {paymentAmount: {amount: "1.00", currencyCode: EUR}, idempotencyKey: "1223356", billingAddress: {firstName: "dave", lastName: "smith", address1: "billrothstraße 62", province: "hamburg", city: "hamburg", country: "germany", zip: "22767"}, paymentData: "tok_1GTR0MFybpdELA6GGXFR1gch", type: "card"}) {

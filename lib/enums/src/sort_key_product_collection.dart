@@ -10,6 +10,7 @@ enum SortKeyProductCollection {
 }
 
 extension ParseToStringProductCollection on SortKeyProductCollection {
+  /// Returns the string representation of the enum
   String parseToString() {
     return toString().split('.')[1];
   }

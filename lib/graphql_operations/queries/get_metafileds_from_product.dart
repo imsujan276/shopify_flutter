@@ -1,3 +1,4 @@
+/// Query to get metafields from product
 const String getMetafieldsFromProductQuery = r'''
 query($handle: String!, $namespace: String!) {
   productByHandle(handle: $handle) {

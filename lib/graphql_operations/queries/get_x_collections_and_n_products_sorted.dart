@@ -1,3 +1,4 @@
+/// Query to get x collections and n products sorted
 const String getXCollectionsAndNProductsSortedQuery = r'''
 query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int){
   collections(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {

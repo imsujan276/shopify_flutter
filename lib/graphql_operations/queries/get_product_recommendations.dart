@@ -1,3 +1,4 @@
+/// Query to get product recommendations
 const String getProductRecommendationsQuery = r'''
 query getProductRecommentationsQuery($id: ID!){
   productRecommendations(productId: $id) {

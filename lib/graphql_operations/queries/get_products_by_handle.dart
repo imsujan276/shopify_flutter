@@ -1,3 +1,4 @@
+/// Query to get product by handle
 const String getProductByHandle = r'''
 query getProductByHandle($handle : String!){
   productByHandle(handle: $handle) {

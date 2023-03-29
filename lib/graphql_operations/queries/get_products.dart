@@ -1,3 +1,4 @@
+/// Query to get products
 const String getProductsQuery = r'''
 query($cursor : String, $metafieldsNamespace : String){
   products(first: 250, after: $cursor) {

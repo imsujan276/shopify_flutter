@@ -1,3 +1,4 @@
+/// Query to get all blogs
 const String getAllBlogsQuery = r'''
 query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: BlogSortKeys ){
   blogs(first: 250, sortKey: $sortKey, reverse: $reverseBlogs) {

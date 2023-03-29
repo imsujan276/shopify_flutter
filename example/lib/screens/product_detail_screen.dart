@@ -10,13 +10,18 @@ class ProductDetailScreen extends StatefulWidget {
   final Product product;
 
   @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState(product);
+  ProductDetailScreenState createState() => ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
-  _ProductDetailScreenState(this.product);
-  final Product product;
+class ProductDetailScreenState extends State<ProductDetailScreen> {
+  late Product product;
   List<LineItem> lineItems = [];
+
+  @override
+  void initState() {
+    product = widget.product;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,21 +49,23 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   List<Widget> _buildProductVariants() {
     List<Widget> widgetList = [];
-    product.productVariants.forEach((variant) => widgetList.add(ListTile(
-          title: Text(variant.title),
-          subtitle: Row(
-            children: [
-              IconButton(
-                  icon: Icon(Icons.add),
-                  onPressed: () => _addProductToShoppingCart(variant)),
-              IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () =>
-                      _removeProductFromShoppingCart(lineItems.first))
-            ],
-          ),
-          trailing: Text(variant.price.amount.toString()),
-        )));
+    for (var variant in product.productVariants) {
+      widgetList.add(ListTile(
+        title: Text(variant.title),
+        subtitle: Row(
+          children: [
+            IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () => _addProductToShoppingCart(variant)),
+            IconButton(
+                icon: const Icon(Icons.delete),
+                onPressed: () =>
+                    _removeProductFromShoppingCart(lineItems.first))
+          ],
+        ),
+        trailing: Text(variant.price.amount.toString()),
+      ));
+    }
     return widgetList;
   }
 

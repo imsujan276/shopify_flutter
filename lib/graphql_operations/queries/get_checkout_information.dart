@@ -1,3 +1,4 @@
+/// Query to get checkout info
 const String getCheckoutInfo = r'''
 query($id: ID!){
   node(id: $id) {

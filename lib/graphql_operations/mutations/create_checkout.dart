@@ -1,3 +1,4 @@
+/// Mutation to create a checkout
 String createCheckoutMutation = r'''
 mutation checkoutCreate($input: CheckoutCreateInput!) {
   checkoutCreate(input: $input) {

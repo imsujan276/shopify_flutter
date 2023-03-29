@@ -1,3 +1,4 @@
+/// Query to get checkout info with payment id
 const String getCheckoutInfoWithPaymentId = r'''
 query($id: ID!){
   node(id: $id) {

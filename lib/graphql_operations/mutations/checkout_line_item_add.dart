@@ -1,3 +1,4 @@
+/// Mutation to add line items to a checkout
 String addLineItemsToCheckoutMutation = r'''
 mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
   checkoutLineItemsAdd(lineItems: $lineItems, checkoutId: $checkoutId) {

@@ -1,3 +1,4 @@
+/// Query to get n articles sorted
 const String getNArticlesSortedQuery = r'''
 query($x : Int, $sortKey : ArticleSortKeys, $reverse: Boolean){
   articles(first: $x, sortKey: $sortKey, reverse: $reverse) {

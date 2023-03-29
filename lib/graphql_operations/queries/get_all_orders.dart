@@ -1,3 +1,4 @@
+/// Query to get all orders
 const String getAllOrdersQuery = r'''
 query getOrders($sortKey : OrderSortKeys, $accessToken : String!, $reverse: Boolean){
 customer(customerAccessToken: $accessToken) {

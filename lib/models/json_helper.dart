@@ -5,6 +5,7 @@ import 'src/checkout/line_item/line_item.dart';
 class JsonHelper {
   const JsonHelper._();
 
+  /// returns a list of line items from a json object
   static List<LineItem> lineItems(dynamic json) {
     if (json == null) {
       return [];
@@ -19,6 +20,7 @@ class JsonHelper {
         .toList();
   }
 
+  /// returns a amount from a json object
   static double amountFromJson(dynamic json) {
     return json == null
         ? null
@@ -31,6 +33,7 @@ class JsonHelper {
                     : json['amount'];
   }
 
+  /// returns a formatted acount with currency code with given priceFormat
   static String chooseRightOrderOnCurrencySymbol(
     dynamic amount,
     String currencyCode, {
@@ -70,6 +73,7 @@ class JsonHelper {
     return currencyString;
   }
 
+  /// list of currency symbols
   static final Map<String, String> _simpleCurrencySymbols = {
     'AFN': 'Af.',
     'TOP': r'T$',

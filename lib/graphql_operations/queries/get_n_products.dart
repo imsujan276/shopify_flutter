@@ -1,3 +1,4 @@
+/// Query to get n products
 const String getNProductsQuery = r'''
 query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
   products(first: $n, sortKey: $sortKey, reverse: $reverse) {

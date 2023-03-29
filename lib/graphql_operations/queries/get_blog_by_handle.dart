@@ -1,3 +1,4 @@
+/// Query to get blog by handle
 const String getBlogByHandleQuery = r'''
 query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
   blogByHandle(handle: $handle) {

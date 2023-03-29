@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class CollectionTab extends StatefulWidget {
+  const CollectionTab({super.key});
+
   @override
-  _CollectionTabState createState() => _CollectionTabState();
+  CollectionTabState createState() => CollectionTabState();
 }
 
-class _CollectionTabState extends State<CollectionTab> {
+class CollectionTabState extends State<CollectionTab> {
   List<Collection> collections = [];
   bool _isLoading = true;
 
@@ -68,10 +70,10 @@ class CollectionDetailScreen extends StatefulWidget {
   final String collectionTitle;
 
   @override
-  _CollectionDetailScreenState createState() => _CollectionDetailScreenState();
+  CollectionDetailScreenState createState() => CollectionDetailScreenState();
 }
 
-class _CollectionDetailScreenState extends State<CollectionDetailScreen> {
+class CollectionDetailScreenState extends State<CollectionDetailScreen> {
   List<Product> products = [];
   bool _isLoading = true;
 

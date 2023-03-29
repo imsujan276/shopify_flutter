@@ -1,3 +1,4 @@
+/// Query to get products by ids
 const String getProductsByIdsQuery = r'''
 query($ids : [ID!]!){
   nodes(ids: $ids) {

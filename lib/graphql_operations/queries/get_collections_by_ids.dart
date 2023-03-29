@@ -1,3 +1,4 @@
+/// Query to get collections by ids
 const String getCollectionsByIdsQuery = r'''
 query getCollectionsByIds($ids: [ID!]!){
   nodes(ids: $ids) {
@@ -16,4 +17,3 @@ query getCollectionsByIds($ids: [ID!]!){
     }
   }
 }''';
-

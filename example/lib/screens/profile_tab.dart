@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatefulWidget {
+  const ProfileTab({super.key});
+
   @override
-  _ProfileTabState createState() => _ProfileTabState();
+  ProfileTabState createState() => ProfileTabState();
 }
 
-class _ProfileTabState extends State<ProfileTab> {
+class ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

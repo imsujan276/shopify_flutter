@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class SearchTab extends StatefulWidget {
+  const SearchTab({super.key});
+
   @override
-  _SearchTabState createState() => _SearchTabState();
+  SearchTabState createState() => SearchTabState();
 }
 
-class _SearchTabState extends State<SearchTab> {
+class SearchTabState extends State<SearchTab> {
   final _controller = TextEditingController(text: '');
   List<Product> products = [];
   bool _isLoading = false;
@@ -81,9 +83,11 @@ class _SearchTabState extends State<SearchTab> {
 
   List<Widget> _buildProductList() {
     List<Widget> widgetList = [];
-    products.forEach((product) => widgetList.add(ListTile(
-          title: Text(product.title),
-        )));
+    for (var product in products) {
+      widgetList.add(ListTile(
+        title: Text(product.title),
+      ));
+    }
     return widgetList;
   }
 }

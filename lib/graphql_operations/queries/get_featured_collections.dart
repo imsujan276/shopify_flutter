@@ -1,3 +1,4 @@
+/// Query to get featured collection
 const String getFeaturedCollectionQuery = r'''
 query getFeaturedCollectionQuery($query: String!){
   collections(query: $query, first: 1) {

@@ -12,33 +12,37 @@ void main() {
     'qoder.myshopify.com', // Store url.
     '2023-01', // The Shopify Storefront API version.
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Shopify Example',
       theme: ThemeData(primaryColor: Colors.redAccent),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  MyHomePageState createState() => MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  List<Widget> _tabs = [
-    HomeTab(),
-    CollectionTab(),
-    SearchTab(),
-    ProfileTab(),
+  List<Widget> tabs = [
+    const HomeTab(),
+    const CollectionTab(),
+    const SearchTab(),
+    const ProfileTab(),
   ];
 
   @override
@@ -46,21 +50,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: IndexedStack(
         index: _currentIndex,
-        children: _tabs,
+        children: tabs,
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: _onNavigationBarItemClick,
         fixedColor: Theme.of(context).primaryColor,
         unselectedItemColor: Colors.black,
-        items: [
-          const BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
               icon: Icon(Icons.category), label: 'Collections'),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.search), label: 'Search'),
-          const BottomNavigationBarItem(
-              icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
     );

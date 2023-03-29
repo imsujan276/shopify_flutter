@@ -2,26 +2,21 @@
 
 A flutter package that works as a bridge between your Shopify Store and Flutter Application.
 
-Note: **This library as of right now is not ready for production**
-
-But, we have created our own app and used the library.
-There are still minor bugs here and there but we advise everyone to start using the library and post as many issues as possible.
-If there are questions about the usage feel free to hit us up on our mail address.
-
 ## How To Use
 
-I Assume you have already a private app on your Shopify store. if not please follow [THIS DOC](https://shopify.dev/docs/storefront-api/getting-started) to get started with shopify storefront API.
+Create a private app on your Shopify store. Please follow [THIS DOC](https://shopify.dev/docs/storefront-api/getting-started) to get started with it.
 
-**At step 6 we recommend checking every API permission** as some queries and mutations require permission on objects like product tags.
+While creating storefront api access token, makes sure to check all the api permissions as some queries and mutations require permission on objects like product tags.
 
 First of all configure the ShopifyConfig like that:
+
 ```dart
 void main() {
   
   ShopifyConfig.setConfig(
-      'de16cae1ce0b86260703fccaa6b689a3', // Storefront API access token.
+      'STOREFRONT_API_ACCESS_TOKEN', // Storefront API access token.
       'exampleShopname.myshopify.com', // Store url.
-      '2020-04'); // The Shopify Storefront API version.
+      '2023-01'); // The Shopify Storefront API version.
   
   runApp(MyApp());
 }

@@ -1,3 +1,4 @@
+/// Query to get checkout info with payment id without shipping rates
 const String getCheckoutInfoWithPaymentIdWithoutShipping = r'''
 query($id: ID!){
   node(id: $id) {

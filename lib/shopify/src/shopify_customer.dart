@@ -1,10 +1,10 @@
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/mutations/customer_address_create.dart';
 import 'package:shopify_flutter/graphql_operations/mutations/customer_address_delete.dart';
 import 'package:shopify_flutter/graphql_operations/mutations/customer_address_update.dart';
 import 'package:shopify_flutter/graphql_operations/mutations/customer_update.dart';
 import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 
 import '../../shopify_config.dart';
 

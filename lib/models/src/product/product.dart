@@ -36,15 +36,27 @@ class Product with _$Product {
 
   double get price =>
       productVariants.isEmpty ? 0 : productVariants.first.price.amount;
+  String get formattedPrice =>
+      productVariants.isEmpty ? '' : productVariants.first.price.formattedPrice;
+
   bool get hasComparablePrice => compareAtPrice > price;
   double get compareAtPrice => productVariants.isEmpty
       ? 0
       : (productVariants.first.compareAtPrice == null
           ? 0
           : productVariants.first.compareAtPrice!.amount);
+
+  String get compareAtPriceFormatted => productVariants.isEmpty
+      ? ''
+      : (productVariants.first.compareAtPrice == null
+          ? ''
+          : productVariants.first.compareAtPrice!.formattedPrice);
   String get image => images.isEmpty
       ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
       : images.first.originalSrc;
+
+  String get currencyCode =>
+      productVariants.isEmpty ? '' : productVariants.first.price.currencyCode;
 
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(

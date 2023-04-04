@@ -39,41 +39,12 @@ class JsonHelper {
     String currencyCode, {
     NumberFormat? priceFormat,
   }) {
-    priceFormat ??= NumberFormat();
-    String currencyString;
-    String formattedPrice = priceFormat.format(amountFromJson(amount));
-    switch (currencyCode) {
-      case "INR":
-        {
-          currencyString =
-              '${_simpleCurrencySymbols[currencyCode]} $formattedPrice';
-        }
-        break;
-
-      case "EUR":
-        {
-          currencyString =
-              '$formattedPrice ${_simpleCurrencySymbols[currencyCode]}';
-        }
-        break;
-      case "USD":
-        {
-          currencyString =
-              '${_simpleCurrencySymbols[currencyCode]} $formattedPrice';
-        }
-        break;
-
-      default:
-        {
-          currencyString =
-              '$formattedPrice ${_simpleCurrencySymbols[currencyCode]}';
-        }
-        break;
-    }
-    return currencyString;
+    return NumberFormat.currency(
+      name: currencyCode,
+      symbol: '${_simpleCurrencySymbols[currencyCode]}',
+    ).format(amountFromJson(amount));
   }
 
-  /// list of currency symbols
   static final Map<String, String> _simpleCurrencySymbols = {
     'AFN': 'Af.',
     'TOP': r'T$',

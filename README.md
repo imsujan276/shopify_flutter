@@ -34,6 +34,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<void> sendPasswordResetEmail({@required String email})
     Future<ShopifyUser> signInWithEmailAndPassword({@required String email, @required String password})
     Future<ShopifyUser> currentUser()
+    Future<String?> get currentCustomerAccessToken
 ```
 
 ##### Shopify Store
@@ -64,7 +65,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<void> checkoutCustomerDisassociate({String checkoutId})
     Future<void> checkoutDiscountCodeApply({String checkoutId, String discountCode})
     Future<void> checkoutDiscountCodeRemove({String checkoutId})
-    Future<String> createCheckout()
+    Future<Checkout> createCheckout()
     Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes)
     Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId)
     Future<void> shippingLineUpdate(String checkoutId, String shippingRateHandle)

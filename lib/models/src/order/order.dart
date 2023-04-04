@@ -33,30 +33,26 @@ class Order with _$Order {
 
   static Order fromGraphJson(Map<String, dynamic> json) {
     return Order(
-        id: (json['node'] ?? const {})['id'],
-        email: (json['node'] ?? const {})['email'],
-        currencyCode: (json['node'] ?? const {})['currencyCode'],
-        customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson(
-            (json['node'] ?? const {})['lineItems'] ?? const {}),
-        name: (json['node'] ?? const {})['name'],
-        orderNumber: (json['node'] ?? const {})['orderNumber'],
-        phone: (json['node'] ?? const {})['phone'],
-        processedAt: (json['node'] ?? const {})['processedAt'],
-        shippingAddress: ShippingAddress.fromJson(
-            (json['node'] ?? const {})['shippingAddress'] ?? const {}),
-        statusUrl: (json['node'] ?? const {})['statusUrl'],
-        subtotalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['subtotalPriceV2'] ?? const {}),
-        totalPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalPriceV2'] ?? const {}),
-        totalRefundedV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalRefundedV2'] ?? const {}),
-        totalShippingPriceV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
-        totalTaxV2: PriceV2.fromJson(
-            (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
-        cursor: json['cursor']);
+      id: json['node']['id'],
+      email: json['node']['email'],
+      currencyCode: json['node']['currencyCode'],
+      customerUrl: json['node']['customerUrl'],
+      lineItems: LineItemsOrder.fromGraphJson(json['node']['lineItems']),
+      name: json['node']['name'],
+      orderNumber: json['node']['orderNumber'] ?? 0,
+      phone: json['node']['phone'],
+      processedAt: json['node']['processedAt'],
+      shippingAddress:
+          ShippingAddress.fromJson(json['node']['shippingAddress']),
+      statusUrl: json['node']['statusUrl'],
+      subtotalPriceV2: PriceV2.fromJson(json['node']['subtotalPriceV2']),
+      totalPriceV2: PriceV2.fromJson(json['node']['totalPriceV2']),
+      totalRefundedV2: PriceV2.fromJson(json['node']['totalRefundedV2']),
+      totalShippingPriceV2:
+          PriceV2.fromJson(json['node']['totalShippingPriceV2']),
+      totalTaxV2: PriceV2.fromJson(json['node']['totalTaxV2']),
+      cursor: json['cursor'],
+    );
   }
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

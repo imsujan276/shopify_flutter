@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'address.dart';
 
@@ -12,62 +12,11 @@ part of 'address.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Address _$AddressFromJson(Map<String, dynamic> json) {
   return _Address.fromJson(json);
 }
-
-/// @nodoc
-class _$AddressTearOff {
-  const _$AddressTearOff();
-
-  _Address call(
-      {String? id,
-      String? address1,
-      String? address2,
-      String? city,
-      String? company,
-      String? country,
-      String? countryCode,
-      String? firstName,
-      String? lastName,
-      String? formattedArea,
-      String? latitude,
-      String? longitude,
-      String? name,
-      String? phone,
-      String? province,
-      String? provinceCode,
-      String? zip}) {
-    return _Address(
-      id: id,
-      address1: address1,
-      address2: address2,
-      city: city,
-      company: company,
-      country: country,
-      countryCode: countryCode,
-      firstName: firstName,
-      lastName: lastName,
-      formattedArea: formattedArea,
-      latitude: latitude,
-      longitude: longitude,
-      name: name,
-      phone: phone,
-      province: province,
-      provinceCode: provinceCode,
-      zip: zip,
-    );
-  }
-
-  Address fromJson(Map<String, Object?> json) {
-    return Address.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Address = _$AddressTearOff();
 
 /// @nodoc
 mixin _$Address {
@@ -97,7 +46,8 @@ mixin _$Address {
 /// @nodoc
 abstract class $AddressCopyWith<$Res> {
   factory $AddressCopyWith(Address value, $Res Function(Address) then) =
-      _$AddressCopyWithImpl<$Res>;
+      _$AddressCopyWithImpl<$Res, Address>;
+  @useResult
   $Res call(
       {String? id,
       String? address1,
@@ -119,13 +69,16 @@ abstract class $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
+class _$AddressCopyWithImpl<$Res, $Val extends Address>
+    implements $AddressCopyWith<$Res> {
   _$AddressCopyWithImpl(this._value, this._then);
 
-  final Address _value;
   // ignore: unused_field
-  final $Res Function(Address) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -147,83 +100,85 @@ class _$AddressCopyWithImpl<$Res> implements $AddressCopyWith<$Res> {
     Object? zip = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      address1: address1 == freezed
+      address1: freezed == address1
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      address2: address2 == freezed
+      address2: freezed == address2
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      countryCode: countryCode == freezed
+      countryCode: freezed == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      formattedArea: formattedArea == freezed
+      formattedArea: freezed == formattedArea
           ? _value.formattedArea
           : formattedArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceCode: provinceCode == freezed
+      provinceCode: freezed == provinceCode
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      zip: zip == freezed
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
-  factory _$AddressCopyWith(_Address value, $Res Function(_Address) then) =
-      __$AddressCopyWithImpl<$Res>;
+abstract class _$$_AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
+  factory _$$_AddressCopyWith(
+          _$_Address value, $Res Function(_$_Address) then) =
+      __$$_AddressCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? id,
       String? address1,
@@ -245,14 +200,13 @@ abstract class _$AddressCopyWith<$Res> implements $AddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
-    implements _$AddressCopyWith<$Res> {
-  __$AddressCopyWithImpl(_Address _value, $Res Function(_Address) _then)
-      : super(_value, (v) => _then(v as _Address));
+class __$$_AddressCopyWithImpl<$Res>
+    extends _$AddressCopyWithImpl<$Res, _$_Address>
+    implements _$$_AddressCopyWith<$Res> {
+  __$$_AddressCopyWithImpl(_$_Address _value, $Res Function(_$_Address) _then)
+      : super(_value, _then);
 
-  @override
-  _Address get _value => super._value as _Address;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -273,72 +227,72 @@ class __$AddressCopyWithImpl<$Res> extends _$AddressCopyWithImpl<$Res>
     Object? provinceCode = freezed,
     Object? zip = freezed,
   }) {
-    return _then(_Address(
-      id: id == freezed
+    return _then(_$_Address(
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      address1: address1 == freezed
+      address1: freezed == address1
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
               as String?,
-      address2: address2 == freezed
+      address2: freezed == address2
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      city: city == freezed
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      country: country == freezed
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String?,
-      countryCode: countryCode == freezed
+      countryCode: freezed == countryCode
           ? _value.countryCode
           : countryCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      formattedArea: formattedArea == freezed
+      formattedArea: freezed == formattedArea
           ? _value.formattedArea
           : formattedArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceCode: provinceCode == freezed
+      provinceCode: freezed == provinceCode
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      zip: zip == freezed
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -416,80 +370,91 @@ class _$_Address extends _Address {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Address &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.address1, address1) &&
-            const DeepCollectionEquality().equals(other.address2, address2) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.company, company) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality()
-                .equals(other.countryCode, countryCode) &&
-            const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality()
-                .equals(other.formattedArea, formattedArea) &&
-            const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.province, province) &&
-            const DeepCollectionEquality()
-                .equals(other.provinceCode, provinceCode) &&
-            const DeepCollectionEquality().equals(other.zip, zip));
+            other is _$_Address &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.address1, address1) ||
+                other.address1 == address1) &&
+            (identical(other.address2, address2) ||
+                other.address2 == address2) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.countryCode, countryCode) ||
+                other.countryCode == countryCode) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.formattedArea, formattedArea) ||
+                other.formattedArea == formattedArea) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.province, province) ||
+                other.province == province) &&
+            (identical(other.provinceCode, provinceCode) ||
+                other.provinceCode == provinceCode) &&
+            (identical(other.zip, zip) || other.zip == zip));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(address1),
-      const DeepCollectionEquality().hash(address2),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(company),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(countryCode),
-      const DeepCollectionEquality().hash(firstName),
-      const DeepCollectionEquality().hash(lastName),
-      const DeepCollectionEquality().hash(formattedArea),
-      const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(province),
-      const DeepCollectionEquality().hash(provinceCode),
-      const DeepCollectionEquality().hash(zip));
 
   @JsonKey(ignore: true)
   @override
-  _$AddressCopyWith<_Address> get copyWith =>
-      __$AddressCopyWithImpl<_Address>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      address1,
+      address2,
+      city,
+      company,
+      country,
+      countryCode,
+      firstName,
+      lastName,
+      formattedArea,
+      latitude,
+      longitude,
+      name,
+      phone,
+      province,
+      provinceCode,
+      zip);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddressCopyWith<_$_Address> get copyWith =>
+      __$$_AddressCopyWithImpl<_$_Address>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressToJson(this);
+    return _$$_AddressToJson(
+      this,
+    );
   }
 }
 
 abstract class _Address extends Address {
   factory _Address(
-      {String? id,
-      String? address1,
-      String? address2,
-      String? city,
-      String? company,
-      String? country,
-      String? countryCode,
-      String? firstName,
-      String? lastName,
-      String? formattedArea,
-      String? latitude,
-      String? longitude,
-      String? name,
-      String? phone,
-      String? province,
-      String? provinceCode,
-      String? zip}) = _$_Address;
+      {final String? id,
+      final String? address1,
+      final String? address2,
+      final String? city,
+      final String? company,
+      final String? country,
+      final String? countryCode,
+      final String? firstName,
+      final String? lastName,
+      final String? formattedArea,
+      final String? latitude,
+      final String? longitude,
+      final String? name,
+      final String? phone,
+      final String? province,
+      final String? provinceCode,
+      final String? zip}) = _$_Address;
   _Address._() : super._();
 
   factory _Address.fromJson(Map<String, dynamic> json) = _$_Address.fromJson;
@@ -530,6 +495,6 @@ abstract class _Address extends Address {
   String? get zip;
   @override
   @JsonKey(ignore: true)
-  _$AddressCopyWith<_Address> get copyWith =>
+  _$$_AddressCopyWith<_$_Address> get copyWith =>
       throw _privateConstructorUsedError;
 }

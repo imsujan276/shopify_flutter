@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'checkout.dart';
 
@@ -12,75 +12,11 @@ part of 'checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Checkout _$CheckoutFromJson(Map<String, dynamic> json) {
   return _Checkout.fromJson(json);
 }
-
-/// @nodoc
-class _$CheckoutTearOff {
-  const _$CheckoutTearOff();
-
-  _Checkout call(
-      {required String id,
-      required bool ready,
-      required AvailableShippingRates? availableShippingRates,
-      required String createdAt,
-      required String currencyCode,
-      required PriceV2 totalTaxV2,
-      required PriceV2 totalPriceV2,
-      required bool taxesIncluded,
-      required bool taxExempt,
-      required PriceV2 subtotalPriceV2,
-      required bool requiresShipping,
-      required List<AppliedGiftCards> appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems)
-          required List<LineItem> lineItems,
-      Order? order,
-      String? orderStatusUrl,
-      String? shopifyPaymentsAccountId,
-      MailingAddress? shippingAddress,
-      ShippingRates? shippingLine,
-      String? email,
-      String? completedAt,
-      String? note,
-      String? webUrl,
-      String? updatedAt}) {
-    return _Checkout(
-      id: id,
-      ready: ready,
-      availableShippingRates: availableShippingRates,
-      createdAt: createdAt,
-      currencyCode: currencyCode,
-      totalTaxV2: totalTaxV2,
-      totalPriceV2: totalPriceV2,
-      taxesIncluded: taxesIncluded,
-      taxExempt: taxExempt,
-      subtotalPriceV2: subtotalPriceV2,
-      requiresShipping: requiresShipping,
-      appliedGiftCards: appliedGiftCards,
-      lineItems: lineItems,
-      order: order,
-      orderStatusUrl: orderStatusUrl,
-      shopifyPaymentsAccountId: shopifyPaymentsAccountId,
-      shippingAddress: shippingAddress,
-      shippingLine: shippingLine,
-      email: email,
-      completedAt: completedAt,
-      note: note,
-      webUrl: webUrl,
-      updatedAt: updatedAt,
-    );
-  }
-
-  Checkout fromJson(Map<String, Object?> json) {
-    return Checkout.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Checkout = _$CheckoutTearOff();
 
 /// @nodoc
 mixin _$Checkout {
@@ -120,7 +56,8 @@ mixin _$Checkout {
 /// @nodoc
 abstract class $CheckoutCopyWith<$Res> {
   factory $CheckoutCopyWith(Checkout value, $Res Function(Checkout) then) =
-      _$CheckoutCopyWithImpl<$Res>;
+      _$CheckoutCopyWithImpl<$Res, Checkout>;
+  @useResult
   $Res call(
       {String id,
       bool ready,
@@ -156,28 +93,31 @@ abstract class $CheckoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
+class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
+    implements $CheckoutCopyWith<$Res> {
   _$CheckoutCopyWithImpl(this._value, this._then);
 
-  final Checkout _value;
   // ignore: unused_field
-  final $Res Function(Checkout) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? ready = freezed,
+    Object? id = null,
+    Object? ready = null,
     Object? availableShippingRates = freezed,
-    Object? createdAt = freezed,
-    Object? currencyCode = freezed,
-    Object? totalTaxV2 = freezed,
-    Object? totalPriceV2 = freezed,
-    Object? taxesIncluded = freezed,
-    Object? taxExempt = freezed,
-    Object? subtotalPriceV2 = freezed,
-    Object? requiresShipping = freezed,
-    Object? appliedGiftCards = freezed,
-    Object? lineItems = freezed,
+    Object? createdAt = null,
+    Object? currencyCode = null,
+    Object? totalTaxV2 = null,
+    Object? totalPriceV2 = null,
+    Object? taxesIncluded = null,
+    Object? taxExempt = null,
+    Object? subtotalPriceV2 = null,
+    Object? requiresShipping = null,
+    Object? appliedGiftCards = null,
+    Object? lineItems = null,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
     Object? shopifyPaymentsAccountId = freezed,
@@ -190,102 +130,103 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      ready: ready == freezed
+      ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
               as bool,
-      availableShippingRates: availableShippingRates == freezed
+      availableShippingRates: freezed == availableShippingRates
           ? _value.availableShippingRates
           : availableShippingRates // ignore: cast_nullable_to_non_nullable
               as AvailableShippingRates?,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      currencyCode: currencyCode == freezed
+      currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      totalTaxV2: totalTaxV2 == freezed
+      totalTaxV2: null == totalTaxV2
           ? _value.totalTaxV2
           : totalTaxV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      totalPriceV2: totalPriceV2 == freezed
+      totalPriceV2: null == totalPriceV2
           ? _value.totalPriceV2
           : totalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      taxesIncluded: taxesIncluded == freezed
+      taxesIncluded: null == taxesIncluded
           ? _value.taxesIncluded
           : taxesIncluded // ignore: cast_nullable_to_non_nullable
               as bool,
-      taxExempt: taxExempt == freezed
+      taxExempt: null == taxExempt
           ? _value.taxExempt
           : taxExempt // ignore: cast_nullable_to_non_nullable
               as bool,
-      subtotalPriceV2: subtotalPriceV2 == freezed
+      subtotalPriceV2: null == subtotalPriceV2
           ? _value.subtotalPriceV2
           : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      requiresShipping: requiresShipping == freezed
+      requiresShipping: null == requiresShipping
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
-      appliedGiftCards: appliedGiftCards == freezed
+      appliedGiftCards: null == appliedGiftCards
           ? _value.appliedGiftCards
           : appliedGiftCards // ignore: cast_nullable_to_non_nullable
               as List<AppliedGiftCards>,
-      lineItems: lineItems == freezed
+      lineItems: null == lineItems
           ? _value.lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
-      order: order == freezed
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order?,
-      orderStatusUrl: orderStatusUrl == freezed
+      orderStatusUrl: freezed == orderStatusUrl
           ? _value.orderStatusUrl
           : orderStatusUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      shopifyPaymentsAccountId: shopifyPaymentsAccountId == freezed
+      shopifyPaymentsAccountId: freezed == shopifyPaymentsAccountId
           ? _value.shopifyPaymentsAccountId
           : shopifyPaymentsAccountId // ignore: cast_nullable_to_non_nullable
               as String?,
-      shippingAddress: shippingAddress == freezed
+      shippingAddress: freezed == shippingAddress
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
               as MailingAddress?,
-      shippingLine: shippingLine == freezed
+      shippingLine: freezed == shippingLine
           ? _value.shippingLine
           : shippingLine // ignore: cast_nullable_to_non_nullable
               as ShippingRates?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      completedAt: completedAt == freezed
+      completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      note: note == freezed
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      webUrl: webUrl == freezed
+      webUrl: freezed == webUrl
           ? _value.webUrl
           : webUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingRates {
     if (_value.availableShippingRates == null) {
       return null;
@@ -293,70 +234,78 @@ class _$CheckoutCopyWithImpl<$Res> implements $CheckoutCopyWith<$Res> {
 
     return $AvailableShippingRatesCopyWith<$Res>(_value.availableShippingRates!,
         (value) {
-      return _then(_value.copyWith(availableShippingRates: value));
+      return _then(_value.copyWith(availableShippingRates: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalTaxV2 {
     return $PriceV2CopyWith<$Res>(_value.totalTaxV2, (value) {
-      return _then(_value.copyWith(totalTaxV2: value));
+      return _then(_value.copyWith(totalTaxV2: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalPriceV2 {
     return $PriceV2CopyWith<$Res>(_value.totalPriceV2, (value) {
-      return _then(_value.copyWith(totalPriceV2: value));
+      return _then(_value.copyWith(totalPriceV2: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get subtotalPriceV2 {
     return $PriceV2CopyWith<$Res>(_value.subtotalPriceV2, (value) {
-      return _then(_value.copyWith(subtotalPriceV2: value));
+      return _then(_value.copyWith(subtotalPriceV2: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $OrderCopyWith<$Res>? get order {
     if (_value.order == null) {
       return null;
     }
 
     return $OrderCopyWith<$Res>(_value.order!, (value) {
-      return _then(_value.copyWith(order: value));
+      return _then(_value.copyWith(order: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $MailingAddressCopyWith<$Res>? get shippingAddress {
     if (_value.shippingAddress == null) {
       return null;
     }
 
     return $MailingAddressCopyWith<$Res>(_value.shippingAddress!, (value) {
-      return _then(_value.copyWith(shippingAddress: value));
+      return _then(_value.copyWith(shippingAddress: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $ShippingRatesCopyWith<$Res>? get shippingLine {
     if (_value.shippingLine == null) {
       return null;
     }
 
     return $ShippingRatesCopyWith<$Res>(_value.shippingLine!, (value) {
-      return _then(_value.copyWith(shippingLine: value));
+      return _then(_value.copyWith(shippingLine: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
-  factory _$CheckoutCopyWith(_Checkout value, $Res Function(_Checkout) then) =
-      __$CheckoutCopyWithImpl<$Res>;
+abstract class _$$_CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
+  factory _$$_CheckoutCopyWith(
+          _$_Checkout value, $Res Function(_$_Checkout) then) =
+      __$$_CheckoutCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       bool ready,
@@ -399,29 +348,29 @@ abstract class _$CheckoutCopyWith<$Res> implements $CheckoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
-    implements _$CheckoutCopyWith<$Res> {
-  __$CheckoutCopyWithImpl(_Checkout _value, $Res Function(_Checkout) _then)
-      : super(_value, (v) => _then(v as _Checkout));
+class __$$_CheckoutCopyWithImpl<$Res>
+    extends _$CheckoutCopyWithImpl<$Res, _$_Checkout>
+    implements _$$_CheckoutCopyWith<$Res> {
+  __$$_CheckoutCopyWithImpl(
+      _$_Checkout _value, $Res Function(_$_Checkout) _then)
+      : super(_value, _then);
 
-  @override
-  _Checkout get _value => super._value as _Checkout;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? ready = freezed,
+    Object? id = null,
+    Object? ready = null,
     Object? availableShippingRates = freezed,
-    Object? createdAt = freezed,
-    Object? currencyCode = freezed,
-    Object? totalTaxV2 = freezed,
-    Object? totalPriceV2 = freezed,
-    Object? taxesIncluded = freezed,
-    Object? taxExempt = freezed,
-    Object? subtotalPriceV2 = freezed,
-    Object? requiresShipping = freezed,
-    Object? appliedGiftCards = freezed,
-    Object? lineItems = freezed,
+    Object? createdAt = null,
+    Object? currencyCode = null,
+    Object? totalTaxV2 = null,
+    Object? totalPriceV2 = null,
+    Object? taxesIncluded = null,
+    Object? taxExempt = null,
+    Object? subtotalPriceV2 = null,
+    Object? requiresShipping = null,
+    Object? appliedGiftCards = null,
+    Object? lineItems = null,
     Object? order = freezed,
     Object? orderStatusUrl = freezed,
     Object? shopifyPaymentsAccountId = freezed,
@@ -433,96 +382,96 @@ class __$CheckoutCopyWithImpl<$Res> extends _$CheckoutCopyWithImpl<$Res>
     Object? webUrl = freezed,
     Object? updatedAt = freezed,
   }) {
-    return _then(_Checkout(
-      id: id == freezed
+    return _then(_$_Checkout(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      ready: ready == freezed
+      ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
               as bool,
-      availableShippingRates: availableShippingRates == freezed
+      availableShippingRates: freezed == availableShippingRates
           ? _value.availableShippingRates
           : availableShippingRates // ignore: cast_nullable_to_non_nullable
               as AvailableShippingRates?,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
-      currencyCode: currencyCode == freezed
+      currencyCode: null == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String,
-      totalTaxV2: totalTaxV2 == freezed
+      totalTaxV2: null == totalTaxV2
           ? _value.totalTaxV2
           : totalTaxV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      totalPriceV2: totalPriceV2 == freezed
+      totalPriceV2: null == totalPriceV2
           ? _value.totalPriceV2
           : totalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      taxesIncluded: taxesIncluded == freezed
+      taxesIncluded: null == taxesIncluded
           ? _value.taxesIncluded
           : taxesIncluded // ignore: cast_nullable_to_non_nullable
               as bool,
-      taxExempt: taxExempt == freezed
+      taxExempt: null == taxExempt
           ? _value.taxExempt
           : taxExempt // ignore: cast_nullable_to_non_nullable
               as bool,
-      subtotalPriceV2: subtotalPriceV2 == freezed
+      subtotalPriceV2: null == subtotalPriceV2
           ? _value.subtotalPriceV2
           : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
-      requiresShipping: requiresShipping == freezed
+      requiresShipping: null == requiresShipping
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
               as bool,
-      appliedGiftCards: appliedGiftCards == freezed
-          ? _value.appliedGiftCards
+      appliedGiftCards: null == appliedGiftCards
+          ? _value._appliedGiftCards
           : appliedGiftCards // ignore: cast_nullable_to_non_nullable
               as List<AppliedGiftCards>,
-      lineItems: lineItems == freezed
-          ? _value.lineItems
+      lineItems: null == lineItems
+          ? _value._lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
-      order: order == freezed
+      order: freezed == order
           ? _value.order
           : order // ignore: cast_nullable_to_non_nullable
               as Order?,
-      orderStatusUrl: orderStatusUrl == freezed
+      orderStatusUrl: freezed == orderStatusUrl
           ? _value.orderStatusUrl
           : orderStatusUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      shopifyPaymentsAccountId: shopifyPaymentsAccountId == freezed
+      shopifyPaymentsAccountId: freezed == shopifyPaymentsAccountId
           ? _value.shopifyPaymentsAccountId
           : shopifyPaymentsAccountId // ignore: cast_nullable_to_non_nullable
               as String?,
-      shippingAddress: shippingAddress == freezed
+      shippingAddress: freezed == shippingAddress
           ? _value.shippingAddress
           : shippingAddress // ignore: cast_nullable_to_non_nullable
               as MailingAddress?,
-      shippingLine: shippingLine == freezed
+      shippingLine: freezed == shippingLine
           ? _value.shippingLine
           : shippingLine // ignore: cast_nullable_to_non_nullable
               as ShippingRates?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      completedAt: completedAt == freezed
+      completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      note: note == freezed
+      note: freezed == note
           ? _value.note
           : note // ignore: cast_nullable_to_non_nullable
               as String?,
-      webUrl: webUrl == freezed
+      webUrl: freezed == webUrl
           ? _value.webUrl
           : webUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      updatedAt: updatedAt == freezed
+      updatedAt: freezed == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -545,8 +494,9 @@ class _$_Checkout extends _Checkout {
       required this.taxExempt,
       required this.subtotalPriceV2,
       required this.requiresShipping,
-      required this.appliedGiftCards,
-      @JsonKey(fromJson: JsonHelper.lineItems) required this.lineItems,
+      required final List<AppliedGiftCards> appliedGiftCards,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          required final List<LineItem> lineItems,
       this.order,
       this.orderStatusUrl,
       this.shopifyPaymentsAccountId,
@@ -557,7 +507,9 @@ class _$_Checkout extends _Checkout {
       this.note,
       this.webUrl,
       this.updatedAt})
-      : super._();
+      : _appliedGiftCards = appliedGiftCards,
+        _lineItems = lineItems,
+        super._();
 
   factory _$_Checkout.fromJson(Map<String, dynamic> json) =>
       _$$_CheckoutFromJson(json);
@@ -584,11 +536,24 @@ class _$_Checkout extends _Checkout {
   final PriceV2 subtotalPriceV2;
   @override
   final bool requiresShipping;
+  final List<AppliedGiftCards> _appliedGiftCards;
   @override
-  final List<AppliedGiftCards> appliedGiftCards;
+  List<AppliedGiftCards> get appliedGiftCards {
+    if (_appliedGiftCards is EqualUnmodifiableListView)
+      return _appliedGiftCards;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_appliedGiftCards);
+  }
+
+  final List<LineItem> _lineItems;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  final List<LineItem> lineItems;
+  List<LineItem> get lineItems {
+    if (_lineItems is EqualUnmodifiableListView) return _lineItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lineItems);
+  }
+
   @override
   final Order? order;
   @override
@@ -619,110 +584,119 @@ class _$_Checkout extends _Checkout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Checkout &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.ready, ready) &&
+            other is _$_Checkout &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.ready, ready) || other.ready == ready) &&
+            (identical(other.availableShippingRates, availableShippingRates) ||
+                other.availableShippingRates == availableShippingRates) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.totalTaxV2, totalTaxV2) ||
+                other.totalTaxV2 == totalTaxV2) &&
+            (identical(other.totalPriceV2, totalPriceV2) ||
+                other.totalPriceV2 == totalPriceV2) &&
+            (identical(other.taxesIncluded, taxesIncluded) ||
+                other.taxesIncluded == taxesIncluded) &&
+            (identical(other.taxExempt, taxExempt) ||
+                other.taxExempt == taxExempt) &&
+            (identical(other.subtotalPriceV2, subtotalPriceV2) ||
+                other.subtotalPriceV2 == subtotalPriceV2) &&
+            (identical(other.requiresShipping, requiresShipping) ||
+                other.requiresShipping == requiresShipping) &&
             const DeepCollectionEquality()
-                .equals(other.availableShippingRates, availableShippingRates) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
+                .equals(other._appliedGiftCards, _appliedGiftCards) &&
             const DeepCollectionEquality()
-                .equals(other.currencyCode, currencyCode) &&
-            const DeepCollectionEquality()
-                .equals(other.totalTaxV2, totalTaxV2) &&
-            const DeepCollectionEquality()
-                .equals(other.totalPriceV2, totalPriceV2) &&
-            const DeepCollectionEquality()
-                .equals(other.taxesIncluded, taxesIncluded) &&
-            const DeepCollectionEquality().equals(other.taxExempt, taxExempt) &&
-            const DeepCollectionEquality()
-                .equals(other.subtotalPriceV2, subtotalPriceV2) &&
-            const DeepCollectionEquality()
-                .equals(other.requiresShipping, requiresShipping) &&
-            const DeepCollectionEquality()
-                .equals(other.appliedGiftCards, appliedGiftCards) &&
-            const DeepCollectionEquality().equals(other.lineItems, lineItems) &&
-            const DeepCollectionEquality().equals(other.order, order) &&
-            const DeepCollectionEquality()
-                .equals(other.orderStatusUrl, orderStatusUrl) &&
-            const DeepCollectionEquality().equals(
-                other.shopifyPaymentsAccountId, shopifyPaymentsAccountId) &&
-            const DeepCollectionEquality()
-                .equals(other.shippingAddress, shippingAddress) &&
-            const DeepCollectionEquality()
-                .equals(other.shippingLine, shippingLine) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality()
-                .equals(other.completedAt, completedAt) &&
-            const DeepCollectionEquality().equals(other.note, note) &&
-            const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt));
+                .equals(other._lineItems, _lineItems) &&
+            (identical(other.order, order) || other.order == order) &&
+            (identical(other.orderStatusUrl, orderStatusUrl) ||
+                other.orderStatusUrl == orderStatusUrl) &&
+            (identical(
+                    other.shopifyPaymentsAccountId, shopifyPaymentsAccountId) ||
+                other.shopifyPaymentsAccountId == shopifyPaymentsAccountId) &&
+            (identical(other.shippingAddress, shippingAddress) ||
+                other.shippingAddress == shippingAddress) &&
+            (identical(other.shippingLine, shippingLine) ||
+                other.shippingLine == shippingLine) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.completedAt, completedAt) ||
+                other.completedAt == completedAt) &&
+            (identical(other.note, note) || other.note == note) &&
+            (identical(other.webUrl, webUrl) || other.webUrl == webUrl) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(ready),
-        const DeepCollectionEquality().hash(availableShippingRates),
-        const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(currencyCode),
-        const DeepCollectionEquality().hash(totalTaxV2),
-        const DeepCollectionEquality().hash(totalPriceV2),
-        const DeepCollectionEquality().hash(taxesIncluded),
-        const DeepCollectionEquality().hash(taxExempt),
-        const DeepCollectionEquality().hash(subtotalPriceV2),
-        const DeepCollectionEquality().hash(requiresShipping),
-        const DeepCollectionEquality().hash(appliedGiftCards),
-        const DeepCollectionEquality().hash(lineItems),
-        const DeepCollectionEquality().hash(order),
-        const DeepCollectionEquality().hash(orderStatusUrl),
-        const DeepCollectionEquality().hash(shopifyPaymentsAccountId),
-        const DeepCollectionEquality().hash(shippingAddress),
-        const DeepCollectionEquality().hash(shippingLine),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(completedAt),
-        const DeepCollectionEquality().hash(note),
-        const DeepCollectionEquality().hash(webUrl),
-        const DeepCollectionEquality().hash(updatedAt)
+        id,
+        ready,
+        availableShippingRates,
+        createdAt,
+        currencyCode,
+        totalTaxV2,
+        totalPriceV2,
+        taxesIncluded,
+        taxExempt,
+        subtotalPriceV2,
+        requiresShipping,
+        const DeepCollectionEquality().hash(_appliedGiftCards),
+        const DeepCollectionEquality().hash(_lineItems),
+        order,
+        orderStatusUrl,
+        shopifyPaymentsAccountId,
+        shippingAddress,
+        shippingLine,
+        email,
+        completedAt,
+        note,
+        webUrl,
+        updatedAt
       ]);
 
   @JsonKey(ignore: true)
   @override
-  _$CheckoutCopyWith<_Checkout> get copyWith =>
-      __$CheckoutCopyWithImpl<_Checkout>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$_CheckoutCopyWith<_$_Checkout> get copyWith =>
+      __$$_CheckoutCopyWithImpl<_$_Checkout>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CheckoutToJson(this);
+    return _$$_CheckoutToJson(
+      this,
+    );
   }
 }
 
 abstract class _Checkout extends Checkout {
   factory _Checkout(
-      {required String id,
-      required bool ready,
-      required AvailableShippingRates? availableShippingRates,
-      required String createdAt,
-      required String currencyCode,
-      required PriceV2 totalTaxV2,
-      required PriceV2 totalPriceV2,
-      required bool taxesIncluded,
-      required bool taxExempt,
-      required PriceV2 subtotalPriceV2,
-      required bool requiresShipping,
-      required List<AppliedGiftCards> appliedGiftCards,
+      {required final String id,
+      required final bool ready,
+      required final AvailableShippingRates? availableShippingRates,
+      required final String createdAt,
+      required final String currencyCode,
+      required final PriceV2 totalTaxV2,
+      required final PriceV2 totalPriceV2,
+      required final bool taxesIncluded,
+      required final bool taxExempt,
+      required final PriceV2 subtotalPriceV2,
+      required final bool requiresShipping,
+      required final List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
-          required List<LineItem> lineItems,
-      Order? order,
-      String? orderStatusUrl,
-      String? shopifyPaymentsAccountId,
-      MailingAddress? shippingAddress,
-      ShippingRates? shippingLine,
-      String? email,
-      String? completedAt,
-      String? note,
-      String? webUrl,
-      String? updatedAt}) = _$_Checkout;
+          required final List<LineItem> lineItems,
+      final Order? order,
+      final String? orderStatusUrl,
+      final String? shopifyPaymentsAccountId,
+      final MailingAddress? shippingAddress,
+      final ShippingRates? shippingLine,
+      final String? email,
+      final String? completedAt,
+      final String? note,
+      final String? webUrl,
+      final String? updatedAt}) = _$_Checkout;
   _Checkout._() : super._();
 
   factory _Checkout.fromJson(Map<String, dynamic> json) = _$_Checkout.fromJson;
@@ -776,6 +750,6 @@ abstract class _Checkout extends Checkout {
   String? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$CheckoutCopyWith<_Checkout> get copyWith =>
+  _$$_CheckoutCopyWith<_$_Checkout> get copyWith =>
       throw _privateConstructorUsedError;
 }

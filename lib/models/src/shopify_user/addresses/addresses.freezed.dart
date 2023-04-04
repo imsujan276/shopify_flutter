@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'addresses.dart';
 
@@ -12,29 +12,11 @@ part of 'addresses.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Addresses _$AddressesFromJson(Map<String, dynamic> json) {
   return _Addresses.fromJson(json);
 }
-
-/// @nodoc
-class _$AddressesTearOff {
-  const _$AddressesTearOff();
-
-  _Addresses call({required List<Address> addressList}) {
-    return _Addresses(
-      addressList: addressList,
-    );
-  }
-
-  Addresses fromJson(Map<String, Object?> json) {
-    return Addresses.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Addresses = _$AddressesTearOff();
 
 /// @nodoc
 mixin _$Addresses {
@@ -49,56 +31,61 @@ mixin _$Addresses {
 /// @nodoc
 abstract class $AddressesCopyWith<$Res> {
   factory $AddressesCopyWith(Addresses value, $Res Function(Addresses) then) =
-      _$AddressesCopyWithImpl<$Res>;
+      _$AddressesCopyWithImpl<$Res, Addresses>;
+  @useResult
   $Res call({List<Address> addressList});
 }
 
 /// @nodoc
-class _$AddressesCopyWithImpl<$Res> implements $AddressesCopyWith<$Res> {
+class _$AddressesCopyWithImpl<$Res, $Val extends Addresses>
+    implements $AddressesCopyWith<$Res> {
   _$AddressesCopyWithImpl(this._value, this._then);
 
-  final Addresses _value;
   // ignore: unused_field
-  final $Res Function(Addresses) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addressList = freezed,
+    Object? addressList = null,
   }) {
     return _then(_value.copyWith(
-      addressList: addressList == freezed
+      addressList: null == addressList
           ? _value.addressList
           : addressList // ignore: cast_nullable_to_non_nullable
               as List<Address>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AddressesCopyWith<$Res> implements $AddressesCopyWith<$Res> {
-  factory _$AddressesCopyWith(
-          _Addresses value, $Res Function(_Addresses) then) =
-      __$AddressesCopyWithImpl<$Res>;
+abstract class _$$_AddressesCopyWith<$Res> implements $AddressesCopyWith<$Res> {
+  factory _$$_AddressesCopyWith(
+          _$_Addresses value, $Res Function(_$_Addresses) then) =
+      __$$_AddressesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Address> addressList});
 }
 
 /// @nodoc
-class __$AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
-    implements _$AddressesCopyWith<$Res> {
-  __$AddressesCopyWithImpl(_Addresses _value, $Res Function(_Addresses) _then)
-      : super(_value, (v) => _then(v as _Addresses));
+class __$$_AddressesCopyWithImpl<$Res>
+    extends _$AddressesCopyWithImpl<$Res, _$_Addresses>
+    implements _$$_AddressesCopyWith<$Res> {
+  __$$_AddressesCopyWithImpl(
+      _$_Addresses _value, $Res Function(_$_Addresses) _then)
+      : super(_value, _then);
 
-  @override
-  _Addresses get _value => super._value as _Addresses;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? addressList = freezed,
+    Object? addressList = null,
   }) {
-    return _then(_Addresses(
-      addressList: addressList == freezed
-          ? _value.addressList
+    return _then(_$_Addresses(
+      addressList: null == addressList
+          ? _value._addressList
           : addressList // ignore: cast_nullable_to_non_nullable
               as List<Address>,
     ));
@@ -108,13 +95,20 @@ class __$AddressesCopyWithImpl<$Res> extends _$AddressesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Addresses extends _Addresses {
-  _$_Addresses({required this.addressList}) : super._();
+  _$_Addresses({required final List<Address> addressList})
+      : _addressList = addressList,
+        super._();
 
   factory _$_Addresses.fromJson(Map<String, dynamic> json) =>
       _$$_AddressesFromJson(json);
 
+  final List<Address> _addressList;
   @override
-  final List<Address> addressList;
+  List<Address> get addressList {
+    if (_addressList is EqualUnmodifiableListView) return _addressList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_addressList);
+  }
 
   @override
   String toString() {
@@ -125,28 +119,32 @@ class _$_Addresses extends _Addresses {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Addresses &&
+            other is _$_Addresses &&
             const DeepCollectionEquality()
-                .equals(other.addressList, addressList));
+                .equals(other._addressList, _addressList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(addressList));
 
   @JsonKey(ignore: true)
   @override
-  _$AddressesCopyWith<_Addresses> get copyWith =>
-      __$AddressesCopyWithImpl<_Addresses>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_addressList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
+      __$$_AddressesCopyWithImpl<_$_Addresses>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressesToJson(this);
+    return _$$_AddressesToJson(
+      this,
+    );
   }
 }
 
 abstract class _Addresses extends Addresses {
-  factory _Addresses({required List<Address> addressList}) = _$_Addresses;
+  factory _Addresses({required final List<Address> addressList}) = _$_Addresses;
   _Addresses._() : super._();
 
   factory _Addresses.fromJson(Map<String, dynamic> json) =
@@ -156,6 +154,6 @@ abstract class _Addresses extends Addresses {
   List<Address> get addressList;
   @override
   @JsonKey(ignore: true)
-  _$AddressesCopyWith<_Addresses> get copyWith =>
+  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
       throw _privateConstructorUsedError;
 }

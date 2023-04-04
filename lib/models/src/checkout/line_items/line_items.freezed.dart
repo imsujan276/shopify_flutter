@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'line_items.dart';
 
@@ -12,29 +12,11 @@ part of 'line_items.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
   return _LineItems.fromJson(json);
 }
-
-/// @nodoc
-class _$LineItemsTearOff {
-  const _$LineItemsTearOff();
-
-  _LineItems call({required List<LineItem> lineItemList}) {
-    return _LineItems(
-      lineItemList: lineItemList,
-    );
-  }
-
-  LineItems fromJson(Map<String, Object?> json) {
-    return LineItems.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LineItems = _$LineItemsTearOff();
 
 /// @nodoc
 mixin _$LineItems {
@@ -49,56 +31,61 @@ mixin _$LineItems {
 /// @nodoc
 abstract class $LineItemsCopyWith<$Res> {
   factory $LineItemsCopyWith(LineItems value, $Res Function(LineItems) then) =
-      _$LineItemsCopyWithImpl<$Res>;
+      _$LineItemsCopyWithImpl<$Res, LineItems>;
+  @useResult
   $Res call({List<LineItem> lineItemList});
 }
 
 /// @nodoc
-class _$LineItemsCopyWithImpl<$Res> implements $LineItemsCopyWith<$Res> {
+class _$LineItemsCopyWithImpl<$Res, $Val extends LineItems>
+    implements $LineItemsCopyWith<$Res> {
   _$LineItemsCopyWithImpl(this._value, this._then);
 
-  final LineItems _value;
   // ignore: unused_field
-  final $Res Function(LineItems) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lineItemList = freezed,
+    Object? lineItemList = null,
   }) {
     return _then(_value.copyWith(
-      lineItemList: lineItemList == freezed
+      lineItemList: null == lineItemList
           ? _value.lineItemList
           : lineItemList // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$LineItemsCopyWith<$Res> implements $LineItemsCopyWith<$Res> {
-  factory _$LineItemsCopyWith(
-          _LineItems value, $Res Function(_LineItems) then) =
-      __$LineItemsCopyWithImpl<$Res>;
+abstract class _$$_LineItemsCopyWith<$Res> implements $LineItemsCopyWith<$Res> {
+  factory _$$_LineItemsCopyWith(
+          _$_LineItems value, $Res Function(_$_LineItems) then) =
+      __$$_LineItemsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<LineItem> lineItemList});
 }
 
 /// @nodoc
-class __$LineItemsCopyWithImpl<$Res> extends _$LineItemsCopyWithImpl<$Res>
-    implements _$LineItemsCopyWith<$Res> {
-  __$LineItemsCopyWithImpl(_LineItems _value, $Res Function(_LineItems) _then)
-      : super(_value, (v) => _then(v as _LineItems));
+class __$$_LineItemsCopyWithImpl<$Res>
+    extends _$LineItemsCopyWithImpl<$Res, _$_LineItems>
+    implements _$$_LineItemsCopyWith<$Res> {
+  __$$_LineItemsCopyWithImpl(
+      _$_LineItems _value, $Res Function(_$_LineItems) _then)
+      : super(_value, _then);
 
-  @override
-  _LineItems get _value => super._value as _LineItems;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lineItemList = freezed,
+    Object? lineItemList = null,
   }) {
-    return _then(_LineItems(
-      lineItemList: lineItemList == freezed
-          ? _value.lineItemList
+    return _then(_$_LineItems(
+      lineItemList: null == lineItemList
+          ? _value._lineItemList
           : lineItemList // ignore: cast_nullable_to_non_nullable
               as List<LineItem>,
     ));
@@ -108,13 +95,19 @@ class __$LineItemsCopyWithImpl<$Res> extends _$LineItemsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LineItems implements _LineItems {
-  _$_LineItems({required this.lineItemList});
+  _$_LineItems({required final List<LineItem> lineItemList})
+      : _lineItemList = lineItemList;
 
   factory _$_LineItems.fromJson(Map<String, dynamic> json) =>
       _$$_LineItemsFromJson(json);
 
+  final List<LineItem> _lineItemList;
   @override
-  final List<LineItem> lineItemList;
+  List<LineItem> get lineItemList {
+    if (_lineItemList is EqualUnmodifiableListView) return _lineItemList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lineItemList);
+  }
 
   @override
   String toString() {
@@ -125,28 +118,33 @@ class _$_LineItems implements _LineItems {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LineItems &&
+            other is _$_LineItems &&
             const DeepCollectionEquality()
-                .equals(other.lineItemList, lineItemList));
+                .equals(other._lineItemList, _lineItemList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(lineItemList));
 
   @JsonKey(ignore: true)
   @override
-  _$LineItemsCopyWith<_LineItems> get copyWith =>
-      __$LineItemsCopyWithImpl<_LineItems>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_lineItemList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LineItemsCopyWith<_$_LineItems> get copyWith =>
+      __$$_LineItemsCopyWithImpl<_$_LineItems>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemsToJson(this);
+    return _$$_LineItemsToJson(
+      this,
+    );
   }
 }
 
 abstract class _LineItems implements LineItems {
-  factory _LineItems({required List<LineItem> lineItemList}) = _$_LineItems;
+  factory _LineItems({required final List<LineItem> lineItemList}) =
+      _$_LineItems;
 
   factory _LineItems.fromJson(Map<String, dynamic> json) =
       _$_LineItems.fromJson;
@@ -155,6 +153,6 @@ abstract class _LineItems implements LineItems {
   List<LineItem> get lineItemList;
   @override
   @JsonKey(ignore: true)
-  _$LineItemsCopyWith<_LineItems> get copyWith =>
+  _$$_LineItemsCopyWith<_$_LineItems> get copyWith =>
       throw _privateConstructorUsedError;
 }

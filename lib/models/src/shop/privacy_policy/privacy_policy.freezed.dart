@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'privacy_policy.dart';
 
@@ -12,34 +12,11 @@ part of 'privacy_policy.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 PrivacyPolicy _$PrivacyPolicyFromJson(Map<String, dynamic> json) {
   return _PrivacyPolicy.fromJson(json);
 }
-
-/// @nodoc
-class _$PrivacyPolicyTearOff {
-  const _$PrivacyPolicyTearOff();
-
-  _PrivacyPolicy call(
-      {String? body, String? handle, String? id, String? title, String? url}) {
-    return _PrivacyPolicy(
-      body: body,
-      handle: handle,
-      id: id,
-      title: title,
-      url: url,
-    );
-  }
-
-  PrivacyPolicy fromJson(Map<String, Object?> json) {
-    return PrivacyPolicy.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $PrivacyPolicy = _$PrivacyPolicyTearOff();
 
 /// @nodoc
 mixin _$PrivacyPolicy {
@@ -59,20 +36,23 @@ mixin _$PrivacyPolicy {
 abstract class $PrivacyPolicyCopyWith<$Res> {
   factory $PrivacyPolicyCopyWith(
           PrivacyPolicy value, $Res Function(PrivacyPolicy) then) =
-      _$PrivacyPolicyCopyWithImpl<$Res>;
+      _$PrivacyPolicyCopyWithImpl<$Res, PrivacyPolicy>;
+  @useResult
   $Res call(
       {String? body, String? handle, String? id, String? title, String? url});
 }
 
 /// @nodoc
-class _$PrivacyPolicyCopyWithImpl<$Res>
+class _$PrivacyPolicyCopyWithImpl<$Res, $Val extends PrivacyPolicy>
     implements $PrivacyPolicyCopyWith<$Res> {
   _$PrivacyPolicyCopyWithImpl(this._value, this._then);
 
-  final PrivacyPolicy _value;
   // ignore: unused_field
-  final $Res Function(PrivacyPolicy) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? body = freezed,
@@ -82,52 +62,51 @@ class _$PrivacyPolicyCopyWithImpl<$Res>
     Object? url = freezed,
   }) {
     return _then(_value.copyWith(
-      body: body == freezed
+      body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      handle: handle == freezed
+      handle: freezed == handle
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PrivacyPolicyCopyWith<$Res>
+abstract class _$$_PrivacyPolicyCopyWith<$Res>
     implements $PrivacyPolicyCopyWith<$Res> {
-  factory _$PrivacyPolicyCopyWith(
-          _PrivacyPolicy value, $Res Function(_PrivacyPolicy) then) =
-      __$PrivacyPolicyCopyWithImpl<$Res>;
+  factory _$$_PrivacyPolicyCopyWith(
+          _$_PrivacyPolicy value, $Res Function(_$_PrivacyPolicy) then) =
+      __$$_PrivacyPolicyCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? body, String? handle, String? id, String? title, String? url});
 }
 
 /// @nodoc
-class __$PrivacyPolicyCopyWithImpl<$Res>
-    extends _$PrivacyPolicyCopyWithImpl<$Res>
-    implements _$PrivacyPolicyCopyWith<$Res> {
-  __$PrivacyPolicyCopyWithImpl(
-      _PrivacyPolicy _value, $Res Function(_PrivacyPolicy) _then)
-      : super(_value, (v) => _then(v as _PrivacyPolicy));
+class __$$_PrivacyPolicyCopyWithImpl<$Res>
+    extends _$PrivacyPolicyCopyWithImpl<$Res, _$_PrivacyPolicy>
+    implements _$$_PrivacyPolicyCopyWith<$Res> {
+  __$$_PrivacyPolicyCopyWithImpl(
+      _$_PrivacyPolicy _value, $Res Function(_$_PrivacyPolicy) _then)
+      : super(_value, _then);
 
-  @override
-  _PrivacyPolicy get _value => super._value as _PrivacyPolicy;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? body = freezed,
@@ -136,24 +115,24 @@ class __$PrivacyPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_PrivacyPolicy(
-      body: body == freezed
+    return _then(_$_PrivacyPolicy(
+      body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String?,
-      handle: handle == freezed
+      handle: freezed == handle
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      title: title == freezed
+      title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: url == freezed
+      url: freezed == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -189,41 +168,39 @@ class _$_PrivacyPolicy implements _PrivacyPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _PrivacyPolicy &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality().equals(other.handle, handle) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$_PrivacyPolicy &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.handle, handle) || other.handle == handle) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.url, url) || other.url == url));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(handle),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$PrivacyPolicyCopyWith<_PrivacyPolicy> get copyWith =>
-      __$PrivacyPolicyCopyWithImpl<_PrivacyPolicy>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PrivacyPolicyCopyWith<_$_PrivacyPolicy> get copyWith =>
+      __$$_PrivacyPolicyCopyWithImpl<_$_PrivacyPolicy>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PrivacyPolicyToJson(this);
+    return _$$_PrivacyPolicyToJson(
+      this,
+    );
   }
 }
 
 abstract class _PrivacyPolicy implements PrivacyPolicy {
   factory _PrivacyPolicy(
-      {String? body,
-      String? handle,
-      String? id,
-      String? title,
-      String? url}) = _$_PrivacyPolicy;
+      {final String? body,
+      final String? handle,
+      final String? id,
+      final String? title,
+      final String? url}) = _$_PrivacyPolicy;
 
   factory _PrivacyPolicy.fromJson(Map<String, dynamic> json) =
       _$_PrivacyPolicy.fromJson;
@@ -240,6 +217,6 @@ abstract class _PrivacyPolicy implements PrivacyPolicy {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$PrivacyPolicyCopyWith<_PrivacyPolicy> get copyWith =>
+  _$$_PrivacyPolicyCopyWith<_$_PrivacyPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }

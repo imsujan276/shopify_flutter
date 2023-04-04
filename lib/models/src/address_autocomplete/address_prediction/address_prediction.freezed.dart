@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'address_prediction.dart';
 
@@ -12,34 +12,11 @@ part of 'address_prediction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AddressPrediction _$AddressPredictionFromJson(Map<String, dynamic> json) {
   return _AddressPrediction.fromJson(json);
 }
-
-/// @nodoc
-class _$AddressPredictionTearOff {
-  const _$AddressPredictionTearOff();
-
-  _AddressPrediction call(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings}) {
-    return _AddressPrediction(
-      addressId: addressId,
-      description: description,
-      matchedSubstrings: matchedSubstrings,
-    );
-  }
-
-  AddressPrediction fromJson(Map<String, Object?> json) {
-    return AddressPrediction.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AddressPrediction = _$AddressPredictionTearOff();
 
 /// @nodoc
 mixin _$AddressPrediction {
@@ -58,7 +35,8 @@ mixin _$AddressPrediction {
 abstract class $AddressPredictionCopyWith<$Res> {
   factory $AddressPredictionCopyWith(
           AddressPrediction value, $Res Function(AddressPrediction) then) =
-      _$AddressPredictionCopyWithImpl<$Res>;
+      _$AddressPredictionCopyWithImpl<$Res, AddressPrediction>;
+  @useResult
   $Res call(
       {String? addressId,
       String? description,
@@ -66,14 +44,16 @@ abstract class $AddressPredictionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$AddressPredictionCopyWithImpl<$Res>
+class _$AddressPredictionCopyWithImpl<$Res, $Val extends AddressPrediction>
     implements $AddressPredictionCopyWith<$Res> {
   _$AddressPredictionCopyWithImpl(this._value, this._then);
 
-  final AddressPrediction _value;
   // ignore: unused_field
-  final $Res Function(AddressPrediction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? addressId = freezed,
@@ -81,29 +61,30 @@ class _$AddressPredictionCopyWithImpl<$Res>
     Object? matchedSubstrings = freezed,
   }) {
     return _then(_value.copyWith(
-      addressId: addressId == freezed
+      addressId: freezed == addressId
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      matchedSubstrings: matchedSubstrings == freezed
+      matchedSubstrings: freezed == matchedSubstrings
           ? _value.matchedSubstrings
           : matchedSubstrings // ignore: cast_nullable_to_non_nullable
               as List<MatchedSubstring>?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$AddressPredictionCopyWith<$Res>
+abstract class _$$_AddressPredictionCopyWith<$Res>
     implements $AddressPredictionCopyWith<$Res> {
-  factory _$AddressPredictionCopyWith(
-          _AddressPrediction value, $Res Function(_AddressPrediction) then) =
-      __$AddressPredictionCopyWithImpl<$Res>;
+  factory _$$_AddressPredictionCopyWith(_$_AddressPrediction value,
+          $Res Function(_$_AddressPrediction) then) =
+      __$$_AddressPredictionCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? addressId,
       String? description,
@@ -111,33 +92,31 @@ abstract class _$AddressPredictionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$AddressPredictionCopyWithImpl<$Res>
-    extends _$AddressPredictionCopyWithImpl<$Res>
-    implements _$AddressPredictionCopyWith<$Res> {
-  __$AddressPredictionCopyWithImpl(
-      _AddressPrediction _value, $Res Function(_AddressPrediction) _then)
-      : super(_value, (v) => _then(v as _AddressPrediction));
+class __$$_AddressPredictionCopyWithImpl<$Res>
+    extends _$AddressPredictionCopyWithImpl<$Res, _$_AddressPrediction>
+    implements _$$_AddressPredictionCopyWith<$Res> {
+  __$$_AddressPredictionCopyWithImpl(
+      _$_AddressPrediction _value, $Res Function(_$_AddressPrediction) _then)
+      : super(_value, _then);
 
-  @override
-  _AddressPrediction get _value => super._value as _AddressPrediction;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? addressId = freezed,
     Object? description = freezed,
     Object? matchedSubstrings = freezed,
   }) {
-    return _then(_AddressPrediction(
-      addressId: addressId == freezed
+    return _then(_$_AddressPrediction(
+      addressId: freezed == addressId
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
               as String?,
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      matchedSubstrings: matchedSubstrings == freezed
-          ? _value.matchedSubstrings
+      matchedSubstrings: freezed == matchedSubstrings
+          ? _value._matchedSubstrings
           : matchedSubstrings // ignore: cast_nullable_to_non_nullable
               as List<MatchedSubstring>?,
     ));
@@ -148,7 +127,10 @@ class __$AddressPredictionCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_AddressPrediction implements _AddressPrediction {
   const _$_AddressPrediction(
-      {this.addressId, this.description, this.matchedSubstrings});
+      {this.addressId,
+      this.description,
+      final List<MatchedSubstring>? matchedSubstrings})
+      : _matchedSubstrings = matchedSubstrings;
 
   factory _$_AddressPrediction.fromJson(Map<String, dynamic> json) =>
       _$$_AddressPredictionFromJson(json);
@@ -157,8 +139,16 @@ class _$_AddressPrediction implements _AddressPrediction {
   final String? addressId;
   @override
   final String? description;
+  final List<MatchedSubstring>? _matchedSubstrings;
   @override
-  final List<MatchedSubstring>? matchedSubstrings;
+  List<MatchedSubstring>? get matchedSubstrings {
+    final value = _matchedSubstrings;
+    if (value == null) return null;
+    if (_matchedSubstrings is EqualUnmodifiableListView)
+      return _matchedSubstrings;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -169,37 +159,40 @@ class _$_AddressPrediction implements _AddressPrediction {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AddressPrediction &&
-            const DeepCollectionEquality().equals(other.addressId, addressId) &&
+            other is _$_AddressPrediction &&
+            (identical(other.addressId, addressId) ||
+                other.addressId == addressId) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.matchedSubstrings, matchedSubstrings));
+                .equals(other._matchedSubstrings, _matchedSubstrings));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(addressId),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(matchedSubstrings));
 
   @JsonKey(ignore: true)
   @override
-  _$AddressPredictionCopyWith<_AddressPrediction> get copyWith =>
-      __$AddressPredictionCopyWithImpl<_AddressPrediction>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, addressId, description,
+      const DeepCollectionEquality().hash(_matchedSubstrings));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
+      __$$_AddressPredictionCopyWithImpl<_$_AddressPrediction>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressPredictionToJson(this);
+    return _$$_AddressPredictionToJson(
+      this,
+    );
   }
 }
 
 abstract class _AddressPrediction implements AddressPrediction {
   const factory _AddressPrediction(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings}) = _$_AddressPrediction;
+      {final String? addressId,
+      final String? description,
+      final List<MatchedSubstring>? matchedSubstrings}) = _$_AddressPrediction;
 
   factory _AddressPrediction.fromJson(Map<String, dynamic> json) =
       _$_AddressPrediction.fromJson;
@@ -212,6 +205,6 @@ abstract class _AddressPrediction implements AddressPrediction {
   List<MatchedSubstring>? get matchedSubstrings;
   @override
   @JsonKey(ignore: true)
-  _$AddressPredictionCopyWith<_AddressPrediction> get copyWith =>
+  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
       throw _privateConstructorUsedError;
 }

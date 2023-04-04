@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'mailing_address.dart';
 
@@ -12,62 +12,11 @@ part of 'mailing_address.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MailingAddress _$MailingAddressFromJson(Map<String, dynamic> json) {
   return _MailingAddress.fromJson(json);
 }
-
-/// @nodoc
-class _$MailingAddressTearOff {
-  const _$MailingAddressTearOff();
-
-  _MailingAddress call(
-      {required String id,
-      required String address1,
-      required String city,
-      required String country,
-      required String zip,
-      String? lastName,
-      String? name,
-      String? firstName,
-      String? address2,
-      String? company,
-      String? countryCodeV2,
-      String? formattedArea,
-      double? latitude,
-      double? longitude,
-      String? phone,
-      String? province,
-      String? provinceCode}) {
-    return _MailingAddress(
-      id: id,
-      address1: address1,
-      city: city,
-      country: country,
-      zip: zip,
-      lastName: lastName,
-      name: name,
-      firstName: firstName,
-      address2: address2,
-      company: company,
-      countryCodeV2: countryCodeV2,
-      formattedArea: formattedArea,
-      latitude: latitude,
-      longitude: longitude,
-      phone: phone,
-      province: province,
-      provinceCode: provinceCode,
-    );
-  }
-
-  MailingAddress fromJson(Map<String, Object?> json) {
-    return MailingAddress.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MailingAddress = _$MailingAddressTearOff();
 
 /// @nodoc
 mixin _$MailingAddress {
@@ -99,7 +48,8 @@ mixin _$MailingAddress {
 abstract class $MailingAddressCopyWith<$Res> {
   factory $MailingAddressCopyWith(
           MailingAddress value, $Res Function(MailingAddress) then) =
-      _$MailingAddressCopyWithImpl<$Res>;
+      _$MailingAddressCopyWithImpl<$Res, MailingAddress>;
+  @useResult
   $Res call(
       {String id,
       String address1,
@@ -121,21 +71,23 @@ abstract class $MailingAddressCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MailingAddressCopyWithImpl<$Res>
+class _$MailingAddressCopyWithImpl<$Res, $Val extends MailingAddress>
     implements $MailingAddressCopyWith<$Res> {
   _$MailingAddressCopyWithImpl(this._value, this._then);
 
-  final MailingAddress _value;
   // ignore: unused_field
-  final $Res Function(MailingAddress) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? address1 = freezed,
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? zip = freezed,
+    Object? id = null,
+    Object? address1 = null,
+    Object? city = null,
+    Object? country = null,
+    Object? zip = null,
     Object? lastName = freezed,
     Object? name = freezed,
     Object? firstName = freezed,
@@ -150,85 +102,86 @@ class _$MailingAddressCopyWithImpl<$Res>
     Object? provinceCode = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      address1: address1 == freezed
+      address1: null == address1
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      zip: zip == freezed
+      zip: null == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      address2: address2 == freezed
+      address2: freezed == address2
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      countryCodeV2: countryCodeV2 == freezed
+      countryCodeV2: freezed == countryCodeV2
           ? _value.countryCodeV2
           : countryCodeV2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      formattedArea: formattedArea == freezed
+      formattedArea: freezed == formattedArea
           ? _value.formattedArea
           : formattedArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceCode: provinceCode == freezed
+      provinceCode: freezed == provinceCode
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$MailingAddressCopyWith<$Res>
+abstract class _$$_MailingAddressCopyWith<$Res>
     implements $MailingAddressCopyWith<$Res> {
-  factory _$MailingAddressCopyWith(
-          _MailingAddress value, $Res Function(_MailingAddress) then) =
-      __$MailingAddressCopyWithImpl<$Res>;
+  factory _$$_MailingAddressCopyWith(
+          _$_MailingAddress value, $Res Function(_$_MailingAddress) then) =
+      __$$_MailingAddressCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String id,
       String address1,
@@ -250,23 +203,21 @@ abstract class _$MailingAddressCopyWith<$Res>
 }
 
 /// @nodoc
-class __$MailingAddressCopyWithImpl<$Res>
-    extends _$MailingAddressCopyWithImpl<$Res>
-    implements _$MailingAddressCopyWith<$Res> {
-  __$MailingAddressCopyWithImpl(
-      _MailingAddress _value, $Res Function(_MailingAddress) _then)
-      : super(_value, (v) => _then(v as _MailingAddress));
+class __$$_MailingAddressCopyWithImpl<$Res>
+    extends _$MailingAddressCopyWithImpl<$Res, _$_MailingAddress>
+    implements _$$_MailingAddressCopyWith<$Res> {
+  __$$_MailingAddressCopyWithImpl(
+      _$_MailingAddress _value, $Res Function(_$_MailingAddress) _then)
+      : super(_value, _then);
 
-  @override
-  _MailingAddress get _value => super._value as _MailingAddress;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? address1 = freezed,
-    Object? city = freezed,
-    Object? country = freezed,
-    Object? zip = freezed,
+    Object? id = null,
+    Object? address1 = null,
+    Object? city = null,
+    Object? country = null,
+    Object? zip = null,
     Object? lastName = freezed,
     Object? name = freezed,
     Object? firstName = freezed,
@@ -280,72 +231,72 @@ class __$MailingAddressCopyWithImpl<$Res>
     Object? province = freezed,
     Object? provinceCode = freezed,
   }) {
-    return _then(_MailingAddress(
-      id: id == freezed
+    return _then(_$_MailingAddress(
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      address1: address1 == freezed
+      address1: null == address1
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
               as String,
-      city: city == freezed
+      city: null == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
               as String,
-      country: country == freezed
+      country: null == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      zip: zip == freezed
+      zip: null == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
               as String,
-      lastName: lastName == freezed
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      firstName: firstName == freezed
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
               as String?,
-      address2: address2 == freezed
+      address2: freezed == address2
           ? _value.address2
           : address2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      company: company == freezed
+      company: freezed == company
           ? _value.company
           : company // ignore: cast_nullable_to_non_nullable
               as String?,
-      countryCodeV2: countryCodeV2 == freezed
+      countryCodeV2: freezed == countryCodeV2
           ? _value.countryCodeV2
           : countryCodeV2 // ignore: cast_nullable_to_non_nullable
               as String?,
-      formattedArea: formattedArea == freezed
+      formattedArea: freezed == formattedArea
           ? _value.formattedArea
           : formattedArea // ignore: cast_nullable_to_non_nullable
               as String?,
-      latitude: latitude == freezed
+      latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      longitude: longitude == freezed
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
-      phone: phone == freezed
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
               as String?,
-      province: province == freezed
+      province: freezed == province
           ? _value.province
           : province // ignore: cast_nullable_to_non_nullable
               as String?,
-      provinceCode: provinceCode == freezed
+      provinceCode: freezed == provinceCode
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -422,80 +373,91 @@ class _$_MailingAddress implements _MailingAddress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MailingAddress &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.address1, address1) &&
-            const DeepCollectionEquality().equals(other.city, city) &&
-            const DeepCollectionEquality().equals(other.country, country) &&
-            const DeepCollectionEquality().equals(other.zip, zip) &&
-            const DeepCollectionEquality().equals(other.lastName, lastName) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.firstName, firstName) &&
-            const DeepCollectionEquality().equals(other.address2, address2) &&
-            const DeepCollectionEquality().equals(other.company, company) &&
-            const DeepCollectionEquality()
-                .equals(other.countryCodeV2, countryCodeV2) &&
-            const DeepCollectionEquality()
-                .equals(other.formattedArea, formattedArea) &&
-            const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude) &&
-            const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.province, province) &&
-            const DeepCollectionEquality()
-                .equals(other.provinceCode, provinceCode));
+            other is _$_MailingAddress &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.address1, address1) ||
+                other.address1 == address1) &&
+            (identical(other.city, city) || other.city == city) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.zip, zip) || other.zip == zip) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.address2, address2) ||
+                other.address2 == address2) &&
+            (identical(other.company, company) || other.company == company) &&
+            (identical(other.countryCodeV2, countryCodeV2) ||
+                other.countryCodeV2 == countryCodeV2) &&
+            (identical(other.formattedArea, formattedArea) ||
+                other.formattedArea == formattedArea) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.phone, phone) || other.phone == phone) &&
+            (identical(other.province, province) ||
+                other.province == province) &&
+            (identical(other.provinceCode, provinceCode) ||
+                other.provinceCode == provinceCode));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(address1),
-      const DeepCollectionEquality().hash(city),
-      const DeepCollectionEquality().hash(country),
-      const DeepCollectionEquality().hash(zip),
-      const DeepCollectionEquality().hash(lastName),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(firstName),
-      const DeepCollectionEquality().hash(address2),
-      const DeepCollectionEquality().hash(company),
-      const DeepCollectionEquality().hash(countryCodeV2),
-      const DeepCollectionEquality().hash(formattedArea),
-      const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(province),
-      const DeepCollectionEquality().hash(provinceCode));
 
   @JsonKey(ignore: true)
   @override
-  _$MailingAddressCopyWith<_MailingAddress> get copyWith =>
-      __$MailingAddressCopyWithImpl<_MailingAddress>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      address1,
+      city,
+      country,
+      zip,
+      lastName,
+      name,
+      firstName,
+      address2,
+      company,
+      countryCodeV2,
+      formattedArea,
+      latitude,
+      longitude,
+      phone,
+      province,
+      provinceCode);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
+      __$$_MailingAddressCopyWithImpl<_$_MailingAddress>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MailingAddressToJson(this);
+    return _$$_MailingAddressToJson(
+      this,
+    );
   }
 }
 
 abstract class _MailingAddress implements MailingAddress {
   factory _MailingAddress(
-      {required String id,
-      required String address1,
-      required String city,
-      required String country,
-      required String zip,
-      String? lastName,
-      String? name,
-      String? firstName,
-      String? address2,
-      String? company,
-      String? countryCodeV2,
-      String? formattedArea,
-      double? latitude,
-      double? longitude,
-      String? phone,
-      String? province,
-      String? provinceCode}) = _$_MailingAddress;
+      {required final String id,
+      required final String address1,
+      required final String city,
+      required final String country,
+      required final String zip,
+      final String? lastName,
+      final String? name,
+      final String? firstName,
+      final String? address2,
+      final String? company,
+      final String? countryCodeV2,
+      final String? formattedArea,
+      final double? latitude,
+      final double? longitude,
+      final String? phone,
+      final String? province,
+      final String? provinceCode}) = _$_MailingAddress;
 
   factory _MailingAddress.fromJson(Map<String, dynamic> json) =
       _$_MailingAddress.fromJson;
@@ -536,6 +498,6 @@ abstract class _MailingAddress implements MailingAddress {
   String? get provinceCode;
   @override
   @JsonKey(ignore: true)
-  _$MailingAddressCopyWith<_MailingAddress> get copyWith =>
+  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'last_incomplete_checkout.dart';
 
@@ -12,47 +12,12 @@ part of 'last_incomplete_checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LastIncompleteCheckout _$LastIncompleteCheckoutFromJson(
     Map<String, dynamic> json) {
   return _LastIncompleteCheckout.fromJson(json);
 }
-
-/// @nodoc
-class _$LastIncompleteCheckoutTearOff {
-  const _$LastIncompleteCheckoutTearOff();
-
-  _LastIncompleteCheckout call(
-      {String? completedAt,
-      String? createdAt,
-      String? email,
-      String? id,
-      String? currencyCode,
-      String? webUrl,
-      PriceV2? totalPriceV2,
-      PriceV2? lineItemsSubtotalPrice,
-      @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem>? lineItems}) {
-    return _LastIncompleteCheckout(
-      completedAt: completedAt,
-      createdAt: createdAt,
-      email: email,
-      id: id,
-      currencyCode: currencyCode,
-      webUrl: webUrl,
-      totalPriceV2: totalPriceV2,
-      lineItemsSubtotalPrice: lineItemsSubtotalPrice,
-      lineItems: lineItems,
-    );
-  }
-
-  LastIncompleteCheckout fromJson(Map<String, Object?> json) {
-    return LastIncompleteCheckout.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LastIncompleteCheckout = _$LastIncompleteCheckoutTearOff();
 
 /// @nodoc
 mixin _$LastIncompleteCheckout {
@@ -77,7 +42,8 @@ mixin _$LastIncompleteCheckout {
 abstract class $LastIncompleteCheckoutCopyWith<$Res> {
   factory $LastIncompleteCheckoutCopyWith(LastIncompleteCheckout value,
           $Res Function(LastIncompleteCheckout) then) =
-      _$LastIncompleteCheckoutCopyWithImpl<$Res>;
+      _$LastIncompleteCheckoutCopyWithImpl<$Res, LastIncompleteCheckout>;
+  @useResult
   $Res call(
       {String? completedAt,
       String? createdAt,
@@ -94,14 +60,17 @@ abstract class $LastIncompleteCheckoutCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$LastIncompleteCheckoutCopyWithImpl<$Res>
+class _$LastIncompleteCheckoutCopyWithImpl<$Res,
+        $Val extends LastIncompleteCheckout>
     implements $LastIncompleteCheckoutCopyWith<$Res> {
   _$LastIncompleteCheckoutCopyWithImpl(this._value, this._then);
 
-  final LastIncompleteCheckout _value;
   // ignore: unused_field
-  final $Res Function(LastIncompleteCheckout) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? completedAt = freezed,
@@ -115,75 +84,78 @@ class _$LastIncompleteCheckoutCopyWithImpl<$Res>
     Object? lineItems = freezed,
   }) {
     return _then(_value.copyWith(
-      completedAt: completedAt == freezed
+      completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      webUrl: webUrl == freezed
+      webUrl: freezed == webUrl
           ? _value.webUrl
           : webUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalPriceV2: totalPriceV2 == freezed
+      totalPriceV2: freezed == totalPriceV2
           ? _value.totalPriceV2
           : totalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2?,
-      lineItemsSubtotalPrice: lineItemsSubtotalPrice == freezed
+      lineItemsSubtotalPrice: freezed == lineItemsSubtotalPrice
           ? _value.lineItemsSubtotalPrice
           : lineItemsSubtotalPrice // ignore: cast_nullable_to_non_nullable
               as PriceV2?,
-      lineItems: lineItems == freezed
+      lineItems: freezed == lineItems
           ? _value.lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get totalPriceV2 {
     if (_value.totalPriceV2 == null) {
       return null;
     }
 
     return $PriceV2CopyWith<$Res>(_value.totalPriceV2!, (value) {
-      return _then(_value.copyWith(totalPriceV2: value));
+      return _then(_value.copyWith(totalPriceV2: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get lineItemsSubtotalPrice {
     if (_value.lineItemsSubtotalPrice == null) {
       return null;
     }
 
     return $PriceV2CopyWith<$Res>(_value.lineItemsSubtotalPrice!, (value) {
-      return _then(_value.copyWith(lineItemsSubtotalPrice: value));
+      return _then(_value.copyWith(lineItemsSubtotalPrice: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$LastIncompleteCheckoutCopyWith<$Res>
+abstract class _$$_LastIncompleteCheckoutCopyWith<$Res>
     implements $LastIncompleteCheckoutCopyWith<$Res> {
-  factory _$LastIncompleteCheckoutCopyWith(_LastIncompleteCheckout value,
-          $Res Function(_LastIncompleteCheckout) then) =
-      __$LastIncompleteCheckoutCopyWithImpl<$Res>;
+  factory _$$_LastIncompleteCheckoutCopyWith(_$_LastIncompleteCheckout value,
+          $Res Function(_$_LastIncompleteCheckout) then) =
+      __$$_LastIncompleteCheckoutCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? completedAt,
       String? createdAt,
@@ -202,16 +174,15 @@ abstract class _$LastIncompleteCheckoutCopyWith<$Res>
 }
 
 /// @nodoc
-class __$LastIncompleteCheckoutCopyWithImpl<$Res>
-    extends _$LastIncompleteCheckoutCopyWithImpl<$Res>
-    implements _$LastIncompleteCheckoutCopyWith<$Res> {
-  __$LastIncompleteCheckoutCopyWithImpl(_LastIncompleteCheckout _value,
-      $Res Function(_LastIncompleteCheckout) _then)
-      : super(_value, (v) => _then(v as _LastIncompleteCheckout));
+class __$$_LastIncompleteCheckoutCopyWithImpl<$Res>
+    extends _$LastIncompleteCheckoutCopyWithImpl<$Res,
+        _$_LastIncompleteCheckout>
+    implements _$$_LastIncompleteCheckoutCopyWith<$Res> {
+  __$$_LastIncompleteCheckoutCopyWithImpl(_$_LastIncompleteCheckout _value,
+      $Res Function(_$_LastIncompleteCheckout) _then)
+      : super(_value, _then);
 
-  @override
-  _LastIncompleteCheckout get _value => super._value as _LastIncompleteCheckout;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? completedAt = freezed,
@@ -224,41 +195,41 @@ class __$LastIncompleteCheckoutCopyWithImpl<$Res>
     Object? lineItemsSubtotalPrice = freezed,
     Object? lineItems = freezed,
   }) {
-    return _then(_LastIncompleteCheckout(
-      completedAt: completedAt == freezed
+    return _then(_$_LastIncompleteCheckout(
+      completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: createdAt == freezed
+      createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: email == freezed
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String?,
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      currencyCode: currencyCode == freezed
+      currencyCode: freezed == currencyCode
           ? _value.currencyCode
           : currencyCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      webUrl: webUrl == freezed
+      webUrl: freezed == webUrl
           ? _value.webUrl
           : webUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      totalPriceV2: totalPriceV2 == freezed
+      totalPriceV2: freezed == totalPriceV2
           ? _value.totalPriceV2
           : totalPriceV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2?,
-      lineItemsSubtotalPrice: lineItemsSubtotalPrice == freezed
+      lineItemsSubtotalPrice: freezed == lineItemsSubtotalPrice
           ? _value.lineItemsSubtotalPrice
           : lineItemsSubtotalPrice // ignore: cast_nullable_to_non_nullable
               as PriceV2?,
-      lineItems: lineItems == freezed
-          ? _value.lineItems
+      lineItems: freezed == lineItems
+          ? _value._lineItems
           : lineItems // ignore: cast_nullable_to_non_nullable
               as List<LineItem>?,
     ));
@@ -277,7 +248,8 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
       this.webUrl,
       this.totalPriceV2,
       this.lineItemsSubtotalPrice,
-      @JsonKey(fromJson: JsonHelper.lineItems) this.lineItems});
+      @JsonKey(fromJson: JsonHelper.lineItems) final List<LineItem>? lineItems})
+      : _lineItems = lineItems;
 
   factory _$_LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>
       _$$_LastIncompleteCheckoutFromJson(json);
@@ -298,9 +270,16 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   final PriceV2? totalPriceV2;
   @override
   final PriceV2? lineItemsSubtotalPrice;
+  final List<LineItem>? _lineItems;
   @override
   @JsonKey(fromJson: JsonHelper.lineItems)
-  final List<LineItem>? lineItems;
+  List<LineItem>? get lineItems {
+    final value = _lineItems;
+    if (value == null) return null;
+    if (_lineItems is EqualUnmodifiableListView) return _lineItems;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
@@ -311,59 +290,65 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LastIncompleteCheckout &&
+            other is _$_LastIncompleteCheckout &&
+            (identical(other.completedAt, completedAt) ||
+                other.completedAt == completedAt) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.currencyCode, currencyCode) ||
+                other.currencyCode == currencyCode) &&
+            (identical(other.webUrl, webUrl) || other.webUrl == webUrl) &&
+            (identical(other.totalPriceV2, totalPriceV2) ||
+                other.totalPriceV2 == totalPriceV2) &&
+            (identical(other.lineItemsSubtotalPrice, lineItemsSubtotalPrice) ||
+                other.lineItemsSubtotalPrice == lineItemsSubtotalPrice) &&
             const DeepCollectionEquality()
-                .equals(other.completedAt, completedAt) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.email, email) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality()
-                .equals(other.currencyCode, currencyCode) &&
-            const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
-            const DeepCollectionEquality()
-                .equals(other.totalPriceV2, totalPriceV2) &&
-            const DeepCollectionEquality()
-                .equals(other.lineItemsSubtotalPrice, lineItemsSubtotalPrice) &&
-            const DeepCollectionEquality().equals(other.lineItems, lineItems));
+                .equals(other._lineItems, _lineItems));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(completedAt),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(currencyCode),
-      const DeepCollectionEquality().hash(webUrl),
-      const DeepCollectionEquality().hash(totalPriceV2),
-      const DeepCollectionEquality().hash(lineItemsSubtotalPrice),
-      const DeepCollectionEquality().hash(lineItems));
 
   @JsonKey(ignore: true)
   @override
-  _$LastIncompleteCheckoutCopyWith<_LastIncompleteCheckout> get copyWith =>
-      __$LastIncompleteCheckoutCopyWithImpl<_LastIncompleteCheckout>(
+  int get hashCode => Object.hash(
+      runtimeType,
+      completedAt,
+      createdAt,
+      email,
+      id,
+      currencyCode,
+      webUrl,
+      totalPriceV2,
+      lineItemsSubtotalPrice,
+      const DeepCollectionEquality().hash(_lineItems));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
+      __$$_LastIncompleteCheckoutCopyWithImpl<_$_LastIncompleteCheckout>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LastIncompleteCheckoutToJson(this);
+    return _$$_LastIncompleteCheckoutToJson(
+      this,
+    );
   }
 }
 
 abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
   factory _LastIncompleteCheckout(
-          {String? completedAt,
-          String? createdAt,
-          String? email,
-          String? id,
-          String? currencyCode,
-          String? webUrl,
-          PriceV2? totalPriceV2,
-          PriceV2? lineItemsSubtotalPrice,
-          @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem>? lineItems}) =
-      _$_LastIncompleteCheckout;
+      {final String? completedAt,
+      final String? createdAt,
+      final String? email,
+      final String? id,
+      final String? currencyCode,
+      final String? webUrl,
+      final PriceV2? totalPriceV2,
+      final PriceV2? lineItemsSubtotalPrice,
+      @JsonKey(fromJson: JsonHelper.lineItems)
+          final List<LineItem>? lineItems}) = _$_LastIncompleteCheckout;
 
   factory _LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =
       _$_LastIncompleteCheckout.fromJson;
@@ -389,6 +374,6 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
   List<LineItem>? get lineItems;
   @override
   @JsonKey(ignore: true)
-  _$LastIncompleteCheckoutCopyWith<_LastIncompleteCheckout> get copyWith =>
+  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }

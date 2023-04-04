@@ -9,6 +9,8 @@ customer(customerAccessToken: $accessToken) {
           email
           currencyCode
           customerUrl
+          financialStatus
+          fulfillmentStatus
           lineItems(first: 250) {
             edges {
               node {

@@ -1,3 +1,7 @@
+## 0.0.4
+
+* added payment status and fulfilment status in order  
+
 ## 0.0.3
 
 * Bug fixes in order, product and checkout models. 

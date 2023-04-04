@@ -26,6 +26,8 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       totalShippingPriceV2: PriceV2.fromJson(
           json['totalShippingPriceV2'] as Map<String, dynamic>),
       totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] as Map<String, dynamic>),
+      financialStatus: json['financialStatus'] as String,
+      fulfillmentStatus: json['fulfillmentStatus'] as String,
       totalRefundedV2: json['totalRefundedV2'] == null
           ? null
           : PriceV2.fromJson(json['totalRefundedV2'] as Map<String, dynamic>),
@@ -48,6 +50,8 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'totalPriceV2': instance.totalPriceV2,
       'totalShippingPriceV2': instance.totalShippingPriceV2,
       'totalTaxV2': instance.totalTaxV2,
+      'financialStatus': instance.financialStatus,
+      'fulfillmentStatus': instance.fulfillmentStatus,
       'totalRefundedV2': instance.totalRefundedV2,
       'phone': instance.phone,
       'cursor': instance.cursor,

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'pages.dart';
 
@@ -12,29 +12,11 @@ part of 'pages.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Pages _$PagesFromJson(Map<String, dynamic> json) {
   return _Pages.fromJson(json);
 }
-
-/// @nodoc
-class _$PagesTearOff {
-  const _$PagesTearOff();
-
-  _Pages call({required List<Page> pageList}) {
-    return _Pages(
-      pageList: pageList,
-    );
-  }
-
-  Pages fromJson(Map<String, Object?> json) {
-    return Pages.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Pages = _$PagesTearOff();
 
 /// @nodoc
 mixin _$Pages {
@@ -48,55 +30,58 @@ mixin _$Pages {
 /// @nodoc
 abstract class $PagesCopyWith<$Res> {
   factory $PagesCopyWith(Pages value, $Res Function(Pages) then) =
-      _$PagesCopyWithImpl<$Res>;
+      _$PagesCopyWithImpl<$Res, Pages>;
+  @useResult
   $Res call({List<Page> pageList});
 }
 
 /// @nodoc
-class _$PagesCopyWithImpl<$Res> implements $PagesCopyWith<$Res> {
+class _$PagesCopyWithImpl<$Res, $Val extends Pages>
+    implements $PagesCopyWith<$Res> {
   _$PagesCopyWithImpl(this._value, this._then);
 
-  final Pages _value;
   // ignore: unused_field
-  final $Res Function(Pages) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pageList = freezed,
+    Object? pageList = null,
   }) {
     return _then(_value.copyWith(
-      pageList: pageList == freezed
+      pageList: null == pageList
           ? _value.pageList
           : pageList // ignore: cast_nullable_to_non_nullable
               as List<Page>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PagesCopyWith<$Res> implements $PagesCopyWith<$Res> {
-  factory _$PagesCopyWith(_Pages value, $Res Function(_Pages) then) =
-      __$PagesCopyWithImpl<$Res>;
+abstract class _$$_PagesCopyWith<$Res> implements $PagesCopyWith<$Res> {
+  factory _$$_PagesCopyWith(_$_Pages value, $Res Function(_$_Pages) then) =
+      __$$_PagesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Page> pageList});
 }
 
 /// @nodoc
-class __$PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
-    implements _$PagesCopyWith<$Res> {
-  __$PagesCopyWithImpl(_Pages _value, $Res Function(_Pages) _then)
-      : super(_value, (v) => _then(v as _Pages));
+class __$$_PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res, _$_Pages>
+    implements _$$_PagesCopyWith<$Res> {
+  __$$_PagesCopyWithImpl(_$_Pages _value, $Res Function(_$_Pages) _then)
+      : super(_value, _then);
 
-  @override
-  _Pages get _value => super._value as _Pages;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? pageList = freezed,
+    Object? pageList = null,
   }) {
-    return _then(_Pages(
-      pageList: pageList == freezed
-          ? _value.pageList
+    return _then(_$_Pages(
+      pageList: null == pageList
+          ? _value._pageList
           : pageList // ignore: cast_nullable_to_non_nullable
               as List<Page>,
     ));
@@ -106,13 +91,18 @@ class __$PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Pages implements _Pages {
-  _$_Pages({required this.pageList});
+  _$_Pages({required final List<Page> pageList}) : _pageList = pageList;
 
   factory _$_Pages.fromJson(Map<String, dynamic> json) =>
       _$$_PagesFromJson(json);
 
+  final List<Page> _pageList;
   @override
-  final List<Page> pageList;
+  List<Page> get pageList {
+    if (_pageList is EqualUnmodifiableListView) return _pageList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pageList);
+  }
 
   @override
   String toString() {
@@ -123,27 +113,31 @@ class _$_Pages implements _Pages {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Pages &&
-            const DeepCollectionEquality().equals(other.pageList, pageList));
+            other is _$_Pages &&
+            const DeepCollectionEquality().equals(other._pageList, _pageList));
   }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(pageList));
 
   @JsonKey(ignore: true)
   @override
-  _$PagesCopyWith<_Pages> get copyWith =>
-      __$PagesCopyWithImpl<_Pages>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_pageList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PagesCopyWith<_$_Pages> get copyWith =>
+      __$$_PagesCopyWithImpl<_$_Pages>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PagesToJson(this);
+    return _$$_PagesToJson(
+      this,
+    );
   }
 }
 
 abstract class _Pages implements Pages {
-  factory _Pages({required List<Page> pageList}) = _$_Pages;
+  factory _Pages({required final List<Page> pageList}) = _$_Pages;
 
   factory _Pages.fromJson(Map<String, dynamic> json) = _$_Pages.fromJson;
 
@@ -151,5 +145,6 @@ abstract class _Pages implements Pages {
   List<Page> get pageList;
   @override
   @JsonKey(ignore: true)
-  _$PagesCopyWith<_Pages> get copyWith => throw _privateConstructorUsedError;
+  _$$_PagesCopyWith<_$_Pages> get copyWith =>
+      throw _privateConstructorUsedError;
 }

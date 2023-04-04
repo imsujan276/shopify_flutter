@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'products.dart';
 
@@ -12,31 +12,11 @@ part of 'products.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Products _$ProductsFromJson(Map<String, dynamic> json) {
   return _Products.fromJson(json);
 }
-
-/// @nodoc
-class _$ProductsTearOff {
-  const _$ProductsTearOff();
-
-  _Products call(
-      {required List<Product> productList, required bool hasNextPage}) {
-    return _Products(
-      productList: productList,
-      hasNextPage: hasNextPage,
-    );
-  }
-
-  Products fromJson(Map<String, Object?> json) {
-    return Products.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Products = _$ProductsTearOff();
 
 /// @nodoc
 mixin _$Products {
@@ -52,64 +32,70 @@ mixin _$Products {
 /// @nodoc
 abstract class $ProductsCopyWith<$Res> {
   factory $ProductsCopyWith(Products value, $Res Function(Products) then) =
-      _$ProductsCopyWithImpl<$Res>;
+      _$ProductsCopyWithImpl<$Res, Products>;
+  @useResult
   $Res call({List<Product> productList, bool hasNextPage});
 }
 
 /// @nodoc
-class _$ProductsCopyWithImpl<$Res> implements $ProductsCopyWith<$Res> {
+class _$ProductsCopyWithImpl<$Res, $Val extends Products>
+    implements $ProductsCopyWith<$Res> {
   _$ProductsCopyWithImpl(this._value, this._then);
 
-  final Products _value;
   // ignore: unused_field
-  final $Res Function(Products) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productList = freezed,
-    Object? hasNextPage = freezed,
+    Object? productList = null,
+    Object? hasNextPage = null,
   }) {
     return _then(_value.copyWith(
-      productList: productList == freezed
+      productList: null == productList
           ? _value.productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$ProductsCopyWith<$Res> implements $ProductsCopyWith<$Res> {
-  factory _$ProductsCopyWith(_Products value, $Res Function(_Products) then) =
-      __$ProductsCopyWithImpl<$Res>;
+abstract class _$$_ProductsCopyWith<$Res> implements $ProductsCopyWith<$Res> {
+  factory _$$_ProductsCopyWith(
+          _$_Products value, $Res Function(_$_Products) then) =
+      __$$_ProductsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Product> productList, bool hasNextPage});
 }
 
 /// @nodoc
-class __$ProductsCopyWithImpl<$Res> extends _$ProductsCopyWithImpl<$Res>
-    implements _$ProductsCopyWith<$Res> {
-  __$ProductsCopyWithImpl(_Products _value, $Res Function(_Products) _then)
-      : super(_value, (v) => _then(v as _Products));
+class __$$_ProductsCopyWithImpl<$Res>
+    extends _$ProductsCopyWithImpl<$Res, _$_Products>
+    implements _$$_ProductsCopyWith<$Res> {
+  __$$_ProductsCopyWithImpl(
+      _$_Products _value, $Res Function(_$_Products) _then)
+      : super(_value, _then);
 
-  @override
-  _Products get _value => super._value as _Products;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? productList = freezed,
-    Object? hasNextPage = freezed,
+    Object? productList = null,
+    Object? hasNextPage = null,
   }) {
-    return _then(_Products(
-      productList: productList == freezed
-          ? _value.productList
+    return _then(_$_Products(
+      productList: null == productList
+          ? _value._productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<Product>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -120,14 +106,22 @@ class __$ProductsCopyWithImpl<$Res> extends _$ProductsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Products extends _Products {
-  _$_Products({required this.productList, required this.hasNextPage})
-      : super._();
+  _$_Products(
+      {required final List<Product> productList, required this.hasNextPage})
+      : _productList = productList,
+        super._();
 
   factory _$_Products.fromJson(Map<String, dynamic> json) =>
       _$$_ProductsFromJson(json);
 
+  final List<Product> _productList;
   @override
-  final List<Product> productList;
+  List<Product> get productList {
+    if (_productList is EqualUnmodifiableListView) return _productList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_productList);
+  }
+
   @override
   final bool hasNextPage;
 
@@ -140,34 +134,36 @@ class _$_Products extends _Products {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Products &&
+            other is _$_Products &&
             const DeepCollectionEquality()
-                .equals(other.productList, productList) &&
-            const DeepCollectionEquality()
-                .equals(other.hasNextPage, hasNextPage));
+                .equals(other._productList, _productList) &&
+            (identical(other.hasNextPage, hasNextPage) ||
+                other.hasNextPage == hasNextPage));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(productList),
-      const DeepCollectionEquality().hash(hasNextPage));
 
   @JsonKey(ignore: true)
   @override
-  _$ProductsCopyWith<_Products> get copyWith =>
-      __$ProductsCopyWithImpl<_Products>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_productList), hasNextPage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ProductsCopyWith<_$_Products> get copyWith =>
+      __$$_ProductsCopyWithImpl<_$_Products>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductsToJson(this);
+    return _$$_ProductsToJson(
+      this,
+    );
   }
 }
 
 abstract class _Products extends Products {
   factory _Products(
-      {required List<Product> productList,
-      required bool hasNextPage}) = _$_Products;
+      {required final List<Product> productList,
+      required final bool hasNextPage}) = _$_Products;
   _Products._() : super._();
 
   factory _Products.fromJson(Map<String, dynamic> json) = _$_Products.fromJson;
@@ -178,6 +174,6 @@ abstract class _Products extends Products {
   bool get hasNextPage;
   @override
   @JsonKey(ignore: true)
-  _$ProductsCopyWith<_Products> get copyWith =>
+  _$$_ProductsCopyWith<_$_Products> get copyWith =>
       throw _privateConstructorUsedError;
 }

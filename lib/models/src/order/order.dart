@@ -26,6 +26,8 @@ class Order with _$Order {
     required PriceV2 totalPriceV2,
     required PriceV2 totalShippingPriceV2,
     required PriceV2 totalTaxV2,
+    required String financialStatus,
+    required String fulfillmentStatus,
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
@@ -42,6 +44,8 @@ class Order with _$Order {
       orderNumber: json['node']['orderNumber'] ?? 0,
       phone: json['node']['phone'],
       processedAt: json['node']['processedAt'],
+      financialStatus: json['node']['financialStatus'],
+      fulfillmentStatus: json['node']['fulfillmentStatus'],
       shippingAddress:
           ShippingAddress.fromJson(json['node']['shippingAddress']),
       statusUrl: json['node']['statusUrl'],

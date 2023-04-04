@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'collections.dart';
 
@@ -12,31 +12,11 @@ part of 'collections.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Collections _$CollectionsFromJson(Map<String, dynamic> json) {
   return _Collections.fromJson(json);
 }
-
-/// @nodoc
-class _$CollectionsTearOff {
-  const _$CollectionsTearOff();
-
-  _Collections call(
-      {required List<Collection> collectionList, required bool hasNextPage}) {
-    return _Collections(
-      collectionList: collectionList,
-      hasNextPage: hasNextPage,
-    );
-  }
-
-  Collections fromJson(Map<String, Object?> json) {
-    return Collections.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Collections = _$CollectionsTearOff();
 
 /// @nodoc
 mixin _$Collections {
@@ -53,67 +33,71 @@ mixin _$Collections {
 abstract class $CollectionsCopyWith<$Res> {
   factory $CollectionsCopyWith(
           Collections value, $Res Function(Collections) then) =
-      _$CollectionsCopyWithImpl<$Res>;
+      _$CollectionsCopyWithImpl<$Res, Collections>;
+  @useResult
   $Res call({List<Collection> collectionList, bool hasNextPage});
 }
 
 /// @nodoc
-class _$CollectionsCopyWithImpl<$Res> implements $CollectionsCopyWith<$Res> {
+class _$CollectionsCopyWithImpl<$Res, $Val extends Collections>
+    implements $CollectionsCopyWith<$Res> {
   _$CollectionsCopyWithImpl(this._value, this._then);
 
-  final Collections _value;
   // ignore: unused_field
-  final $Res Function(Collections) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collectionList = freezed,
-    Object? hasNextPage = freezed,
+    Object? collectionList = null,
+    Object? hasNextPage = null,
   }) {
     return _then(_value.copyWith(
-      collectionList: collectionList == freezed
+      collectionList: null == collectionList
           ? _value.collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
               as List<Collection>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$CollectionsCopyWith<$Res>
+abstract class _$$_CollectionsCopyWith<$Res>
     implements $CollectionsCopyWith<$Res> {
-  factory _$CollectionsCopyWith(
-          _Collections value, $Res Function(_Collections) then) =
-      __$CollectionsCopyWithImpl<$Res>;
+  factory _$$_CollectionsCopyWith(
+          _$_Collections value, $Res Function(_$_Collections) then) =
+      __$$_CollectionsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<Collection> collectionList, bool hasNextPage});
 }
 
 /// @nodoc
-class __$CollectionsCopyWithImpl<$Res> extends _$CollectionsCopyWithImpl<$Res>
-    implements _$CollectionsCopyWith<$Res> {
-  __$CollectionsCopyWithImpl(
-      _Collections _value, $Res Function(_Collections) _then)
-      : super(_value, (v) => _then(v as _Collections));
+class __$$_CollectionsCopyWithImpl<$Res>
+    extends _$CollectionsCopyWithImpl<$Res, _$_Collections>
+    implements _$$_CollectionsCopyWith<$Res> {
+  __$$_CollectionsCopyWithImpl(
+      _$_Collections _value, $Res Function(_$_Collections) _then)
+      : super(_value, _then);
 
-  @override
-  _Collections get _value => super._value as _Collections;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? collectionList = freezed,
-    Object? hasNextPage = freezed,
+    Object? collectionList = null,
+    Object? hasNextPage = null,
   }) {
-    return _then(_Collections(
-      collectionList: collectionList == freezed
-          ? _value.collectionList
+    return _then(_$_Collections(
+      collectionList: null == collectionList
+          ? _value._collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
               as List<Collection>,
-      hasNextPage: hasNextPage == freezed
+      hasNextPage: null == hasNextPage
           ? _value.hasNextPage
           : hasNextPage // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -124,13 +108,22 @@ class __$CollectionsCopyWithImpl<$Res> extends _$CollectionsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Collections implements _Collections {
-  _$_Collections({required this.collectionList, required this.hasNextPage});
+  _$_Collections(
+      {required final List<Collection> collectionList,
+      required this.hasNextPage})
+      : _collectionList = collectionList;
 
   factory _$_Collections.fromJson(Map<String, dynamic> json) =>
       _$$_CollectionsFromJson(json);
 
+  final List<Collection> _collectionList;
   @override
-  final List<Collection> collectionList;
+  List<Collection> get collectionList {
+    if (_collectionList is EqualUnmodifiableListView) return _collectionList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_collectionList);
+  }
+
   @override
   final bool hasNextPage;
 
@@ -143,34 +136,36 @@ class _$_Collections implements _Collections {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Collections &&
+            other is _$_Collections &&
             const DeepCollectionEquality()
-                .equals(other.collectionList, collectionList) &&
-            const DeepCollectionEquality()
-                .equals(other.hasNextPage, hasNextPage));
+                .equals(other._collectionList, _collectionList) &&
+            (identical(other.hasNextPage, hasNextPage) ||
+                other.hasNextPage == hasNextPage));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(collectionList),
-      const DeepCollectionEquality().hash(hasNextPage));
 
   @JsonKey(ignore: true)
   @override
-  _$CollectionsCopyWith<_Collections> get copyWith =>
-      __$CollectionsCopyWithImpl<_Collections>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_collectionList), hasNextPage);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CollectionsCopyWith<_$_Collections> get copyWith =>
+      __$$_CollectionsCopyWithImpl<_$_Collections>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CollectionsToJson(this);
+    return _$$_CollectionsToJson(
+      this,
+    );
   }
 }
 
 abstract class _Collections implements Collections {
   factory _Collections(
-      {required List<Collection> collectionList,
-      required bool hasNextPage}) = _$_Collections;
+      {required final List<Collection> collectionList,
+      required final bool hasNextPage}) = _$_Collections;
 
   factory _Collections.fromJson(Map<String, dynamic> json) =
       _$_Collections.fromJson;
@@ -181,6 +176,6 @@ abstract class _Collections implements Collections {
   bool get hasNextPage;
   @override
   @JsonKey(ignore: true)
-  _$CollectionsCopyWith<_Collections> get copyWith =>
+  _$$_CollectionsCopyWith<_$_Collections> get copyWith =>
       throw _privateConstructorUsedError;
 }

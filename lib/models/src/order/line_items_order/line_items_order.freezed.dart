@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'line_items_order.dart';
 
@@ -12,29 +12,11 @@ part of 'line_items_order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 LineItemsOrder _$LineItemsOrderFromJson(Map<String, dynamic> json) {
   return _LineItemsOrder.fromJson(json);
 }
-
-/// @nodoc
-class _$LineItemsOrderTearOff {
-  const _$LineItemsOrderTearOff();
-
-  _LineItemsOrder call({required List<LineItemOrder> lineItemOrderList}) {
-    return _LineItemsOrder(
-      lineItemOrderList: lineItemOrderList,
-    );
-  }
-
-  LineItemsOrder fromJson(Map<String, Object?> json) {
-    return LineItemsOrder.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $LineItemsOrder = _$LineItemsOrderTearOff();
 
 /// @nodoc
 mixin _$LineItemsOrder {
@@ -51,60 +33,62 @@ mixin _$LineItemsOrder {
 abstract class $LineItemsOrderCopyWith<$Res> {
   factory $LineItemsOrderCopyWith(
           LineItemsOrder value, $Res Function(LineItemsOrder) then) =
-      _$LineItemsOrderCopyWithImpl<$Res>;
+      _$LineItemsOrderCopyWithImpl<$Res, LineItemsOrder>;
+  @useResult
   $Res call({List<LineItemOrder> lineItemOrderList});
 }
 
 /// @nodoc
-class _$LineItemsOrderCopyWithImpl<$Res>
+class _$LineItemsOrderCopyWithImpl<$Res, $Val extends LineItemsOrder>
     implements $LineItemsOrderCopyWith<$Res> {
   _$LineItemsOrderCopyWithImpl(this._value, this._then);
 
-  final LineItemsOrder _value;
   // ignore: unused_field
-  final $Res Function(LineItemsOrder) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lineItemOrderList = freezed,
+    Object? lineItemOrderList = null,
   }) {
     return _then(_value.copyWith(
-      lineItemOrderList: lineItemOrderList == freezed
+      lineItemOrderList: null == lineItemOrderList
           ? _value.lineItemOrderList
           : lineItemOrderList // ignore: cast_nullable_to_non_nullable
               as List<LineItemOrder>,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$LineItemsOrderCopyWith<$Res>
+abstract class _$$_LineItemsOrderCopyWith<$Res>
     implements $LineItemsOrderCopyWith<$Res> {
-  factory _$LineItemsOrderCopyWith(
-          _LineItemsOrder value, $Res Function(_LineItemsOrder) then) =
-      __$LineItemsOrderCopyWithImpl<$Res>;
+  factory _$$_LineItemsOrderCopyWith(
+          _$_LineItemsOrder value, $Res Function(_$_LineItemsOrder) then) =
+      __$$_LineItemsOrderCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<LineItemOrder> lineItemOrderList});
 }
 
 /// @nodoc
-class __$LineItemsOrderCopyWithImpl<$Res>
-    extends _$LineItemsOrderCopyWithImpl<$Res>
-    implements _$LineItemsOrderCopyWith<$Res> {
-  __$LineItemsOrderCopyWithImpl(
-      _LineItemsOrder _value, $Res Function(_LineItemsOrder) _then)
-      : super(_value, (v) => _then(v as _LineItemsOrder));
+class __$$_LineItemsOrderCopyWithImpl<$Res>
+    extends _$LineItemsOrderCopyWithImpl<$Res, _$_LineItemsOrder>
+    implements _$$_LineItemsOrderCopyWith<$Res> {
+  __$$_LineItemsOrderCopyWithImpl(
+      _$_LineItemsOrder _value, $Res Function(_$_LineItemsOrder) _then)
+      : super(_value, _then);
 
-  @override
-  _LineItemsOrder get _value => super._value as _LineItemsOrder;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? lineItemOrderList = freezed,
+    Object? lineItemOrderList = null,
   }) {
-    return _then(_LineItemsOrder(
-      lineItemOrderList: lineItemOrderList == freezed
-          ? _value.lineItemOrderList
+    return _then(_$_LineItemsOrder(
+      lineItemOrderList: null == lineItemOrderList
+          ? _value._lineItemOrderList
           : lineItemOrderList // ignore: cast_nullable_to_non_nullable
               as List<LineItemOrder>,
     ));
@@ -114,13 +98,20 @@ class __$LineItemsOrderCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_LineItemsOrder implements _LineItemsOrder {
-  _$_LineItemsOrder({required this.lineItemOrderList});
+  _$_LineItemsOrder({required final List<LineItemOrder> lineItemOrderList})
+      : _lineItemOrderList = lineItemOrderList;
 
   factory _$_LineItemsOrder.fromJson(Map<String, dynamic> json) =>
       _$$_LineItemsOrderFromJson(json);
 
+  final List<LineItemOrder> _lineItemOrderList;
   @override
-  final List<LineItemOrder> lineItemOrderList;
+  List<LineItemOrder> get lineItemOrderList {
+    if (_lineItemOrderList is EqualUnmodifiableListView)
+      return _lineItemOrderList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lineItemOrderList);
+  }
 
   @override
   String toString() {
@@ -131,28 +122,33 @@ class _$_LineItemsOrder implements _LineItemsOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LineItemsOrder &&
+            other is _$_LineItemsOrder &&
             const DeepCollectionEquality()
-                .equals(other.lineItemOrderList, lineItemOrderList));
+                .equals(other._lineItemOrderList, _lineItemOrderList));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(lineItemOrderList));
 
   @JsonKey(ignore: true)
   @override
-  _$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith =>
-      __$LineItemsOrderCopyWithImpl<_LineItemsOrder>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_lineItemOrderList));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
+      __$$_LineItemsOrderCopyWithImpl<_$_LineItemsOrder>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemsOrderToJson(this);
+    return _$$_LineItemsOrderToJson(
+      this,
+    );
   }
 }
 
 abstract class _LineItemsOrder implements LineItemsOrder {
-  factory _LineItemsOrder({required List<LineItemOrder> lineItemOrderList}) =
+  factory _LineItemsOrder(
+          {required final List<LineItemOrder> lineItemOrderList}) =
       _$_LineItemsOrder;
 
   factory _LineItemsOrder.fromJson(Map<String, dynamic> json) =
@@ -162,6 +158,6 @@ abstract class _LineItemsOrder implements LineItemsOrder {
   List<LineItemOrder> get lineItemOrderList;
   @override
   @JsonKey(ignore: true)
-  _$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith =>
+  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }

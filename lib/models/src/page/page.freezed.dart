@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'page.dart';
 
@@ -12,44 +12,11 @@ part of 'page.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Page _$PageFromJson(Map<String, dynamic> json) {
   return _Page.fromJson(json);
 }
-
-/// @nodoc
-class _$PageTearOff {
-  const _$PageTearOff();
-
-  _Page call(
-      {required String body,
-      required String bodySummary,
-      required DateTime createdAt,
-      required String handle,
-      required String id,
-      required String title,
-      required DateTime updatedAt,
-      required String url}) {
-    return _Page(
-      body: body,
-      bodySummary: bodySummary,
-      createdAt: createdAt,
-      handle: handle,
-      id: id,
-      title: title,
-      updatedAt: updatedAt,
-      url: url,
-    );
-  }
-
-  Page fromJson(Map<String, Object?> json) {
-    return Page.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Page = _$PageTearOff();
 
 /// @nodoc
 mixin _$Page {
@@ -70,7 +37,8 @@ mixin _$Page {
 /// @nodoc
 abstract class $PageCopyWith<$Res> {
   factory $PageCopyWith(Page value, $Res Function(Page) then) =
-      _$PageCopyWithImpl<$Res>;
+      _$PageCopyWithImpl<$Res, Page>;
+  @useResult
   $Res call(
       {String body,
       String bodySummary,
@@ -83,66 +51,70 @@ abstract class $PageCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PageCopyWithImpl<$Res> implements $PageCopyWith<$Res> {
+class _$PageCopyWithImpl<$Res, $Val extends Page>
+    implements $PageCopyWith<$Res> {
   _$PageCopyWithImpl(this._value, this._then);
 
-  final Page _value;
   // ignore: unused_field
-  final $Res Function(Page) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? body = freezed,
-    Object? bodySummary = freezed,
-    Object? createdAt = freezed,
-    Object? handle = freezed,
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? updatedAt = freezed,
-    Object? url = freezed,
+    Object? body = null,
+    Object? bodySummary = null,
+    Object? createdAt = null,
+    Object? handle = null,
+    Object? id = null,
+    Object? title = null,
+    Object? updatedAt = null,
+    Object? url = null,
   }) {
     return _then(_value.copyWith(
-      body: body == freezed
+      body: null == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      bodySummary: bodySummary == freezed
+      bodySummary: null == bodySummary
           ? _value.bodySummary
           : bodySummary // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      handle: handle == freezed
+      handle: null == handle
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$PageCopyWith<$Res> implements $PageCopyWith<$Res> {
-  factory _$PageCopyWith(_Page value, $Res Function(_Page) then) =
-      __$PageCopyWithImpl<$Res>;
+abstract class _$$_PageCopyWith<$Res> implements $PageCopyWith<$Res> {
+  factory _$$_PageCopyWith(_$_Page value, $Res Function(_$_Page) then) =
+      __$$_PageCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String body,
       String bodySummary,
@@ -155,55 +127,53 @@ abstract class _$PageCopyWith<$Res> implements $PageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
-    implements _$PageCopyWith<$Res> {
-  __$PageCopyWithImpl(_Page _value, $Res Function(_Page) _then)
-      : super(_value, (v) => _then(v as _Page));
+class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res, _$_Page>
+    implements _$$_PageCopyWith<$Res> {
+  __$$_PageCopyWithImpl(_$_Page _value, $Res Function(_$_Page) _then)
+      : super(_value, _then);
 
-  @override
-  _Page get _value => super._value as _Page;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? body = freezed,
-    Object? bodySummary = freezed,
-    Object? createdAt = freezed,
-    Object? handle = freezed,
-    Object? id = freezed,
-    Object? title = freezed,
-    Object? updatedAt = freezed,
-    Object? url = freezed,
+    Object? body = null,
+    Object? bodySummary = null,
+    Object? createdAt = null,
+    Object? handle = null,
+    Object? id = null,
+    Object? title = null,
+    Object? updatedAt = null,
+    Object? url = null,
   }) {
-    return _then(_Page(
-      body: body == freezed
+    return _then(_$_Page(
+      body: null == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
               as String,
-      bodySummary: bodySummary == freezed
+      bodySummary: null == bodySummary
           ? _value.bodySummary
           : bodySummary // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: createdAt == freezed
+      createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      handle: handle == freezed
+      handle: null == handle
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
               as String,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      url: url == freezed
+      url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
@@ -253,51 +223,49 @@ class _$_Page extends _Page {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Page &&
-            const DeepCollectionEquality().equals(other.body, body) &&
-            const DeepCollectionEquality()
-                .equals(other.bodySummary, bodySummary) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
-            const DeepCollectionEquality().equals(other.handle, handle) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality().equals(other.url, url));
+            other is _$_Page &&
+            (identical(other.body, body) || other.body == body) &&
+            (identical(other.bodySummary, bodySummary) ||
+                other.bodySummary == bodySummary) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.handle, handle) || other.handle == handle) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.url, url) || other.url == url));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(body),
-      const DeepCollectionEquality().hash(bodySummary),
-      const DeepCollectionEquality().hash(createdAt),
-      const DeepCollectionEquality().hash(handle),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(url));
 
   @JsonKey(ignore: true)
   @override
-  _$PageCopyWith<_Page> get copyWith =>
-      __$PageCopyWithImpl<_Page>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, body, bodySummary, createdAt,
+      handle, id, title, updatedAt, url);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PageCopyWith<_$_Page> get copyWith =>
+      __$$_PageCopyWithImpl<_$_Page>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PageToJson(this);
+    return _$$_PageToJson(
+      this,
+    );
   }
 }
 
 abstract class _Page extends Page {
   factory _Page(
-      {required String body,
-      required String bodySummary,
-      required DateTime createdAt,
-      required String handle,
-      required String id,
-      required String title,
-      required DateTime updatedAt,
-      required String url}) = _$_Page;
+      {required final String body,
+      required final String bodySummary,
+      required final DateTime createdAt,
+      required final String handle,
+      required final String id,
+      required final String title,
+      required final DateTime updatedAt,
+      required final String url}) = _$_Page;
   _Page._() : super._();
 
   factory _Page.fromJson(Map<String, dynamic> json) = _$_Page.fromJson;
@@ -320,5 +288,5 @@ abstract class _Page extends Page {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$PageCopyWith<_Page> get copyWith => throw _privateConstructorUsedError;
+  _$$_PageCopyWith<_$_Page> get copyWith => throw _privateConstructorUsedError;
 }

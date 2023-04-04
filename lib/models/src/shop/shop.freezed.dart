@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'shop.dart';
 
@@ -12,46 +12,11 @@ part of 'shop.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Shop _$ShopFromJson(Map<String, dynamic> json) {
   return _Shop.fromJson(json);
 }
-
-/// @nodoc
-class _$ShopTearOff {
-  const _$ShopTearOff();
-
-  _Shop call(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService}) {
-    return _Shop(
-      description: description,
-      moneyFormat: moneyFormat,
-      name: name,
-      paymentSettings: paymentSettings,
-      primaryDomain: primaryDomain,
-      privacyPolicy: privacyPolicy,
-      refundPolicy: refundPolicy,
-      shipsToCountries: shipsToCountries,
-      termsOfService: termsOfService,
-    );
-  }
-
-  Shop fromJson(Map<String, Object?> json) {
-    return Shop.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Shop = _$ShopTearOff();
 
 /// @nodoc
 mixin _$Shop {
@@ -73,7 +38,8 @@ mixin _$Shop {
 /// @nodoc
 abstract class $ShopCopyWith<$Res> {
   factory $ShopCopyWith(Shop value, $Res Function(Shop) then) =
-      _$ShopCopyWithImpl<$Res>;
+      _$ShopCopyWithImpl<$Res, Shop>;
+  @useResult
   $Res call(
       {String? description,
       String? moneyFormat,
@@ -93,13 +59,16 @@ abstract class $ShopCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
+class _$ShopCopyWithImpl<$Res, $Val extends Shop>
+    implements $ShopCopyWith<$Res> {
   _$ShopCopyWithImpl(this._value, this._then);
 
-  final Shop _value;
   // ignore: unused_field
-  final $Res Function(Shop) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? description = freezed,
@@ -113,106 +82,112 @@ class _$ShopCopyWithImpl<$Res> implements $ShopCopyWith<$Res> {
     Object? termsOfService = freezed,
   }) {
     return _then(_value.copyWith(
-      description: description == freezed
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      moneyFormat: moneyFormat == freezed
+      moneyFormat: freezed == moneyFormat
           ? _value.moneyFormat
           : moneyFormat // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentSettings: paymentSettings == freezed
+      paymentSettings: freezed == paymentSettings
           ? _value.paymentSettings
           : paymentSettings // ignore: cast_nullable_to_non_nullable
               as PaymentSettings?,
-      primaryDomain: primaryDomain == freezed
+      primaryDomain: freezed == primaryDomain
           ? _value.primaryDomain
           : primaryDomain // ignore: cast_nullable_to_non_nullable
               as PrimaryDomain?,
-      privacyPolicy: privacyPolicy == freezed
+      privacyPolicy: freezed == privacyPolicy
           ? _value.privacyPolicy
           : privacyPolicy // ignore: cast_nullable_to_non_nullable
               as PrivacyPolicy?,
-      refundPolicy: refundPolicy == freezed
+      refundPolicy: freezed == refundPolicy
           ? _value.refundPolicy
           : refundPolicy // ignore: cast_nullable_to_non_nullable
               as RefundPolicy?,
-      shipsToCountries: shipsToCountries == freezed
+      shipsToCountries: freezed == shipsToCountries
           ? _value.shipsToCountries
           : shipsToCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      termsOfService: termsOfService == freezed
+      termsOfService: freezed == termsOfService
           ? _value.termsOfService
           : termsOfService // ignore: cast_nullable_to_non_nullable
               as TermsOfService?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PaymentSettingsCopyWith<$Res>? get paymentSettings {
     if (_value.paymentSettings == null) {
       return null;
     }
 
     return $PaymentSettingsCopyWith<$Res>(_value.paymentSettings!, (value) {
-      return _then(_value.copyWith(paymentSettings: value));
+      return _then(_value.copyWith(paymentSettings: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PrimaryDomainCopyWith<$Res>? get primaryDomain {
     if (_value.primaryDomain == null) {
       return null;
     }
 
     return $PrimaryDomainCopyWith<$Res>(_value.primaryDomain!, (value) {
-      return _then(_value.copyWith(primaryDomain: value));
+      return _then(_value.copyWith(primaryDomain: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PrivacyPolicyCopyWith<$Res>? get privacyPolicy {
     if (_value.privacyPolicy == null) {
       return null;
     }
 
     return $PrivacyPolicyCopyWith<$Res>(_value.privacyPolicy!, (value) {
-      return _then(_value.copyWith(privacyPolicy: value));
+      return _then(_value.copyWith(privacyPolicy: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $RefundPolicyCopyWith<$Res>? get refundPolicy {
     if (_value.refundPolicy == null) {
       return null;
     }
 
     return $RefundPolicyCopyWith<$Res>(_value.refundPolicy!, (value) {
-      return _then(_value.copyWith(refundPolicy: value));
+      return _then(_value.copyWith(refundPolicy: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TermsOfServiceCopyWith<$Res>? get termsOfService {
     if (_value.termsOfService == null) {
       return null;
     }
 
     return $TermsOfServiceCopyWith<$Res>(_value.termsOfService!, (value) {
-      return _then(_value.copyWith(termsOfService: value));
+      return _then(_value.copyWith(termsOfService: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
-  factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) then) =
-      __$ShopCopyWithImpl<$Res>;
+abstract class _$$_ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
+  factory _$$_ShopCopyWith(_$_Shop value, $Res Function(_$_Shop) then) =
+      __$$_ShopCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String? description,
       String? moneyFormat,
@@ -237,14 +212,12 @@ abstract class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
-    implements _$ShopCopyWith<$Res> {
-  __$ShopCopyWithImpl(_Shop _value, $Res Function(_Shop) _then)
-      : super(_value, (v) => _then(v as _Shop));
+class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res, _$_Shop>
+    implements _$$_ShopCopyWith<$Res> {
+  __$$_ShopCopyWithImpl(_$_Shop _value, $Res Function(_$_Shop) _then)
+      : super(_value, _then);
 
-  @override
-  _Shop get _value => super._value as _Shop;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? description = freezed,
@@ -257,40 +230,40 @@ class __$ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res>
     Object? shipsToCountries = freezed,
     Object? termsOfService = freezed,
   }) {
-    return _then(_Shop(
-      description: description == freezed
+    return _then(_$_Shop(
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      moneyFormat: moneyFormat == freezed
+      moneyFormat: freezed == moneyFormat
           ? _value.moneyFormat
           : moneyFormat // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      paymentSettings: paymentSettings == freezed
+      paymentSettings: freezed == paymentSettings
           ? _value.paymentSettings
           : paymentSettings // ignore: cast_nullable_to_non_nullable
               as PaymentSettings?,
-      primaryDomain: primaryDomain == freezed
+      primaryDomain: freezed == primaryDomain
           ? _value.primaryDomain
           : primaryDomain // ignore: cast_nullable_to_non_nullable
               as PrimaryDomain?,
-      privacyPolicy: privacyPolicy == freezed
+      privacyPolicy: freezed == privacyPolicy
           ? _value.privacyPolicy
           : privacyPolicy // ignore: cast_nullable_to_non_nullable
               as PrivacyPolicy?,
-      refundPolicy: refundPolicy == freezed
+      refundPolicy: freezed == refundPolicy
           ? _value.refundPolicy
           : refundPolicy // ignore: cast_nullable_to_non_nullable
               as RefundPolicy?,
-      shipsToCountries: shipsToCountries == freezed
-          ? _value.shipsToCountries
+      shipsToCountries: freezed == shipsToCountries
+          ? _value._shipsToCountries
           : shipsToCountries // ignore: cast_nullable_to_non_nullable
               as List<String>?,
-      termsOfService: termsOfService == freezed
+      termsOfService: freezed == termsOfService
           ? _value.termsOfService
           : termsOfService // ignore: cast_nullable_to_non_nullable
               as TermsOfService?,
@@ -309,8 +282,9 @@ class _$_Shop implements _Shop {
       this.primaryDomain,
       this.privacyPolicy,
       this.refundPolicy,
-      this.shipsToCountries,
-      this.termsOfService});
+      final List<String>? shipsToCountries,
+      this.termsOfService})
+      : _shipsToCountries = shipsToCountries;
 
   factory _$_Shop.fromJson(Map<String, dynamic> json) => _$$_ShopFromJson(json);
 
@@ -328,8 +302,17 @@ class _$_Shop implements _Shop {
   final PrivacyPolicy? privacyPolicy;
   @override
   final RefundPolicy? refundPolicy;
+  final List<String>? _shipsToCountries;
   @override
-  final List<String>? shipsToCountries;
+  List<String>? get shipsToCountries {
+    final value = _shipsToCountries;
+    if (value == null) return null;
+    if (_shipsToCountries is EqualUnmodifiableListView)
+      return _shipsToCountries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   final TermsOfService? termsOfService;
 
@@ -342,61 +325,65 @@ class _$_Shop implements _Shop {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Shop &&
+            other is _$_Shop &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.moneyFormat, moneyFormat) ||
+                other.moneyFormat == moneyFormat) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.paymentSettings, paymentSettings) ||
+                other.paymentSettings == paymentSettings) &&
+            (identical(other.primaryDomain, primaryDomain) ||
+                other.primaryDomain == primaryDomain) &&
+            (identical(other.privacyPolicy, privacyPolicy) ||
+                other.privacyPolicy == privacyPolicy) &&
+            (identical(other.refundPolicy, refundPolicy) ||
+                other.refundPolicy == refundPolicy) &&
             const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.moneyFormat, moneyFormat) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.paymentSettings, paymentSettings) &&
-            const DeepCollectionEquality()
-                .equals(other.primaryDomain, primaryDomain) &&
-            const DeepCollectionEquality()
-                .equals(other.privacyPolicy, privacyPolicy) &&
-            const DeepCollectionEquality()
-                .equals(other.refundPolicy, refundPolicy) &&
-            const DeepCollectionEquality()
-                .equals(other.shipsToCountries, shipsToCountries) &&
-            const DeepCollectionEquality()
-                .equals(other.termsOfService, termsOfService));
+                .equals(other._shipsToCountries, _shipsToCountries) &&
+            (identical(other.termsOfService, termsOfService) ||
+                other.termsOfService == termsOfService));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(moneyFormat),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(paymentSettings),
-      const DeepCollectionEquality().hash(primaryDomain),
-      const DeepCollectionEquality().hash(privacyPolicy),
-      const DeepCollectionEquality().hash(refundPolicy),
-      const DeepCollectionEquality().hash(shipsToCountries),
-      const DeepCollectionEquality().hash(termsOfService));
 
   @JsonKey(ignore: true)
   @override
-  _$ShopCopyWith<_Shop> get copyWith =>
-      __$ShopCopyWithImpl<_Shop>(this, _$identity);
+  int get hashCode => Object.hash(
+      runtimeType,
+      description,
+      moneyFormat,
+      name,
+      paymentSettings,
+      primaryDomain,
+      privacyPolicy,
+      refundPolicy,
+      const DeepCollectionEquality().hash(_shipsToCountries),
+      termsOfService);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ShopCopyWith<_$_Shop> get copyWith =>
+      __$$_ShopCopyWithImpl<_$_Shop>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShopToJson(this);
+    return _$$_ShopToJson(
+      this,
+    );
   }
 }
 
 abstract class _Shop implements Shop {
   factory _Shop(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService}) = _$_Shop;
+      {final String? description,
+      final String? moneyFormat,
+      final String? name,
+      final PaymentSettings? paymentSettings,
+      final PrimaryDomain? primaryDomain,
+      final PrivacyPolicy? privacyPolicy,
+      final RefundPolicy? refundPolicy,
+      final List<String>? shipsToCountries,
+      final TermsOfService? termsOfService}) = _$_Shop;
 
   factory _Shop.fromJson(Map<String, dynamic> json) = _$_Shop.fromJson;
 
@@ -420,5 +407,5 @@ abstract class _Shop implements Shop {
   TermsOfService? get termsOfService;
   @override
   @JsonKey(ignore: true)
-  _$ShopCopyWith<_Shop> get copyWith => throw _privateConstructorUsedError;
+  _$$_ShopCopyWith<_$_Shop> get copyWith => throw _privateConstructorUsedError;
 }

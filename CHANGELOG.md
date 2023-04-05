@@ -1,6 +1,6 @@
-## 0.0.5
+## 1.0.0
 
-* updated config to add admin access token. 
+* updated shopify config to add admin access token. 
 * delete customer mutation 
 
 ## 0.0.4

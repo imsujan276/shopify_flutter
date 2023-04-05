@@ -14,9 +14,11 @@ First of all configure the ShopifyConfig like that:
 void main() {
   
   ShopifyConfig.setConfig(
-      'STOREFRONT_API_ACCESS_TOKEN', // Storefront API access token.
-      'exampleShopname.myshopify.com', // Store url.
-      '2023-01'); // The Shopify Storefront API version.
+    storefrontAccessToken: '*******************',
+    adminAccessToken: "shpat_*******************",
+    storeUrl: '*****.myshopify.com',
+    storefrontApiVersion: '2023-01',
+  );
   
   runApp(MyApp());
 }
@@ -29,11 +31,12 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ##### Shopify Auth
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
-    Future<ShopifyUser> createUserWithEmailAndPassword({@required String email, @required String password})
+    Future<ShopifyUser> createUserWithEmailAndPassword({required String email, required String password})
     Future<void> signOutCurrentUser()
-    Future<void> sendPasswordResetEmail({@required String email})
-    Future<ShopifyUser> signInWithEmailAndPassword({@required String email, @required String password})
+    Future<void> sendPasswordResetEmail({required String email})
+    Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
     Future<ShopifyUser> currentUser()
+    Future<void> deleteCustomer({required String userId})
     Future<String?> get currentCustomerAccessToken
 ```
 
@@ -43,7 +46,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Product>> getProductsByIds()
      Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
      Future<List<Product>> getAllProducts()
-     Future<List<Product>> getNProducts({@required int n, @required SortKey sortKey})
+     Future<List<Product>> getNProducts({required int n, required SortKey sortKey})
      Future<Shop> getShop()
      Future<Collection> getFeaturedCollection()
      Future<List<Collection>> getAllCollections()

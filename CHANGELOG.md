@@ -1,3 +1,8 @@
+## 0.0.5
+
+* updated config to add admin access token. 
+* delete customer mutation 
+
 ## 0.0.4
 
 * added payment status and fulfilment status in order  

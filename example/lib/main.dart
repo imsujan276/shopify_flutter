@@ -8,9 +8,10 @@ import 'screens/search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig(
-    '3bad22a96234c41d90825b826abf57cb', // Storefront API access token.
-    'qoder.myshopify.com', // Store url.
-    '2023-01', // The Shopify Storefront API version.
+    storefrontAccessToken: '*******************',
+    adminAccessToken: "shpat_*******************",
+    storeUrl: '*****.myshopify.com',
+    storefrontApiVersion: '2023-01',
   );
   runApp(const MyApp());
 }

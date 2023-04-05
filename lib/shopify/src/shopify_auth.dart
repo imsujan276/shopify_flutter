@@ -5,6 +5,7 @@ import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../graphql_operations/admin/mutations/customer_delete.dart';
 import '../../graphql_operations/mutations/access_token_delete.dart';
 import '../../graphql_operations/mutations/customer_access_token_create.dart';
 import '../../graphql_operations/mutations/customer_access_token_create_with_multipass.dart';
@@ -19,6 +20,7 @@ import '../../shopify_config.dart';
 class ShopifyAuth with ShopifyError {
   ShopifyAuth._();
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
+  GraphQLClient? get _graphQLClientAdmin => ShopifyConfig.graphQLClientAdmin;
 
   static final ShopifyAuth instance = ShopifyAuth._();
 
@@ -253,5 +255,20 @@ class ShopifyAuth with ShopifyError {
       _currentCustomerAccessToken[ShopifyConfig.storeUrl] = sharedPrefsToken;
       _prefs.setString(ShopifyConfig.storeUrl!, sharedPrefsToken);
     }
+  }
+
+  /// Delete current user and clears it from the disk cache.
+  Future<void> deleteCustomer({required String userId}) async {
+    final MutationOptions _options = MutationOptions(
+      document: gql(customerDeleteMutation),
+      variables: {'id': userId},
+    );
+    await _setShopifyUser(null, null);
+    final QueryResult result = await _graphQLClientAdmin!.mutate(_options);
+    checkForError(
+      result,
+      key: 'customerDelete',
+      errorKey: 'userErrors',
+    );
   }
 }

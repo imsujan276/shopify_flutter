@@ -69,15 +69,21 @@ class ShopifyCustomer with ShopifyError {
       bool? acceptsMarketing,
       bool deleteThisPartOfCache = false}) async {
     Map<String, dynamic> variableMap = {};
-    ({
-      'email': email,
-      'firstName': firstName,
-      'lastName': lastName,
-      'password': password,
-      'phone': phoneNumber,
-      'acceptsMarketing': acceptsMarketing,
-      'customerAccessToken': customerAccessToken
-    }).forEach((k, v) => v != {} ? variableMap[k] = v : {});
+
+    Map<String, dynamic> dataMap = {};
+    dataMap['email'] = email;
+    dataMap['firstName'] = firstName;
+    dataMap['lastName'] = lastName;
+    dataMap['acceptsMarketing'] = acceptsMarketing;
+    dataMap['customerAccessToken'] = customerAccessToken;
+    if (phoneNumber != null && phoneNumber.isNotEmpty) {
+      dataMap['phone'] = phoneNumber;
+    }
+    if (password != null && password.isNotEmpty) {
+      dataMap['password'] = password;
+    }
+
+    dataMap.forEach((k, v) => v != {} ? variableMap[k] = v : {});
 
     final MutationOptions _options = MutationOptions(
         document: gql(createValidMutationString(variableMap)),

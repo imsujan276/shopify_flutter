@@ -58,6 +58,20 @@ class Product with _$Product {
   String get currencyCode =>
       productVariants.isEmpty ? '' : productVariants.first.price.currencyCode;
 
+  /// Checks if the product is available for sale by checking its variants availability and quantity
+  bool get isAvailableForSale {
+    ProductVariant? defaultVariant;
+    final temp =
+        productVariants.where((e) => e.title == 'Default Title').toList();
+    if (temp.isNotEmpty) defaultVariant = temp.first;
+    final variants =
+        productVariants.where((e) => e.title != 'Default Title').toList();
+    final activeVariant = variants.isNotEmpty ? variants.first : defaultVariant;
+    return activeVariant == null
+        ? false
+        : activeVariant.availableForSale && activeVariant.quantityAvailable > 0;
+  }
+
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(
         collectionList: _getCollectionList(json),

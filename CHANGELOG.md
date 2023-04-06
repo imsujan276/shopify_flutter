@@ -1,3 +1,7 @@
+## 1.0.1
+
+* add 'isAvailableForSale' in product and CustomerUpdate bug fixes
+
 ## 1.0.0
 
 * updated shopify config to add admin access token. 

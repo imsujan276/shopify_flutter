@@ -359,6 +359,7 @@ class ShopifyCheckout with ShopifyError {
   Future<Checkout> createCheckout({
     List<LineItem>? lineItems,
     Address? mailingAddress,
+    String? email,
     bool deleteThisPartOfCache = false,
   }) async {
     final MutationOptions _options =
@@ -378,6 +379,7 @@ class ShopifyCheckout with ShopifyError {
                     .toList(),
               }
           ],
+        if (email != null) 'email': email,
         if (mailingAddress != null)
           'shippingAddress': {
             'address1': mailingAddress.address1,

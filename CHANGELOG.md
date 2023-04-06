@@ -1,3 +1,7 @@
+## 1.0.2
+
+* added 'email' in checkout product for eacy checkout experience if logged in
+
 ## 1.0.1
 
 * add 'isAvailableForSale' in product and CustomerUpdate bug fixes

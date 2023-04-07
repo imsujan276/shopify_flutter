@@ -18,14 +18,6 @@ class ShopifyConfig {
   /// The version of the Storefront API.
   static String _storefrontApiVersion = '';
 
-  /// Where to store the cache.
-  ///
-  /// Default is [InMemoryStore] which does _not_ persist to disk
-  static Store? _cacheStore;
-
-  /// Where to store the cache.
-  static Store? get cacheStore => _cacheStore;
-
   /// The GraphQlClient used for communication with the Storefront API.
   static GraphQLClient? _graphQLClient;
 
@@ -52,13 +44,11 @@ class ShopifyConfig {
     required String adminAccessToken,
     required String storeUrl,
     String storefrontApiVersion = "2023-01",
-    Store? cacheStore,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
-    _cacheStore = cacheStore;
     _graphQLClient = GraphQLClient(
       link: HttpLink(
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',
@@ -66,9 +56,7 @@ class ShopifyConfig {
           'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
         },
       ),
-      cache: GraphQLCache(
-        store: _cacheStore,
-      ),
+      cache: GraphQLCache(),
     );
 
     _graphQLClientAdmin = GraphQLClient(
@@ -78,9 +66,7 @@ class ShopifyConfig {
           'X-Shopify-Access-Token': _adminAccessToken!,
         },
       ),
-      cache: GraphQLCache(
-        store: _cacheStore,
-      ),
+      cache: GraphQLCache(),
     );
   }
 }

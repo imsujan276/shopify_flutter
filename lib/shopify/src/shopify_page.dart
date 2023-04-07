@@ -1,6 +1,6 @@
 import 'package:shopify_flutter/enums/src/sort_key_page.dart';
-import 'package:shopify_flutter/graphql_operations/queries/get_all_pages.dart';
-import 'package:shopify_flutter/graphql_operations/queries/get_page_by_handle.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_pages.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/get_page_by_handle.dart';
 import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 import 'package:shopify_flutter/models/src/page/page.dart';
 import 'package:shopify_flutter/models/src/page/pages/pages.dart';
@@ -19,7 +19,6 @@ class ShopifyPage with ShopifyError {
   ///
   /// Returns All [Page] of the Shop.
   Future<List<Page>?> getAllPages({
-    bool deleteThisPartOfCache = false,
     SortKeyPage sortKeyPage = SortKeyPage.ID,
     bool reversePages = false,
     String? pagesQuery,
@@ -34,9 +33,6 @@ class ShopifyPage with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    if (deleteThisPartOfCache) {
-      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-    }
     return (Pages.fromGraphJson((result.data ?? const {})["pages"] ?? const {}))
         .pageList;
   }
@@ -44,10 +40,7 @@ class ShopifyPage with ShopifyError {
   /// Returns a [Page].
   ///
   /// Returns the [Page] that is associated to the [handle].
-  Future<Page> getPageByHandle(
-    String handle, {
-    bool deleteThisPartOfCache = false,
-  }) async {
+  Future<Page> getPageByHandle(String handle) async {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getPageByHandleQuery),
       variables: {
@@ -57,9 +50,6 @@ class ShopifyPage with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!['pageByHandle'];
-    if (deleteThisPartOfCache) {
-      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
-    }
     return Page.fromJson(response);
   }
 }

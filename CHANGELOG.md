@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Code optimization
+
 ## 1.0.2
 
 * added 'email' in checkout product for eacy checkout experience if logged in

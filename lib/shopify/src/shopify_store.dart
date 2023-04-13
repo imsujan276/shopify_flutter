@@ -200,6 +200,7 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a collection by handle.
+  @Deprecated('Use [getCollectionById]')
   Future<Collection> getCollectionByHandle(
     String collectionName,
   ) async {
@@ -215,6 +216,23 @@ class ShopifyStore with ShopifyError {
       log(e.toString());
     }
     return Collection.fromGraphJson({});
+  }
+
+  /// Returns a collection by id.
+  Future<Collection?> getCollectionById(String collectionId) async {
+    try {
+      final WatchQueryOptions _options = WatchQueryOptions(
+          document: gql(getCollectionsByIdsQuery),
+          variables: {
+            'ids': [collectionId],
+          });
+      final QueryResult result = await _graphQLClient!.query(_options);
+      checkForError(result);
+      return Collection.fromGraphJson(result.data!);
+    } catch (e) {
+      log(e.toString());
+    }
+    return null;
   }
 
   /// Returns all available collections.
@@ -289,7 +307,7 @@ class ShopifyStore with ShopifyError {
     QueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          document: gql(getCollectionByIdQuery),
+          document: gql(getAllProductsFromCollectionByIdQuery),
           variables: {
             'id': id,
             'cursor': cursor,

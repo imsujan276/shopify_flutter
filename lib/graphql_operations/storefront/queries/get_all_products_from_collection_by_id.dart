@@ -108,8 +108,7 @@
 // }
 // ''';
 
-/// Query to get all collections
-const String getCollectionByIdQuery = r'''
+const String getAllProductsFromCollectionByIdQuery = r'''
 query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
   node(id: $id) {
     ... on Collection {

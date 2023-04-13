@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Added get collection by id
+
 ## 1.0.3
 
 * Code optimization

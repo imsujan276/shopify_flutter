@@ -48,7 +48,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Product>> getAllProducts()
      Future<List<Product>> getNProducts({required int n, required SortKey sortKey})
      Future<Shop> getShop()
-     Future<Collection> getFeaturedCollection()
+     Future<Collection> getCollectionById(String collectionId)
      Future<List<Collection>> getAllCollections()
      Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey)
      Future<List<Product>> getAllProductsFromCollectionById(String id)

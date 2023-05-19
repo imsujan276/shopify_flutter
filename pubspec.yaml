@@ -4,7 +4,8 @@ version: 1.0.6
 homepage: https://github.com/imsujan276/shopify_flutter
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  # sdk: '>=2.19.3 <3.0.0'
+  sdk: '>=2.19.3 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:

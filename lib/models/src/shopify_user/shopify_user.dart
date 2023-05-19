@@ -29,7 +29,11 @@ class ShopifyUser with _$ShopifyUser {
       email: json['email'],
       firstName: json['firstName'],
       id: json['id'],
-      lastName: json['lastName'],
+      lastName: json['lastName'] ??
+          json['displayName']
+              .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
+              .replaceAll(RegExp(r'\s+'), ' ')
+              .trim(),
       phone: json['phone'],
       tags: _getTagList((json)),
       lastIncompleteCheckout: LastIncompleteCheckout.fromJson(

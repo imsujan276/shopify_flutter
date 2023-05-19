@@ -239,12 +239,12 @@ class ShopifyAuth with ShopifyError {
       document: gql(customerDeleteMutation),
       variables: {'id': userId},
     );
+    await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClientAdmin!.mutate(_options);
     checkForError(
       result,
       key: 'customerDelete',
       errorKey: 'userErrors',
     );
-    await _setShopifyUser(null, null);
   }
 }

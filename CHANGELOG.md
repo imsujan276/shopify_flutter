@@ -1,6 +1,10 @@
+## 1.0.7
+
+* Bug fixes in registeration
+
 ## 1.0.6
 
-* Bug fixes while deleteing customer account
+* Bug fixes while deleting customer account
 
 ## 1.0.5
 

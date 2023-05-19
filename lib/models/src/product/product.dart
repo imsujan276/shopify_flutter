@@ -60,16 +60,22 @@ class Product with _$Product {
 
   /// Checks if the product is available for sale by checking its variants availability and quantity
   bool get isAvailableForSale {
-    ProductVariant? defaultVariant;
     final temp =
         productVariants.where((e) => e.title == 'Default Title').toList();
-    if (temp.isNotEmpty) defaultVariant = temp.first;
-    final variants =
-        productVariants.where((e) => e.title != 'Default Title').toList();
-    final activeVariant = variants.isNotEmpty ? variants.first : defaultVariant;
-    return activeVariant == null
-        ? false
-        : activeVariant.availableForSale && activeVariant.quantityAvailable > 0;
+    if (temp.isNotEmpty) {
+      return temp.first.availableForSale && temp.first.quantityAvailable > 0;
+    } else {
+      bool isAvailable = false;
+      final variants =
+          productVariants.where((e) => e.title != 'Default Title').toList();
+      for (int i = 0; i < variants.length; i++) {
+        if (variants[i].availableForSale && variants[i].quantityAvailable > 0) {
+          isAvailable = true;
+          break;
+        }
+      }
+      return isAvailable;
+    }
   }
 
   static Product fromGraphJson(Map<String, dynamic> json) {

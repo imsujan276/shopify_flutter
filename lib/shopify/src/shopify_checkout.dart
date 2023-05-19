@@ -119,14 +119,21 @@ class ShopifyCheckout with ShopifyError {
     SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
     bool reverse = true,
   }) async {
-    final QueryOptions _options =
-        WatchQueryOptions(document: gql(getAllOrdersQuery), variables: {
+    // final QueryOptions _options =
+    //     WatchQueryOptions(document: gql(getAllOrdersQuery), variables: {
+    //   'accessToken': customerAccessToken,
+    //   'sortKey': sortKey.parseToString(),
+    //   'reverse': reverse
+    // });
+    // final QueryResult result =
+    //     await ShopifyConfig.graphQLClient!.query(_options);
+    final MutationOptions _options =
+        MutationOptions(document: gql(getAllOrdersQuery), variables: {
       'accessToken': customerAccessToken,
       'sortKey': sortKey.parseToString(),
       'reverse': reverse
     });
-    final QueryResult result =
-        await ShopifyConfig.graphQLClient!.query(_options);
+    QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(result);
     final orderResult =
         result.data!['customer']['orders'] as Map<String, dynamic>;

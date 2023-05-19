@@ -1,3 +1,11 @@
+## 1.0.6
+
+* Bug fixes while deleteing customer account
+
+## 1.0.5
+
+* Optimized orders query and product isAvailableForSale
+
 ## 1.0.4
 
 * Added get collection by id

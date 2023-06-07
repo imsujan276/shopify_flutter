@@ -56,6 +56,13 @@ customer(customerAccessToken: $accessToken) {
               }
             }
           }
+          successfulFulfillments(first: 50) {
+            trackingCompany
+            trackingInfo {
+              number
+              url
+            }
+          }
           name
           orderNumber
           phone

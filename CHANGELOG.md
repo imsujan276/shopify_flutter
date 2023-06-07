@@ -1,3 +1,8 @@
+## 1.0.8
+
+* Fixed error getting in order history when the the purchased product is archieved
+* added billingAddress in getAllOrdersQuery and orders 
+
 ## 1.0.7
 
 * Bug fixes in registeration

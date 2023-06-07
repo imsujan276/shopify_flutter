@@ -37,6 +37,10 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
           : PriceV2.fromJson(json['totalRefundedV2'] as Map<String, dynamic>),
       phone: json['phone'] as String?,
       cursor: json['cursor'] as String?,
+      successfulFulfillments: (json['successfulFulfillments'] as List<dynamic>?)
+          ?.map(
+              (e) => SuccessfulFullfilment.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
@@ -60,4 +64,5 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'totalRefundedV2': instance.totalRefundedV2,
       'phone': instance.phone,
       'cursor': instance.cursor,
+      'successfulFulfillments': instance.successfulFulfillments,
     };

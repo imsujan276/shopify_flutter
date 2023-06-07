@@ -40,6 +40,8 @@ mixin _$Order {
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
+  List<SuccessfulFullfilment>? get successfulFulfillments =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,7 +73,8 @@ abstract class $OrderCopyWith<$Res> {
       String fulfillmentStatus,
       PriceV2? totalRefundedV2,
       String? phone,
-      String? cursor});
+      String? cursor,
+      List<SuccessfulFullfilment>? successfulFulfillments});
 
   $LineItemsOrderCopyWith<$Res> get lineItems;
   $ShippingAddressCopyWith<$Res> get shippingAddress;
@@ -116,6 +119,7 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? successfulFulfillments = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -198,6 +202,10 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
+      successfulFulfillments: freezed == successfulFulfillments
+          ? _value.successfulFulfillments
+          : successfulFulfillments // ignore: cast_nullable_to_non_nullable
+              as List<SuccessfulFullfilment>?,
     ) as $Val);
   }
 
@@ -300,7 +308,8 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       String fulfillmentStatus,
       PriceV2? totalRefundedV2,
       String? phone,
-      String? cursor});
+      String? cursor,
+      List<SuccessfulFullfilment>? successfulFulfillments});
 
   @override
   $LineItemsOrderCopyWith<$Res> get lineItems;
@@ -349,6 +358,7 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? successfulFulfillments = freezed,
   }) {
     return _then(_$_Order(
       id: null == id
@@ -431,6 +441,10 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res, _$_Order>
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
+      successfulFulfillments: freezed == successfulFulfillments
+          ? _value._successfulFulfillments
+          : successfulFulfillments // ignore: cast_nullable_to_non_nullable
+              as List<SuccessfulFullfilment>?,
     ));
   }
 }
@@ -458,8 +472,10 @@ class _$_Order extends _Order {
       required this.fulfillmentStatus,
       this.totalRefundedV2,
       this.phone,
-      this.cursor})
-      : super._();
+      this.cursor,
+      final List<SuccessfulFullfilment>? successfulFulfillments})
+      : _successfulFulfillments = successfulFulfillments,
+        super._();
 
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
       _$$_OrderFromJson(json);
@@ -504,10 +520,20 @@ class _$_Order extends _Order {
   final String? phone;
   @override
   final String? cursor;
+  final List<SuccessfulFullfilment>? _successfulFulfillments;
+  @override
+  List<SuccessfulFullfilment>? get successfulFulfillments {
+    final value = _successfulFulfillments;
+    if (value == null) return null;
+    if (_successfulFulfillments is EqualUnmodifiableListView)
+      return _successfulFulfillments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor)';
+    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, successfulFulfillments: $successfulFulfillments)';
   }
 
   @override
@@ -549,7 +575,9 @@ class _$_Order extends _Order {
             (identical(other.totalRefundedV2, totalRefundedV2) ||
                 other.totalRefundedV2 == totalRefundedV2) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.cursor, cursor) || other.cursor == cursor));
+            (identical(other.cursor, cursor) || other.cursor == cursor) &&
+            const DeepCollectionEquality().equals(
+                other._successfulFulfillments, _successfulFulfillments));
   }
 
   @JsonKey(ignore: true)
@@ -575,7 +603,8 @@ class _$_Order extends _Order {
         fulfillmentStatus,
         totalRefundedV2,
         phone,
-        cursor
+        cursor,
+        const DeepCollectionEquality().hash(_successfulFulfillments)
       ]);
 
   @JsonKey(ignore: true)
@@ -613,7 +642,8 @@ abstract class _Order extends Order {
       required final String fulfillmentStatus,
       final PriceV2? totalRefundedV2,
       final String? phone,
-      final String? cursor}) = _$_Order;
+      final String? cursor,
+      final List<SuccessfulFullfilment>? successfulFulfillments}) = _$_Order;
   _Order._() : super._();
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
@@ -658,6 +688,8 @@ abstract class _Order extends Order {
   String? get phone;
   @override
   String? get cursor;
+  @override
+  List<SuccessfulFullfilment>? get successfulFulfillments;
   @override
   @JsonKey(ignore: true)
   _$$_OrderCopyWith<_$_Order> get copyWith =>

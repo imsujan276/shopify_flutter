@@ -78,6 +78,24 @@ customer(customerAccessToken: $accessToken) {
             provinceCode
             zip
           }
+          billingAddress {
+            address1
+            address2
+            city
+            company
+            country
+            countryCodeV2
+            firstName
+            id
+            lastName
+            latitude
+            longitude
+            name
+            phone
+            province
+            provinceCode
+            zip
+          }
           statusUrl
           subtotalPriceV2 {
             amount

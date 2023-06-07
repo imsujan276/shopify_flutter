@@ -43,7 +43,7 @@ class ShopifyConfig {
     required String storefrontAccessToken,
     required String adminAccessToken,
     required String storeUrl,
-    String storefrontApiVersion = "2023-01",
+    String storefrontApiVersion = "2023-07",
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;

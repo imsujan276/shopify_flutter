@@ -18,6 +18,10 @@ _$_Order _$$_OrderFromJson(Map<String, dynamic> json) => _$_Order(
       processedAt: json['processedAt'] as String,
       shippingAddress: ShippingAddress.fromJson(
           json['shippingAddress'] as Map<String, dynamic>),
+      billingAddress: json['billingAddress'] == null
+          ? null
+          : ShippingAddress.fromJson(
+              json['billingAddress'] as Map<String, dynamic>),
       statusUrl: json['statusUrl'] as String,
       subtotalPriceV2:
           PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
@@ -45,6 +49,7 @@ Map<String, dynamic> _$$_OrderToJson(_$_Order instance) => <String, dynamic>{
       'orderNumber': instance.orderNumber,
       'processedAt': instance.processedAt,
       'shippingAddress': instance.shippingAddress,
+      'billingAddress': instance.billingAddress,
       'statusUrl': instance.statusUrl,
       'subtotalPriceV2': instance.subtotalPriceV2,
       'totalPriceV2': instance.totalPriceV2,

@@ -1,6 +1,6 @@
 /// Mutation to update the line items of a checkout
 String updateLineItemsInCheckoutMutation = r'''
-mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemInput!]!, $checkoutId: ID!) {
+mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $checkoutId: ID!) {
   checkoutLineItemsUpdate(lineItems: $lineItems, checkoutId: $checkoutId) {
     checkout {
       id

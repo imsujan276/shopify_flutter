@@ -1,3 +1,7 @@
+## 1.0.9
+
+* checkout lineitem update fixes
+
 ## 1.0.8
 
 * Fixed error getting in order history when the the purchased product is archieved

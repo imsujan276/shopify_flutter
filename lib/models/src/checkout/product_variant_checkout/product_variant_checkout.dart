@@ -20,6 +20,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     PriceV2? compareAtPrice,
     double? weight,
     String? weightUnit,
+    @Default(0) int quantityAvailable,
   }) = _ProductVariantCheckout;
 
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>

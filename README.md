@@ -74,6 +74,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<void> shippingLineUpdate(String checkoutId, String shippingRateHandle)
     Future<void> checkoutCompleteFree(String checkoutId)
     Future<void> updateAttributes(String checkoutId, {bool allowPartialAddresses, Map<String, String> customAttributes, String note})
+    Future<Checkout> updateCheckoutEmail(String checkoutId, String email)
 ```
 
 ##### Shopify Customer

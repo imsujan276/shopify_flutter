@@ -71,6 +71,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                 currencyCode
               }
               title
+              quantityAvailable
               image {
                 altText
                 originalSrc

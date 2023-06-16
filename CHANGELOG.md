@@ -1,3 +1,7 @@
+## 1.0.10
+
+* added update email in checkout
+
 ## 1.0.9
 
 * checkout lineitem update fixes

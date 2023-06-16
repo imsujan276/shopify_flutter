@@ -1,6 +1,7 @@
 import 'package:shopify_flutter/enums/src/payment_token_type.dart';
 import 'package:shopify_flutter/enums/src/sort_key_order.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_free.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_email_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_item_add.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_with_credit_card_V2.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_item_remove.dart';
@@ -250,6 +251,30 @@ class ShopifyCheckout with ShopifyError {
       }
     }
     return lineItemList;
+  }
+
+  /// Update email of the checkout.
+  Future<Checkout> updateCheckoutEmail(
+    String checkoutId,
+    String email,
+  ) async {
+    final MutationOptions _options = MutationOptions(
+      document: gql(checkoutEmailUpdateMutation),
+      variables: {
+        'checkoutId': checkoutId,
+        'email': email,
+      },
+    );
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'checkoutEmailUpdateV2',
+      errorKey: 'checkoutUserErrors',
+    );
+
+    return Checkout.fromJson(
+        ((result.data!['checkoutEmailUpdateV2'] ?? const {})['checkout'] ??
+            const {}));
   }
 
   /// Associates the [Customer] that [customerAccessToken] belongs to, to the [Checkout] that [checkoutId] belongs to.

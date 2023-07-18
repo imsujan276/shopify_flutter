@@ -80,34 +80,34 @@ class Product with _$Product {
 
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(
-        collectionList: _getCollectionList(json),
-        id: (json['node'] ?? const {})['id'] ?? '',
-        title: (json['node'] ?? const {})['title'] ?? '',
-        availableForSale: (json['node'] ?? const {})['availableForSale'],
-        createdAt: (json['node'] ?? const {})['createdAt'],
-        description: (json['node'] ?? const {})['description'] ?? '',
-        productVariants: _getProductVariants(json),
-        descriptionHtml: (json['node'] ?? const {})['descriptionHtml'] ?? '',
-        handle: (json['node'] ?? const {})['handle'] ?? '',
-        onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'] ?? '',
-        productType: (json['node'] ?? const {})['productType'] ?? '',
-        publishedAt: (json['node'] ?? const {})['publishedAt'],
-        tags: _getTags(json),
-        updatedAt: (json['node'] ?? const {})['updatedAt'],
-        images: _getImageList((json['node'] ?? const {})['images'] ?? const {}),
-        cursor: json['cursor'],
-        option: _getOptionList((json['node'] ?? const {})),
-        vendor: (json['node'] ?? const {})['vendor'],
-        metafields: _getMetafieldList(
-            (json['node'] ?? const {})['metafields'] ?? const {}));
+      collectionList: _getCollectionList(json),
+      id: json['node']['id'] ?? '',
+      title: json['node']['title'] ?? '',
+      availableForSale: json['node']['availableForSale'],
+      createdAt: json['node']['createdAt'],
+      description: json['node']['description'] ?? '',
+      productVariants: _getProductVariants(json),
+      descriptionHtml: json['node']['descriptionHtml'] ?? '',
+      handle: json['node']['handle'] ?? '',
+      onlineStoreUrl: json['node']['onlineStoreUrl'] ?? '',
+      productType: json['node']['productType'] ?? '',
+      publishedAt: json['node']['publishedAt'],
+      tags: _getTags(json),
+      updatedAt: json['node']['updatedAt'],
+      images: _getImageList(json['node']['images'] ?? const {}),
+      cursor: json['cursor'],
+      option: _getOptionList(json['node']),
+      vendor: json['node']['vendor'],
+      metafields: _getMetafieldList(json['node']['metafields'] ?? const {}),
+    );
   }
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    return (((json['node'] ?? const {})['variants'] ?? const {})['edges']
-            as List)
+    if (json['node']['variants'] == null) return [];
+    return (json['node']['variants']['edges'] as List)
         .map((v) => ProductVariant.fromGraphJson(v ?? const {}))
         .toList();
   }
@@ -122,16 +122,15 @@ class Product with _$Product {
 
   static List<String> _getTags(Map<String, dynamic> json) {
     List<String> tags = [];
-    (json['node'] ?? const {})['tags']?.forEach((e) => tags.add(e ?? const {}));
+    json['node']['tags']?.forEach((e) => tags.add(e ?? const {}));
     return tags;
   }
 
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
-    if ((json['node'] ?? const {})['collections'] == null) return [];
+    if (json['node']['collections'] == null) return [];
 
-    return (((json['node'] ?? const {})['collections'] ?? const {})['edges']
-            as List)
+    return ((json['node']['collections']['edges']) as List)
         .map((v) => AssociatedCollections.fromGraphJson(v ?? const {}))
         .toList();
   }
@@ -147,6 +146,7 @@ class Product with _$Product {
 
   static _getMetafieldList(Map<String, dynamic> json) {
     List<Metafield> metafieldList = [];
+    if (json['metafields'] == null) return metafieldList;
     json['edges']?.forEach((metafield) =>
         metafieldList.add(Metafield.fromGraphJson(metafield ?? const {})));
     return metafieldList;

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopify_flutter/models/src/order/successful_fulfillment/successful_fulfilment_tracking_info/successful_fulfilment_tracking_info.dart';
 
@@ -16,7 +14,6 @@ class SuccessfulFullfilment with _$SuccessfulFullfilment {
   }) = _SuccessfulFullfilment;
 
   static SuccessfulFullfilment fromGraphJson(Map<String, dynamic> json) {
-    log(json.toString());
     return SuccessfulFullfilment(
       trackingCompany: json['trackingCompany'],
       trackingInfo: _getTrackingInfoList(json['trackingInfo'] ?? []),

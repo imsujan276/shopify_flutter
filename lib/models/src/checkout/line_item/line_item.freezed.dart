@@ -196,7 +196,7 @@ class _$_LineItem extends _LineItem {
   _$_LineItem(
       {required this.title,
       required this.quantity,
-      required final List<DiscountAllocations> discountAllocations,
+      final List<DiscountAllocations> discountAllocations = const [],
       final List<Attribute> customAttributes = const [],
       this.variantId,
       this.id,
@@ -214,6 +214,7 @@ class _$_LineItem extends _LineItem {
   final int quantity;
   final List<DiscountAllocations> _discountAllocations;
   @override
+  @JsonKey()
   List<DiscountAllocations> get discountAllocations {
     if (_discountAllocations is EqualUnmodifiableListView)
       return _discountAllocations;
@@ -291,7 +292,7 @@ abstract class _LineItem extends LineItem {
   factory _LineItem(
       {required final String title,
       required final int quantity,
-      required final List<DiscountAllocations> discountAllocations,
+      final List<DiscountAllocations> discountAllocations,
       final List<Attribute> customAttributes,
       final String? variantId,
       final String? id,

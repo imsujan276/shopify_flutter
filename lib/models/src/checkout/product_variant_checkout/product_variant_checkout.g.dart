@@ -24,6 +24,9 @@ _$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
       weight: (json['weight'] as num?)?.toDouble(),
       weightUnit: json['weightUnit'] as String?,
       quantityAvailable: json['quantityAvailable'] as int? ?? 0,
+      product: json['product'] == null
+          ? null
+          : Product.fromJson(json['product'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
@@ -40,4 +43,5 @@ Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
       'weight': instance.weight,
       'weightUnit': instance.weightUnit,
       'quantityAvailable': instance.quantityAvailable,
+      'product': instance.product,
     };

@@ -494,7 +494,7 @@ class _$_Checkout extends _Checkout {
       required this.taxExempt,
       required this.subtotalPriceV2,
       required this.requiresShipping,
-      required final List<AppliedGiftCards> appliedGiftCards,
+      final List<AppliedGiftCards> appliedGiftCards = const [],
       @JsonKey(fromJson: JsonHelper.lineItems)
           required final List<LineItem> lineItems,
       this.order,
@@ -538,6 +538,7 @@ class _$_Checkout extends _Checkout {
   final bool requiresShipping;
   final List<AppliedGiftCards> _appliedGiftCards;
   @override
+  @JsonKey()
   List<AppliedGiftCards> get appliedGiftCards {
     if (_appliedGiftCards is EqualUnmodifiableListView)
       return _appliedGiftCards;
@@ -684,7 +685,7 @@ abstract class _Checkout extends Checkout {
       required final bool taxExempt,
       required final PriceV2 subtotalPriceV2,
       required final bool requiresShipping,
-      required final List<AppliedGiftCards> appliedGiftCards,
+      final List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
           required final List<LineItem> lineItems,
       final Order? order,

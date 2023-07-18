@@ -23,9 +23,10 @@ _$_Checkout _$$_CheckoutFromJson(Map<String, dynamic> json) => _$_Checkout(
       subtotalPriceV2:
           PriceV2.fromJson(json['subtotalPriceV2'] as Map<String, dynamic>),
       requiresShipping: json['requiresShipping'] as bool,
-      appliedGiftCards: (json['appliedGiftCards'] as List<dynamic>)
-          .map((e) => AppliedGiftCards.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      appliedGiftCards: (json['appliedGiftCards'] as List<dynamic>?)
+              ?.map((e) => AppliedGiftCards.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       lineItems: JsonHelper.lineItems(json['lineItems']),
       order: json['order'] == null
           ? null

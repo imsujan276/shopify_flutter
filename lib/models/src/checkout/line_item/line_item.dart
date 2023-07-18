@@ -12,7 +12,7 @@ class LineItem with _$LineItem {
   factory LineItem({
     required String title,
     required int quantity,
-    required List<DiscountAllocations> discountAllocations,
+    @Default([]) List<DiscountAllocations> discountAllocations,
     @Default([]) List<Attribute> customAttributes,
     String? variantId,
     String? id,

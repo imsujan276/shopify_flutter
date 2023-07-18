@@ -30,7 +30,7 @@ class Checkout with _$Checkout {
     required bool taxExempt,
     required PriceV2 subtotalPriceV2,
     required bool requiresShipping,
-    required List<AppliedGiftCards> appliedGiftCards,
+    @Default([]) List<AppliedGiftCards> appliedGiftCards,
     @JsonKey(fromJson: JsonHelper.lineItems) required List<LineItem> lineItems,
     Order? order,
     String? orderStatusUrl,

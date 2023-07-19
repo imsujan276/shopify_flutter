@@ -1,3 +1,7 @@
+## 1.0.11
+
+* added product relation in the Checkout lineitem
+
 ## 1.0.10
 
 * added update email in checkout

@@ -10,6 +10,7 @@ part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
+@JsonSerializable()
 class Product with _$Product {
   const Product._();
   factory Product({
@@ -81,39 +82,66 @@ class Product with _$Product {
   static Product fromGraphJson(Map<String, dynamic> json) {
     return Product(
       collectionList: _getCollectionList(json),
-      id: json['node']['id'] ?? '',
-      title: json['node']['title'] ?? '',
-      availableForSale: json['node']['availableForSale'],
-      createdAt: json['node']['createdAt'],
-      description: json['node']['description'] ?? '',
+      id: json['node']?['id'] ?? '',
+      title: json['node']?['title'] ?? '',
+      availableForSale: json['node']?['availableForSale'],
+      createdAt: json['node']?['createdAt'],
+      description: json['node']?['description'] ?? '',
       productVariants: _getProductVariants(json),
-      descriptionHtml: json['node']['descriptionHtml'] ?? '',
-      handle: json['node']['handle'] ?? '',
-      onlineStoreUrl: json['node']['onlineStoreUrl'] ?? '',
-      productType: json['node']['productType'] ?? '',
-      publishedAt: json['node']['publishedAt'],
+      descriptionHtml: json['node']?['descriptionHtml'] ?? '',
+      handle: json['node']?['handle'] ?? '',
+      onlineStoreUrl: json['node']?['onlineStoreUrl'] ?? '',
+      productType: json['node']?['productType'] ?? '',
+      publishedAt: json['node']?['publishedAt'],
       tags: _getTags(json),
-      updatedAt: json['node']['updatedAt'],
-      images: _getImageList(json['node']['images'] ?? const {}),
+      updatedAt: json['node']?['updatedAt'],
+      images: _getImageList(json['node']?['images'] ?? const {}),
       cursor: json['cursor'],
       option: _getOptionList(json['node']),
-      vendor: json['node']['vendor'],
-      metafields: _getMetafieldList(json['node']['metafields'] ?? const {}),
+      vendor: json['node']?['vendor'],
+      metafields: _getMetafieldList(json['node']?['metafields'] ?? const {}),
     );
   }
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  // factory Product.fromJson(Map<String, dynamic> json) =>
+  //     _$ProductFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      collectionList: _getCollectionList(json),
+      id: json['id'] ?? '',
+      title: json['title'] ?? '',
+      availableForSale: json['availableForSale'],
+      createdAt: json['createdAt'],
+      description: json['description'] ?? '',
+      productVariants: _getProductVariants(json),
+      descriptionHtml: json['descriptionHtml'] ?? '',
+      handle: json['handle'] ?? '',
+      onlineStoreUrl: json['onlineStoreUrl'] ?? '',
+      productType: json['productType'] ?? '',
+      publishedAt: json['publishedAt'],
+      tags: _getTags(json),
+      updatedAt: json['updatedAt'],
+      images: _getImageList(json['images'] ?? const {}),
+      cursor: json['cursor'],
+      option: _getOptionList(json),
+      vendor: json['vendor'],
+      metafields: _getMetafieldList(json['metafields'] ?? const {}),
+    );
+  }
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    if (json['node']['variants'] == null) return [];
-    return (json['node']['variants']['edges'] as List)
+    if (json['node']?['variants'] == null) return [];
+    return ((json['node']?['variants']?['edges'] ?? []) as List)
         .map((v) => ProductVariant.fromGraphJson(v ?? const {}))
         .toList();
   }
 
   static List<Option> _getOptionList(Map<String, dynamic> json) {
     List<Option> optionList = [];
+    if (json['options'] == null) return optionList;
     json['options']?.forEach((v) {
       if (v != null) optionList.add(Option.fromJson(v ?? const {}));
     });
@@ -122,15 +150,16 @@ class Product with _$Product {
 
   static List<String> _getTags(Map<String, dynamic> json) {
     List<String> tags = [];
-    json['node']['tags']?.forEach((e) => tags.add(e ?? const {}));
+    if (json['node']?['tags'] == null) return tags;
+    json['node']?['tags']?.forEach((e) => tags.add(e ?? const {}));
     return tags;
   }
 
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
-    if (json['node']['collections'] == null) return [];
+    if (json['node']?['collections'] == null) return [];
 
-    return ((json['node']['collections']['edges']) as List)
+    return ((json['node']?['collections']?['edges'] ?? []) as List)
         .map((v) => AssociatedCollections.fromGraphJson(v ?? const {}))
         .toList();
   }

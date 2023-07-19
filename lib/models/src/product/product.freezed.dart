@@ -14,10 +14,6 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Product _$ProductFromJson(Map<String, dynamic> json) {
-  return _Product.fromJson(json);
-}
-
 /// @nodoc
 mixin _$Product {
   String get title => throw _privateConstructorUsedError;
@@ -42,7 +38,6 @@ mixin _$Product {
   String? get descriptionHtml => throw _privateConstructorUsedError;
   String? get handle => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
@@ -329,7 +324,7 @@ class __$$_ProductCopyWithImpl<$Res>
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _$_Product extends _Product {
   _$_Product(
       {required this.title,
@@ -358,9 +353,6 @@ class _$_Product extends _Product {
         _metafields = metafields,
         _collectionList = collectionList,
         super._();
-
-  factory _$_Product.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductFromJson(json);
 
   @override
   final String title;
@@ -481,7 +473,6 @@ class _$_Product extends _Product {
             (identical(other.handle, handle) || other.handle == handle));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -511,13 +502,6 @@ class _$_Product extends _Product {
   @pragma('vm:prefer-inline')
   _$$_ProductCopyWith<_$_Product> get copyWith =>
       __$$_ProductCopyWithImpl<_$_Product>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_ProductToJson(
-      this,
-    );
-  }
 }
 
 abstract class _Product extends Product {
@@ -542,8 +526,6 @@ abstract class _Product extends Product {
       final String? descriptionHtml,
       final String? handle}) = _$_Product;
   _Product._() : super._();
-
-  factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
   @override
   String get title;

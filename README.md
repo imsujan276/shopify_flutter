@@ -15,14 +15,21 @@ void main() {
   
   ShopifyConfig.setConfig(
     storefrontAccessToken: '*******************',
-    adminAccessToken: "shpat_*******************",
     storeUrl: '*****.myshopify.com',
-    storefrontApiVersion: '2023-07',
+    adminAccessToken: "shpat_*******************", // optional
+    storefrontApiVersion: '2023-07', // optional
   );
   
   runApp(MyApp());
 }
 ```
+
+> `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
+If you are not using that function, you may not need to provide it.
+
+> `storefrontApiVersion` default vesion is set to '2023-07'
+
+<hr>
 
 These are the five possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
 

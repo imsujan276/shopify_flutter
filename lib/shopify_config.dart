@@ -30,19 +30,18 @@ class ShopifyConfig {
   /// The GraphQlClient used for communication with the Storefront API.
   static GraphQLClient? get graphQLClientAdmin => _graphQLClientAdmin;
 
-  /// The Storefront Access Token.
-  static String get adminAccessToken => _adminAccessToken!;
-
   /// The Storefront API Version.
   static String get apiVersion => _storefrontApiVersion;
 
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
+  ///
+  /// [adminAccessToken] is optional, but required for some admin API calls like deleteCustomer.
   static void setConfig({
     required String storefrontAccessToken,
-    required String adminAccessToken,
     required String storeUrl,
+    String? adminAccessToken,
     String storefrontApiVersion = "2023-07",
   }) {
     _storefrontAccessToken = storefrontAccessToken;
@@ -59,14 +58,16 @@ class ShopifyConfig {
       cache: GraphQLCache(),
     );
 
-    _graphQLClientAdmin = GraphQLClient(
-      link: HttpLink(
-        '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
-        defaultHeaders: {
-          'X-Shopify-Access-Token': _adminAccessToken!,
-        },
-      ),
-      cache: GraphQLCache(),
-    );
+    _graphQLClientAdmin = _adminAccessToken == null
+        ? null
+        : GraphQLClient(
+            link: HttpLink(
+              '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
+              defaultHeaders: {
+                'X-Shopify-Access-Token': _adminAccessToken!,
+              },
+            ),
+            cache: GraphQLCache(),
+          );
   }
 }

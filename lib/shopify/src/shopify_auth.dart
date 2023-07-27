@@ -235,6 +235,7 @@ class ShopifyAuth with ShopifyError {
 
   /// Delete current user and clears it from the disk cache.
   Future<void> deleteCustomer({required String userId}) async {
+    if (_graphQLClientAdmin == null) throw 'Admin access token is not provided';
     final MutationOptions _options = MutationOptions(
       document: gql(customerDeleteMutation),
       variables: {'id': userId},

@@ -1,3 +1,7 @@
+## 1.0.12
+
+* made shopify admin access token optional as it is only used for deleting the customer
+
 ## 1.0.11
 
 * added product relation in the Checkout lineitem

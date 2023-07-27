@@ -9,8 +9,8 @@ import 'screens/search_tab.dart';
 void main() {
   ShopifyConfig.setConfig(
     storefrontAccessToken: '*******************',
-    adminAccessToken: "shpat_*******************",
     storeUrl: '*****.myshopify.com',
+    adminAccessToken: "shpat_*******************", // optional
     storefrontApiVersion: '2023-07',
   );
   runApp(const MyApp());

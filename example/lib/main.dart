@@ -11,7 +11,6 @@ void main() {
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
     adminAccessToken: "shpat_*******************", // optional
-    storefrontApiVersion: '2023-07',
   );
   runApp(const MyApp());
 }

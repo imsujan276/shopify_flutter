@@ -1,11 +1,11 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=/Volumes/D/flutter/Flutter-SDK"
+export "FLUTTER_ROOT=/Volumes/D/Flutter/Flutter-SDK"
 export "FLUTTER_APPLICATION_PATH=/Volumes/D/flutter_package/shopify_flutter"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_BUILD_DIR=build"
-export "FLUTTER_BUILD_NAME=1.0.9"
-export "FLUTTER_BUILD_NUMBER=1.0.9"
+export "FLUTTER_BUILD_NAME=1.0.12"
+export "FLUTTER_BUILD_NUMBER=1.0.12"
 export "DART_OBFUSCATION=false"
 export "TRACK_WIDGET_CREATION=true"
 export "TREE_SHAKE_ICONS=false"

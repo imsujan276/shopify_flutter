@@ -1,10 +1,10 @@
 // This is a generated file; do not edit or check into version control.
-FLUTTER_ROOT=/Volumes/D/flutter/Flutter-SDK
+FLUTTER_ROOT=/Volumes/D/Flutter/Flutter-SDK
 FLUTTER_APPLICATION_PATH=/Volumes/D/flutter_package/shopify_flutter
 COCOAPODS_PARALLEL_CODE_SIGN=true
 FLUTTER_BUILD_DIR=build
-FLUTTER_BUILD_NAME=1.0.9
-FLUTTER_BUILD_NUMBER=1.0.9
+FLUTTER_BUILD_NAME=1.0.12
+FLUTTER_BUILD_NUMBER=1.0.12
 DART_OBFUSCATION=false
 TRACK_WIDGET_CREATION=true
 TREE_SHAKE_ICONS=false

@@ -15,7 +15,7 @@ class HomeTabState extends State<HomeTab> {
 
   @override
   void initState() {
-    _fetchProducts();
+    _fetchAllProducts();
     super.initState();
   }
 
@@ -43,14 +43,13 @@ class HomeTabState extends State<HomeTab> {
     );
   }
 
-  Future<void> _fetchProducts() async {
+  Future<void> _fetchAllProducts() async {
     try {
       final shopifyStore = ShopifyStore.instance;
-      final bestSellingProducts = await shopifyStore.getNProducts(6,
-          sortKey: SortKeyProduct.BEST_SELLING);
+      final bestSellingProducts = await shopifyStore.getAllProducts();
       if (mounted) {
         setState(() {
-          products = bestSellingProducts ?? [];
+          products = bestSellingProducts;
           _isLoading = false;
         });
       }
@@ -79,8 +78,7 @@ class HomeTabState extends State<HomeTab> {
           alignment: Alignment.bottomCenter,
           child: Text(
             product.title,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
       ),

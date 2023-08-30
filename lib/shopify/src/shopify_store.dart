@@ -6,7 +6,6 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_co
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_from_collection_by_id.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_on_query.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_collections_by_ids.dart';
-import 'package:shopify_flutter/graphql_operations/storefront/queries/get_metafileds_from_product.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_product_recommendations.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_products_by_ids.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_shop.dart';
@@ -16,7 +15,6 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_prod
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 import 'package:shopify_flutter/models/src/collection/collections/collections.dart';
-import 'package:shopify_flutter/models/src/product/metafield/metafield.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
@@ -40,7 +38,7 @@ class ShopifyStore with ShopifyError {
   ///
   /// Simply returns all Products from your Store.
   Future<List<Product>> getAllProducts({
-    String? metafieldsNamespace,
+    bool reverse = false,
   }) async {
     List<Product> productList = [];
     Products tempProduct;
@@ -51,7 +49,7 @@ class ShopifyStore with ShopifyError {
         document: gql(getProductsQuery),
         variables: {
           'cursor': cursor,
-          'metafieldsNamespace': metafieldsNamespace,
+          'reverse': reverse,
         },
       );
       final QueryResult result = await _graphQLClient!.query(_options);
@@ -397,24 +395,5 @@ class ShopifyStore with ShopifyError {
     checkForError(result);
     return Products.fromGraphJson((result.data ?? const {})['products'])
         .productList;
-  }
-
-  /// Returns a List of [Metafield].
-  ///
-  /// Gets [Metafield]s of [Product] optionally filtered by namespace.
-  Future<List<Metafield>> getMetafieldsFromProduct(
-    String productHandle,
-    String namespace,
-  ) async {
-    final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getMetafieldsFromProductQuery),
-        variables: {'handle': productHandle, 'namespace': namespace});
-    final QueryResult result =
-        await ShopifyConfig.graphQLClient!.query(_options);
-    checkForError(result);
-    return (result.data!['productByHandle']['metafields']['edges']
-            as List<Object>)
-        .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
-        .toList();
   }
 }

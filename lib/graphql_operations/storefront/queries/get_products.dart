@@ -1,7 +1,7 @@
 /// Query to get products
 const String getProductsQuery = r'''
-query($cursor : String, $metafieldsNamespace : String){
-  products(first: 250, after: $cursor) {
+query($cursor : String, $reverse: Boolean){
+  products(first: 250, after: $cursor, reverse: $reverse) {
     pageInfo {
       hasNextPage
     }
@@ -12,18 +12,6 @@ query($cursor : String, $metafieldsNamespace : String){
           id
           name
           values
-        }
-        metafields(namespace: $metafieldsNamespace, first: 250) {
-          edges {
-            node {
-              id
-              namespace
-              key
-              value
-              valueType
-              description
-            }
-          }
         }
         variants(first: 250) {
           edges {

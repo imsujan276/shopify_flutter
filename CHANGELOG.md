@@ -1,3 +1,7 @@
+## 1.0.13
+
+* get all products error fixes
+
 ## 1.0.12
 
 * made shopify admin access token optional as it is only used for deleting the customer

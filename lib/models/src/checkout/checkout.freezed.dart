@@ -496,7 +496,7 @@ class _$_Checkout extends _Checkout {
       required this.requiresShipping,
       final List<AppliedGiftCards> appliedGiftCards = const [],
       @JsonKey(fromJson: JsonHelper.lineItems)
-          required final List<LineItem> lineItems,
+      required final List<LineItem> lineItems,
       this.order,
       this.orderStatusUrl,
       this.shopifyPaymentsAccountId,
@@ -687,7 +687,7 @@ abstract class _Checkout extends Checkout {
       required final bool requiresShipping,
       final List<AppliedGiftCards> appliedGiftCards,
       @JsonKey(fromJson: JsonHelper.lineItems)
-          required final List<LineItem> lineItems,
+      required final List<LineItem> lineItems,
       final Order? order,
       final String? orderStatusUrl,
       final String? shopifyPaymentsAccountId,

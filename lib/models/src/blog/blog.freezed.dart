@@ -23,7 +23,7 @@ mixin _$Blog {
   String? get id => throw _privateConstructorUsedError;
   String? get handle => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
+  String? get onlineStoreUrl => throw _privateConstructorUsedError;
   Articles? get articles => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,7 +40,7 @@ abstract class $BlogCopyWith<$Res> {
       {String? id,
       String? handle,
       String? title,
-      String? url,
+      String? onlineStoreUrl,
       Articles? articles});
 
   $ArticlesCopyWith<$Res>? get articles;
@@ -62,7 +62,7 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
     Object? id = freezed,
     Object? handle = freezed,
     Object? title = freezed,
-    Object? url = freezed,
+    Object? onlineStoreUrl = freezed,
     Object? articles = freezed,
   }) {
     return _then(_value.copyWith(
@@ -78,9 +78,9 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      onlineStoreUrl: freezed == onlineStoreUrl
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       articles: freezed == articles
           ? _value.articles
@@ -112,7 +112,7 @@ abstract class _$$_BlogCopyWith<$Res> implements $BlogCopyWith<$Res> {
       {String? id,
       String? handle,
       String? title,
-      String? url,
+      String? onlineStoreUrl,
       Articles? articles});
 
   @override
@@ -131,7 +131,7 @@ class __$$_BlogCopyWithImpl<$Res> extends _$BlogCopyWithImpl<$Res, _$_Blog>
     Object? id = freezed,
     Object? handle = freezed,
     Object? title = freezed,
-    Object? url = freezed,
+    Object? onlineStoreUrl = freezed,
     Object? articles = freezed,
   }) {
     return _then(_$_Blog(
@@ -147,9 +147,9 @@ class __$$_BlogCopyWithImpl<$Res> extends _$BlogCopyWithImpl<$Res, _$_Blog>
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      onlineStoreUrl: freezed == onlineStoreUrl
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       articles: freezed == articles
           ? _value.articles
@@ -162,7 +162,8 @@ class __$$_BlogCopyWithImpl<$Res> extends _$BlogCopyWithImpl<$Res, _$_Blog>
 /// @nodoc
 @JsonSerializable()
 class _$_Blog extends _Blog {
-  _$_Blog({this.id, this.handle, this.title, this.url, this.articles})
+  _$_Blog(
+      {this.id, this.handle, this.title, this.onlineStoreUrl, this.articles})
       : super._();
 
   factory _$_Blog.fromJson(Map<String, dynamic> json) => _$$_BlogFromJson(json);
@@ -174,13 +175,13 @@ class _$_Blog extends _Blog {
   @override
   final String? title;
   @override
-  final String? url;
+  final String? onlineStoreUrl;
   @override
   final Articles? articles;
 
   @override
   String toString() {
-    return 'Blog(id: $id, handle: $handle, title: $title, url: $url, articles: $articles)';
+    return 'Blog(id: $id, handle: $handle, title: $title, onlineStoreUrl: $onlineStoreUrl, articles: $articles)';
   }
 
   @override
@@ -191,7 +192,8 @@ class _$_Blog extends _Blog {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.url, url) || other.url == url) &&
+            (identical(other.onlineStoreUrl, onlineStoreUrl) ||
+                other.onlineStoreUrl == onlineStoreUrl) &&
             (identical(other.articles, articles) ||
                 other.articles == articles));
   }
@@ -199,7 +201,7 @@ class _$_Blog extends _Blog {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, handle, title, url, articles);
+      Object.hash(runtimeType, id, handle, title, onlineStoreUrl, articles);
 
   @JsonKey(ignore: true)
   @override
@@ -220,7 +222,7 @@ abstract class _Blog extends Blog {
       {final String? id,
       final String? handle,
       final String? title,
-      final String? url,
+      final String? onlineStoreUrl,
       final Articles? articles}) = _$_Blog;
   _Blog._() : super._();
 
@@ -233,7 +235,7 @@ abstract class _Blog extends Blog {
   @override
   String? get title;
   @override
-  String? get url;
+  String? get onlineStoreUrl;
   @override
   Articles? get articles;
   @override

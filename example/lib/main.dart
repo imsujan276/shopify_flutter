@@ -1,3 +1,4 @@
+import 'package:example/screens/blog_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
@@ -8,9 +9,9 @@ import 'screens/search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '*******************',
-    storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // optional
+    storefrontAccessToken: '18dfd65fec45157e5beec24686936229',
+    storeUrl: 'suzan-nerd.myshopify.com',
+    adminAccessToken: "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", // optional
   );
   runApp(const MyApp());
 }
@@ -43,6 +44,7 @@ class MyHomePageState extends State<MyHomePage> {
     const CollectionTab(),
     const SearchTab(),
     const ProfileTab(),
+    const BlogTab(),
   ];
 
   @override
@@ -63,6 +65,8 @@ class MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.category), label: 'Collections'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.book_online_outlined), label: 'Blog'),
         ],
       ),
     );

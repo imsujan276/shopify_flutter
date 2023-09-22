@@ -11,7 +11,7 @@ class Blog with _$Blog {
     String? id,
     String? handle,
     String? title,
-    String? url,
+    String? onlineStoreUrl,
     Articles? articles,
   }) = _Blog;
 
@@ -20,7 +20,7 @@ class Blog with _$Blog {
         id: (json['node'] ?? {})['id'],
         handle: (json['node'] ?? {})['handle'],
         title: (json['node'] ?? {})['title'],
-        url: (json['node'] ?? {})['url'],
+        onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'],
         articles: Articles.fromGraphJson(
             ((json['node'] ?? const {})['articles']) ?? const {}));
   }

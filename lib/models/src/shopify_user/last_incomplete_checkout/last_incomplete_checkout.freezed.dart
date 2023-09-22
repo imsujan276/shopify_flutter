@@ -348,7 +348,7 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
       final PriceV2? totalPriceV2,
       final PriceV2? lineItemsSubtotalPrice,
       @JsonKey(fromJson: JsonHelper.lineItems)
-          final List<LineItem>? lineItems}) = _$_LastIncompleteCheckout;
+      final List<LineItem>? lineItems}) = _$_LastIncompleteCheckout;
 
   factory _LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =
       _$_LastIncompleteCheckout.fromJson;

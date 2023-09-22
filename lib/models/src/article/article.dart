@@ -24,7 +24,7 @@ class Article with _$Article {
     final String? publishedAt,
     final List<String>? tags,
     final String? title,
-    final String? url,
+    final String? onlineStoreUrl,
   }) = _Article;
 
   factory Article.fromJson(Map<String, dynamic> json) =>
@@ -42,12 +42,13 @@ class Article with _$Article {
       excerptHtml: (json['node'] ?? const {})['excerptHtml'],
       handle: (json['node'] ?? const {})['handle'],
       id: (json['node'] ?? const {})['id'],
-      image: ShopifyImage.fromJson(
-          (json['node'] ?? const {})['image'] ?? const {}),
+      image: json['node']['image'] == null
+          ? null
+          : ShopifyImage.fromJson(json['node']['image']),
       publishedAt: (json['node'] ?? const {})['publishedAt'],
       tags: _getTagsList(json),
       title: (json['node'] ?? const {})['title'],
-      url: (json['node'] ?? const {})['url'],
+      onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
     );
   }
 

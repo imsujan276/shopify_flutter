@@ -159,7 +159,7 @@ class _$_PriceV2 extends _PriceV2 {
 abstract class _PriceV2 extends PriceV2 {
   factory _PriceV2(
       {@JsonKey(fromJson: JsonHelper.amountFromJson)
-          required final double amount,
+      required final double amount,
       required final String currencyCode}) = _$_PriceV2;
   _PriceV2._() : super._();
 

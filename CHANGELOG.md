@@ -1,3 +1,7 @@
+## 1.0.14
+
+* Shopify Blogs issue fixes
+
 ## 1.0.13
 
 * get all products error fixes

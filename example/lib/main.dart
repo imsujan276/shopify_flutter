@@ -9,9 +9,9 @@ import 'screens/search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '18dfd65fec45157e5beec24686936229',
-    storeUrl: 'suzan-nerd.myshopify.com',
-    adminAccessToken: "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", // optional
+    storefrontAccessToken: '*******************',
+    storeUrl: '*****.myshopify.com',
+    adminAccessToken: "shpat_*******************", // optional
   );
   runApp(const MyApp());
 }

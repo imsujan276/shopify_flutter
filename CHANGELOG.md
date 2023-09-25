@@ -1,3 +1,7 @@
+## 1.0.16
+
+* Updated Example
+
 ## 1.0.15
 
 * Updated Shop model to get shippingPolicy and subscriptionPolicy

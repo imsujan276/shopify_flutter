@@ -8,14 +8,10 @@ import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
 
 void main() {
-  // ShopifyConfig.setConfig(
-  //   storefrontAccessToken: '*******************',
-  //   storeUrl: '*****.myshopify.com',
-  //   adminAccessToken: "shpat_*******************", // optional
-  // );
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '18dfd65fec45157e5beec24686936229',
-    storeUrl: 'suzan-nerd.myshopify.com',
+    storefrontAccessToken: '*******************',
+    storeUrl: '*****.myshopify.com',
+    adminAccessToken: "shpat_*******************", // optional
   );
   runApp(const MyApp());
 }

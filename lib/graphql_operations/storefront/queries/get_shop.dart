@@ -33,6 +33,20 @@ query getShop {
       title
       url
     }
+    shippingPolicy {
+      body
+      handle
+      id
+      title
+      url
+    }
+    subscriptionPolicy {
+      body
+      handle
+      id
+      title
+      url
+    }
     shipsToCountries
     termsOfService {
       body

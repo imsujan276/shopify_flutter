@@ -1,3 +1,7 @@
+## 1.0.15
+
+* Updated Shop model to get shippingPolicy and subscriptionPolicy
+
 ## 1.0.14
 
 * Shopify Blogs issue fixes

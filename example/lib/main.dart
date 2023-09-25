@@ -4,14 +4,18 @@ import 'package:shopify_flutter/shopify_flutter.dart';
 
 import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
-import 'screens/profile_tab.dart';
+import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
 
 void main() {
+  // ShopifyConfig.setConfig(
+  //   storefrontAccessToken: '*******************',
+  //   storeUrl: '*****.myshopify.com',
+  //   adminAccessToken: "shpat_*******************", // optional
+  // );
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '*******************',
-    storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // optional
+    storefrontAccessToken: '18dfd65fec45157e5beec24686936229',
+    storeUrl: 'suzan-nerd.myshopify.com',
   );
   runApp(const MyApp());
 }
@@ -43,7 +47,7 @@ class MyHomePageState extends State<MyHomePage> {
     const HomeTab(),
     const CollectionTab(),
     const SearchTab(),
-    const ProfileTab(),
+    const ShopTab(),
     const BlogTab(),
   ];
 
@@ -64,7 +68,7 @@ class MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.category), label: 'Collections'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopify), label: 'Shop'),
           BottomNavigationBarItem(
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
         ],

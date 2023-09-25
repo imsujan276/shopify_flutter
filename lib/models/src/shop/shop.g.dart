@@ -25,6 +25,14 @@ _$_Shop _$$_ShopFromJson(Map<String, dynamic> json) => _$_Shop(
       refundPolicy: json['refundPolicy'] == null
           ? null
           : RefundPolicy.fromJson(json['refundPolicy'] as Map<String, dynamic>),
+      shippingPolicy: json['shippingPolicy'] == null
+          ? null
+          : ShippingPolicy.fromJson(
+              json['shippingPolicy'] as Map<String, dynamic>),
+      subscriptionPolicy: json['subscriptionPolicy'] == null
+          ? null
+          : SubscriptionPolicy.fromJson(
+              json['subscriptionPolicy'] as Map<String, dynamic>),
       shipsToCountries: (json['shipsToCountries'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
@@ -42,6 +50,8 @@ Map<String, dynamic> _$$_ShopToJson(_$_Shop instance) => <String, dynamic>{
       'primaryDomain': instance.primaryDomain,
       'privacyPolicy': instance.privacyPolicy,
       'refundPolicy': instance.refundPolicy,
+      'shippingPolicy': instance.shippingPolicy,
+      'subscriptionPolicy': instance.subscriptionPolicy,
       'shipsToCountries': instance.shipsToCountries,
       'termsOfService': instance.termsOfService,
     };

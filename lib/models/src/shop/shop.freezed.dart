@@ -27,6 +27,9 @@ mixin _$Shop {
   PrimaryDomain? get primaryDomain => throw _privateConstructorUsedError;
   PrivacyPolicy? get privacyPolicy => throw _privateConstructorUsedError;
   RefundPolicy? get refundPolicy => throw _privateConstructorUsedError;
+  ShippingPolicy? get shippingPolicy => throw _privateConstructorUsedError;
+  SubscriptionPolicy? get subscriptionPolicy =>
+      throw _privateConstructorUsedError;
   List<String>? get shipsToCountries => throw _privateConstructorUsedError;
   TermsOfService? get termsOfService => throw _privateConstructorUsedError;
 
@@ -48,6 +51,8 @@ abstract class $ShopCopyWith<$Res> {
       PrimaryDomain? primaryDomain,
       PrivacyPolicy? privacyPolicy,
       RefundPolicy? refundPolicy,
+      ShippingPolicy? shippingPolicy,
+      SubscriptionPolicy? subscriptionPolicy,
       List<String>? shipsToCountries,
       TermsOfService? termsOfService});
 
@@ -55,6 +60,8 @@ abstract class $ShopCopyWith<$Res> {
   $PrimaryDomainCopyWith<$Res>? get primaryDomain;
   $PrivacyPolicyCopyWith<$Res>? get privacyPolicy;
   $RefundPolicyCopyWith<$Res>? get refundPolicy;
+  $ShippingPolicyCopyWith<$Res>? get shippingPolicy;
+  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;
   $TermsOfServiceCopyWith<$Res>? get termsOfService;
 }
 
@@ -78,6 +85,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     Object? primaryDomain = freezed,
     Object? privacyPolicy = freezed,
     Object? refundPolicy = freezed,
+    Object? shippingPolicy = freezed,
+    Object? subscriptionPolicy = freezed,
     Object? shipsToCountries = freezed,
     Object? termsOfService = freezed,
   }) {
@@ -110,6 +119,14 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
           ? _value.refundPolicy
           : refundPolicy // ignore: cast_nullable_to_non_nullable
               as RefundPolicy?,
+      shippingPolicy: freezed == shippingPolicy
+          ? _value.shippingPolicy
+          : shippingPolicy // ignore: cast_nullable_to_non_nullable
+              as ShippingPolicy?,
+      subscriptionPolicy: freezed == subscriptionPolicy
+          ? _value.subscriptionPolicy
+          : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
+              as SubscriptionPolicy?,
       shipsToCountries: freezed == shipsToCountries
           ? _value.shipsToCountries
           : shipsToCountries // ignore: cast_nullable_to_non_nullable
@@ -171,6 +188,31 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
 
   @override
   @pragma('vm:prefer-inline')
+  $ShippingPolicyCopyWith<$Res>? get shippingPolicy {
+    if (_value.shippingPolicy == null) {
+      return null;
+    }
+
+    return $ShippingPolicyCopyWith<$Res>(_value.shippingPolicy!, (value) {
+      return _then(_value.copyWith(shippingPolicy: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy {
+    if (_value.subscriptionPolicy == null) {
+      return null;
+    }
+
+    return $SubscriptionPolicyCopyWith<$Res>(_value.subscriptionPolicy!,
+        (value) {
+      return _then(_value.copyWith(subscriptionPolicy: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $TermsOfServiceCopyWith<$Res>? get termsOfService {
     if (_value.termsOfService == null) {
       return null;
@@ -196,6 +238,8 @@ abstract class _$$_ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
       PrimaryDomain? primaryDomain,
       PrivacyPolicy? privacyPolicy,
       RefundPolicy? refundPolicy,
+      ShippingPolicy? shippingPolicy,
+      SubscriptionPolicy? subscriptionPolicy,
       List<String>? shipsToCountries,
       TermsOfService? termsOfService});
 
@@ -207,6 +251,10 @@ abstract class _$$_ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
   $PrivacyPolicyCopyWith<$Res>? get privacyPolicy;
   @override
   $RefundPolicyCopyWith<$Res>? get refundPolicy;
+  @override
+  $ShippingPolicyCopyWith<$Res>? get shippingPolicy;
+  @override
+  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;
   @override
   $TermsOfServiceCopyWith<$Res>? get termsOfService;
 }
@@ -227,6 +275,8 @@ class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res, _$_Shop>
     Object? primaryDomain = freezed,
     Object? privacyPolicy = freezed,
     Object? refundPolicy = freezed,
+    Object? shippingPolicy = freezed,
+    Object? subscriptionPolicy = freezed,
     Object? shipsToCountries = freezed,
     Object? termsOfService = freezed,
   }) {
@@ -259,6 +309,14 @@ class __$$_ShopCopyWithImpl<$Res> extends _$ShopCopyWithImpl<$Res, _$_Shop>
           ? _value.refundPolicy
           : refundPolicy // ignore: cast_nullable_to_non_nullable
               as RefundPolicy?,
+      shippingPolicy: freezed == shippingPolicy
+          ? _value.shippingPolicy
+          : shippingPolicy // ignore: cast_nullable_to_non_nullable
+              as ShippingPolicy?,
+      subscriptionPolicy: freezed == subscriptionPolicy
+          ? _value.subscriptionPolicy
+          : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
+              as SubscriptionPolicy?,
       shipsToCountries: freezed == shipsToCountries
           ? _value._shipsToCountries
           : shipsToCountries // ignore: cast_nullable_to_non_nullable
@@ -282,6 +340,8 @@ class _$_Shop implements _Shop {
       this.primaryDomain,
       this.privacyPolicy,
       this.refundPolicy,
+      this.shippingPolicy,
+      this.subscriptionPolicy,
       final List<String>? shipsToCountries,
       this.termsOfService})
       : _shipsToCountries = shipsToCountries;
@@ -302,6 +362,10 @@ class _$_Shop implements _Shop {
   final PrivacyPolicy? privacyPolicy;
   @override
   final RefundPolicy? refundPolicy;
+  @override
+  final ShippingPolicy? shippingPolicy;
+  @override
+  final SubscriptionPolicy? subscriptionPolicy;
   final List<String>? _shipsToCountries;
   @override
   List<String>? get shipsToCountries {
@@ -318,7 +382,7 @@ class _$_Shop implements _Shop {
 
   @override
   String toString() {
-    return 'Shop(description: $description, moneyFormat: $moneyFormat, name: $name, paymentSettings: $paymentSettings, primaryDomain: $primaryDomain, privacyPolicy: $privacyPolicy, refundPolicy: $refundPolicy, shipsToCountries: $shipsToCountries, termsOfService: $termsOfService)';
+    return 'Shop(description: $description, moneyFormat: $moneyFormat, name: $name, paymentSettings: $paymentSettings, primaryDomain: $primaryDomain, privacyPolicy: $privacyPolicy, refundPolicy: $refundPolicy, shippingPolicy: $shippingPolicy, subscriptionPolicy: $subscriptionPolicy, shipsToCountries: $shipsToCountries, termsOfService: $termsOfService)';
   }
 
   @override
@@ -339,6 +403,10 @@ class _$_Shop implements _Shop {
                 other.privacyPolicy == privacyPolicy) &&
             (identical(other.refundPolicy, refundPolicy) ||
                 other.refundPolicy == refundPolicy) &&
+            (identical(other.shippingPolicy, shippingPolicy) ||
+                other.shippingPolicy == shippingPolicy) &&
+            (identical(other.subscriptionPolicy, subscriptionPolicy) ||
+                other.subscriptionPolicy == subscriptionPolicy) &&
             const DeepCollectionEquality()
                 .equals(other._shipsToCountries, _shipsToCountries) &&
             (identical(other.termsOfService, termsOfService) ||
@@ -356,6 +424,8 @@ class _$_Shop implements _Shop {
       primaryDomain,
       privacyPolicy,
       refundPolicy,
+      shippingPolicy,
+      subscriptionPolicy,
       const DeepCollectionEquality().hash(_shipsToCountries),
       termsOfService);
 
@@ -382,6 +452,8 @@ abstract class _Shop implements Shop {
       final PrimaryDomain? primaryDomain,
       final PrivacyPolicy? privacyPolicy,
       final RefundPolicy? refundPolicy,
+      final ShippingPolicy? shippingPolicy,
+      final SubscriptionPolicy? subscriptionPolicy,
       final List<String>? shipsToCountries,
       final TermsOfService? termsOfService}) = _$_Shop;
 
@@ -401,6 +473,10 @@ abstract class _Shop implements Shop {
   PrivacyPolicy? get privacyPolicy;
   @override
   RefundPolicy? get refundPolicy;
+  @override
+  ShippingPolicy? get shippingPolicy;
+  @override
+  SubscriptionPolicy? get subscriptionPolicy;
   @override
   List<String>? get shipsToCountries;
   @override

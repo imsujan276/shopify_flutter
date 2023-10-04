@@ -29,16 +29,30 @@ class ShopifyUser with _$ShopifyUser {
       email: json['email'],
       firstName: json['firstName'],
       id: json['id'],
-      lastName: json['lastName'] ??
-          json['displayName']
-              .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
-              .replaceAll(RegExp(r'\s+'), ' ')
-              .trim(),
+      lastName: getLastName(json),
       phone: json['phone'],
       tags: _getTagList((json)),
       lastIncompleteCheckout: LastIncompleteCheckout.fromJson(
           json['lastIncompleteCheckout'] ?? const {}),
     );
+  }
+
+  static String? getLastName(Map<String, dynamic> json) {
+    String? lastName = json['lastName'];
+    if (lastName == null) {
+      lastName = json['displayName'];
+      if (lastName != null) {
+        if (json['firstName'] == null) {
+          lastName = lastName.replaceAll(RegExp(r'\s+'), ' ').trim();
+        } else {
+          lastName = lastName
+              .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
+              .replaceAll(RegExp(r'\s+'), ' ')
+              .trim();
+        }
+      }
+    }
+    return lastName;
   }
 
   factory ShopifyUser.fromJson(Map<String, dynamic> json) =>

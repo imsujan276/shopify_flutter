@@ -312,12 +312,12 @@ class ShopifyCheckout with ShopifyError {
   }
 
   /// Applies [discountCode] to the [Checkout] that [checkoutId] belongs to.
-  Future<void> checkoutDiscountCodeApply(
+  Future<Checkout> checkoutDiscountCodeApply(
     String checkoutId,
     String discountCode,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(checkoutDiscountCodeApplyMutation),
+        document: gql(checkoutDiscountCodeApplyV2Mutation),
         variables: {'checkoutId': checkoutId, 'discountCode': discountCode});
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
@@ -325,6 +325,9 @@ class ShopifyCheckout with ShopifyError {
       key: 'checkoutDiscountCodeApplyV2',
       errorKey: 'checkoutUserErrors',
     );
+    return Checkout.fromJson(((result.data?['checkoutDiscountCodeApplyV2'] ??
+            const {})['checkout'] ??
+        const {}));
   }
 
   /// Removes the applied discount from the [Checkout] that [checkoutId] belongs to.

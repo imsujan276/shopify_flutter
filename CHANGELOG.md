@@ -1,3 +1,7 @@
+## 1.0.17
+
+* checkoutDiscountCodeApply returns Checkout object
+
 ## 1.0.16
 
 * Updated Example

@@ -1,3 +1,7 @@
+## 1.0.17+1
+
+* updated signup and readme 
+
 ## 1.0.17
 
 * checkoutDiscountCodeApply returns Checkout object

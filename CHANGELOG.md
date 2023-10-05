@@ -1,4 +1,4 @@
-## 1.0.17+1
+## 1.0.18
 
 * updated signup and readme 
 

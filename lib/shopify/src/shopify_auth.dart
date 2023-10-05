@@ -45,8 +45,8 @@ class ShopifyAuth with ShopifyError {
 
   /// Tries to create a new user account with the given email address and password.
   Future<ShopifyUser> createUserWithEmailAndPassword({
-    String? firstName,
-    String? lastName,
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
   }) async {

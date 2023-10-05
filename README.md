@@ -38,10 +38,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ##### Shopify Auth
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
-    Future<ShopifyUser> createUserWithEmailAndPassword({required String email, required String password})
+    Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
+    Future<ShopifyUser> createUserWithEmailAndPassword({required String firstName, required String email, required String email, required String password})
     Future<void> signOutCurrentUser()
     Future<void> sendPasswordResetEmail({required String email})
-    Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
     Future<ShopifyUser> currentUser()
     Future<void> deleteCustomer({required String userId})
     Future<String?> get currentCustomerAccessToken

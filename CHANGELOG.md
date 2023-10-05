@@ -1,3 +1,7 @@
+## 1.0.19
+
+* updated readme 
+
 ## 1.0.18
 
 * updated signup and readme 

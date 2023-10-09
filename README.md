@@ -101,6 +101,13 @@ The goal is to make creating an mobile app from your Shopify website easier.
      Future<List<Article>> getXArticlesSorted({int articleAmount, SortKeyArticle sortKeyArticle})
 ```
 
+##### Shopify Custom
+```dart
+  ShopifyCustom shopifyCustom = ShopifyCustom.instance;
+     Future<Map<String, dynamic>?> customQuery({required String gqlQuery, Map<String, dynamic> variables = const {}, bool adminAccess = false})
+     Future<Map<String, dynamic>?> customMutation({required String gqlMutation, Map<String, dynamic> variables = const {}, bool adminAccess = false})
+```
+
 Above you see the instance on top and the possible methods and functions which you can use.
 
 

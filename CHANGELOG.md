@@ -1,4 +1,4 @@
-## 1.2.0
+## 1.1.0
 
 * added ShopifyCustom to give the suer an ability to create custom query and mutations that are not available in the package 
 

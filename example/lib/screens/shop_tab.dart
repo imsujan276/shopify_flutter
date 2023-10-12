@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:shopify_flutter/enums/src/payment_token_type.dart';
+import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class ShopTab extends StatefulWidget {
@@ -34,11 +38,71 @@ class ShopTabState extends State<ShopTab> {
     }
   }
 
+  Future<void> testCheckoutCompleteWithTokenizedPaymentV3() async {
+    final shopifyStore = ShopifyStore.instance;
+    final shopifyAuth = ShopifyAuth.instance;
+    final shopifyCheckout = ShopifyCheckout.instance;
+
+    try {
+      await shopifyAuth.signInWithEmailAndPassword(
+          email: 'john2@yopmail.com', password: 'password123');
+
+      final bestSellingProducts = await shopifyStore.getAllProducts();
+
+      var items = List<LineItem>.empty(growable: true);
+      items.add(LineItem(
+          quantity: 1,
+          variantId: bestSellingProducts[0].productVariants[0].id,
+          title: bestSellingProducts[0].title,
+          id: bestSellingProducts[0].id));
+
+      var address = Address(
+        address1: '11 Hinkler Avenue',
+        city: 'Sydney',
+        country: 'Australia',
+        countryCode: 'AU',
+        firstName: 'Anderson',
+        lastName: 'Fetter',
+        phone: '044444444',
+        zip: '2229',
+      );
+
+      final checkout = await shopifyCheckout.createCheckout(
+        lineItems: items,
+        shippingAddress: address,
+        email: 'john2@yopmail.com',
+      );
+
+      final idempotencyKey = UniqueKey().toString();
+      await shopifyCheckout.shippingAddressUpdate(checkout.id, address);
+      var completed =
+          await shopifyCheckout.checkoutCompleteWithTokenizedPaymentV3(
+        checkout.id,
+        checkout: checkout,
+        token: r'CQ32pyIRCmIEfekpX8x=',
+        paymentTokenType: PaymentTokenType.APPLE_PAY,
+        idempotencyKey: idempotencyKey,
+        amount: '1.00',
+        currencyCode: 'AUD',
+        billingAddress: address,
+      );
+      log('completed: $completed');
+    } on Exception catch (e) {
+      log('error: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shop'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.payment),
+            onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
+          ),
+        ],
       ),
       body: Column(
         children: [

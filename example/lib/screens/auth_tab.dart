@@ -79,6 +79,28 @@ class _AuthTabState extends State<AuthTab> {
                 },
                 child: const Text('Sign Out'),
               ),
+            const Divider(),
+            ElevatedButton(
+              onPressed: () async {
+                try {
+                  final createdUser =
+                      await shopifyAuth.createUserWithEmailAndPassword(
+                    email: 'as3@asdasdad.asd',
+                    password: 'asdasdasd',
+                    firstName: 'asdasd',
+                    lastName: 'asdasd',
+                    phone: '1234567890',
+                    acceptsMarketing: true,
+                  );
+                  setState(() {
+                    shopifyUser = createdUser;
+                  });
+                } catch (e) {
+                  debugPrint(e.toString());
+                }
+              },
+              child: const Text('Sign Up'),
+            )
           ],
         ),
       ),

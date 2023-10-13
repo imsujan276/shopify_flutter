@@ -73,6 +73,8 @@ class ShopifyAuth with ShopifyError {
     required String lastName,
     required String email,
     required String password,
+    bool? acceptsMarketing,
+    String? phone,
   }) async {
     final MutationOptions _options = MutationOptions(
       document: gql(customerCreateMutation),
@@ -81,10 +83,11 @@ class ShopifyAuth with ShopifyError {
         'lastName': lastName,
         'email': email,
         'password': password,
+        'acceptsMarketing': acceptsMarketing ?? false,
+        'phone': phone ?? '',
       },
     );
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    log(result.exception.toString());
     checkForError(
       result,
       key: 'customerCreate',
@@ -253,8 +256,6 @@ class ShopifyAuth with ShopifyError {
     AccessTokenWithExpDate? accessTokenWithExpDate,
     ShopifyUser? shopifyUser,
   ) async {
-    log('accessTokenWithExpDate: $accessTokenWithExpDate');
-    log('shopifyUser: $shopifyUser');
     SharedPreferences _prefs = await SharedPreferences.getInstance();
     if (accessTokenWithExpDate == null ||
         accessTokenWithExpDate.accessToken == null ||
@@ -270,9 +271,6 @@ class ShopifyAuth with ShopifyError {
       _prefs.setString(
           ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
     }
-
-    log('accessTokenWithExpDate 2: $accessTokenWithExpDate');
-    log('shopifyUser 2: $shopifyUser');
   }
 
   /// Delete current user and clears it from the disk cache.

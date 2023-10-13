@@ -1,3 +1,7 @@
+## 1.1.4
+
+* phone and acceptsMarketing can be passed in createUserWithEmailAndPassword nut are optional
+
 ## 1.1.3
 
 * now you can get the token with expiry date and get the boolean status of access token expiration

@@ -1,3 +1,7 @@
+## 1.1.2
+
+* minor update
+
 ## 1.1.1
 
 * issue fixed

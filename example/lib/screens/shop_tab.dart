@@ -45,7 +45,7 @@ class ShopTabState extends State<ShopTab> {
 
     try {
       await shopifyAuth.signInWithEmailAndPassword(
-          email: 'john2@yopmail.com', password: 'password123');
+          email: '**********', password: '**********');
 
       final bestSellingProducts = await shopifyStore.getAllProducts();
 
@@ -70,7 +70,7 @@ class ShopTabState extends State<ShopTab> {
       final checkout = await shopifyCheckout.createCheckout(
         lineItems: items,
         shippingAddress: address,
-        email: 'john2@yopmail.com',
+        email: '*********',
       );
 
       final idempotencyKey = UniqueKey().toString();
@@ -97,12 +97,12 @@ class ShopTabState extends State<ShopTab> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shop'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.payment),
-            onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.payment),
+        //     onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
+        //   ),
+        // ],
       ),
       body: Column(
         children: [

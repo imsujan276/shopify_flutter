@@ -9,16 +9,10 @@ import 'screens/search_tab.dart';
 
 void main() {
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '3bad22a96234c41d90825b826abf57cb',
-    storeUrl: 'qoder.myshopify.com',
-    adminAccessToken: "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", // optional
-    storefrontApiVersion: '2023-07',
+    storefrontAccessToken: '*******************',
+    storeUrl: '*****.myshopify.com',
+    adminAccessToken: "shpat_*******************", // optional
   );
-  // ShopifyConfig.setConfig(
-  //   storefrontAccessToken: '*******************',
-  //   storeUrl: '*****.myshopify.com',
-  //   adminAccessToken: "shpat_*******************", // optional
-  // );
   runApp(const MyApp());
 }
 

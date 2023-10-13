@@ -45,6 +45,8 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Future<ShopifyUser> currentUser()
     Future<void> deleteCustomer({required String userId})
     Future<String?> get currentCustomerAccessToken
+    Future<bool> get isAccessTokenExpired
+    Future<AccessTokenWithExpDate?> get accessTokenWithExpDate
 ```
 
 ##### Shopify Store

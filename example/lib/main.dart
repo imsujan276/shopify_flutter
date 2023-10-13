@@ -2,6 +2,7 @@ import 'package:example/screens/blog_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
+import 'screens/auth_tab.dart';
 import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
@@ -45,6 +46,7 @@ class MyHomePageState extends State<MyHomePage> {
     const SearchTab(),
     const ShopTab(),
     const BlogTab(),
+    const AuthTab(),
   ];
 
   @override
@@ -67,6 +69,7 @@ class MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.shopify), label: 'Shop'),
           BottomNavigationBarItem(
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
+          BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
         ],
       ),
     );

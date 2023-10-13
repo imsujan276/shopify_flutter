@@ -4,6 +4,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shopify_flutter/models/models.dart';
 
 import '../../graphql_operations/admin/mutations/customer_delete.dart';
 import '../../graphql_operations/storefront/mutations/access_token_delete.dart';
@@ -13,7 +14,6 @@ import '../../graphql_operations/storefront/mutations/customer_access_token_rene
 import '../../graphql_operations/storefront/mutations/customer_create.dart';
 import '../../graphql_operations/storefront/mutations/customer_recover.dart';
 import '../../graphql_operations/storefront/queries/get_customer.dart';
-import '../../models/src/shopify_user/shopify_user.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyAuth class handles the authentication.
@@ -30,17 +30,41 @@ class ShopifyAuth with ShopifyError {
 
   static final Map<String?, String?> _currentCustomerAccessToken = {};
 
-  Future<String?> get currentCustomerAccessToken async {
+  /// Returns the current customer access token.
+  Future<AccessTokenWithExpDate?> get accessTokenWithExpDate async {
+    AccessTokenWithExpDate? accessTokenWithExpDate;
     if (_currentCustomerAccessToken.containsKey(ShopifyConfig.storeUrl)) {
-      return _currentCustomerAccessToken[ShopifyConfig.storeUrl];
+      accessTokenWithExpDate = AccessTokenWithExpDate.fromJson(
+        _currentCustomerAccessToken[ShopifyConfig.storeUrl]!,
+      );
+    } else {
+      final _prefs = await SharedPreferences.getInstance();
+      if (_prefs.containsKey(ShopifyConfig.storeUrl!)) {
+        accessTokenWithExpDate = AccessTokenWithExpDate.fromJson(
+          _prefs.getString(ShopifyConfig.storeUrl!)!,
+        );
+        _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+            accessTokenWithExpDate.toJson();
+      }
     }
-    final _prefs = await SharedPreferences.getInstance();
-    if (_prefs.containsKey(ShopifyConfig.storeUrl!)) {
-      return _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
-          _prefs.getString(ShopifyConfig.storeUrl!);
+    return accessTokenWithExpDate;
+  }
+
+  /// Returns the current customer access token.
+  Future<String?> get currentCustomerAccessToken async {
+    return (await accessTokenWithExpDate)?.accessToken;
+  }
+
+  /// Returns the [bool] status if the current access token is expired or not
+  Future<bool> get isAccessTokenExpired async {
+    bool isTokenExpired = false;
+    final data = await accessTokenWithExpDate;
+    if (data == null || data.accessToken == null || data.expiresAt == null) {
+      isTokenExpired = true;
+    } else {
+      isTokenExpired = DateTime.now().isAfter(data.expiresAt!);
     }
-    return _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
-        _prefs.getString(_shopifyKey);
+    return isTokenExpired;
   }
 
   /// Tries to create a new user account with the given email address and password.
@@ -68,12 +92,13 @@ class ShopifyAuth with ShopifyError {
     );
     final shopifyUser = ShopifyUser.fromGraphJson(
         (result.data!['customerCreate'] ?? const {})['customer']);
-    final String? customerAccessToken = await _createAccessToken(
+    final AccessTokenWithExpDate accessTokenWithExpDate =
+        await _createAccessToken(
       email,
       password,
     );
     await _setShopifyUser(
-      customerAccessToken,
+      accessTokenWithExpDate,
       _shopifyUser[ShopifyConfig.storeUrl],
     );
     return shopifyUser;
@@ -100,17 +125,18 @@ class ShopifyAuth with ShopifyError {
     required String email,
     required String password,
   }) async {
-    final String? customerAccessToken = await _createAccessToken(
+    final AccessTokenWithExpDate accessTokenWithExpDate =
+        await _createAccessToken(
       email,
       password,
     );
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         document: gql(getCustomerQuery),
-        variables: {'customerAccessToken': customerAccessToken});
+        variables: {'customerAccessToken': accessTokenWithExpDate.accessToken});
     final QueryResult result = await _graphQLClient!.query(_getCustomer);
     checkForError(result);
     final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
-    await _setShopifyUser(customerAccessToken, shopifyUser);
+    await _setShopifyUser(accessTokenWithExpDate, shopifyUser);
     return shopifyUser;
   }
 
@@ -124,21 +150,21 @@ class ShopifyAuth with ShopifyError {
   Future<ShopifyUser> signInWithMultipassToken(
     final String multipassToken,
   ) async {
-    final String? customerAccessToken =
+    final accessTokenWithExpDate =
         await _createAccessTokenWithMultipass(multipassToken);
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         document: gql(getCustomerQuery),
-        variables: {'customerAccessToken': customerAccessToken});
+        variables: {'customerAccessToken': accessTokenWithExpDate.accessToken});
     final QueryResult result = await _graphQLClient!.query(_getCustomer);
     checkForError(result);
     final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
-    await _setShopifyUser(customerAccessToken, shopifyUser);
+    await _setShopifyUser(accessTokenWithExpDate, shopifyUser);
 
     return shopifyUser;
   }
 
   /// Helper method for creating the accessToken.
-  Future<String?> _createAccessToken(
+  Future<AccessTokenWithExpDate> _createAccessToken(
     String email,
     String password,
   ) async {
@@ -146,35 +172,41 @@ class ShopifyAuth with ShopifyError {
         document: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessToken(result.data, "customerAccessTokenCreate");
+    return _extractAccessTokenWithExpDate(
+        result.data, "customerAccessTokenCreate");
   }
 
   /// Helper method for creating the accessToken with Multipass.
-  Future<String?> _createAccessTokenWithMultipass(
+  Future<AccessTokenWithExpDate> _createAccessTokenWithMultipass(
     String multipassToken,
   ) async {
     final MutationOptions _options = MutationOptions(
         document: gql(customerAccessTokenCreateWithMultipassMutation),
         variables: {'multipassToken': multipassToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessToken(
+    return _extractAccessTokenWithExpDate(
       result.data,
       "customerAccessTokenCreateWithMultipass",
     );
   }
 
-  /// Helper method for extracting the customerAccessToken from the mutation.
-  String? _extractAccessToken(
+  /// Helper method for extracting the customerAccessToken and Expiration date from the mutation.
+  AccessTokenWithExpDate _extractAccessTokenWithExpDate(
     Map<String, dynamic>? mutationData,
     String mutation,
   ) {
-    return (((mutationData ?? const {})[mutation] ??
-            const {})['customerAccessToken'] ??
-        const {})['accessToken'];
+    return AccessTokenWithExpDate.fromMap(
+      mutationData?[mutation]['customerAccessToken'] ?? {},
+    );
   }
 
   /// Signs out the current user and clears it from the disk cache.
   Future<void> signOutCurrentUser() async {
+    if (await isAccessTokenExpired) {
+      log('currentCustomerAccessTokenExpired');
+      await _setShopifyUser(null, null);
+      return;
+    }
     final MutationOptions _options = MutationOptions(
         document: gql(accessTokenDeleteMutation),
         variables: {'customerAccessToken': await currentCustomerAccessToken});
@@ -188,14 +220,15 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Renews customer access token
-  Future<String?> _renewAccessToken(
+  Future<AccessTokenWithExpDate> _renewAccessToken(
     String customerAccessToken,
   ) async {
     final MutationOptions _options = MutationOptions(
         document: gql(customerAccessTokenRenewMutation),
         variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessToken(result.data, "customerAccessTokenRenew");
+    return _extractAccessTokenWithExpDate(
+        result.data, "customerAccessTokenRenew");
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -217,20 +250,29 @@ class ShopifyAuth with ShopifyError {
   }
 
   Future<void> _setShopifyUser(
-    String? sharedPrefsToken,
+    AccessTokenWithExpDate? accessTokenWithExpDate,
     ShopifyUser? shopifyUser,
   ) async {
+    log('accessTokenWithExpDate: $accessTokenWithExpDate');
+    log('shopifyUser: $shopifyUser');
     SharedPreferences _prefs = await SharedPreferences.getInstance();
-    if (sharedPrefsToken == null) {
+    if (accessTokenWithExpDate == null ||
+        accessTokenWithExpDate.accessToken == null ||
+        accessTokenWithExpDate.expiresAt == null) {
       _shopifyUser.remove(ShopifyConfig.storeUrl);
       _currentCustomerAccessToken.remove(ShopifyConfig.storeUrl);
       _prefs.remove(_shopifyKey);
       _prefs.remove(ShopifyConfig.storeUrl!);
     } else {
       _shopifyUser[ShopifyConfig.storeUrl] = shopifyUser;
-      _currentCustomerAccessToken[ShopifyConfig.storeUrl] = sharedPrefsToken;
-      _prefs.setString(ShopifyConfig.storeUrl!, sharedPrefsToken);
+      _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+          accessTokenWithExpDate.toJson();
+      _prefs.setString(
+          ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
     }
+
+    log('accessTokenWithExpDate 2: $accessTokenWithExpDate');
+    log('shopifyUser 2: $shopifyUser');
   }
 
   /// Delete current user and clears it from the disk cache.

@@ -1,0 +1,87 @@
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
+import 'package:shopify_flutter/shopify_flutter.dart';
+
+class AuthTab extends StatefulWidget {
+  const AuthTab({super.key});
+
+  @override
+  State<AuthTab> createState() => _AuthTabState();
+}
+
+class _AuthTabState extends State<AuthTab> {
+  final shopifyAuth = ShopifyAuth.instance;
+  ShopifyUser? shopifyUser;
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfLoggedIn();
+  }
+
+  Future<void> _checkIfLoggedIn() async {
+    try {
+      final isTokenExpired = await shopifyAuth.isAccessTokenExpired;
+      log('isTokenExpired: $isTokenExpired');
+      if (isTokenExpired) {
+        setState(() => shopifyUser = null);
+        final accessToken = await shopifyAuth.currentCustomerAccessToken;
+        if (accessToken != null) {
+          await shopifyAuth.renewCurrentAccessToken(accessToken);
+          final user = await shopifyAuth.currentUser();
+          log('user after token refresh: $user');
+          setState(() => shopifyUser = user);
+        }
+      } else {
+        final user = await shopifyAuth.currentUser();
+        log('current user: $user');
+        setState(() => shopifyUser = user);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Auth'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('shopifyUser: ${shopifyUser?.email}'),
+            if (shopifyUser == null)
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await shopifyAuth.signInWithEmailAndPassword(
+                        email: '*******', password: '**********');
+                    _checkIfLoggedIn();
+                  } catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+                child: const Text('Sign In'),
+              )
+            else
+              ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await shopifyAuth.signOutCurrentUser();
+                    _checkIfLoggedIn();
+                  } catch (e) {
+                    debugPrint(e.toString());
+                  }
+                },
+                child: const Text('Sign Out'),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}

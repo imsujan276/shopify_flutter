@@ -3,6 +3,7 @@ export 'src/collection/collection.dart';
 export 'src/order/order.dart';
 export 'src/product/product.dart';
 export 'src/shopify_user/shopify_user.dart';
+export 'src/shopify_user/access_token_with_exp_date.dart';
 export 'src/article/article.dart';
 export 'src/blog/blog.dart';
 export 'src/shop/shop.dart';

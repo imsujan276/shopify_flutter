@@ -95,8 +95,10 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
             : ListView.builder(
                 itemCount: products.length,
                 itemBuilder: (_, int index) => ListTile(
-                      title: Text(products[index].title),
-                    )),
+                  title: Text(products[index].title),
+                  subtitle: Text(products[index].formattedPrice),
+                ),
+              ),
       ),
     );
   }
@@ -110,6 +112,9 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
         4,
         startCursor: null,
         sortKey: SortKeyProductCollection.RELEVANCE,
+        filters: {
+          "price": {"min": 500, "max": 600},
+        },
       );
       if (mounted) {
         setState(() {

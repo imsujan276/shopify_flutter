@@ -41,7 +41,10 @@ class SearchTabState extends State<SearchTab> {
                 const Padding(padding: EdgeInsets.all(8)),
                 IconButton(
                     icon: const Icon(Icons.search),
-                    onPressed: () => _searchForProduct(_controller.text)),
+                    onPressed: () {
+                      FocusScope.of(context).unfocus();
+                      _searchForProduct(_controller.text);
+                    }),
               ],
             ),
             const Padding(padding: EdgeInsets.all(10)),
@@ -64,11 +67,12 @@ class SearchTabState extends State<SearchTab> {
     });
     try {
       final shopifyStore = ShopifyStore.instance;
-      final products = await shopifyStore.getXProductsOnQueryAfterCursor(
+      final products = await shopifyStore.searchProducts(
         searchKeyword,
-        4,
-        null,
-        sortKey: SortKeyProduct.RELEVANCE,
+        limit: 4,
+        // filters: {
+        //   "price": {"min": 500, "max": 1000},
+        // },
       );
       if (mounted) {
         setState(() {
@@ -86,6 +90,7 @@ class SearchTabState extends State<SearchTab> {
     for (var product in products) {
       widgetList.add(ListTile(
         title: Text(product.title),
+        subtitle: Text(product.formattedPrice),
       ));
     }
     return widgetList;

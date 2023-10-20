@@ -14,7 +14,6 @@ void main() {
     storeUrl: '*****.myshopify.com',
     adminAccessToken: "shpat_*******************", // optional
   );
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

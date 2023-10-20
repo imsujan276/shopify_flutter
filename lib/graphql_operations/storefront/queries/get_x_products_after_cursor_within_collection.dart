@@ -1,6 +1,6 @@
 /// Query to get x products after cursor within collection
 const String getXProductsAfterCursorWithinCollectionQuery = r'''
-query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean){
+query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean, $filters: [ProductFilter!]){
   node(id: $id) {
     ... on Collection {
       id
@@ -14,7 +14,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
         id
         originalSrc
       }
-      products(first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse) {
+      products(first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse, filters: $filters) {
         edges {
           cursor
           node {

@@ -1,3 +1,8 @@
+## 1.3.0
+
+* added search product query and option for filters in `searchProducts` and `getXProductsAfterCursorWithinCollection`.
+
+
 ## 1.2.0
 
 * phone and acceptsMarketing can be passed in createUserWithEmailAndPassword

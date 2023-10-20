@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:shopify_flutter/enums/enums.dart';
 import 'package:shopify_flutter/enums/src/sort_key_collection.dart';
+import 'package:shopify_flutter/enums/src/sort_key_product_search.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_collections_optimized.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_from_collection_by_id.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_on_query.dart';
@@ -12,6 +13,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_shop.d
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_after_cursor.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_after_cursor_within_collection.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/search_product.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
 import 'package:shopify_flutter/models/src/collection/collections/collections.dart';
@@ -325,11 +327,28 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
+  ///
+  /// [filters] is a Map of String and dynmaic, example:
+  ///
+  /// {"price": {"min":100, "max":500} } gets products with a price between 100 and 500
+  ///
+  /// {"price": {"min":100, "max":500}, "available": true} } gets products with a price between 100 and 500 which are available
+  ///
+  /// { "variantOption": { "name": "color", "value": "blue" } } gets products with a variant option with name "color" and value "blue"
+  ///
+  /// for more information about filters visit:
+  ///
+  /// 1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
+  ///
+  /// 2. https://shopify.dev/docs/api/storefront/2023-07/input-objects/productfilter
   Future<List<Product>?> getXProductsAfterCursorWithinCollection(
-      String id, int limit,
-      {String? startCursor,
-      SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING,
-      bool reverse = false}) async {
+    String id,
+    int limit, {
+    String? startCursor,
+    SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING,
+    bool reverse = false,
+    Map<String, dynamic>? filters,
+  }) async {
     String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getXProductsAfterCursorWithinCollectionQuery),
@@ -339,10 +358,41 @@ class ShopifyStore with ShopifyError {
           'limit': limit,
           'sortKey': sortKey.parseToString(),
           'reverse': reverse,
+          'filters': [if (filters != null) filters],
         });
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     return (Collection.fromGraphJson(result.data!)).products.productList;
+  }
+
+  /// Returns a List of [Product].
+  ///
+  /// Returns the first [limit] Products after the given [startCursor].
+  ///
+  /// [limit] has to be in the range of 0 and 250.
+  Future<List<Product>?> searchProducts(
+    String query, {
+    int limit = 15,
+    String? startCursor,
+    SearchSortKeys sortKey = SearchSortKeys.RELEVANCE,
+    bool reverse = false,
+    Map<String, dynamic>? filters,
+  }) async {
+    String? cursor = startCursor;
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getSearchedProducts),
+      variables: {
+        'query': query,
+        'cursor': cursor,
+        'limit': limit,
+        'sortKey': sortKey.parseToString(),
+        'reverse': reverse,
+        'filters': [if (filters != null) filters],
+      },
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    return Products.fromGraphJson(result.data?['search']).productList;
   }
 
   /// Returns a List of [Product].

@@ -1,6 +1,9 @@
-## 1.1.4
+## 1.2.0
 
-* phone and acceptsMarketing can be passed in createUserWithEmailAndPassword nut are optional
+* phone and acceptsMarketing can be passed in createUserWithEmailAndPassword
+* bug fixes
+* updated code documentation
+
 
 ## 1.1.3
 

@@ -1,7 +1,7 @@
 /// Mutation to create a customer
 const String customerCreateMutation = r''' 
-mutation MyMutation($firstName: String, $lastName: String, $email: String!, $password: String!) {
-  customerCreate(input: {firstName: $firstName, lastName: $lastName, email: $email, password: $password}) {
+mutation MyMutation($firstName: String, $lastName: String, $email: String!, $password: String!, $acceptsMarketing: Boolean, $phone: String) {
+  customerCreate(input: {firstName: $firstName, lastName: $lastName, email: $email, password: $password, acceptsMarketing: $acceptsMarketing, phone: $phone}) {
     customer{
       acceptsMarketing
     addresses(first: 10) {
@@ -50,6 +50,8 @@ mutation MyMutation($firstName: String, $lastName: String, $email: String!, $pas
     email
     firstName
     id
+    lastName
+    phone
     lastIncompleteCheckout {
         completedAt
         createdAt

@@ -59,7 +59,9 @@ class _AuthTabState extends State<AuthTab> {
                 onPressed: () async {
                   try {
                     await shopifyAuth.signInWithEmailAndPassword(
-                        email: '*******', password: '**********');
+                      email: 'as14@asdasdad.asd',
+                      password: 'asdasdasd',
+                    );
                     _checkIfLoggedIn();
                   } catch (e) {
                     debugPrint(e.toString());
@@ -85,11 +87,11 @@ class _AuthTabState extends State<AuthTab> {
                 try {
                   final createdUser =
                       await shopifyAuth.createUserWithEmailAndPassword(
-                    email: 'as3@asdasdad.asd',
+                    email: 'as14@asdasdad.asd',
                     password: 'asdasdasd',
                     firstName: 'asdasd',
                     lastName: 'asdasd',
-                    phone: '1234567890',
+                    phone: '+9779841543211',
                     acceptsMarketing: true,
                   );
                   setState(() {

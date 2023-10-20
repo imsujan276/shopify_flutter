@@ -68,6 +68,9 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Tries to create a new user account with the given email address and password.
+  ///
+  /// if phone is provided, it should be formatted using E.164 standard. For example, +16135551111.
+  /// i.e. [+][countrycode][number including area code]
   Future<ShopifyUser> createUserWithEmailAndPassword({
     required String firstName,
     required String lastName,

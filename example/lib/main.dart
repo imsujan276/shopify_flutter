@@ -1,8 +1,8 @@
-import 'package:example/screens/blog_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 import 'screens/auth_tab.dart';
+import 'screens/blog_tab.dart';
 import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
@@ -14,6 +14,7 @@ void main() {
     storeUrl: '*****.myshopify.com',
     adminAccessToken: "shpat_*******************", // optional
   );
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

@@ -55,19 +55,19 @@ class CollectionTabState extends State<CollectionTab> {
   void _navigateToCollectionDetailScreen(
       String collectionId, String collectionTitle) {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => CollectionDetailScreen(
-                collectionId: collectionId, collectionTitle: collectionTitle)));
+      context,
+      MaterialPageRoute(
+        builder: (context) =>
+            CollectionDetailScreen(collectionId: collectionId),
+      ),
+    );
   }
 }
 
 class CollectionDetailScreen extends StatefulWidget {
-  const CollectionDetailScreen(
-      {Key? key, required this.collectionId, required this.collectionTitle})
+  const CollectionDetailScreen({Key? key, required this.collectionId})
       : super(key: key);
   final String collectionId;
-  final String collectionTitle;
 
   @override
   CollectionDetailScreenState createState() => CollectionDetailScreenState();
@@ -76,10 +76,12 @@ class CollectionDetailScreen extends StatefulWidget {
 class CollectionDetailScreenState extends State<CollectionDetailScreen> {
   List<Product> products = [];
   bool _isLoading = true;
+  Collection? collection;
 
   @override
   void initState() {
     _fetchProductsByCollectionId();
+    _fetchCollectionDetail();
     super.initState();
   }
 
@@ -87,7 +89,7 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.collectionTitle),
+        title: Text(collection?.title ?? ''),
       ),
       body: Center(
         child: _isLoading
@@ -122,6 +124,20 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
           _isLoading = false;
         });
       }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> _fetchCollectionDetail() async {
+    try {
+      final shopifyStore = ShopifyStore.instance;
+      final collectionInfo =
+          await shopifyStore.getCollectionById(widget.collectionId);
+      setState(() {
+        collection = collectionInfo;
+      });
+      debugPrint(collection.toString());
     } catch (e) {
       debugPrint(e.toString());
     }

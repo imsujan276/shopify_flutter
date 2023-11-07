@@ -1,3 +1,8 @@
+## 1.3.1
+
+* Image issue in Collection resolved
+* Order Model updated
+
 ## 1.3.0
 
 * added search product query and option for filters in `searchProducts` and `getXProductsAfterCursorWithinCollection`.

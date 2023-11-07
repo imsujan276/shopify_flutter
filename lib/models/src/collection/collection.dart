@@ -59,8 +59,7 @@ class Collection with _$Collection {
       id: nodeJson['id'],
       updatedAt: nodeJson['updatedAt'],
       image: nodeJson['image'] != null
-          ? ShopifyImage.fromJson(
-              (json['node'] ?? const {})['image'] ?? const {})
+          ? ShopifyImage.fromJson(nodeJson['image'])
           : null,
       products: _products,
       cursor: json['cursor'],

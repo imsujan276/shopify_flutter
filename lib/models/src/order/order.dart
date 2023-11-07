@@ -39,11 +39,11 @@ class Order with _$Order {
   static Order fromGraphJson(Map<String, dynamic> json) {
     return Order(
       id: json['node']['id'],
-      email: json['node']['email'],
+      email: json['node']['email'] ?? '',
       currencyCode: json['node']['currencyCode'],
       customerUrl: json['node']['customerUrl'],
       lineItems: LineItemsOrder.fromGraphJson(json['node']['lineItems']),
-      name: json['node']['name'],
+      name: json['node']['name'] ?? '',
       orderNumber: json['node']['orderNumber'] ?? 0,
       phone: json['node']['phone'],
       processedAt: json['node']['processedAt'],
@@ -51,7 +51,9 @@ class Order with _$Order {
       fulfillmentStatus: json['node']['fulfillmentStatus'],
       shippingAddress:
           ShippingAddress.fromJson(json['node']['shippingAddress']),
-      billingAddress: ShippingAddress.fromJson(json['node']['billingAddress']),
+      billingAddress: json['node']['billingAddress'] == null
+          ? null
+          : ShippingAddress.fromJson(json['node']['billingAddress']),
       statusUrl: json['node']['statusUrl'],
       subtotalPriceV2: PriceV2.fromJson(json['node']['subtotalPriceV2']),
       totalPriceV2: PriceV2.fromJson(json['node']['totalPriceV2']),

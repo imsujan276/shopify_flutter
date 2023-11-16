@@ -35,9 +35,38 @@ class _AuthTabState extends State<AuthTab> {
         }
       } else {
         final user = await shopifyAuth.currentUser();
-        log('current user: $user');
         setState(() => shopifyUser = user);
       }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> _login() async {
+    try {
+      await shopifyAuth.signInWithEmailAndPassword(
+        email: 'as14@asdasdad.asd',
+        password: 'asdasdasd',
+      );
+      _checkIfLoggedIn();
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> _register() async {
+    try {
+      final createdUser = await shopifyAuth.createUserWithEmailAndPassword(
+        email: 'as14@asdasdad.asd',
+        password: 'asdasdasd',
+        firstName: 'asdasd',
+        lastName: 'asdasd',
+        phone: '+9779841543211',
+        acceptsMarketing: true,
+      );
+      setState(() {
+        shopifyUser = createdUser;
+      });
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -56,17 +85,7 @@ class _AuthTabState extends State<AuthTab> {
             Text('shopifyUser: ${shopifyUser?.email}'),
             if (shopifyUser == null)
               ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await shopifyAuth.signInWithEmailAndPassword(
-                      email: 'as14@asdasdad.asd',
-                      password: 'asdasdasd',
-                    );
-                    _checkIfLoggedIn();
-                  } catch (e) {
-                    debugPrint(e.toString());
-                  }
-                },
+                onPressed: () => _login(),
                 child: const Text('Sign In'),
               )
             else
@@ -83,24 +102,7 @@ class _AuthTabState extends State<AuthTab> {
               ),
             const Divider(),
             ElevatedButton(
-              onPressed: () async {
-                try {
-                  final createdUser =
-                      await shopifyAuth.createUserWithEmailAndPassword(
-                    email: 'as14@asdasdad.asd',
-                    password: 'asdasdasd',
-                    firstName: 'asdasd',
-                    lastName: 'asdasd',
-                    phone: '+9779841543211',
-                    acceptsMarketing: true,
-                  );
-                  setState(() {
-                    shopifyUser = createdUser;
-                  });
-                } catch (e) {
-                  debugPrint(e.toString());
-                }
-              },
+              onPressed: () => _register(),
               child: const Text('Sign Up'),
             )
           ],

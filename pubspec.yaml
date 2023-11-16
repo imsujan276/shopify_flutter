@@ -12,6 +12,7 @@ dependencies:
     sdk: flutter
   graphql_flutter: ^5.1.2
   freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.1
   json_serializable: ^6.7.1
   shared_preferences: ^2.0.20
   intl: ^0.18.0
@@ -26,7 +27,5 @@ dev_dependencies:
   pedantic: ^1.11.1
 
 screenshots:
- - description: 'Auth Example of the shopify storefront'
-   path: example/screenshot/auth.png
  - description: 'Search Example of the shopify storefront'
    path: example/screenshot/search.png

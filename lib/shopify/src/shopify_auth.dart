@@ -132,10 +132,10 @@ class ShopifyAuth with ShopifyError {
     required String password,
   }) async {
     final AccessTokenWithExpDate accessTokenWithExpDate =
-        await _createAccessToken(
-      email,
-      password,
-    );
+        await _createAccessToken(email, password);
+    if (accessTokenWithExpDate.accessToken == null) {
+      throw Exception('Invalid credentials');
+    }
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         document: gql(getCustomerQuery),
         variables: {'customerAccessToken': accessTokenWithExpDate.accessToken});

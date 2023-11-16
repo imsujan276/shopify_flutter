@@ -39,7 +39,7 @@ class ProductVariant with _$ProductVariant {
       compareAtPrice: nodeJson['compareAtPriceV2'] != null
           ? PriceV2.fromJson(nodeJson['compareAtPriceV2'])
           : null,
-      weight: nodeJson['weight'],
+      weight: double.tryParse(nodeJson['weight'].toString()) ?? 0.0,
       weightUnit: nodeJson['weightUnit'],
       availableForSale: nodeJson['availableForSale'],
       sku: nodeJson['sku'] ?? '',

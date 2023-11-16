@@ -33,6 +33,8 @@ mixin _$ProductVariantCheckout {
   String? get weightUnit => throw _privateConstructorUsedError;
   int get quantityAvailable => throw _privateConstructorUsedError;
   Product? get product => throw _privateConstructorUsedError;
+  List<SelectedOption> get selectedOptions =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -58,7 +60,8 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
       double? weight,
       String? weightUnit,
       int quantityAvailable,
-      Product? product});
+      Product? product,
+      List<SelectedOption> selectedOptions});
 
   $PriceV2CopyWith<$Res> get priceV2;
   $ShopifyImageCopyWith<$Res>? get image;
@@ -92,6 +95,7 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     Object? weightUnit = freezed,
     Object? quantityAvailable = null,
     Object? product = freezed,
+    Object? selectedOptions = null,
   }) {
     return _then(_value.copyWith(
       priceV2: null == priceV2
@@ -142,6 +146,10 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
+      selectedOptions: null == selectedOptions
+          ? _value.selectedOptions
+          : selectedOptions // ignore: cast_nullable_to_non_nullable
+              as List<SelectedOption>,
     ) as $Val);
   }
 
@@ -210,7 +218,8 @@ abstract class _$$_ProductVariantCheckoutCopyWith<$Res>
       double? weight,
       String? weightUnit,
       int quantityAvailable,
-      Product? product});
+      Product? product,
+      List<SelectedOption> selectedOptions});
 
   @override
   $PriceV2CopyWith<$Res> get priceV2;
@@ -246,6 +255,7 @@ class __$$_ProductVariantCheckoutCopyWithImpl<$Res>
     Object? weightUnit = freezed,
     Object? quantityAvailable = null,
     Object? product = freezed,
+    Object? selectedOptions = null,
   }) {
     return _then(_$_ProductVariantCheckout(
       priceV2: null == priceV2
@@ -296,6 +306,10 @@ class __$$_ProductVariantCheckoutCopyWithImpl<$Res>
           ? _value.product
           : product // ignore: cast_nullable_to_non_nullable
               as Product?,
+      selectedOptions: null == selectedOptions
+          ? _value._selectedOptions
+          : selectedOptions // ignore: cast_nullable_to_non_nullable
+              as List<SelectedOption>,
     ));
   }
 }
@@ -315,8 +329,10 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       this.weight,
       this.weightUnit,
       this.quantityAvailable = 0,
-      this.product})
-      : super._();
+      this.product,
+      final List<SelectedOption> selectedOptions = const []})
+      : _selectedOptions = selectedOptions,
+        super._();
 
   factory _$_ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
       _$$_ProductVariantCheckoutFromJson(json);
@@ -346,10 +362,18 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   final int quantityAvailable;
   @override
   final Product? product;
+  final List<SelectedOption> _selectedOptions;
+  @override
+  @JsonKey()
+  List<SelectedOption> get selectedOptions {
+    if (_selectedOptions is EqualUnmodifiableListView) return _selectedOptions;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedOptions);
+  }
 
   @override
   String toString() {
-    return 'ProductVariantCheckout(priceV2: $priceV2, title: $title, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit, quantityAvailable: $quantityAvailable, product: $product)';
+    return 'ProductVariantCheckout(priceV2: $priceV2, title: $title, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit, quantityAvailable: $quantityAvailable, product: $product, selectedOptions: $selectedOptions)';
   }
 
   @override
@@ -373,7 +397,9 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
                 other.weightUnit == weightUnit) &&
             (identical(other.quantityAvailable, quantityAvailable) ||
                 other.quantityAvailable == quantityAvailable) &&
-            (identical(other.product, product) || other.product == product));
+            (identical(other.product, product) || other.product == product) &&
+            const DeepCollectionEquality()
+                .equals(other._selectedOptions, _selectedOptions));
   }
 
   @JsonKey(ignore: true)
@@ -391,7 +417,8 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       weight,
       weightUnit,
       quantityAvailable,
-      product);
+      product,
+      const DeepCollectionEquality().hash(_selectedOptions));
 
   @JsonKey(ignore: true)
   @override
@@ -421,7 +448,8 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
       final double? weight,
       final String? weightUnit,
       final int quantityAvailable,
-      final Product? product}) = _$_ProductVariantCheckout;
+      final Product? product,
+      final List<SelectedOption> selectedOptions}) = _$_ProductVariantCheckout;
   _ProductVariantCheckout._() : super._();
 
   factory _ProductVariantCheckout.fromJson(Map<String, dynamic> json) =
@@ -451,6 +479,8 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   int get quantityAvailable;
   @override
   Product? get product;
+  @override
+  List<SelectedOption> get selectedOptions;
   @override
   @JsonKey(ignore: true)
   _$$_ProductVariantCheckoutCopyWith<_$_ProductVariantCheckout> get copyWith =>

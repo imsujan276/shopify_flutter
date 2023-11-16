@@ -20,6 +20,8 @@ class LineItemOrder with _$LineItemOrder {
     @Default(null) ProductVariantCheckout? variant,
   }) = _LineItemOrder;
 
+  String? get productId => variant?.product?.id;
+
   factory LineItemOrder.fromJson(Map<String, dynamic> json) =>
       _$LineItemOrderFromJson(json);
 

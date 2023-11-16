@@ -1,5 +1,6 @@
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
+import 'package:shopify_flutter/models/src/product/selected_option/selected_option.dart';
 import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,6 +24,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     String? weightUnit,
     @Default(0) int quantityAvailable,
     Product? product,
+    @Default([]) List<SelectedOption> selectedOptions,
   }) = _ProductVariantCheckout;
 
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>

@@ -27,6 +27,10 @@ _$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
       product: json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),
+      selectedOptions: (json['selectedOptions'] as List<dynamic>?)
+              ?.map((e) => SelectedOption.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
@@ -44,4 +48,5 @@ Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
       'weightUnit': instance.weightUnit,
       'quantityAvailable': instance.quantityAvailable,
       'product': instance.product,
+      'selectedOptions': instance.selectedOptions,
     };

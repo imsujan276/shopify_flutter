@@ -52,6 +52,18 @@ customer(customerAccessToken: $accessToken) {
                   sku
                   requiresShipping
                   id
+                  product{
+                    availableForSale
+                    createdAt
+                    handle
+                    id
+                    onlineStoreUrl
+                    productType
+                    publishedAt
+                    title
+                    updatedAt
+                    vendor
+                  }
                 }
               }
             }

@@ -1,3 +1,10 @@
+## 1.4.0
+
+* Fixed issues 
+  * [Typecast error](https://github.com/imsujan276/shopify_flutter/issues/25)
+  * [Include selectedOptions on ProductVariantCheckout in Order](https://github.com/imsujan276/shopify_flutter/issues/26)
+  * [getAllOrdersQuery is missing product fields for lineItem variants](https://github.com/imsujan276/shopify_flutter/issues/27)
+
 ## 1.3.1
 
 * Image issue in Collection resolved

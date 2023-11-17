@@ -1,5 +1,7 @@
 # shopify_flutter
 
+![Analyzer status](https://github.com/imsujan276/shopify_flutter/actions/workflows/analyzer.yml/badge.svg)
+
 A flutter package that works as a bridge between your Shopify Store and Flutter Application.
 
 ## How To Use

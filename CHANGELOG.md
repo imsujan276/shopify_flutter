@@ -1,3 +1,8 @@
+## 1.4.1
+
+* Fixed issues 
+  * [Product fromJson/toJson ](https://github.com/imsujan276/shopify_flutter/issues/24)
+
 ## 1.4.0
 
 * Fixed issues 

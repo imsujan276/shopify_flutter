@@ -21,7 +21,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       images: (json['images'] as List<dynamic>)
           .map((e) => ShopifyImage.fromJson(e as Map<String, dynamic>))
           .toList(),
-      option: (json['option'] as List<dynamic>)
+      options: (json['options'] as List<dynamic>)
           .map((e) => Option.fromJson(e as Map<String, dynamic>))
           .toList(),
       vendor: json['vendor'] as String,
@@ -50,7 +50,7 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'tags': instance.tags,
       'updatedAt': instance.updatedAt,
       'images': instance.images,
-      'option': instance.option,
+      'options': instance.options,
       'vendor': instance.vendor,
       'metafields': instance.metafields,
       'collectionList': instance.collectionList,

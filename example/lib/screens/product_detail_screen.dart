@@ -20,6 +20,9 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   void initState() {
     product = widget.product;
+    final jsonProduct = product.toJson();
+    final productFromJson = Product.fromJson(jsonProduct);
+    log(productFromJson.toString());
     super.initState();
   }
 

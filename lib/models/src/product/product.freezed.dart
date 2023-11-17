@@ -27,7 +27,7 @@ mixin _$Product {
   List<String> get tags => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
-  List<Option> get option => throw _privateConstructorUsedError;
+  List<Option> get options => throw _privateConstructorUsedError;
   String get vendor => throw _privateConstructorUsedError;
   List<Metafield> get metafields => throw _privateConstructorUsedError;
   List<AssociatedCollections>? get collectionList =>
@@ -58,7 +58,7 @@ abstract class $ProductCopyWith<$Res> {
       List<String> tags,
       String updatedAt,
       List<ShopifyImage> images,
-      List<Option> option,
+      List<Option> options,
       String vendor,
       List<Metafield> metafields,
       List<AssociatedCollections>? collectionList,
@@ -92,7 +92,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? tags = null,
     Object? updatedAt = null,
     Object? images = null,
-    Object? option = null,
+    Object? options = null,
     Object? vendor = null,
     Object? metafields = null,
     Object? collectionList = freezed,
@@ -143,9 +143,9 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ShopifyImage>,
-      option: null == option
-          ? _value.option
-          : option // ignore: cast_nullable_to_non_nullable
+      options: null == options
+          ? _value.options
+          : options // ignore: cast_nullable_to_non_nullable
               as List<Option>,
       vendor: null == vendor
           ? _value.vendor
@@ -201,7 +201,7 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       List<String> tags,
       String updatedAt,
       List<ShopifyImage> images,
-      List<Option> option,
+      List<Option> options,
       String vendor,
       List<Metafield> metafields,
       List<AssociatedCollections>? collectionList,
@@ -232,7 +232,7 @@ class __$$_ProductCopyWithImpl<$Res>
     Object? tags = null,
     Object? updatedAt = null,
     Object? images = null,
-    Object? option = null,
+    Object? options = null,
     Object? vendor = null,
     Object? metafields = null,
     Object? collectionList = freezed,
@@ -283,9 +283,9 @@ class __$$_ProductCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<ShopifyImage>,
-      option: null == option
-          ? _value._option
-          : option // ignore: cast_nullable_to_non_nullable
+      options: null == options
+          ? _value._options
+          : options // ignore: cast_nullable_to_non_nullable
               as List<Option>,
       vendor: null == vendor
           ? _value.vendor
@@ -337,7 +337,7 @@ class _$_Product extends _Product {
       required final List<String> tags,
       required this.updatedAt,
       required final List<ShopifyImage> images,
-      required final List<Option> option,
+      required final List<Option> options,
       required this.vendor,
       required final List<Metafield> metafields,
       final List<AssociatedCollections>? collectionList,
@@ -349,7 +349,7 @@ class _$_Product extends _Product {
       : _productVariants = productVariants,
         _tags = tags,
         _images = images,
-        _option = option,
+        _options = options,
         _metafields = metafields,
         _collectionList = collectionList,
         super._();
@@ -392,12 +392,12 @@ class _$_Product extends _Product {
     return EqualUnmodifiableListView(_images);
   }
 
-  final List<Option> _option;
+  final List<Option> _options;
   @override
-  List<Option> get option {
-    if (_option is EqualUnmodifiableListView) return _option;
+  List<Option> get options {
+    if (_options is EqualUnmodifiableListView) return _options;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_option);
+    return EqualUnmodifiableListView(_options);
   }
 
   @override
@@ -433,7 +433,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, images: $images, option: $option, vendor: $vendor, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+    return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, images: $images, options: $options, vendor: $vendor, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
   }
 
   @override
@@ -457,7 +457,7 @@ class _$_Product extends _Product {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality().equals(other._option, _option) &&
+            const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.vendor, vendor) || other.vendor == vendor) &&
             const DeepCollectionEquality()
                 .equals(other._metafields, _metafields) &&
@@ -486,7 +486,7 @@ class _$_Product extends _Product {
         const DeepCollectionEquality().hash(_tags),
         updatedAt,
         const DeepCollectionEquality().hash(_images),
-        const DeepCollectionEquality().hash(_option),
+        const DeepCollectionEquality().hash(_options),
         vendor,
         const DeepCollectionEquality().hash(_metafields),
         const DeepCollectionEquality().hash(_collectionList),
@@ -516,7 +516,7 @@ abstract class _Product extends Product {
       required final List<String> tags,
       required final String updatedAt,
       required final List<ShopifyImage> images,
-      required final List<Option> option,
+      required final List<Option> options,
       required final String vendor,
       required final List<Metafield> metafields,
       final List<AssociatedCollections>? collectionList,
@@ -548,7 +548,7 @@ abstract class _Product extends Product {
   @override
   List<ShopifyImage> get images;
   @override
-  List<Option> get option;
+  List<Option> get options;
   @override
   String get vendor;
   @override

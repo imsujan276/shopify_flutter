@@ -1,4 +1,4 @@
-name: Dart
+name: Analyzer
 
 on:
   push:
@@ -13,14 +13,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      # Note: This workflow uses the latest stable version of the Dart SDK.
-      # You can specify other versions if desired, see documentation here:
-      # https://github.com/dart-lang/setup-dart/blob/main/README.md
-      # - uses: dart-lang/setup-dart@v1
-      - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      # Use the latest stable version of the Dart SDK and Flutter.
+      - uses: dart-lang/setup-dart@v1
+        with:
+          flutter-version: 'latest'
 
       - name: Install dependencies
-        run: dart pub get
+        run: flutter pub get
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting

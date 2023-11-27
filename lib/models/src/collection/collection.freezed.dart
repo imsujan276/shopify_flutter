@@ -142,11 +142,11 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
 }
 
 /// @nodoc
-abstract class _$$_CollectionCopyWith<$Res>
+abstract class _$$CollectionImplCopyWith<$Res>
     implements $CollectionCopyWith<$Res> {
-  factory _$$_CollectionCopyWith(
-          _$_Collection value, $Res Function(_$_Collection) then) =
-      __$$_CollectionCopyWithImpl<$Res>;
+  factory _$$CollectionImplCopyWith(
+          _$CollectionImpl value, $Res Function(_$CollectionImpl) then) =
+      __$$CollectionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -167,11 +167,11 @@ abstract class _$$_CollectionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CollectionCopyWithImpl<$Res>
-    extends _$CollectionCopyWithImpl<$Res, _$_Collection>
-    implements _$$_CollectionCopyWith<$Res> {
-  __$$_CollectionCopyWithImpl(
-      _$_Collection _value, $Res Function(_$_Collection) _then)
+class __$$CollectionImplCopyWithImpl<$Res>
+    extends _$CollectionCopyWithImpl<$Res, _$CollectionImpl>
+    implements _$$CollectionImplCopyWith<$Res> {
+  __$$CollectionImplCopyWithImpl(
+      _$CollectionImpl _value, $Res Function(_$CollectionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -187,7 +187,7 @@ class __$$_CollectionCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? image = freezed,
   }) {
-    return _then(_$_Collection(
+    return _then(_$CollectionImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -230,8 +230,8 @@ class __$$_CollectionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Collection extends _Collection {
-  _$_Collection(
+class _$CollectionImpl extends _Collection {
+  _$CollectionImpl(
       {required this.title,
       required this.id,
       required this.products,
@@ -243,8 +243,8 @@ class _$_Collection extends _Collection {
       this.image})
       : super._();
 
-  factory _$_Collection.fromJson(Map<String, dynamic> json) =>
-      _$$_CollectionFromJson(json);
+  factory _$CollectionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CollectionImplFromJson(json);
 
   @override
   final String title;
@@ -274,7 +274,7 @@ class _$_Collection extends _Collection {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Collection &&
+            other is _$CollectionImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.products, products) ||
@@ -298,12 +298,12 @@ class _$_Collection extends _Collection {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CollectionCopyWith<_$_Collection> get copyWith =>
-      __$$_CollectionCopyWithImpl<_$_Collection>(this, _$identity);
+  _$$CollectionImplCopyWith<_$CollectionImpl> get copyWith =>
+      __$$CollectionImplCopyWithImpl<_$CollectionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CollectionToJson(
+    return _$$CollectionImplToJson(
       this,
     );
   }
@@ -319,11 +319,11 @@ abstract class _Collection extends Collection {
       final String? descriptionHtml,
       final String? handle,
       final String? updatedAt,
-      final ShopifyImage? image}) = _$_Collection;
+      final ShopifyImage? image}) = _$CollectionImpl;
   _Collection._() : super._();
 
   factory _Collection.fromJson(Map<String, dynamic> json) =
-      _$_Collection.fromJson;
+      _$CollectionImpl.fromJson;
 
   @override
   String get title;
@@ -345,6 +345,6 @@ abstract class _Collection extends Collection {
   ShopifyImage? get image;
   @override
   @JsonKey(ignore: true)
-  _$$_CollectionCopyWith<_$_Collection> get copyWith =>
+  _$$CollectionImplCopyWith<_$CollectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

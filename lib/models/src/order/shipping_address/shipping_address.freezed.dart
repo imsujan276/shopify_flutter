@@ -168,11 +168,11 @@ class _$ShippingAddressCopyWithImpl<$Res, $Val extends ShippingAddress>
 }
 
 /// @nodoc
-abstract class _$$_ShippingAddressCopyWith<$Res>
+abstract class _$$ShippingAddressImplCopyWith<$Res>
     implements $ShippingAddressCopyWith<$Res> {
-  factory _$$_ShippingAddressCopyWith(
-          _$_ShippingAddress value, $Res Function(_$_ShippingAddress) then) =
-      __$$_ShippingAddressCopyWithImpl<$Res>;
+  factory _$$ShippingAddressImplCopyWith(_$ShippingAddressImpl value,
+          $Res Function(_$ShippingAddressImpl) then) =
+      __$$ShippingAddressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -195,11 +195,11 @@ abstract class _$$_ShippingAddressCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ShippingAddressCopyWithImpl<$Res>
-    extends _$ShippingAddressCopyWithImpl<$Res, _$_ShippingAddress>
-    implements _$$_ShippingAddressCopyWith<$Res> {
-  __$$_ShippingAddressCopyWithImpl(
-      _$_ShippingAddress _value, $Res Function(_$_ShippingAddress) _then)
+class __$$ShippingAddressImplCopyWithImpl<$Res>
+    extends _$ShippingAddressCopyWithImpl<$Res, _$ShippingAddressImpl>
+    implements _$$ShippingAddressImplCopyWith<$Res> {
+  __$$ShippingAddressImplCopyWithImpl(
+      _$ShippingAddressImpl _value, $Res Function(_$ShippingAddressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -222,7 +222,7 @@ class __$$_ShippingAddressCopyWithImpl<$Res>
     Object? provinceCode = freezed,
     Object? zip = null,
   }) {
-    return _then(_$_ShippingAddress(
+    return _then(_$ShippingAddressImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -293,8 +293,8 @@ class __$$_ShippingAddressCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShippingAddress implements _ShippingAddress {
-  _$_ShippingAddress(
+class _$ShippingAddressImpl implements _ShippingAddress {
+  _$ShippingAddressImpl(
       {required this.name,
       required this.firstName,
       required this.id,
@@ -312,8 +312,8 @@ class _$_ShippingAddress implements _ShippingAddress {
       this.provinceCode,
       required this.zip});
 
-  factory _$_ShippingAddress.fromJson(Map<String, dynamic> json) =>
-      _$$_ShippingAddressFromJson(json);
+  factory _$ShippingAddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShippingAddressImplFromJson(json);
 
   @override
   final String name;
@@ -357,7 +357,7 @@ class _$_ShippingAddress implements _ShippingAddress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShippingAddress &&
+            other is _$ShippingAddressImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
@@ -409,12 +409,13 @@ class _$_ShippingAddress implements _ShippingAddress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShippingAddressCopyWith<_$_ShippingAddress> get copyWith =>
-      __$$_ShippingAddressCopyWithImpl<_$_ShippingAddress>(this, _$identity);
+  _$$ShippingAddressImplCopyWith<_$ShippingAddressImpl> get copyWith =>
+      __$$ShippingAddressImplCopyWithImpl<_$ShippingAddressImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingAddressToJson(
+    return _$$ShippingAddressImplToJson(
       this,
     );
   }
@@ -437,10 +438,10 @@ abstract class _ShippingAddress implements ShippingAddress {
       final String? phone,
       final String? province,
       final String? provinceCode,
-      required final String zip}) = _$_ShippingAddress;
+      required final String zip}) = _$ShippingAddressImpl;
 
   factory _ShippingAddress.fromJson(Map<String, dynamic> json) =
-      _$_ShippingAddress.fromJson;
+      _$ShippingAddressImpl.fromJson;
 
   @override
   String get name;
@@ -476,6 +477,6 @@ abstract class _ShippingAddress implements ShippingAddress {
   String get zip;
   @override
   @JsonKey(ignore: true)
-  _$$_ShippingAddressCopyWith<_$_ShippingAddress> get copyWith =>
+  _$$ShippingAddressImplCopyWith<_$ShippingAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -140,11 +140,11 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
 }
 
 /// @nodoc
-abstract class _$$_AddressDetailsCopyWith<$Res>
+abstract class _$$AddressDetailsImplCopyWith<$Res>
     implements $AddressDetailsCopyWith<$Res> {
-  factory _$$_AddressDetailsCopyWith(
-          _$_AddressDetails value, $Res Function(_$_AddressDetails) then) =
-      __$$_AddressDetailsCopyWithImpl<$Res>;
+  factory _$$AddressDetailsImplCopyWith(_$AddressDetailsImpl value,
+          $Res Function(_$AddressDetailsImpl) then) =
+      __$$AddressDetailsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,11 +163,11 @@ abstract class _$$_AddressDetailsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddressDetailsCopyWithImpl<$Res>
-    extends _$AddressDetailsCopyWithImpl<$Res, _$_AddressDetails>
-    implements _$$_AddressDetailsCopyWith<$Res> {
-  __$$_AddressDetailsCopyWithImpl(
-      _$_AddressDetails _value, $Res Function(_$_AddressDetails) _then)
+class __$$AddressDetailsImplCopyWithImpl<$Res>
+    extends _$AddressDetailsCopyWithImpl<$Res, _$AddressDetailsImpl>
+    implements _$$AddressDetailsImplCopyWith<$Res> {
+  __$$AddressDetailsImplCopyWithImpl(
+      _$AddressDetailsImpl _value, $Res Function(_$AddressDetailsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -186,7 +186,7 @@ class __$$_AddressDetailsCopyWithImpl<$Res>
     Object? provinceCode = freezed,
     Object? zip = freezed,
   }) {
-    return _then(_$_AddressDetails(
+    return _then(_$AddressDetailsImpl(
       address1: freezed == address1
           ? _value.address1
           : address1 // ignore: cast_nullable_to_non_nullable
@@ -241,8 +241,8 @@ class __$$_AddressDetailsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AddressDetails implements _AddressDetails {
-  const _$_AddressDetails(
+class _$AddressDetailsImpl implements _AddressDetails {
+  const _$AddressDetailsImpl(
       {this.address1,
       this.address2,
       this.city,
@@ -256,8 +256,8 @@ class _$_AddressDetails implements _AddressDetails {
       this.provinceCode,
       this.zip});
 
-  factory _$_AddressDetails.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressDetailsFromJson(json);
+  factory _$AddressDetailsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressDetailsImplFromJson(json);
 
   @override
   final String? address1;
@@ -293,7 +293,7 @@ class _$_AddressDetails implements _AddressDetails {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddressDetails &&
+            other is _$AddressDetailsImpl &&
             (identical(other.address1, address1) ||
                 other.address1 == address1) &&
             (identical(other.address2, address2) ||
@@ -336,12 +336,13 @@ class _$_AddressDetails implements _AddressDetails {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
-      __$$_AddressDetailsCopyWithImpl<_$_AddressDetails>(this, _$identity);
+  _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
+      __$$AddressDetailsImplCopyWithImpl<_$AddressDetailsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressDetailsToJson(
+    return _$$AddressDetailsImplToJson(
       this,
     );
   }
@@ -360,10 +361,10 @@ abstract class _AddressDetails implements AddressDetails {
       final double? longitude,
       final String? province,
       final String? provinceCode,
-      final String? zip}) = _$_AddressDetails;
+      final String? zip}) = _$AddressDetailsImpl;
 
   factory _AddressDetails.fromJson(Map<String, dynamic> json) =
-      _$_AddressDetails.fromJson;
+      _$AddressDetailsImpl.fromJson;
 
   @override
   String? get address1;
@@ -391,6 +392,6 @@ abstract class _AddressDetails implements AddressDetails {
   String? get zip;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressDetailsCopyWith<_$_AddressDetails> get copyWith =>
+  _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

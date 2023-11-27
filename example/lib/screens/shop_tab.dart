@@ -67,11 +67,47 @@ class ShopTabState extends State<ShopTab> {
         zip: '2229',
       );
 
-      final checkout = await shopifyCheckout.createCheckout(
+      Checkout checkout = await shopifyCheckout.createCheckout(
         lineItems: items,
         shippingAddress: address,
         email: '*********',
       );
+
+      /// add line items to current checkout
+      // checkout = await shopifyCheckout.addLineItemsToCheckout(
+      //   lineItems: items,
+      //   checkoutId: checkout.id,
+      // );
+
+      /// update line items to current checkout
+      ///
+      /// updates the lineitems of provided id's quantity to 2
+      // checkout = await shopifyCheckout.updateLineItemsInCheckout(
+      //   lineItems: [
+      //     LineItem(
+      //       quantity: 2,
+      //       variantId: bestSellingProducts[0].productVariants[0].id,
+      //       title: bestSellingProducts[0].title,
+      //       id: bestSellingProducts[0].id,
+      //     ),
+      //   ],
+      //   checkoutId: checkout.id,
+      // );
+
+      /// remove line items from current checkout
+      ///
+      /// removes the lineitems of provided id
+      // checkout = await shopifyCheckout.removeLineItemsFromCheckout(
+      //   lineItems: [
+      //     LineItem(
+      //       quantity: 1,
+      //       variantId: bestSellingProducts[0].productVariants[0].id,
+      //       title: bestSellingProducts[0].title,
+      //       id: bestSellingProducts[0].id,
+      //     ),
+      //   ],
+      //   checkoutId: checkout.id,
+      // );
 
       final idempotencyKey = UniqueKey().toString();
       await shopifyCheckout.shippingAddressUpdate(checkout.id, address);

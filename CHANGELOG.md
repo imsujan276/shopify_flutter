@@ -1,3 +1,7 @@
+## 1.4.3
+
+* updated example with add, update and remove lineitems for checkout
+
 ## 1.4.2
 
 * Minor fixes

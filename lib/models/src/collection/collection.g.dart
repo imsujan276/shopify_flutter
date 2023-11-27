@@ -6,8 +6,8 @@ part of 'collection.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Collection _$$_CollectionFromJson(Map<String, dynamic> json) =>
-    _$_Collection(
+_$CollectionImpl _$$CollectionImplFromJson(Map<String, dynamic> json) =>
+    _$CollectionImpl(
       title: json['title'] as String,
       id: json['id'] as String,
       products: Products.fromJson(json['products'] as Map<String, dynamic>),
@@ -21,7 +21,7 @@ _$_Collection _$$_CollectionFromJson(Map<String, dynamic> json) =>
           : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_CollectionToJson(_$_Collection instance) =>
+Map<String, dynamic> _$$CollectionImplToJson(_$CollectionImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'id': instance.id,

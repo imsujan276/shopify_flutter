@@ -3,7 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/enums/src/payment_token_type.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
+import 'package:shopify_flutter/shopify/src/shopify_custom.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
+
+import 'checkout_page.dart';
 
 class ShopTab extends StatefulWidget {
   const ShopTab({super.key});
@@ -22,6 +25,46 @@ class ShopTabState extends State<ShopTab> {
     _fetchShopInfo();
   }
 
+  Future<void> _fetchShopAdminInfo() async {
+    try {
+      final shopInfo = await ShopifyCustom.instance.customQuery(
+        gqlQuery: """
+query{
+  shop {
+    name
+    currencyCode
+    checkoutApiSupported
+    taxesIncluded
+    resourceLimits {
+      maxProductVariants
+    }
+    billingAddress {
+      id
+      address1
+      address2
+      city
+      company
+      country
+      countryCodeV2
+      formattedArea
+      latitude
+      longitude
+      phone
+      province
+      provinceCode
+      zip
+    }
+  }
+}
+""",
+        adminAccess: true,
+      );
+      log('shopInfo: $shopInfo');
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   Future<void> _fetchShopInfo() async {
     try {
       setState(() => _isLoading = true);
@@ -35,6 +78,73 @@ class ShopTabState extends State<ShopTab> {
     } catch (e) {
       debugPrint(e.toString());
       setState(() => _isLoading = false);
+    }
+  }
+
+  Future<void> testCheckoutProcess() async {
+    final shopifyStore = ShopifyStore.instance;
+    final shopifyAuth = ShopifyAuth.instance;
+    final shopifyCheckout = ShopifyCheckout.instance;
+
+    try {
+      setState(() => _isLoading = true);
+      await shopifyAuth.signInWithEmailAndPassword(
+        email: '****@gmail.com',
+        password: '*********',
+      );
+
+      final bestSellingProducts = await shopifyStore.getAllProducts();
+
+      var items = List<LineItem>.empty(growable: true);
+      items.add(LineItem(
+          quantity: 1,
+          variantId: bestSellingProducts[0].productVariants[0].id,
+          title: bestSellingProducts[0].title,
+          id: bestSellingProducts[0].id));
+
+      var address = Address(
+        address1: '11 Hinkler Avenue',
+        city: 'Sydney',
+        country: 'Australia',
+        countryCode: 'AU',
+        firstName: 'Anderson',
+        lastName: 'Fetter',
+        phone: '044444444',
+        zip: '2229',
+      );
+
+      Checkout checkout = await shopifyCheckout.createCheckout(
+        lineItems: items,
+        shippingAddress: address,
+        email: '****@gmail.com',
+      );
+      setState(() => _isLoading = false);
+      if (!mounted) return;
+      final status = await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => WebViewCheckout(checkout: checkout),
+        ),
+      );
+      if (status != null && status) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context)
+          ..clearSnackBars()
+          ..showSnackBar(
+            const SnackBar(
+              content: Text('Checkout Success'),
+            ),
+          );
+      }
+    } on Exception catch (e) {
+      log('error: $e');
+      setState(() => _isLoading = false);
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+        ..clearSnackBars()
+        ..showSnackBar(
+          SnackBar(content: Text('$e')),
+        );
     }
   }
 
@@ -133,18 +243,29 @@ class ShopTabState extends State<ShopTab> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Shop'),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.payment),
-        //     onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
-        //   ),
-        // ],
+        actions: [
+          // IconButton(
+          //   icon: const Icon(Icons.payment),
+          //   onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
+          // ),
+          IconButton(
+            icon: const Icon(Icons.payments_outlined),
+            onPressed: testCheckoutProcess,
+          ),
+          // IconButton(
+          //   icon: const Icon(Icons.refresh),
+          //   onPressed: _fetchShopAdminInfo,
+          // ),
+        ],
       ),
       body: Column(
         children: [
           if (_isLoading)
-            const Center(
-              child: CircularProgressIndicator(),
+            const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             )
           else
             Expanded(

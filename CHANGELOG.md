@@ -1,3 +1,7 @@
+## 1.4.4
+
+* update example with demo chekout flow in shop tab
+
 ## 1.4.3
 
 * updated example with add, update and remove lineitems for checkout

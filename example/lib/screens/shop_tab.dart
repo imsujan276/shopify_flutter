@@ -25,7 +25,7 @@ class ShopTabState extends State<ShopTab> {
     _fetchShopInfo();
   }
 
-  Future<void> _fetchShopAdminInfo() async {
+  Future<void> fetchShopAdminInfo() async {
     try {
       final shopInfo = await ShopifyCustom.instance.customQuery(
         gqlQuery: """
@@ -254,7 +254,7 @@ query{
           ),
           // IconButton(
           //   icon: const Icon(Icons.refresh),
-          //   onPressed: _fetchShopAdminInfo,
+          //   onPressed: fetchShopAdminInfo,
           // ),
         ],
       ),

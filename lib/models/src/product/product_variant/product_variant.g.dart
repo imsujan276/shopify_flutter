@@ -6,8 +6,8 @@ part of 'product_variant.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProductVariant _$$_ProductVariantFromJson(Map<String, dynamic> json) =>
-    _$_ProductVariant(
+_$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
+    _$ProductVariantImpl(
       price: PriceV2.fromJson(json['price'] as Map<String, dynamic>),
       title: json['title'] as String,
       weight: (json['weight'] as num).toDouble(),
@@ -35,7 +35,8 @@ _$_ProductVariant _$$_ProductVariantFromJson(Map<String, dynamic> json) =>
           : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ProductVariantToJson(_$_ProductVariant instance) =>
+Map<String, dynamic> _$$ProductVariantImplToJson(
+        _$ProductVariantImpl instance) =>
     <String, dynamic>{
       'price': instance.price,
       'title': instance.title,

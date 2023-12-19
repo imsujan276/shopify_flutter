@@ -69,10 +69,10 @@ class _$PriceV2CopyWithImpl<$Res, $Val extends PriceV2>
 }
 
 /// @nodoc
-abstract class _$$_PriceV2CopyWith<$Res> implements $PriceV2CopyWith<$Res> {
-  factory _$$_PriceV2CopyWith(
-          _$_PriceV2 value, $Res Function(_$_PriceV2) then) =
-      __$$_PriceV2CopyWithImpl<$Res>;
+abstract class _$$PriceV2ImplCopyWith<$Res> implements $PriceV2CopyWith<$Res> {
+  factory _$$PriceV2ImplCopyWith(
+          _$PriceV2Impl value, $Res Function(_$PriceV2Impl) then) =
+      __$$PriceV2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -81,10 +81,11 @@ abstract class _$$_PriceV2CopyWith<$Res> implements $PriceV2CopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PriceV2CopyWithImpl<$Res>
-    extends _$PriceV2CopyWithImpl<$Res, _$_PriceV2>
-    implements _$$_PriceV2CopyWith<$Res> {
-  __$$_PriceV2CopyWithImpl(_$_PriceV2 _value, $Res Function(_$_PriceV2) _then)
+class __$$PriceV2ImplCopyWithImpl<$Res>
+    extends _$PriceV2CopyWithImpl<$Res, _$PriceV2Impl>
+    implements _$$PriceV2ImplCopyWith<$Res> {
+  __$$PriceV2ImplCopyWithImpl(
+      _$PriceV2Impl _value, $Res Function(_$PriceV2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -93,7 +94,7 @@ class __$$_PriceV2CopyWithImpl<$Res>
     Object? amount = null,
     Object? currencyCode = null,
   }) {
-    return _then(_$_PriceV2(
+    return _then(_$PriceV2Impl(
       amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
@@ -108,14 +109,14 @@ class __$$_PriceV2CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PriceV2 extends _PriceV2 {
-  _$_PriceV2(
+class _$PriceV2Impl extends _PriceV2 {
+  _$PriceV2Impl(
       {@JsonKey(fromJson: JsonHelper.amountFromJson) required this.amount,
       required this.currencyCode})
       : super._();
 
-  factory _$_PriceV2.fromJson(Map<String, dynamic> json) =>
-      _$$_PriceV2FromJson(json);
+  factory _$PriceV2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$PriceV2ImplFromJson(json);
 
   @override
   @JsonKey(fromJson: JsonHelper.amountFromJson)
@@ -132,7 +133,7 @@ class _$_PriceV2 extends _PriceV2 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PriceV2 &&
+            other is _$PriceV2Impl &&
             (identical(other.amount, amount) || other.amount == amount) &&
             (identical(other.currencyCode, currencyCode) ||
                 other.currencyCode == currencyCode));
@@ -145,12 +146,12 @@ class _$_PriceV2 extends _PriceV2 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PriceV2CopyWith<_$_PriceV2> get copyWith =>
-      __$$_PriceV2CopyWithImpl<_$_PriceV2>(this, _$identity);
+  _$$PriceV2ImplCopyWith<_$PriceV2Impl> get copyWith =>
+      __$$PriceV2ImplCopyWithImpl<_$PriceV2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PriceV2ToJson(
+    return _$$PriceV2ImplToJson(
       this,
     );
   }
@@ -160,10 +161,10 @@ abstract class _PriceV2 extends PriceV2 {
   factory _PriceV2(
       {@JsonKey(fromJson: JsonHelper.amountFromJson)
       required final double amount,
-      required final String currencyCode}) = _$_PriceV2;
+      required final String currencyCode}) = _$PriceV2Impl;
   _PriceV2._() : super._();
 
-  factory _PriceV2.fromJson(Map<String, dynamic> json) = _$_PriceV2.fromJson;
+  factory _PriceV2.fromJson(Map<String, dynamic> json) = _$PriceV2Impl.fromJson;
 
   @override
   @JsonKey(fromJson: JsonHelper.amountFromJson)
@@ -172,6 +173,6 @@ abstract class _PriceV2 extends PriceV2 {
   String get currencyCode;
   @override
   @JsonKey(ignore: true)
-  _$$_PriceV2CopyWith<_$_PriceV2> get copyWith =>
+  _$$PriceV2ImplCopyWith<_$PriceV2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

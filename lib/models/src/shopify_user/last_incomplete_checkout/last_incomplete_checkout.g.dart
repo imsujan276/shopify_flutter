@@ -6,9 +6,9 @@ part of 'last_incomplete_checkout.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_LastIncompleteCheckout _$$_LastIncompleteCheckoutFromJson(
+_$LastIncompleteCheckoutImpl _$$LastIncompleteCheckoutImplFromJson(
         Map<String, dynamic> json) =>
-    _$_LastIncompleteCheckout(
+    _$LastIncompleteCheckoutImpl(
       completedAt: json['completedAt'] as String?,
       createdAt: json['createdAt'] as String?,
       email: json['email'] as String?,
@@ -25,8 +25,8 @@ _$_LastIncompleteCheckout _$$_LastIncompleteCheckoutFromJson(
       lineItems: JsonHelper.lineItems(json['lineItems']),
     );
 
-Map<String, dynamic> _$$_LastIncompleteCheckoutToJson(
-        _$_LastIncompleteCheckout instance) =>
+Map<String, dynamic> _$$LastIncompleteCheckoutImplToJson(
+        _$LastIncompleteCheckoutImpl instance) =>
     <String, dynamic>{
       'completedAt': instance.completedAt,
       'createdAt': instance.createdAt,

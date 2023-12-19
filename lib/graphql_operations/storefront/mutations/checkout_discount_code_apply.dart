@@ -88,6 +88,7 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
               product {

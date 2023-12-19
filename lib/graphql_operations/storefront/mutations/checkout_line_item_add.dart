@@ -83,6 +83,7 @@ mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
               product {

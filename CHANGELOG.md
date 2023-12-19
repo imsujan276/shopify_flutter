@@ -1,3 +1,7 @@
+## 1.5.0
+
+* optimized checkout and product models
+
 ## 1.4.4
 
 * update example with demo chekout flow in shop tab

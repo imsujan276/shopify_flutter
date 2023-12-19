@@ -67,21 +67,22 @@ class _$ProductsCopyWithImpl<$Res, $Val extends Products>
 }
 
 /// @nodoc
-abstract class _$$_ProductsCopyWith<$Res> implements $ProductsCopyWith<$Res> {
-  factory _$$_ProductsCopyWith(
-          _$_Products value, $Res Function(_$_Products) then) =
-      __$$_ProductsCopyWithImpl<$Res>;
+abstract class _$$ProductsImplCopyWith<$Res>
+    implements $ProductsCopyWith<$Res> {
+  factory _$$ProductsImplCopyWith(
+          _$ProductsImpl value, $Res Function(_$ProductsImpl) then) =
+      __$$ProductsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Product> productList, bool hasNextPage});
 }
 
 /// @nodoc
-class __$$_ProductsCopyWithImpl<$Res>
-    extends _$ProductsCopyWithImpl<$Res, _$_Products>
-    implements _$$_ProductsCopyWith<$Res> {
-  __$$_ProductsCopyWithImpl(
-      _$_Products _value, $Res Function(_$_Products) _then)
+class __$$ProductsImplCopyWithImpl<$Res>
+    extends _$ProductsCopyWithImpl<$Res, _$ProductsImpl>
+    implements _$$ProductsImplCopyWith<$Res> {
+  __$$ProductsImplCopyWithImpl(
+      _$ProductsImpl _value, $Res Function(_$ProductsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_ProductsCopyWithImpl<$Res>
     Object? productList = null,
     Object? hasNextPage = null,
   }) {
-    return _then(_$_Products(
+    return _then(_$ProductsImpl(
       productList: null == productList
           ? _value._productList
           : productList // ignore: cast_nullable_to_non_nullable
@@ -105,14 +106,14 @@ class __$$_ProductsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Products extends _Products {
-  _$_Products(
+class _$ProductsImpl extends _Products {
+  _$ProductsImpl(
       {required final List<Product> productList, required this.hasNextPage})
       : _productList = productList,
         super._();
 
-  factory _$_Products.fromJson(Map<String, dynamic> json) =>
-      _$$_ProductsFromJson(json);
+  factory _$ProductsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ProductsImplFromJson(json);
 
   final List<Product> _productList;
   @override
@@ -134,7 +135,7 @@ class _$_Products extends _Products {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Products &&
+            other is _$ProductsImpl &&
             const DeepCollectionEquality()
                 .equals(other._productList, _productList) &&
             (identical(other.hasNextPage, hasNextPage) ||
@@ -149,12 +150,12 @@ class _$_Products extends _Products {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ProductsCopyWith<_$_Products> get copyWith =>
-      __$$_ProductsCopyWithImpl<_$_Products>(this, _$identity);
+  _$$ProductsImplCopyWith<_$ProductsImpl> get copyWith =>
+      __$$ProductsImplCopyWithImpl<_$ProductsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProductsToJson(
+    return _$$ProductsImplToJson(
       this,
     );
   }
@@ -163,10 +164,11 @@ class _$_Products extends _Products {
 abstract class _Products extends Products {
   factory _Products(
       {required final List<Product> productList,
-      required final bool hasNextPage}) = _$_Products;
+      required final bool hasNextPage}) = _$ProductsImpl;
   _Products._() : super._();
 
-  factory _Products.fromJson(Map<String, dynamic> json) = _$_Products.fromJson;
+  factory _Products.fromJson(Map<String, dynamic> json) =
+      _$ProductsImpl.fromJson;
 
   @override
   List<Product> get productList;
@@ -174,6 +176,6 @@ abstract class _Products extends Products {
   bool get hasNextPage;
   @override
   @JsonKey(ignore: true)
-  _$$_ProductsCopyWith<_$_Products> get copyWith =>
+  _$$ProductsImplCopyWith<_$ProductsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -83,6 +83,7 @@ mutation checkoutLineItemsRemove($lineItemIds: [ID!]!, $checkoutId: ID!) {
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
               product {

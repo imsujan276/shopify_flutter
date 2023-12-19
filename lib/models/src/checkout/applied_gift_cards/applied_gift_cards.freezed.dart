@@ -93,11 +93,11 @@ class _$AppliedGiftCardsCopyWithImpl<$Res, $Val extends AppliedGiftCards>
 }
 
 /// @nodoc
-abstract class _$$_AppliedGiftCardsCopyWith<$Res>
+abstract class _$$AppliedGiftCardsImplCopyWith<$Res>
     implements $AppliedGiftCardsCopyWith<$Res> {
-  factory _$$_AppliedGiftCardsCopyWith(
-          _$_AppliedGiftCards value, $Res Function(_$_AppliedGiftCards) then) =
-      __$$_AppliedGiftCardsCopyWithImpl<$Res>;
+  factory _$$AppliedGiftCardsImplCopyWith(_$AppliedGiftCardsImpl value,
+          $Res Function(_$AppliedGiftCardsImpl) then) =
+      __$$AppliedGiftCardsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({PriceV2 amountUsedV2, PriceV2 balanceV2, String id});
@@ -109,11 +109,11 @@ abstract class _$$_AppliedGiftCardsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AppliedGiftCardsCopyWithImpl<$Res>
-    extends _$AppliedGiftCardsCopyWithImpl<$Res, _$_AppliedGiftCards>
-    implements _$$_AppliedGiftCardsCopyWith<$Res> {
-  __$$_AppliedGiftCardsCopyWithImpl(
-      _$_AppliedGiftCards _value, $Res Function(_$_AppliedGiftCards) _then)
+class __$$AppliedGiftCardsImplCopyWithImpl<$Res>
+    extends _$AppliedGiftCardsCopyWithImpl<$Res, _$AppliedGiftCardsImpl>
+    implements _$$AppliedGiftCardsImplCopyWith<$Res> {
+  __$$AppliedGiftCardsImplCopyWithImpl(_$AppliedGiftCardsImpl _value,
+      $Res Function(_$AppliedGiftCardsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -123,7 +123,7 @@ class __$$_AppliedGiftCardsCopyWithImpl<$Res>
     Object? balanceV2 = null,
     Object? id = null,
   }) {
-    return _then(_$_AppliedGiftCards(
+    return _then(_$AppliedGiftCardsImpl(
       amountUsedV2: null == amountUsedV2
           ? _value.amountUsedV2
           : amountUsedV2 // ignore: cast_nullable_to_non_nullable
@@ -142,13 +142,13 @@ class __$$_AppliedGiftCardsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AppliedGiftCards extends _AppliedGiftCards {
-  _$_AppliedGiftCards(
+class _$AppliedGiftCardsImpl extends _AppliedGiftCards {
+  _$AppliedGiftCardsImpl(
       {required this.amountUsedV2, required this.balanceV2, required this.id})
       : super._();
 
-  factory _$_AppliedGiftCards.fromJson(Map<String, dynamic> json) =>
-      _$$_AppliedGiftCardsFromJson(json);
+  factory _$AppliedGiftCardsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AppliedGiftCardsImplFromJson(json);
 
   @override
   final PriceV2 amountUsedV2;
@@ -166,7 +166,7 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AppliedGiftCards &&
+            other is _$AppliedGiftCardsImpl &&
             (identical(other.amountUsedV2, amountUsedV2) ||
                 other.amountUsedV2 == amountUsedV2) &&
             (identical(other.balanceV2, balanceV2) ||
@@ -181,12 +181,13 @@ class _$_AppliedGiftCards extends _AppliedGiftCards {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AppliedGiftCardsCopyWith<_$_AppliedGiftCards> get copyWith =>
-      __$$_AppliedGiftCardsCopyWithImpl<_$_AppliedGiftCards>(this, _$identity);
+  _$$AppliedGiftCardsImplCopyWith<_$AppliedGiftCardsImpl> get copyWith =>
+      __$$AppliedGiftCardsImplCopyWithImpl<_$AppliedGiftCardsImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AppliedGiftCardsToJson(
+    return _$$AppliedGiftCardsImplToJson(
       this,
     );
   }
@@ -196,11 +197,11 @@ abstract class _AppliedGiftCards extends AppliedGiftCards {
   factory _AppliedGiftCards(
       {required final PriceV2 amountUsedV2,
       required final PriceV2 balanceV2,
-      required final String id}) = _$_AppliedGiftCards;
+      required final String id}) = _$AppliedGiftCardsImpl;
   _AppliedGiftCards._() : super._();
 
   factory _AppliedGiftCards.fromJson(Map<String, dynamic> json) =
-      _$_AppliedGiftCards.fromJson;
+      _$AppliedGiftCardsImpl.fromJson;
 
   @override
   PriceV2 get amountUsedV2;
@@ -210,6 +211,6 @@ abstract class _AppliedGiftCards extends AppliedGiftCards {
   String get id;
   @override
   @JsonKey(ignore: true)
-  _$$_AppliedGiftCardsCopyWith<_$_AppliedGiftCards> get copyWith =>
+  _$$AppliedGiftCardsImplCopyWith<_$AppliedGiftCardsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -63,22 +63,22 @@ class _$LineItemsOrderCopyWithImpl<$Res, $Val extends LineItemsOrder>
 }
 
 /// @nodoc
-abstract class _$$_LineItemsOrderCopyWith<$Res>
+abstract class _$$LineItemsOrderImplCopyWith<$Res>
     implements $LineItemsOrderCopyWith<$Res> {
-  factory _$$_LineItemsOrderCopyWith(
-          _$_LineItemsOrder value, $Res Function(_$_LineItemsOrder) then) =
-      __$$_LineItemsOrderCopyWithImpl<$Res>;
+  factory _$$LineItemsOrderImplCopyWith(_$LineItemsOrderImpl value,
+          $Res Function(_$LineItemsOrderImpl) then) =
+      __$$LineItemsOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<LineItemOrder> lineItemOrderList});
 }
 
 /// @nodoc
-class __$$_LineItemsOrderCopyWithImpl<$Res>
-    extends _$LineItemsOrderCopyWithImpl<$Res, _$_LineItemsOrder>
-    implements _$$_LineItemsOrderCopyWith<$Res> {
-  __$$_LineItemsOrderCopyWithImpl(
-      _$_LineItemsOrder _value, $Res Function(_$_LineItemsOrder) _then)
+class __$$LineItemsOrderImplCopyWithImpl<$Res>
+    extends _$LineItemsOrderCopyWithImpl<$Res, _$LineItemsOrderImpl>
+    implements _$$LineItemsOrderImplCopyWith<$Res> {
+  __$$LineItemsOrderImplCopyWithImpl(
+      _$LineItemsOrderImpl _value, $Res Function(_$LineItemsOrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -86,7 +86,7 @@ class __$$_LineItemsOrderCopyWithImpl<$Res>
   $Res call({
     Object? lineItemOrderList = null,
   }) {
-    return _then(_$_LineItemsOrder(
+    return _then(_$LineItemsOrderImpl(
       lineItemOrderList: null == lineItemOrderList
           ? _value._lineItemOrderList
           : lineItemOrderList // ignore: cast_nullable_to_non_nullable
@@ -97,12 +97,12 @@ class __$$_LineItemsOrderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LineItemsOrder implements _LineItemsOrder {
-  _$_LineItemsOrder({required final List<LineItemOrder> lineItemOrderList})
+class _$LineItemsOrderImpl implements _LineItemsOrder {
+  _$LineItemsOrderImpl({required final List<LineItemOrder> lineItemOrderList})
       : _lineItemOrderList = lineItemOrderList;
 
-  factory _$_LineItemsOrder.fromJson(Map<String, dynamic> json) =>
-      _$$_LineItemsOrderFromJson(json);
+  factory _$LineItemsOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LineItemsOrderImplFromJson(json);
 
   final List<LineItemOrder> _lineItemOrderList;
   @override
@@ -122,7 +122,7 @@ class _$_LineItemsOrder implements _LineItemsOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LineItemsOrder &&
+            other is _$LineItemsOrderImpl &&
             const DeepCollectionEquality()
                 .equals(other._lineItemOrderList, _lineItemOrderList));
   }
@@ -135,12 +135,13 @@ class _$_LineItemsOrder implements _LineItemsOrder {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
-      __$$_LineItemsOrderCopyWithImpl<_$_LineItemsOrder>(this, _$identity);
+  _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
+      __$$LineItemsOrderImplCopyWithImpl<_$LineItemsOrderImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemsOrderToJson(
+    return _$$LineItemsOrderImplToJson(
       this,
     );
   }
@@ -149,15 +150,15 @@ class _$_LineItemsOrder implements _LineItemsOrder {
 abstract class _LineItemsOrder implements LineItemsOrder {
   factory _LineItemsOrder(
           {required final List<LineItemOrder> lineItemOrderList}) =
-      _$_LineItemsOrder;
+      _$LineItemsOrderImpl;
 
   factory _LineItemsOrder.fromJson(Map<String, dynamic> json) =
-      _$_LineItemsOrder.fromJson;
+      _$LineItemsOrderImpl.fromJson;
 
   @override
   List<LineItemOrder> get lineItemOrderList;
   @override
   @JsonKey(ignore: true)
-  _$$_LineItemsOrderCopyWith<_$_LineItemsOrder> get copyWith =>
+  _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

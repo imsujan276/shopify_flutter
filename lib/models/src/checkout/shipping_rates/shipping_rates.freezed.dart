@@ -84,11 +84,11 @@ class _$ShippingRatesCopyWithImpl<$Res, $Val extends ShippingRates>
 }
 
 /// @nodoc
-abstract class _$$_ShippingRatesCopyWith<$Res>
+abstract class _$$ShippingRatesImplCopyWith<$Res>
     implements $ShippingRatesCopyWith<$Res> {
-  factory _$$_ShippingRatesCopyWith(
-          _$_ShippingRates value, $Res Function(_$_ShippingRates) then) =
-      __$$_ShippingRatesCopyWithImpl<$Res>;
+  factory _$$ShippingRatesImplCopyWith(
+          _$ShippingRatesImpl value, $Res Function(_$ShippingRatesImpl) then) =
+      __$$ShippingRatesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String handle, String title, PriceV2 priceV2});
@@ -98,11 +98,11 @@ abstract class _$$_ShippingRatesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ShippingRatesCopyWithImpl<$Res>
-    extends _$ShippingRatesCopyWithImpl<$Res, _$_ShippingRates>
-    implements _$$_ShippingRatesCopyWith<$Res> {
-  __$$_ShippingRatesCopyWithImpl(
-      _$_ShippingRates _value, $Res Function(_$_ShippingRates) _then)
+class __$$ShippingRatesImplCopyWithImpl<$Res>
+    extends _$ShippingRatesCopyWithImpl<$Res, _$ShippingRatesImpl>
+    implements _$$ShippingRatesImplCopyWith<$Res> {
+  __$$ShippingRatesImplCopyWithImpl(
+      _$ShippingRatesImpl _value, $Res Function(_$ShippingRatesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +112,7 @@ class __$$_ShippingRatesCopyWithImpl<$Res>
     Object? title = null,
     Object? priceV2 = null,
   }) {
-    return _then(_$_ShippingRates(
+    return _then(_$ShippingRatesImpl(
       handle: null == handle
           ? _value.handle
           : handle // ignore: cast_nullable_to_non_nullable
@@ -131,13 +131,13 @@ class __$$_ShippingRatesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShippingRates extends _ShippingRates {
-  _$_ShippingRates(
+class _$ShippingRatesImpl extends _ShippingRates {
+  _$ShippingRatesImpl(
       {required this.handle, required this.title, required this.priceV2})
       : super._();
 
-  factory _$_ShippingRates.fromJson(Map<String, dynamic> json) =>
-      _$$_ShippingRatesFromJson(json);
+  factory _$ShippingRatesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShippingRatesImplFromJson(json);
 
   @override
   final String handle;
@@ -155,7 +155,7 @@ class _$_ShippingRates extends _ShippingRates {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShippingRates &&
+            other is _$ShippingRatesImpl &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.priceV2, priceV2) || other.priceV2 == priceV2));
@@ -168,12 +168,12 @@ class _$_ShippingRates extends _ShippingRates {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShippingRatesCopyWith<_$_ShippingRates> get copyWith =>
-      __$$_ShippingRatesCopyWithImpl<_$_ShippingRates>(this, _$identity);
+  _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
+      __$$ShippingRatesImplCopyWithImpl<_$ShippingRatesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingRatesToJson(
+    return _$$ShippingRatesImplToJson(
       this,
     );
   }
@@ -183,11 +183,11 @@ abstract class _ShippingRates extends ShippingRates {
   factory _ShippingRates(
       {required final String handle,
       required final String title,
-      required final PriceV2 priceV2}) = _$_ShippingRates;
+      required final PriceV2 priceV2}) = _$ShippingRatesImpl;
   _ShippingRates._() : super._();
 
   factory _ShippingRates.fromJson(Map<String, dynamic> json) =
-      _$_ShippingRates.fromJson;
+      _$ShippingRatesImpl.fromJson;
 
   @override
   String get handle;
@@ -197,6 +197,6 @@ abstract class _ShippingRates extends ShippingRates {
   PriceV2 get priceV2;
   @override
   @JsonKey(ignore: true)
-  _$$_ShippingRatesCopyWith<_$_ShippingRates> get copyWith =>
+  _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -149,11 +149,12 @@ class _$LastIncompleteCheckoutCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_LastIncompleteCheckoutCopyWith<$Res>
+abstract class _$$LastIncompleteCheckoutImplCopyWith<$Res>
     implements $LastIncompleteCheckoutCopyWith<$Res> {
-  factory _$$_LastIncompleteCheckoutCopyWith(_$_LastIncompleteCheckout value,
-          $Res Function(_$_LastIncompleteCheckout) then) =
-      __$$_LastIncompleteCheckoutCopyWithImpl<$Res>;
+  factory _$$LastIncompleteCheckoutImplCopyWith(
+          _$LastIncompleteCheckoutImpl value,
+          $Res Function(_$LastIncompleteCheckoutImpl) then) =
+      __$$LastIncompleteCheckoutImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -174,12 +175,13 @@ abstract class _$$_LastIncompleteCheckoutCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LastIncompleteCheckoutCopyWithImpl<$Res>
+class __$$LastIncompleteCheckoutImplCopyWithImpl<$Res>
     extends _$LastIncompleteCheckoutCopyWithImpl<$Res,
-        _$_LastIncompleteCheckout>
-    implements _$$_LastIncompleteCheckoutCopyWith<$Res> {
-  __$$_LastIncompleteCheckoutCopyWithImpl(_$_LastIncompleteCheckout _value,
-      $Res Function(_$_LastIncompleteCheckout) _then)
+        _$LastIncompleteCheckoutImpl>
+    implements _$$LastIncompleteCheckoutImplCopyWith<$Res> {
+  __$$LastIncompleteCheckoutImplCopyWithImpl(
+      _$LastIncompleteCheckoutImpl _value,
+      $Res Function(_$LastIncompleteCheckoutImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -195,7 +197,7 @@ class __$$_LastIncompleteCheckoutCopyWithImpl<$Res>
     Object? lineItemsSubtotalPrice = freezed,
     Object? lineItems = freezed,
   }) {
-    return _then(_$_LastIncompleteCheckout(
+    return _then(_$LastIncompleteCheckoutImpl(
       completedAt: freezed == completedAt
           ? _value.completedAt
           : completedAt // ignore: cast_nullable_to_non_nullable
@@ -238,8 +240,8 @@ class __$$_LastIncompleteCheckoutCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
-  _$_LastIncompleteCheckout(
+class _$LastIncompleteCheckoutImpl implements _LastIncompleteCheckout {
+  _$LastIncompleteCheckoutImpl(
       {this.completedAt,
       this.createdAt,
       this.email,
@@ -251,8 +253,8 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
       @JsonKey(fromJson: JsonHelper.lineItems) final List<LineItem>? lineItems})
       : _lineItems = lineItems;
 
-  factory _$_LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>
-      _$$_LastIncompleteCheckoutFromJson(json);
+  factory _$LastIncompleteCheckoutImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LastIncompleteCheckoutImplFromJson(json);
 
   @override
   final String? completedAt;
@@ -290,7 +292,7 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LastIncompleteCheckout &&
+            other is _$LastIncompleteCheckoutImpl &&
             (identical(other.completedAt, completedAt) ||
                 other.completedAt == completedAt) &&
             (identical(other.createdAt, createdAt) ||
@@ -325,13 +327,13 @@ class _$_LastIncompleteCheckout implements _LastIncompleteCheckout {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
-      __$$_LastIncompleteCheckoutCopyWithImpl<_$_LastIncompleteCheckout>(
-          this, _$identity);
+  _$$LastIncompleteCheckoutImplCopyWith<_$LastIncompleteCheckoutImpl>
+      get copyWith => __$$LastIncompleteCheckoutImplCopyWithImpl<
+          _$LastIncompleteCheckoutImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LastIncompleteCheckoutToJson(
+    return _$$LastIncompleteCheckoutImplToJson(
       this,
     );
   }
@@ -348,10 +350,10 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
       final PriceV2? totalPriceV2,
       final PriceV2? lineItemsSubtotalPrice,
       @JsonKey(fromJson: JsonHelper.lineItems)
-      final List<LineItem>? lineItems}) = _$_LastIncompleteCheckout;
+      final List<LineItem>? lineItems}) = _$LastIncompleteCheckoutImpl;
 
   factory _LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =
-      _$_LastIncompleteCheckout.fromJson;
+      _$LastIncompleteCheckoutImpl.fromJson;
 
   @override
   String? get completedAt;
@@ -374,6 +376,6 @@ abstract class _LastIncompleteCheckout implements LastIncompleteCheckout {
   List<LineItem>? get lineItems;
   @override
   @JsonKey(ignore: true)
-  _$$_LastIncompleteCheckoutCopyWith<_$_LastIncompleteCheckout> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$LastIncompleteCheckoutImplCopyWith<_$LastIncompleteCheckoutImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

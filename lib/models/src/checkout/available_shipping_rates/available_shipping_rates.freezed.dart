@@ -70,23 +70,25 @@ class _$AvailableShippingRatesCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AvailableShippingRatesCopyWith<$Res>
+abstract class _$$AvailableShippingRatesImplCopyWith<$Res>
     implements $AvailableShippingRatesCopyWith<$Res> {
-  factory _$$_AvailableShippingRatesCopyWith(_$_AvailableShippingRates value,
-          $Res Function(_$_AvailableShippingRates) then) =
-      __$$_AvailableShippingRatesCopyWithImpl<$Res>;
+  factory _$$AvailableShippingRatesImplCopyWith(
+          _$AvailableShippingRatesImpl value,
+          $Res Function(_$AvailableShippingRatesImpl) then) =
+      __$$AvailableShippingRatesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool ready, List<ShippingRates>? shippingRates});
 }
 
 /// @nodoc
-class __$$_AvailableShippingRatesCopyWithImpl<$Res>
+class __$$AvailableShippingRatesImplCopyWithImpl<$Res>
     extends _$AvailableShippingRatesCopyWithImpl<$Res,
-        _$_AvailableShippingRates>
-    implements _$$_AvailableShippingRatesCopyWith<$Res> {
-  __$$_AvailableShippingRatesCopyWithImpl(_$_AvailableShippingRates _value,
-      $Res Function(_$_AvailableShippingRates) _then)
+        _$AvailableShippingRatesImpl>
+    implements _$$AvailableShippingRatesImplCopyWith<$Res> {
+  __$$AvailableShippingRatesImplCopyWithImpl(
+      _$AvailableShippingRatesImpl _value,
+      $Res Function(_$AvailableShippingRatesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -95,7 +97,7 @@ class __$$_AvailableShippingRatesCopyWithImpl<$Res>
     Object? ready = null,
     Object? shippingRates = freezed,
   }) {
-    return _then(_$_AvailableShippingRates(
+    return _then(_$AvailableShippingRatesImpl(
       ready: null == ready
           ? _value.ready
           : ready // ignore: cast_nullable_to_non_nullable
@@ -110,14 +112,14 @@ class __$$_AvailableShippingRatesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AvailableShippingRates extends _AvailableShippingRates {
-  _$_AvailableShippingRates(
+class _$AvailableShippingRatesImpl extends _AvailableShippingRates {
+  _$AvailableShippingRatesImpl(
       {required this.ready, required final List<ShippingRates>? shippingRates})
       : _shippingRates = shippingRates,
         super._();
 
-  factory _$_AvailableShippingRates.fromJson(Map<String, dynamic> json) =>
-      _$$_AvailableShippingRatesFromJson(json);
+  factory _$AvailableShippingRatesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AvailableShippingRatesImplFromJson(json);
 
   @override
   final bool ready;
@@ -140,7 +142,7 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AvailableShippingRates &&
+            other is _$AvailableShippingRatesImpl &&
             (identical(other.ready, ready) || other.ready == ready) &&
             const DeepCollectionEquality()
                 .equals(other._shippingRates, _shippingRates));
@@ -154,13 +156,13 @@ class _$_AvailableShippingRates extends _AvailableShippingRates {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AvailableShippingRatesCopyWith<_$_AvailableShippingRates> get copyWith =>
-      __$$_AvailableShippingRatesCopyWithImpl<_$_AvailableShippingRates>(
-          this, _$identity);
+  _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
+      get copyWith => __$$AvailableShippingRatesImplCopyWithImpl<
+          _$AvailableShippingRatesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AvailableShippingRatesToJson(
+    return _$$AvailableShippingRatesImplToJson(
       this,
     );
   }
@@ -170,11 +172,11 @@ abstract class _AvailableShippingRates extends AvailableShippingRates {
   factory _AvailableShippingRates(
           {required final bool ready,
           required final List<ShippingRates>? shippingRates}) =
-      _$_AvailableShippingRates;
+      _$AvailableShippingRatesImpl;
   _AvailableShippingRates._() : super._();
 
   factory _AvailableShippingRates.fromJson(Map<String, dynamic> json) =
-      _$_AvailableShippingRates.fromJson;
+      _$AvailableShippingRatesImpl.fromJson;
 
   @override
   bool get ready;
@@ -182,6 +184,6 @@ abstract class _AvailableShippingRates extends AvailableShippingRates {
   List<ShippingRates>? get shippingRates;
   @override
   @JsonKey(ignore: true)
-  _$$_AvailableShippingRatesCopyWith<_$_AvailableShippingRates> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

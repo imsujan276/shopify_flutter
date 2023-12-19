@@ -97,6 +97,7 @@ mutation MyMutation($firstName: String, $lastName: String, $email: String!, $pas
                 weight
                 weightUnit
                 availableForSale
+                quantityAvailable
                 sku
                 requiresShipping
                 id

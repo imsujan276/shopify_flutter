@@ -61,21 +61,22 @@ class _$LineItemsCopyWithImpl<$Res, $Val extends LineItems>
 }
 
 /// @nodoc
-abstract class _$$_LineItemsCopyWith<$Res> implements $LineItemsCopyWith<$Res> {
-  factory _$$_LineItemsCopyWith(
-          _$_LineItems value, $Res Function(_$_LineItems) then) =
-      __$$_LineItemsCopyWithImpl<$Res>;
+abstract class _$$LineItemsImplCopyWith<$Res>
+    implements $LineItemsCopyWith<$Res> {
+  factory _$$LineItemsImplCopyWith(
+          _$LineItemsImpl value, $Res Function(_$LineItemsImpl) then) =
+      __$$LineItemsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<LineItem> lineItemList});
 }
 
 /// @nodoc
-class __$$_LineItemsCopyWithImpl<$Res>
-    extends _$LineItemsCopyWithImpl<$Res, _$_LineItems>
-    implements _$$_LineItemsCopyWith<$Res> {
-  __$$_LineItemsCopyWithImpl(
-      _$_LineItems _value, $Res Function(_$_LineItems) _then)
+class __$$LineItemsImplCopyWithImpl<$Res>
+    extends _$LineItemsCopyWithImpl<$Res, _$LineItemsImpl>
+    implements _$$LineItemsImplCopyWith<$Res> {
+  __$$LineItemsImplCopyWithImpl(
+      _$LineItemsImpl _value, $Res Function(_$LineItemsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_LineItemsCopyWithImpl<$Res>
   $Res call({
     Object? lineItemList = null,
   }) {
-    return _then(_$_LineItems(
+    return _then(_$LineItemsImpl(
       lineItemList: null == lineItemList
           ? _value._lineItemList
           : lineItemList // ignore: cast_nullable_to_non_nullable
@@ -94,12 +95,12 @@ class __$$_LineItemsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LineItems implements _LineItems {
-  _$_LineItems({required final List<LineItem> lineItemList})
+class _$LineItemsImpl implements _LineItems {
+  _$LineItemsImpl({required final List<LineItem> lineItemList})
       : _lineItemList = lineItemList;
 
-  factory _$_LineItems.fromJson(Map<String, dynamic> json) =>
-      _$$_LineItemsFromJson(json);
+  factory _$LineItemsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LineItemsImplFromJson(json);
 
   final List<LineItem> _lineItemList;
   @override
@@ -118,7 +119,7 @@ class _$_LineItems implements _LineItems {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LineItems &&
+            other is _$LineItemsImpl &&
             const DeepCollectionEquality()
                 .equals(other._lineItemList, _lineItemList));
   }
@@ -131,12 +132,12 @@ class _$_LineItems implements _LineItems {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LineItemsCopyWith<_$_LineItems> get copyWith =>
-      __$$_LineItemsCopyWithImpl<_$_LineItems>(this, _$identity);
+  _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
+      __$$LineItemsImplCopyWithImpl<_$LineItemsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemsToJson(
+    return _$$LineItemsImplToJson(
       this,
     );
   }
@@ -144,15 +145,15 @@ class _$_LineItems implements _LineItems {
 
 abstract class _LineItems implements LineItems {
   factory _LineItems({required final List<LineItem> lineItemList}) =
-      _$_LineItems;
+      _$LineItemsImpl;
 
   factory _LineItems.fromJson(Map<String, dynamic> json) =
-      _$_LineItems.fromJson;
+      _$LineItemsImpl.fromJson;
 
   @override
   List<LineItem> get lineItemList;
   @override
   @JsonKey(ignore: true)
-  _$$_LineItemsCopyWith<_$_LineItems> get copyWith =>
+  _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

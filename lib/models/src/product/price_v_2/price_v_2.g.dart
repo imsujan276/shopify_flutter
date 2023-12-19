@@ -6,12 +6,13 @@ part of 'price_v_2.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PriceV2 _$$_PriceV2FromJson(Map<String, dynamic> json) => _$_PriceV2(
+_$PriceV2Impl _$$PriceV2ImplFromJson(Map<String, dynamic> json) =>
+    _$PriceV2Impl(
       amount: JsonHelper.amountFromJson(json['amount']),
       currencyCode: json['currencyCode'] as String,
     );
 
-Map<String, dynamic> _$$_PriceV2ToJson(_$_PriceV2 instance) =>
+Map<String, dynamic> _$$PriceV2ImplToJson(_$PriceV2Impl instance) =>
     <String, dynamic>{
       'amount': instance.amount,
       'currencyCode': instance.currencyCode,

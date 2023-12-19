@@ -138,11 +138,11 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
 }
 
 /// @nodoc
-abstract class _$$_LineItemOrderCopyWith<$Res>
+abstract class _$$LineItemOrderImplCopyWith<$Res>
     implements $LineItemOrderCopyWith<$Res> {
-  factory _$$_LineItemOrderCopyWith(
-          _$_LineItemOrder value, $Res Function(_$_LineItemOrder) then) =
-      __$$_LineItemOrderCopyWithImpl<$Res>;
+  factory _$$LineItemOrderImplCopyWith(
+          _$LineItemOrderImpl value, $Res Function(_$LineItemOrderImpl) then) =
+      __$$LineItemOrderImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -163,11 +163,11 @@ abstract class _$$_LineItemOrderCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_LineItemOrderCopyWithImpl<$Res>
-    extends _$LineItemOrderCopyWithImpl<$Res, _$_LineItemOrder>
-    implements _$$_LineItemOrderCopyWith<$Res> {
-  __$$_LineItemOrderCopyWithImpl(
-      _$_LineItemOrder _value, $Res Function(_$_LineItemOrder) _then)
+class __$$LineItemOrderImplCopyWithImpl<$Res>
+    extends _$LineItemOrderCopyWithImpl<$Res, _$LineItemOrderImpl>
+    implements _$$LineItemOrderImplCopyWith<$Res> {
+  __$$LineItemOrderImplCopyWithImpl(
+      _$LineItemOrderImpl _value, $Res Function(_$LineItemOrderImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -181,7 +181,7 @@ class __$$_LineItemOrderCopyWithImpl<$Res>
     Object? discountAllocations = null,
     Object? variant = freezed,
   }) {
-    return _then(_$_LineItemOrder(
+    return _then(_$LineItemOrderImpl(
       currentQuantity: null == currentQuantity
           ? _value.currentQuantity
           : currentQuantity // ignore: cast_nullable_to_non_nullable
@@ -216,8 +216,8 @@ class __$$_LineItemOrderCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LineItemOrder extends _LineItemOrder {
-  _$_LineItemOrder(
+class _$LineItemOrderImpl extends _LineItemOrder {
+  _$LineItemOrderImpl(
       {required this.currentQuantity,
       required this.discountedTotalPrice,
       required this.originalTotalPrice,
@@ -228,8 +228,8 @@ class _$_LineItemOrder extends _LineItemOrder {
       : _discountAllocations = discountAllocations,
         super._();
 
-  factory _$_LineItemOrder.fromJson(Map<String, dynamic> json) =>
-      _$$_LineItemOrderFromJson(json);
+  factory _$LineItemOrderImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LineItemOrderImplFromJson(json);
 
   @override
   final int currentQuantity;
@@ -264,7 +264,7 @@ class _$_LineItemOrder extends _LineItemOrder {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LineItemOrder &&
+            other is _$LineItemOrderImpl &&
             (identical(other.currentQuantity, currentQuantity) ||
                 other.currentQuantity == currentQuantity) &&
             (identical(other.discountedTotalPrice, discountedTotalPrice) ||
@@ -294,12 +294,12 @@ class _$_LineItemOrder extends _LineItemOrder {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LineItemOrderCopyWith<_$_LineItemOrder> get copyWith =>
-      __$$_LineItemOrderCopyWithImpl<_$_LineItemOrder>(this, _$identity);
+  _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
+      __$$LineItemOrderImplCopyWithImpl<_$LineItemOrderImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemOrderToJson(
+    return _$$LineItemOrderImplToJson(
       this,
     );
   }
@@ -313,11 +313,11 @@ abstract class _LineItemOrder extends LineItemOrder {
       required final int quantity,
       required final String title,
       final List<DiscountAllocations> discountAllocations,
-      final ProductVariantCheckout? variant}) = _$_LineItemOrder;
+      final ProductVariantCheckout? variant}) = _$LineItemOrderImpl;
   _LineItemOrder._() : super._();
 
   factory _LineItemOrder.fromJson(Map<String, dynamic> json) =
-      _$_LineItemOrder.fromJson;
+      _$LineItemOrderImpl.fromJson;
 
   @override
   int get currentQuantity;
@@ -335,6 +335,6 @@ abstract class _LineItemOrder extends LineItemOrder {
   ProductVariantCheckout? get variant;
   @override
   @JsonKey(ignore: true)
-  _$$_LineItemOrderCopyWith<_$_LineItemOrder> get copyWith =>
+  _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

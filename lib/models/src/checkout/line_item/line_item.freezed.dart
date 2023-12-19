@@ -119,10 +119,11 @@ class _$LineItemCopyWithImpl<$Res, $Val extends LineItem>
 }
 
 /// @nodoc
-abstract class _$$_LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
-  factory _$$_LineItemCopyWith(
-          _$_LineItem value, $Res Function(_$_LineItem) then) =
-      __$$_LineItemCopyWithImpl<$Res>;
+abstract class _$$LineItemImplCopyWith<$Res>
+    implements $LineItemCopyWith<$Res> {
+  factory _$$LineItemImplCopyWith(
+          _$LineItemImpl value, $Res Function(_$LineItemImpl) then) =
+      __$$LineItemImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -139,11 +140,11 @@ abstract class _$$_LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_LineItemCopyWithImpl<$Res>
-    extends _$LineItemCopyWithImpl<$Res, _$_LineItem>
-    implements _$$_LineItemCopyWith<$Res> {
-  __$$_LineItemCopyWithImpl(
-      _$_LineItem _value, $Res Function(_$_LineItem) _then)
+class __$$LineItemImplCopyWithImpl<$Res>
+    extends _$LineItemCopyWithImpl<$Res, _$LineItemImpl>
+    implements _$$LineItemImplCopyWith<$Res> {
+  __$$LineItemImplCopyWithImpl(
+      _$LineItemImpl _value, $Res Function(_$LineItemImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -157,7 +158,7 @@ class __$$_LineItemCopyWithImpl<$Res>
     Object? id = freezed,
     Object? variant = freezed,
   }) {
-    return _then(_$_LineItem(
+    return _then(_$LineItemImpl(
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -192,8 +193,8 @@ class __$$_LineItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LineItem extends _LineItem {
-  _$_LineItem(
+class _$LineItemImpl extends _LineItem {
+  _$LineItemImpl(
       {required this.title,
       required this.quantity,
       final List<DiscountAllocations> discountAllocations = const [],
@@ -205,8 +206,8 @@ class _$_LineItem extends _LineItem {
         _customAttributes = customAttributes,
         super._();
 
-  factory _$_LineItem.fromJson(Map<String, dynamic> json) =>
-      _$$_LineItemFromJson(json);
+  factory _$LineItemImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LineItemImplFromJson(json);
 
   @override
   final String title;
@@ -248,7 +249,7 @@ class _$_LineItem extends _LineItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LineItem &&
+            other is _$LineItemImpl &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
@@ -277,12 +278,12 @@ class _$_LineItem extends _LineItem {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LineItemCopyWith<_$_LineItem> get copyWith =>
-      __$$_LineItemCopyWithImpl<_$_LineItem>(this, _$identity);
+  _$$LineItemImplCopyWith<_$LineItemImpl> get copyWith =>
+      __$$LineItemImplCopyWithImpl<_$LineItemImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LineItemToJson(
+    return _$$LineItemImplToJson(
       this,
     );
   }
@@ -296,10 +297,11 @@ abstract class _LineItem extends LineItem {
       final List<Attribute> customAttributes,
       final String? variantId,
       final String? id,
-      final ProductVariantCheckout? variant}) = _$_LineItem;
+      final ProductVariantCheckout? variant}) = _$LineItemImpl;
   _LineItem._() : super._();
 
-  factory _LineItem.fromJson(Map<String, dynamic> json) = _$_LineItem.fromJson;
+  factory _LineItem.fromJson(Map<String, dynamic> json) =
+      _$LineItemImpl.fromJson;
 
   @override
   String get title;
@@ -317,6 +319,6 @@ abstract class _LineItem extends LineItem {
   ProductVariantCheckout? get variant;
   @override
   @JsonKey(ignore: true)
-  _$$_LineItemCopyWith<_$_LineItem> get copyWith =>
+  _$$LineItemImplCopyWith<_$LineItemImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

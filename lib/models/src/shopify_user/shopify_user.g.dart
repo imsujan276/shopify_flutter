@@ -6,8 +6,8 @@ part of 'shopify_user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ShopifyUser _$$_ShopifyUserFromJson(Map<String, dynamic> json) =>
-    _$_ShopifyUser(
+_$ShopifyUserImpl _$$ShopifyUserImplFromJson(Map<String, dynamic> json) =>
+    _$ShopifyUserImpl(
       address: json['address'] == null
           ? null
           : Addresses.fromJson(json['address'] as Map<String, dynamic>),
@@ -25,7 +25,7 @@ _$_ShopifyUser _$$_ShopifyUserFromJson(Map<String, dynamic> json) =>
               json['lastIncompleteCheckout'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ShopifyUserToJson(_$_ShopifyUser instance) =>
+Map<String, dynamic> _$$ShopifyUserImplToJson(_$ShopifyUserImpl instance) =>
     <String, dynamic>{
       'address': instance.address,
       'createdAt': instance.createdAt,

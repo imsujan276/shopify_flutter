@@ -92,6 +92,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
               product {

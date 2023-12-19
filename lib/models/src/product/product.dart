@@ -147,31 +147,38 @@ class Product with _$Product {
       } else {
         final variants = json['productVariants'] ?? json['variants'];
         if (variants == null) return [];
-        return ((variants ?? []) as List).map((v) {
-          Map<String, dynamic> jsonVariant =
-              v is ProductVariant ? v.toJson() : v;
-          jsonVariant['price'] = jsonVariant['price'] is PriceV2
-              ? jsonVariant['price'].toJson()
-              : jsonVariant['price'];
-          jsonVariant['unitPrice'] = jsonVariant['unitPrice'] is PriceV2
-              ? jsonVariant['unitPrice'].toJson()
-              : jsonVariant['unitPrice'];
-          jsonVariant['compareAtPrice'] =
-              jsonVariant['compareAtPrice'] is PriceV2
-                  ? jsonVariant['compareAtPrice'].toJson()
-                  : jsonVariant['compareAtPrice'];
-          jsonVariant['image'] = jsonVariant['image'] is ShopifyImage
-              ? jsonVariant['image'].toJson()
-              : jsonVariant['image'];
-          jsonVariant['unitPriceMeasurement'] =
-              jsonVariant['unitPriceMeasurement'] is UnitPriceMeasurement
-                  ? jsonVariant['unitPriceMeasurement'].toJson()
-                  : jsonVariant['unitPriceMeasurement'];
-          jsonVariant['selectedOptions'] = jsonVariant['selectedOptions']
-              ?.map((e) => e is SelectedOption ? e.toJson() : e)
-              ?.toList();
-          return ProductVariant.fromJson(jsonVariant);
-        }).toList();
+        if (variants is Map) {
+          if (variants['edges'] == null) return [];
+          return ((variants['edges'] ?? []) as List)
+              .map((v) => ProductVariant.fromGraphJson(v ?? const {}))
+              .toList();
+        } else {
+          return ((variants ?? []) as List).map((v) {
+            Map<String, dynamic> jsonVariant =
+                v is ProductVariant ? v.toJson() : v;
+            jsonVariant['price'] = jsonVariant['price'] is PriceV2
+                ? jsonVariant['price'].toJson()
+                : jsonVariant['price'];
+            jsonVariant['unitPrice'] = jsonVariant['unitPrice'] is PriceV2
+                ? jsonVariant['unitPrice'].toJson()
+                : jsonVariant['unitPrice'];
+            jsonVariant['compareAtPrice'] =
+                jsonVariant['compareAtPrice'] is PriceV2
+                    ? jsonVariant['compareAtPrice'].toJson()
+                    : jsonVariant['compareAtPrice'];
+            jsonVariant['image'] = jsonVariant['image'] is ShopifyImage
+                ? jsonVariant['image'].toJson()
+                : jsonVariant['image'];
+            jsonVariant['unitPriceMeasurement'] =
+                jsonVariant['unitPriceMeasurement'] is UnitPriceMeasurement
+                    ? jsonVariant['unitPriceMeasurement'].toJson()
+                    : jsonVariant['unitPriceMeasurement'];
+            jsonVariant['selectedOptions'] = jsonVariant['selectedOptions']
+                ?.map((e) => e is SelectedOption ? e.toJson() : e)
+                ?.toList();
+            return ProductVariant.fromJson(jsonVariant);
+          }).toList();
+        }
       }
     } catch (e) {
       log("_getProductVariants error: $e");
@@ -224,10 +231,19 @@ class Product with _$Product {
       } else {
         final list = json['collectionList'] ?? json['collections'];
         if (list == null) return [];
-        return ((list ?? []) as List).map((v) {
-          final jsonCollection = v is AssociatedCollections ? v.toJson() : v;
-          return AssociatedCollections.fromJson(jsonCollection ?? const {});
-        }).toList();
+        if (list is Map) {
+          if (list['edges'] == null) return [];
+          return ((list['edges'] ?? []) as List).map((v) {
+            final jsonCollection = v is AssociatedCollections ? v.toJson() : v;
+            return AssociatedCollections.fromGraphJson(
+                jsonCollection ?? const {});
+          }).toList();
+        } else {
+          return ((list ?? []) as List).map((v) {
+            final jsonCollection = v is AssociatedCollections ? v.toJson() : v;
+            return AssociatedCollections.fromJson(jsonCollection ?? const {});
+          }).toList();
+        }
       }
     } catch (e) {
       log("_getCollectionList error: $e");
@@ -244,10 +260,17 @@ class Product with _$Product {
             .toList();
       } else {
         if (json['images'] == null) return [];
-        return ((json['images'] ?? []) as List).map((image) {
-          final jsonImage = image is ShopifyImage ? image.toJson() : image;
-          return ShopifyImage.fromJson(jsonImage ?? const {});
-        }).toList();
+        if (json['images'] is Map) {
+          if (json['images']?['edges'] == null) return [];
+          return ((json['images']?['edges'] ?? []) as List)
+              .map((image) => ShopifyImage.fromJson(image['node'] ?? const {}))
+              .toList();
+        } else {
+          return ((json['images'] ?? []) as List).map((image) {
+            final jsonImage = image is ShopifyImage ? image.toJson() : image;
+            return ShopifyImage.fromJson(jsonImage ?? const {});
+          }).toList();
+        }
       }
     } catch (e) {
       log("_getImageList error: $e");

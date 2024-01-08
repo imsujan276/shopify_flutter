@@ -100,11 +100,12 @@ class _$AssociatedCollectionsCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_AssociatedCollectionsCopyWith<$Res>
+abstract class _$$AssociatedCollectionsImplCopyWith<$Res>
     implements $AssociatedCollectionsCopyWith<$Res> {
-  factory _$$_AssociatedCollectionsCopyWith(_$_AssociatedCollections value,
-          $Res Function(_$_AssociatedCollections) then) =
-      __$$_AssociatedCollectionsCopyWithImpl<$Res>;
+  factory _$$AssociatedCollectionsImplCopyWith(
+          _$AssociatedCollectionsImpl value,
+          $Res Function(_$AssociatedCollectionsImpl) then) =
+      __$$AssociatedCollectionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -117,11 +118,12 @@ abstract class _$$_AssociatedCollectionsCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AssociatedCollectionsCopyWithImpl<$Res>
-    extends _$AssociatedCollectionsCopyWithImpl<$Res, _$_AssociatedCollections>
-    implements _$$_AssociatedCollectionsCopyWith<$Res> {
-  __$$_AssociatedCollectionsCopyWithImpl(_$_AssociatedCollections _value,
-      $Res Function(_$_AssociatedCollections) _then)
+class __$$AssociatedCollectionsImplCopyWithImpl<$Res>
+    extends _$AssociatedCollectionsCopyWithImpl<$Res,
+        _$AssociatedCollectionsImpl>
+    implements _$$AssociatedCollectionsImplCopyWith<$Res> {
+  __$$AssociatedCollectionsImplCopyWithImpl(_$AssociatedCollectionsImpl _value,
+      $Res Function(_$AssociatedCollectionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -134,7 +136,7 @@ class __$$_AssociatedCollectionsCopyWithImpl<$Res>
     Object? descriptionHtml = freezed,
     Object? handle = freezed,
   }) {
-    return _then(_$_AssociatedCollections(
+    return _then(_$AssociatedCollectionsImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -165,8 +167,8 @@ class __$$_AssociatedCollectionsCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AssociatedCollections extends _AssociatedCollections {
-  _$_AssociatedCollections(
+class _$AssociatedCollectionsImpl extends _AssociatedCollections {
+  _$AssociatedCollectionsImpl(
       {required this.id,
       required this.title,
       required this.description,
@@ -175,8 +177,8 @@ class _$_AssociatedCollections extends _AssociatedCollections {
       this.handle})
       : super._();
 
-  factory _$_AssociatedCollections.fromJson(Map<String, dynamic> json) =>
-      _$$_AssociatedCollectionsFromJson(json);
+  factory _$AssociatedCollectionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AssociatedCollectionsImplFromJson(json);
 
   @override
   final String id;
@@ -200,7 +202,7 @@ class _$_AssociatedCollections extends _AssociatedCollections {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AssociatedCollections &&
+            other is _$AssociatedCollectionsImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -220,13 +222,13 @@ class _$_AssociatedCollections extends _AssociatedCollections {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AssociatedCollectionsCopyWith<_$_AssociatedCollections> get copyWith =>
-      __$$_AssociatedCollectionsCopyWithImpl<_$_AssociatedCollections>(
-          this, _$identity);
+  _$$AssociatedCollectionsImplCopyWith<_$AssociatedCollectionsImpl>
+      get copyWith => __$$AssociatedCollectionsImplCopyWithImpl<
+          _$AssociatedCollectionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AssociatedCollectionsToJson(
+    return _$$AssociatedCollectionsImplToJson(
       this,
     );
   }
@@ -239,11 +241,11 @@ abstract class _AssociatedCollections extends AssociatedCollections {
       required final String description,
       required final String updatedAt,
       final String? descriptionHtml,
-      final String? handle}) = _$_AssociatedCollections;
+      final String? handle}) = _$AssociatedCollectionsImpl;
   _AssociatedCollections._() : super._();
 
   factory _AssociatedCollections.fromJson(Map<String, dynamic> json) =
-      _$_AssociatedCollections.fromJson;
+      _$AssociatedCollectionsImpl.fromJson;
 
   @override
   String get id;
@@ -259,6 +261,6 @@ abstract class _AssociatedCollections extends AssociatedCollections {
   String? get handle;
   @override
   @JsonKey(ignore: true)
-  _$$_AssociatedCollectionsCopyWith<_$_AssociatedCollections> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$AssociatedCollectionsImplCopyWith<_$AssociatedCollectionsImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:shopify_flutter/enums/src/payment_token_type.dart';
 import 'package:shopify_flutter/enums/src/sort_key_order.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_free.dart';
@@ -587,7 +586,7 @@ class ShopifyCheckout with ShopifyError {
           'paymentAmount': {'amount': amount, 'currencyCode': currencyCode},
           'idempotencyKey': idempotencyKey,
           'paymentData': token,
-          'type': describeEnum(paymentTokenType),
+          'type': paymentTokenType.name,
           'billingAddress': {
             'address1': billingAddress?.address1 ?? '',
             'address2': billingAddress?.address2 ?? '',

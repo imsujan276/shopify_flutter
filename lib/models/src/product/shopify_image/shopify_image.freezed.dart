@@ -74,22 +74,22 @@ class _$ShopifyImageCopyWithImpl<$Res, $Val extends ShopifyImage>
 }
 
 /// @nodoc
-abstract class _$$_ShopifyImageCopyWith<$Res>
+abstract class _$$ShopifyImageImplCopyWith<$Res>
     implements $ShopifyImageCopyWith<$Res> {
-  factory _$$_ShopifyImageCopyWith(
-          _$_ShopifyImage value, $Res Function(_$_ShopifyImage) then) =
-      __$$_ShopifyImageCopyWithImpl<$Res>;
+  factory _$$ShopifyImageImplCopyWith(
+          _$ShopifyImageImpl value, $Res Function(_$ShopifyImageImpl) then) =
+      __$$ShopifyImageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String originalSrc, String id, String? altText});
 }
 
 /// @nodoc
-class __$$_ShopifyImageCopyWithImpl<$Res>
-    extends _$ShopifyImageCopyWithImpl<$Res, _$_ShopifyImage>
-    implements _$$_ShopifyImageCopyWith<$Res> {
-  __$$_ShopifyImageCopyWithImpl(
-      _$_ShopifyImage _value, $Res Function(_$_ShopifyImage) _then)
+class __$$ShopifyImageImplCopyWithImpl<$Res>
+    extends _$ShopifyImageCopyWithImpl<$Res, _$ShopifyImageImpl>
+    implements _$$ShopifyImageImplCopyWith<$Res> {
+  __$$ShopifyImageImplCopyWithImpl(
+      _$ShopifyImageImpl _value, $Res Function(_$ShopifyImageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_ShopifyImageCopyWithImpl<$Res>
     Object? id = null,
     Object? altText = freezed,
   }) {
-    return _then(_$_ShopifyImage(
+    return _then(_$ShopifyImageImpl(
       originalSrc: null == originalSrc
           ? _value.originalSrc
           : originalSrc // ignore: cast_nullable_to_non_nullable
@@ -118,12 +118,13 @@ class __$$_ShopifyImageCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShopifyImage extends _ShopifyImage {
-  _$_ShopifyImage({required this.originalSrc, required this.id, this.altText})
+class _$ShopifyImageImpl extends _ShopifyImage {
+  _$ShopifyImageImpl(
+      {required this.originalSrc, required this.id, this.altText})
       : super._();
 
-  factory _$_ShopifyImage.fromJson(Map<String, dynamic> json) =>
-      _$$_ShopifyImageFromJson(json);
+  factory _$ShopifyImageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShopifyImageImplFromJson(json);
 
   @override
   final String originalSrc;
@@ -141,7 +142,7 @@ class _$_ShopifyImage extends _ShopifyImage {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShopifyImage &&
+            other is _$ShopifyImageImpl &&
             (identical(other.originalSrc, originalSrc) ||
                 other.originalSrc == originalSrc) &&
             (identical(other.id, id) || other.id == id) &&
@@ -155,12 +156,12 @@ class _$_ShopifyImage extends _ShopifyImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShopifyImageCopyWith<_$_ShopifyImage> get copyWith =>
-      __$$_ShopifyImageCopyWithImpl<_$_ShopifyImage>(this, _$identity);
+  _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
+      __$$ShopifyImageImplCopyWithImpl<_$ShopifyImageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShopifyImageToJson(
+    return _$$ShopifyImageImplToJson(
       this,
     );
   }
@@ -170,11 +171,11 @@ abstract class _ShopifyImage extends ShopifyImage {
   factory _ShopifyImage(
       {required final String originalSrc,
       required final String id,
-      final String? altText}) = _$_ShopifyImage;
+      final String? altText}) = _$ShopifyImageImpl;
   _ShopifyImage._() : super._();
 
   factory _ShopifyImage.fromJson(Map<String, dynamic> json) =
-      _$_ShopifyImage.fromJson;
+      _$ShopifyImageImpl.fromJson;
 
   @override
   String get originalSrc;
@@ -184,6 +185,6 @@ abstract class _ShopifyImage extends ShopifyImage {
   String? get altText;
   @override
   @JsonKey(ignore: true)
-  _$$_ShopifyImageCopyWith<_$_ShopifyImage> get copyWith =>
+  _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

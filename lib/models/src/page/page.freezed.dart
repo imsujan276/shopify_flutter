@@ -110,9 +110,10 @@ class _$PageCopyWithImpl<$Res, $Val extends Page>
 }
 
 /// @nodoc
-abstract class _$$_PageCopyWith<$Res> implements $PageCopyWith<$Res> {
-  factory _$$_PageCopyWith(_$_Page value, $Res Function(_$_Page) then) =
-      __$$_PageCopyWithImpl<$Res>;
+abstract class _$$PageImplCopyWith<$Res> implements $PageCopyWith<$Res> {
+  factory _$$PageImplCopyWith(
+          _$PageImpl value, $Res Function(_$PageImpl) then) =
+      __$$PageImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -127,9 +128,10 @@ abstract class _$$_PageCopyWith<$Res> implements $PageCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res, _$_Page>
-    implements _$$_PageCopyWith<$Res> {
-  __$$_PageCopyWithImpl(_$_Page _value, $Res Function(_$_Page) _then)
+class __$$PageImplCopyWithImpl<$Res>
+    extends _$PageCopyWithImpl<$Res, _$PageImpl>
+    implements _$$PageImplCopyWith<$Res> {
+  __$$PageImplCopyWithImpl(_$PageImpl _value, $Res Function(_$PageImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -144,7 +146,7 @@ class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res, _$_Page>
     Object? updatedAt = null,
     Object? url = null,
   }) {
-    return _then(_$_Page(
+    return _then(_$PageImpl(
       body: null == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -183,8 +185,8 @@ class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res, _$_Page>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Page extends _Page {
-  _$_Page(
+class _$PageImpl extends _Page {
+  _$PageImpl(
       {required this.body,
       required this.bodySummary,
       required this.createdAt,
@@ -195,7 +197,8 @@ class _$_Page extends _Page {
       required this.url})
       : super._();
 
-  factory _$_Page.fromJson(Map<String, dynamic> json) => _$$_PageFromJson(json);
+  factory _$PageImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PageImplFromJson(json);
 
   @override
   final String body;
@@ -223,7 +226,7 @@ class _$_Page extends _Page {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Page &&
+            other is _$PageImpl &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.bodySummary, bodySummary) ||
                 other.bodySummary == bodySummary) &&
@@ -245,12 +248,12 @@ class _$_Page extends _Page {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PageCopyWith<_$_Page> get copyWith =>
-      __$$_PageCopyWithImpl<_$_Page>(this, _$identity);
+  _$$PageImplCopyWith<_$PageImpl> get copyWith =>
+      __$$PageImplCopyWithImpl<_$PageImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PageToJson(
+    return _$$PageImplToJson(
       this,
     );
   }
@@ -265,10 +268,10 @@ abstract class _Page extends Page {
       required final String id,
       required final String title,
       required final DateTime updatedAt,
-      required final String url}) = _$_Page;
+      required final String url}) = _$PageImpl;
   _Page._() : super._();
 
-  factory _Page.fromJson(Map<String, dynamic> json) = _$_Page.fromJson;
+  factory _Page.fromJson(Map<String, dynamic> json) = _$PageImpl.fromJson;
 
   @override
   String get body;
@@ -288,5 +291,6 @@ abstract class _Page extends Page {
   String get url;
   @override
   @JsonKey(ignore: true)
-  _$$_PageCopyWith<_$_Page> get copyWith => throw _privateConstructorUsedError;
+  _$$PageImplCopyWith<_$PageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

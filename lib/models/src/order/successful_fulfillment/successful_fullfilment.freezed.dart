@@ -73,11 +73,12 @@ class _$SuccessfulFullfilmentCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_SuccessfulFullfilmentCopyWith<$Res>
+abstract class _$$SuccessfulFullfilmentImplCopyWith<$Res>
     implements $SuccessfulFullfilmentCopyWith<$Res> {
-  factory _$$_SuccessfulFullfilmentCopyWith(_$_SuccessfulFullfilment value,
-          $Res Function(_$_SuccessfulFullfilment) then) =
-      __$$_SuccessfulFullfilmentCopyWithImpl<$Res>;
+  factory _$$SuccessfulFullfilmentImplCopyWith(
+          _$SuccessfulFullfilmentImpl value,
+          $Res Function(_$SuccessfulFullfilmentImpl) then) =
+      __$$SuccessfulFullfilmentImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -86,11 +87,12 @@ abstract class _$$_SuccessfulFullfilmentCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SuccessfulFullfilmentCopyWithImpl<$Res>
-    extends _$SuccessfulFullfilmentCopyWithImpl<$Res, _$_SuccessfulFullfilment>
-    implements _$$_SuccessfulFullfilmentCopyWith<$Res> {
-  __$$_SuccessfulFullfilmentCopyWithImpl(_$_SuccessfulFullfilment _value,
-      $Res Function(_$_SuccessfulFullfilment) _then)
+class __$$SuccessfulFullfilmentImplCopyWithImpl<$Res>
+    extends _$SuccessfulFullfilmentCopyWithImpl<$Res,
+        _$SuccessfulFullfilmentImpl>
+    implements _$$SuccessfulFullfilmentImplCopyWith<$Res> {
+  __$$SuccessfulFullfilmentImplCopyWithImpl(_$SuccessfulFullfilmentImpl _value,
+      $Res Function(_$SuccessfulFullfilmentImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +101,7 @@ class __$$_SuccessfulFullfilmentCopyWithImpl<$Res>
     Object? trackingCompany = freezed,
     Object? trackingInfo = freezed,
   }) {
-    return _then(_$_SuccessfulFullfilment(
+    return _then(_$SuccessfulFullfilmentImpl(
       trackingCompany: freezed == trackingCompany
           ? _value.trackingCompany
           : trackingCompany // ignore: cast_nullable_to_non_nullable
@@ -114,15 +116,15 @@ class __$$_SuccessfulFullfilmentCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SuccessfulFullfilment extends _SuccessfulFullfilment {
-  _$_SuccessfulFullfilment(
+class _$SuccessfulFullfilmentImpl extends _SuccessfulFullfilment {
+  _$SuccessfulFullfilmentImpl(
       {required this.trackingCompany,
       required final List<SuccessfulFullfilmentTrackingInfo>? trackingInfo})
       : _trackingInfo = trackingInfo,
         super._();
 
-  factory _$_SuccessfulFullfilment.fromJson(Map<String, dynamic> json) =>
-      _$$_SuccessfulFullfilmentFromJson(json);
+  factory _$SuccessfulFullfilmentImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SuccessfulFullfilmentImplFromJson(json);
 
   @override
   final String? trackingCompany;
@@ -145,7 +147,7 @@ class _$_SuccessfulFullfilment extends _SuccessfulFullfilment {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SuccessfulFullfilment &&
+            other is _$SuccessfulFullfilmentImpl &&
             (identical(other.trackingCompany, trackingCompany) ||
                 other.trackingCompany == trackingCompany) &&
             const DeepCollectionEquality()
@@ -160,13 +162,13 @@ class _$_SuccessfulFullfilment extends _SuccessfulFullfilment {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SuccessfulFullfilmentCopyWith<_$_SuccessfulFullfilment> get copyWith =>
-      __$$_SuccessfulFullfilmentCopyWithImpl<_$_SuccessfulFullfilment>(
-          this, _$identity);
+  _$$SuccessfulFullfilmentImplCopyWith<_$SuccessfulFullfilmentImpl>
+      get copyWith => __$$SuccessfulFullfilmentImplCopyWithImpl<
+          _$SuccessfulFullfilmentImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SuccessfulFullfilmentToJson(
+    return _$$SuccessfulFullfilmentImplToJson(
       this,
     );
   }
@@ -176,11 +178,11 @@ abstract class _SuccessfulFullfilment extends SuccessfulFullfilment {
   factory _SuccessfulFullfilment(
       {required final String? trackingCompany,
       required final List<SuccessfulFullfilmentTrackingInfo>?
-          trackingInfo}) = _$_SuccessfulFullfilment;
+          trackingInfo}) = _$SuccessfulFullfilmentImpl;
   _SuccessfulFullfilment._() : super._();
 
   factory _SuccessfulFullfilment.fromJson(Map<String, dynamic> json) =
-      _$_SuccessfulFullfilment.fromJson;
+      _$SuccessfulFullfilmentImpl.fromJson;
 
   @override
   String? get trackingCompany;
@@ -188,6 +190,6 @@ abstract class _SuccessfulFullfilment extends SuccessfulFullfilment {
   List<SuccessfulFullfilmentTrackingInfo>? get trackingInfo;
   @override
   @JsonKey(ignore: true)
-  _$$_SuccessfulFullfilmentCopyWith<_$_SuccessfulFullfilment> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SuccessfulFullfilmentImplCopyWith<_$SuccessfulFullfilmentImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

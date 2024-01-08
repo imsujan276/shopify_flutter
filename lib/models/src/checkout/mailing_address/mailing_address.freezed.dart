@@ -175,11 +175,11 @@ class _$MailingAddressCopyWithImpl<$Res, $Val extends MailingAddress>
 }
 
 /// @nodoc
-abstract class _$$_MailingAddressCopyWith<$Res>
+abstract class _$$MailingAddressImplCopyWith<$Res>
     implements $MailingAddressCopyWith<$Res> {
-  factory _$$_MailingAddressCopyWith(
-          _$_MailingAddress value, $Res Function(_$_MailingAddress) then) =
-      __$$_MailingAddressCopyWithImpl<$Res>;
+  factory _$$MailingAddressImplCopyWith(_$MailingAddressImpl value,
+          $Res Function(_$MailingAddressImpl) then) =
+      __$$MailingAddressImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -203,11 +203,11 @@ abstract class _$$_MailingAddressCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_MailingAddressCopyWithImpl<$Res>
-    extends _$MailingAddressCopyWithImpl<$Res, _$_MailingAddress>
-    implements _$$_MailingAddressCopyWith<$Res> {
-  __$$_MailingAddressCopyWithImpl(
-      _$_MailingAddress _value, $Res Function(_$_MailingAddress) _then)
+class __$$MailingAddressImplCopyWithImpl<$Res>
+    extends _$MailingAddressCopyWithImpl<$Res, _$MailingAddressImpl>
+    implements _$$MailingAddressImplCopyWith<$Res> {
+  __$$MailingAddressImplCopyWithImpl(
+      _$MailingAddressImpl _value, $Res Function(_$MailingAddressImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -231,7 +231,7 @@ class __$$_MailingAddressCopyWithImpl<$Res>
     Object? province = freezed,
     Object? provinceCode = freezed,
   }) {
-    return _then(_$_MailingAddress(
+    return _then(_$MailingAddressImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -306,8 +306,8 @@ class __$$_MailingAddressCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MailingAddress implements _MailingAddress {
-  _$_MailingAddress(
+class _$MailingAddressImpl implements _MailingAddress {
+  _$MailingAddressImpl(
       {required this.id,
       required this.address1,
       required this.city,
@@ -326,8 +326,8 @@ class _$_MailingAddress implements _MailingAddress {
       this.province,
       this.provinceCode});
 
-  factory _$_MailingAddress.fromJson(Map<String, dynamic> json) =>
-      _$$_MailingAddressFromJson(json);
+  factory _$MailingAddressImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MailingAddressImplFromJson(json);
 
   @override
   final String id;
@@ -373,7 +373,7 @@ class _$_MailingAddress implements _MailingAddress {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MailingAddress &&
+            other is _$MailingAddressImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.address1, address1) ||
                 other.address1 == address1) &&
@@ -428,12 +428,13 @@ class _$_MailingAddress implements _MailingAddress {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
-      __$$_MailingAddressCopyWithImpl<_$_MailingAddress>(this, _$identity);
+  _$$MailingAddressImplCopyWith<_$MailingAddressImpl> get copyWith =>
+      __$$MailingAddressImplCopyWithImpl<_$MailingAddressImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MailingAddressToJson(
+    return _$$MailingAddressImplToJson(
       this,
     );
   }
@@ -457,10 +458,10 @@ abstract class _MailingAddress implements MailingAddress {
       final double? longitude,
       final String? phone,
       final String? province,
-      final String? provinceCode}) = _$_MailingAddress;
+      final String? provinceCode}) = _$MailingAddressImpl;
 
   factory _MailingAddress.fromJson(Map<String, dynamic> json) =
-      _$_MailingAddress.fromJson;
+      _$MailingAddressImpl.fromJson;
 
   @override
   String get id;
@@ -498,6 +499,6 @@ abstract class _MailingAddress implements MailingAddress {
   String? get provinceCode;
   @override
   @JsonKey(ignore: true)
-  _$$_MailingAddressCopyWith<_$_MailingAddress> get copyWith =>
+  _$$MailingAddressImplCopyWith<_$MailingAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

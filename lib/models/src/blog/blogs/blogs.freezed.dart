@@ -60,18 +60,21 @@ class _$BlogsCopyWithImpl<$Res, $Val extends Blogs>
 }
 
 /// @nodoc
-abstract class _$$_BlogsCopyWith<$Res> implements $BlogsCopyWith<$Res> {
-  factory _$$_BlogsCopyWith(_$_Blogs value, $Res Function(_$_Blogs) then) =
-      __$$_BlogsCopyWithImpl<$Res>;
+abstract class _$$BlogsImplCopyWith<$Res> implements $BlogsCopyWith<$Res> {
+  factory _$$BlogsImplCopyWith(
+          _$BlogsImpl value, $Res Function(_$BlogsImpl) then) =
+      __$$BlogsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Blog> blogList});
 }
 
 /// @nodoc
-class __$$_BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res, _$_Blogs>
-    implements _$$_BlogsCopyWith<$Res> {
-  __$$_BlogsCopyWithImpl(_$_Blogs _value, $Res Function(_$_Blogs) _then)
+class __$$BlogsImplCopyWithImpl<$Res>
+    extends _$BlogsCopyWithImpl<$Res, _$BlogsImpl>
+    implements _$$BlogsImplCopyWith<$Res> {
+  __$$BlogsImplCopyWithImpl(
+      _$BlogsImpl _value, $Res Function(_$BlogsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -79,7 +82,7 @@ class __$$_BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res, _$_Blogs>
   $Res call({
     Object? blogList = null,
   }) {
-    return _then(_$_Blogs(
+    return _then(_$BlogsImpl(
       blogList: null == blogList
           ? _value._blogList
           : blogList // ignore: cast_nullable_to_non_nullable
@@ -90,11 +93,11 @@ class __$$_BlogsCopyWithImpl<$Res> extends _$BlogsCopyWithImpl<$Res, _$_Blogs>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Blogs implements _Blogs {
-  _$_Blogs({required final List<Blog> blogList}) : _blogList = blogList;
+class _$BlogsImpl implements _Blogs {
+  _$BlogsImpl({required final List<Blog> blogList}) : _blogList = blogList;
 
-  factory _$_Blogs.fromJson(Map<String, dynamic> json) =>
-      _$$_BlogsFromJson(json);
+  factory _$BlogsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$BlogsImplFromJson(json);
 
   final List<Blog> _blogList;
   @override
@@ -113,7 +116,7 @@ class _$_Blogs implements _Blogs {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Blogs &&
+            other is _$BlogsImpl &&
             const DeepCollectionEquality().equals(other._blogList, _blogList));
   }
 
@@ -125,26 +128,26 @@ class _$_Blogs implements _Blogs {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BlogsCopyWith<_$_Blogs> get copyWith =>
-      __$$_BlogsCopyWithImpl<_$_Blogs>(this, _$identity);
+  _$$BlogsImplCopyWith<_$BlogsImpl> get copyWith =>
+      __$$BlogsImplCopyWithImpl<_$BlogsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BlogsToJson(
+    return _$$BlogsImplToJson(
       this,
     );
   }
 }
 
 abstract class _Blogs implements Blogs {
-  factory _Blogs({required final List<Blog> blogList}) = _$_Blogs;
+  factory _Blogs({required final List<Blog> blogList}) = _$BlogsImpl;
 
-  factory _Blogs.fromJson(Map<String, dynamic> json) = _$_Blogs.fromJson;
+  factory _Blogs.fromJson(Map<String, dynamic> json) = _$BlogsImpl.fromJson;
 
   @override
   List<Blog> get blogList;
   @override
   @JsonKey(ignore: true)
-  _$$_BlogsCopyWith<_$_Blogs> get copyWith =>
+  _$$BlogsImplCopyWith<_$BlogsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -6,15 +6,16 @@ part of 'successful_fulfilment_tracking_info.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SuccessfulFullfilmentTrackingInfo
-    _$$_SuccessfulFullfilmentTrackingInfoFromJson(Map<String, dynamic> json) =>
-        _$_SuccessfulFullfilmentTrackingInfo(
+_$SuccessfulFullfilmentTrackingInfoImpl
+    _$$SuccessfulFullfilmentTrackingInfoImplFromJson(
+            Map<String, dynamic> json) =>
+        _$SuccessfulFullfilmentTrackingInfoImpl(
           number: json['number'] as String?,
           url: json['url'] as String?,
         );
 
-Map<String, dynamic> _$$_SuccessfulFullfilmentTrackingInfoToJson(
-        _$_SuccessfulFullfilmentTrackingInfo instance) =>
+Map<String, dynamic> _$$SuccessfulFullfilmentTrackingInfoImplToJson(
+        _$SuccessfulFullfilmentTrackingInfoImpl instance) =>
     <String, dynamic>{
       'number': instance.number,
       'url': instance.url,

@@ -97,10 +97,11 @@ class _$MetafieldCopyWithImpl<$Res, $Val extends Metafield>
 }
 
 /// @nodoc
-abstract class _$$_MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
-  factory _$$_MetafieldCopyWith(
-          _$_Metafield value, $Res Function(_$_Metafield) then) =
-      __$$_MetafieldCopyWithImpl<$Res>;
+abstract class _$$MetafieldImplCopyWith<$Res>
+    implements $MetafieldCopyWith<$Res> {
+  factory _$$MetafieldImplCopyWith(
+          _$MetafieldImpl value, $Res Function(_$MetafieldImpl) then) =
+      __$$MetafieldImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -113,11 +114,11 @@ abstract class _$$_MetafieldCopyWith<$Res> implements $MetafieldCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_MetafieldCopyWithImpl<$Res>
-    extends _$MetafieldCopyWithImpl<$Res, _$_Metafield>
-    implements _$$_MetafieldCopyWith<$Res> {
-  __$$_MetafieldCopyWithImpl(
-      _$_Metafield _value, $Res Function(_$_Metafield) _then)
+class __$$MetafieldImplCopyWithImpl<$Res>
+    extends _$MetafieldCopyWithImpl<$Res, _$MetafieldImpl>
+    implements _$$MetafieldImplCopyWith<$Res> {
+  __$$MetafieldImplCopyWithImpl(
+      _$MetafieldImpl _value, $Res Function(_$MetafieldImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -130,7 +131,7 @@ class __$$_MetafieldCopyWithImpl<$Res>
     Object? valueType = null,
     Object? description = null,
   }) {
-    return _then(_$_Metafield(
+    return _then(_$MetafieldImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -161,8 +162,8 @@ class __$$_MetafieldCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Metafield extends _Metafield {
-  _$_Metafield(
+class _$MetafieldImpl extends _Metafield {
+  _$MetafieldImpl(
       {required this.id,
       required this.namespace,
       required this.key,
@@ -171,8 +172,8 @@ class _$_Metafield extends _Metafield {
       this.description = ''})
       : super._();
 
-  factory _$_Metafield.fromJson(Map<String, dynamic> json) =>
-      _$$_MetafieldFromJson(json);
+  factory _$MetafieldImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MetafieldImplFromJson(json);
 
   @override
   final String id;
@@ -197,7 +198,7 @@ class _$_Metafield extends _Metafield {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Metafield &&
+            other is _$MetafieldImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.namespace, namespace) ||
                 other.namespace == namespace) &&
@@ -217,12 +218,12 @@ class _$_Metafield extends _Metafield {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MetafieldCopyWith<_$_Metafield> get copyWith =>
-      __$$_MetafieldCopyWithImpl<_$_Metafield>(this, _$identity);
+  _$$MetafieldImplCopyWith<_$MetafieldImpl> get copyWith =>
+      __$$MetafieldImplCopyWithImpl<_$MetafieldImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MetafieldToJson(
+    return _$$MetafieldImplToJson(
       this,
     );
   }
@@ -235,11 +236,11 @@ abstract class _Metafield extends Metafield {
       required final String key,
       required final String value,
       required final String valueType,
-      final String description}) = _$_Metafield;
+      final String description}) = _$MetafieldImpl;
   _Metafield._() : super._();
 
   factory _Metafield.fromJson(Map<String, dynamic> json) =
-      _$_Metafield.fromJson;
+      _$MetafieldImpl.fromJson;
 
   @override
   String get id;
@@ -255,6 +256,6 @@ abstract class _Metafield extends Metafield {
   String get description;
   @override
   @JsonKey(ignore: true)
-  _$$_MetafieldCopyWith<_$_Metafield> get copyWith =>
+  _$$MetafieldImplCopyWith<_$MetafieldImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

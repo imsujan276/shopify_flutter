@@ -87,11 +87,11 @@ class _$SubscriptionPolicyCopyWithImpl<$Res, $Val extends SubscriptionPolicy>
 }
 
 /// @nodoc
-abstract class _$$_SubscriptionPolicyCopyWith<$Res>
+abstract class _$$SubscriptionPolicyImplCopyWith<$Res>
     implements $SubscriptionPolicyCopyWith<$Res> {
-  factory _$$_SubscriptionPolicyCopyWith(_$_SubscriptionPolicy value,
-          $Res Function(_$_SubscriptionPolicy) then) =
-      __$$_SubscriptionPolicyCopyWithImpl<$Res>;
+  factory _$$SubscriptionPolicyImplCopyWith(_$SubscriptionPolicyImpl value,
+          $Res Function(_$SubscriptionPolicyImpl) then) =
+      __$$SubscriptionPolicyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_SubscriptionPolicyCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SubscriptionPolicyCopyWithImpl<$Res>
-    extends _$SubscriptionPolicyCopyWithImpl<$Res, _$_SubscriptionPolicy>
-    implements _$$_SubscriptionPolicyCopyWith<$Res> {
-  __$$_SubscriptionPolicyCopyWithImpl(
-      _$_SubscriptionPolicy _value, $Res Function(_$_SubscriptionPolicy) _then)
+class __$$SubscriptionPolicyImplCopyWithImpl<$Res>
+    extends _$SubscriptionPolicyCopyWithImpl<$Res, _$SubscriptionPolicyImpl>
+    implements _$$SubscriptionPolicyImplCopyWith<$Res> {
+  __$$SubscriptionPolicyImplCopyWithImpl(_$SubscriptionPolicyImpl _value,
+      $Res Function(_$SubscriptionPolicyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_SubscriptionPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_SubscriptionPolicy(
+    return _then(_$SubscriptionPolicyImpl(
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,12 +142,12 @@ class __$$_SubscriptionPolicyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SubscriptionPolicy implements _SubscriptionPolicy {
-  _$_SubscriptionPolicy(
+class _$SubscriptionPolicyImpl implements _SubscriptionPolicy {
+  _$SubscriptionPolicyImpl(
       {this.body, this.handle, this.id, this.title, this.url});
 
-  factory _$_SubscriptionPolicy.fromJson(Map<String, dynamic> json) =>
-      _$$_SubscriptionPolicyFromJson(json);
+  factory _$SubscriptionPolicyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SubscriptionPolicyImplFromJson(json);
 
   @override
   final String? body;
@@ -169,7 +169,7 @@ class _$_SubscriptionPolicy implements _SubscriptionPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SubscriptionPolicy &&
+            other is _$SubscriptionPolicyImpl &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.id, id) || other.id == id) &&
@@ -184,13 +184,13 @@ class _$_SubscriptionPolicy implements _SubscriptionPolicy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SubscriptionPolicyCopyWith<_$_SubscriptionPolicy> get copyWith =>
-      __$$_SubscriptionPolicyCopyWithImpl<_$_SubscriptionPolicy>(
+  _$$SubscriptionPolicyImplCopyWith<_$SubscriptionPolicyImpl> get copyWith =>
+      __$$SubscriptionPolicyImplCopyWithImpl<_$SubscriptionPolicyImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SubscriptionPolicyToJson(
+    return _$$SubscriptionPolicyImplToJson(
       this,
     );
   }
@@ -202,10 +202,10 @@ abstract class _SubscriptionPolicy implements SubscriptionPolicy {
       final String? handle,
       final String? id,
       final String? title,
-      final String? url}) = _$_SubscriptionPolicy;
+      final String? url}) = _$SubscriptionPolicyImpl;
 
   factory _SubscriptionPolicy.fromJson(Map<String, dynamic> json) =
-      _$_SubscriptionPolicy.fromJson;
+      _$SubscriptionPolicyImpl.fromJson;
 
   @override
   String? get body;
@@ -219,6 +219,6 @@ abstract class _SubscriptionPolicy implements SubscriptionPolicy {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_SubscriptionPolicyCopyWith<_$_SubscriptionPolicy> get copyWith =>
+  _$$SubscriptionPolicyImplCopyWith<_$SubscriptionPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

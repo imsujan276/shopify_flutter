@@ -90,10 +90,11 @@ class _$AuthorV2CopyWithImpl<$Res, $Val extends AuthorV2>
 }
 
 /// @nodoc
-abstract class _$$_AuthorV2CopyWith<$Res> implements $AuthorV2CopyWith<$Res> {
-  factory _$$_AuthorV2CopyWith(
-          _$_AuthorV2 value, $Res Function(_$_AuthorV2) then) =
-      __$$_AuthorV2CopyWithImpl<$Res>;
+abstract class _$$AuthorV2ImplCopyWith<$Res>
+    implements $AuthorV2CopyWith<$Res> {
+  factory _$$AuthorV2ImplCopyWith(
+          _$AuthorV2Impl value, $Res Function(_$AuthorV2Impl) then) =
+      __$$AuthorV2ImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -105,11 +106,11 @@ abstract class _$$_AuthorV2CopyWith<$Res> implements $AuthorV2CopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_AuthorV2CopyWithImpl<$Res>
-    extends _$AuthorV2CopyWithImpl<$Res, _$_AuthorV2>
-    implements _$$_AuthorV2CopyWith<$Res> {
-  __$$_AuthorV2CopyWithImpl(
-      _$_AuthorV2 _value, $Res Function(_$_AuthorV2) _then)
+class __$$AuthorV2ImplCopyWithImpl<$Res>
+    extends _$AuthorV2CopyWithImpl<$Res, _$AuthorV2Impl>
+    implements _$$AuthorV2ImplCopyWith<$Res> {
+  __$$AuthorV2ImplCopyWithImpl(
+      _$AuthorV2Impl _value, $Res Function(_$AuthorV2Impl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -121,7 +122,7 @@ class __$$_AuthorV2CopyWithImpl<$Res>
     Object? lastName = freezed,
     Object? name = freezed,
   }) {
-    return _then(_$_AuthorV2(
+    return _then(_$AuthorV2Impl(
       bio: freezed == bio
           ? _value.bio
           : bio // ignore: cast_nullable_to_non_nullable
@@ -148,11 +149,12 @@ class __$$_AuthorV2CopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AuthorV2 implements _AuthorV2 {
-  _$_AuthorV2({this.bio, this.email, this.firstName, this.lastName, this.name});
+class _$AuthorV2Impl implements _AuthorV2 {
+  _$AuthorV2Impl(
+      {this.bio, this.email, this.firstName, this.lastName, this.name});
 
-  factory _$_AuthorV2.fromJson(Map<String, dynamic> json) =>
-      _$$_AuthorV2FromJson(json);
+  factory _$AuthorV2Impl.fromJson(Map<String, dynamic> json) =>
+      _$$AuthorV2ImplFromJson(json);
 
   @override
   final String? bio;
@@ -174,7 +176,7 @@ class _$_AuthorV2 implements _AuthorV2 {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AuthorV2 &&
+            other is _$AuthorV2Impl &&
             (identical(other.bio, bio) || other.bio == bio) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.firstName, firstName) ||
@@ -192,12 +194,12 @@ class _$_AuthorV2 implements _AuthorV2 {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AuthorV2CopyWith<_$_AuthorV2> get copyWith =>
-      __$$_AuthorV2CopyWithImpl<_$_AuthorV2>(this, _$identity);
+  _$$AuthorV2ImplCopyWith<_$AuthorV2Impl> get copyWith =>
+      __$$AuthorV2ImplCopyWithImpl<_$AuthorV2Impl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AuthorV2ToJson(
+    return _$$AuthorV2ImplToJson(
       this,
     );
   }
@@ -209,9 +211,10 @@ abstract class _AuthorV2 implements AuthorV2 {
       final String? email,
       final String? firstName,
       final String? lastName,
-      final String? name}) = _$_AuthorV2;
+      final String? name}) = _$AuthorV2Impl;
 
-  factory _AuthorV2.fromJson(Map<String, dynamic> json) = _$_AuthorV2.fromJson;
+  factory _AuthorV2.fromJson(Map<String, dynamic> json) =
+      _$AuthorV2Impl.fromJson;
 
   @override
   String? get bio;
@@ -225,6 +228,6 @@ abstract class _AuthorV2 implements AuthorV2 {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$$_AuthorV2CopyWith<_$_AuthorV2> get copyWith =>
+  _$$AuthorV2ImplCopyWith<_$AuthorV2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

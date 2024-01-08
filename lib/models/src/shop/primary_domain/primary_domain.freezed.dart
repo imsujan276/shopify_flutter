@@ -74,22 +74,22 @@ class _$PrimaryDomainCopyWithImpl<$Res, $Val extends PrimaryDomain>
 }
 
 /// @nodoc
-abstract class _$$_PrimaryDomainCopyWith<$Res>
+abstract class _$$PrimaryDomainImplCopyWith<$Res>
     implements $PrimaryDomainCopyWith<$Res> {
-  factory _$$_PrimaryDomainCopyWith(
-          _$_PrimaryDomain value, $Res Function(_$_PrimaryDomain) then) =
-      __$$_PrimaryDomainCopyWithImpl<$Res>;
+  factory _$$PrimaryDomainImplCopyWith(
+          _$PrimaryDomainImpl value, $Res Function(_$PrimaryDomainImpl) then) =
+      __$$PrimaryDomainImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? host, bool? sslEnabled, String? url});
 }
 
 /// @nodoc
-class __$$_PrimaryDomainCopyWithImpl<$Res>
-    extends _$PrimaryDomainCopyWithImpl<$Res, _$_PrimaryDomain>
-    implements _$$_PrimaryDomainCopyWith<$Res> {
-  __$$_PrimaryDomainCopyWithImpl(
-      _$_PrimaryDomain _value, $Res Function(_$_PrimaryDomain) _then)
+class __$$PrimaryDomainImplCopyWithImpl<$Res>
+    extends _$PrimaryDomainCopyWithImpl<$Res, _$PrimaryDomainImpl>
+    implements _$$PrimaryDomainImplCopyWith<$Res> {
+  __$$PrimaryDomainImplCopyWithImpl(
+      _$PrimaryDomainImpl _value, $Res Function(_$PrimaryDomainImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -99,7 +99,7 @@ class __$$_PrimaryDomainCopyWithImpl<$Res>
     Object? sslEnabled = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_PrimaryDomain(
+    return _then(_$PrimaryDomainImpl(
       host: freezed == host
           ? _value.host
           : host // ignore: cast_nullable_to_non_nullable
@@ -118,11 +118,11 @@ class __$$_PrimaryDomainCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_PrimaryDomain implements _PrimaryDomain {
-  _$_PrimaryDomain({this.host, this.sslEnabled, this.url});
+class _$PrimaryDomainImpl implements _PrimaryDomain {
+  _$PrimaryDomainImpl({this.host, this.sslEnabled, this.url});
 
-  factory _$_PrimaryDomain.fromJson(Map<String, dynamic> json) =>
-      _$$_PrimaryDomainFromJson(json);
+  factory _$PrimaryDomainImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PrimaryDomainImplFromJson(json);
 
   @override
   final String? host;
@@ -140,7 +140,7 @@ class _$_PrimaryDomain implements _PrimaryDomain {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PrimaryDomain &&
+            other is _$PrimaryDomainImpl &&
             (identical(other.host, host) || other.host == host) &&
             (identical(other.sslEnabled, sslEnabled) ||
                 other.sslEnabled == sslEnabled) &&
@@ -154,12 +154,12 @@ class _$_PrimaryDomain implements _PrimaryDomain {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PrimaryDomainCopyWith<_$_PrimaryDomain> get copyWith =>
-      __$$_PrimaryDomainCopyWithImpl<_$_PrimaryDomain>(this, _$identity);
+  _$$PrimaryDomainImplCopyWith<_$PrimaryDomainImpl> get copyWith =>
+      __$$PrimaryDomainImplCopyWithImpl<_$PrimaryDomainImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PrimaryDomainToJson(
+    return _$$PrimaryDomainImplToJson(
       this,
     );
   }
@@ -169,10 +169,10 @@ abstract class _PrimaryDomain implements PrimaryDomain {
   factory _PrimaryDomain(
       {final String? host,
       final bool? sslEnabled,
-      final String? url}) = _$_PrimaryDomain;
+      final String? url}) = _$PrimaryDomainImpl;
 
   factory _PrimaryDomain.fromJson(Map<String, dynamic> json) =
-      _$_PrimaryDomain.fromJson;
+      _$PrimaryDomainImpl.fromJson;
 
   @override
   String? get host;
@@ -182,6 +182,6 @@ abstract class _PrimaryDomain implements PrimaryDomain {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_PrimaryDomainCopyWith<_$_PrimaryDomain> get copyWith =>
+  _$$PrimaryDomainImplCopyWith<_$PrimaryDomainImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

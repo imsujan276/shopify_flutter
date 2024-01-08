@@ -92,11 +92,11 @@ class _$UnitPriceMeasurementCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_UnitPriceMeasurementCopyWith<$Res>
+abstract class _$$UnitPriceMeasurementImplCopyWith<$Res>
     implements $UnitPriceMeasurementCopyWith<$Res> {
-  factory _$$_UnitPriceMeasurementCopyWith(_$_UnitPriceMeasurement value,
-          $Res Function(_$_UnitPriceMeasurement) then) =
-      __$$_UnitPriceMeasurementCopyWithImpl<$Res>;
+  factory _$$UnitPriceMeasurementImplCopyWith(_$UnitPriceMeasurementImpl value,
+          $Res Function(_$UnitPriceMeasurementImpl) then) =
+      __$$UnitPriceMeasurementImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -108,11 +108,11 @@ abstract class _$$_UnitPriceMeasurementCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_UnitPriceMeasurementCopyWithImpl<$Res>
-    extends _$UnitPriceMeasurementCopyWithImpl<$Res, _$_UnitPriceMeasurement>
-    implements _$$_UnitPriceMeasurementCopyWith<$Res> {
-  __$$_UnitPriceMeasurementCopyWithImpl(_$_UnitPriceMeasurement _value,
-      $Res Function(_$_UnitPriceMeasurement) _then)
+class __$$UnitPriceMeasurementImplCopyWithImpl<$Res>
+    extends _$UnitPriceMeasurementCopyWithImpl<$Res, _$UnitPriceMeasurementImpl>
+    implements _$$UnitPriceMeasurementImplCopyWith<$Res> {
+  __$$UnitPriceMeasurementImplCopyWithImpl(_$UnitPriceMeasurementImpl _value,
+      $Res Function(_$UnitPriceMeasurementImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -124,7 +124,7 @@ class __$$_UnitPriceMeasurementCopyWithImpl<$Res>
     Object? referenceUnit = null,
     Object? referenceValue = null,
   }) {
-    return _then(_$_UnitPriceMeasurement(
+    return _then(_$UnitPriceMeasurementImpl(
       measuredType: null == measuredType
           ? _value.measuredType
           : measuredType // ignore: cast_nullable_to_non_nullable
@@ -151,8 +151,8 @@ class __$$_UnitPriceMeasurementCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
-  _$_UnitPriceMeasurement(
+class _$UnitPriceMeasurementImpl extends _UnitPriceMeasurement {
+  _$UnitPriceMeasurementImpl(
       {required this.measuredType,
       required this.quantityUnit,
       required this.quantityValue,
@@ -160,8 +160,8 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
       required this.referenceValue})
       : super._();
 
-  factory _$_UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =>
-      _$$_UnitPriceMeasurementFromJson(json);
+  factory _$UnitPriceMeasurementImpl.fromJson(Map<String, dynamic> json) =>
+      _$$UnitPriceMeasurementImplFromJson(json);
 
   @override
   final String measuredType;
@@ -183,7 +183,7 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnitPriceMeasurement &&
+            other is _$UnitPriceMeasurementImpl &&
             (identical(other.measuredType, measuredType) ||
                 other.measuredType == measuredType) &&
             (identical(other.quantityUnit, quantityUnit) ||
@@ -204,13 +204,14 @@ class _$_UnitPriceMeasurement extends _UnitPriceMeasurement {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnitPriceMeasurementCopyWith<_$_UnitPriceMeasurement> get copyWith =>
-      __$$_UnitPriceMeasurementCopyWithImpl<_$_UnitPriceMeasurement>(
-          this, _$identity);
+  _$$UnitPriceMeasurementImplCopyWith<_$UnitPriceMeasurementImpl>
+      get copyWith =>
+          __$$UnitPriceMeasurementImplCopyWithImpl<_$UnitPriceMeasurementImpl>(
+              this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UnitPriceMeasurementToJson(
+    return _$$UnitPriceMeasurementImplToJson(
       this,
     );
   }
@@ -222,11 +223,11 @@ abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
       required final String quantityUnit,
       required final double quantityValue,
       required final String referenceUnit,
-      required final int referenceValue}) = _$_UnitPriceMeasurement;
+      required final int referenceValue}) = _$UnitPriceMeasurementImpl;
   _UnitPriceMeasurement._() : super._();
 
   factory _UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =
-      _$_UnitPriceMeasurement.fromJson;
+      _$UnitPriceMeasurementImpl.fromJson;
 
   @override
   String get measuredType;
@@ -240,6 +241,6 @@ abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
   int get referenceValue;
   @override
   @JsonKey(ignore: true)
-  _$$_UnitPriceMeasurementCopyWith<_$_UnitPriceMeasurement> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$UnitPriceMeasurementImplCopyWith<_$UnitPriceMeasurementImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

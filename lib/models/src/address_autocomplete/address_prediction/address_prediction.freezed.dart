@@ -78,11 +78,11 @@ class _$AddressPredictionCopyWithImpl<$Res, $Val extends AddressPrediction>
 }
 
 /// @nodoc
-abstract class _$$_AddressPredictionCopyWith<$Res>
+abstract class _$$AddressPredictionImplCopyWith<$Res>
     implements $AddressPredictionCopyWith<$Res> {
-  factory _$$_AddressPredictionCopyWith(_$_AddressPrediction value,
-          $Res Function(_$_AddressPrediction) then) =
-      __$$_AddressPredictionCopyWithImpl<$Res>;
+  factory _$$AddressPredictionImplCopyWith(_$AddressPredictionImpl value,
+          $Res Function(_$AddressPredictionImpl) then) =
+      __$$AddressPredictionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -92,11 +92,11 @@ abstract class _$$_AddressPredictionCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_AddressPredictionCopyWithImpl<$Res>
-    extends _$AddressPredictionCopyWithImpl<$Res, _$_AddressPrediction>
-    implements _$$_AddressPredictionCopyWith<$Res> {
-  __$$_AddressPredictionCopyWithImpl(
-      _$_AddressPrediction _value, $Res Function(_$_AddressPrediction) _then)
+class __$$AddressPredictionImplCopyWithImpl<$Res>
+    extends _$AddressPredictionCopyWithImpl<$Res, _$AddressPredictionImpl>
+    implements _$$AddressPredictionImplCopyWith<$Res> {
+  __$$AddressPredictionImplCopyWithImpl(_$AddressPredictionImpl _value,
+      $Res Function(_$AddressPredictionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -106,7 +106,7 @@ class __$$_AddressPredictionCopyWithImpl<$Res>
     Object? description = freezed,
     Object? matchedSubstrings = freezed,
   }) {
-    return _then(_$_AddressPrediction(
+    return _then(_$AddressPredictionImpl(
       addressId: freezed == addressId
           ? _value.addressId
           : addressId // ignore: cast_nullable_to_non_nullable
@@ -125,15 +125,15 @@ class __$$_AddressPredictionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_AddressPrediction implements _AddressPrediction {
-  const _$_AddressPrediction(
+class _$AddressPredictionImpl implements _AddressPrediction {
+  const _$AddressPredictionImpl(
       {this.addressId,
       this.description,
       final List<MatchedSubstring>? matchedSubstrings})
       : _matchedSubstrings = matchedSubstrings;
 
-  factory _$_AddressPrediction.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressPredictionFromJson(json);
+  factory _$AddressPredictionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressPredictionImplFromJson(json);
 
   @override
   final String? addressId;
@@ -159,7 +159,7 @@ class _$_AddressPrediction implements _AddressPrediction {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_AddressPrediction &&
+            other is _$AddressPredictionImpl &&
             (identical(other.addressId, addressId) ||
                 other.addressId == addressId) &&
             (identical(other.description, description) ||
@@ -176,13 +176,13 @@ class _$_AddressPrediction implements _AddressPrediction {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
-      __$$_AddressPredictionCopyWithImpl<_$_AddressPrediction>(
+  _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
+      __$$AddressPredictionImplCopyWithImpl<_$AddressPredictionImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressPredictionToJson(
+    return _$$AddressPredictionImplToJson(
       this,
     );
   }
@@ -190,12 +190,13 @@ class _$_AddressPrediction implements _AddressPrediction {
 
 abstract class _AddressPrediction implements AddressPrediction {
   const factory _AddressPrediction(
-      {final String? addressId,
-      final String? description,
-      final List<MatchedSubstring>? matchedSubstrings}) = _$_AddressPrediction;
+          {final String? addressId,
+          final String? description,
+          final List<MatchedSubstring>? matchedSubstrings}) =
+      _$AddressPredictionImpl;
 
   factory _AddressPrediction.fromJson(Map<String, dynamic> json) =
-      _$_AddressPrediction.fromJson;
+      _$AddressPredictionImpl.fromJson;
 
   @override
   String? get addressId;
@@ -205,6 +206,6 @@ abstract class _AddressPrediction implements AddressPrediction {
   List<MatchedSubstring>? get matchedSubstrings;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressPredictionCopyWith<_$_AddressPrediction> get copyWith =>
+  _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

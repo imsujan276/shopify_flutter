@@ -72,19 +72,21 @@ class _$OptionCopyWithImpl<$Res, $Val extends Option>
 }
 
 /// @nodoc
-abstract class _$$_OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
-  factory _$$_OptionCopyWith(_$_Option value, $Res Function(_$_Option) then) =
-      __$$_OptionCopyWithImpl<$Res>;
+abstract class _$$OptionImplCopyWith<$Res> implements $OptionCopyWith<$Res> {
+  factory _$$OptionImplCopyWith(
+          _$OptionImpl value, $Res Function(_$OptionImpl) then) =
+      __$$OptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String id, String name, List<String> values});
 }
 
 /// @nodoc
-class __$$_OptionCopyWithImpl<$Res>
-    extends _$OptionCopyWithImpl<$Res, _$_Option>
-    implements _$$_OptionCopyWith<$Res> {
-  __$$_OptionCopyWithImpl(_$_Option _value, $Res Function(_$_Option) _then)
+class __$$OptionImplCopyWithImpl<$Res>
+    extends _$OptionCopyWithImpl<$Res, _$OptionImpl>
+    implements _$$OptionImplCopyWith<$Res> {
+  __$$OptionImplCopyWithImpl(
+      _$OptionImpl _value, $Res Function(_$OptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -94,7 +96,7 @@ class __$$_OptionCopyWithImpl<$Res>
     Object? name = null,
     Object? values = null,
   }) {
-    return _then(_$_Option(
+    return _then(_$OptionImpl(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -113,16 +115,16 @@ class __$$_OptionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Option extends _Option {
-  _$_Option(
+class _$OptionImpl extends _Option {
+  _$OptionImpl(
       {required this.id,
       required this.name,
       required final List<String> values})
       : _values = values,
         super._();
 
-  factory _$_Option.fromJson(Map<String, dynamic> json) =>
-      _$$_OptionFromJson(json);
+  factory _$OptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OptionImplFromJson(json);
 
   @override
   final String id;
@@ -145,7 +147,7 @@ class _$_Option extends _Option {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Option &&
+            other is _$OptionImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._values, _values));
@@ -159,12 +161,12 @@ class _$_Option extends _Option {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OptionCopyWith<_$_Option> get copyWith =>
-      __$$_OptionCopyWithImpl<_$_Option>(this, _$identity);
+  _$$OptionImplCopyWith<_$OptionImpl> get copyWith =>
+      __$$OptionImplCopyWithImpl<_$OptionImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_OptionToJson(
+    return _$$OptionImplToJson(
       this,
     );
   }
@@ -174,10 +176,10 @@ abstract class _Option extends Option {
   factory _Option(
       {required final String id,
       required final String name,
-      required final List<String> values}) = _$_Option;
+      required final List<String> values}) = _$OptionImpl;
   _Option._() : super._();
 
-  factory _Option.fromJson(Map<String, dynamic> json) = _$_Option.fromJson;
+  factory _Option.fromJson(Map<String, dynamic> json) = _$OptionImpl.fromJson;
 
   @override
   String get id;
@@ -187,6 +189,6 @@ abstract class _Option extends Option {
   List<String> get values;
   @override
   @JsonKey(ignore: true)
-  _$$_OptionCopyWith<_$_Option> get copyWith =>
+  _$$OptionImplCopyWith<_$OptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -257,7 +257,7 @@ class ShopifyStore with ShopifyError {
       checkForError(result);
       tempCollection = (Collections.fromGraphJson(
           (result.data ?? const {})['collections'] ?? {}));
-      collectionList = tempCollection.collectionList + collectionList;
+      collectionList.addAll(tempCollection.collectionList);
       cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
     } while ((tempCollection.hasNextPage == true));
     return collectionList;

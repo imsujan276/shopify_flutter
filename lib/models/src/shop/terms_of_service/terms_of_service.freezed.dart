@@ -87,11 +87,11 @@ class _$TermsOfServiceCopyWithImpl<$Res, $Val extends TermsOfService>
 }
 
 /// @nodoc
-abstract class _$$_TermsOfServiceCopyWith<$Res>
+abstract class _$$TermsOfServiceImplCopyWith<$Res>
     implements $TermsOfServiceCopyWith<$Res> {
-  factory _$$_TermsOfServiceCopyWith(
-          _$_TermsOfService value, $Res Function(_$_TermsOfService) then) =
-      __$$_TermsOfServiceCopyWithImpl<$Res>;
+  factory _$$TermsOfServiceImplCopyWith(_$TermsOfServiceImpl value,
+          $Res Function(_$TermsOfServiceImpl) then) =
+      __$$TermsOfServiceImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_TermsOfServiceCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_TermsOfServiceCopyWithImpl<$Res>
-    extends _$TermsOfServiceCopyWithImpl<$Res, _$_TermsOfService>
-    implements _$$_TermsOfServiceCopyWith<$Res> {
-  __$$_TermsOfServiceCopyWithImpl(
-      _$_TermsOfService _value, $Res Function(_$_TermsOfService) _then)
+class __$$TermsOfServiceImplCopyWithImpl<$Res>
+    extends _$TermsOfServiceCopyWithImpl<$Res, _$TermsOfServiceImpl>
+    implements _$$TermsOfServiceImplCopyWith<$Res> {
+  __$$TermsOfServiceImplCopyWithImpl(
+      _$TermsOfServiceImpl _value, $Res Function(_$TermsOfServiceImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_TermsOfServiceCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_TermsOfService(
+    return _then(_$TermsOfServiceImpl(
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,11 +142,11 @@ class __$$_TermsOfServiceCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_TermsOfService implements _TermsOfService {
-  _$_TermsOfService({this.body, this.handle, this.id, this.title, this.url});
+class _$TermsOfServiceImpl implements _TermsOfService {
+  _$TermsOfServiceImpl({this.body, this.handle, this.id, this.title, this.url});
 
-  factory _$_TermsOfService.fromJson(Map<String, dynamic> json) =>
-      _$$_TermsOfServiceFromJson(json);
+  factory _$TermsOfServiceImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TermsOfServiceImplFromJson(json);
 
   @override
   final String? body;
@@ -168,7 +168,7 @@ class _$_TermsOfService implements _TermsOfService {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TermsOfService &&
+            other is _$TermsOfServiceImpl &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.id, id) || other.id == id) &&
@@ -183,12 +183,13 @@ class _$_TermsOfService implements _TermsOfService {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_TermsOfServiceCopyWith<_$_TermsOfService> get copyWith =>
-      __$$_TermsOfServiceCopyWithImpl<_$_TermsOfService>(this, _$identity);
+  _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
+      __$$TermsOfServiceImplCopyWithImpl<_$TermsOfServiceImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TermsOfServiceToJson(
+    return _$$TermsOfServiceImplToJson(
       this,
     );
   }
@@ -200,10 +201,10 @@ abstract class _TermsOfService implements TermsOfService {
       final String? handle,
       final String? id,
       final String? title,
-      final String? url}) = _$_TermsOfService;
+      final String? url}) = _$TermsOfServiceImpl;
 
   factory _TermsOfService.fromJson(Map<String, dynamic> json) =
-      _$_TermsOfService.fromJson;
+      _$TermsOfServiceImpl.fromJson;
 
   @override
   String? get body;
@@ -217,6 +218,6 @@ abstract class _TermsOfService implements TermsOfService {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_TermsOfServiceCopyWith<_$_TermsOfService> get copyWith =>
+  _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

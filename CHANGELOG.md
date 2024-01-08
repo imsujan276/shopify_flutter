@@ -1,3 +1,8 @@
+## 1.5.1
+
+* updated getAllCollections 
+* optimized auto-generated files
+
 ## 1.5.0
 
 * optimized checkout and product models

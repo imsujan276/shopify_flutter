@@ -6,7 +6,7 @@ part of 'blog.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Blog _$$_BlogFromJson(Map<String, dynamic> json) => _$_Blog(
+_$BlogImpl _$$BlogImplFromJson(Map<String, dynamic> json) => _$BlogImpl(
       id: json['id'] as String?,
       handle: json['handle'] as String?,
       title: json['title'] as String?,
@@ -16,7 +16,8 @@ _$_Blog _$$_BlogFromJson(Map<String, dynamic> json) => _$_Blog(
           : Articles.fromJson(json['articles'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_BlogToJson(_$_Blog instance) => <String, dynamic>{
+Map<String, dynamic> _$$BlogImplToJson(_$BlogImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'handle': instance.handle,
       'title': instance.title,

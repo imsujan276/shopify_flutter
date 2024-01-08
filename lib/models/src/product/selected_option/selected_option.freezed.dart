@@ -68,22 +68,22 @@ class _$SelectedOptionCopyWithImpl<$Res, $Val extends SelectedOption>
 }
 
 /// @nodoc
-abstract class _$$_SelectedOptionCopyWith<$Res>
+abstract class _$$SelectedOptionImplCopyWith<$Res>
     implements $SelectedOptionCopyWith<$Res> {
-  factory _$$_SelectedOptionCopyWith(
-          _$_SelectedOption value, $Res Function(_$_SelectedOption) then) =
-      __$$_SelectedOptionCopyWithImpl<$Res>;
+  factory _$$SelectedOptionImplCopyWith(_$SelectedOptionImpl value,
+          $Res Function(_$SelectedOptionImpl) then) =
+      __$$SelectedOptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, String value});
 }
 
 /// @nodoc
-class __$$_SelectedOptionCopyWithImpl<$Res>
-    extends _$SelectedOptionCopyWithImpl<$Res, _$_SelectedOption>
-    implements _$$_SelectedOptionCopyWith<$Res> {
-  __$$_SelectedOptionCopyWithImpl(
-      _$_SelectedOption _value, $Res Function(_$_SelectedOption) _then)
+class __$$SelectedOptionImplCopyWithImpl<$Res>
+    extends _$SelectedOptionCopyWithImpl<$Res, _$SelectedOptionImpl>
+    implements _$$SelectedOptionImplCopyWith<$Res> {
+  __$$SelectedOptionImplCopyWithImpl(
+      _$SelectedOptionImpl _value, $Res Function(_$SelectedOptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_SelectedOptionCopyWithImpl<$Res>
     Object? name = null,
     Object? value = null,
   }) {
-    return _then(_$_SelectedOption(
+    return _then(_$SelectedOptionImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_SelectedOptionCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_SelectedOption extends _SelectedOption {
-  _$_SelectedOption({required this.name, required this.value}) : super._();
+class _$SelectedOptionImpl extends _SelectedOption {
+  _$SelectedOptionImpl({required this.name, required this.value}) : super._();
 
-  factory _$_SelectedOption.fromJson(Map<String, dynamic> json) =>
-      _$$_SelectedOptionFromJson(json);
+  factory _$SelectedOptionImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SelectedOptionImplFromJson(json);
 
   @override
   final String name;
@@ -127,7 +127,7 @@ class _$_SelectedOption extends _SelectedOption {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SelectedOption &&
+            other is _$SelectedOptionImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.value, value) || other.value == value));
   }
@@ -139,12 +139,13 @@ class _$_SelectedOption extends _SelectedOption {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SelectedOptionCopyWith<_$_SelectedOption> get copyWith =>
-      __$$_SelectedOptionCopyWithImpl<_$_SelectedOption>(this, _$identity);
+  _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
+      __$$SelectedOptionImplCopyWithImpl<_$SelectedOptionImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SelectedOptionToJson(
+    return _$$SelectedOptionImplToJson(
       this,
     );
   }
@@ -153,11 +154,11 @@ class _$_SelectedOption extends _SelectedOption {
 abstract class _SelectedOption extends SelectedOption {
   factory _SelectedOption(
       {required final String name,
-      required final String value}) = _$_SelectedOption;
+      required final String value}) = _$SelectedOptionImpl;
   _SelectedOption._() : super._();
 
   factory _SelectedOption.fromJson(Map<String, dynamic> json) =
-      _$_SelectedOption.fromJson;
+      _$SelectedOptionImpl.fromJson;
 
   @override
   String get name;
@@ -165,6 +166,6 @@ abstract class _SelectedOption extends SelectedOption {
   String get value;
   @override
   @JsonKey(ignore: true)
-  _$$_SelectedOptionCopyWith<_$_SelectedOption> get copyWith =>
+  _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

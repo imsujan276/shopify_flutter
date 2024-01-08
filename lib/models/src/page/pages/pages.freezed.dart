@@ -60,18 +60,21 @@ class _$PagesCopyWithImpl<$Res, $Val extends Pages>
 }
 
 /// @nodoc
-abstract class _$$_PagesCopyWith<$Res> implements $PagesCopyWith<$Res> {
-  factory _$$_PagesCopyWith(_$_Pages value, $Res Function(_$_Pages) then) =
-      __$$_PagesCopyWithImpl<$Res>;
+abstract class _$$PagesImplCopyWith<$Res> implements $PagesCopyWith<$Res> {
+  factory _$$PagesImplCopyWith(
+          _$PagesImpl value, $Res Function(_$PagesImpl) then) =
+      __$$PagesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Page> pageList});
 }
 
 /// @nodoc
-class __$$_PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res, _$_Pages>
-    implements _$$_PagesCopyWith<$Res> {
-  __$$_PagesCopyWithImpl(_$_Pages _value, $Res Function(_$_Pages) _then)
+class __$$PagesImplCopyWithImpl<$Res>
+    extends _$PagesCopyWithImpl<$Res, _$PagesImpl>
+    implements _$$PagesImplCopyWith<$Res> {
+  __$$PagesImplCopyWithImpl(
+      _$PagesImpl _value, $Res Function(_$PagesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -79,7 +82,7 @@ class __$$_PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res, _$_Pages>
   $Res call({
     Object? pageList = null,
   }) {
-    return _then(_$_Pages(
+    return _then(_$PagesImpl(
       pageList: null == pageList
           ? _value._pageList
           : pageList // ignore: cast_nullable_to_non_nullable
@@ -90,11 +93,11 @@ class __$$_PagesCopyWithImpl<$Res> extends _$PagesCopyWithImpl<$Res, _$_Pages>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Pages implements _Pages {
-  _$_Pages({required final List<Page> pageList}) : _pageList = pageList;
+class _$PagesImpl implements _Pages {
+  _$PagesImpl({required final List<Page> pageList}) : _pageList = pageList;
 
-  factory _$_Pages.fromJson(Map<String, dynamic> json) =>
-      _$$_PagesFromJson(json);
+  factory _$PagesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PagesImplFromJson(json);
 
   final List<Page> _pageList;
   @override
@@ -113,7 +116,7 @@ class _$_Pages implements _Pages {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Pages &&
+            other is _$PagesImpl &&
             const DeepCollectionEquality().equals(other._pageList, _pageList));
   }
 
@@ -125,26 +128,26 @@ class _$_Pages implements _Pages {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PagesCopyWith<_$_Pages> get copyWith =>
-      __$$_PagesCopyWithImpl<_$_Pages>(this, _$identity);
+  _$$PagesImplCopyWith<_$PagesImpl> get copyWith =>
+      __$$PagesImplCopyWithImpl<_$PagesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PagesToJson(
+    return _$$PagesImplToJson(
       this,
     );
   }
 }
 
 abstract class _Pages implements Pages {
-  factory _Pages({required final List<Page> pageList}) = _$_Pages;
+  factory _Pages({required final List<Page> pageList}) = _$PagesImpl;
 
-  factory _Pages.fromJson(Map<String, dynamic> json) = _$_Pages.fromJson;
+  factory _Pages.fromJson(Map<String, dynamic> json) = _$PagesImpl.fromJson;
 
   @override
   List<Page> get pageList;
   @override
   @JsonKey(ignore: true)
-  _$$_PagesCopyWith<_$_Pages> get copyWith =>
+  _$$PagesImplCopyWith<_$PagesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

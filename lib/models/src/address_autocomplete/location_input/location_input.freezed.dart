@@ -68,22 +68,22 @@ class _$LocationInputCopyWithImpl<$Res, $Val extends LocationInput>
 }
 
 /// @nodoc
-abstract class _$$_LocationInputCopyWith<$Res>
+abstract class _$$LocationInputImplCopyWith<$Res>
     implements $LocationInputCopyWith<$Res> {
-  factory _$$_LocationInputCopyWith(
-          _$_LocationInput value, $Res Function(_$_LocationInput) then) =
-      __$$_LocationInputCopyWithImpl<$Res>;
+  factory _$$LocationInputImplCopyWith(
+          _$LocationInputImpl value, $Res Function(_$LocationInputImpl) then) =
+      __$$LocationInputImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({double? latitude, double? longitude});
 }
 
 /// @nodoc
-class __$$_LocationInputCopyWithImpl<$Res>
-    extends _$LocationInputCopyWithImpl<$Res, _$_LocationInput>
-    implements _$$_LocationInputCopyWith<$Res> {
-  __$$_LocationInputCopyWithImpl(
-      _$_LocationInput _value, $Res Function(_$_LocationInput) _then)
+class __$$LocationInputImplCopyWithImpl<$Res>
+    extends _$LocationInputCopyWithImpl<$Res, _$LocationInputImpl>
+    implements _$$LocationInputImplCopyWith<$Res> {
+  __$$LocationInputImplCopyWithImpl(
+      _$LocationInputImpl _value, $Res Function(_$LocationInputImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_LocationInputCopyWithImpl<$Res>
     Object? latitude = freezed,
     Object? longitude = freezed,
   }) {
-    return _then(_$_LocationInput(
+    return _then(_$LocationInputImpl(
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_LocationInputCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_LocationInput implements _LocationInput {
-  _$_LocationInput({this.latitude, this.longitude});
+class _$LocationInputImpl implements _LocationInput {
+  _$LocationInputImpl({this.latitude, this.longitude});
 
-  factory _$_LocationInput.fromJson(Map<String, dynamic> json) =>
-      _$$_LocationInputFromJson(json);
+  factory _$LocationInputImpl.fromJson(Map<String, dynamic> json) =>
+      _$$LocationInputImplFromJson(json);
 
   @override
   final double? latitude;
@@ -127,7 +127,7 @@ class _$_LocationInput implements _LocationInput {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LocationInput &&
+            other is _$LocationInputImpl &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -141,12 +141,12 @@ class _$_LocationInput implements _LocationInput {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LocationInputCopyWith<_$_LocationInput> get copyWith =>
-      __$$_LocationInputCopyWithImpl<_$_LocationInput>(this, _$identity);
+  _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
+      __$$LocationInputImplCopyWithImpl<_$LocationInputImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_LocationInputToJson(
+    return _$$LocationInputImplToJson(
       this,
     );
   }
@@ -154,10 +154,10 @@ class _$_LocationInput implements _LocationInput {
 
 abstract class _LocationInput implements LocationInput {
   factory _LocationInput({final double? latitude, final double? longitude}) =
-      _$_LocationInput;
+      _$LocationInputImpl;
 
   factory _LocationInput.fromJson(Map<String, dynamic> json) =
-      _$_LocationInput.fromJson;
+      _$LocationInputImpl.fromJson;
 
   @override
   double? get latitude;
@@ -165,6 +165,6 @@ abstract class _LocationInput implements LocationInput {
   double? get longitude;
   @override
   @JsonKey(ignore: true)
-  _$$_LocationInputCopyWith<_$_LocationInput> get copyWith =>
+  _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

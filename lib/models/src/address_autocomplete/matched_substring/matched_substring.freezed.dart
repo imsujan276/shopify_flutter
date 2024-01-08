@@ -68,22 +68,22 @@ class _$MatchedSubstringCopyWithImpl<$Res, $Val extends MatchedSubstring>
 }
 
 /// @nodoc
-abstract class _$$_MatchedSubstringCopyWith<$Res>
+abstract class _$$MatchedSubstringImplCopyWith<$Res>
     implements $MatchedSubstringCopyWith<$Res> {
-  factory _$$_MatchedSubstringCopyWith(
-          _$_MatchedSubstring value, $Res Function(_$_MatchedSubstring) then) =
-      __$$_MatchedSubstringCopyWithImpl<$Res>;
+  factory _$$MatchedSubstringImplCopyWith(_$MatchedSubstringImpl value,
+          $Res Function(_$MatchedSubstringImpl) then) =
+      __$$MatchedSubstringImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? length, int? offset});
 }
 
 /// @nodoc
-class __$$_MatchedSubstringCopyWithImpl<$Res>
-    extends _$MatchedSubstringCopyWithImpl<$Res, _$_MatchedSubstring>
-    implements _$$_MatchedSubstringCopyWith<$Res> {
-  __$$_MatchedSubstringCopyWithImpl(
-      _$_MatchedSubstring _value, $Res Function(_$_MatchedSubstring) _then)
+class __$$MatchedSubstringImplCopyWithImpl<$Res>
+    extends _$MatchedSubstringCopyWithImpl<$Res, _$MatchedSubstringImpl>
+    implements _$$MatchedSubstringImplCopyWith<$Res> {
+  __$$MatchedSubstringImplCopyWithImpl(_$MatchedSubstringImpl _value,
+      $Res Function(_$MatchedSubstringImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -92,7 +92,7 @@ class __$$_MatchedSubstringCopyWithImpl<$Res>
     Object? length = freezed,
     Object? offset = freezed,
   }) {
-    return _then(_$_MatchedSubstring(
+    return _then(_$MatchedSubstringImpl(
       length: freezed == length
           ? _value.length
           : length // ignore: cast_nullable_to_non_nullable
@@ -107,11 +107,11 @@ class __$$_MatchedSubstringCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MatchedSubstring implements _MatchedSubstring {
-  const _$_MatchedSubstring({this.length, this.offset});
+class _$MatchedSubstringImpl implements _MatchedSubstring {
+  const _$MatchedSubstringImpl({this.length, this.offset});
 
-  factory _$_MatchedSubstring.fromJson(Map<String, dynamic> json) =>
-      _$$_MatchedSubstringFromJson(json);
+  factory _$MatchedSubstringImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MatchedSubstringImplFromJson(json);
 
   @override
   final int? length;
@@ -127,7 +127,7 @@ class _$_MatchedSubstring implements _MatchedSubstring {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MatchedSubstring &&
+            other is _$MatchedSubstringImpl &&
             (identical(other.length, length) || other.length == length) &&
             (identical(other.offset, offset) || other.offset == offset));
   }
@@ -139,12 +139,13 @@ class _$_MatchedSubstring implements _MatchedSubstring {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MatchedSubstringCopyWith<_$_MatchedSubstring> get copyWith =>
-      __$$_MatchedSubstringCopyWithImpl<_$_MatchedSubstring>(this, _$identity);
+  _$$MatchedSubstringImplCopyWith<_$MatchedSubstringImpl> get copyWith =>
+      __$$MatchedSubstringImplCopyWithImpl<_$MatchedSubstringImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MatchedSubstringToJson(
+    return _$$MatchedSubstringImplToJson(
       this,
     );
   }
@@ -152,10 +153,10 @@ class _$_MatchedSubstring implements _MatchedSubstring {
 
 abstract class _MatchedSubstring implements MatchedSubstring {
   const factory _MatchedSubstring({final int? length, final int? offset}) =
-      _$_MatchedSubstring;
+      _$MatchedSubstringImpl;
 
   factory _MatchedSubstring.fromJson(Map<String, dynamic> json) =
-      _$_MatchedSubstring.fromJson;
+      _$MatchedSubstringImpl.fromJson;
 
   @override
   int? get length;
@@ -163,6 +164,6 @@ abstract class _MatchedSubstring implements MatchedSubstring {
   int? get offset;
   @override
   @JsonKey(ignore: true)
-  _$$_MatchedSubstringCopyWith<_$_MatchedSubstring> get copyWith =>
+  _$$MatchedSubstringImplCopyWith<_$MatchedSubstringImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

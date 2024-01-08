@@ -67,21 +67,22 @@ class _$AttributeCopyWithImpl<$Res, $Val extends Attribute>
 }
 
 /// @nodoc
-abstract class _$$_AttributeCopyWith<$Res> implements $AttributeCopyWith<$Res> {
-  factory _$$_AttributeCopyWith(
-          _$_Attribute value, $Res Function(_$_Attribute) then) =
-      __$$_AttributeCopyWithImpl<$Res>;
+abstract class _$$AttributeImplCopyWith<$Res>
+    implements $AttributeCopyWith<$Res> {
+  factory _$$AttributeImplCopyWith(
+          _$AttributeImpl value, $Res Function(_$AttributeImpl) then) =
+      __$$AttributeImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String key, String? value});
 }
 
 /// @nodoc
-class __$$_AttributeCopyWithImpl<$Res>
-    extends _$AttributeCopyWithImpl<$Res, _$_Attribute>
-    implements _$$_AttributeCopyWith<$Res> {
-  __$$_AttributeCopyWithImpl(
-      _$_Attribute _value, $Res Function(_$_Attribute) _then)
+class __$$AttributeImplCopyWithImpl<$Res>
+    extends _$AttributeCopyWithImpl<$Res, _$AttributeImpl>
+    implements _$$AttributeImplCopyWith<$Res> {
+  __$$AttributeImplCopyWithImpl(
+      _$AttributeImpl _value, $Res Function(_$AttributeImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -90,7 +91,7 @@ class __$$_AttributeCopyWithImpl<$Res>
     Object? key = null,
     Object? value = freezed,
   }) {
-    return _then(_$_Attribute(
+    return _then(_$AttributeImpl(
       key: null == key
           ? _value.key
           : key // ignore: cast_nullable_to_non_nullable
@@ -105,11 +106,11 @@ class __$$_AttributeCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Attribute extends _Attribute {
-  _$_Attribute({required this.key, this.value}) : super._();
+class _$AttributeImpl extends _Attribute {
+  _$AttributeImpl({required this.key, this.value}) : super._();
 
-  factory _$_Attribute.fromJson(Map<String, dynamic> json) =>
-      _$$_AttributeFromJson(json);
+  factory _$AttributeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AttributeImplFromJson(json);
 
   @override
   final String key;
@@ -125,7 +126,7 @@ class _$_Attribute extends _Attribute {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Attribute &&
+            other is _$AttributeImpl &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.value, value) || other.value == value));
   }
@@ -137,12 +138,12 @@ class _$_Attribute extends _Attribute {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AttributeCopyWith<_$_Attribute> get copyWith =>
-      __$$_AttributeCopyWithImpl<_$_Attribute>(this, _$identity);
+  _$$AttributeImplCopyWith<_$AttributeImpl> get copyWith =>
+      __$$AttributeImplCopyWithImpl<_$AttributeImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AttributeToJson(
+    return _$$AttributeImplToJson(
       this,
     );
   }
@@ -150,11 +151,11 @@ class _$_Attribute extends _Attribute {
 
 abstract class _Attribute extends Attribute {
   factory _Attribute({required final String key, final String? value}) =
-      _$_Attribute;
+      _$AttributeImpl;
   _Attribute._() : super._();
 
   factory _Attribute.fromJson(Map<String, dynamic> json) =
-      _$_Attribute.fromJson;
+      _$AttributeImpl.fromJson;
 
   @override
   String get key;
@@ -162,6 +163,6 @@ abstract class _Attribute extends Attribute {
   String? get value;
   @override
   @JsonKey(ignore: true)
-  _$$_AttributeCopyWith<_$_Attribute> get copyWith =>
+  _$$AttributeImplCopyWith<_$AttributeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

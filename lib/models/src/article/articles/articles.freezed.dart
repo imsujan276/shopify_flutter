@@ -61,21 +61,22 @@ class _$ArticlesCopyWithImpl<$Res, $Val extends Articles>
 }
 
 /// @nodoc
-abstract class _$$_ArticlesCopyWith<$Res> implements $ArticlesCopyWith<$Res> {
-  factory _$$_ArticlesCopyWith(
-          _$_Articles value, $Res Function(_$_Articles) then) =
-      __$$_ArticlesCopyWithImpl<$Res>;
+abstract class _$$ArticlesImplCopyWith<$Res>
+    implements $ArticlesCopyWith<$Res> {
+  factory _$$ArticlesImplCopyWith(
+          _$ArticlesImpl value, $Res Function(_$ArticlesImpl) then) =
+      __$$ArticlesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Article> articleList});
 }
 
 /// @nodoc
-class __$$_ArticlesCopyWithImpl<$Res>
-    extends _$ArticlesCopyWithImpl<$Res, _$_Articles>
-    implements _$$_ArticlesCopyWith<$Res> {
-  __$$_ArticlesCopyWithImpl(
-      _$_Articles _value, $Res Function(_$_Articles) _then)
+class __$$ArticlesImplCopyWithImpl<$Res>
+    extends _$ArticlesCopyWithImpl<$Res, _$ArticlesImpl>
+    implements _$$ArticlesImplCopyWith<$Res> {
+  __$$ArticlesImplCopyWithImpl(
+      _$ArticlesImpl _value, $Res Function(_$ArticlesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_ArticlesCopyWithImpl<$Res>
   $Res call({
     Object? articleList = null,
   }) {
-    return _then(_$_Articles(
+    return _then(_$ArticlesImpl(
       articleList: null == articleList
           ? _value._articleList
           : articleList // ignore: cast_nullable_to_non_nullable
@@ -94,12 +95,12 @@ class __$$_ArticlesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Articles implements _Articles {
-  _$_Articles({required final List<Article> articleList})
+class _$ArticlesImpl implements _Articles {
+  _$ArticlesImpl({required final List<Article> articleList})
       : _articleList = articleList;
 
-  factory _$_Articles.fromJson(Map<String, dynamic> json) =>
-      _$$_ArticlesFromJson(json);
+  factory _$ArticlesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ArticlesImplFromJson(json);
 
   final List<Article> _articleList;
   @override
@@ -118,7 +119,7 @@ class _$_Articles implements _Articles {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Articles &&
+            other is _$ArticlesImpl &&
             const DeepCollectionEquality()
                 .equals(other._articleList, _articleList));
   }
@@ -131,26 +132,28 @@ class _$_Articles implements _Articles {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ArticlesCopyWith<_$_Articles> get copyWith =>
-      __$$_ArticlesCopyWithImpl<_$_Articles>(this, _$identity);
+  _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
+      __$$ArticlesImplCopyWithImpl<_$ArticlesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ArticlesToJson(
+    return _$$ArticlesImplToJson(
       this,
     );
   }
 }
 
 abstract class _Articles implements Articles {
-  factory _Articles({required final List<Article> articleList}) = _$_Articles;
+  factory _Articles({required final List<Article> articleList}) =
+      _$ArticlesImpl;
 
-  factory _Articles.fromJson(Map<String, dynamic> json) = _$_Articles.fromJson;
+  factory _Articles.fromJson(Map<String, dynamic> json) =
+      _$ArticlesImpl.fromJson;
 
   @override
   List<Article> get articleList;
   @override
   @JsonKey(ignore: true)
-  _$$_ArticlesCopyWith<_$_Articles> get copyWith =>
+  _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

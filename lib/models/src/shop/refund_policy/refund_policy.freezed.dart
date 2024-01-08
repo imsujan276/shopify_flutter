@@ -87,11 +87,11 @@ class _$RefundPolicyCopyWithImpl<$Res, $Val extends RefundPolicy>
 }
 
 /// @nodoc
-abstract class _$$_RefundPolicyCopyWith<$Res>
+abstract class _$$RefundPolicyImplCopyWith<$Res>
     implements $RefundPolicyCopyWith<$Res> {
-  factory _$$_RefundPolicyCopyWith(
-          _$_RefundPolicy value, $Res Function(_$_RefundPolicy) then) =
-      __$$_RefundPolicyCopyWithImpl<$Res>;
+  factory _$$RefundPolicyImplCopyWith(
+          _$RefundPolicyImpl value, $Res Function(_$RefundPolicyImpl) then) =
+      __$$RefundPolicyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_RefundPolicyCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_RefundPolicyCopyWithImpl<$Res>
-    extends _$RefundPolicyCopyWithImpl<$Res, _$_RefundPolicy>
-    implements _$$_RefundPolicyCopyWith<$Res> {
-  __$$_RefundPolicyCopyWithImpl(
-      _$_RefundPolicy _value, $Res Function(_$_RefundPolicy) _then)
+class __$$RefundPolicyImplCopyWithImpl<$Res>
+    extends _$RefundPolicyCopyWithImpl<$Res, _$RefundPolicyImpl>
+    implements _$$RefundPolicyImplCopyWith<$Res> {
+  __$$RefundPolicyImplCopyWithImpl(
+      _$RefundPolicyImpl _value, $Res Function(_$RefundPolicyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_RefundPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_RefundPolicy(
+    return _then(_$RefundPolicyImpl(
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,11 +142,11 @@ class __$$_RefundPolicyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_RefundPolicy implements _RefundPolicy {
-  _$_RefundPolicy({this.body, this.handle, this.id, this.title, this.url});
+class _$RefundPolicyImpl implements _RefundPolicy {
+  _$RefundPolicyImpl({this.body, this.handle, this.id, this.title, this.url});
 
-  factory _$_RefundPolicy.fromJson(Map<String, dynamic> json) =>
-      _$$_RefundPolicyFromJson(json);
+  factory _$RefundPolicyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RefundPolicyImplFromJson(json);
 
   @override
   final String? body;
@@ -168,7 +168,7 @@ class _$_RefundPolicy implements _RefundPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_RefundPolicy &&
+            other is _$RefundPolicyImpl &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.id, id) || other.id == id) &&
@@ -183,12 +183,12 @@ class _$_RefundPolicy implements _RefundPolicy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_RefundPolicyCopyWith<_$_RefundPolicy> get copyWith =>
-      __$$_RefundPolicyCopyWithImpl<_$_RefundPolicy>(this, _$identity);
+  _$$RefundPolicyImplCopyWith<_$RefundPolicyImpl> get copyWith =>
+      __$$RefundPolicyImplCopyWithImpl<_$RefundPolicyImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RefundPolicyToJson(
+    return _$$RefundPolicyImplToJson(
       this,
     );
   }
@@ -200,10 +200,10 @@ abstract class _RefundPolicy implements RefundPolicy {
       final String? handle,
       final String? id,
       final String? title,
-      final String? url}) = _$_RefundPolicy;
+      final String? url}) = _$RefundPolicyImpl;
 
   factory _RefundPolicy.fromJson(Map<String, dynamic> json) =
-      _$_RefundPolicy.fromJson;
+      _$RefundPolicyImpl.fromJson;
 
   @override
   String? get body;
@@ -217,6 +217,6 @@ abstract class _RefundPolicy implements RefundPolicy {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_RefundPolicyCopyWith<_$_RefundPolicy> get copyWith =>
+  _$$RefundPolicyImplCopyWith<_$RefundPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

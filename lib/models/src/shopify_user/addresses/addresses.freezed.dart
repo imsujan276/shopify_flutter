@@ -61,21 +61,22 @@ class _$AddressesCopyWithImpl<$Res, $Val extends Addresses>
 }
 
 /// @nodoc
-abstract class _$$_AddressesCopyWith<$Res> implements $AddressesCopyWith<$Res> {
-  factory _$$_AddressesCopyWith(
-          _$_Addresses value, $Res Function(_$_Addresses) then) =
-      __$$_AddressesCopyWithImpl<$Res>;
+abstract class _$$AddressesImplCopyWith<$Res>
+    implements $AddressesCopyWith<$Res> {
+  factory _$$AddressesImplCopyWith(
+          _$AddressesImpl value, $Res Function(_$AddressesImpl) then) =
+      __$$AddressesImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Address> addressList});
 }
 
 /// @nodoc
-class __$$_AddressesCopyWithImpl<$Res>
-    extends _$AddressesCopyWithImpl<$Res, _$_Addresses>
-    implements _$$_AddressesCopyWith<$Res> {
-  __$$_AddressesCopyWithImpl(
-      _$_Addresses _value, $Res Function(_$_Addresses) _then)
+class __$$AddressesImplCopyWithImpl<$Res>
+    extends _$AddressesCopyWithImpl<$Res, _$AddressesImpl>
+    implements _$$AddressesImplCopyWith<$Res> {
+  __$$AddressesImplCopyWithImpl(
+      _$AddressesImpl _value, $Res Function(_$AddressesImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -83,7 +84,7 @@ class __$$_AddressesCopyWithImpl<$Res>
   $Res call({
     Object? addressList = null,
   }) {
-    return _then(_$_Addresses(
+    return _then(_$AddressesImpl(
       addressList: null == addressList
           ? _value._addressList
           : addressList // ignore: cast_nullable_to_non_nullable
@@ -94,13 +95,13 @@ class __$$_AddressesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Addresses extends _Addresses {
-  _$_Addresses({required final List<Address> addressList})
+class _$AddressesImpl extends _Addresses {
+  _$AddressesImpl({required final List<Address> addressList})
       : _addressList = addressList,
         super._();
 
-  factory _$_Addresses.fromJson(Map<String, dynamic> json) =>
-      _$$_AddressesFromJson(json);
+  factory _$AddressesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AddressesImplFromJson(json);
 
   final List<Address> _addressList;
   @override
@@ -119,7 +120,7 @@ class _$_Addresses extends _Addresses {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Addresses &&
+            other is _$AddressesImpl &&
             const DeepCollectionEquality()
                 .equals(other._addressList, _addressList));
   }
@@ -132,28 +133,29 @@ class _$_Addresses extends _Addresses {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
-      __$$_AddressesCopyWithImpl<_$_Addresses>(this, _$identity);
+  _$$AddressesImplCopyWith<_$AddressesImpl> get copyWith =>
+      __$$AddressesImplCopyWithImpl<_$AddressesImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_AddressesToJson(
+    return _$$AddressesImplToJson(
       this,
     );
   }
 }
 
 abstract class _Addresses extends Addresses {
-  factory _Addresses({required final List<Address> addressList}) = _$_Addresses;
+  factory _Addresses({required final List<Address> addressList}) =
+      _$AddressesImpl;
   _Addresses._() : super._();
 
   factory _Addresses.fromJson(Map<String, dynamic> json) =
-      _$_Addresses.fromJson;
+      _$AddressesImpl.fromJson;
 
   @override
   List<Address> get addressList;
   @override
   @JsonKey(ignore: true)
-  _$$_AddressesCopyWith<_$_Addresses> get copyWith =>
+  _$$AddressesImplCopyWith<_$AddressesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

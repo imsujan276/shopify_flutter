@@ -87,11 +87,11 @@ class _$ShippingPolicyCopyWithImpl<$Res, $Val extends ShippingPolicy>
 }
 
 /// @nodoc
-abstract class _$$_ShippingPolicyCopyWith<$Res>
+abstract class _$$ShippingPolicyImplCopyWith<$Res>
     implements $ShippingPolicyCopyWith<$Res> {
-  factory _$$_ShippingPolicyCopyWith(
-          _$_ShippingPolicy value, $Res Function(_$_ShippingPolicy) then) =
-      __$$_ShippingPolicyCopyWithImpl<$Res>;
+  factory _$$ShippingPolicyImplCopyWith(_$ShippingPolicyImpl value,
+          $Res Function(_$ShippingPolicyImpl) then) =
+      __$$ShippingPolicyImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -99,11 +99,11 @@ abstract class _$$_ShippingPolicyCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ShippingPolicyCopyWithImpl<$Res>
-    extends _$ShippingPolicyCopyWithImpl<$Res, _$_ShippingPolicy>
-    implements _$$_ShippingPolicyCopyWith<$Res> {
-  __$$_ShippingPolicyCopyWithImpl(
-      _$_ShippingPolicy _value, $Res Function(_$_ShippingPolicy) _then)
+class __$$ShippingPolicyImplCopyWithImpl<$Res>
+    extends _$ShippingPolicyCopyWithImpl<$Res, _$ShippingPolicyImpl>
+    implements _$$ShippingPolicyImplCopyWith<$Res> {
+  __$$ShippingPolicyImplCopyWithImpl(
+      _$ShippingPolicyImpl _value, $Res Function(_$ShippingPolicyImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -115,7 +115,7 @@ class __$$_ShippingPolicyCopyWithImpl<$Res>
     Object? title = freezed,
     Object? url = freezed,
   }) {
-    return _then(_$_ShippingPolicy(
+    return _then(_$ShippingPolicyImpl(
       body: freezed == body
           ? _value.body
           : body // ignore: cast_nullable_to_non_nullable
@@ -142,11 +142,11 @@ class __$$_ShippingPolicyCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_ShippingPolicy implements _ShippingPolicy {
-  _$_ShippingPolicy({this.body, this.handle, this.id, this.title, this.url});
+class _$ShippingPolicyImpl implements _ShippingPolicy {
+  _$ShippingPolicyImpl({this.body, this.handle, this.id, this.title, this.url});
 
-  factory _$_ShippingPolicy.fromJson(Map<String, dynamic> json) =>
-      _$$_ShippingPolicyFromJson(json);
+  factory _$ShippingPolicyImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ShippingPolicyImplFromJson(json);
 
   @override
   final String? body;
@@ -168,7 +168,7 @@ class _$_ShippingPolicy implements _ShippingPolicy {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ShippingPolicy &&
+            other is _$ShippingPolicyImpl &&
             (identical(other.body, body) || other.body == body) &&
             (identical(other.handle, handle) || other.handle == handle) &&
             (identical(other.id, id) || other.id == id) &&
@@ -183,12 +183,13 @@ class _$_ShippingPolicy implements _ShippingPolicy {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ShippingPolicyCopyWith<_$_ShippingPolicy> get copyWith =>
-      __$$_ShippingPolicyCopyWithImpl<_$_ShippingPolicy>(this, _$identity);
+  _$$ShippingPolicyImplCopyWith<_$ShippingPolicyImpl> get copyWith =>
+      __$$ShippingPolicyImplCopyWithImpl<_$ShippingPolicyImpl>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ShippingPolicyToJson(
+    return _$$ShippingPolicyImplToJson(
       this,
     );
   }
@@ -200,10 +201,10 @@ abstract class _ShippingPolicy implements ShippingPolicy {
       final String? handle,
       final String? id,
       final String? title,
-      final String? url}) = _$_ShippingPolicy;
+      final String? url}) = _$ShippingPolicyImpl;
 
   factory _ShippingPolicy.fromJson(Map<String, dynamic> json) =
-      _$_ShippingPolicy.fromJson;
+      _$ShippingPolicyImpl.fromJson;
 
   @override
   String? get body;
@@ -217,6 +218,6 @@ abstract class _ShippingPolicy implements ShippingPolicy {
   String? get url;
   @override
   @JsonKey(ignore: true)
-  _$$_ShippingPolicyCopyWith<_$_ShippingPolicy> get copyWith =>
+  _$$ShippingPolicyImplCopyWith<_$ShippingPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

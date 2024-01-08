@@ -354,7 +354,7 @@ class _$ShippingAddressImpl implements _ShippingAddress {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShippingAddressImpl &&

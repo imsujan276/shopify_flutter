@@ -408,7 +408,7 @@ class _$ProductVariantImpl extends _ProductVariant {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductVariantImpl &&

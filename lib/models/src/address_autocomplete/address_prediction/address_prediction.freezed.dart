@@ -156,7 +156,7 @@ class _$AddressPredictionImpl implements _AddressPrediction {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddressPredictionImpl &&

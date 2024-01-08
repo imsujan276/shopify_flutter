@@ -116,7 +116,7 @@ class _$LineItemsImpl implements _LineItems {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LineItemsImpl &&

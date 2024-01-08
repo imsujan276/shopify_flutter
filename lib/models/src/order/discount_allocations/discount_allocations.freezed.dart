@@ -128,7 +128,7 @@ class _$DiscountAllocationsImpl extends _DiscountAllocations {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DiscountAllocationsImpl &&

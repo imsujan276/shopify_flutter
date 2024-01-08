@@ -389,7 +389,7 @@ class _$ShopImpl implements _Shop {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ShopImpl &&

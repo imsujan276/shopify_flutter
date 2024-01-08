@@ -144,7 +144,7 @@ class _$SuccessfulFullfilmentImpl extends _SuccessfulFullfilment {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessfulFullfilmentImpl &&

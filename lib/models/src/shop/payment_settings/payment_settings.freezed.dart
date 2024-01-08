@@ -241,7 +241,7 @@ class _$PaymentSettingsImpl implements _PaymentSettings {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PaymentSettingsImpl &&

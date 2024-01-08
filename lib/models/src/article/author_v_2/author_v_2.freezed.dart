@@ -173,7 +173,7 @@ class _$AuthorV2Impl implements _AuthorV2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AuthorV2Impl &&

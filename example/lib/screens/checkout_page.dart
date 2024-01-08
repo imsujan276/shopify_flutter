@@ -47,7 +47,7 @@ class _WebViewCheckoutState extends State<WebViewCheckout> {
         ),
         body: InAppWebView(
           initialUrlRequest: URLRequest(
-            url: Uri.parse(widget.checkout.webUrl!),
+            url: WebUri(widget.checkout.webUrl!),
           ),
           onWebViewCreated: (controller) {
             webViewController = controller;

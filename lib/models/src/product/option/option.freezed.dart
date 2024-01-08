@@ -144,7 +144,7 @@ class _$OptionImpl extends _Option {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OptionImpl &&

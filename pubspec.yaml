@@ -1,6 +1,6 @@
 name: shopify_flutter
 description: A flutter package that works as a bridge between your Shopify Store and Flutter Application.
-version: 1.5.1
+version: 1.5.1+1
 homepage: https://github.com/imsujan276/shopify_flutter
 
 tags:
@@ -15,17 +15,17 @@ dependencies:
   flutter:
     sdk: flutter
   graphql_flutter: ^5.1.2
-  freezed_annotation: ^2.2.0
+  freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
   shared_preferences: ^2.0.20
-  intl: ^0.18.0
+  intl: ^0.19.0
   url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   build_runner: ^2.3.3
   freezed: ^2.3.2
 

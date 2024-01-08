@@ -130,7 +130,7 @@ class _$PriceV2Impl extends _PriceV2 {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PriceV2Impl &&

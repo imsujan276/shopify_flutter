@@ -223,7 +223,7 @@ class _$PageImpl extends _Page {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PageImpl &&

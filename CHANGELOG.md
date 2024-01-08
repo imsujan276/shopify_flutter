@@ -1,4 +1,4 @@
-## 1.5.1
+## 1.5.2
 
 * updated dependencies to match latest flutter 3.16.5
 

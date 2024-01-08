@@ -85,5 +85,4 @@ query($n : Int, $sortKey : ProductSortKeys, $reverse: Boolean){
     }
   }
 }
-
 ''';

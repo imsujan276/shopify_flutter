@@ -85,5 +85,4 @@ query($cursor : String, $reverse: Boolean){
     }
   }
 }
-
 ''';

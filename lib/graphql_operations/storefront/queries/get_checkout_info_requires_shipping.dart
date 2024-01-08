@@ -6,4 +6,5 @@ query getCheckoutInfoAboutShipping($id : ID!) {
       requiresShipping
     }
   }
-}''';
+}
+''';

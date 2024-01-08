@@ -6,39 +6,6 @@ part of 'product.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Product _$ProductFromJson(Map<String, dynamic> json) => Product(
-      title: json['title'] as String,
-      id: json['id'] as String,
-      availableForSale: json['availableForSale'] as bool,
-      createdAt: json['createdAt'] as String,
-      productVariants: (json['productVariants'] as List<dynamic>)
-          .map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      productType: json['productType'] as String,
-      publishedAt: json['publishedAt'] as String,
-      tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
-      updatedAt: json['updatedAt'] as String,
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ShopifyImage.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      options: (json['options'] as List<dynamic>)
-          .map((e) => Option.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      vendor: json['vendor'] as String,
-      metafields: (json['metafields'] as List<dynamic>)
-          .map((e) => Metafield.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      collectionList: (json['collectionList'] as List<dynamic>?)
-          ?.map(
-              (e) => AssociatedCollections.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      cursor: json['cursor'] as String?,
-      onlineStoreUrl: json['onlineStoreUrl'] as String?,
-      description: json['description'] as String?,
-      descriptionHtml: json['descriptionHtml'] as String?,
-      handle: json['handle'] as String?,
-    );
-
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'title': instance.title,
       'id': instance.id,
@@ -59,4 +26,12 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'description': instance.description,
       'descriptionHtml': instance.descriptionHtml,
       'handle': instance.handle,
+      'price': instance.price,
+      'formattedPrice': instance.formattedPrice,
+      'hasComparablePrice': instance.hasComparablePrice,
+      'compareAtPrice': instance.compareAtPrice,
+      'compareAtPriceFormatted': instance.compareAtPriceFormatted,
+      'image': instance.image,
+      'currencyCode': instance.currencyCode,
+      'isAvailableForSale': instance.isAvailableForSale,
     };

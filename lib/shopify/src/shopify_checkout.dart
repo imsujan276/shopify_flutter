@@ -3,7 +3,7 @@ import 'package:shopify_flutter/enums/src/sort_key_order.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_free.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_email_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_item_add.dart';
-import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_with_credit_card_V2.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_complete_with_credit_card.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_item_remove.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_item_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/checkout_line_items_replace.dart';

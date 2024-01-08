@@ -15,7 +15,7 @@ part 'product.freezed.dart';
 part 'product.g.dart';
 
 @freezed
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class Product with _$Product {
   const Product._();
   factory Product({

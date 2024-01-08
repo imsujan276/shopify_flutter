@@ -93,5 +93,4 @@ query getFeaturedCollectionQuery($query: String!){
     }
   }
 }
-
 ''';

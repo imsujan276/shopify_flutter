@@ -1,3 +1,7 @@
+## 1.5.2+1
+
+* updates to increase pub points
+
 ## 1.5.2
 
 * updated dependencies to match latest flutter 3.16.5

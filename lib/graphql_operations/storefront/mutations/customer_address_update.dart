@@ -9,5 +9,4 @@ mutation MyMutation($address1 : String, $address2 : String, $company : String, $
     }
   }
 }
-
 ''';

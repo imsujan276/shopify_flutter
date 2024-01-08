@@ -9,5 +9,4 @@ mutation associateCustomer($checkoutId : ID!, $customerAccessToken : String!) {
     }
   }
 }
-
 ''';

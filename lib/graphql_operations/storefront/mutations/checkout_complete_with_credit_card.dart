@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 /// Mutation to complete a checkout with a credit card
 const String compCheckoutWithTokenizedPaymentV2 = r'''
 mutation checkoutCompleteWithTokenizedPaymentV2($checkoutId: ID!, $payment: TokenizedPaymentInputV2!) {
@@ -20,5 +18,4 @@ mutation checkoutCompleteWithTokenizedPaymentV2($checkoutId: ID!, $payment: Toke
     }
   }
 }
-
 ''';

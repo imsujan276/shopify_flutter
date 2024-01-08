@@ -6,4 +6,5 @@ query getCheckoutInfoIsReady($id : ID!) {
       ready
     }
   }
-}''';
+}
+''';

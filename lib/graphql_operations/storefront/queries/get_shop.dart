@@ -56,4 +56,5 @@ query getShop {
       url
     }
   }
-}''';
+}
+''';

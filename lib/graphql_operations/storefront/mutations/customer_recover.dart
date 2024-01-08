@@ -8,4 +8,5 @@ mutation customerRecover($email: String!) {
       message
     }
   }
-}''';
+}
+''';

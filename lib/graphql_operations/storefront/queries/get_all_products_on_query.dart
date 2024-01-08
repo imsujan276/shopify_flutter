@@ -69,4 +69,5 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
       hasNextPage
     }
   }
-}''';
+}
+''';

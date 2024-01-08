@@ -7,4 +7,5 @@ mutation customerAccessTokenCreate($email : String!, $password: String!) {
       accessToken
     }
   }
-}''';
+}
+''';

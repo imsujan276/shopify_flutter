@@ -1,5 +1,9 @@
 ## 1.5.1
 
+* updated dependencies to match latest flutter 3.16.5
+
+## 1.5.1
+
 * updated getAllCollections 
 * optimized auto-generated files
 

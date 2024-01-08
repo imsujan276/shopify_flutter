@@ -1,4 +1,4 @@
-## 1.5.2+1
+## 1.5.3
 
 * updates to increase pub points
 

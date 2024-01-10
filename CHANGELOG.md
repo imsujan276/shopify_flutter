@@ -1,4 +1,4 @@
-## 1.5.4
+## 1.5.6
 
 * added default address in shopify user
 * added method **customerDefaultAddressUpdate** in **ShopifyCustomer** class to update the default address

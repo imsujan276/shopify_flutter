@@ -101,6 +101,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<void> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
   Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
   Future<void> customerAddressDelete({String customerAccessToken, String addressId})
+  Future<void> customerDefaultAddressUpdate({required String addressId, required String customerAccessToken})
        
 ```
 

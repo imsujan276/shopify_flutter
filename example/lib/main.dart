@@ -1,5 +1,6 @@
 import 'package:example/screens/orders_tab.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 import 'screens/auth_tab.dart';
@@ -9,11 +10,15 @@ import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
+
   ShopifyConfig.setConfig(
-    storefrontAccessToken: '*******************',
-    storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // optional
+    storefrontAccessToken: dotenv.env['STOREFRONT_ACCESS_TOKEN'] ?? '',
+    storeUrl: dotenv.env['STORE_URL'] ?? '',
+    adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
+    storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
   );
   runApp(const MyApp());
 }

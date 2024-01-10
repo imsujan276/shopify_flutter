@@ -1,5 +1,10 @@
 ## 1.5.4
 
+* added default address in shopify user
+* added method **customerDefaultAddressUpdate** in **ShopifyCustomer** class to update the default address
+
+## 1.5.4
+
 * Some bugs fixes [Issue 34](https://github.com/imsujan276/shopify_flutter/issues/34)
 
 ## 1.5.3

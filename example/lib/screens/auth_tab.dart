@@ -37,6 +37,7 @@ class _AuthTabState extends State<AuthTab> {
         final user = await shopifyAuth.currentUser();
         setState(() => shopifyUser = user);
       }
+      log(shopifyUser.toString());
     } catch (e) {
       debugPrint(e.toString());
     }
@@ -100,11 +101,13 @@ class _AuthTabState extends State<AuthTab> {
                 },
                 child: const Text('Sign Out'),
               ),
-            const Divider(),
-            ElevatedButton(
-              onPressed: () => _register(),
-              child: const Text('Sign Up'),
-            )
+            if (shopifyUser == null) ...[
+              const Divider(),
+              ElevatedButton(
+                onPressed: () => _register(),
+                child: const Text('Sign Up'),
+              )
+            ],
           ],
         ),
       ),

@@ -14,7 +14,7 @@ _$PageImpl _$$PageImplFromJson(Map<String, dynamic> json) => _$PageImpl(
       id: json['id'] as String,
       title: json['title'] as String,
       updatedAt: DateTime.parse(json['updatedAt'] as String),
-      url: json['url'] as String,
+      onlineStoreUrl: json['onlineStoreUrl'] as String,
     );
 
 Map<String, dynamic> _$$PageImplToJson(_$PageImpl instance) =>
@@ -26,5 +26,5 @@ Map<String, dynamic> _$$PageImplToJson(_$PageImpl instance) =>
       'id': instance.id,
       'title': instance.title,
       'updatedAt': instance.updatedAt.toIso8601String(),
-      'url': instance.url,
+      'onlineStoreUrl': instance.onlineStoreUrl,
     };

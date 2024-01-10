@@ -72,10 +72,10 @@ class ShopifyAuth with ShopifyError {
   /// if phone is provided, it should be formatted using E.164 standard. For example, +16135551111.
   /// i.e. [+][countrycode][number including area code]
   Future<ShopifyUser> createUserWithEmailAndPassword({
-    required String firstName,
-    required String lastName,
     required String email,
     required String password,
+    String? firstName,
+    String? lastName,
     bool? acceptsMarketing,
     String? phone,
   }) async {
@@ -87,7 +87,7 @@ class ShopifyAuth with ShopifyError {
         'email': email,
         'password': password,
         'acceptsMarketing': acceptsMarketing ?? false,
-        'phone': phone ?? '',
+        'phone': phone,
       },
     );
     final QueryResult result = await _graphQLClient!.mutate(_options);

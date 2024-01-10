@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/enums/src/payment_token_type.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
-import 'package:shopify_flutter/shopify/src/shopify_custom.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 import 'checkout_page.dart';

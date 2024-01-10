@@ -1,3 +1,7 @@
+## 1.5.4
+
+* Some bugs fixes [Issue 34](https://github.com/imsujan276/shopify_flutter/issues/34)
+
 ## 1.5.3
 
 * updates to increase pub points

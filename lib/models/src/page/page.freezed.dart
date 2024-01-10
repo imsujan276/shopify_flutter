@@ -27,7 +27,7 @@ mixin _$Page {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String get onlineStoreUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,7 +47,7 @@ abstract class $PageCopyWith<$Res> {
       String id,
       String title,
       DateTime updatedAt,
-      String url});
+      String onlineStoreUrl});
 }
 
 /// @nodoc
@@ -70,7 +70,7 @@ class _$PageCopyWithImpl<$Res, $Val extends Page>
     Object? id = null,
     Object? title = null,
     Object? updatedAt = null,
-    Object? url = null,
+    Object? onlineStoreUrl = null,
   }) {
     return _then(_value.copyWith(
       body: null == body
@@ -101,9 +101,9 @@ class _$PageCopyWithImpl<$Res, $Val extends Page>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      onlineStoreUrl: null == onlineStoreUrl
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -124,7 +124,7 @@ abstract class _$$PageImplCopyWith<$Res> implements $PageCopyWith<$Res> {
       String id,
       String title,
       DateTime updatedAt,
-      String url});
+      String onlineStoreUrl});
 }
 
 /// @nodoc
@@ -144,7 +144,7 @@ class __$$PageImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = null,
     Object? updatedAt = null,
-    Object? url = null,
+    Object? onlineStoreUrl = null,
   }) {
     return _then(_$PageImpl(
       body: null == body
@@ -175,9 +175,9 @@ class __$$PageImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
+      onlineStoreUrl: null == onlineStoreUrl
+          ? _value.onlineStoreUrl
+          : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -194,7 +194,7 @@ class _$PageImpl extends _Page {
       required this.id,
       required this.title,
       required this.updatedAt,
-      required this.url})
+      required this.onlineStoreUrl})
       : super._();
 
   factory _$PageImpl.fromJson(Map<String, dynamic> json) =>
@@ -215,11 +215,11 @@ class _$PageImpl extends _Page {
   @override
   final DateTime updatedAt;
   @override
-  final String url;
+  final String onlineStoreUrl;
 
   @override
   String toString() {
-    return 'Page(body: $body, bodySummary: $bodySummary, createdAt: $createdAt, handle: $handle, id: $id, title: $title, updatedAt: $updatedAt, url: $url)';
+    return 'Page(body: $body, bodySummary: $bodySummary, createdAt: $createdAt, handle: $handle, id: $id, title: $title, updatedAt: $updatedAt, onlineStoreUrl: $onlineStoreUrl)';
   }
 
   @override
@@ -237,13 +237,14 @@ class _$PageImpl extends _Page {
             (identical(other.title, title) || other.title == title) &&
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
-            (identical(other.url, url) || other.url == url));
+            (identical(other.onlineStoreUrl, onlineStoreUrl) ||
+                other.onlineStoreUrl == onlineStoreUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, body, bodySummary, createdAt,
-      handle, id, title, updatedAt, url);
+      handle, id, title, updatedAt, onlineStoreUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -268,7 +269,7 @@ abstract class _Page extends Page {
       required final String id,
       required final String title,
       required final DateTime updatedAt,
-      required final String url}) = _$PageImpl;
+      required final String onlineStoreUrl}) = _$PageImpl;
   _Page._() : super._();
 
   factory _Page.fromJson(Map<String, dynamic> json) = _$PageImpl.fromJson;
@@ -288,7 +289,7 @@ abstract class _Page extends Page {
   @override
   DateTime get updatedAt;
   @override
-  String get url;
+  String get onlineStoreUrl;
   @override
   @JsonKey(ignore: true)
   _$$PageImplCopyWith<_$PageImpl> get copyWith =>

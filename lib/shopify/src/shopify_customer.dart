@@ -3,7 +3,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/mutations/customer
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/customer_address_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/customer_default_address_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/customer_update.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 

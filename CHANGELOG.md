@@ -1,3 +1,9 @@
+## 1.5.6
+
+* added foormatted price in product price
+* added `cachePolicy` in `ShopifyConfig`  for GraphQL queries
+* some bugs fixes
+
 ## 1.5.5
 
 * added default address in shopify user

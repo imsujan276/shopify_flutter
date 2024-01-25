@@ -137,8 +137,10 @@ class ShopifyAuth with ShopifyError {
       throw Exception('Invalid credentials');
     }
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
-        document: gql(getCustomerQuery),
-        variables: {'customerAccessToken': accessTokenWithExpDate.accessToken});
+      document: gql(getCustomerQuery),
+      variables: {'customerAccessToken': accessTokenWithExpDate.accessToken},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_getCustomer);
     checkForError(result);
     final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
@@ -159,8 +161,10 @@ class ShopifyAuth with ShopifyError {
     final accessTokenWithExpDate =
         await _createAccessTokenWithMultipass(multipassToken);
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
-        document: gql(getCustomerQuery),
-        variables: {'customerAccessToken': accessTokenWithExpDate.accessToken});
+      document: gql(getCustomerQuery),
+      variables: {'customerAccessToken': accessTokenWithExpDate.accessToken},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_getCustomer);
     checkForError(result);
     final shopifyUser = ShopifyUser.fromGraphJson(result.data!['customer']);
@@ -240,8 +244,10 @@ class ShopifyAuth with ShopifyError {
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
   Future<ShopifyUser?> currentUser() async {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
-        document: gql(getCustomerQuery),
-        variables: {'customerAccessToken': await currentCustomerAccessToken});
+      document: gql(getCustomerQuery),
+      variables: {'customerAccessToken': await currentCustomerAccessToken},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];
     } else if (await currentCustomerAccessToken != null) {

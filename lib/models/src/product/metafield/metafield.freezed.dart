@@ -24,7 +24,7 @@ mixin _$Metafield {
   String get namespace => throw _privateConstructorUsedError;
   String get key => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
-  String get valueType => throw _privateConstructorUsedError;
+  String get type => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +43,7 @@ abstract class $MetafieldCopyWith<$Res> {
       String namespace,
       String key,
       String value,
-      String valueType,
+      String type,
       String description});
 }
 
@@ -64,7 +64,7 @@ class _$MetafieldCopyWithImpl<$Res, $Val extends Metafield>
     Object? namespace = null,
     Object? key = null,
     Object? value = null,
-    Object? valueType = null,
+    Object? type = null,
     Object? description = null,
   }) {
     return _then(_value.copyWith(
@@ -84,9 +84,9 @@ class _$MetafieldCopyWithImpl<$Res, $Val extends Metafield>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-      valueType: null == valueType
-          ? _value.valueType
-          : valueType // ignore: cast_nullable_to_non_nullable
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -109,7 +109,7 @@ abstract class _$$MetafieldImplCopyWith<$Res>
       String namespace,
       String key,
       String value,
-      String valueType,
+      String type,
       String description});
 }
 
@@ -128,7 +128,7 @@ class __$$MetafieldImplCopyWithImpl<$Res>
     Object? namespace = null,
     Object? key = null,
     Object? value = null,
-    Object? valueType = null,
+    Object? type = null,
     Object? description = null,
   }) {
     return _then(_$MetafieldImpl(
@@ -148,9 +148,9 @@ class __$$MetafieldImplCopyWithImpl<$Res>
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as String,
-      valueType: null == valueType
-          ? _value.valueType
-          : valueType // ignore: cast_nullable_to_non_nullable
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
@@ -168,7 +168,7 @@ class _$MetafieldImpl extends _Metafield {
       required this.namespace,
       required this.key,
       required this.value,
-      required this.valueType,
+      required this.type,
       this.description = ''})
       : super._();
 
@@ -184,14 +184,14 @@ class _$MetafieldImpl extends _Metafield {
   @override
   final String value;
   @override
-  final String valueType;
+  final String type;
   @override
   @JsonKey()
   final String description;
 
   @override
   String toString() {
-    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value, valueType: $valueType, description: $description)';
+    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value, type: $type, description: $description)';
   }
 
   @override
@@ -204,16 +204,15 @@ class _$MetafieldImpl extends _Metafield {
                 other.namespace == namespace) &&
             (identical(other.key, key) || other.key == key) &&
             (identical(other.value, value) || other.value == value) &&
-            (identical(other.valueType, valueType) ||
-                other.valueType == valueType) &&
+            (identical(other.type, type) || other.type == type) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, namespace, key, value, valueType, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, namespace, key, value, type, description);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +234,7 @@ abstract class _Metafield extends Metafield {
       required final String namespace,
       required final String key,
       required final String value,
-      required final String valueType,
+      required final String type,
       final String description}) = _$MetafieldImpl;
   _Metafield._() : super._();
 
@@ -251,7 +250,7 @@ abstract class _Metafield extends Metafield {
   @override
   String get value;
   @override
-  String get valueType;
+  String get type;
   @override
   String get description;
   @override

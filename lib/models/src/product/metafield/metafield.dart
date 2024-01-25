@@ -12,17 +12,17 @@ class Metafield with _$Metafield {
     required String namespace,
     required String key,
     required String value,
-    required String valueType,
+    required String type,
     @Default('') String description,
   }) = _Metafield;
 
   static Metafield fromGraphJson(Map<String, dynamic> json) {
     return Metafield(
         id: (json['node'] ?? const {})['id'],
-        namespace: (json['node'] ?? const {})['namespace'],
         key: (json['node'] ?? const {})['key'],
+        namespace: (json['node'] ?? const {})['namespace'],
+        type: (json['node'] ?? const {})['type'],
         value: (json['node'] ?? const {})['value'],
-        valueType: (json['node'] ?? const {})['valueType'],
         description: (json['node'] ?? const {})['description']);
   }
 

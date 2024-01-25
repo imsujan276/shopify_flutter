@@ -30,6 +30,7 @@ class ShopifyPage with ShopifyError {
         'sortKey': sortKeyPage.parseToString(),
         'pagesQuery': pagesQuery,
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
@@ -46,6 +47,7 @@ class ShopifyPage with ShopifyError {
       variables: {
         'handle': handle,
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);

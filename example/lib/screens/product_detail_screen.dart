@@ -66,7 +66,8 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
                     _removeProductFromShoppingCart(lineItems.first))
           ],
         ),
-        trailing: Text(variant.price.amount.toString()),
+        // trailing: Text(variant.price.amount.toString()),
+        trailing: Text(variant.price.formattedPriceWithLocale('en_US')),
       ));
     }
     return widgetList;

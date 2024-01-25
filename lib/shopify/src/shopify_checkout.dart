@@ -51,23 +51,27 @@ class ShopifyCheckout with ShopifyError {
     bool withPaymentId = false,
   }) async {
     final WatchQueryOptions _optionsRequireShipping = WatchQueryOptions(
-        document: gql(getCheckoutInfoAboutShipping),
-        variables: {
-          'id': checkoutId,
-        });
+      document: gql(getCheckoutInfoAboutShipping),
+      variables: {
+        'id': checkoutId,
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     QueryResult result = await _graphQLClient!.query(_optionsRequireShipping);
 
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(_requiresShipping(result) == true && getShippingInfo
-            ? withPaymentId
-                ? getCheckoutInfoWithPaymentId
-                : getCheckoutInfo
-            : withPaymentId
-                ? getCheckoutInfoWithPaymentIdWithoutShipping
-                : getCheckoutInfoWithoutShipping),
-        variables: {
-          'id': checkoutId,
-        });
+      document: gql(_requiresShipping(result) == true && getShippingInfo
+          ? withPaymentId
+              ? getCheckoutInfoWithPaymentId
+              : getCheckoutInfo
+          : withPaymentId
+              ? getCheckoutInfoWithPaymentIdWithoutShipping
+              : getCheckoutInfoWithoutShipping),
+      variables: {
+        'id': checkoutId,
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult _queryResult = (await _graphQLClient!.query(_options));
     checkForError(_queryResult);
 

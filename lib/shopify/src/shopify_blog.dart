@@ -25,12 +25,15 @@ class ShopifyBlog with ShopifyError {
       {SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
       bool reverseBlogs = false,
       bool reverseArticles = false}) async {
-    final WatchQueryOptions _options =
-        WatchQueryOptions(document: gql(getAllBlogsQuery), variables: {
-      'reverseBlogs': reverseBlogs,
-      'reverseArticles': reverseArticles,
-      'sortKey': sortKeyBlog.parseToString(),
-    });
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getAllBlogsQuery),
+      variables: {
+        'reverseBlogs': reverseBlogs,
+        'reverseArticles': reverseArticles,
+        'sortKey': sortKeyBlog.parseToString(),
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     return (Blogs.fromGraphJson((result.data ?? const {})["blogs"] ?? const {}))
@@ -44,12 +47,15 @@ class ShopifyBlog with ShopifyError {
   Future<Blog> getBlogByHandle(String handle,
       {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
       bool reverse = false}) async {
-    final QueryOptions _options =
-        WatchQueryOptions(document: gql(getBlogByHandleQuery), variables: {
-      'handle': handle,
-      'sortKey': sortKeyArticle.parseToString(),
-      'reverseArticles': reverse
-    });
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getBlogByHandleQuery),
+      variables: {
+        'handle': handle,
+        'sortKey': sortKeyArticle.parseToString(),
+        'reverseArticles': reverse
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!['blogByHandle'];
@@ -64,11 +70,14 @@ class ShopifyBlog with ShopifyError {
     int articleAmount, {
     SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
   }) async {
-    final QueryOptions _options =
-        WatchQueryOptions(document: gql(getNArticlesSortedQuery), variables: {
-      'x': articleAmount,
-      'sortKey': sortKeyArticle.parseToString(),
-    });
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getNArticlesSortedQuery),
+      variables: {
+        'x': articleAmount,
+        'sortKey': sortKeyArticle.parseToString(),
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
 

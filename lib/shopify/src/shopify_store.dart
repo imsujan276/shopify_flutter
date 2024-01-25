@@ -53,6 +53,7 @@ class ShopifyStore with ShopifyError {
           'cursor': cursor,
           'reverse': reverse,
         },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
@@ -76,13 +77,15 @@ class ShopifyStore with ShopifyError {
     Products tempProduct;
     String cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getXProductsAfterCursorQuery),
-        variables: {
-          'x': limit,
-          'cursor': cursor,
-          'reverse': reverse,
-          'sortKey': sortKeyProduct.parseToString()
-        });
+      document: gql(getXProductsAfterCursorQuery),
+      variables: {
+        'x': limit,
+        'cursor': cursor,
+        'reverse': reverse,
+        'sortKey': sortKeyProduct.parseToString()
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     tempProduct =
@@ -99,7 +102,10 @@ class ShopifyStore with ShopifyError {
   ) async {
     List<Product>? productList = [];
     final QueryOptions _options = WatchQueryOptions(
-        document: gql(getProductsByIdsQuery), variables: {'ids': idList});
+      document: gql(getProductsByIdsQuery),
+      variables: {'ids': idList},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!;
@@ -137,6 +143,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
@@ -152,8 +159,10 @@ class ShopifyStore with ShopifyError {
   ) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getProductRecommendationsQuery),
-          variables: {'id': productId});
+        document: gql(getProductRecommendationsQuery),
+        variables: {'id': productId},
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       var newResponse = List.generate(
@@ -176,7 +185,10 @@ class ShopifyStore with ShopifyError {
   ) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getCollectionsByIdsQuery), variables: {'ids': idList});
+        document: gql(getCollectionsByIdsQuery),
+        variables: {'ids': idList},
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
@@ -193,6 +205,7 @@ class ShopifyStore with ShopifyError {
   Future<Shop> getShop() async {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getShopQuery),
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
@@ -206,8 +219,10 @@ class ShopifyStore with ShopifyError {
   ) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getFeaturedCollectionQuery),
-          variables: {'query': collectionName});
+        document: gql(getFeaturedCollectionQuery),
+        variables: {'query': collectionName},
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       return Collections.fromGraphJson(result.data!['collections'])
@@ -222,10 +237,12 @@ class ShopifyStore with ShopifyError {
   Future<Collection?> getCollectionById(String collectionId) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getCollectionsByIdsQuery),
-          variables: {
-            'ids': [collectionId],
-          });
+        document: gql(getCollectionsByIdsQuery),
+        variables: {
+          'ids': [collectionId],
+        },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       return Collection.fromGraphJson(result.data!);
@@ -247,12 +264,14 @@ class ShopifyStore with ShopifyError {
     WatchQueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          document: gql(getAllCollectionsOptimizedQuery),
-          variables: {
-            'cursor': cursor,
-            'sortKey': sortKeyCollection.parseToString(),
-            'reverse': reverse
-          });
+        document: gql(getAllCollectionsOptimizedQuery),
+        variables: {
+          'cursor': cursor,
+          'sortKey': sortKeyCollection.parseToString(),
+          'reverse': reverse
+        },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempCollection = (Collections.fromGraphJson(
@@ -278,15 +297,17 @@ class ShopifyStore with ShopifyError {
     String? cursor;
     WatchQueryOptions _options;
     _options = WatchQueryOptions(
-        document: gql(getXCollectionsAndNProductsSortedQuery),
-        variables: {
-          'cursor': cursor,
-          'sortKey': sortKeyCollection.parseToString(),
-          'reverse': reverse,
-          'sortKeyProduct': sortKeyProductCollection.parseToString(),
-          'x': x,
-          'n': n
-        });
+      document: gql(getXCollectionsAndNProductsSortedQuery),
+      variables: {
+        'cursor': cursor,
+        'sortKey': sortKeyCollection.parseToString(),
+        'reverse': reverse,
+        'sortKeyProduct': sortKeyProductCollection.parseToString(),
+        'x': x,
+        'n': n
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     collectionList = (Collections.fromGraphJson(
@@ -307,12 +328,14 @@ class ShopifyStore with ShopifyError {
     QueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          document: gql(getAllProductsFromCollectionByIdQuery),
-          variables: {
-            'id': id,
-            'cursor': cursor,
-            'sortKey': sortKeyProductCollection.parseToString()
-          });
+        document: gql(getAllProductsFromCollectionByIdQuery),
+        variables: {
+          'id': id,
+          'cursor': cursor,
+          'sortKey': sortKeyProductCollection.parseToString()
+        },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList
@@ -351,15 +374,17 @@ class ShopifyStore with ShopifyError {
   }) async {
     String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getXProductsAfterCursorWithinCollectionQuery),
-        variables: {
-          'id': id,
-          'cursor': cursor,
-          'limit': limit,
-          'sortKey': sortKey.parseToString(),
-          'reverse': reverse,
-          'filters': [if (filters != null) filters],
-        });
+      document: gql(getXProductsAfterCursorWithinCollectionQuery),
+      variables: {
+        'id': id,
+        'cursor': cursor,
+        'limit': limit,
+        'sortKey': sortKey.parseToString(),
+        'reverse': reverse,
+        'filters': [if (filters != null) filters],
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     return (Collection.fromGraphJson(result.data!)).products.productList;
@@ -389,6 +414,7 @@ class ShopifyStore with ShopifyError {
         'reverse': reverse,
         'filters': [if (filters != null) filters],
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
@@ -406,13 +432,15 @@ class ShopifyStore with ShopifyError {
     WatchQueryOptions _options;
     do {
       _options = WatchQueryOptions(
-          document: gql(getAllProductsOnQueryQuery),
-          variables: {
-            'cursor': cursor,
-            'sortKey': sortKey?.parseToString(),
-            'query': query,
-            'reverse': reverse
-          });
+        document: gql(getAllProductsOnQueryQuery),
+        variables: {
+          'cursor': cursor,
+          'sortKey': sortKey?.parseToString(),
+          'query': query,
+          'reverse': reverse
+        },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList.addAll(
@@ -439,6 +467,7 @@ class ShopifyStore with ShopifyError {
         'query': query,
         'reverse': reverse,
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result =
         await ShopifyConfig.graphQLClient!.query(_options);

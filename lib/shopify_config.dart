@@ -1,5 +1,22 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+enum CachePolicy {
+  /// Return result from cache. Only fetch from network if cached result is not available.
+  cacheFirst,
+
+  /// Return result from cache first (if it exists), then return network result once it's available.
+  cacheAndNetwork,
+
+  /// Return result from cache if available, fail otherwise.
+  cacheOnly,
+
+  /// Return result from network, fail if network call doesn't succeed, don't save to cache.
+  noCache,
+
+  /// Return result from network, fail if network call doesn't succeed, save to cache.
+  networkOnly,
+}
+
 class ShopifyConfig {
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String? _storefrontAccessToken;
@@ -33,6 +50,25 @@ class ShopifyConfig {
   /// The Storefront API Version.
   static String get apiVersion => _storefrontApiVersion;
 
+  /// fetch policy to be used for all queries and mutations
+  static CachePolicy? _fetchPolicy;
+  static FetchPolicy? get fetchPolicy {
+    switch (_fetchPolicy) {
+      case CachePolicy.noCache:
+        return FetchPolicy.noCache;
+      case CachePolicy.cacheAndNetwork:
+        return FetchPolicy.cacheAndNetwork;
+      case CachePolicy.networkOnly:
+        return FetchPolicy.networkOnly;
+      case CachePolicy.cacheFirst:
+        return FetchPolicy.cacheFirst;
+      case CachePolicy.cacheOnly:
+        return FetchPolicy.cacheOnly;
+      default:
+        return null;
+    }
+  }
+
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
@@ -43,11 +79,13 @@ class ShopifyConfig {
     required String storeUrl,
     String? adminAccessToken,
     String storefrontApiVersion = "2023-07",
+    CachePolicy? cachePolicy,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
+    _fetchPolicy = cachePolicy;
     _graphQLClient = GraphQLClient(
       link: HttpLink(
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',

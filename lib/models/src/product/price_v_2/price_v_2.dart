@@ -27,4 +27,12 @@ class PriceV2 with _$PriceV2 {
         currencyCode,
         priceFormat: priceFormat,
       );
+
+  String formattedPriceWithLocale(String? locale) =>
+      JsonHelper.chooseRightOrderOnCurrencySymbol(
+        amount,
+        currencyCode,
+        priceFormat: priceFormat,
+        locale: (locale != null && locale.isEmpty) ? null : locale,
+      );
 }

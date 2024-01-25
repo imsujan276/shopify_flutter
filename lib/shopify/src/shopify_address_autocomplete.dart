@@ -7,6 +7,7 @@ import 'package:shopify_flutter/models/src/address_autocomplete/address_predicti
 import 'package:shopify_flutter/models/src/address_autocomplete/location_input/location_input.dart';
 
 import 'package:intl/intl.dart';
+import 'package:shopify_flutter/shopify_config.dart';
 
 /// ShopifyAddressAutocomplete class for address autocompletion e.g. during the checkout
 class ShopifyAddressAutocomplete with ShopifyError {
@@ -40,6 +41,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
         'locale': locale ?? Intl.getCurrentLocale(),
         'location': location?.toJson(),
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);
@@ -58,6 +60,7 @@ class ShopifyAddressAutocomplete with ShopifyError {
         'predictionId': prediction.addressId,
         'locale': locale ?? Intl.getCurrentLocale(),
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient.query(_options);
     checkForError(result);

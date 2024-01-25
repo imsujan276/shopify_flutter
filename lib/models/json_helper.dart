@@ -38,10 +38,12 @@ class JsonHelper {
     dynamic amount,
     String currencyCode, {
     NumberFormat? priceFormat,
+    String? locale,
   }) {
     return NumberFormat.currency(
       name: currencyCode,
       symbol: '${_simpleCurrencySymbols[currencyCode]}',
+      locale: locale,
     ).format(amountFromJson(amount));
   }
 

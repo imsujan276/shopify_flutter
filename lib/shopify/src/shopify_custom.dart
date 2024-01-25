@@ -23,6 +23,7 @@ class ShopifyCustom with ShopifyError {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(gqlQuery),
       variables: variables,
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = adminAccess
         ? await _graphQLClientAdmin!.query(_options)

@@ -18,8 +18,9 @@ void main() {
   ShopifyConfig.setConfig(
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // optional
-    storefrontApiVersion: '2023-07', // optional
+    adminAccessToken: "shpat_*******************", // Optional | Needed only if needed to call admin api
+    storefrontApiVersion: '2023-07', // optional | default: 2023-07
+    cachePolicy: CachePolicy.cacheAndNetwork, // optional | default: null
   );
   
   runApp(MyApp());

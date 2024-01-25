@@ -11,7 +11,7 @@ class HomeTab extends StatefulWidget {
 
 class HomeTabState extends State<HomeTab> {
   List<Product> products = [];
-  bool _isLoading = true;
+  bool _isLoading = false;
 
   @override
   void initState() {
@@ -24,6 +24,12 @@ class HomeTabState extends State<HomeTab> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home'),
+        actions: [
+          IconButton(
+            onPressed: _fetchAllProducts,
+            icon: const Icon(Icons.refresh),
+          )
+        ],
       ),
       body: Center(
         child: _isLoading
@@ -45,6 +51,10 @@ class HomeTabState extends State<HomeTab> {
 
   Future<void> _fetchAllProducts() async {
     try {
+      setState(() {
+        _isLoading = true;
+        products = [];
+      });
       final shopifyStore = ShopifyStore.instance;
       final bestSellingProducts = await shopifyStore.getAllProducts();
       if (mounted) {

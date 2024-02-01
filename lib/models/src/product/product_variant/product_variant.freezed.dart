@@ -25,10 +25,10 @@ mixin _$ProductVariant {
   double get weight => throw _privateConstructorUsedError;
   String get weightUnit => throw _privateConstructorUsedError;
   bool get availableForSale => throw _privateConstructorUsedError;
-  String get sku => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   int get quantityAvailable => throw _privateConstructorUsedError;
+  String? get sku => throw _privateConstructorUsedError;
   PriceV2? get unitPrice => throw _privateConstructorUsedError;
   UnitPriceMeasurement? get unitPriceMeasurement =>
       throw _privateConstructorUsedError;
@@ -55,10 +55,10 @@ abstract class $ProductVariantCopyWith<$Res> {
       double weight,
       String weightUnit,
       bool availableForSale,
-      String sku,
       bool requiresShipping,
       String id,
       int quantityAvailable,
+      String? sku,
       PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions,
@@ -90,10 +90,10 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     Object? weight = null,
     Object? weightUnit = null,
     Object? availableForSale = null,
-    Object? sku = null,
     Object? requiresShipping = null,
     Object? id = null,
     Object? quantityAvailable = null,
+    Object? sku = freezed,
     Object? unitPrice = freezed,
     Object? unitPriceMeasurement = freezed,
     Object? selectedOptions = freezed,
@@ -121,10 +121,6 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
           ? _value.availableForSale
           : availableForSale // ignore: cast_nullable_to_non_nullable
               as bool,
-      sku: null == sku
-          ? _value.sku
-          : sku // ignore: cast_nullable_to_non_nullable
-              as String,
       requiresShipping: null == requiresShipping
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
@@ -137,6 +133,10 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
           ? _value.quantityAvailable
           : quantityAvailable // ignore: cast_nullable_to_non_nullable
               as int,
+      sku: freezed == sku
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String?,
       unitPrice: freezed == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
@@ -232,10 +232,10 @@ abstract class _$$ProductVariantImplCopyWith<$Res>
       double weight,
       String weightUnit,
       bool availableForSale,
-      String sku,
       bool requiresShipping,
       String id,
       int quantityAvailable,
+      String? sku,
       PriceV2? unitPrice,
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions,
@@ -270,10 +270,10 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
     Object? weight = null,
     Object? weightUnit = null,
     Object? availableForSale = null,
-    Object? sku = null,
     Object? requiresShipping = null,
     Object? id = null,
     Object? quantityAvailable = null,
+    Object? sku = freezed,
     Object? unitPrice = freezed,
     Object? unitPriceMeasurement = freezed,
     Object? selectedOptions = freezed,
@@ -301,10 +301,6 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
           ? _value.availableForSale
           : availableForSale // ignore: cast_nullable_to_non_nullable
               as bool,
-      sku: null == sku
-          ? _value.sku
-          : sku // ignore: cast_nullable_to_non_nullable
-              as String,
       requiresShipping: null == requiresShipping
           ? _value.requiresShipping
           : requiresShipping // ignore: cast_nullable_to_non_nullable
@@ -317,6 +313,10 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
           ? _value.quantityAvailable
           : quantityAvailable // ignore: cast_nullable_to_non_nullable
               as int,
+      sku: freezed == sku
+          ? _value.sku
+          : sku // ignore: cast_nullable_to_non_nullable
+              as String?,
       unitPrice: freezed == unitPrice
           ? _value.unitPrice
           : unitPrice // ignore: cast_nullable_to_non_nullable
@@ -350,10 +350,10 @@ class _$ProductVariantImpl extends _ProductVariant {
       required this.weight,
       required this.weightUnit,
       required this.availableForSale,
-      required this.sku,
       required this.requiresShipping,
       required this.id,
       required this.quantityAvailable,
+      this.sku,
       this.unitPrice,
       this.unitPriceMeasurement,
       final List<SelectedOption>? selectedOptions,
@@ -376,13 +376,13 @@ class _$ProductVariantImpl extends _ProductVariant {
   @override
   final bool availableForSale;
   @override
-  final String sku;
-  @override
   final bool requiresShipping;
   @override
   final String id;
   @override
   final int quantityAvailable;
+  @override
+  final String? sku;
   @override
   final PriceV2? unitPrice;
   @override
@@ -404,7 +404,7 @@ class _$ProductVariantImpl extends _ProductVariant {
 
   @override
   String toString() {
-    return 'ProductVariant(price: $price, title: $title, weight: $weight, weightUnit: $weightUnit, availableForSale: $availableForSale, sku: $sku, requiresShipping: $requiresShipping, id: $id, quantityAvailable: $quantityAvailable, unitPrice: $unitPrice, unitPriceMeasurement: $unitPriceMeasurement, selectedOptions: $selectedOptions, compareAtPrice: $compareAtPrice, image: $image)';
+    return 'ProductVariant(price: $price, title: $title, weight: $weight, weightUnit: $weightUnit, availableForSale: $availableForSale, requiresShipping: $requiresShipping, id: $id, quantityAvailable: $quantityAvailable, sku: $sku, unitPrice: $unitPrice, unitPriceMeasurement: $unitPriceMeasurement, selectedOptions: $selectedOptions, compareAtPrice: $compareAtPrice, image: $image)';
   }
 
   @override
@@ -419,12 +419,12 @@ class _$ProductVariantImpl extends _ProductVariant {
                 other.weightUnit == weightUnit) &&
             (identical(other.availableForSale, availableForSale) ||
                 other.availableForSale == availableForSale) &&
-            (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.requiresShipping, requiresShipping) ||
                 other.requiresShipping == requiresShipping) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.quantityAvailable, quantityAvailable) ||
                 other.quantityAvailable == quantityAvailable) &&
+            (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.unitPrice, unitPrice) ||
                 other.unitPrice == unitPrice) &&
             (identical(other.unitPriceMeasurement, unitPriceMeasurement) ||
@@ -445,10 +445,10 @@ class _$ProductVariantImpl extends _ProductVariant {
       weight,
       weightUnit,
       availableForSale,
-      sku,
       requiresShipping,
       id,
       quantityAvailable,
+      sku,
       unitPrice,
       unitPriceMeasurement,
       const DeepCollectionEquality().hash(_selectedOptions),
@@ -477,10 +477,10 @@ abstract class _ProductVariant extends ProductVariant {
       required final double weight,
       required final String weightUnit,
       required final bool availableForSale,
-      required final String sku,
       required final bool requiresShipping,
       required final String id,
       required final int quantityAvailable,
+      final String? sku,
       final PriceV2? unitPrice,
       final UnitPriceMeasurement? unitPriceMeasurement,
       final List<SelectedOption>? selectedOptions,
@@ -502,13 +502,13 @@ abstract class _ProductVariant extends ProductVariant {
   @override
   bool get availableForSale;
   @override
-  String get sku;
-  @override
   bool get requiresShipping;
   @override
   String get id;
   @override
   int get quantityAvailable;
+  @override
+  String? get sku;
   @override
   PriceV2? get unitPrice;
   @override

@@ -1,3 +1,8 @@
+## 1.5.7
+
+* Made SKU nullable in Product Variant
+  * [Issue 43](https://github.com/imsujan276/shopify_flutter/issues/43)
+
 ## 1.5.6
 
 * added foormatted price in product price

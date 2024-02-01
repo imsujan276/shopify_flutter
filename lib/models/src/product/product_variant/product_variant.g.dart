@@ -13,10 +13,10 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       weight: (json['weight'] as num).toDouble(),
       weightUnit: json['weightUnit'] as String,
       availableForSale: json['availableForSale'] as bool,
-      sku: json['sku'] as String,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
       quantityAvailable: json['quantityAvailable'] as int,
+      sku: json['sku'] as String?,
       unitPrice: json['unitPrice'] == null
           ? null
           : PriceV2.fromJson(json['unitPrice'] as Map<String, dynamic>),
@@ -43,10 +43,10 @@ Map<String, dynamic> _$$ProductVariantImplToJson(
       'weight': instance.weight,
       'weightUnit': instance.weightUnit,
       'availableForSale': instance.availableForSale,
-      'sku': instance.sku,
       'requiresShipping': instance.requiresShipping,
       'id': instance.id,
       'quantityAvailable': instance.quantityAvailable,
+      'sku': instance.sku,
       'unitPrice': instance.unitPrice,
       'unitPriceMeasurement': instance.unitPriceMeasurement,
       'selectedOptions': instance.selectedOptions,

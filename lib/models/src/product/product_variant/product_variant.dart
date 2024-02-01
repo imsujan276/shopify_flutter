@@ -16,10 +16,10 @@ class ProductVariant with _$ProductVariant {
     required double weight,
     required String weightUnit,
     required bool availableForSale,
-    required String sku,
     required bool requiresShipping,
     required String id,
     required int quantityAvailable,
+    String? sku,
     PriceV2? unitPrice,
     UnitPriceMeasurement? unitPriceMeasurement,
     List<SelectedOption>? selectedOptions,
@@ -42,10 +42,10 @@ class ProductVariant with _$ProductVariant {
       weight: double.tryParse(nodeJson['weight'].toString()) ?? 0.0,
       weightUnit: nodeJson['weightUnit'],
       availableForSale: nodeJson['availableForSale'],
-      sku: nodeJson['sku'] ?? '',
       requiresShipping: nodeJson['requiresShipping'],
       id: nodeJson['id'],
       quantityAvailable: nodeJson['quantityAvailable'],
+      sku: nodeJson['sku'],
       unitPrice: nodeJson['unitPrice'] != null
           ? PriceV2.fromJson(nodeJson['unitPrice'])
           : null,

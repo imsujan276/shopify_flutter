@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopify_flutter/models/models.dart';

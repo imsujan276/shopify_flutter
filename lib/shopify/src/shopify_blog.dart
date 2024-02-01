@@ -3,7 +3,7 @@ import 'package:shopify_flutter/enums/enums.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_blogs.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_blog_by_handle.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_n_articles_sorted.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/article/article.dart';
 import 'package:shopify_flutter/models/src/article/articles/articles.dart';
 import 'package:shopify_flutter/models/src/blog/blog.dart';

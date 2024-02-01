@@ -1,7 +1,7 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_address_details.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_address_predictions.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/address_autocomplete/address_details/address_details.dart';
 import 'package:shopify_flutter/models/src/address_autocomplete/address_prediction/address_prediction.dart';
 import 'package:shopify_flutter/models/src/address_autocomplete/location_input/location_input.dart';

@@ -1,7 +1,7 @@
 import 'package:shopify_flutter/enums/src/sort_key_page.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_pages.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_page_by_handle.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/page/page.dart';
 import 'package:shopify_flutter/models/src/page/pages/pages.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';

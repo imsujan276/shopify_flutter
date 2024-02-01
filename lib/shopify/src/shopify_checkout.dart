@@ -15,7 +15,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_checko
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_checkout_info_with_payment_id.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_checkout_info_with_payment_id_without_shipping_rates.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_checkout_without_shipping_rates.dart';
-import 'package:shopify_flutter/mixins/src/shopfiy_error.dart';
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/checkout/line_item/line_item.dart';
 import 'package:shopify_flutter/models/src/order/order.dart';
 import 'package:shopify_flutter/models/src/order/orders/orders.dart';

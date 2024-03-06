@@ -1,3 +1,7 @@
+## 1.5.9
+
+* added a support for locale.
+
 ## 1.5.8
 
 * Made SKU nullable in Product Variant Checkout

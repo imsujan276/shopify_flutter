@@ -21,6 +21,7 @@ void main() {
     adminAccessToken: "shpat_*******************", // Optional | Needed only if needed to call admin api
     storefrontApiVersion: '2023-07', // optional | default: 2023-07
     cachePolicy: CachePolicy.cacheAndNetwork, // optional | default: null
+    language: 'en' // Store locale | default : en
   );
   
   runApp(MyApp());
@@ -31,6 +32,8 @@ void main() {
 If you are not using that function, you may not need to provide it.
 
 > `storefrontApiVersion` default vesion is set to '2023-07'
+
+> `language` defaults to 'en'. It is the default locale/language of the store
 
 <hr>
 

@@ -79,6 +79,7 @@ class ShopifyConfig {
     required String storeUrl,
     String? adminAccessToken,
     String storefrontApiVersion = "2023-07",
+    String language = 'en',
     CachePolicy? cachePolicy,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
@@ -91,6 +92,7 @@ class ShopifyConfig {
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',
         defaultHeaders: {
           'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
+          'Accept-Language': language, // Default to English
         },
       ),
       cache: GraphQLCache(),
@@ -103,6 +105,7 @@ class ShopifyConfig {
               '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
               defaultHeaders: {
                 'X-Shopify-Access-Token': _adminAccessToken!,
+                'Accept-Language': language, // Default to English
               },
             ),
             cache: GraphQLCache(),

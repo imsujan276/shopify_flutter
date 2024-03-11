@@ -154,16 +154,20 @@ query{
 
     try {
       await shopifyAuth.signInWithEmailAndPassword(
-          email: '**********', password: '**********');
+          email: 'as14@asdasdad.asd', password: 'asdasdasd');
 
       final bestSellingProducts = await shopifyStore.getAllProducts();
 
       var items = List<LineItem>.empty(growable: true);
+
+      final product = bestSellingProducts.first;
+
       items.add(LineItem(
-          quantity: 1,
-          variantId: bestSellingProducts[0].productVariants[0].id,
-          title: bestSellingProducts[0].title,
-          id: bestSellingProducts[0].id));
+        quantity: 1,
+        variantId: product.productVariants.first.id,
+        title: product.title,
+        id: product.id,
+      ));
 
       var address = Address(
         address1: '11 Hinkler Avenue',
@@ -179,7 +183,7 @@ query{
       Checkout checkout = await shopifyCheckout.createCheckout(
         lineItems: items,
         shippingAddress: address,
-        email: '*********',
+        email: 'as14@asdasdad.asd',
       );
 
       /// add line items to current checkout
@@ -220,18 +224,46 @@ query{
 
       final idempotencyKey = UniqueKey().toString();
       await shopifyCheckout.shippingAddressUpdate(checkout.id, address);
-      var completed =
+      final tokanizedCheckout =
           await shopifyCheckout.checkoutCompleteWithTokenizedPaymentV3(
         checkout.id,
         checkout: checkout,
         token: r'CQ32pyIRCmIEfekpX8x=',
-        paymentTokenType: PaymentTokenType.APPLE_PAY,
+        paymentTokenType: PaymentTokenType.SHOPIFY_PAY,
         idempotencyKey: idempotencyKey,
-        amount: '1.00',
-        currencyCode: 'AUD',
+        amount: '${product.price}',
+        currencyCode: product.currencyCode,
         billingAddress: address,
       );
-      log('completed: $completed');
+      log('tokanizedCheckout: $tokanizedCheckout');
+      if (tokanizedCheckout.errorMessage != null) {
+        if (!mounted) return;
+        ScaffoldMessenger.of(context)
+          ..clearSnackBars()
+          ..showSnackBar(
+            SnackBar(content: Text(tokanizedCheckout.errorMessage!)),
+          );
+        return;
+      }
+      if (tokanizedCheckout.ready && tokanizedCheckout.nextActionUrl != null) {
+        if (!mounted) return;
+        final status = await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => WebViewCheckout(checkout: checkout),
+          ),
+        );
+        if (status != null && status) {
+          if (!mounted) return;
+          ScaffoldMessenger.of(context)
+            ..clearSnackBars()
+            ..showSnackBar(
+              const SnackBar(
+                content: Text('Checkout Success'),
+              ),
+            );
+        }
+      }
     } on Exception catch (e) {
       log('error: $e');
     }
@@ -243,10 +275,10 @@ query{
       appBar: AppBar(
         title: const Text('Shop'),
         actions: [
-          // IconButton(
-          //   icon: const Icon(Icons.payment),
-          //   onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
-          // ),
+          IconButton(
+            icon: const Icon(Icons.payment),
+            onPressed: testCheckoutCompleteWithTokenizedPaymentV3,
+          ),
           IconButton(
             icon: const Icon(Icons.payments_outlined),
             onPressed: testCheckoutProcess,

@@ -1,3 +1,8 @@
+## 1.5.10
+
+* updated `checkoutCompleteWithTokenizedPaymentV3()` to return `TokanizedCheckout` model
+* updated `shop_tab.dart` in example to showcase the use of `checkoutCompleteWithTokenizedPaymentV3()`
+
 ## 1.5.9
 
 * added a support for locale.

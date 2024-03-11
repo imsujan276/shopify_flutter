@@ -17,8 +17,14 @@ mutation checkoutCompleteWithTokenizedPaymentV3($checkoutId: ID!, $payment: Toke
         amount
         currencyCode
       }
+      checkout {
+        id
+      }
       test
       id
+      nextActionUrl
+      ready
+      errorMessage
     }
   }
 }

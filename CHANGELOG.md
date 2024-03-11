@@ -1,4 +1,4 @@
-## 1.5.10
+## 1.5.11
 
 * formatted code using `dart format .` to increase pub score
 

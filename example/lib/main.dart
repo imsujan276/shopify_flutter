@@ -1,4 +1,3 @@
-import 'package:example/screens/orders_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
@@ -9,6 +8,8 @@ import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
+import 'screens/checkout_page.dart';
+import 'screens/orders_tab.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,8 @@ Future<void> main() async {
     storeUrl: dotenv.env['STORE_URL'] ?? '',
     adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
+    cachePolicy: CachePolicy.networkOnly,
+    language: dotenv.env['LANGUAGE_LOCALE'] ?? 'en',
   );
   runApp(const MyApp());
 }
@@ -52,6 +55,7 @@ class MyHomePageState extends State<MyHomePage> {
     const SearchTab(),
     const ShopTab(),
     const BlogTab(),
+    const CheckoutPage(),
     const OrdersTab(),
     const AuthTab(),
   ];
@@ -76,6 +80,8 @@ class MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.shopify), label: 'Shop'),
           BottomNavigationBarItem(
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Orders'),
           BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
         ],

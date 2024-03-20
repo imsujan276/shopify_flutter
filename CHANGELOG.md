@@ -1,3 +1,9 @@
+## 1.5.12
+
+* User nullable issue when calling `currentUser()` after signup
+  * [Issue 50](https://github.com/imsujan276/shopify_flutter/issues/50)
+  
+  
 ## 1.5.11
 
 * formatted code using `dart format .` to increase pub score

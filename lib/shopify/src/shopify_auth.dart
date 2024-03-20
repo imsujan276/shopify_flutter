@@ -105,7 +105,7 @@ class ShopifyAuth with ShopifyError {
     );
     await _setShopifyUser(
       accessTokenWithExpDate,
-      _shopifyUser[ShopifyConfig.storeUrl],
+      shopifyUser,
     );
     return shopifyUser;
   }

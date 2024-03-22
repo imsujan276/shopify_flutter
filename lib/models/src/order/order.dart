@@ -21,7 +21,7 @@ class Order with _$Order {
     required String name,
     required int orderNumber,
     required String processedAt,
-    required ShippingAddress shippingAddress,
+    required ShippingAddress? shippingAddress,
     required ShippingAddress? billingAddress,
     required String statusUrl,
     required PriceV2 subtotalPriceV2,
@@ -49,8 +49,9 @@ class Order with _$Order {
       processedAt: json['node']['processedAt'],
       financialStatus: json['node']['financialStatus'],
       fulfillmentStatus: json['node']['fulfillmentStatus'],
-      shippingAddress:
-          ShippingAddress.fromJson(json['node']['shippingAddress']),
+      shippingAddress: json['node']['shippingAddress'] == null
+          ? null
+          : ShippingAddress.fromJson(json['node']['shippingAddress']),
       billingAddress: json['node']['billingAddress'] == null
           ? null
           : ShippingAddress.fromJson(json['node']['billingAddress']),

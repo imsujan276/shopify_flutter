@@ -1,3 +1,8 @@
+## 1.5.13
+
+* null check for shipping address in orders
+* made first name nullable in shipping address
+
 ## 1.5.12
 
 * User nullable issue when calling `currentUser()` after signup

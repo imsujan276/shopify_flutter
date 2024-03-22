@@ -23,6 +23,7 @@ Future<void> main() async {
     cachePolicy: CachePolicy.networkOnly,
     language: dotenv.env['LANGUAGE_LOCALE'] ?? 'en',
   );
+
   runApp(const MyApp());
 }
 

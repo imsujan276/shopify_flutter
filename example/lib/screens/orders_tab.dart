@@ -61,29 +61,36 @@ class _OrdersTabState extends State<OrdersTab> {
                 child: const Text('Login first and try again'),
               ),
             )
-          : ListView.builder(
-              itemCount: orders.length,
-              itemBuilder: (context, index) {
-                final order = orders[index];
-                return ListTile(
-                  title: Text(order.name),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ...order.lineItems.lineItemOrderList
-                          .map((e) => ListTile(
-                                title: Text(e.title),
-                                subtitle: Text(
-                                  "Price: ${e.discountedTotalPrice.formattedPrice} \n Product ID: ${e.productId}",
-                                ),
-                              ))
-                          .toList()
-                    ],
+          : orders.isEmpty
+              ? Center(
+                  child: TextButton(
+                    onPressed: () => init(),
+                    child: const Text('No orders found. Try again'),
                   ),
-                );
-              },
-            ),
+                )
+              : ListView.builder(
+                  itemCount: orders.length,
+                  itemBuilder: (context, index) {
+                    final order = orders[index];
+                    return ListTile(
+                      title: Text(order.name),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ...order.lineItems.lineItemOrderList
+                              .map((e) => ListTile(
+                                    title: Text(e.title),
+                                    subtitle: Text(
+                                      "Price: ${e.discountedTotalPrice.formattedPrice} \n Product ID: ${e.productId}",
+                                    ),
+                                  ))
+                              .toList()
+                        ],
+                      ),
+                    );
+                  },
+                ),
     );
   }
 }

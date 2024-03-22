@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
@@ -46,8 +47,8 @@ class _AuthTabState extends State<AuthTab> {
   Future<void> _login() async {
     try {
       await shopifyAuth.signInWithEmailAndPassword(
-        email: 'as14@asdasdad.asd',
-        password: 'asdasdasd',
+        email: kUserEmail,
+        password: kUserPassword,
       );
       _checkIfLoggedIn();
     } catch (e) {
@@ -58,11 +59,11 @@ class _AuthTabState extends State<AuthTab> {
   Future<void> _register() async {
     try {
       final createdUser = await shopifyAuth.createUserWithEmailAndPassword(
-        email: 'as14@asdasdad.asd',
-        password: 'asdasdasd',
+        email: kUserEmail,
+        password: kUserPassword,
         firstName: 'asdasd',
         lastName: 'asdasd',
-        phone: '+9779841543211',
+        phone: '+9779841543213',
         acceptsMarketing: true,
       );
       setState(() {

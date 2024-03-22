@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/enums/src/payment_token_type.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
@@ -26,7 +27,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     try {
       setState(() => _isLoading = true);
       await shopifyAuth.signInWithEmailAndPassword(
-          email: 'as14@asdasdad.asd', password: 'asdasdasd');
+          email: kUserEmail, password: kUserPassword);
 
       final bestSellingProducts = await shopifyStore.getAllProducts();
 
@@ -51,7 +52,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       Checkout checkout = await shopifyCheckout.createCheckout(
         lineItems: items,
         shippingAddress: address,
-        email: '****@gmail.com',
+        email: kUserEmail,
       );
       setState(() => _isLoading = false);
       if (!mounted) return;
@@ -91,7 +92,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     try {
       setState(() => _isLoading = true);
       await shopifyAuth.signInWithEmailAndPassword(
-          email: 'as14@asdasdad.asd', password: 'asdasdasd');
+          email: kUserEmail, password: kUserPassword);
 
       final bestSellingProducts = await shopifyStore.getAllProducts();
 
@@ -120,7 +121,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       Checkout checkout = await shopifyCheckout.createCheckout(
         lineItems: items,
         shippingAddress: address,
-        email: 'as14@asdasdad.asd',
+        email: kUserEmail,
       );
 
       /// add line items to current checkout
@@ -216,7 +217,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     try {
       setState(() => _isLoading = true);
       await shopifyAuth.signInWithEmailAndPassword(
-          email: 'as14@asdasdad.asd', password: 'asdasdasd');
+          email: kUserEmail, password: kUserPassword);
 
       final bestSellingProducts = await shopifyStore.getAllProducts();
 

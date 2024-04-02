@@ -2,7 +2,11 @@
 const String getSearchedProducts = r'''
 query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys, $reverse: Boolean, $filters: [ProductFilter!]){
   search(query: $query, first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse, productFilters: $filters, types: PRODUCT){
+    pageInfo {
+      hasNextPage
+    }
     edges{
+      cursor
       node{
         ... on Product {
 

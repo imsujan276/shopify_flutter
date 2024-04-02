@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
-import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({Key? key, required this.product})

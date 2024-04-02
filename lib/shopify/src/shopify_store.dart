@@ -1,8 +1,6 @@
 import 'dart:developer';
 
 import 'package:shopify_flutter/enums/enums.dart';
-import 'package:shopify_flutter/enums/src/sort_key_collection.dart';
-import 'package:shopify_flutter/enums/src/sort_key_product_search.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_collections_optimized.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_from_collection_by_id.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_on_query.dart';

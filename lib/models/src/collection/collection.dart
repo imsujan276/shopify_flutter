@@ -1,7 +1,4 @@
 import 'package:shopify_flutter/models/models.dart';
-import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
-import 'package:shopify_flutter/models/src/product/products/products.dart';
-import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'collection.freezed.dart';

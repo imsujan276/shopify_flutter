@@ -2,8 +2,6 @@ import 'dart:developer';
 
 import 'package:example/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:shopify_flutter/enums/src/payment_token_type.dart';
-import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 import 'checkout_webview.dart';

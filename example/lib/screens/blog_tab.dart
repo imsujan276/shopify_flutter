@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopify_flutter/models/src/article/articles/articles.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class BlogTab extends StatefulWidget {

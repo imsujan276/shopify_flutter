@@ -9,12 +9,11 @@ query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys
       cursor
       node{
         ... on Product {
-
           options(first: 50) {
             id
             name
             values
-            } 
+          } 
       id
       handle
       collections(first: 250) {
@@ -80,8 +79,6 @@ query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys
       tags
       updatedAt
       vendor
-
-
         }
       }
     }

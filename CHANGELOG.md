@@ -1,3 +1,7 @@
+## 1.5.14
+
+* added cursor to the `getSearchedProducts` query.
+  
 ## 1.5.13
 
 * null check for shipping address in orders

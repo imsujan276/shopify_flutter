@@ -235,7 +235,7 @@ class _PagePageState extends State<PagePage> {
       final p = await shopifyPage.getPageByHandle(widget.handle);
       if (mounted) {
         setState(() {
-          page = p as Page?;
+          page = p;
           _isLoading = false;
         });
       }

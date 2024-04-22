@@ -13,6 +13,7 @@ dependencies:
   flutter_inappwebview: 
   flutter_dotenv: ^5.1.0
   cupertino_icons: ^1.0.2
+  flutter_widget_from_html: ^0.14.11
 
 dev_dependencies:
   flutter_test:

@@ -1,3 +1,7 @@
+## 1.5.15
+
+* updated example
+
 ## 1.5.14
 
 * added cursor to the `getSearchedProducts` query.

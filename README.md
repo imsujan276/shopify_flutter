@@ -118,6 +118,14 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<List<Article>> getXArticlesSorted({int articleAmount, SortKeyArticle sortKeyArticle})
 ```
 
+##### Shopify Page
+```dart
+  ShopifyPage shopifyPage = ShopifyPage.instance;
+
+  Future<List<Page>> getAllPages()
+  Future<Page> getPageByHandle(String handle)
+```
+
 ##### Shopify Custom
 ```dart
   ShopifyCustom shopifyCustom = ShopifyCustom.instance;

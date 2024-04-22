@@ -84,8 +84,8 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
   Future<void> _setupCheckout() async {
     final user = await shopifyAuth.currentUser();
 
-    if (user?.lastIncompleteCheckout?.id != null) {
-      _lastCheckoutId = user!.lastIncompleteCheckout!.id;
+    if (user != null && user.lastIncompleteCheckout?.id != null) {
+      _lastCheckoutId = user.lastIncompleteCheckout!.id;
 
       lineItems
         ..clear()

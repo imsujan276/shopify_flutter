@@ -24,7 +24,7 @@ mixin _$MailingAddress {
   String get address1 => throw _privateConstructorUsedError;
   String get city => throw _privateConstructorUsedError;
   String get country => throw _privateConstructorUsedError;
-  String get zip => throw _privateConstructorUsedError;
+  String? get zip => throw _privateConstructorUsedError;
   String? get lastName => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get firstName => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $MailingAddressCopyWith<$Res> {
       String address1,
       String city,
       String country,
-      String zip,
+      String? zip,
       String? lastName,
       String? name,
       String? firstName,
@@ -87,7 +87,7 @@ class _$MailingAddressCopyWithImpl<$Res, $Val extends MailingAddress>
     Object? address1 = null,
     Object? city = null,
     Object? country = null,
-    Object? zip = null,
+    Object? zip = freezed,
     Object? lastName = freezed,
     Object? name = freezed,
     Object? firstName = freezed,
@@ -118,10 +118,10 @@ class _$MailingAddressCopyWithImpl<$Res, $Val extends MailingAddress>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      zip: null == zip
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
@@ -187,7 +187,7 @@ abstract class _$$MailingAddressImplCopyWith<$Res>
       String address1,
       String city,
       String country,
-      String zip,
+      String? zip,
       String? lastName,
       String? name,
       String? firstName,
@@ -217,7 +217,7 @@ class __$$MailingAddressImplCopyWithImpl<$Res>
     Object? address1 = null,
     Object? city = null,
     Object? country = null,
-    Object? zip = null,
+    Object? zip = freezed,
     Object? lastName = freezed,
     Object? name = freezed,
     Object? firstName = freezed,
@@ -248,10 +248,10 @@ class __$$MailingAddressImplCopyWithImpl<$Res>
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
               as String,
-      zip: null == zip
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
@@ -312,7 +312,7 @@ class _$MailingAddressImpl implements _MailingAddress {
       required this.address1,
       required this.city,
       required this.country,
-      required this.zip,
+      this.zip,
       this.lastName,
       this.name,
       this.firstName,
@@ -338,7 +338,7 @@ class _$MailingAddressImpl implements _MailingAddress {
   @override
   final String country;
   @override
-  final String zip;
+  final String? zip;
   @override
   final String? lastName;
   @override
@@ -446,7 +446,7 @@ abstract class _MailingAddress implements MailingAddress {
       required final String address1,
       required final String city,
       required final String country,
-      required final String zip,
+      final String? zip,
       final String? lastName,
       final String? name,
       final String? firstName,
@@ -472,7 +472,7 @@ abstract class _MailingAddress implements MailingAddress {
   @override
   String get country;
   @override
-  String get zip;
+  String? get zip;
   @override
   String? get lastName;
   @override

@@ -35,7 +35,7 @@ mixin _$ShippingAddress {
   String? get phone => throw _privateConstructorUsedError;
   String? get province => throw _privateConstructorUsedError;
   String? get provinceCode => throw _privateConstructorUsedError;
-  String get zip => throw _privateConstructorUsedError;
+  String? get zip => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,7 +65,7 @@ abstract class $ShippingAddressCopyWith<$Res> {
       String? phone,
       String? province,
       String? provinceCode,
-      String zip});
+      String? zip});
 }
 
 /// @nodoc
@@ -96,7 +96,7 @@ class _$ShippingAddressCopyWithImpl<$Res, $Val extends ShippingAddress>
     Object? phone = freezed,
     Object? province = freezed,
     Object? provinceCode = freezed,
-    Object? zip = null,
+    Object? zip = freezed,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -159,10 +159,10 @@ class _$ShippingAddressCopyWithImpl<$Res, $Val extends ShippingAddress>
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      zip: null == zip
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -191,7 +191,7 @@ abstract class _$$ShippingAddressImplCopyWith<$Res>
       String? phone,
       String? province,
       String? provinceCode,
-      String zip});
+      String? zip});
 }
 
 /// @nodoc
@@ -220,7 +220,7 @@ class __$$ShippingAddressImplCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? province = freezed,
     Object? provinceCode = freezed,
-    Object? zip = null,
+    Object? zip = freezed,
   }) {
     return _then(_$ShippingAddressImpl(
       name: null == name
@@ -283,10 +283,10 @@ class __$$ShippingAddressImplCopyWithImpl<$Res>
           ? _value.provinceCode
           : provinceCode // ignore: cast_nullable_to_non_nullable
               as String?,
-      zip: null == zip
+      zip: freezed == zip
           ? _value.zip
           : zip // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -310,7 +310,7 @@ class _$ShippingAddressImpl implements _ShippingAddress {
       this.phone,
       this.province,
       this.provinceCode,
-      required this.zip});
+      this.zip});
 
   factory _$ShippingAddressImpl.fromJson(Map<String, dynamic> json) =>
       _$$ShippingAddressImplFromJson(json);
@@ -346,7 +346,7 @@ class _$ShippingAddressImpl implements _ShippingAddress {
   @override
   final String? provinceCode;
   @override
-  final String zip;
+  final String? zip;
 
   @override
   String toString() {
@@ -438,7 +438,7 @@ abstract class _ShippingAddress implements ShippingAddress {
       final String? phone,
       final String? province,
       final String? provinceCode,
-      required final String zip}) = _$ShippingAddressImpl;
+      final String? zip}) = _$ShippingAddressImpl;
 
   factory _ShippingAddress.fromJson(Map<String, dynamic> json) =
       _$ShippingAddressImpl.fromJson;
@@ -474,7 +474,7 @@ abstract class _ShippingAddress implements ShippingAddress {
   @override
   String? get provinceCode;
   @override
-  String get zip;
+  String? get zip;
   @override
   @JsonKey(ignore: true)
   _$$ShippingAddressImplCopyWith<_$ShippingAddressImpl> get copyWith =>

@@ -24,7 +24,7 @@ _$ShippingAddressImpl _$$ShippingAddressImplFromJson(
       phone: json['phone'] as String?,
       province: json['province'] as String?,
       provinceCode: json['provinceCode'] as String?,
-      zip: json['zip'] as String,
+      zip: json['zip'] as String?,
     );
 
 Map<String, dynamic> _$$ShippingAddressImplToJson(

@@ -10,7 +10,7 @@ class MailingAddress with _$MailingAddress {
     required String address1,
     required String city,
     required String country,
-    required String zip,
+    String? zip,
     String? lastName,
     String? name,
     String? firstName,

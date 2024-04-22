@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Page;
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class BlogTab extends StatefulWidget {
@@ -10,48 +11,108 @@ class BlogTab extends StatefulWidget {
 
 class BlogTabState extends State<BlogTab> {
   List<Blog> blogs = [];
-  bool _isLoading = true;
+  bool _isBlogsLoading = true;
+  List<Page> pages = [];
+  bool _isPagesLoading = true;
 
   @override
   void initState() {
     _fetchAllBlogs();
+    _fetchAllPages();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Blogs'),
-      ),
-      body: Center(
-        child: _isLoading
-            ? const CircularProgressIndicator()
-            : ListView.builder(
-                padding: const EdgeInsets.all(8),
-                itemCount: blogs.length,
-                itemBuilder: (_, int index) => ListTile(
-                    title: blogs[index].title == null
-                        ? const Text('No Title')
-                        : Text(blogs[index].title!),
-                    trailing: const Icon(Icons.arrow_forward_ios),
-                    onTap: () {
-                      if (blogs[index].articles != null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ArticlesPage(
-                              articles: blogs[index].articles!,
-                            ),
-                          ),
-                        );
-                      } else {
-                        debugPrint('No articles');
-                      }
-                    }),
-              ),
+    return DefaultTabController(
+      length: 2,
+      initialIndex: 0,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Blogs & Pages'),
+          bottom: TabBar(
+            tabs: const [Tab(text: 'Blogs'), Tab(text: 'Pages')],
+            onTap: (index) {
+              if (index == 1) _fetchAllPages();
+            },
+          ),
+        ),
+        body: TabBarView(
+          children: [_buildBlogList(), _buildPagesList()],
+        ),
       ),
     );
+  }
+
+  Widget _buildBlogList() {
+    return Center(
+      child: _isBlogsLoading
+          ? const CircularProgressIndicator()
+          : ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: blogs.length,
+              itemBuilder: (_, int index) => ListTile(
+                  title: blogs[index].title == null
+                      ? const Text('No Title')
+                      : Text(blogs[index].title!),
+                  trailing: const Icon(Icons.arrow_forward_ios),
+                  onTap: () {
+                    if (blogs[index].articles != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ArticlesPage(
+                            title: blogs[index].title ?? 'No Title',
+                            articles: blogs[index].articles!,
+                          ),
+                        ),
+                      );
+                    } else {
+                      debugPrint('No articles');
+                    }
+                  }),
+            ),
+    );
+  }
+
+  Widget _buildPagesList() {
+    return Center(
+      child: _isPagesLoading
+          ? const CircularProgressIndicator()
+          : ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: pages.length,
+              itemBuilder: (_, int index) => ListTile(
+                title: Text(pages[index].title),
+                trailing: const Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          PagePage(handle: pages[index].title),
+                    ),
+                  );
+                },
+              ),
+            ),
+    );
+  }
+
+  Future<void> _fetchAllPages() async {
+    try {
+      final shopifyPage = ShopifyPage.instance;
+      final p = await shopifyPage.getAllPages();
+      if (mounted) {
+        setState(() {
+          pages = p ?? [];
+          _isPagesLoading = false;
+        });
+      }
+    } catch (e) {
+      _isPagesLoading = false;
+      debugPrint(e.toString());
+    }
   }
 
   Future<void> _fetchAllBlogs() async {
@@ -61,10 +122,11 @@ class BlogTabState extends State<BlogTab> {
       if (mounted) {
         setState(() {
           blogs = b ?? [];
-          _isLoading = false;
+          _isBlogsLoading = false;
         });
       }
     } catch (e) {
+      _isBlogsLoading = false;
       debugPrint(e.toString());
     }
   }
@@ -72,13 +134,14 @@ class BlogTabState extends State<BlogTab> {
 
 class ArticlesPage extends StatelessWidget {
   final Articles articles;
-  const ArticlesPage({super.key, required this.articles});
+  final String title;
+  const ArticlesPage({super.key, required this.articles, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Articles'),
+        title: Text(title),
       ),
       body: ListView.builder(
         itemCount: articles.articleList.length,
@@ -111,17 +174,12 @@ class ArtilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Article'),
+        title: Text(article.title ?? 'No Title'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Text(
-              article.title ?? 'No Title',
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
-            const SizedBox(height: 10),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -149,6 +207,67 @@ class ArtilePage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class PagePage extends StatefulWidget {
+  final String handle;
+  const PagePage({super.key, required this.handle});
+
+  @override
+  State<PagePage> createState() => _PagePageState();
+}
+
+class _PagePageState extends State<PagePage> {
+  Page? page;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchPage();
+  }
+
+  Future<void> _fetchPage() async {
+    try {
+      final shopifyPage = ShopifyPage.instance;
+      final p = await shopifyPage.getPageByHandle(widget.handle);
+      if (mounted) {
+        setState(() {
+          page = p as Page?;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      _isLoading = false;
+      debugPrint(e.toString());
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(_isLoading ? '...' : page?.title ?? 'No Title'),
+      ),
+      body: _isLoading
+          ? const CircularProgressIndicator()
+          : Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: HtmlWidget(
+                      page?.body ?? 'No Content',
+                      renderMode: RenderMode.listView,
+                      textStyle: const TextStyle(fontSize: 14),
+                    ),
+                  ),
+                ],
+              ),
+            ),
     );
   }
 }

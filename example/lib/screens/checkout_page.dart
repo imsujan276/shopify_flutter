@@ -207,46 +207,33 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  Future<void> setAndGetCartItems() async {
-    final shopifyStore = ShopifyStore.instance;
+  Future<void> getCartItems() async {
     final shopifyAuth = ShopifyAuth.instance;
-    final shopifyCheckout = ShopifyCheckout.instance;
 
     try {
-      setState(() => _isLoading = true);
-      await shopifyAuth.signInWithEmailAndPassword(
-          email: kUserEmail, password: kUserPassword);
+      try {
+        cartItems.clear();
 
-      final bestSellingProducts = await shopifyStore.getAllProducts();
+        setState(() => _isLoading = true);
 
-      var items = List<LineItem>.empty(growable: true);
-      items.add(LineItem(
-          quantity: 1,
-          variantId: bestSellingProducts[0].productVariants[0].id,
-          title: bestSellingProducts[0].title,
-          id: bestSellingProducts[0].id));
+        final user = await shopifyAuth.currentUser();
 
-      var address = Address(
-        address1: '11 Hinkler Avenue',
-        city: 'Sydney',
-        country: 'Australia',
-        countryCode: 'AU',
-        firstName: 'Anderson',
-        lastName: 'Fetter',
-        phone: '044444444',
-        zip: '2229',
-      );
+        if (user?.lastIncompleteCheckout?.id != null) {
+          cartItems
+            ..clear()
+            ..addAll(user!.lastIncompleteCheckout!.lineItems!);
+        }
 
-      Checkout checkout = await shopifyCheckout.createCheckout(
-        lineItems: items,
-        shippingAddress: address,
-        email: '****@gmail.com',
-      );
-      log('lineItems: ${checkout.lineItems}');
-      setState(() {
-        _isLoading = false;
-        cartItems = checkout.lineItems;
-      });
+        setState(() => _isLoading = false);
+      } on Exception catch (e) {
+        setState(() => _isLoading = false);
+
+        if (mounted) {
+          ScaffoldMessenger.of(context)
+            ..clearSnackBars()
+            ..showSnackBar(SnackBar(content: Text('$e')));
+        }
+      }
     } on Exception catch (e) {
       log('error: $e');
       setState(() => _isLoading = false);
@@ -293,9 +280,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
           ListTile(
             leading: const Icon(Icons.shopping_cart_outlined),
-            title: const Text('Set & Get Cart Items'),
+            title: const Text('Get Cart Items'),
             trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: setAndGetCartItems,
+            onTap: getCartItems,
           ),
           if (cartItems.isNotEmpty)
             Expanded(

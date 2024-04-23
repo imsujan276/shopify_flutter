@@ -19,7 +19,7 @@ class LineItem with _$LineItem {
     ProductVariantCheckout? variant,
   }) = _LineItem;
 
-  static LineItem fromGraphJson(Map<String, dynamic> json) {
+  factory LineItem.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? {};
 
     return LineItem(

@@ -13,12 +13,11 @@ class SuccessfulFullfilment with _$SuccessfulFullfilment {
     required List<SuccessfulFullfilmentTrackingInfo>? trackingInfo,
   }) = _SuccessfulFullfilment;
 
-  static SuccessfulFullfilment fromGraphJson(Map<String, dynamic> json) {
-    return SuccessfulFullfilment(
-      trackingCompany: json['trackingCompany'],
-      trackingInfo: _getTrackingInfoList(json['trackingInfo'] ?? []),
-    );
-  }
+  factory SuccessfulFullfilment.fromGraphJson(Map<String, dynamic> json) =>
+      SuccessfulFullfilment(
+        trackingCompany: json['trackingCompany'],
+        trackingInfo: _getTrackingInfoList(json['trackingInfo'] ?? []),
+      );
 
   factory SuccessfulFullfilment.fromJson(Map<String, dynamic> json) =>
       _$SuccessfulFullfilmentFromJson(json);

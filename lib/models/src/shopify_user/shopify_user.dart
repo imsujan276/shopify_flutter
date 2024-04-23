@@ -23,25 +23,23 @@ class ShopifyUser with _$ShopifyUser {
     LastIncompleteCheckout? lastIncompleteCheckout,
   }) = _ShopifyUser;
 
-  static ShopifyUser fromGraphJson(Map<String, dynamic> json) {
-    return ShopifyUser(
-      address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
-      defaultAddress: json['defaultAddress'] == null
-          ? null
-          : Address.fromJson(json['defaultAddress']),
-      createdAt: json['createdAt'],
-      displayName: json['displayName'],
-      email: json['email'],
-      firstName: json['firstName'],
-      id: json['id'],
-      lastName: getLastName(json),
-      phone: json['phone'],
-      tags: _getTagList((json)),
-      lastIncompleteCheckout: json['lastIncompleteCheckout'] == null
-          ? null
-          : LastIncompleteCheckout.fromJson(json['lastIncompleteCheckout']),
-    );
-  }
+  factory ShopifyUser.fromGraphJson(Map<String, dynamic> json) => ShopifyUser(
+        address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
+        defaultAddress: json['defaultAddress'] == null
+            ? null
+            : Address.fromJson(json['defaultAddress']),
+        createdAt: json['createdAt'],
+        displayName: json['displayName'],
+        email: json['email'],
+        firstName: json['firstName'],
+        id: json['id'],
+        lastName: getLastName(json),
+        phone: json['phone'],
+        tags: _getTagList((json)),
+        lastIncompleteCheckout: json['lastIncompleteCheckout'] == null
+            ? null
+            : LastIncompleteCheckout.fromJson(json['lastIncompleteCheckout']),
+      );
 
   static String? getLastName(Map<String, dynamic> json) {
     String? lastName = json['lastName'];

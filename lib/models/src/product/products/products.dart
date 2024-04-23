@@ -7,15 +7,15 @@ part 'products.g.dart';
 @freezed
 class Products with _$Products {
   const Products._();
-  factory Products(
-      {required List<Product> productList,
-      required bool hasNextPage}) = _Products;
+  factory Products({
+    required List<Product> productList,
+    required bool hasNextPage,
+  }) = _Products;
 
-  static Products fromGraphJson(Map<String, dynamic> json) {
-    return Products(
+  factory Products.fromGraphJson(Map<String, dynamic> json) => Products(
         productList: _getProductList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false);
-  }
+        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false,
+      );
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
     return (json['edges'] as List?)

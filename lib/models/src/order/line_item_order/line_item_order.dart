@@ -25,23 +25,22 @@ class LineItemOrder with _$LineItemOrder {
   factory LineItemOrder.fromJson(Map<String, dynamic> json) =>
       _$LineItemOrderFromJson(json);
 
-  static LineItemOrder fromGraphJson(Map<String, dynamic> json) {
-    return LineItemOrder(
-      currentQuantity: (json['node'] ?? const {})['currentQuantity'],
-      discountAllocations: _getDiscountAllocationsList(json),
-      discountedTotalPrice:
-          PriceV2.fromJson((json['node'] ?? const {})['discountedTotalPrice']),
-      originalTotalPrice:
-          PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
-      quantity: (json['node'] ?? const {})['quantity'],
-      title: (json['node'] ?? const {})['title'],
-      variant: json['node']['variant'] == null
-          ? null
-          : ProductVariantCheckout.fromJson(json['node']['variant']),
-      // variant: ProductVariantCheckout.fromJson(
-      //     (json['node'] ?? const {})['variant'] ?? const {})
-    );
-  }
+  factory LineItemOrder.fromGraphJson(Map<String, dynamic> json) =>
+      LineItemOrder(
+        currentQuantity: (json['node'] ?? const {})['currentQuantity'],
+        discountAllocations: _getDiscountAllocationsList(json),
+        discountedTotalPrice: PriceV2.fromJson(
+            (json['node'] ?? const {})['discountedTotalPrice']),
+        originalTotalPrice:
+            PriceV2.fromJson((json['node'] ?? const {})['originalTotalPrice']),
+        quantity: (json['node'] ?? const {})['quantity'],
+        title: (json['node'] ?? const {})['title'],
+        variant: json['node']['variant'] == null
+            ? null
+            : ProductVariantCheckout.fromJson(json['node']['variant']),
+        // variant: ProductVariantCheckout.fromJson(
+        //     (json['node'] ?? const {})['variant'] ?? const {})
+      );
 
   static _getDiscountAllocationsList(Map<String, dynamic> json) {
     List<DiscountAllocations> discountList = [];

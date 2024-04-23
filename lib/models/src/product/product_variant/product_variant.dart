@@ -27,7 +27,7 @@ class ProductVariant with _$ProductVariant {
     ShopifyImage? image,
   }) = _ProductVariant;
 
-  static ProductVariant fromGraphJson(Map<String, dynamic> json) {
+  factory ProductVariant.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? const {};
 
     return ProductVariant(

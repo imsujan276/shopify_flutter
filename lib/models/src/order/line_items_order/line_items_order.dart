@@ -12,9 +12,8 @@ class LineItemsOrder with _$LineItemsOrder {
   factory LineItemsOrder.fromJson(Map<String, dynamic> json) =>
       _$LineItemsOrderFromJson(json);
 
-  static LineItemsOrder fromGraphJson(Map<String, dynamic> json) {
-    return LineItemsOrder(lineItemOrderList: _getLineItemOrderList(json));
-  }
+  factory LineItemsOrder.fromGraphJson(Map<String, dynamic> json) =>
+      LineItemsOrder(lineItemOrderList: _getLineItemOrderList(json));
 
   static _getLineItemOrderList(Map<String, dynamic> json) {
     List<LineItemOrder> lineItemListOrder = [];

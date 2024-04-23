@@ -14,11 +14,10 @@ class Collections with _$Collections {
   factory Collections.fromJson(Map<String, dynamic> json) =>
       _$CollectionsFromJson(json);
 
-  static Collections fromGraphJson(Map<String, dynamic> json) {
-    return Collections(
+  factory Collections.fromGraphJson(Map<String, dynamic> json) => Collections(
         collectionList: _getCollectionList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage']);
-  }
+        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'],
+      );
 
   static List<Collection> _getCollectionList(Map<String, dynamic> json) {
     List<Collection> collectionList = [];

@@ -13,13 +13,13 @@ class SuccessfulFullfilmentTrackingInfo
     required String? url,
   }) = _SuccessfulFullfilmentTrackingInfo;
 
-  static SuccessfulFullfilmentTrackingInfo fromGraphJson(
-      Map<String, dynamic> json) {
-    return SuccessfulFullfilmentTrackingInfo(
-      number: json['number'],
-      url: json['url'],
-    );
-  }
+  factory SuccessfulFullfilmentTrackingInfo.fromGraphJson(
+    Map<String, dynamic> json,
+  ) =>
+      SuccessfulFullfilmentTrackingInfo(
+        number: json['number'],
+        url: json['url'],
+      );
 
   factory SuccessfulFullfilmentTrackingInfo.fromJson(
           Map<String, dynamic> json) =>

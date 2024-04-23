@@ -12,12 +12,10 @@ class Orders with _$Orders {
 
   factory Orders.fromJson(Map<String, dynamic> json) => _$OrdersFromJson(json);
 
-  static Orders fromGraphJson(Map<String, dynamic> json) {
-    return Orders(
-      orderList: _getOrderList(json),
-      hasNextPage: json['pageInfo']?['hasNextPage'] ?? false,
-    );
-  }
+  factory Orders.fromGraphJson(Map<String, dynamic> json) => Orders(
+        orderList: _getOrderList(json),
+        hasNextPage: json['pageInfo']?['hasNextPage'] ?? false,
+      );
 
   static List<Order> _getOrderList(Map<String, dynamic> json) {
     List<Order> orderList = [];

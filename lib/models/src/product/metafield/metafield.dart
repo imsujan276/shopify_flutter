@@ -16,15 +16,14 @@ class Metafield with _$Metafield {
     @Default('') String description,
   }) = _Metafield;
 
-  static Metafield fromGraphJson(Map<String, dynamic> json) {
-    return Metafield(
+  factory Metafield.fromGraphJson(Map<String, dynamic> json) => Metafield(
         id: (json['node'] ?? const {})['id'],
         key: (json['node'] ?? const {})['key'],
         namespace: (json['node'] ?? const {})['namespace'],
         type: (json['node'] ?? const {})['type'],
         value: (json['node'] ?? const {})['value'],
-        description: (json['node'] ?? const {})['description']);
-  }
+        description: (json['node'] ?? const {})['description'],
+      );
 
   factory Metafield.fromJson(Map<String, dynamic> json) =>
       _$MetafieldFromJson(json);

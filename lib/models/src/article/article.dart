@@ -30,27 +30,25 @@ class Article with _$Article {
   factory Article.fromJson(Map<String, dynamic> json) =>
       _$ArticleFromJson(json);
 
-  static Article fromGraphJson(Map<String, dynamic> json) {
-    return Article(
-      author: AuthorV2.fromJson(
-          ((json['node'] ?? const {})['authorV2']) ?? const {}),
-      commentList:
-          _getCommentList((json['node'] ?? const {})['comments'] ?? const {}),
-      content: (json['node'] ?? const {})['content'],
-      contentHtml: (json['node'] ?? const {})['contentHtml'],
-      excerpt: (json['node'] ?? const {})['excerpt'],
-      excerptHtml: (json['node'] ?? const {})['excerptHtml'],
-      handle: (json['node'] ?? const {})['handle'],
-      id: (json['node'] ?? const {})['id'],
-      image: json['node']['image'] == null
-          ? null
-          : ShopifyImage.fromJson(json['node']['image']),
-      publishedAt: (json['node'] ?? const {})['publishedAt'],
-      tags: _getTagsList(json),
-      title: (json['node'] ?? const {})['title'],
-      onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
-    );
-  }
+  factory Article.fromGraphJson(Map<String, dynamic> json) => Article(
+        author: AuthorV2.fromJson(
+            ((json['node'] ?? const {})['authorV2']) ?? const {}),
+        commentList:
+            _getCommentList((json['node'] ?? const {})['comments'] ?? const {}),
+        content: (json['node'] ?? const {})['content'],
+        contentHtml: (json['node'] ?? const {})['contentHtml'],
+        excerpt: (json['node'] ?? const {})['excerpt'],
+        excerptHtml: (json['node'] ?? const {})['excerptHtml'],
+        handle: (json['node'] ?? const {})['handle'],
+        id: (json['node'] ?? const {})['id'],
+        image: json['node']['image'] == null
+            ? null
+            : ShopifyImage.fromJson(json['node']['image']),
+        publishedAt: (json['node'] ?? const {})['publishedAt'],
+        tags: _getTagsList(json),
+        title: (json['node'] ?? const {})['title'],
+        onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
+      );
 
   static _getCommentList(Map<String, dynamic> json) {
     List<Comment> commentList = [];

@@ -7,13 +7,14 @@ part 'addresses.g.dart';
 @freezed
 class Addresses with _$Addresses {
   const Addresses._();
+
   factory Addresses({required List<Address> addressList}) = _Addresses;
+
   factory Addresses.fromJson(Map<String, dynamic> json) =>
       _$AddressesFromJson(json);
 
-  static Addresses fromGraphJson(Map<String, dynamic> json) {
-    return Addresses(addressList: _getAddressList(json));
-  }
+  factory Addresses.fromGraphJson(Map<String, dynamic> json) =>
+      Addresses(addressList: _getAddressList(json));
 
   static _getAddressList(Map<String, dynamic> json) {
     List<Address> addressList = [];

@@ -17,12 +17,11 @@ class Comment with _$Comment {
   factory Comment.fromJson(Map<String, dynamic> json) =>
       _$CommentFromJson(json);
 
-  static Comment fromGraphJson(Map<String, dynamic> json) {
-    return Comment(
+  factory Comment.fromGraphJson(Map<String, dynamic> json) => Comment(
         email: ((json['node'] ?? const {})['author'] ?? const {})['email'],
         name: ((json['node'] ?? const {})['author'] ?? const {})['name'],
         content: (json['node'] ?? const {})['content'],
         contentHtml: (json['node'] ?? const {})['contentHtml'],
-        id: (json['node'] ?? const {})['id']);
-  }
+        id: (json['node'] ?? const {})['id'],
+      );
 }

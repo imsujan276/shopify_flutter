@@ -17,18 +17,16 @@ class Page with _$Page {
     required String onlineStoreUrl,
   }) = _Page;
 
-  static Page fromGraphJson(Map<String, dynamic> json) {
-    return Page(
-      id: (json['node'] ?? {})['id'],
-      handle: (json['node'] ?? {})['handle'],
-      title: (json['node'] ?? {})['title'],
-      onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'],
-      body: (json['node'] ?? {})['body'],
-      bodySummary: (json['node'] ?? {})['bodySummary'],
-      createdAt: DateTime.parse(((json['node'] ?? const {})['createdAt'])),
-      updatedAt: DateTime.parse(((json['node'] ?? const {})['updatedAt'])),
-    );
-  }
+  factory Page.fromGraphJson(Map<String, dynamic> json) => Page(
+        id: (json['node'] ?? {})['id'],
+        handle: (json['node'] ?? {})['handle'],
+        title: (json['node'] ?? {})['title'],
+        onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'],
+        body: (json['node'] ?? {})['body'],
+        bodySummary: (json['node'] ?? {})['bodySummary'],
+        createdAt: DateTime.parse(((json['node'] ?? const {})['createdAt'])),
+        updatedAt: DateTime.parse(((json['node'] ?? const {})['updatedAt'])),
+      );
 
   factory Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
 }

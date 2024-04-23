@@ -26,8 +26,7 @@ class Address with _$Address {
     String? zip,
   }) = _Address;
 
-  static Address fromGraphJson(Map<String, dynamic> json) {
-    return Address(
+  factory Address.fromGraphJson(Map<String, dynamic> json) => Address(
         id: (json['node'] ?? const {})['id'],
         address1: (json['node'] ?? const {})['address1'],
         address2: (json['node'] ?? const {})['address2'],
@@ -44,8 +43,8 @@ class Address with _$Address {
         phone: (json['node'] ?? const {})['phone'],
         province: (json['node'] ?? const {})['province'],
         provinceCode: (json['node'] ?? const {})['provinceCode'],
-        zip: (json['node'] ?? const {})['zip']);
-  }
+        zip: (json['node'] ?? const {})['zip'],
+      );
 
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);

@@ -15,15 +15,15 @@ class Blog with _$Blog {
     Articles? articles,
   }) = _Blog;
 
-  static Blog fromGraphJson(Map<String, dynamic> json) {
-    return Blog(
+  factory Blog.fromGraphJson(Map<String, dynamic> json) => Blog(
         id: (json['node'] ?? {})['id'],
         handle: (json['node'] ?? {})['handle'],
         title: (json['node'] ?? {})['title'],
         onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'],
         articles: Articles.fromGraphJson(
-            ((json['node'] ?? const {})['articles']) ?? const {}));
-  }
+          ((json['node'] ?? const {})['articles']) ?? const {},
+        ),
+      );
 
   factory Blog.fromJson(Map<String, dynamic> json) => _$BlogFromJson(json);
 }

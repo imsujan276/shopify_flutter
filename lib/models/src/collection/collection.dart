@@ -23,7 +23,7 @@ class Collection with _$Collection {
       ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
       : image!.originalSrc;
 
-  static Collection fromGraphJson(Map<String, dynamic> json) {
+  factory Collection.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? const {};
     if (json.containsKey('nodes')) {
       nodeJson = json['nodes'][0] ?? const {};

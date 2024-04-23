@@ -8,11 +8,11 @@ part 'blogs.g.dart';
 @freezed
 class Blogs with _$Blogs {
   factory Blogs({required List<Blog> blogList}) = _Blogs;
+
   factory Blogs.fromJson(Map<String, dynamic> json) => _$BlogsFromJson(json);
 
-  static Blogs fromGraphJson(Map<String, dynamic> json) {
-    return Blogs(blogList: _getBlogList(json));
-  }
+  factory Blogs.fromGraphJson(Map<String, dynamic> json) =>
+      Blogs(blogList: _getBlogList(json));
 
   static List<Blog> _getBlogList(Map<String, dynamic> json) {
     List<Blog> blogList = [];

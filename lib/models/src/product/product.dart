@@ -95,29 +95,27 @@ class Product with _$Product {
     }
   }
 
-  static Product fromGraphJson(Map<String, dynamic> json) {
-    return Product(
-      collectionList: _getCollectionList(json),
-      id: json['node']?['id'] ?? '',
-      title: json['node']?['title'] ?? '',
-      availableForSale: json['node']?['availableForSale'],
-      createdAt: json['node']?['createdAt'],
-      description: json['node']?['description'] ?? '',
-      productVariants: _getProductVariants(json),
-      descriptionHtml: json['node']?['descriptionHtml'] ?? '',
-      handle: json['node']?['handle'] ?? '',
-      onlineStoreUrl: json['node']?['onlineStoreUrl'] ?? '',
-      productType: json['node']?['productType'] ?? '',
-      publishedAt: json['node']?['publishedAt'],
-      tags: _getTags(json['node']),
-      updatedAt: json['node']?['updatedAt'],
-      images: _getImageList(json),
-      cursor: json['cursor'],
-      options: _getOptionList(json),
-      vendor: json['node']?['vendor'],
-      // metafields: _getMetafieldList(json),
-    );
-  }
+  factory Product.fromGraphJson(Map<String, dynamic> json) => Product(
+        collectionList: _getCollectionList(json),
+        id: json['node']?['id'] ?? '',
+        title: json['node']?['title'] ?? '',
+        availableForSale: json['node']?['availableForSale'],
+        createdAt: json['node']?['createdAt'],
+        description: json['node']?['description'] ?? '',
+        productVariants: _getProductVariants(json),
+        descriptionHtml: json['node']?['descriptionHtml'] ?? '',
+        handle: json['node']?['handle'] ?? '',
+        onlineStoreUrl: json['node']?['onlineStoreUrl'] ?? '',
+        productType: json['node']?['productType'] ?? '',
+        publishedAt: json['node']?['publishedAt'],
+        tags: _getTags(json['node']),
+        updatedAt: json['node']?['updatedAt'],
+        images: _getImageList(json),
+        cursor: json['cursor'],
+        options: _getOptionList(json),
+        vendor: json['node']?['vendor'],
+        // metafields: _getMetafieldList(json),
+      );
 
   // factory Product.fromJson(Map<String, dynamic> json) =>
   //     _$ProductFromJson(json);

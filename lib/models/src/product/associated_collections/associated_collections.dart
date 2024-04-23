@@ -16,15 +16,15 @@ class AssociatedCollections with _$AssociatedCollections {
     String? handle,
   }) = _AssociatedCollections;
 
-  static AssociatedCollections fromGraphJson(Map<String, dynamic> json) {
-    return AssociatedCollections(
+  factory AssociatedCollections.fromGraphJson(Map<String, dynamic> json) =>
+      AssociatedCollections(
         description: (json['node'] ?? const {})['description'],
         descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
         id: (json['node'] ?? const {})['id'],
         handle: (json['node'] ?? const {})['handle'],
         updatedAt: (json['node'] ?? const {})['updatedAt'],
-        title: (json['node'] ?? const {})['title']);
-  }
+        title: (json['node'] ?? const {})['title'],
+      );
 
   factory AssociatedCollections.fromJson(Map<String, dynamic> json) =>
       _$AssociatedCollectionsFromJson(json);

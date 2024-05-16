@@ -1,3 +1,7 @@
+## 1.5.18
+
+* inncrease the number of varients in query 'getXProductsAfterCursorWithinCollectionQuery'
+
 ## 1.5.17
 
 * formatted the code to inscreate the pub score

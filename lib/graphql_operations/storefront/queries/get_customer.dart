@@ -105,7 +105,7 @@ query($customerAccessToken : String!){
                     name
                     values
                     } 
-                  variants(first: 5) {
+                  variants(first: 250) {
                     edges {
                       node {
                         id

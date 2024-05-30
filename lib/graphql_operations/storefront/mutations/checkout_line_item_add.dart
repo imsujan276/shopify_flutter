@@ -92,7 +92,7 @@ mutation checkoutLineItemsAdd($lineItems: [CheckoutLineItemInput!]!, $checkoutId
                     name
                     values
                     } 
-                variants(first: 5) {
+                variants(first: 250) {
                   edges {
                     node {
                       id

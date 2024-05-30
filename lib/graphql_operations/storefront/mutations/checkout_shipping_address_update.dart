@@ -92,7 +92,7 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                     name
                     values
                     } 
-                variants(first: 5) {
+                variants(first: 250) {
                   edges {
                     node {
                       id

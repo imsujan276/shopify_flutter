@@ -107,7 +107,7 @@ mutation MyMutation($firstName: String, $lastName: String, $email: String!, $pas
                       name
                       values
                       } 
-                  variants(first: 5) {
+                  variants(first: 250) {
                     edges {
                       node {
                         id

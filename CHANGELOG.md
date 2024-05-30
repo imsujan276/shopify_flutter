@@ -1,6 +1,8 @@
 ## 1.5.18
 
-* inncrease the number of varients in query 'getXProductsAfterCursorWithinCollectionQuery'
+* increase the number of varients in products
+* auto renew token in `ShopifyAuth.instance.currentCustomerAccessToken` if it is about to expire.
+* added media list in products
 
 ## 1.5.17
 

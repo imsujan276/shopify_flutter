@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

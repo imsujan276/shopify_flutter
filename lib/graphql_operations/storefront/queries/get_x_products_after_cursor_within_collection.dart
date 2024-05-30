@@ -71,7 +71,7 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
             title
             updatedAt
             vendor
-            variants(first: 25) {
+            variants(first: 250) {
               edges {
                 node {
                   title

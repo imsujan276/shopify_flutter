@@ -175,6 +175,20 @@ mutation MyMutation($firstName: String, $lastName: String, $email: String!, $pas
                       }
                     }
                   }
+                  media(first: 250) {
+                  edges {
+                    node {
+                      alt
+                      id
+                      mediaContentType
+                      previewImage {
+                        altText
+                        id
+                        originalSrc
+                      }
+                    }
+                  }
+                }
                 }
               }
             }

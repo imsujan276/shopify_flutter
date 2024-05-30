@@ -160,6 +160,20 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                     }
                   }
                 }
+                media(first: 250) {
+                  edges {
+                    node {
+                      alt
+                      id
+                      mediaContentType
+                      previewImage {
+                        altText
+                        id
+                        originalSrc
+                      }
+                    }
+                  }
+                }
               }
             }
           }

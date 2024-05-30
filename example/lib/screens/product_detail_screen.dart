@@ -91,12 +91,7 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
         ..clear()
         ..addAll(user.lastIncompleteCheckout!.lineItems!);
     } else {
-      _lastCheckoutId = (await checkout.createCheckout(
-        lineItems: [],
-        email: user!.email,
-        shippingAddress: user.defaultAddress,
-      ))
-          .id;
+      _lastCheckoutId = (await checkout.createCheckout(lineItems: [])).id;
     }
 
     setState(() {});

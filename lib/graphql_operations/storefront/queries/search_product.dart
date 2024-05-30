@@ -42,6 +42,20 @@ query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys
             }
           }
         }
+      media(first: 250) {
+          edges {
+            node {
+              alt
+              id
+              mediaContentType
+              previewImage {
+                altText
+                id
+                originalSrc
+              }
+            }
+          }
+        }
       variants(first: 250) {
         edges {
           node {

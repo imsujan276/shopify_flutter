@@ -169,6 +169,20 @@ query($id: ID!){
                     }
                   }
                 }
+                media(first: 250) {
+                  edges {
+                    node {
+                      alt
+                      id
+                      mediaContentType
+                      previewImage {
+                        altText
+                        id
+                        originalSrc
+                      }
+                    }
+                  }
+                }
               }
             }
           }

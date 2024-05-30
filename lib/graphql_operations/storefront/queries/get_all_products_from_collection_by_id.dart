@@ -50,6 +50,20 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
                 }
               }
             }
+            media(first: 250) {
+              edges {
+                node {
+                  alt
+                  id
+                  mediaContentType
+                  previewImage {
+                    altText
+                    id
+                    originalSrc
+                  }
+                }
+              }
+            }
             onlineStoreUrl
             productType
             publishedAt

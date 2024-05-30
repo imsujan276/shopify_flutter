@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:shopify_flutter/models/src/product/option/option.dart';
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
+import 'package:shopify_flutter/models/src/product/product_media/product_media.dart';
 import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -30,6 +31,7 @@ class Product with _$Product {
     required List<ShopifyImage> images,
     required List<Option> options,
     required String vendor,
+    required List<ProductMedia> media,
     // required List<Metafield> metafields,
     List<AssociatedCollections>? collectionList,
     String? cursor,
@@ -114,6 +116,7 @@ class Product with _$Product {
         cursor: json['cursor'],
         options: _getOptionList(json),
         vendor: json['node']?['vendor'],
+        media: _getMediaList(json),
         // metafields: _getMetafieldList(json),
       );
 
@@ -142,6 +145,7 @@ class Product with _$Product {
       cursor: json['cursor'],
       options: _getOptionList(json),
       vendor: json['vendor'],
+      media: _getMediaList(json),
       // metafields: _getMetafieldList(json),
     );
   }
@@ -278,6 +282,33 @@ class Product with _$Product {
           return ((json['images'] ?? []) as List).map((image) {
             final jsonImage = image is ShopifyImage ? image.toJson() : image;
             return ShopifyImage.fromJson(jsonImage ?? const {});
+          }).toList();
+        }
+      }
+    } catch (e) {
+      log("_getImageList error: $e");
+      return [];
+    }
+  }
+
+  static List<ProductMedia> _getMediaList(Map<String, dynamic> json) {
+    try {
+      if (json.containsKey('node')) {
+        if (json['node']?['media'] == null) return [];
+        return ((json['node']?['media']?['edges'] ?? []) as List)
+            .map((image) => ProductMedia.fromGraphJson(image ?? const {}))
+            .toList();
+      } else {
+        if (json['media'] == null) return [];
+        if (json['media'] is Map) {
+          if (json['media']?['edges'] == null) return [];
+          return ((json['media']?['edges'] ?? []) as List)
+              .map((image) => ProductMedia.fromGraphJson(image ?? const {}))
+              .toList();
+        } else {
+          return ((json['media'] ?? []) as List).map((image) {
+            final jsonMedia = image is ProductMedia ? image.toJson() : image;
+            return ProductMedia.fromJson(jsonMedia ?? const {});
           }).toList();
         }
       }

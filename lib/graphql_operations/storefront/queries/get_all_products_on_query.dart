@@ -31,6 +31,20 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
             }
           }
         }
+        media(first: 250) {
+          edges {
+            node {
+              alt
+              id
+              mediaContentType
+              previewImage {
+                altText
+                id
+                originalSrc
+              }
+            }
+          }
+        }
         variants(first: 250) {
           edges {
             node {

@@ -160,6 +160,20 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                     }
                   }
                 }
+                media(first: 250) {
+                  edges {
+                    node {
+                      alt
+                      id
+                      mediaContentType
+                      previewImage {
+                        altText
+                        id
+                        originalSrc
+                      }
+                    }
+                  }
+                }
               }
             }
           }

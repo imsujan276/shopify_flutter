@@ -81,6 +81,20 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
             }
           }
         }
+        media(first: 250) {
+          edges {
+            node {
+              alt
+              id
+              mediaContentType
+              previewImage {
+                altText
+                id
+                originalSrc
+              }
+            }
+          }
+        }
       }
     }
   }

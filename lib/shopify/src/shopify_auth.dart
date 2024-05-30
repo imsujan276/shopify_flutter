@@ -51,20 +51,57 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Returns the current customer access token.
+  ///
+  /// If the current access token is not expired but about to expire, it will renew the token.
+  ///
+  /// The token is considered about to expire if the difference between the current time and the token's expiration time is less than 10 minutes.
+  ///
+  /// The token is considered expired if the current time is after the token's expiration time.
+  ///
+  /// If the token is expired, it will return null.
+  ///
+  /// If the token is not expired, it will return the token.
   Future<String?> get currentCustomerAccessToken async {
-    return (await accessTokenWithExpDate)?.accessToken;
+    final data = await accessTokenWithExpDate;
+    final String? accessToken = data?.accessToken;
+    if (accessToken != null && await _isTokenNotExpiredButAboutToExpire(data)) {
+      try {
+        final updatedAccessToken = await _renewAccessToken(
+          accessToken,
+        );
+        await _setShopifyUser(
+          updatedAccessToken,
+          _shopifyUser[ShopifyConfig.storeUrl],
+        );
+        return updatedAccessToken.accessToken;
+      } catch (e) {
+        log('Error renewing token: $e');
+      }
+    }
+    return accessToken;
+  }
+
+  /// Returns the [bool] status if the current access token is not expired but about to expire
+  ///
+  /// The token is considered about to expire if the difference between the current time and the token's expiration time is less than 10 minutes.
+  Future<bool> _isTokenNotExpiredButAboutToExpire(
+    AccessTokenWithExpDate? data,
+  ) async {
+    if (data == null || await isAccessTokenExpired) return false;
+    if (data.accessToken == null || data.expiresAt == null) {
+      return false;
+    }
+    final timeDifference = data.expiresAt!.difference(DateTime.now());
+    return timeDifference.inMinutes < 10 && timeDifference.inMinutes > 0;
   }
 
   /// Returns the [bool] status if the current access token is expired or not
   Future<bool> get isAccessTokenExpired async {
-    bool isTokenExpired = false;
     final data = await accessTokenWithExpDate;
     if (data == null || data.accessToken == null || data.expiresAt == null) {
-      isTokenExpired = true;
-    } else {
-      isTokenExpired = DateTime.now().isAfter(data.expiresAt!);
+      return true;
     }
-    return isTokenExpired;
+    return DateTime.now().isAfter(data.expiresAt!);
   }
 
   /// Tries to create a new user account with the given email address and password.

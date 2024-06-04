@@ -141,8 +141,9 @@ class ShopifyCheckout with ShopifyError {
     });
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(result);
-    final orderResult =
-        (result.data!['customer']['orders'] ?? {}) as Map<String, dynamic>;
+    final ordersData = result.data!['customer']?['orders'];
+    if (ordersData == null) return [];
+    final orderResult = ordersData as Map<String, dynamic>;
     Orders orders = Orders.fromGraphJson(orderResult);
     // Orders orders = Orders.fromJson(
     //     (((result.data ?? const {})['customer'] ?? const {})['orders'] ??

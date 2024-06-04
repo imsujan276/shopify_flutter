@@ -56,10 +56,10 @@ class HomeTabState extends State<HomeTab> {
         products = [];
       });
       final shopifyStore = ShopifyStore.instance;
-      final bestSellingProducts = await shopifyStore.getAllProducts();
+      final bestSellingProducts = await shopifyStore.getNProducts(10);
       if (mounted) {
         setState(() {
-          products = bestSellingProducts;
+          products = bestSellingProducts ?? [];
           _isLoading = false;
         });
       }

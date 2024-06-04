@@ -4,6 +4,14 @@ extension BuildContextExt on BuildContext {
   void showSnackBar(String message) {
     ScaffoldMessenger.of(this)
       ..clearSnackBars()
-      ..showSnackBar(SnackBar(content: Text(message)));
+      ..showSnackBar(
+        SnackBar(
+          content: Text(
+            message,
+            maxLines: 6,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      );
   }
 }

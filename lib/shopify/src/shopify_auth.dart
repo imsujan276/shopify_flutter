@@ -64,10 +64,10 @@ class ShopifyAuth with ShopifyError {
   Future<String?> get currentCustomerAccessToken async {
     final data = await accessTokenWithExpDate;
     final String? accessToken = data?.accessToken;
-    if (accessToken != null && await _isTokenNotExpiredButAboutToExpire(data)) {
+    if (await _isTokenNotExpiredButAboutToExpire(data)) {
       try {
         final updatedAccessToken = await _renewAccessToken(
-          accessToken,
+          accessToken!,
         );
         await _setShopifyUser(
           updatedAccessToken,
@@ -326,12 +326,12 @@ class ShopifyAuth with ShopifyError {
       document: gql(customerDeleteMutation),
       variables: {'id': userId},
     );
-    await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClientAdmin!.mutate(_options);
     checkForError(
       result,
       key: 'customerDelete',
       errorKey: 'userErrors',
     );
+    await _setShopifyUser(null, null);
   }
 }

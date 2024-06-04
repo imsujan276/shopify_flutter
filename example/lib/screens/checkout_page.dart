@@ -27,7 +27,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
       await shopifyAuth.signInWithEmailAndPassword(
           email: kUserEmail, password: kUserPassword);
 
-      final bestSellingProducts = await shopifyStore.getAllProducts();
+      final bestSellingProducts = await shopifyStore.getNProducts(
+        10,
+        sortKey: SortKeyProduct.BEST_SELLING,
+      );
+      if (bestSellingProducts == null) {
+        throw Exception('No best selling products found');
+      }
 
       var items = List<LineItem>.empty(growable: true);
       items.add(LineItem(
@@ -92,7 +98,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
       await shopifyAuth.signInWithEmailAndPassword(
           email: kUserEmail, password: kUserPassword);
 
-      final bestSellingProducts = await shopifyStore.getAllProducts();
+      final bestSellingProducts = await shopifyStore.getNProducts(
+        10,
+        sortKey: SortKeyProduct.BEST_SELLING,
+      );
+      if (bestSellingProducts == null) {
+        throw Exception('No best selling products found');
+      }
 
       var items = List<LineItem>.empty(growable: true);
 

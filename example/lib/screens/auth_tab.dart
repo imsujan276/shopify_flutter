@@ -22,9 +22,7 @@ class _AuthTabState extends State<AuthTab> {
     _checkIfLoggedIn();
   }
 
-  void showSnackbar(String message) {
-    context.showSnackBar(message);
-  }
+  void showSnackbar(String message) => context.showSnackBar(message);
 
   Future<void> _checkIfLoggedIn() async {
     try {

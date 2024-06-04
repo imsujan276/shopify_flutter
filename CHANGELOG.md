@@ -1,5 +1,9 @@
 ## 1.5.18
 
+* minor update in example and getAllOrders 
+
+## 1.5.18
+
 * increase the number of varients in products
 * auto renew token in `ShopifyAuth.instance.currentCustomerAccessToken` if it is about to expire.
 * added media list in products

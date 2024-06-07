@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:graphql/src/core/policies.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -283,7 +284,7 @@ class ShopifyAuth with ShopifyError {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
       document: gql(getCustomerQuery),
       variables: {'customerAccessToken': await currentCustomerAccessToken},
-      fetchPolicy: ShopifyConfig.fetchPolicy,
+      fetchPolicy: FetchPolicy.networkOnly,
     );
     if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];

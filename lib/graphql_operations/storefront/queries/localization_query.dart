@@ -8,6 +8,11 @@ query getCountriesAndCurrencies($country: CountryCode) @inContext(country: $coun
       endonymName
       name
     }
+    language{
+    isoCode
+    endonymName
+    name
+    }
     availableCountries {
       availableLanguages { 
         isoCode

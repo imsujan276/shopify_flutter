@@ -1,5 +1,5 @@
 /// Query to get [Localization] object
-/// [Docs](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/markets/multiple-languages)
+/// [Query Doc](https://shopify.dev/docs/api/storefront/2024-01/queries/localization)
 const String getLocalizationQuery = r'''
 query getCountriesAndCurrencies($country: CountryCode) @inContext(country: $country) {
   localization {

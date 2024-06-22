@@ -870,7 +870,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.5.18"
+    version: "1.5.19"
   sky_engine:
     dependency: transitive
     description: flutter

@@ -13,7 +13,7 @@ _$UnitPriceMeasurementImpl _$$UnitPriceMeasurementImplFromJson(
       quantityUnit: json['quantityUnit'] as String,
       quantityValue: (json['quantityValue'] as num).toDouble(),
       referenceUnit: json['referenceUnit'] as String,
-      referenceValue: json['referenceValue'] as int,
+      referenceValue: (json['referenceValue'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$UnitPriceMeasurementImplToJson(

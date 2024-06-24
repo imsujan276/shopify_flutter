@@ -283,7 +283,7 @@ class ShopifyAuth with ShopifyError {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
       document: gql(getCustomerQuery),
       variables: {'customerAccessToken': await currentCustomerAccessToken},
-      fetchPolicy: ShopifyConfig.fetchPolicy,
+      fetchPolicy: FetchPolicy.networkOnly,
     );
     if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];

@@ -51,7 +51,7 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
       completedAt
       createdAt
       currencyCode
-      lineItems(first: 10) {
+      lineItems(first: 250) {
         edges {
           node {
             id

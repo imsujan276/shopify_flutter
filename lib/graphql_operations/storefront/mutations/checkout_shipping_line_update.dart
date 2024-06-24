@@ -59,7 +59,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
       completedAt
       createdAt
       currencyCode
-      lineItems(first: 10) {
+      lineItems(first: 250) {
         edges {
           node {
             id

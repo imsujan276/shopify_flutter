@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:shopify_flutter/models/models.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class ShopTab extends StatefulWidget {
@@ -12,12 +13,14 @@ class ShopTab extends StatefulWidget {
 
 class ShopTabState extends State<ShopTab> {
   Shop? shop;
+  Localization? localization;
   bool _isLoading = false;
 
   @override
   void initState() {
     super.initState();
     _fetchShopInfo();
+    _fetchLocalizationInfo();
   }
 
   Future<void> fetchShopAdminInfo() async {
@@ -76,6 +79,23 @@ query{
     }
   }
 
+  Future<void> _fetchLocalizationInfo() async {
+    try {
+      setState(() => _isLoading = true);
+      final localizationInfo =
+          await ShopifyLocalization.instance.getLocalization();
+      if (mounted) {
+        setState(() {
+          localization = localizationInfo;
+          _isLoading = false;
+        });
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+      setState(() => _isLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -117,6 +137,23 @@ query{
                   ListTile(
                     title: const Text('Primary Domain'),
                     subtitle: Text(shop?.primaryDomain?.url ?? 'N/A'),
+                  ),
+                  ListTile(
+                    title: const Text('Supported Languages'),
+                    subtitle: Text(localization?.availableLanguages
+                            .map((lang) => lang.name)
+                            .toList()
+                            .join(', ') ??
+                        'N/A'),
+                  ),
+                  ListTile(
+                    title: const Text('Supported Currencies'),
+                    subtitle: Text(localization?.availableCountries
+                            .map((country) =>
+                                '${country.currency.name} (${country.currency.symbol})')
+                            .toSet()
+                            .join(', ') ??
+                        'N/A'),
                   ),
                   ListTile(
                     title: const Text('Primary Domain SSL Enabled'),

@@ -17,7 +17,7 @@ class ShopifyLocalization with ShopifyError {
   ///
   /// Returns the [Localization] object for the provide [Country] code, and if none is provided
   /// the general localization object is returned.
-  /// It provides information regarding supported [Language]s, 
+  /// It provides information regarding supported [Language]s,
   /// [Country]s and [Currencies] suuported by each country.
   Future<Localization> getLocalization({
     String? countrycode,

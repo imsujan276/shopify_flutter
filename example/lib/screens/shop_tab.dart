@@ -1,7 +1,6 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:shopify_flutter/models/models.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class ShopTab extends StatefulWidget {

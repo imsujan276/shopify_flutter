@@ -1,24 +1,20 @@
 /// Query to get [Localization] object
 /// [Query Doc](https://shopify.dev/docs/api/storefront/2024-01/queries/localization)
 const String getLocalizationQuery = r'''
-query getCountriesAndCurrencies($country: CountryCode) @inContext(country: $country) {
+query getCountriesAndCurrencies($country: CountryCode, $language: LanguageCode)
+@inContext(country: $country, language: $language) {
   localization {
-    availableLanguages { 
+    availableLanguages {
       isoCode
       endonymName
       name
     }
-    language{
-    isoCode
-    endonymName
-    name
+    language {
+      isoCode
+      endonymName
+      name
     }
     availableCountries {
-      availableLanguages { 
-        isoCode
-        endonymName
-        name
-      }
       market {
         id
         handle
@@ -31,13 +27,13 @@ query getCountriesAndCurrencies($country: CountryCode) @inContext(country: $coun
       isoCode
       name
       unitSystem
+      availableLanguages {
+        isoCode
+        endonymName
+        name
+      }
     }
     country {
-      availableLanguages { 
-        isoCode
-        endonymName
-        name
-      }
       market {
         id
         handle
@@ -50,6 +46,11 @@ query getCountriesAndCurrencies($country: CountryCode) @inContext(country: $coun
       isoCode
       name
       unitSystem
+      availableLanguages {
+        isoCode
+        endonymName
+        name
+      }
     }
     market {
       id

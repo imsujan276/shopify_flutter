@@ -9,8 +9,8 @@ part of 'matched_substring.dart';
 _$MatchedSubstringImpl _$$MatchedSubstringImplFromJson(
         Map<String, dynamic> json) =>
     _$MatchedSubstringImpl(
-      length: json['length'] as int?,
-      offset: json['offset'] as int?,
+      length: (json['length'] as num?)?.toInt(),
+      offset: (json['offset'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$MatchedSubstringImplToJson(

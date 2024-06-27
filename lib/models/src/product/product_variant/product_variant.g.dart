@@ -15,7 +15,7 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       availableForSale: json['availableForSale'] as bool,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
-      quantityAvailable: json['quantityAvailable'] as int,
+      quantityAvailable: (json['quantityAvailable'] as num).toInt(),
       sku: json['sku'] as String?,
       unitPrice: json['unitPrice'] == null
           ? null

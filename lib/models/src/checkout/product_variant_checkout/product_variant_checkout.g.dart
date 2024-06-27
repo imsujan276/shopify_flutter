@@ -23,7 +23,7 @@ _$ProductVariantCheckoutImpl _$$ProductVariantCheckoutImplFromJson(
           : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
       weight: (json['weight'] as num?)?.toDouble(),
       weightUnit: json['weightUnit'] as String?,
-      quantityAvailable: json['quantityAvailable'] as int? ?? 0,
+      quantityAvailable: (json['quantityAvailable'] as num?)?.toInt() ?? 0,
       product: json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),

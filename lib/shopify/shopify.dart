@@ -5,3 +5,4 @@ export 'src/shopify_customer.dart'; //
 export 'src/shopify_store.dart'; //
 export 'src/shopify_custom.dart'; //
 export 'src/shopify_page.dart';
+export 'src/shopify_localization.dart';

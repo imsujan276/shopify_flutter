@@ -126,6 +126,14 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<Page> getPageByHandle(String handle)
 ```
 
+##### Shopify Localization
+
+```dart
+  ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
+
+  Future<List<Page>> getLocalization()
+```
+
 ##### Shopify Custom
 ```dart
   ShopifyCustom shopifyCustom = ShopifyCustom.instance;

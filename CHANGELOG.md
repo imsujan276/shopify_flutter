@@ -1,3 +1,8 @@
+## 1.5.20
+
+* [Added ShopifyLocalization](https://github.com/imsujan276/shopify_flutter/pull/71)
+* [Fix blogByHandle query](https://github.com/imsujan276/shopify_flutter/pull/72)
+
 ## 1.5.19
 
 * minor update in example and getAllOrders 

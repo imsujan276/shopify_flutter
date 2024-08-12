@@ -33,6 +33,8 @@ class Order with _$Order {
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
+    String? canceledAt,
+    String? cancelReason,
     List<SuccessfulFullfilment>? successfulFulfillments,
   }) = _Order;
 
@@ -62,6 +64,8 @@ class Order with _$Order {
             PriceV2.fromJson(json['node']['totalShippingPriceV2']),
         totalTaxV2: PriceV2.fromJson(json['node']['totalTaxV2']),
         cursor: json['cursor'],
+        canceledAt: json['node']['canceledAt'],
+        cancelReason: json['node']['cancelReason'],
         successfulFulfillments: _getSuccessfulFulfilments(
           json['node']['successfulFulfillments'] ?? [],
         ),

@@ -28,6 +28,7 @@ dev_dependencies:
   flutter_lints: ^3.0.1
   build_runner: ^2.3.3
   freezed: ^2.3.2
+  analyzer: ^6.2.0
 
 screenshots:
  - description: 'Search Example of the shopify storefront'

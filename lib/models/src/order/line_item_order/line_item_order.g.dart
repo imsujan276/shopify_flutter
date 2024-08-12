@@ -8,12 +8,12 @@ part of 'line_item_order.dart';
 
 _$LineItemOrderImpl _$$LineItemOrderImplFromJson(Map<String, dynamic> json) =>
     _$LineItemOrderImpl(
-      currentQuantity: (json['currentQuantity'] as num).toInt(),
+      currentQuantity: json['currentQuantity'] as int,
       discountedTotalPrice: PriceV2.fromJson(
           json['discountedTotalPrice'] as Map<String, dynamic>),
       originalTotalPrice:
           PriceV2.fromJson(json['originalTotalPrice'] as Map<String, dynamic>),
-      quantity: (json['quantity'] as num).toInt(),
+      quantity: json['quantity'] as int,
       title: json['title'] as String,
       discountAllocations: (json['discountAllocations'] as List<dynamic>?)
               ?.map((e) =>

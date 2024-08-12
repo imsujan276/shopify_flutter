@@ -9,7 +9,7 @@ part of 'line_item.dart';
 _$LineItemImpl _$$LineItemImplFromJson(Map<String, dynamic> json) =>
     _$LineItemImpl(
       title: json['title'] as String,
-      quantity: (json['quantity'] as num).toInt(),
+      quantity: json['quantity'] as int,
       discountAllocations: (json['discountAllocations'] as List<dynamic>?)
               ?.map((e) =>
                   DiscountAllocations.fromJson(e as Map<String, dynamic>))

@@ -12,7 +12,7 @@ part of 'order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Order _$OrderFromJson(Map<String, dynamic> json) {
   return _Order.fromJson(json);
@@ -40,8 +40,8 @@ mixin _$Order {
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
-  String? get canceledAt => throw _privateConstructorUsedError; // 新字段
-  String? get cancelReason => throw _privateConstructorUsedError; // 新字段
+  String? get canceledAt => throw _privateConstructorUsedError;
+  String? get cancelReason => throw _privateConstructorUsedError;
   List<SuccessfulFullfilment>? get successfulFulfillments =>
       throw _privateConstructorUsedError;
 
@@ -557,12 +557,9 @@ class _$OrderImpl extends _Order {
   final String? cursor;
   @override
   final String? canceledAt;
-// 新字段
   @override
   final String? cancelReason;
-// 新字段
   final List<SuccessfulFullfilment>? _successfulFulfillments;
-// 新字段
   @override
   List<SuccessfulFullfilment>? get successfulFulfillments {
     final value = _successfulFulfillments;
@@ -740,9 +737,9 @@ abstract class _Order extends Order {
   String? get cursor;
   @override
   String? get canceledAt;
-  @override // 新字段
+  @override
   String? get cancelReason;
-  @override // 新字段
+  @override
   List<SuccessfulFullfilment>? get successfulFulfillments;
   @override
   @JsonKey(ignore: true)

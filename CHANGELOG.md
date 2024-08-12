@@ -1,3 +1,7 @@
+## 1.5.21
+
+* [Add order cancel fields](https://github.com/imsujan276/shopify_flutter/pull/75)
+
 ## 1.5.20
 
 * [Added ShopifyLocalization](https://github.com/imsujan276/shopify_flutter/pull/71)

@@ -40,6 +40,8 @@ mixin _$Order {
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
+  String? get canceledAt => throw _privateConstructorUsedError; // 新字段
+  String? get cancelReason => throw _privateConstructorUsedError; // 新字段
   List<SuccessfulFullfilment>? get successfulFulfillments =>
       throw _privateConstructorUsedError;
 
@@ -74,6 +76,8 @@ abstract class $OrderCopyWith<$Res> {
       PriceV2? totalRefundedV2,
       String? phone,
       String? cursor,
+      String? canceledAt,
+      String? cancelReason,
       List<SuccessfulFullfilment>? successfulFulfillments});
 
   $LineItemsOrderCopyWith<$Res> get lineItems;
@@ -119,6 +123,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? canceledAt = freezed,
+    Object? cancelReason = freezed,
     Object? successfulFulfillments = freezed,
   }) {
     return _then(_value.copyWith(
@@ -201,6 +207,14 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
       cursor: freezed == cursor
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
+              as String?,
+      canceledAt: freezed == canceledAt
+          ? _value.canceledAt
+          : canceledAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelReason: freezed == cancelReason
+          ? _value.cancelReason
+          : cancelReason // ignore: cast_nullable_to_non_nullable
               as String?,
       successfulFulfillments: freezed == successfulFulfillments
           ? _value.successfulFulfillments
@@ -314,6 +328,8 @@ abstract class _$$OrderImplCopyWith<$Res> implements $OrderCopyWith<$Res> {
       PriceV2? totalRefundedV2,
       String? phone,
       String? cursor,
+      String? canceledAt,
+      String? cancelReason,
       List<SuccessfulFullfilment>? successfulFulfillments});
 
   @override
@@ -365,6 +381,8 @@ class __$$OrderImplCopyWithImpl<$Res>
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? canceledAt = freezed,
+    Object? cancelReason = freezed,
     Object? successfulFulfillments = freezed,
   }) {
     return _then(_$OrderImpl(
@@ -448,6 +466,14 @@ class __$$OrderImplCopyWithImpl<$Res>
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
+      canceledAt: freezed == canceledAt
+          ? _value.canceledAt
+          : canceledAt // ignore: cast_nullable_to_non_nullable
+              as String?,
+      cancelReason: freezed == cancelReason
+          ? _value.cancelReason
+          : cancelReason // ignore: cast_nullable_to_non_nullable
+              as String?,
       successfulFulfillments: freezed == successfulFulfillments
           ? _value._successfulFulfillments
           : successfulFulfillments // ignore: cast_nullable_to_non_nullable
@@ -480,6 +506,8 @@ class _$OrderImpl extends _Order {
       this.totalRefundedV2,
       this.phone,
       this.cursor,
+      this.canceledAt,
+      this.cancelReason,
       final List<SuccessfulFullfilment>? successfulFulfillments})
       : _successfulFulfillments = successfulFulfillments,
         super._();
@@ -527,7 +555,14 @@ class _$OrderImpl extends _Order {
   final String? phone;
   @override
   final String? cursor;
+  @override
+  final String? canceledAt;
+// 新字段
+  @override
+  final String? cancelReason;
+// 新字段
   final List<SuccessfulFullfilment>? _successfulFulfillments;
+// 新字段
   @override
   List<SuccessfulFullfilment>? get successfulFulfillments {
     final value = _successfulFulfillments;
@@ -540,7 +575,7 @@ class _$OrderImpl extends _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, successfulFulfillments: $successfulFulfillments)';
+    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, canceledAt: $canceledAt, cancelReason: $cancelReason, successfulFulfillments: $successfulFulfillments)';
   }
 
   @override
@@ -583,6 +618,10 @@ class _$OrderImpl extends _Order {
                 other.totalRefundedV2 == totalRefundedV2) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.cursor, cursor) || other.cursor == cursor) &&
+            (identical(other.canceledAt, canceledAt) ||
+                other.canceledAt == canceledAt) &&
+            (identical(other.cancelReason, cancelReason) ||
+                other.cancelReason == cancelReason) &&
             const DeepCollectionEquality().equals(
                 other._successfulFulfillments, _successfulFulfillments));
   }
@@ -611,6 +650,8 @@ class _$OrderImpl extends _Order {
         totalRefundedV2,
         phone,
         cursor,
+        canceledAt,
+        cancelReason,
         const DeepCollectionEquality().hash(_successfulFulfillments)
       ]);
 
@@ -650,6 +691,8 @@ abstract class _Order extends Order {
       final PriceV2? totalRefundedV2,
       final String? phone,
       final String? cursor,
+      final String? canceledAt,
+      final String? cancelReason,
       final List<SuccessfulFullfilment>? successfulFulfillments}) = _$OrderImpl;
   _Order._() : super._();
 
@@ -696,6 +739,10 @@ abstract class _Order extends Order {
   @override
   String? get cursor;
   @override
+  String? get canceledAt;
+  @override // 新字段
+  String? get cancelReason;
+  @override // 新字段
   List<SuccessfulFullfilment>? get successfulFulfillments;
   @override
   @JsonKey(ignore: true)

@@ -11,6 +11,8 @@ customer(customerAccessToken: $accessToken) {
           customerUrl
           financialStatus
           fulfillmentStatus
+          canceledAt
+          cancelReason
           lineItems(first: 250) {
             edges {
               node {

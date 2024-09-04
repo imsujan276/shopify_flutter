@@ -1,3 +1,4 @@
+/// mutation to update the buyer identity of the cart
 const String cartBuyerIdentityUpdate = r'''
 mutation cartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
   cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {

@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+/// The cache policy to be used for all queries and mutations.
 enum CachePolicy {
   /// Return result from cache. Only fetch from network if cached result is not available.
   cacheFirst,
@@ -17,6 +18,7 @@ enum CachePolicy {
   networkOnly,
 }
 
+/// The ShopifyConfig class holds the configuration for the Shopify Flutter SDK.
 class ShopifyConfig {
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String? _storefrontAccessToken;
@@ -52,6 +54,8 @@ class ShopifyConfig {
 
   /// fetch policy to be used for all queries and mutations
   static CachePolicy? _fetchPolicy;
+
+  /// returns [FetchPolicy] based on the [CachePolicy]
   static FetchPolicy? get fetchPolicy {
     switch (_fetchPolicy) {
       case CachePolicy.noCache:

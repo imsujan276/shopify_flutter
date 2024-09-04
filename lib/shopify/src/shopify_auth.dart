@@ -22,6 +22,7 @@ class ShopifyAuth with ShopifyError {
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
   GraphQLClient? get _graphQLClientAdmin => ShopifyConfig.graphQLClientAdmin;
 
+  /// Singleton instance of ShopifyAuth
   static final ShopifyAuth instance = ShopifyAuth._();
 
   static final Map<String?, ShopifyUser?> _shopifyUser = {};
@@ -185,6 +186,7 @@ class ShopifyAuth with ShopifyError {
     return shopifyUser;
   }
 
+  /// Renews the current access token.
   Future<void> renewCurrentAccessToken(String accessToken) async {
     final updatedAccessToken = await _renewAccessToken(accessToken);
     await _setShopifyUser(

@@ -1,3 +1,4 @@
+/// mutation to update cart discount codes
 const String updateCartDiscountCodesMutation = r'''
 mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]) {
   cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {

@@ -1,3 +1,4 @@
+/// query to get cart by id
 const String getCartByIdQuery = r'''
 query cart($id: ID!) {
   cart(id: $id) {

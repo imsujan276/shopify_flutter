@@ -41,6 +41,8 @@ import '../../shopify_config.dart';
 /// ShopifyCheckout provides various method in order to work with checkouts.
 class ShopifyCheckout with ShopifyError {
   ShopifyCheckout._();
+
+  /// Singleton instance of [ShopifyCheckout]
   static final ShopifyCheckout instance = ShopifyCheckout._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
@@ -369,6 +371,7 @@ class ShopifyCheckout with ShopifyError {
     );
   }
 
+  /// creates a new [Checkout] with the given [lineItems], [shippingAddress] and [email].
   Future<Checkout> createCheckout({
     List<LineItem>? lineItems,
     Address? shippingAddress,
@@ -418,6 +421,7 @@ class ShopifyCheckout with ShopifyError {
         ((result.data!['checkoutCreate'] ?? const {})['checkout'] ?? const {}));
   }
 
+  /// Returns the [Checkout] that [checkoutId] belongs to after adding the [lineItems] to it.
   Future<Checkout> addLineItemsToCheckout({
     required String checkoutId,
     required List<LineItem> lineItems,
@@ -452,6 +456,7 @@ class ShopifyCheckout with ShopifyError {
             const {}));
   }
 
+  /// Returns the [Checkout] that [checkoutId] belongs to after updating the [lineItems] to it.
   Future<Checkout> updateLineItemsInCheckout({
     required String checkoutId,
     required List<LineItem> lineItems,
@@ -487,6 +492,7 @@ class ShopifyCheckout with ShopifyError {
             const {}));
   }
 
+  /// Returns the [Checkout] that [checkoutId] belongs to after removing the [lineItems] from it.
   Future<Checkout> removeLineItemsFromCheckout({
     required String checkoutId,
     required List<LineItem> lineItems,

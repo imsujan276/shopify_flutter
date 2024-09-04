@@ -8,8 +8,12 @@ part 'product_variant.freezed.dart';
 part 'product_variant.g.dart';
 
 @freezed
+
+/// the product variant
 class ProductVariant with _$ProductVariant {
   const ProductVariant._();
+
+  /// the product variant constructor
   factory ProductVariant({
     required PriceV2 price,
     required String title,
@@ -27,6 +31,7 @@ class ProductVariant with _$ProductVariant {
     ShopifyImage? image,
   }) = _ProductVariant;
 
+  /// the product variant from graphjson
   factory ProductVariant.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? const {};
 
@@ -61,6 +66,7 @@ class ProductVariant with _$ProductVariant {
     );
   }
 
+  /// the product variant from json
   factory ProductVariant.fromJson(Map<String, dynamic> json) =>
       _$ProductVariantFromJson(json);
 

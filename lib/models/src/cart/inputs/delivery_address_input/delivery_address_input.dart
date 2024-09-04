@@ -15,11 +15,14 @@ class DeliveryAddressInput with _$DeliveryAddressInput {
 
   @Assert('customerAddressId == null || deliveryAddress == null',
       'Cannot contain both customerAddressId and deliveryAddress')
+
+  /// The delivery address input constructor
   factory DeliveryAddressInput({
     String? customerAddressId,
     MailingAddressInput? deliveryAddress,
   }) = _DeliveryAddressInput;
 
+  /// The delivery address input from json factory
   factory DeliveryAddressInput.fromJson(Map<String, dynamic> json) =>
       _$DeliveryAddressInputFromJson(json);
 }

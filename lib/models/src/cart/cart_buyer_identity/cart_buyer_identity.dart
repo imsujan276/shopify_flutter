@@ -8,9 +8,12 @@ part 'cart_buyer_identity.freezed.dart';
 part 'cart_buyer_identity.g.dart';
 
 @freezed
+
+/// The buyer identity of a cart
 class CartBuyerIdentity with _$CartBuyerIdentity {
   const CartBuyerIdentity._();
 
+  /// cart buyer identity factory
   factory CartBuyerIdentity({
     String? email,
     String? phone,
@@ -20,6 +23,7 @@ class CartBuyerIdentity with _$CartBuyerIdentity {
     List<MailingAddress?>? deliveryAddressPreferences,
   }) = _CartBuyerIdentity;
 
+  /// cart buyer identity from json factory
   factory CartBuyerIdentity.fromJson(Map<String, dynamic> json) =>
       _$CartBuyerIdentityFromJson(json);
 }

@@ -12,9 +12,12 @@ part 'cart.freezed.dart';
 part 'cart.g.dart';
 
 @freezed
+
+/// The cart
 class Cart with _$Cart {
   const Cart._();
 
+  /// The cart constructor
   factory Cart({
     required String id,
     required String? checkoutUrl,
@@ -29,5 +32,6 @@ class Cart with _$Cart {
     @JsonKey(fromJson: JsonHelper.lines) required List<Line> lines,
   }) = _Cart;
 
+  /// The cart from json
   factory Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
 }

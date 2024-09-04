@@ -9,9 +9,12 @@ part 'order.freezed.dart';
 part 'order.g.dart';
 
 @freezed
+
+/// The order
 class Order with _$Order {
   const Order._();
 
+  /// The order constructor
   factory Order({
     required String id,
     required String email,
@@ -38,6 +41,7 @@ class Order with _$Order {
     List<SuccessfulFullfilment>? successfulFulfillments,
   }) = _Order;
 
+  /// The order from graph json
   factory Order.fromGraphJson(Map<String, dynamic> json) => Order(
         id: json['node']['id'],
         email: json['node']['email'] ?? '',
@@ -71,6 +75,7 @@ class Order with _$Order {
         ),
       );
 
+  /// The order from json
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
   static _getSuccessfulFulfilments(List<dynamic> fulfilments) {

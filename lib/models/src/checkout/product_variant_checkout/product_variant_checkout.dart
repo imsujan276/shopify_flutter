@@ -8,9 +8,12 @@ part 'product_variant_checkout.freezed.dart';
 part 'product_variant_checkout.g.dart';
 
 @freezed
+
+/// The product variant checkout
 class ProductVariantCheckout with _$ProductVariantCheckout {
   const ProductVariantCheckout._();
 
+  /// The product variant checkout constructor
   factory ProductVariantCheckout({
     required String title,
     required bool availableForSale,
@@ -28,6 +31,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     @Default([]) List<SelectedOption> selectedOptions,
   }) = _ProductVariantCheckout;
 
+  /// The product variant checkout from json
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
       _$ProductVariantCheckoutFromJson(json);
 }

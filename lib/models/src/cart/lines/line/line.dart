@@ -7,8 +7,12 @@ part 'line.freezed.dart';
 part 'line.g.dart';
 
 @freezed
+
+/// The cart line
 class Line with _$Line {
   const Line._();
+
+  /// The cart line constructor
   factory Line({
     String? id,
     int? quantity,
@@ -17,6 +21,7 @@ class Line with _$Line {
     String? variantId,
   }) = _Line;
 
+  /// The cart line from json
   factory Line.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? {};
 
@@ -35,5 +40,6 @@ class Line with _$Line {
     );
   }
 
+  /// The cart line from json
   factory Line.fromJson(Map<String, dynamic> json) => _$LineFromJson(json);
 }

@@ -5,8 +5,12 @@ part 'lines.freezed.dart';
 part 'lines.g.dart';
 
 @freezed
+
+/// The cart lines
 class Lines with _$Lines {
+  /// The cart lines constructor
   factory Lines({required List<Line> lines}) = _Lines;
 
+  /// The cart lines from json
   factory Lines.fromJson(Map<String, dynamic> json) => _$LinesFromJson(json);
 }

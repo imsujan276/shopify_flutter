@@ -1,3 +1,4 @@
+/// mutation to remove a line item from the cart
 const String removeLineItemFromCartMutation = r'''
 mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {

@@ -5,8 +5,12 @@ part 'product_media.freezed.dart';
 part 'product_media.g.dart';
 
 @freezed
+
+/// The product media
 class ProductMedia with _$ProductMedia {
   const ProductMedia._();
+
+  /// The product media constructor
   factory ProductMedia({
     required String id,
     required String mediaContentType,
@@ -14,6 +18,7 @@ class ProductMedia with _$ProductMedia {
     String? alt,
   }) = _ProductVariant;
 
+  /// The product media from graphjson
   factory ProductMedia.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? const {};
     return ProductMedia(
@@ -26,6 +31,7 @@ class ProductMedia with _$ProductMedia {
     );
   }
 
+  /// The product media from json
   factory ProductMedia.fromJson(Map<String, dynamic> json) =>
       _$ProductMediaFromJson(json);
 }

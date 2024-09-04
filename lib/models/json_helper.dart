@@ -3,6 +3,7 @@ import 'package:shopify_flutter/models/src/cart/lines/line/line.dart';
 
 import 'src/checkout/line_item/line_item.dart';
 
+/// A helper class for parsing json objects
 class JsonHelper {
   const JsonHelper._();
 

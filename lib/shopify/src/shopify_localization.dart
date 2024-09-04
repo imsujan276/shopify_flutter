@@ -9,6 +9,7 @@ import '../../shopify_config.dart';
 class ShopifyLocalization with ShopifyError {
   ShopifyLocalization._();
 
+  /// Singleton instance of [ShopifyLocalization]
   static final ShopifyLocalization instance = ShopifyLocalization._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;

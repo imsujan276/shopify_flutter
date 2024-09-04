@@ -8,7 +8,10 @@ part 'shopify_user.freezed.dart';
 part 'shopify_user.g.dart';
 
 @freezed
+
+/// The shopify user
 class ShopifyUser with _$ShopifyUser {
+  /// The shopify user constructor
   factory ShopifyUser({
     Addresses? address,
     String? createdAt,
@@ -23,6 +26,7 @@ class ShopifyUser with _$ShopifyUser {
     LastIncompleteCheckout? lastIncompleteCheckout,
   }) = _ShopifyUser;
 
+  /// The shopify user from json factory
   factory ShopifyUser.fromGraphJson(Map<String, dynamic> json) => ShopifyUser(
         address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
         defaultAddress: json['defaultAddress'] == null
@@ -41,6 +45,11 @@ class ShopifyUser with _$ShopifyUser {
             : LastIncompleteCheckout.fromJson(json['lastIncompleteCheckout']),
       );
 
+  /// returns the last name of the user from the json.
+  ///
+  /// If the last name is not present in the json, it will return the display name.
+  ///
+  /// If the first name is present in the json, it will remove the first name from the display name.
   static String? getLastName(Map<String, dynamic> json) {
     String? lastName = json['lastName'];
     if (lastName == null) {
@@ -59,6 +68,7 @@ class ShopifyUser with _$ShopifyUser {
     return lastName;
   }
 
+  /// The shopify user from json factory
   factory ShopifyUser.fromJson(Map<String, dynamic> json) =>
       _$ShopifyUserFromJson(json);
 

@@ -15,6 +15,8 @@ import '../../shopify_config.dart';
 /// ShopifyCart provides various method in order to work with carts.
 class ShopifyCart with ShopifyError {
   ShopifyCart._();
+
+  /// Singleton instance of [ShopifyCart]
   static final ShopifyCart instance = ShopifyCart._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;

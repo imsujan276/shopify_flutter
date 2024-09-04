@@ -6,12 +6,17 @@ part 'orders.freezed.dart';
 part 'orders.g.dart';
 
 @freezed
+
+/// The Orders class
 class Orders with _$Orders {
+  /// The Orders constructor
   factory Orders({required List<Order> orderList, required bool hasNextPage}) =
       _Orders;
 
+  /// The Orders from json
   factory Orders.fromJson(Map<String, dynamic> json) => _$OrdersFromJson(json);
 
+  /// The Orders from graph json
   factory Orders.fromGraphJson(Map<String, dynamic> json) => Orders(
         orderList: _getOrderList(json),
         hasNextPage: json['pageInfo']?['hasNextPage'] ?? false,

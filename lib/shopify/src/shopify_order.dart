@@ -9,6 +9,8 @@ import '../../shopify_config.dart';
 /// ShopifyOrder provides methods for Shopify Orders.
 class ShopifyOrder with ShopifyError {
   ShopifyOrder._();
+
+  /// Singleton instance of [ShopifyOrder]
   static final ShopifyOrder instance = ShopifyOrder._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;

@@ -7,9 +7,12 @@ part 'cart_input.freezed.dart';
 part 'cart_input.g.dart';
 
 @freezed
+
+/// The cart input
 class CartInput with _$CartInput {
   const CartInput._();
 
+  /// The cart input constructor
   factory CartInput({
     @Default([]) List<String?> discountCodes,
     @Default([]) List<CartLineInput?> lines,
@@ -17,6 +20,7 @@ class CartInput with _$CartInput {
     CartBuyerIdentityInput? buyerIdentity,
   }) = _CartInput;
 
+  /// The cart input from json factory
   factory CartInput.fromJson(Map<String, dynamic> json) =>
       _$CartInputFromJson(json);
 }

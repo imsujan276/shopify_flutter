@@ -1,3 +1,4 @@
+/// mutation to update the note of a cart
 const String updateNoteInCartMutation = r'''
 mutation cartNoteUpdate($cartId: ID!, $note: String!) {
   cartNoteUpdate(cartId: $cartId, note: $note) {

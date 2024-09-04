@@ -8,6 +8,8 @@ class ShopifyCustom with ShopifyError {
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
   GraphQLClient? get _graphQLClientAdmin => ShopifyConfig.graphQLClientAdmin;
+
+  /// Singleton instance of [ShopifyCustom]
   static final ShopifyCustom instance = ShopifyCustom._();
 
   /// Returns a Map of [String] and [dynamic].

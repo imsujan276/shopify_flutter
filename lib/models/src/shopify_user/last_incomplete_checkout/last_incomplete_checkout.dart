@@ -9,7 +9,10 @@ part 'last_incomplete_checkout.freezed.dart';
 part 'last_incomplete_checkout.g.dart';
 
 @freezed
+
+/// The last incomplete checkout
 class LastIncompleteCheckout with _$LastIncompleteCheckout {
+  /// The last incomplete checkout constructor
   factory LastIncompleteCheckout(
           {String? completedAt,
           String? createdAt,
@@ -22,6 +25,7 @@ class LastIncompleteCheckout with _$LastIncompleteCheckout {
           @JsonKey(fromJson: JsonHelper.lineItems) List<LineItem>? lineItems}) =
       _LastIncompleteCheckout;
 
+  /// The last incomplete checkout from json
   factory LastIncompleteCheckout.fromJson(Map<String, dynamic> json) =>
       _$LastIncompleteCheckoutFromJson(json);
 }

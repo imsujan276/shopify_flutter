@@ -15,9 +15,12 @@ part 'checkout.freezed.dart';
 part 'checkout.g.dart';
 
 @freezed
+
+/// The checkout
 class Checkout with _$Checkout {
   const Checkout._();
 
+  /// The checkout constructor
   factory Checkout({
     required String id,
     required bool ready,
@@ -44,6 +47,7 @@ class Checkout with _$Checkout {
     String? updatedAt,
   }) = _Checkout;
 
+  /// The checkout from json
   factory Checkout.fromJson(Map<String, dynamic> json) =>
       _$CheckoutFromJson(json);
 }

@@ -14,10 +14,13 @@ import 'unit_price_measurement/unit_price_measurement.dart';
 part 'product.freezed.dart';
 part 'product.g.dart';
 
+/// The product
 @freezed
 @JsonSerializable(createFactory: false)
 class Product with _$Product {
   const Product._();
+
+  /// The product constructor
   factory Product({
     required String title,
     required String id,
@@ -41,15 +44,20 @@ class Product with _$Product {
     String? handle,
   }) = _Product;
 
+  /// return the first product variant price amount or 0 if the list is empty
   double get price =>
       productVariants.isEmpty ? 0 : productVariants.first.price.amount;
+
+  /// return the first product variant price formatted or empty string if the list is empty
   String get formattedPrice =>
       productVariants.isEmpty ? '' : productVariants.first.price.formattedPrice;
 
+  /// return the first product variant price formatted with locale or empty string if the list is empty
   String formattedPriceWithLocale(String? locale) => productVariants.isEmpty
       ? ''
       : productVariants.first.price.formattedPriceWithLocale(locale);
 
+  /// return the first product variant compareAtPrice amount or '' if the list is empty
   String compareAtPriceFormattedWithLocale(String? locale) =>
       productVariants.isEmpty
           ? ''
@@ -58,22 +66,29 @@ class Product with _$Product {
               : productVariants.first.compareAtPrice!
                   .formattedPriceWithLocale(locale));
 
+  /// return bool if compareAtPrice is greater than price
   bool get hasComparablePrice => compareAtPrice > price;
+
+  /// return the first product variant compareAtPrice amount or 0 if the list is empty
   double get compareAtPrice => productVariants.isEmpty
       ? 0
       : (productVariants.first.compareAtPrice == null
           ? 0
           : productVariants.first.compareAtPrice!.amount);
 
+  /// return the first product variant compareAtPrice formatted or empty string if the list is empty
   String get compareAtPriceFormatted => productVariants.isEmpty
       ? ''
       : (productVariants.first.compareAtPrice == null
           ? ''
           : productVariants.first.compareAtPrice!.formattedPrice);
+
+  /// returns first image src or a placeholder image
   String get image => images.isEmpty
       ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
       : images.first.originalSrc;
 
+  /// returns cuurency code of the first product variant or empty string if the list is empty
   String get currencyCode =>
       productVariants.isEmpty ? '' : productVariants.first.price.currencyCode;
 
@@ -97,6 +112,7 @@ class Product with _$Product {
     }
   }
 
+  /// The product from graphjson
   factory Product.fromGraphJson(Map<String, dynamic> json) => Product(
         collectionList: _getCollectionList(json),
         id: json['node']?['id'] ?? '',
@@ -123,8 +139,10 @@ class Product with _$Product {
   // factory Product.fromJson(Map<String, dynamic> json) =>
   //     _$ProductFromJson(json);
 
+  /// The product to json
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
+  /// The product from json
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       collectionList: _getCollectionList(json),

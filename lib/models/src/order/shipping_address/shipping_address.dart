@@ -4,7 +4,10 @@ part 'shipping_address.freezed.dart';
 part 'shipping_address.g.dart';
 
 @freezed
+
+/// The shipping address
 class ShippingAddress with _$ShippingAddress {
+  /// the shipping address constructor
   factory ShippingAddress({
     required String name,
     required String id,
@@ -24,6 +27,7 @@ class ShippingAddress with _$ShippingAddress {
     String? zip,
   }) = _ShippingAddress;
 
+  /// the shipping address from json
   factory ShippingAddress.fromJson(Map<String, dynamic> json) =>
       _$ShippingAddressFromJson(json);
 }

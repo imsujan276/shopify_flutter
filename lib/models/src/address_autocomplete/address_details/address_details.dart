@@ -4,7 +4,10 @@ part 'address_details.freezed.dart';
 part 'address_details.g.dart';
 
 @freezed
+
+/// The address details
 class AddressDetails with _$AddressDetails {
+  /// A constructor for address details
   const factory AddressDetails({
     String? address1,
     String? address2,
@@ -20,6 +23,7 @@ class AddressDetails with _$AddressDetails {
     String? zip,
   }) = _AddressDetails;
 
+  /// A factory constructor for address details
   factory AddressDetails.fromJson(Map<String, dynamic> json) =>
       _$AddressDetailsFromJson(json);
 }

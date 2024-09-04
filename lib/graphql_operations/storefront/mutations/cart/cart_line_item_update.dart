@@ -1,3 +1,4 @@
+/// mutation to update a line item in the cart
 const String updateLineItemInCartMutation = r'''
 mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
   cartLinesUpdate(cartId: $cartId, lines: $lines) {

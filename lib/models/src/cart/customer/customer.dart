@@ -5,8 +5,12 @@ part 'customer.freezed.dart';
 part 'customer.g.dart';
 
 @freezed
+
+/// The cart customer
 class Customer with _$Customer {
   const Customer._();
+
+  /// The cart customer constructor
   factory Customer({
     required String? id,
     required String email,
@@ -19,6 +23,7 @@ class Customer with _$Customer {
     required bool? acceptsMarketing,
   }) = _Customer;
 
+  /// The cart customer from json
   factory Customer.fromJson(Map<String, dynamic> json) =>
       _$CustomerFromJson(json);
 }

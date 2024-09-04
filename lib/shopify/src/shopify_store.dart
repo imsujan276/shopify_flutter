@@ -362,7 +362,7 @@ class ShopifyStore with ShopifyError {
   ///
   /// 1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   ///
-  /// 2. https://shopify.dev/docs/api/storefront/2023-07/input-objects/productfilter
+  /// 2. https://shopify.dev/docs/api/storefront/2024-07/input-objects/productfilter
   Future<List<Product>?> getXProductsAfterCursorWithinCollection(
     String id,
     int limit, {

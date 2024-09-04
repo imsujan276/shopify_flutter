@@ -82,7 +82,7 @@ class ShopifyConfig {
     required String storefrontAccessToken,
     required String storeUrl,
     String? adminAccessToken,
-    String storefrontApiVersion = "2023-07",
+    String storefrontApiVersion = "2024-07",
     String language = 'en',
     CachePolicy? cachePolicy,
   }) {

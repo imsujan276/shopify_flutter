@@ -19,7 +19,7 @@ void main() {
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
     adminAccessToken: "shpat_*******************", // Optional | Needed only if needed to call admin api
-    storefrontApiVersion: '2023-07', // optional | default: 2023-07
+    storefrontApiVersion: '2024-07', // optional | default: 2024-07
     cachePolicy: CachePolicy.cacheAndNetwork, // optional | default: null
     language: 'en' // Store locale | default : en
   );
@@ -31,7 +31,7 @@ void main() {
 > `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
 If you are not using that function, you may not need to provide it.
 
-> `storefrontApiVersion` default vesion is set to '2023-07'
+> `storefrontApiVersion` default vesion is set to '2024-07'
 
 > `language` defaults to 'en'. It is the default locale/language of the store
 
@@ -191,7 +191,7 @@ For more information about filters visit:
   
   1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   
-  2. https://shopify.dev/docs/api/storefront/2023-07/input-objects/productfilter
+  2. https://shopify.dev/docs/api/storefront/2024-07/input-objects/productfilter
 
 <hr>
 

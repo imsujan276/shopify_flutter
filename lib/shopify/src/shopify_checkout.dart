@@ -36,6 +36,8 @@ import '../../graphql_operations/storefront/queries/get_checkout_information.dar
 import '../../models/src/checkout/checkout.dart';
 import '../../shopify_config.dart';
 
+@Deprecated('From Shopify API Version 2024-07, use ShopifyCart instead')
+
 /// ShopifyCheckout provides various method in order to work with checkouts.
 class ShopifyCheckout with ShopifyError {
   ShopifyCheckout._();

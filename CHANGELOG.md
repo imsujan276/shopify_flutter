@@ -1,3 +1,10 @@
+## 2.0.0
+
+##### Major Updates:
+* Depreciated **ShopifyCheckout** from Shopify API version **2024-07**
+* Introduced **ShopifyCart** to perform cart operation
+* Introduced **ShopifyOrder** to access customer orders
+
 ## 1.5.21
 
 * [Add order cancel fields](https://github.com/imsujan276/shopify_flutter/pull/75)

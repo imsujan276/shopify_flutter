@@ -76,7 +76,9 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<List<Product>?> searchProducts(String query, {int limit = 15, String? startCursor, SearchSortKeys sortKey = SearchSortKeys.RELEVANCE, bool reverse = false, Map<String, dynamic>? filters})
 ```
 
+
 ##### Shopify Checkout
+###### Depreciated in Shopify API Version 2024-07. Use [ShopifyCart](#shopify-cart) Instead
 ```dart
   ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
 
@@ -97,6 +99,27 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<Checkout> updateCheckoutEmail(String checkoutId, String email)
 ```
 
+##### Shopify Cart
+```dart
+  ShopifyCart shopifyCart = ShopifyCart.instance;
+
+  Future<Cart> getCartById(String cartId)
+  Future<Cart> createCart(CartInput cartInput)
+  Future<Cart> addLineItemsToCart({required String cartId, required List<CartLineInput> cartLineInputs})
+  Future<Cart> removeLineItemsFromCart({required String cartId, required List<String> lineIds })
+  Future<Cart> updateLineItemsInCart({ required String cartId, required List<CartLineInput> cartLineInputs })
+  Future<Cart> updateNoteInCart({ required String cartId, required String note })
+  Future<Cart> updateCartDiscountCodes({ required String cartId, required List<String> discountCodes })
+  Future<Cart> updateBuyerIdentityInCart({ required String cartId, required CartBuyerIdentityInput buyerIdentity })
+```
+
+##### Shopify Order
+```dart
+  ShopifyOrder shopifyOrder = ShopifyOrder.instance;
+
+  Future<List<Order>> getAllOrders({String customerAccessToken})
+```
+
 ##### Shopify Customer
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
@@ -106,7 +129,6 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
   Future<void> customerAddressDelete({String customerAccessToken, String addressId})
   Future<void> customerDefaultAddressUpdate({required String addressId, required String customerAccessToken})
-       
 ```
 
 ##### Shopify Blog

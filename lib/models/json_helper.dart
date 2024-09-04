@@ -1,9 +1,23 @@
 import 'package:intl/intl.dart';
+import 'package:shopify_flutter/models/src/cart/lines/line/line.dart';
 
 import 'src/checkout/line_item/line_item.dart';
 
 class JsonHelper {
   const JsonHelper._();
+
+  /// returns a list of lines  from a json object
+  static List<Line> lines(dynamic json) {
+    if (json == null) {
+      return [];
+    } else if (json is List) {
+      return json.map((e) => Line.fromJson(e)).toList();
+    } else if (json['edges'] == null) {
+      return [];
+    }
+
+    return (json['edges'] as List).map((e) => Line.fromGraphJson(e)).toList();
+  }
 
   /// returns a list of line items from a json object
   static List<LineItem> lineItems(dynamic json) {

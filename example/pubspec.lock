@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "64.0.0"
+  alerter:
+    dependency: "direct main"
+    description:
+      name: alerter
+      sha256: "0eceea4fa0654b87c5b941cbd54328c5ce16b127ef1bcf4dc4793dcfe8e52d28"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.2"
   analyzer:
     dependency: transitive
     description:
@@ -870,7 +878,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.5.21"
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

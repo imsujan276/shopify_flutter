@@ -69,3 +69,5 @@ export 'src/localization/country/country.dart';
 export 'src/localization/currency/currency.dart';
 export 'src/localization/language/language.dart';
 export 'src/localization/market/market.dart';
+
+export 'src/cart/cart_model.dart';

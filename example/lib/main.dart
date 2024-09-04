@@ -1,3 +1,4 @@
+import 'package:example/screens/cart_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
@@ -57,6 +58,7 @@ class MyHomePageState extends State<MyHomePage> {
     const ShopTab(),
     const BlogTab(),
     const CheckoutPage(),
+    const CartTab(),
     const OrdersTab(),
     const AuthTab(),
   ];
@@ -83,6 +85,8 @@ class MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
           BottomNavigationBarItem(
               icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Orders'),
           BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
         ],

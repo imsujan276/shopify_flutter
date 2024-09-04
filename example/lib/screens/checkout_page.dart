@@ -20,6 +20,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Future<void> testCheckoutProcess() async {
     final shopifyStore = ShopifyStore.instance;
     final shopifyAuth = ShopifyAuth.instance;
+    // ignore: deprecated_member_use
     final shopifyCheckout = ShopifyCheckout.instance;
 
     try {
@@ -63,7 +64,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       final status = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => WebViewCheckout(checkout: checkout),
+          builder: (_) => WebViewCheckout(checkoutUrl: checkout.webUrl!),
         ),
       );
       if (status != null && status) {
@@ -91,6 +92,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Future<void> testCheckoutCompleteWithTokenizedPaymentV3() async {
     final shopifyStore = ShopifyStore.instance;
     final shopifyAuth = ShopifyAuth.instance;
+    // ignore: deprecated_member_use
     final shopifyCheckout = ShopifyCheckout.instance;
 
     try {
@@ -199,7 +201,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         final status = await Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => WebViewCheckout(checkout: checkout),
+            builder: (_) => WebViewCheckout(checkoutUrl: checkout.webUrl!),
           ),
         );
         if (status != null && status) {
@@ -262,7 +264,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout'),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Checkout'),
+            Text(
+              'Depreciated in version 2024-07. Use ShopifyCart instead',
+              style: Theme.of(context).textTheme.bodySmall,
+            )
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

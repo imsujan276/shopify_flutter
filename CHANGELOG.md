@@ -1,3 +1,8 @@
+## 2.0.1
+
+* Updated default api version to **2024-01**
+* Added code comments for better pub score
+
 ## 2.0.0
 
 ##### Major Updates:

@@ -30,8 +30,6 @@ mixin _$ShopifyUser {
   String? get phone => throw _privateConstructorUsedError;
   List<String>? get tags => throw _privateConstructorUsedError;
   Address? get defaultAddress => throw _privateConstructorUsedError;
-  LastIncompleteCheckout? get lastIncompleteCheckout =>
-      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,12 +53,10 @@ abstract class $ShopifyUserCopyWith<$Res> {
       String? lastName,
       String? phone,
       List<String>? tags,
-      Address? defaultAddress,
-      LastIncompleteCheckout? lastIncompleteCheckout});
+      Address? defaultAddress});
 
   $AddressesCopyWith<$Res>? get address;
   $AddressCopyWith<$Res>? get defaultAddress;
-  $LastIncompleteCheckoutCopyWith<$Res>? get lastIncompleteCheckout;
 }
 
 /// @nodoc
@@ -86,7 +82,6 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
     Object? phone = freezed,
     Object? tags = freezed,
     Object? defaultAddress = freezed,
-    Object? lastIncompleteCheckout = freezed,
   }) {
     return _then(_value.copyWith(
       address: freezed == address
@@ -129,10 +124,6 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
           ? _value.defaultAddress
           : defaultAddress // ignore: cast_nullable_to_non_nullable
               as Address?,
-      lastIncompleteCheckout: freezed == lastIncompleteCheckout
-          ? _value.lastIncompleteCheckout
-          : lastIncompleteCheckout // ignore: cast_nullable_to_non_nullable
-              as LastIncompleteCheckout?,
     ) as $Val);
   }
 
@@ -159,19 +150,6 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
       return _then(_value.copyWith(defaultAddress: value) as $Val);
     });
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LastIncompleteCheckoutCopyWith<$Res>? get lastIncompleteCheckout {
-    if (_value.lastIncompleteCheckout == null) {
-      return null;
-    }
-
-    return $LastIncompleteCheckoutCopyWith<$Res>(_value.lastIncompleteCheckout!,
-        (value) {
-      return _then(_value.copyWith(lastIncompleteCheckout: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -192,15 +170,12 @@ abstract class _$$ShopifyUserImplCopyWith<$Res>
       String? lastName,
       String? phone,
       List<String>? tags,
-      Address? defaultAddress,
-      LastIncompleteCheckout? lastIncompleteCheckout});
+      Address? defaultAddress});
 
   @override
   $AddressesCopyWith<$Res>? get address;
   @override
   $AddressCopyWith<$Res>? get defaultAddress;
-  @override
-  $LastIncompleteCheckoutCopyWith<$Res>? get lastIncompleteCheckout;
 }
 
 /// @nodoc
@@ -224,7 +199,6 @@ class __$$ShopifyUserImplCopyWithImpl<$Res>
     Object? phone = freezed,
     Object? tags = freezed,
     Object? defaultAddress = freezed,
-    Object? lastIncompleteCheckout = freezed,
   }) {
     return _then(_$ShopifyUserImpl(
       address: freezed == address
@@ -267,10 +241,6 @@ class __$$ShopifyUserImplCopyWithImpl<$Res>
           ? _value.defaultAddress
           : defaultAddress // ignore: cast_nullable_to_non_nullable
               as Address?,
-      lastIncompleteCheckout: freezed == lastIncompleteCheckout
-          ? _value.lastIncompleteCheckout
-          : lastIncompleteCheckout // ignore: cast_nullable_to_non_nullable
-              as LastIncompleteCheckout?,
     ));
   }
 }
@@ -288,8 +258,7 @@ class _$ShopifyUserImpl implements _ShopifyUser {
       this.lastName,
       this.phone,
       final List<String>? tags,
-      this.defaultAddress,
-      this.lastIncompleteCheckout})
+      this.defaultAddress})
       : _tags = tags;
 
   factory _$ShopifyUserImpl.fromJson(Map<String, dynamic> json) =>
@@ -323,12 +292,10 @@ class _$ShopifyUserImpl implements _ShopifyUser {
 
   @override
   final Address? defaultAddress;
-  @override
-  final LastIncompleteCheckout? lastIncompleteCheckout;
 
   @override
   String toString() {
-    return 'ShopifyUser(address: $address, createdAt: $createdAt, displayName: $displayName, email: $email, firstName: $firstName, id: $id, lastName: $lastName, phone: $phone, tags: $tags, defaultAddress: $defaultAddress, lastIncompleteCheckout: $lastIncompleteCheckout)';
+    return 'ShopifyUser(address: $address, createdAt: $createdAt, displayName: $displayName, email: $email, firstName: $firstName, id: $id, lastName: $lastName, phone: $phone, tags: $tags, defaultAddress: $defaultAddress)';
   }
 
   @override
@@ -350,9 +317,7 @@ class _$ShopifyUserImpl implements _ShopifyUser {
             (identical(other.phone, phone) || other.phone == phone) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
             (identical(other.defaultAddress, defaultAddress) ||
-                other.defaultAddress == defaultAddress) &&
-            (identical(other.lastIncompleteCheckout, lastIncompleteCheckout) ||
-                other.lastIncompleteCheckout == lastIncompleteCheckout));
+                other.defaultAddress == defaultAddress));
   }
 
   @JsonKey(ignore: true)
@@ -368,8 +333,7 @@ class _$ShopifyUserImpl implements _ShopifyUser {
       lastName,
       phone,
       const DeepCollectionEquality().hash(_tags),
-      defaultAddress,
-      lastIncompleteCheckout);
+      defaultAddress);
 
   @JsonKey(ignore: true)
   @override
@@ -387,18 +351,16 @@ class _$ShopifyUserImpl implements _ShopifyUser {
 
 abstract class _ShopifyUser implements ShopifyUser {
   factory _ShopifyUser(
-          {final Addresses? address,
-          final String? createdAt,
-          final String? displayName,
-          final String? email,
-          final String? firstName,
-          final String? id,
-          final String? lastName,
-          final String? phone,
-          final List<String>? tags,
-          final Address? defaultAddress,
-          final LastIncompleteCheckout? lastIncompleteCheckout}) =
-      _$ShopifyUserImpl;
+      {final Addresses? address,
+      final String? createdAt,
+      final String? displayName,
+      final String? email,
+      final String? firstName,
+      final String? id,
+      final String? lastName,
+      final String? phone,
+      final List<String>? tags,
+      final Address? defaultAddress}) = _$ShopifyUserImpl;
 
   factory _ShopifyUser.fromJson(Map<String, dynamic> json) =
       _$ShopifyUserImpl.fromJson;
@@ -423,8 +385,6 @@ abstract class _ShopifyUser implements ShopifyUser {
   List<String>? get tags;
   @override
   Address? get defaultAddress;
-  @override
-  LastIncompleteCheckout? get lastIncompleteCheckout;
   @override
   @JsonKey(ignore: true)
   _$$ShopifyUserImplCopyWith<_$ShopifyUserImpl> get copyWith =>

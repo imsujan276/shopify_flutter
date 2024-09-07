@@ -2,7 +2,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopify_flutter/models/src/shopify_user/address/address.dart';
 
 import 'addresses/addresses.dart';
-import 'last_incomplete_checkout/last_incomplete_checkout.dart';
 
 part 'shopify_user.freezed.dart';
 part 'shopify_user.g.dart';
@@ -23,7 +22,6 @@ class ShopifyUser with _$ShopifyUser {
     String? phone,
     List<String>? tags,
     Address? defaultAddress,
-    LastIncompleteCheckout? lastIncompleteCheckout,
   }) = _ShopifyUser;
 
   /// The shopify user from json factory
@@ -40,9 +38,6 @@ class ShopifyUser with _$ShopifyUser {
         lastName: getLastName(json),
         phone: json['phone'],
         tags: _getTagList((json)),
-        lastIncompleteCheckout: json['lastIncompleteCheckout'] == null
-            ? null
-            : LastIncompleteCheckout.fromJson(json['lastIncompleteCheckout']),
       );
 
   /// returns the last name of the user from the json.

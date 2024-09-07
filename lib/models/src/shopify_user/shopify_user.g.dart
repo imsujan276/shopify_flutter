@@ -22,10 +22,6 @@ _$ShopifyUserImpl _$$ShopifyUserImplFromJson(Map<String, dynamic> json) =>
       defaultAddress: json['defaultAddress'] == null
           ? null
           : Address.fromJson(json['defaultAddress'] as Map<String, dynamic>),
-      lastIncompleteCheckout: json['lastIncompleteCheckout'] == null
-          ? null
-          : LastIncompleteCheckout.fromJson(
-              json['lastIncompleteCheckout'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ShopifyUserImplToJson(_$ShopifyUserImpl instance) =>
@@ -40,5 +36,4 @@ Map<String, dynamic> _$$ShopifyUserImplToJson(_$ShopifyUserImpl instance) =>
       'phone': instance.phone,
       'tags': instance.tags,
       'defaultAddress': instance.defaultAddress,
-      'lastIncompleteCheckout': instance.lastIncompleteCheckout,
     };

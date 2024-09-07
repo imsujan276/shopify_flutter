@@ -1,3 +1,7 @@
+## 2.1.0
+
+* Removed depreciated proprty **lastIncompleteCheckout** from **ShopifyUser**
+
 ## 2.0.1
 
 * Updated default api version to **2024-01**

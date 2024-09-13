@@ -12,7 +12,7 @@ part of 'cart_preference.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CartPreference _$CartPreferenceFromJson(Map<String, dynamic> json) {
   return _CartPreference.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$CartPreference {
   List<String?> get wallet => throw _privateConstructorUsedError;
   CartDeliveryPreference? get delivery => throw _privateConstructorUsedError;
 
+  /// Serializes this CartPreference to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartPreferenceCopyWith<CartPreference> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$CartPreferenceCopyWithImpl<$Res, $Val extends CartPreference>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$CartPreferenceCopyWithImpl<$Res, $Val extends CartPreference>
     ) as $Val);
   }
 
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CartDeliveryPreferenceCopyWith<$Res>? get delivery {
@@ -103,6 +111,8 @@ class __$$CartPreferenceImplCopyWithImpl<$Res>
       _$CartPreferenceImpl _value, $Res Function(_$CartPreferenceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -158,12 +168,14 @@ class _$CartPreferenceImpl extends _CartPreference {
                 other.delivery == delivery));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_wallet), delivery);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartPreferenceImplCopyWith<_$CartPreferenceImpl> get copyWith =>
@@ -191,8 +203,11 @@ abstract class _CartPreference extends CartPreference {
   List<String?> get wallet;
   @override
   CartDeliveryPreference? get delivery;
+
+  /// Create a copy of CartPreference
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartPreferenceImplCopyWith<_$CartPreferenceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

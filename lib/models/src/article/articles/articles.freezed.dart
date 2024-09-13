@@ -12,7 +12,7 @@ part of 'articles.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Articles _$ArticlesFromJson(Map<String, dynamic> json) {
   return _Articles.fromJson(json);
@@ -22,8 +22,12 @@ Articles _$ArticlesFromJson(Map<String, dynamic> json) {
 mixin _$Articles {
   List<Article> get articleList => throw _privateConstructorUsedError;
 
+  /// Serializes this Articles to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Articles
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ArticlesCopyWith<Articles> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +50,8 @@ class _$ArticlesCopyWithImpl<$Res, $Val extends Articles>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Articles
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +85,8 @@ class __$$ArticlesImplCopyWithImpl<$Res>
       _$ArticlesImpl _value, $Res Function(_$ArticlesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Articles
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,12 +132,14 @@ class _$ArticlesImpl implements _Articles {
                 .equals(other._articleList, _articleList));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_articleList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Articles
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
@@ -152,8 +162,11 @@ abstract class _Articles implements Articles {
 
   @override
   List<Article> get articleList;
+
+  /// Create a copy of Articles
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

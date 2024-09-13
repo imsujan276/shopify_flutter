@@ -12,7 +12,7 @@ part of 'cart_line_input.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CartLineInput _$CartLineInputFromJson(Map<String, dynamic> json) {
   return _CartLineInput.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$CartLineInput {
   int get quantity => throw _privateConstructorUsedError;
   String? get sellingPlanId => throw _privateConstructorUsedError;
 
+  /// Serializes this CartLineInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartLineInputCopyWith<CartLineInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CartLineInputCopyWithImpl<$Res, $Val extends CartLineInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$CartLineInputImplCopyWithImpl<$Res>
       _$CartLineInputImpl _value, $Res Function(_$CartLineInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,12 +178,14 @@ class _$CartLineInputImpl extends _CartLineInput {
                 other.sellingPlanId == sellingPlanId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, merchandiseId, quantity, sellingPlanId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartLineInputImplCopyWith<_$CartLineInputImpl> get copyWith =>
@@ -208,8 +218,11 @@ abstract class _CartLineInput extends CartLineInput {
   int get quantity;
   @override
   String? get sellingPlanId;
+
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartLineInputImplCopyWith<_$CartLineInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

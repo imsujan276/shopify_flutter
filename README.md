@@ -49,7 +49,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<ShopifyUser> createUserWithEmailAndPassword({required String firstName, required String lastName, required String email, required String password, String? phone, bool? acceptsMarketing})
   Future<void> signOutCurrentUser()
   Future<void> sendPasswordResetEmail({required String email})
-  Future<ShopifyUser> currentUser()
+  Future<ShopifyUser> currentUser({bool forceRefresh = false})
   Future<void> deleteCustomer({required String userId})
   Future<String?> get currentCustomerAccessToken
   Future<bool> get isAccessTokenExpired

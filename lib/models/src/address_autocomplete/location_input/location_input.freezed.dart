@@ -12,7 +12,7 @@ part of 'location_input.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LocationInput _$LocationInputFromJson(Map<String, dynamic> json) {
   return _LocationInput.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$LocationInput {
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
+  /// Serializes this LocationInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LocationInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocationInputCopyWith<LocationInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$LocationInputCopyWithImpl<$Res, $Val extends LocationInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LocationInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$LocationInputImplCopyWithImpl<$Res>
       _$LocationInputImpl _value, $Res Function(_$LocationInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LocationInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$LocationInputImpl implements _LocationInput {
                 other.longitude == longitude));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocationInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
@@ -163,8 +173,11 @@ abstract class _LocationInput implements LocationInput {
   double? get latitude;
   @override
   double? get longitude;
+
+  /// Create a copy of LocationInput
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -8,7 +8,7 @@ part of 'line.dart';
 
 _$LineImpl _$$LineImplFromJson(Map<String, dynamic> json) => _$LineImpl(
       id: json['id'] as String?,
-      quantity: json['quantity'] as int?,
+      quantity: (json['quantity'] as num?)?.toInt(),
       cost: json['cost'] == null
           ? null
           : CartLineCost.fromJson(json['cost'] as Map<String, dynamic>),

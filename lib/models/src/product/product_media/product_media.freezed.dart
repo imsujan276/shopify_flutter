@@ -12,7 +12,7 @@ part of 'product_media.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ProductMedia _$ProductMediaFromJson(Map<String, dynamic> json) {
   return _ProductVariant.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$ProductMedia {
   ShopifyImage? get image => throw _privateConstructorUsedError;
   String? get alt => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductMedia to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductMediaCopyWith<ProductMedia> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$ProductMediaCopyWithImpl<$Res, $Val extends ProductMedia>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class _$ProductMediaCopyWithImpl<$Res, $Val extends ProductMedia>
     ) as $Val);
   }
 
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -117,6 +125,8 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
       _$ProductVariantImpl _value, $Res Function(_$ProductVariantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -182,12 +192,14 @@ class _$ProductVariantImpl extends _ProductVariant {
             (identical(other.alt, alt) || other.alt == alt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, mediaContentType, image, alt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
@@ -221,8 +233,11 @@ abstract class _ProductVariant extends ProductMedia {
   ShopifyImage? get image;
   @override
   String? get alt;
+
+  /// Create a copy of ProductMedia
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

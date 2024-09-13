@@ -12,7 +12,7 @@ part of 'payment_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 PaymentSettings _$PaymentSettingsFromJson(Map<String, dynamic> json) {
   return _PaymentSettings.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$PaymentSettings {
   List<String>? get supportedDigitalWallets =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this PaymentSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PaymentSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaymentSettingsCopyWith<PaymentSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$PaymentSettingsCopyWithImpl<$Res, $Val extends PaymentSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaymentSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +138,8 @@ class __$$PaymentSettingsImplCopyWithImpl<$Res>
       _$PaymentSettingsImpl _value, $Res Function(_$PaymentSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaymentSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -263,7 +271,7 @@ class _$PaymentSettingsImpl implements _PaymentSettings {
                 other._supportedDigitalWallets, _supportedDigitalWallets));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -275,7 +283,9 @@ class _$PaymentSettingsImpl implements _PaymentSettings {
       shopifyPaymentAccountId,
       const DeepCollectionEquality().hash(_supportedDigitalWallets));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaymentSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaymentSettingsImplCopyWith<_$PaymentSettingsImpl> get copyWith =>
@@ -317,8 +327,11 @@ abstract class _PaymentSettings implements PaymentSettings {
   String? get shopifyPaymentAccountId;
   @override
   List<String>? get supportedDigitalWallets;
+
+  /// Create a copy of PaymentSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaymentSettingsImplCopyWith<_$PaymentSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

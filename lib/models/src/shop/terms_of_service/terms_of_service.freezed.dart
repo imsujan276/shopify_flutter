@@ -12,7 +12,7 @@ part of 'terms_of_service.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TermsOfService _$TermsOfServiceFromJson(Map<String, dynamic> json) {
   return _TermsOfService.fromJson(json);
@@ -26,8 +26,12 @@ mixin _$TermsOfService {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this TermsOfService to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TermsOfService
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TermsOfServiceCopyWith<TermsOfService> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$TermsOfServiceCopyWithImpl<$Res, $Val extends TermsOfService>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TermsOfService
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$TermsOfServiceImplCopyWithImpl<$Res>
       _$TermsOfServiceImpl _value, $Res Function(_$TermsOfServiceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TermsOfService
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,11 +184,13 @@ class _$TermsOfServiceImpl implements _TermsOfService {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TermsOfService
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
@@ -216,8 +226,11 @@ abstract class _TermsOfService implements TermsOfService {
   String? get title;
   @override
   String? get url;
+
+  /// Create a copy of TermsOfService
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

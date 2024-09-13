@@ -12,7 +12,7 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       cost: json['cost'] == null
           ? null
           : CartCost.fromJson(json['cost'] as Map<String, dynamic>),
-      totalQuantity: json['totalQuantity'] as int?,
+      totalQuantity: (json['totalQuantity'] as num?)?.toInt(),
       discountAllocations: (json['discountAllocations'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null

@@ -10,7 +10,7 @@ _$CartLineInputImpl _$$CartLineInputImplFromJson(Map<String, dynamic> json) =>
     _$CartLineInputImpl(
       id: json['id'] as String?,
       merchandiseId: json['merchandiseId'] as String,
-      quantity: json['quantity'] as int,
+      quantity: (json['quantity'] as num).toInt(),
       sellingPlanId: json['sellingPlanId'] as String?,
     );
 

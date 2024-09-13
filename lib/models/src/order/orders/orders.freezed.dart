@@ -12,7 +12,7 @@ part of 'orders.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Orders _$OrdersFromJson(Map<String, dynamic> json) {
   return _Orders.fromJson(json);
@@ -23,8 +23,12 @@ mixin _$Orders {
   List<Order> get orderList => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
 
+  /// Serializes this Orders to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Orders
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrdersCopyWith<Orders> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$OrdersCopyWithImpl<$Res, $Val extends Orders>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Orders
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$OrdersImplCopyWithImpl<$Res>
       _$OrdersImpl _value, $Res Function(_$OrdersImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Orders
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,12 +147,14 @@ class _$OrdersImpl implements _Orders {
                 other.hasNextPage == hasNextPage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_orderList), hasNextPage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Orders
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
@@ -169,8 +179,11 @@ abstract class _Orders implements Orders {
   List<Order> get orderList;
   @override
   bool get hasNextPage;
+
+  /// Create a copy of Orders
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

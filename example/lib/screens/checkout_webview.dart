@@ -22,6 +22,7 @@ class _WebViewCheckoutState extends State<WebViewCheckout> {
         url.contains('thank-you') ||
         url.contains('thank_you')) {
       Future.delayed(const Duration(seconds: 2), () {
+        if (!mounted) return;
         Navigator.pop(context, true);
       });
     }

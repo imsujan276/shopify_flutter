@@ -12,7 +12,7 @@ part of 'address_details.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AddressDetails _$AddressDetailsFromJson(Map<String, dynamic> json) {
   return _AddressDetails.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$AddressDetails {
   String? get provinceCode => throw _privateConstructorUsedError;
   String? get zip => throw _privateConstructorUsedError;
 
+  /// Serializes this AddressDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddressDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddressDetailsCopyWith<AddressDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,6 +74,8 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddressDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +176,8 @@ class __$$AddressDetailsImplCopyWithImpl<$Res>
       _$AddressDetailsImpl _value, $Res Function(_$AddressDetailsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddressDetails
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -316,7 +324,7 @@ class _$AddressDetailsImpl implements _AddressDetails {
             (identical(other.zip, zip) || other.zip == zip));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -333,7 +341,9 @@ class _$AddressDetailsImpl implements _AddressDetails {
       provinceCode,
       zip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressDetails
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
@@ -390,8 +400,11 @@ abstract class _AddressDetails implements AddressDetails {
   String? get provinceCode;
   @override
   String? get zip;
+
+  /// Create a copy of AddressDetails
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

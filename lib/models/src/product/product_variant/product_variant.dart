@@ -4,6 +4,8 @@ import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.d
 import 'package:shopify_flutter/models/src/product/unit_price_measurement/unit_price_measurement.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../product.dart';
+
 part 'product_variant.freezed.dart';
 part 'product_variant.g.dart';
 
@@ -29,6 +31,7 @@ class ProductVariant with _$ProductVariant {
     List<SelectedOption>? selectedOptions,
     PriceV2? compareAtPrice,
     ShopifyImage? image,
+    Product? product,
   }) = _ProductVariant;
 
   /// the product variant from graphjson
@@ -63,6 +66,9 @@ class ProductVariant with _$ProductVariant {
           ? UnitPriceMeasurement.fromJson(nodeJson['unitPriceMeasurement'])
           : null,
       selectedOptions: _getOptionList((nodeJson)),
+      product: nodeJson['product'] != null
+          ? Product.fromJson(nodeJson['product'])
+          : null,
     );
   }
 

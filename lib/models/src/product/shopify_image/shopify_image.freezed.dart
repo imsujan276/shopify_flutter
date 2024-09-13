@@ -12,7 +12,7 @@ part of 'shopify_image.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ShopifyImage _$ShopifyImageFromJson(Map<String, dynamic> json) {
   return _ShopifyImage.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$ShopifyImage {
   String get id => throw _privateConstructorUsedError;
   String? get altText => throw _privateConstructorUsedError;
 
+  /// Serializes this ShopifyImage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShopifyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShopifyImageCopyWith<ShopifyImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$ShopifyImageCopyWithImpl<$Res, $Val extends ShopifyImage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShopifyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$ShopifyImageImplCopyWithImpl<$Res>
       _$ShopifyImageImpl _value, $Res Function(_$ShopifyImageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShopifyImage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -149,11 +157,13 @@ class _$ShopifyImageImpl extends _ShopifyImage {
             (identical(other.altText, altText) || other.altText == altText));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, originalSrc, id, altText);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShopifyImage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
@@ -183,8 +193,11 @@ abstract class _ShopifyImage extends ShopifyImage {
   String get id;
   @override
   String? get altText;
+
+  /// Create a copy of ShopifyImage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

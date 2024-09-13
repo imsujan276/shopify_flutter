@@ -93,6 +93,7 @@ class _CartTabState extends State<CartTab> {
       setState(() {
         cart = updatedCart;
       });
+      log('cart: $cart');
       if (!mounted) return;
       context.showSnackBar('Added ${product.title} to cart');
     } on ShopifyException catch (error) {
@@ -343,7 +344,9 @@ class _CartInfoState extends State<CartInfo> {
                     }
                     return ListTile(
                       leading: Text('${line.quantity}x'),
-                      title: Text(merchandise.title),
+                      title: Text(
+                        merchandise.product?.title ?? merchandise.title,
+                      ),
                       subtitle: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,

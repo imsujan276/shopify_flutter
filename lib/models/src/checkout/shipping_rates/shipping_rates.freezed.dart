@@ -12,7 +12,7 @@ part of 'shipping_rates.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ShippingRates _$ShippingRatesFromJson(Map<String, dynamic> json) {
   return _ShippingRates.fromJson(json);
@@ -24,8 +24,12 @@ mixin _$ShippingRates {
   String get title => throw _privateConstructorUsedError;
   PriceV2 get priceV2 => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingRates to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingRatesCopyWith<ShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ShippingRatesCopyWithImpl<$Res, $Val extends ShippingRates>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -74,6 +80,8 @@ class _$ShippingRatesCopyWithImpl<$Res, $Val extends ShippingRates>
     ) as $Val);
   }
 
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get priceV2 {
@@ -105,6 +113,8 @@ class __$$ShippingRatesImplCopyWithImpl<$Res>
       _$ShippingRatesImpl _value, $Res Function(_$ShippingRatesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -161,11 +171,13 @@ class _$ShippingRatesImpl extends _ShippingRates {
             (identical(other.priceV2, priceV2) || other.priceV2 == priceV2));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, handle, title, priceV2);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
@@ -195,8 +207,11 @@ abstract class _ShippingRates extends ShippingRates {
   String get title;
   @override
   PriceV2 get priceV2;
+
+  /// Create a copy of ShippingRates
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

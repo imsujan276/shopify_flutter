@@ -12,7 +12,7 @@ part of 'line_items.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
   return _LineItems.fromJson(json);
@@ -22,8 +22,12 @@ LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
 mixin _$LineItems {
   List<LineItem> get lineItemList => throw _privateConstructorUsedError;
 
+  /// Serializes this LineItems to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LineItems
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LineItemsCopyWith<LineItems> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -46,6 +50,8 @@ class _$LineItemsCopyWithImpl<$Res, $Val extends LineItems>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LineItems
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -79,6 +85,8 @@ class __$$LineItemsImplCopyWithImpl<$Res>
       _$LineItemsImpl _value, $Res Function(_$LineItemsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LineItems
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -124,12 +132,14 @@ class _$LineItemsImpl implements _LineItems {
                 .equals(other._lineItemList, _lineItemList));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_lineItemList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LineItems
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
@@ -152,8 +162,11 @@ abstract class _LineItems implements LineItems {
 
   @override
   List<LineItem> get lineItemList;
+
+  /// Create a copy of LineItems
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

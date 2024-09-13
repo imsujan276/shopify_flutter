@@ -12,7 +12,7 @@ part of 'order.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 Order _$OrderFromJson(Map<String, dynamic> json) {
   return _Order.fromJson(json);
@@ -45,8 +45,12 @@ mixin _$Order {
   List<SuccessfulFullfilment>? get successfulFulfillments =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this Order to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $OrderCopyWith<Order> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -100,6 +104,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -223,6 +229,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     ) as $Val);
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LineItemsOrderCopyWith<$Res> get lineItems {
@@ -231,6 +239,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingAddressCopyWith<$Res>? get shippingAddress {
@@ -243,6 +253,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingAddressCopyWith<$Res>? get billingAddress {
@@ -255,6 +267,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get subtotalPriceV2 {
@@ -263,6 +277,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalPriceV2 {
@@ -271,6 +287,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalShippingPriceV2 {
@@ -279,6 +297,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalTaxV2 {
@@ -287,6 +307,8 @@ class _$OrderCopyWithImpl<$Res, $Val extends Order>
     });
   }
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get totalRefundedV2 {
@@ -358,6 +380,8 @@ class __$$OrderImplCopyWithImpl<$Res>
       _$OrderImpl _value, $Res Function(_$OrderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -623,7 +647,7 @@ class _$OrderImpl extends _Order {
                 other._successfulFulfillments, _successfulFulfillments));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -652,7 +676,9 @@ class _$OrderImpl extends _Order {
         const DeepCollectionEquality().hash(_successfulFulfillments)
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
@@ -741,8 +767,11 @@ abstract class _Order extends Order {
   String? get cancelReason;
   @override
   List<SuccessfulFullfilment>? get successfulFulfillments;
+
+  /// Create a copy of Order
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OrderImplCopyWith<_$OrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

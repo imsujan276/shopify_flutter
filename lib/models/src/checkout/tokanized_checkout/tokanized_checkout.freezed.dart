@@ -12,7 +12,7 @@ part of 'tokanized_checkout.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 TokanizedCheckout _$TokanizedCheckoutFromJson(Map<String, dynamic> json) {
   return _TokanizedCheckout.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$TokanizedCheckout {
   @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson)
   String? get checkoutId => throw _privateConstructorUsedError;
 
+  /// Serializes this TokanizedCheckout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TokanizedCheckoutCopyWith<TokanizedCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$TokanizedCheckoutCopyWithImpl<$Res, $Val extends TokanizedCheckout>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class _$TokanizedCheckoutCopyWithImpl<$Res, $Val extends TokanizedCheckout>
     ) as $Val);
   }
 
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get amountV2 {
@@ -147,6 +155,8 @@ class __$$TokanizedCheckoutImplCopyWithImpl<$Res>
       $Res Function(_$TokanizedCheckoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -249,12 +259,14 @@ class _$TokanizedCheckoutImpl extends _TokanizedCheckout {
                 other.checkoutId == checkoutId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, paymentId, amountV2, test, ready,
       nextActionUrl, errorMessage, checkoutId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TokanizedCheckoutImplCopyWith<_$TokanizedCheckoutImpl> get copyWith =>
@@ -300,8 +312,11 @@ abstract class _TokanizedCheckout extends TokanizedCheckout {
   @override
   @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson)
   String? get checkoutId;
+
+  /// Create a copy of TokanizedCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TokanizedCheckoutImplCopyWith<_$TokanizedCheckoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

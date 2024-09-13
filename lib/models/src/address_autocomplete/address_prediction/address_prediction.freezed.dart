@@ -12,7 +12,7 @@ part of 'address_prediction.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AddressPrediction _$AddressPredictionFromJson(Map<String, dynamic> json) {
   return _AddressPrediction.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$AddressPrediction {
   List<MatchedSubstring>? get matchedSubstrings =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AddressPrediction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddressPredictionCopyWith<AddressPrediction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$AddressPredictionCopyWithImpl<$Res, $Val extends AddressPrediction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$AddressPredictionImplCopyWithImpl<$Res>
       $Res Function(_$AddressPredictionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,12 +176,14 @@ class _$AddressPredictionImpl implements _AddressPrediction {
                 .equals(other._matchedSubstrings, _matchedSubstrings));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, addressId, description,
       const DeepCollectionEquality().hash(_matchedSubstrings));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
@@ -204,8 +214,11 @@ abstract class _AddressPrediction implements AddressPrediction {
   String? get description;
   @override
   List<MatchedSubstring>? get matchedSubstrings;
+
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

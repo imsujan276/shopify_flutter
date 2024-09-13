@@ -1,3 +1,8 @@
+## 2.1.1
+
+* ability to get the cached current user or updated user from `ShopifyAuth.currentUser` using a boolean value of **forceRefresh**
+* added `product` in cart line merchandise to access the product properties like title.
+
 ## 2.1.0
 
 * Removed depreciated proprty **lastIncompleteCheckout** from **ShopifyUser**

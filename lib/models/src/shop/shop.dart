@@ -12,7 +12,10 @@ part 'shop.freezed.dart';
 part 'shop.g.dart';
 
 @freezed
+
+/// The shop
 class Shop with _$Shop {
+  /// The shop factory constructor
   factory Shop({
     String? description,
     String? moneyFormat,
@@ -27,5 +30,6 @@ class Shop with _$Shop {
     TermsOfService? termsOfService,
   }) = _Shop;
 
+  /// The shop from json
   factory Shop.fromJson(Map<String, dynamic> json) => _$ShopFromJson(json);
 }

@@ -37,8 +37,12 @@ mixin _$ShippingAddress {
   String? get provinceCode => throw _privateConstructorUsedError;
   String? get zip => throw _privateConstructorUsedError;
 
+  /// Serializes this ShippingAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShippingAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShippingAddressCopyWith<ShippingAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -78,6 +82,8 @@ class _$ShippingAddressCopyWithImpl<$Res, $Val extends ShippingAddress>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShippingAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -202,6 +208,8 @@ class __$$ShippingAddressImplCopyWithImpl<$Res>
       _$ShippingAddressImpl _value, $Res Function(_$ShippingAddressImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShippingAddress
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -385,7 +393,7 @@ class _$ShippingAddressImpl implements _ShippingAddress {
             (identical(other.zip, zip) || other.zip == zip));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -406,7 +414,9 @@ class _$ShippingAddressImpl implements _ShippingAddress {
       provinceCode,
       zip);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShippingAddress
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingAddressImplCopyWith<_$ShippingAddressImpl> get copyWith =>
@@ -475,8 +485,11 @@ abstract class _ShippingAddress implements ShippingAddress {
   String? get provinceCode;
   @override
   String? get zip;
+
+  /// Create a copy of ShippingAddress
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShippingAddressImplCopyWith<_$ShippingAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

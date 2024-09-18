@@ -4,8 +4,12 @@ part 'address.freezed.dart';
 part 'address.g.dart';
 
 @freezed
+
+/// The address
 class Address with _$Address {
   const Address._();
+
+  /// The address constructor
   factory Address({
     String? id,
     String? address1,
@@ -26,6 +30,7 @@ class Address with _$Address {
     String? zip,
   }) = _Address;
 
+  /// The address from graphjson factory
   factory Address.fromGraphJson(Map<String, dynamic> json) => Address(
         id: (json['node'] ?? const {})['id'],
         address1: (json['node'] ?? const {})['address1'],
@@ -46,6 +51,7 @@ class Address with _$Address {
         zip: (json['node'] ?? const {})['zip'],
       );
 
+  /// The address from json factory
   factory Address.fromJson(Map<String, dynamic> json) =>
       _$AddressFromJson(json);
 }

@@ -7,8 +7,12 @@ part 'line_item.freezed.dart';
 part 'line_item.g.dart';
 
 @freezed
+
+/// The line item
 class LineItem with _$LineItem {
   const LineItem._();
+
+  /// The line item constructor
   factory LineItem({
     required String title,
     required int quantity,
@@ -19,6 +23,7 @@ class LineItem with _$LineItem {
     ProductVariantCheckout? variant,
   }) = _LineItem;
 
+  /// The line item from json
   factory LineItem.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? {};
 
@@ -40,6 +45,7 @@ class LineItem with _$LineItem {
     );
   }
 
+  /// The line item from json
   factory LineItem.fromJson(Map<String, dynamic> json) =>
       _$LineItemFromJson(json);
 }

@@ -25,8 +25,12 @@ mixin _$AddressPrediction {
   List<MatchedSubstring>? get matchedSubstrings =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AddressPrediction to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AddressPredictionCopyWith<AddressPrediction> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$AddressPredictionCopyWithImpl<$Res, $Val extends AddressPrediction>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$AddressPredictionImplCopyWithImpl<$Res>
       $Res Function(_$AddressPredictionImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -168,12 +176,14 @@ class _$AddressPredictionImpl implements _AddressPrediction {
                 .equals(other._matchedSubstrings, _matchedSubstrings));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, addressId, description,
       const DeepCollectionEquality().hash(_matchedSubstrings));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
@@ -204,8 +214,11 @@ abstract class _AddressPrediction implements AddressPrediction {
   String? get description;
   @override
   List<MatchedSubstring>? get matchedSubstrings;
+
+  /// Create a copy of AddressPrediction
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

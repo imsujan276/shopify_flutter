@@ -26,8 +26,12 @@ mixin _$UnitPriceMeasurement {
   String get referenceUnit => throw _privateConstructorUsedError;
   int get referenceValue => throw _privateConstructorUsedError;
 
+  /// Serializes this UnitPriceMeasurement to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UnitPriceMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UnitPriceMeasurementCopyWith<UnitPriceMeasurement> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$UnitPriceMeasurementCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UnitPriceMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -115,6 +121,8 @@ class __$$UnitPriceMeasurementImplCopyWithImpl<$Res>
       $Res Function(_$UnitPriceMeasurementImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UnitPriceMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -196,12 +204,14 @@ class _$UnitPriceMeasurementImpl extends _UnitPriceMeasurement {
                 other.referenceValue == referenceValue));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, measuredType, quantityUnit,
       quantityValue, referenceUnit, referenceValue);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UnitPriceMeasurement
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnitPriceMeasurementImplCopyWith<_$UnitPriceMeasurementImpl>
@@ -239,8 +249,11 @@ abstract class _UnitPriceMeasurement extends UnitPriceMeasurement {
   String get referenceUnit;
   @override
   int get referenceValue;
+
+  /// Create a copy of UnitPriceMeasurement
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnitPriceMeasurementImplCopyWith<_$UnitPriceMeasurementImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

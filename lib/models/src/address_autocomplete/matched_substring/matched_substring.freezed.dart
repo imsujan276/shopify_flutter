@@ -23,8 +23,12 @@ mixin _$MatchedSubstring {
   int? get length => throw _privateConstructorUsedError;
   int? get offset => throw _privateConstructorUsedError;
 
+  /// Serializes this MatchedSubstring to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MatchedSubstring
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MatchedSubstringCopyWith<MatchedSubstring> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$MatchedSubstringCopyWithImpl<$Res, $Val extends MatchedSubstring>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MatchedSubstring
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$MatchedSubstringImplCopyWithImpl<$Res>
       $Res Function(_$MatchedSubstringImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MatchedSubstring
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,11 +140,13 @@ class _$MatchedSubstringImpl implements _MatchedSubstring {
             (identical(other.offset, offset) || other.offset == offset));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, length, offset);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MatchedSubstring
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MatchedSubstringImplCopyWith<_$MatchedSubstringImpl> get copyWith =>
@@ -162,8 +172,11 @@ abstract class _MatchedSubstring implements MatchedSubstring {
   int? get length;
   @override
   int? get offset;
+
+  /// Create a copy of MatchedSubstring
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MatchedSubstringImplCopyWith<_$MatchedSubstringImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

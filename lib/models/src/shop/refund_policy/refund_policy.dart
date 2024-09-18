@@ -4,7 +4,10 @@ part 'refund_policy.freezed.dart';
 part 'refund_policy.g.dart';
 
 @freezed
+
+/// The RefundPolicy class
 class RefundPolicy with _$RefundPolicy {
+  /// The RefundPolicy constructor
   factory RefundPolicy({
     String? body,
     String? handle,
@@ -13,6 +16,7 @@ class RefundPolicy with _$RefundPolicy {
     String? url,
   }) = _RefundPolicy;
 
+  /// The RefundPolicy from json
   factory RefundPolicy.fromJson(Map<String, dynamic> json) =>
       _$RefundPolicyFromJson(json);
 }

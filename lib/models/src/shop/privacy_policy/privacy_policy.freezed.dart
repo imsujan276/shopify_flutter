@@ -26,8 +26,12 @@ mixin _$PrivacyPolicy {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this PrivacyPolicy to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrivacyPolicy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrivacyPolicyCopyWith<PrivacyPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$PrivacyPolicyCopyWithImpl<$Res, $Val extends PrivacyPolicy>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrivacyPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$PrivacyPolicyImplCopyWithImpl<$Res>
       _$PrivacyPolicyImpl _value, $Res Function(_$PrivacyPolicyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrivacyPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,11 +184,13 @@ class _$PrivacyPolicyImpl implements _PrivacyPolicy {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrivacyPolicy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrivacyPolicyImplCopyWith<_$PrivacyPolicyImpl> get copyWith =>
@@ -215,8 +225,11 @@ abstract class _PrivacyPolicy implements PrivacyPolicy {
   String? get title;
   @override
   String? get url;
+
+  /// Create a copy of PrivacyPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrivacyPolicyImplCopyWith<_$PrivacyPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,8 +24,12 @@ mixin _$SuccessfulFullfilmentTrackingInfo {
   String? get number => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this SuccessfulFullfilmentTrackingInfo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SuccessfulFullfilmentTrackingInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SuccessfulFullfilmentTrackingInfoCopyWith<SuccessfulFullfilmentTrackingInfo>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$SuccessfulFullfilmentTrackingInfoCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SuccessfulFullfilmentTrackingInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class __$$SuccessfulFullfilmentTrackingInfoImplCopyWithImpl<$Res>
       $Res Function(_$SuccessfulFullfilmentTrackingInfoImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SuccessfulFullfilmentTrackingInfo
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,11 +151,13 @@ class _$SuccessfulFullfilmentTrackingInfoImpl
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, number, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SuccessfulFullfilmentTrackingInfo
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessfulFullfilmentTrackingInfoImplCopyWith<
@@ -178,8 +188,11 @@ abstract class _SuccessfulFullfilmentTrackingInfo
   String? get number;
   @override
   String? get url;
+
+  /// Create a copy of SuccessfulFullfilmentTrackingInfo
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessfulFullfilmentTrackingInfoImplCopyWith<
           _$SuccessfulFullfilmentTrackingInfoImpl>
       get copyWith => throw _privateConstructorUsedError;

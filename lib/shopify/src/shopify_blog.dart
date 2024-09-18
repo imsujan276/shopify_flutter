@@ -16,6 +16,8 @@ class ShopifyBlog with ShopifyError {
   ShopifyBlog._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
+
+  /// Singleton instance of [ShopifyBlog]
   static final ShopifyBlog instance = ShopifyBlog._();
 
   /// Returns a List of [Blog].

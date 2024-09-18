@@ -36,9 +36,14 @@ mixin _$ProductVariant {
       throw _privateConstructorUsedError;
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
+  Product? get product => throw _privateConstructorUsedError;
 
+  /// Serializes this ProductVariant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductVariantCopyWith<ProductVariant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,13 +68,15 @@ abstract class $ProductVariantCopyWith<$Res> {
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions,
       PriceV2? compareAtPrice,
-      ShopifyImage? image});
+      ShopifyImage? image,
+      Product? product});
 
   $PriceV2CopyWith<$Res> get price;
   $PriceV2CopyWith<$Res>? get unitPrice;
   $UnitPriceMeasurementCopyWith<$Res>? get unitPriceMeasurement;
   $PriceV2CopyWith<$Res>? get compareAtPrice;
   $ShopifyImageCopyWith<$Res>? get image;
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -82,6 +89,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +108,7 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     Object? selectedOptions = freezed,
     Object? compareAtPrice = freezed,
     Object? image = freezed,
+    Object? product = freezed,
   }) {
     return _then(_value.copyWith(
       price: null == price
@@ -157,9 +167,15 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ShopifyImage?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
     ) as $Val);
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get price {
@@ -168,6 +184,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get unitPrice {
@@ -180,6 +198,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UnitPriceMeasurementCopyWith<$Res>? get unitPriceMeasurement {
@@ -193,6 +213,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get compareAtPrice {
@@ -205,6 +227,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -214,6 +238,20 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
 
     return $ShopifyImageCopyWith<$Res>(_value.image!, (value) {
       return _then(_value.copyWith(image: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $ProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
     });
   }
 }
@@ -240,7 +278,8 @@ abstract class _$$ProductVariantImplCopyWith<$Res>
       UnitPriceMeasurement? unitPriceMeasurement,
       List<SelectedOption>? selectedOptions,
       PriceV2? compareAtPrice,
-      ShopifyImage? image});
+      ShopifyImage? image,
+      Product? product});
 
   @override
   $PriceV2CopyWith<$Res> get price;
@@ -252,6 +291,8 @@ abstract class _$$ProductVariantImplCopyWith<$Res>
   $PriceV2CopyWith<$Res>? get compareAtPrice;
   @override
   $ShopifyImageCopyWith<$Res>? get image;
+  @override
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -262,6 +303,8 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
       _$ProductVariantImpl _value, $Res Function(_$ProductVariantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,6 +322,7 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
     Object? selectedOptions = freezed,
     Object? compareAtPrice = freezed,
     Object? image = freezed,
+    Object? product = freezed,
   }) {
     return _then(_$ProductVariantImpl(
       price: null == price
@@ -337,6 +381,10 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
               as ShopifyImage?,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
     ));
   }
 }
@@ -358,7 +406,8 @@ class _$ProductVariantImpl extends _ProductVariant {
       this.unitPriceMeasurement,
       final List<SelectedOption>? selectedOptions,
       this.compareAtPrice,
-      this.image})
+      this.image,
+      this.product})
       : _selectedOptions = selectedOptions,
         super._();
 
@@ -401,10 +450,12 @@ class _$ProductVariantImpl extends _ProductVariant {
   final PriceV2? compareAtPrice;
   @override
   final ShopifyImage? image;
+  @override
+  final Product? product;
 
   @override
   String toString() {
-    return 'ProductVariant(price: $price, title: $title, weight: $weight, weightUnit: $weightUnit, availableForSale: $availableForSale, requiresShipping: $requiresShipping, id: $id, quantityAvailable: $quantityAvailable, sku: $sku, unitPrice: $unitPrice, unitPriceMeasurement: $unitPriceMeasurement, selectedOptions: $selectedOptions, compareAtPrice: $compareAtPrice, image: $image)';
+    return 'ProductVariant(price: $price, title: $title, weight: $weight, weightUnit: $weightUnit, availableForSale: $availableForSale, requiresShipping: $requiresShipping, id: $id, quantityAvailable: $quantityAvailable, sku: $sku, unitPrice: $unitPrice, unitPriceMeasurement: $unitPriceMeasurement, selectedOptions: $selectedOptions, compareAtPrice: $compareAtPrice, image: $image, product: $product)';
   }
 
   @override
@@ -433,10 +484,11 @@ class _$ProductVariantImpl extends _ProductVariant {
                 .equals(other._selectedOptions, _selectedOptions) &&
             (identical(other.compareAtPrice, compareAtPrice) ||
                 other.compareAtPrice == compareAtPrice) &&
-            (identical(other.image, image) || other.image == image));
+            (identical(other.image, image) || other.image == image) &&
+            (identical(other.product, product) || other.product == product));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -453,9 +505,12 @@ class _$ProductVariantImpl extends _ProductVariant {
       unitPriceMeasurement,
       const DeepCollectionEquality().hash(_selectedOptions),
       compareAtPrice,
-      image);
+      image,
+      product);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
@@ -485,7 +540,8 @@ abstract class _ProductVariant extends ProductVariant {
       final UnitPriceMeasurement? unitPriceMeasurement,
       final List<SelectedOption>? selectedOptions,
       final PriceV2? compareAtPrice,
-      final ShopifyImage? image}) = _$ProductVariantImpl;
+      final ShopifyImage? image,
+      final Product? product}) = _$ProductVariantImpl;
   _ProductVariant._() : super._();
 
   factory _ProductVariant.fromJson(Map<String, dynamic> json) =
@@ -520,7 +576,12 @@ abstract class _ProductVariant extends ProductVariant {
   @override
   ShopifyImage? get image;
   @override
-  @JsonKey(ignore: true)
+  Product? get product;
+
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

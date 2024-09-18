@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+/// A mixin to handle errors from shopify
 mixin ShopifyError {
   /// throws a [OperationException] if the operation was wrong
   /// throws a [ShopifyException] if shopify reports an error
@@ -30,6 +31,7 @@ class ShopifyException implements Exception {
   /// errors
   final List<dynamic>? errors;
 
+  /// Exception thrown when an api call fails
   const ShopifyException(this.key, this.errorKey, {this.errors});
 
   @override

@@ -24,8 +24,12 @@ mixin _$PrimaryDomain {
   bool? get sslEnabled => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this PrimaryDomain to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of PrimaryDomain
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PrimaryDomainCopyWith<PrimaryDomain> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$PrimaryDomainCopyWithImpl<$Res, $Val extends PrimaryDomain>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PrimaryDomain
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,6 +98,8 @@ class __$$PrimaryDomainImplCopyWithImpl<$Res>
       _$PrimaryDomainImpl _value, $Res Function(_$PrimaryDomainImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of PrimaryDomain
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,11 +155,13 @@ class _$PrimaryDomainImpl implements _PrimaryDomain {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, host, sslEnabled, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PrimaryDomain
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PrimaryDomainImplCopyWith<_$PrimaryDomainImpl> get copyWith =>
@@ -180,8 +190,11 @@ abstract class _PrimaryDomain implements PrimaryDomain {
   bool? get sslEnabled;
   @override
   String? get url;
+
+  /// Create a copy of PrimaryDomain
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PrimaryDomainImplCopyWith<_$PrimaryDomainImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

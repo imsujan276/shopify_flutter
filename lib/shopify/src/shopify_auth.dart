@@ -22,6 +22,7 @@ class ShopifyAuth with ShopifyError {
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
   GraphQLClient? get _graphQLClientAdmin => ShopifyConfig.graphQLClientAdmin;
 
+  /// Singleton instance of ShopifyAuth
   static final ShopifyAuth instance = ShopifyAuth._();
 
   static final Map<String?, ShopifyUser?> _shopifyUser = {};
@@ -111,10 +112,10 @@ class ShopifyAuth with ShopifyError {
   Future<ShopifyUser> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String phone,
     String? firstName,
     String? lastName,
     bool? acceptsMarketing,
-    String? phone,
   }) async {
     final MutationOptions _options = MutationOptions(
       document: gql(customerCreateMutation),
@@ -185,6 +186,7 @@ class ShopifyAuth with ShopifyError {
     return shopifyUser;
   }
 
+  /// Renews the current access token.
   Future<void> renewCurrentAccessToken(String accessToken) async {
     final updatedAccessToken = await _renewAccessToken(accessToken);
     await _setShopifyUser(
@@ -279,23 +281,40 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
-  Future<ShopifyUser?> currentUser() async {
-    final WatchQueryOptions _getCustomer = WatchQueryOptions(
-      document: gql(getCustomerQuery),
-      variables: {'customerAccessToken': await currentCustomerAccessToken},
-      fetchPolicy: FetchPolicy.networkOnly,
-    );
-    if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
+  ///
+  /// If [forceRefresh] is set to true, it will fetch the user from the server.
+  Future<ShopifyUser?> currentUser({
+    bool forceRefresh = false,
+  }) async {
+    final accessToken = await currentCustomerAccessToken;
+    if (accessToken == null) {
+      await signOutCurrentUser();
+      return null;
+    }
+
+    if (forceRefresh) {
+      return _getShopifyUser(accessToken);
+    } else if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];
-    } else if (await currentCustomerAccessToken != null) {
-      final QueryResult result = (await _graphQLClient!.query(_getCustomer));
-      checkForError(result);
-      ShopifyUser user = ShopifyUser.fromGraphJson(
-          (result.data ?? const {})['customer'] ?? const {});
-      return user;
     } else {
       return null;
     }
+  }
+
+  /// Fetches the user from the server.
+  Future<ShopifyUser?> _getShopifyUser(String accessToken) async {
+    final WatchQueryOptions _getCustomer = WatchQueryOptions(
+      document: gql(getCustomerQuery),
+      variables: {'customerAccessToken': accessToken},
+      fetchPolicy: FetchPolicy.networkOnly,
+    );
+    final QueryResult result = (await _graphQLClient!.query(_getCustomer));
+    checkForError(result);
+    ShopifyUser user = ShopifyUser.fromGraphJson(
+        (result.data ?? const {})['customer'] ?? const {});
+    final updatedAccessToken = await _renewAccessToken(accessToken);
+    await _setShopifyUser(updatedAccessToken, user);
+    return user;
   }
 
   Future<void> _setShopifyUser(

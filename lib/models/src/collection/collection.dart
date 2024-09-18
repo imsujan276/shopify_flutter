@@ -5,8 +5,12 @@ part 'collection.freezed.dart';
 part 'collection.g.dart';
 
 @freezed
+
+/// The collection
 class Collection with _$Collection {
   const Collection._();
+
+  /// The collection constructor
   factory Collection({
     required String title,
     required String id,
@@ -19,10 +23,12 @@ class Collection with _$Collection {
     ShopifyImage? image,
   }) = _Collection;
 
+  /// get imageUrl method
   String get imageUrl => image == null
       ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
       : image!.originalSrc;
 
+  /// The collection from json
   factory Collection.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? const {};
     if (json.containsKey('nodes')) {
@@ -63,6 +69,7 @@ class Collection with _$Collection {
     );
   }
 
+  /// The collection from json
   factory Collection.fromJson(Map<String, dynamic> json) =>
       _$CollectionFromJson(json);
 }

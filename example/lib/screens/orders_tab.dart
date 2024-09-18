@@ -33,7 +33,7 @@ class _OrdersTabState extends State<OrdersTab> {
   getOrders() async {
     if (isLoggedIn) {
       final accessToken = await ShopifyAuth.instance.currentCustomerAccessToken;
-      final allOrders = await ShopifyCheckout.instance.getAllOrders(
+      final allOrders = await ShopifyOrder.instance.getAllOrders(
         accessToken!,
       );
       setState(() {

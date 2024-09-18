@@ -8,7 +8,10 @@ part 'localization.g.dart';
 
 /// [Localizzation Object Doc](https://shopify.dev/docs/api/storefront/2024-04/objects/Localization)
 @freezed
+
+/// The localization object
 class Localization with _$Localization {
+  /// The localization object constructor
   const factory Localization({
     required List<Language> availableLanguages,
     required List<Country> availableCountries,
@@ -17,6 +20,7 @@ class Localization with _$Localization {
     required Market market,
   }) = _Localization;
 
+  /// The localization object from json
   factory Localization.fromJson(Map<String, dynamic> json) =>
       _$LocalizationFromJson(json);
 }

@@ -112,10 +112,10 @@ class ShopifyAuth with ShopifyError {
   Future<ShopifyUser> createUserWithEmailAndPassword({
     required String email,
     required String password,
+    required String phone,
     String? firstName,
     String? lastName,
     bool? acceptsMarketing,
-    String? phone,
   }) async {
     final MutationOptions _options = MutationOptions(
       document: gql(customerCreateMutation),

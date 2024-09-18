@@ -1,3 +1,8 @@
+## 2.1.2
+
+* made phone as required while creating user using `createUserWithEmailAndPassword`
+
+
 ## 2.1.1
 
 * ability to get the cached current user or updated user from `ShopifyAuth.currentUser` using a boolean value of **forceRefresh**

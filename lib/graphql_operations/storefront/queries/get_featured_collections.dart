@@ -1,6 +1,6 @@
 /// Query to get featured collection
 const String getFeaturedCollectionQuery = r'''
-query getFeaturedCollectionQuery($query: String!){
+query getFeaturedCollectionQuery($query: String!, $country: CountryCode)  @inContext(country: $country){
   collections(query: $query, first: 1) {
     edges {
       node {

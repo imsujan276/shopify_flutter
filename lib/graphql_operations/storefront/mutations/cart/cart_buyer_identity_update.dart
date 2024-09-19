@@ -1,6 +1,6 @@
 /// mutation to update the buyer identity of the cart
 const String cartBuyerIdentityUpdate = r'''
-mutation cartBuyerIdentityUpdate($cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) {
+mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!) @inContext(country: $country){
   cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
     cart {
       id

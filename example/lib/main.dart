@@ -22,7 +22,8 @@ Future<void> main() async {
     adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
     cachePolicy: CachePolicy.networkOnly,
-    language: dotenv.env['LANGUAGE_LOCALE'] ?? 'en',
+    language: dotenv.env['COUNTRY_LOCALE'],
+    countryCode: dotenv.env['COUNTRY_LOCALE'],
   );
 
   runApp(const MyApp());

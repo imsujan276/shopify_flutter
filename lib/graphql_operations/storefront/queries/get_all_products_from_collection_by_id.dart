@@ -1,6 +1,6 @@
 /// get all related products from collection by id
 const String getAllProductsFromCollectionByIdQuery = r'''
-query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys){
+query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys, $country: CountryCode)  @inContext(country: $country){
   node(id: $id) {
     ... on Collection {
       id

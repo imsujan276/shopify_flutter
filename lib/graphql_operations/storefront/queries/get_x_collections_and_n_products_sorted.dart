@@ -1,6 +1,6 @@
 /// Query to get x collections and n products sorted
 const String getXCollectionsAndNProductsSortedQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int){
+query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int, $country: CountryCode)  @inContext(country: $country){
   collections(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage

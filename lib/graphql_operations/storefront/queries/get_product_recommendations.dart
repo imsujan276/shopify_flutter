@@ -1,6 +1,6 @@
 /// Query to get product recommendations
 const String getProductRecommendationsQuery = r'''
-query getProductRecommentationsQuery($id: ID!){
+query getProductRecommentationsQuery($id: ID!, $country: CountryCode)  @inContext(country: $country){
   productRecommendations(productId: $id) {
     availableForSale
     createdAt

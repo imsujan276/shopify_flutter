@@ -1,6 +1,6 @@
 /// Query to get all collections
 const String getAllCollectionsQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
+query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
   collections(first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage

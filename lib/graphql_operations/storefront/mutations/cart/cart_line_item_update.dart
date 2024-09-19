@@ -1,6 +1,6 @@
 /// mutation to update a line item in the cart
 const String updateLineItemInCartMutation = r'''
-mutation cartLinesUpdate($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineUpdateInput!]!) @inContext(country: $country) {
   cartLinesUpdate(cartId: $cartId, lines: $lines) {
     cart {
       id

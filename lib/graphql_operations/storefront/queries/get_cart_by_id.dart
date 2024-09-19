@@ -1,6 +1,6 @@
 /// query to get cart by id
 const String getCartByIdQuery = r'''
-query cart($id: ID!) {
+query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
   cart(id: $id) {
     id
     checkoutUrl

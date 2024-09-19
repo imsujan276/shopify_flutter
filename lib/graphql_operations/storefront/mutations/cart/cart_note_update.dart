@@ -1,6 +1,6 @@
 /// mutation to update the note of a cart
 const String updateNoteInCartMutation = r'''
-mutation cartNoteUpdate($cartId: ID!, $note: String!) {
+mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode)  @inContext(country: $country) {
   cartNoteUpdate(cartId: $cartId, note: $note) {
     cart {
       id

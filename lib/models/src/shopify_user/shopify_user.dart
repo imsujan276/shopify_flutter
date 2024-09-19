@@ -35,34 +35,10 @@ class ShopifyUser with _$ShopifyUser {
         email: json['email'],
         firstName: json['firstName'],
         id: json['id'],
-        lastName: getLastName(json),
+        lastName: json['lastName'],
         phone: json['phone'],
         tags: _getTagList((json)),
       );
-
-  /// returns the last name of the user from the json.
-  ///
-  /// If the last name is not present in the json, it will return the display name.
-  ///
-  /// If the first name is present in the json, it will remove the first name from the display name.
-  static String? getLastName(Map<String, dynamic> json) {
-    String? lastName = json['lastName'];
-    // Don't need to handle empty cases.
-    // if (lastName == null) {
-    //   lastName = json['displayName'];
-    //   if (lastName != null) {
-    //     if (json['firstName'] == null) {
-    //       lastName = lastName.replaceAll(RegExp(r'\s+'), ' ').trim();
-    //     } else {
-    //       lastName = lastName
-    //           .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
-    //           .replaceAll(RegExp(r'\s+'), ' ')
-    //           .trim();
-    //     }
-    //   }
-    // }
-    return lastName;
-  }
 
   /// The shopify user from json factory
   factory ShopifyUser.fromJson(Map<String, dynamic> json) =>

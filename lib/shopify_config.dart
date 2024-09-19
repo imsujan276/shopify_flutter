@@ -73,30 +73,48 @@ class ShopifyConfig {
     }
   }
 
+  /// Used to change currency units. eg: "US", "NP", "IN" etc.
+  static String? _countryCode;
+
+  /// The country code.
+  static String? get countryCode => _countryCode;
+
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
   ///
   /// [adminAccessToken] is optional, but required for some admin API calls like deleteCustomer.
+  ///
+  /// [storefrontApiVersion] is optional, but defaults to "2024-07".
+  ///
+  /// [cachePolicy] is optional, but defaults to [CachePolicy.networkOnly].
+  ///
+  /// [language] is optional, but defaults to "en".
+  /// Used to change language. eg: "en", "np", "fr" etc. Only takes effect if the store supports provided language.
+  ///
+  /// [countryCode] is optional, but defaults to null.
+  /// Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   static void setConfig({
     required String storefrontAccessToken,
     required String storeUrl,
     String? adminAccessToken,
     String storefrontApiVersion = "2024-07",
-    String language = 'en',
     CachePolicy? cachePolicy,
+    String? language,
+    String? countryCode,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
     _fetchPolicy = cachePolicy;
+    _countryCode = countryCode;
     _graphQLClient = GraphQLClient(
       link: HttpLink(
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',
         defaultHeaders: {
           'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
-          'Accept-Language': language, // Default to English
+          'Accept-Language': language ?? 'en',
         },
       ),
       cache: GraphQLCache(),
@@ -109,7 +127,7 @@ class ShopifyConfig {
               '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
               defaultHeaders: {
                 'X-Shopify-Access-Token': _adminAccessToken!,
-                'Accept-Language': language, // Default to English
+                'Accept-Language': language ?? 'en',
               },
             ),
             cache: GraphQLCache(),

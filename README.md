@@ -18,10 +18,21 @@ void main() {
   ShopifyConfig.setConfig(
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // Optional | Needed only if needed to call admin api
-    storefrontApiVersion: '2024-07', // optional | default: 2024-07
-    cachePolicy: CachePolicy.cacheAndNetwork, // optional | default: null
-    language: 'en' // Store locale | default : en
+
+    // Optional | Needed only if needed to call admin api
+    adminAccessToken: "shpat_*******************", 
+
+    // optional | default: 2024-07
+    storefrontApiVersion: '2024-07',
+
+    // optional | default: null
+    cachePolicy: CachePolicy.cacheAndNetwork,
+
+     // Store locale | default : en
+    language: 'en',
+    
+    // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
+    countryCode: 'US'
   );
   
   runApp(MyApp());
@@ -33,7 +44,9 @@ If you are not using that function, you may not need to provide it.
 
 > `storefrontApiVersion` default vesion is set to '2024-07'
 
-> `language` defaults to 'en'. It is the default locale/language of the store
+> `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
+
+> `countryCode` defaults to null. It is used to set chnage the currency unit. Only takes effect if the store supports provided currency.
 
 <hr>
 
@@ -46,7 +59,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
 
   Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
-  Future<ShopifyUser> createUserWithEmailAndPassword({required String firstName, required String lastName, required String email, required String password, String? phone, bool? acceptsMarketing})
+  Future<ShopifyUser> createUserWithEmailAndPassword({required String email, required String password, required String phone, String? firstName, String? lastName, bool? acceptsMarketing,})
   Future<void> signOutCurrentUser()
   Future<void> sendPasswordResetEmail({required String email})
   Future<ShopifyUser> currentUser({bool forceRefresh = false})
@@ -77,10 +90,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```
 
 
-##### Shopify Checkout
+##### ~~Shopify Checkout~~
 ###### Depreciated in Shopify API Version 2024-07. Use [ShopifyCart](#shopify-cart) Instead
 ```dart
-  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
+  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;~~
 
   Future<Checkout> getCheckoutInfoQuery({String checkoutId})
   Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})

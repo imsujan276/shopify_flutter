@@ -1,3 +1,11 @@
+## 2.2.0
+
+* Added a feature to set the desired country code to display the prices
+  - In `ShopifyConfig`, set the decired county code to property `countryCode`. 
+    - If left null, the shopify default price currency will be applied
+    - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
+* Updated example app to reflect the changes.
+
 ## 2.1.2
 
 * made phone as required while creating user using `createUserWithEmailAndPassword`

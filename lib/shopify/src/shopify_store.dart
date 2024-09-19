@@ -5,6 +5,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_co
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_from_collection_by_id.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_on_query.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_collections_by_ids.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/get_product_by_handle.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_product_recommendations.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_products_by_ids.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_shop.dart';
@@ -19,6 +20,7 @@ import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
 import '../../graphql_operations/storefront/queries/get_featured_collections.dart';
 import '../../graphql_operations/storefront/queries/get_n_products.dart';
@@ -102,7 +104,7 @@ class ShopifyStore with ShopifyError {
     List<Product>? productList = [];
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductsByIdsQuery),
-      variables: {'ids': idList},
+      variables: {'ids': idList, 'country': ShopifyLocalization.countryCode},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
@@ -114,6 +116,26 @@ class ShopifyStore with ShopifyError {
     };
     productList = Products.fromGraphJson(newResponse).productList;
     return productList;
+  }
+
+  /// Returns Product.
+  ///
+  /// Returns Product by [handle]
+  Future<Product?> getProductByHandle(
+    String handle,
+  ) async {
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getProductByHandleQuery),
+      variables: {'handle': handle, 'country': ShopifyLocalization.countryCode},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    var response = result.data!;
+    if (response['productByHandle'] == null) {
+      return null;
+    }
+    return Product.fromJson(response['productByHandle']);
   }
 
   /// Returns [n] Products.
@@ -141,6 +163,7 @@ class ShopifyStore with ShopifyError {
         'n': n,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
+        'country': ShopifyLocalization.countryCode
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );

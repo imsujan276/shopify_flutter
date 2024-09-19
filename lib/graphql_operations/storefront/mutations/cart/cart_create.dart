@@ -1,6 +1,6 @@
 /// mutation to create a cart
 const String cartCreateMutation = r'''
-mutation cartCreate($input: CartInput!) {
+mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(country: $country) {
   cartCreate(input: $input) {
     userErrors {
       code

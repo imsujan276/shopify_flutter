@@ -1,10 +1,7 @@
-import 'package:shopify_flutter/enums/src/sort_key_order.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
-import 'package:shopify_flutter/models/src/order/order.dart';
-import 'package:shopify_flutter/models/src/order/orders/orders.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shopify_flutter/shopify_flutter.dart';
 import '../../graphql_operations/storefront/queries/get_all_orders.dart';
-import '../../shopify_config.dart';
 
 /// ShopifyOrder provides methods for Shopify Orders.
 class ShopifyOrder with ShopifyError {
@@ -27,7 +24,8 @@ class ShopifyOrder with ShopifyError {
         MutationOptions(document: gql(getAllOrdersQuery), variables: {
       'accessToken': customerAccessToken,
       'sortKey': sortKey.parseToString(),
-      'reverse': reverse
+      'reverse': reverse,
+      'country': ShopifyLocalization.countryCode,
     });
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(result);

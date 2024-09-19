@@ -1,6 +1,6 @@
 /// mutation to remove a line item from the cart
 const String removeLineItemFromCartMutation = r'''
-mutation cartLinesRemove($cartId: ID!, $lineIds: [ID!]!) {
+mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!) @inContext(country: $country) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
     cart {
       id

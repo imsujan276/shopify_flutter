@@ -47,19 +47,20 @@ class ShopifyUser with _$ShopifyUser {
   /// If the first name is present in the json, it will remove the first name from the display name.
   static String? getLastName(Map<String, dynamic> json) {
     String? lastName = json['lastName'];
-    if (lastName == null) {
-      lastName = json['displayName'];
-      if (lastName != null) {
-        if (json['firstName'] == null) {
-          lastName = lastName.replaceAll(RegExp(r'\s+'), ' ').trim();
-        } else {
-          lastName = lastName
-              .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
-              .replaceAll(RegExp(r'\s+'), ' ')
-              .trim();
-        }
-      }
-    }
+    // Don't need to handle empty cases.
+    // if (lastName == null) {
+    //   lastName = json['displayName'];
+    //   if (lastName != null) {
+    //     if (json['firstName'] == null) {
+    //       lastName = lastName.replaceAll(RegExp(r'\s+'), ' ').trim();
+    //     } else {
+    //       lastName = lastName
+    //           .replaceAll(RegExp(r'\b' + json['firstName'] + r'\b'), '')
+    //           .replaceAll(RegExp(r'\s+'), ' ')
+    //           .trim();
+    //     }
+    //   }
+    // }
     return lastName;
   }
 

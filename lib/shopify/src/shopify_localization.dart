@@ -14,6 +14,9 @@ class ShopifyLocalization with ShopifyError {
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
 
+  /// Used to change currency units. eg: "USD", "EUR", "GBP"
+  static String? countryCode;
+
   /// Returns an instance of [Localization].
   ///
   /// Returns the [Localization] object for the provide [Country] code, and if none is provided

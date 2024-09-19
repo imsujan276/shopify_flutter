@@ -53,6 +53,7 @@ class ShopifyStore with ShopifyError {
         variables: {
           'cursor': cursor,
           'reverse': reverse,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -83,7 +84,8 @@ class ShopifyStore with ShopifyError {
         'x': limit,
         'cursor': cursor,
         'reverse': reverse,
-        'sortKey': sortKeyProduct.parseToString()
+        'sortKey': sortKeyProduct.parseToString(),
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -182,7 +184,10 @@ class ShopifyStore with ShopifyError {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getProductRecommendationsQuery),
-        variables: {'id': productId},
+        variables: {
+          'id': productId,
+          'country': ShopifyLocalization.countryCode,
+        },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
       final QueryResult result = await _graphQLClient!.query(_options);
@@ -354,7 +359,8 @@ class ShopifyStore with ShopifyError {
         variables: {
           'id': id,
           'cursor': cursor,
-          'sortKey': sortKeyProductCollection.parseToString()
+          'sortKey': sortKeyProductCollection.parseToString(),
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -404,6 +410,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
         'filters': [if (filters != null) filters],
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -435,6 +442,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
         'filters': [if (filters != null) filters],
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -459,7 +467,8 @@ class ShopifyStore with ShopifyError {
           'cursor': cursor,
           'sortKey': sortKey?.parseToString(),
           'query': query,
-          'reverse': reverse
+          'reverse': reverse,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -488,6 +497,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey?.parseToString(),
         'query': query,
         'reverse': reverse,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );

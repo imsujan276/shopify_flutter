@@ -1,6 +1,6 @@
 /// Query to get all products on query
 const String getAllProductsOnQueryQuery = r'''
-query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean){
+query($country: CountryCode, $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean) @inContext(country: $country) {
   products(query: $query, first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {

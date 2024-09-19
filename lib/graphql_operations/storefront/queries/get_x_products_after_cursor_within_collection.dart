@@ -1,6 +1,6 @@
 /// Query to get x products after cursor within collection
 const String getXProductsAfterCursorWithinCollectionQuery = r'''
-query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean, $filters: [ProductFilter!]){
+query($country: CountryCode, $id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSortKeys, $reverse: Boolean, $filters: [ProductFilter!]) @inContext(country: $country) {
   node(id: $id) {
     ... on Collection {
       id

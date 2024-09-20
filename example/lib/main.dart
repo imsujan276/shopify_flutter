@@ -23,7 +23,6 @@ Future<void> main() async {
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
     cachePolicy: CachePolicy.networkOnly,
     language: dotenv.env['COUNTRY_LOCALE'],
-    countryCode: dotenv.env['COUNTRY_LOCALE'],
   );
 
   runApp(const MyApp());

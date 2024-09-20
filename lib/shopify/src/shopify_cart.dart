@@ -9,6 +9,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_cart_b
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/models/src/cart/cart_model.dart';
+import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
 import '../../shopify_config.dart';
 
@@ -29,7 +30,7 @@ class ShopifyCart with ShopifyError {
       document: gql(getCartByIdQuery),
       variables: {
         'id': cartId,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -51,7 +52,7 @@ class ShopifyCart with ShopifyError {
       document: gql(cartCreateMutation),
       variables: {
         'input': data,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(createCart);
@@ -76,7 +77,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'lines': lineInputs,
-        'country': ShopifyConfig.countryCode
+        'country': ShopifyLocalization.countryCode
       },
     );
     QueryResult result = await _graphQLClient!.mutate(addLineItem);
@@ -96,7 +97,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'lineIds': lineIds,
-        'country': ShopifyConfig.countryCode
+        'country': ShopifyLocalization.countryCode
       },
     );
     QueryResult result = await _graphQLClient!.mutate(removeLineItem);
@@ -117,7 +118,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'lines': lineInputs,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateLineItem);
@@ -137,7 +138,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'note': note,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateNote);
@@ -157,7 +158,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'discountCodes': discountCodes,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateDiscountCodes);
@@ -206,7 +207,7 @@ class ShopifyCart with ShopifyError {
           'customerAccessToken': buyerIdentity.customerAccessToken,
           'deliveryAddressPreferences': deliveryAddressPreferencesData,
         },
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateBuyerIdentity);

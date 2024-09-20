@@ -73,12 +73,6 @@ class ShopifyConfig {
     }
   }
 
-  /// Used to change currency units. eg: "US", "NP", "IN" etc.
-  static String? _countryCode;
-
-  /// The country code.
-  static String? get countryCode => _countryCode;
-
   /// Sets the config.
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
@@ -101,14 +95,12 @@ class ShopifyConfig {
     String storefrontApiVersion = "2024-07",
     CachePolicy? cachePolicy,
     String? language,
-    String? countryCode,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
     _fetchPolicy = cachePolicy;
-    _countryCode = countryCode;
     _graphQLClient = GraphQLClient(
       link: HttpLink(
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',

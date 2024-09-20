@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shopify_flutter/models/src/cart/cart_discount_allocation/cart_discount_allocation.dart';
 import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 
 import '../cart_line_cost/cart_line_cost.dart';
@@ -19,6 +20,7 @@ class Line with _$Line {
     CartLineCost? cost,
     ProductVariant? merchandise,
     String? variantId,
+    List<CartDiscountAllocation?>? discountAllocations,
   }) = _Line;
 
   /// The cart line from json

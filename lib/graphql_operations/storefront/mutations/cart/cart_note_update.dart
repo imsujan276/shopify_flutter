@@ -77,6 +77,12 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode)  @i
           node {
             id
             quantity
+            discountAllocations {
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
             sellingPlanAllocation {
               sellingPlan {
                 id

@@ -30,9 +30,6 @@ void main() {
 
      // Store locale | default : en
     language: 'en',
-    
-    // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
-    countryCode: 'US'
   );
   
   runApp(MyApp());
@@ -45,8 +42,6 @@ If you are not using that function, you may not need to provide it.
 > `storefrontApiVersion` default vesion is set to '2024-07'
 
 > `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
-
-> `countryCode` defaults to null. It is used to set chnage the currency unit. Only takes effect if the store supports provided currency.
 
 <hr>
 
@@ -167,6 +162,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
 
   Future<List<Page>> getLocalization()
+
+  // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
+  void setCountryCode(String? countryCode)
+
 ```
 
 ##### Shopify Custom

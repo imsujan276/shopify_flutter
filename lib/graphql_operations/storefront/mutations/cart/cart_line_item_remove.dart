@@ -77,6 +77,12 @@ mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!) 
           node {
             id
             quantity
+            discountAllocations {
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
             sellingPlanAllocation {
               sellingPlan {
                 id

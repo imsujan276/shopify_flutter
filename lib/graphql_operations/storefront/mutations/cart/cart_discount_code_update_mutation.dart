@@ -77,6 +77,12 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
           node {
             id
             quantity
+            discountAllocations {
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
             sellingPlanAllocation {
               sellingPlan {
                 id

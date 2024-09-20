@@ -104,6 +104,12 @@ query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
           node {
             id
             quantity
+            discountAllocations {
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
             sellingPlanAllocation {
               sellingPlan {
                 id

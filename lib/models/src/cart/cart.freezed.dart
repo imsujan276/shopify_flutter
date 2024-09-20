@@ -24,7 +24,7 @@ mixin _$Cart {
   String? get checkoutUrl => throw _privateConstructorUsedError;
   CartCost? get cost => throw _privateConstructorUsedError;
   int? get totalQuantity => throw _privateConstructorUsedError;
-  List<DiscountAllocations?>? get discountAllocations =>
+  List<CartDiscountAllocation?>? get discountAllocations =>
       throw _privateConstructorUsedError;
   List<CartDiscountCode?>? get discountCodes =>
       throw _privateConstructorUsedError;
@@ -54,7 +54,7 @@ abstract class $CartCopyWith<$Res> {
       String? checkoutUrl,
       CartCost? cost,
       int? totalQuantity,
-      List<DiscountAllocations?>? discountAllocations,
+      List<CartDiscountAllocation?>? discountAllocations,
       List<CartDiscountCode?>? discountCodes,
       String? createdAt,
       CartBuyerIdentity? buyerIdentity,
@@ -113,7 +113,7 @@ class _$CartCopyWithImpl<$Res, $Val extends Cart>
       discountAllocations: freezed == discountAllocations
           ? _value.discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations?>?,
+              as List<CartDiscountAllocation?>?,
       discountCodes: freezed == discountCodes
           ? _value.discountCodes
           : discountCodes // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ abstract class _$$CartImplCopyWith<$Res> implements $CartCopyWith<$Res> {
       String? checkoutUrl,
       CartCost? cost,
       int? totalQuantity,
-      List<DiscountAllocations?>? discountAllocations,
+      List<CartDiscountAllocation?>? discountAllocations,
       List<CartDiscountCode?>? discountCodes,
       String? createdAt,
       CartBuyerIdentity? buyerIdentity,
@@ -240,7 +240,7 @@ class __$$CartImplCopyWithImpl<$Res>
       discountAllocations: freezed == discountAllocations
           ? _value._discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations?>?,
+              as List<CartDiscountAllocation?>?,
       discountCodes: freezed == discountCodes
           ? _value._discountCodes
           : discountCodes // ignore: cast_nullable_to_non_nullable
@@ -277,7 +277,7 @@ class _$CartImpl extends _Cart {
       required this.checkoutUrl,
       required this.cost,
       required this.totalQuantity,
-      required final List<DiscountAllocations?>? discountAllocations,
+      required final List<CartDiscountAllocation?>? discountAllocations,
       required final List<CartDiscountCode?>? discountCodes,
       required this.createdAt,
       this.buyerIdentity,
@@ -300,9 +300,9 @@ class _$CartImpl extends _Cart {
   final CartCost? cost;
   @override
   final int? totalQuantity;
-  final List<DiscountAllocations?>? _discountAllocations;
+  final List<CartDiscountAllocation?>? _discountAllocations;
   @override
-  List<DiscountAllocations?>? get discountAllocations {
+  List<CartDiscountAllocation?>? get discountAllocations {
     final value = _discountAllocations;
     if (value == null) return null;
     if (_discountAllocations is EqualUnmodifiableListView)
@@ -406,7 +406,7 @@ abstract class _Cart extends Cart {
       required final String? checkoutUrl,
       required final CartCost? cost,
       required final int? totalQuantity,
-      required final List<DiscountAllocations?>? discountAllocations,
+      required final List<CartDiscountAllocation?>? discountAllocations,
       required final List<CartDiscountCode?>? discountCodes,
       required final String? createdAt,
       final CartBuyerIdentity? buyerIdentity,
@@ -427,7 +427,7 @@ abstract class _Cart extends Cart {
   @override
   int? get totalQuantity;
   @override
-  List<DiscountAllocations?>? get discountAllocations;
+  List<CartDiscountAllocation?>? get discountAllocations;
   @override
   List<CartDiscountCode?>? get discountCodes;
   @override

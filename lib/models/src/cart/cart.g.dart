@@ -16,7 +16,7 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
       discountAllocations: (json['discountAllocations'] as List<dynamic>?)
           ?.map((e) => e == null
               ? null
-              : DiscountAllocations.fromJson(e as Map<String, dynamic>))
+              : CartDiscountAllocation.fromJson(e as Map<String, dynamic>))
           .toList(),
       discountCodes: (json['discountCodes'] as List<dynamic>?)
           ?.map((e) => e == null

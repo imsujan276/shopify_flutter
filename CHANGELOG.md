@@ -2,6 +2,7 @@
 
 * moved `countryCode` to `ShopifyLocalization` class. This class is responsible to handle the store localization
   - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
+* Added `discountAllocations` in `Cart` and `CartLine.lines` items
 
 ## 2.2.0
 

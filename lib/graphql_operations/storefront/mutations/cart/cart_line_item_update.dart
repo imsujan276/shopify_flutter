@@ -77,6 +77,12 @@ mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineU
           node {
             id
             quantity
+            discountAllocations {
+              discountedAmount {
+                amount
+                currencyCode
+              }
+            }
             sellingPlanAllocation {
               sellingPlan {
                 id

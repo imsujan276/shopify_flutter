@@ -22,7 +22,11 @@ class ShopifyLocalization with ShopifyError {
 
   /// Sets the country code.
   /// Used to change currency units. eg: "US", "NP", "IN" etc.
-  static void setCountryCode(String? countryCode) {
+  void setCountryCode(String? countryCode) {
+    /// validate if it mathes the example format.
+    if (countryCode != null && countryCode.length != 2) {
+      throw Exception('Country code should be of 2 characters');
+    }
     _countryCode = countryCode;
   }
 

@@ -164,7 +164,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<List<Page>> getLocalization()
 
   // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
-  static void setCountryCode(String? countryCode)
+  void setCountryCode(String? countryCode)
 
 ```
 

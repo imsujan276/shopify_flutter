@@ -25,7 +25,7 @@ class ShopifyOrder with ShopifyError {
       'accessToken': customerAccessToken,
       'sortKey': sortKey.parseToString(),
       'reverse': reverse,
-      'country': ShopifyConfig.countryCode,
+      'country': ShopifyLocalization.countryCode,
     });
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(result);

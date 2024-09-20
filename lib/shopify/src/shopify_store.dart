@@ -20,6 +20,7 @@ import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
 import '../../graphql_operations/storefront/queries/get_featured_collections.dart';
 import '../../graphql_operations/storefront/queries/get_n_products.dart';
@@ -52,7 +53,7 @@ class ShopifyStore with ShopifyError {
         variables: {
           'cursor': cursor,
           'reverse': reverse,
-          'country': ShopifyConfig.countryCode,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -84,7 +85,7 @@ class ShopifyStore with ShopifyError {
         'cursor': cursor,
         'reverse': reverse,
         'sortKey': sortKeyProduct.parseToString(),
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -107,7 +108,7 @@ class ShopifyStore with ShopifyError {
       document: gql(getProductsByIdsQuery),
       variables: {
         'ids': idList,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -132,7 +133,7 @@ class ShopifyStore with ShopifyError {
       document: gql(getProductByHandleQuery),
       variables: {
         'handle': handle,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -170,7 +171,7 @@ class ShopifyStore with ShopifyError {
         'n': n,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'country': ShopifyConfig.countryCode
+        'country': ShopifyLocalization.countryCode
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -191,7 +192,7 @@ class ShopifyStore with ShopifyError {
         document: gql(getProductRecommendationsQuery),
         variables: {
           'id': productId,
-          'country': ShopifyConfig.countryCode,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -254,7 +255,7 @@ class ShopifyStore with ShopifyError {
         document: gql(getFeaturedCollectionQuery),
         variables: {
           'query': collectionName,
-          'country': ShopifyConfig.countryCode,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -340,7 +341,7 @@ class ShopifyStore with ShopifyError {
         'sortKeyProduct': sortKeyProductCollection.parseToString(),
         'x': x,
         'n': n,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -369,7 +370,7 @@ class ShopifyStore with ShopifyError {
           'id': id,
           'cursor': cursor,
           'sortKey': sortKeyProductCollection.parseToString(),
-          'country': ShopifyConfig.countryCode,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -419,7 +420,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
         'filters': [if (filters != null) filters],
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -451,7 +452,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
         'filters': [if (filters != null) filters],
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -477,7 +478,7 @@ class ShopifyStore with ShopifyError {
           'sortKey': sortKey?.parseToString(),
           'query': query,
           'reverse': reverse,
-          'country': ShopifyConfig.countryCode,
+          'country': ShopifyLocalization.countryCode,
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -506,7 +507,7 @@ class ShopifyStore with ShopifyError {
         'sortKey': sortKey?.parseToString(),
         'query': query,
         'reverse': reverse,
-        'country': ShopifyConfig.countryCode,
+        'country': ShopifyLocalization.countryCode,
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );

@@ -1,3 +1,8 @@
+## 2.2.1
+
+* moved `countryCode` to `ShopifyLocalization` class. This class is responsible to handle the store localization
+  - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
+
 ## 2.2.0
 
 * Added a feature to set the desired country code to display the prices

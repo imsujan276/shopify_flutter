@@ -14,10 +14,22 @@ class ShopifyLocalization with ShopifyError {
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
 
+  /// Used to change currency units. eg: "US", "NP", "IN" etc.
+  static String? _countryCode;
+
+  /// get country code.
+  static String? get countryCode => _countryCode;
+
+  /// Sets the country code.
+  /// Used to change currency units. eg: "US", "NP", "IN" etc.
+  static void setCountryCode(String? countryCode) {
+    _countryCode = countryCode;
+  }
+
   /// Returns an instance of [Localization].
   ///
-  /// Returns the [Localization] object for the provide [Country] code, and if none is provided
-  /// the general localization object is returned.
+  /// Returns the [Localization] object for the provide [Country] code,
+  /// If none is provided, the general localization object is returned.
   /// It provides information regarding supported [Language]s,
   /// [Country]s and [Currencies] suuported by each country.
   Future<Localization> getLocalization(
@@ -26,7 +38,7 @@ class ShopifyLocalization with ShopifyError {
     _options = WatchQueryOptions(
       document: gql(getLocalizationQuery),
       variables: {'country': countrycode, 'language': languageCode},
-      fetchPolicy: ShopifyConfig.fetchPolicy,
+      fetchPolicy: FetchPolicy.networkOnly,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);

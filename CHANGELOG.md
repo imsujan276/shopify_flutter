@@ -1,3 +1,7 @@
+# 2.2.3
+
+* Added cart line cost in cart line items Graph Query
+
 ## 2.2.1
 
 * moved `countryCode` to `ShopifyLocalization` class. This class is responsible to handle the store localization

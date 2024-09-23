@@ -77,6 +77,24 @@ mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIden
           node {
             id
             quantity
+            cost {
+              amountPerQuantity {
+                amount
+                currencyCode
+              }
+              compareAtAmountPerQuantity {
+                amount
+                currencyCode
+              }
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
             discountAllocations {
               discountedAmount {
                 amount

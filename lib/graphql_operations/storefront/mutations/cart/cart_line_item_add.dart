@@ -77,6 +77,24 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
           node {
             id
             quantity
+            cost {
+              amountPerQuantity {
+                amount
+                currencyCode
+              }
+              compareAtAmountPerQuantity {
+                amount
+                currencyCode
+              }
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
             discountAllocations {
               discountedAmount {
                 amount

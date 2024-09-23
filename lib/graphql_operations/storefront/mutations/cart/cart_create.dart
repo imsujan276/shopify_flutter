@@ -110,6 +110,24 @@ mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(countr
           node {
             id
             quantity
+            cost {
+              amountPerQuantity {
+                amount
+                currencyCode
+              }
+              compareAtAmountPerQuantity {
+                amount
+                currencyCode
+              }
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
             discountAllocations {
               discountedAmount {
                 amount

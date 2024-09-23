@@ -77,6 +77,24 @@ mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!) 
           node {
             id
             quantity
+            cost {
+              amountPerQuantity {
+                amount
+                currencyCode
+              }
+              compareAtAmountPerQuantity {
+                amount
+                currencyCode
+              }
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
             discountAllocations {
               discountedAmount {
                 amount

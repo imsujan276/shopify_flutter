@@ -39,6 +39,12 @@ class Line with _$Line {
       variantId: nodeJson['merchandise'] != null
           ? ProductVariant.fromJson(nodeJson['merchandise']).id
           : null,
+      discountAllocations: (nodeJson['discountAllocations'] != null &&
+              nodeJson['discountAllocations'] is List)
+          ? nodeJson['discountAllocations']
+              .map((e) => CartDiscountAllocation.fromJson(e))
+              .toList()
+          : null,
     );
   }
 

@@ -24,12 +24,8 @@ mixin _$DeliveryAddressInput {
   MailingAddressInput? get deliveryAddress =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this DeliveryAddressInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $DeliveryAddressInputCopyWith<DeliveryAddressInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,8 +52,6 @@ class _$DeliveryAddressInputCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -76,8 +70,6 @@ class _$DeliveryAddressInputCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MailingAddressInputCopyWith<$Res>? get deliveryAddress {
@@ -113,8 +105,6 @@ class __$$DeliveryAddressInputImplCopyWithImpl<$Res>
       $Res Function(_$DeliveryAddressInputImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -166,14 +156,12 @@ class _$DeliveryAddressInputImpl extends _DeliveryAddressInput {
                 other.deliveryAddress == deliveryAddress));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, customerAddressId, deliveryAddress);
 
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$DeliveryAddressInputImplCopyWith<_$DeliveryAddressInputImpl>
@@ -202,11 +190,8 @@ abstract class _DeliveryAddressInput extends DeliveryAddressInput {
   String? get customerAddressId;
   @override
   MailingAddressInput? get deliveryAddress;
-
-  /// Create a copy of DeliveryAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$DeliveryAddressInputImplCopyWith<_$DeliveryAddressInputImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

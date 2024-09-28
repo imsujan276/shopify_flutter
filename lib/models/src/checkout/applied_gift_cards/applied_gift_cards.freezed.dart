@@ -24,12 +24,8 @@ mixin _$AppliedGiftCards {
   PriceV2 get balanceV2 => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
-  /// Serializes this AppliedGiftCards to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AppliedGiftCardsCopyWith<AppliedGiftCards> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,8 +52,6 @@ class _$AppliedGiftCardsCopyWithImpl<$Res, $Val extends AppliedGiftCards>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,8 +75,6 @@ class _$AppliedGiftCardsCopyWithImpl<$Res, $Val extends AppliedGiftCards>
     ) as $Val);
   }
 
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get amountUsedV2 {
@@ -91,8 +83,6 @@ class _$AppliedGiftCardsCopyWithImpl<$Res, $Val extends AppliedGiftCards>
     });
   }
 
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get balanceV2 {
@@ -126,8 +116,6 @@ class __$$AppliedGiftCardsImplCopyWithImpl<$Res>
       $Res Function(_$AppliedGiftCardsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -186,13 +174,11 @@ class _$AppliedGiftCardsImpl extends _AppliedGiftCards {
             (identical(other.id, id) || other.id == id));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, amountUsedV2, balanceV2, id);
 
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AppliedGiftCardsImplCopyWith<_$AppliedGiftCardsImpl> get copyWith =>
@@ -223,11 +209,8 @@ abstract class _AppliedGiftCards extends AppliedGiftCards {
   PriceV2 get balanceV2;
   @override
   String get id;
-
-  /// Create a copy of AppliedGiftCards
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AppliedGiftCardsImplCopyWith<_$AppliedGiftCardsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

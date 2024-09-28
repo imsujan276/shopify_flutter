@@ -39,9 +39,7 @@ mixin _$Product {
   String? get descriptionHtml => throw _privateConstructorUsedError;
   String? get handle => throw _privateConstructorUsedError;
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -82,8 +80,6 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -225,8 +221,6 @@ class __$$ProductImplCopyWithImpl<$Res>
       _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -506,9 +500,7 @@ class _$ProductImpl extends _Product {
         handle
       ]);
 
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
@@ -563,8 +555,8 @@ abstract class _Product extends Product {
   @override
   String get vendor;
   @override
-  List<ProductMedia> get media; // required List<Metafield> metafields,
-  @override
+  List<ProductMedia> get media;
+  @override // required List<Metafield> metafields,
   List<AssociatedCollections>? get collectionList;
   @override
   String? get cursor;
@@ -576,11 +568,8 @@ abstract class _Product extends Product {
   String? get descriptionHtml;
   @override
   String? get handle;
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

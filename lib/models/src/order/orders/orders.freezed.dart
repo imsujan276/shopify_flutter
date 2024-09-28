@@ -23,12 +23,8 @@ mixin _$Orders {
   List<Order> get orderList => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
 
-  /// Serializes this Orders to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $OrdersCopyWith<Orders> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -50,8 +46,6 @@ class _$OrdersCopyWithImpl<$Res, $Val extends Orders>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,8 +83,6 @@ class __$$OrdersImplCopyWithImpl<$Res>
       _$OrdersImpl _value, $Res Function(_$OrdersImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,14 +139,12 @@ class _$OrdersImpl implements _Orders {
                 other.hasNextPage == hasNextPage));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_orderList), hasNextPage);
 
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
@@ -179,11 +169,8 @@ abstract class _Orders implements Orders {
   List<Order> get orderList;
   @override
   bool get hasNextPage;
-
-  /// Create a copy of Orders
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OrdersImplCopyWith<_$OrdersImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,12 +24,8 @@ mixin _$AvailableShippingRates {
   bool get ready => throw _privateConstructorUsedError;
   List<ShippingRates>? get shippingRates => throw _privateConstructorUsedError;
 
-  /// Serializes this AvailableShippingRates to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AvailableShippingRates
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AvailableShippingRatesCopyWith<AvailableShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,8 +50,6 @@ class _$AvailableShippingRatesCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AvailableShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -97,8 +91,6 @@ class __$$AvailableShippingRatesImplCopyWithImpl<$Res>
       $Res Function(_$AvailableShippingRatesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AvailableShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,14 +148,12 @@ class _$AvailableShippingRatesImpl extends _AvailableShippingRates {
                 .equals(other._shippingRates, _shippingRates));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, ready, const DeepCollectionEquality().hash(_shippingRates));
 
-  /// Create a copy of AvailableShippingRates
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
@@ -192,11 +182,8 @@ abstract class _AvailableShippingRates extends AvailableShippingRates {
   bool get ready;
   @override
   List<ShippingRates>? get shippingRates;
-
-  /// Create a copy of AvailableShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

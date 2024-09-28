@@ -24,12 +24,8 @@ mixin _$PriceV2 {
   double get amount => throw _privateConstructorUsedError;
   String get currencyCode => throw _privateConstructorUsedError;
 
-  /// Serializes this PriceV2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of PriceV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $PriceV2CopyWith<PriceV2> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -53,8 +49,6 @@ class _$PriceV2CopyWithImpl<$Res, $Val extends PriceV2>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of PriceV2
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,8 +88,6 @@ class __$$PriceV2ImplCopyWithImpl<$Res>
       _$PriceV2Impl _value, $Res Function(_$PriceV2Impl) _then)
       : super(_value, _then);
 
-  /// Create a copy of PriceV2
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,13 +139,11 @@ class _$PriceV2Impl extends _PriceV2 {
                 other.currencyCode == currencyCode));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, amount, currencyCode);
 
-  /// Create a copy of PriceV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$PriceV2ImplCopyWith<_$PriceV2Impl> get copyWith =>
@@ -181,11 +171,8 @@ abstract class _PriceV2 extends PriceV2 {
   double get amount;
   @override
   String get currencyCode;
-
-  /// Create a copy of PriceV2
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$PriceV2ImplCopyWith<_$PriceV2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

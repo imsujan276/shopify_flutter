@@ -28,12 +28,8 @@ mixin _$AssociatedCollections {
   String? get descriptionHtml => throw _privateConstructorUsedError;
   String? get handle => throw _privateConstructorUsedError;
 
-  /// Serializes this AssociatedCollections to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AssociatedCollections
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AssociatedCollectionsCopyWith<AssociatedCollections> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,8 +60,6 @@ class _$AssociatedCollectionsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AssociatedCollections
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,8 +126,6 @@ class __$$AssociatedCollectionsImplCopyWithImpl<$Res>
       $Res Function(_$AssociatedCollectionsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AssociatedCollections
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -222,14 +214,12 @@ class _$AssociatedCollectionsImpl extends _AssociatedCollections {
             (identical(other.handle, handle) || other.handle == handle));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, id, title, description, updatedAt, descriptionHtml, handle);
 
-  /// Create a copy of AssociatedCollections
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AssociatedCollectionsImplCopyWith<_$AssociatedCollectionsImpl>
@@ -269,11 +259,8 @@ abstract class _AssociatedCollections extends AssociatedCollections {
   String? get descriptionHtml;
   @override
   String? get handle;
-
-  /// Create a copy of AssociatedCollections
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AssociatedCollectionsImplCopyWith<_$AssociatedCollectionsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

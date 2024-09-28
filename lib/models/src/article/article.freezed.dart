@@ -34,12 +34,8 @@ mixin _$Article {
   String? get title => throw _privateConstructorUsedError;
   String? get onlineStoreUrl => throw _privateConstructorUsedError;
 
-  /// Serializes this Article to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArticleCopyWith<Article> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -77,8 +73,6 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -152,8 +146,6 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     ) as $Val);
   }
 
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AuthorV2CopyWith<$Res>? get author {
@@ -166,8 +158,6 @@ class _$ArticleCopyWithImpl<$Res, $Val extends Article>
     });
   }
 
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -217,8 +207,6 @@ class __$$ArticleImplCopyWithImpl<$Res>
       _$ArticleImpl _value, $Res Function(_$ArticleImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -390,7 +378,7 @@ class _$ArticleImpl extends _Article {
                 other.onlineStoreUrl == onlineStoreUrl));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -408,9 +396,7 @@ class _$ArticleImpl extends _Article {
       title,
       onlineStoreUrl);
 
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticleImplCopyWith<_$ArticleImpl> get copyWith =>
@@ -469,11 +455,8 @@ abstract class _Article extends Article {
   String? get title;
   @override
   String? get onlineStoreUrl;
-
-  /// Create a copy of Article
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArticleImplCopyWith<_$ArticleImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

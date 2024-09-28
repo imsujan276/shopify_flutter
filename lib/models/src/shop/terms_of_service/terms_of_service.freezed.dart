@@ -26,12 +26,8 @@ mixin _$TermsOfService {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
-  /// Serializes this TermsOfService to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TermsOfService
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TermsOfServiceCopyWith<TermsOfService> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,8 +52,6 @@ class _$TermsOfServiceCopyWithImpl<$Res, $Val extends TermsOfService>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TermsOfService
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,8 +106,6 @@ class __$$TermsOfServiceImplCopyWithImpl<$Res>
       _$TermsOfServiceImpl _value, $Res Function(_$TermsOfServiceImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TermsOfService
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,13 +176,11 @@ class _$TermsOfServiceImpl implements _TermsOfService {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
 
-  /// Create a copy of TermsOfService
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
@@ -226,11 +216,8 @@ abstract class _TermsOfService implements TermsOfService {
   String? get title;
   @override
   String? get url;
-
-  /// Create a copy of TermsOfService
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TermsOfServiceImplCopyWith<_$TermsOfServiceImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

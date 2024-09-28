@@ -22,12 +22,8 @@ Lines _$LinesFromJson(Map<String, dynamic> json) {
 mixin _$Lines {
   List<Line> get lines => throw _privateConstructorUsedError;
 
-  /// Serializes this Lines to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Lines
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LinesCopyWith<Lines> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,8 +45,6 @@ class _$LinesCopyWithImpl<$Res, $Val extends Lines>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Lines
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,8 +77,6 @@ class __$$LinesImplCopyWithImpl<$Res>
       _$LinesImpl _value, $Res Function(_$LinesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Lines
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,14 +120,12 @@ class _$LinesImpl implements _Lines {
             const DeepCollectionEquality().equals(other._lines, _lines));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_lines));
 
-  /// Create a copy of Lines
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LinesImplCopyWith<_$LinesImpl> get copyWith =>
@@ -156,11 +146,8 @@ abstract class _Lines implements Lines {
 
   @override
   List<Line> get lines;
-
-  /// Create a copy of Lines
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LinesImplCopyWith<_$LinesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -24,12 +24,8 @@ mixin _$ShippingRates {
   String get title => throw _privateConstructorUsedError;
   PriceV2 get priceV2 => throw _privateConstructorUsedError;
 
-  /// Serializes this ShippingRates to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ShippingRatesCopyWith<ShippingRates> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,8 +51,6 @@ class _$ShippingRatesCopyWithImpl<$Res, $Val extends ShippingRates>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,8 +74,6 @@ class _$ShippingRatesCopyWithImpl<$Res, $Val extends ShippingRates>
     ) as $Val);
   }
 
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get priceV2 {
@@ -113,8 +105,6 @@ class __$$ShippingRatesImplCopyWithImpl<$Res>
       _$ShippingRatesImpl _value, $Res Function(_$ShippingRatesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -171,13 +161,11 @@ class _$ShippingRatesImpl extends _ShippingRates {
             (identical(other.priceV2, priceV2) || other.priceV2 == priceV2));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, handle, title, priceV2);
 
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
@@ -207,11 +195,8 @@ abstract class _ShippingRates extends ShippingRates {
   String get title;
   @override
   PriceV2 get priceV2;
-
-  /// Create a copy of ShippingRates
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ShippingRatesImplCopyWith<_$ShippingRatesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

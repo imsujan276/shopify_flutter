@@ -24,12 +24,8 @@ mixin _$ShopifyImage {
   String get id => throw _privateConstructorUsedError;
   String? get altText => throw _privateConstructorUsedError;
 
-  /// Serializes this ShopifyImage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ShopifyImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ShopifyImageCopyWith<ShopifyImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,8 +49,6 @@ class _$ShopifyImageCopyWithImpl<$Res, $Val extends ShopifyImage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShopifyImage
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -98,8 +92,6 @@ class __$$ShopifyImageImplCopyWithImpl<$Res>
       _$ShopifyImageImpl _value, $Res Function(_$ShopifyImageImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShopifyImage
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -157,13 +149,11 @@ class _$ShopifyImageImpl extends _ShopifyImage {
             (identical(other.altText, altText) || other.altText == altText));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, originalSrc, id, altText);
 
-  /// Create a copy of ShopifyImage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
@@ -193,11 +183,8 @@ abstract class _ShopifyImage extends ShopifyImage {
   String get id;
   @override
   String? get altText;
-
-  /// Create a copy of ShopifyImage
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ShopifyImageImplCopyWith<_$ShopifyImageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

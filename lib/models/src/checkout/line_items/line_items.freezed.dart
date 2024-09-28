@@ -22,12 +22,8 @@ LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
 mixin _$LineItems {
   List<LineItem> get lineItemList => throw _privateConstructorUsedError;
 
-  /// Serializes this LineItems to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LineItems
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LineItemsCopyWith<LineItems> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,8 +46,6 @@ class _$LineItemsCopyWithImpl<$Res, $Val extends LineItems>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LineItems
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,8 +79,6 @@ class __$$LineItemsImplCopyWithImpl<$Res>
       _$LineItemsImpl _value, $Res Function(_$LineItemsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LineItems
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,14 +124,12 @@ class _$LineItemsImpl implements _LineItems {
                 .equals(other._lineItemList, _lineItemList));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_lineItemList));
 
-  /// Create a copy of LineItems
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
@@ -162,11 +152,8 @@ abstract class _LineItems implements LineItems {
 
   @override
   List<LineItem> get lineItemList;
-
-  /// Create a copy of LineItems
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,12 +26,8 @@ mixin _$Blog {
   String? get onlineStoreUrl => throw _privateConstructorUsedError;
   Articles? get articles => throw _privateConstructorUsedError;
 
-  /// Serializes this Blog to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BlogCopyWith<Blog> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -60,8 +56,6 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,8 +89,6 @@ class _$BlogCopyWithImpl<$Res, $Val extends Blog>
     ) as $Val);
   }
 
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ArticlesCopyWith<$Res>? get articles {
@@ -135,8 +127,6 @@ class __$$BlogImplCopyWithImpl<$Res>
   __$$BlogImplCopyWithImpl(_$BlogImpl _value, $Res Function(_$BlogImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -211,14 +201,12 @@ class _$BlogImpl extends _Blog {
                 other.articles == articles));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, handle, title, onlineStoreUrl, articles);
 
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BlogImplCopyWith<_$BlogImpl> get copyWith =>
@@ -253,11 +241,8 @@ abstract class _Blog extends Blog {
   String? get onlineStoreUrl;
   @override
   Articles? get articles;
-
-  /// Create a copy of Blog
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BlogImplCopyWith<_$BlogImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

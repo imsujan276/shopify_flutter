@@ -37,12 +37,8 @@ mixin _$ProductVariantCheckout {
   List<SelectedOption> get selectedOptions =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this ProductVariantCheckout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductVariantCheckoutCopyWith<ProductVariantCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -87,8 +83,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,8 +161,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get priceV2 {
@@ -181,8 +173,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get price {
@@ -195,8 +185,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -209,8 +197,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get compareAtPrice {
@@ -223,8 +209,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductCopyWith<$Res>? get product {
@@ -285,8 +269,6 @@ class __$$ProductVariantCheckoutImplCopyWithImpl<$Res>
       $Res Function(_$ProductVariantCheckoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -458,7 +440,7 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
                 .equals(other._selectedOptions, _selectedOptions));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -477,9 +459,7 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
       product,
       const DeepCollectionEquality().hash(_selectedOptions));
 
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantCheckoutImplCopyWith<_$ProductVariantCheckoutImpl>
@@ -544,11 +524,8 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   Product? get product;
   @override
   List<SelectedOption> get selectedOptions;
-
-  /// Create a copy of ProductVariantCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProductVariantCheckoutImplCopyWith<_$ProductVariantCheckoutImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

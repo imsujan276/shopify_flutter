@@ -1,15 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shopify_flutter/models/src/article/article.dart';
-import 'package:shopify_flutter/models/src/collection/collection.dart';
-import 'package:shopify_flutter/models/src/page/page.dart';
-import 'package:shopify_flutter/models/src/product/product.dart';
-import 'package:shopify_flutter/models/src/query/query.dart';
+import 'package:shopify_flutter/models/src/predictive_search_result/article/article.dart';
+import 'package:shopify_flutter/models/src/predictive_search_result/collection/collection.dart';
+import 'package:shopify_flutter/models/src/predictive_search_result/page/page.dart';
+import 'package:shopify_flutter/models/src/predictive_search_result/product/product.dart';
+import 'package:shopify_flutter/models/src/predictive_search_result/query/query.dart';
 
 part 'predictive_search_result.freezed.dart';
 part 'predictive_search_result.g.dart';
 
 @freezed
+
+/// The PredictiveSearchResult class
 class PredictiveSearchResult with _$PredictiveSearchResult {
+  /// The PredictiveSearchResult constructor
   factory PredictiveSearchResult({
     final List<Query>? queries,
     final List<Collection>? collections,
@@ -18,8 +21,10 @@ class PredictiveSearchResult with _$PredictiveSearchResult {
     final List<Article>? articles,
   }) = _PredictiveSearchResult;
 
+  /// The PredictiveSearchResult from json
   factory PredictiveSearchResult.fromJson(Map<String, dynamic> json) => _$PredictiveSearchResultFromJson(json);
 
+  /// The PredictiveSearchResult from graph json
   factory PredictiveSearchResult.fromGraphJson(Map<String, dynamic> json) => PredictiveSearchResult(
         queries: _getQueries(json),
         collections: _getCollections(json),

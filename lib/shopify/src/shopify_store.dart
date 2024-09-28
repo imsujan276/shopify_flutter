@@ -458,7 +458,7 @@ class ShopifyStore with ShopifyError {
     final WatchQueryOptions options = WatchQueryOptions(
       document: gql(predictiveSearchQuery),
       variables: {'query': query},
-      fetchPolicy: FetchPolicy.networkOnly,
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
 
     final QueryResult result = await _graphQLClient!.query(options);

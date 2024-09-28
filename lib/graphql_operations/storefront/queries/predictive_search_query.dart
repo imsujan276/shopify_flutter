@@ -1,6 +1,6 @@
 /// Query for predictive search
 const String predictiveSearchQuery = r'''
-query suggestions($query: String!) {
+query ($query: String!) {
   predictiveSearch(query: $query) {
     queries {
       text

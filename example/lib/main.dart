@@ -1,3 +1,4 @@
+import 'package:example/screens/cart_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
@@ -21,7 +22,7 @@ Future<void> main() async {
     adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
     cachePolicy: CachePolicy.networkOnly,
-    language: dotenv.env['LANGUAGE_LOCALE'] ?? 'en',
+    language: dotenv.env['COUNTRY_LOCALE'],
   );
 
   runApp(const MyApp());
@@ -57,6 +58,7 @@ class MyHomePageState extends State<MyHomePage> {
     const ShopTab(),
     const BlogTab(),
     const CheckoutPage(),
+    const CartTab(),
     const OrdersTab(),
     const AuthTab(),
   ];
@@ -83,6 +85,8 @@ class MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
           BottomNavigationBarItem(
               icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Orders'),
           BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
         ],

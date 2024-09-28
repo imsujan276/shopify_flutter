@@ -1,6 +1,6 @@
 /// Query to get x products after cursor
 const String getXProductsAfterCursorQuery = r'''
-query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
+query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, $country: CountryCode)  @inContext(country: $country){
   products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage

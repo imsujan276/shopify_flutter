@@ -7,9 +7,12 @@ part 'tokanized_checkout.freezed.dart';
 part 'tokanized_checkout.g.dart';
 
 @freezed
+
+/// The tokanized checkout
 class TokanizedCheckout with _$TokanizedCheckout {
   const TokanizedCheckout._();
 
+  /// The tokanized checkout constructor
   factory TokanizedCheckout({
     @JsonKey(name: 'id') required String paymentId,
     required PriceV2 amountV2,
@@ -21,6 +24,7 @@ class TokanizedCheckout with _$TokanizedCheckout {
     String? checkoutId,
   }) = _TokanizedCheckout;
 
+  /// The tokanized checkout from json
   factory TokanizedCheckout.fromJson(Map<String, dynamic> json) =>
       _$TokanizedCheckoutFromJson(json);
 }

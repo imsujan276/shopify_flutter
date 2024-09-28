@@ -33,8 +33,12 @@ mixin _$Shop {
   List<String>? get shipsToCountries => throw _privateConstructorUsedError;
   TermsOfService? get termsOfService => throw _privateConstructorUsedError;
 
+  /// Serializes this Shop to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShopCopyWith<Shop> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -75,6 +79,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -138,6 +144,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     ) as $Val);
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PaymentSettingsCopyWith<$Res>? get paymentSettings {
@@ -150,6 +158,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PrimaryDomainCopyWith<$Res>? get primaryDomain {
@@ -162,6 +172,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PrivacyPolicyCopyWith<$Res>? get privacyPolicy {
@@ -174,6 +186,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $RefundPolicyCopyWith<$Res>? get refundPolicy {
@@ -186,6 +200,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingPolicyCopyWith<$Res>? get shippingPolicy {
@@ -198,6 +214,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy {
@@ -211,6 +229,8 @@ class _$ShopCopyWithImpl<$Res, $Val extends Shop>
     });
   }
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $TermsOfServiceCopyWith<$Res>? get termsOfService {
@@ -267,6 +287,8 @@ class __$$ShopImplCopyWithImpl<$Res>
   __$$ShopImplCopyWithImpl(_$ShopImpl _value, $Res Function(_$ShopImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -416,7 +438,7 @@ class _$ShopImpl implements _Shop {
                 other.termsOfService == termsOfService));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -432,7 +454,9 @@ class _$ShopImpl implements _Shop {
       const DeepCollectionEquality().hash(_shipsToCountries),
       termsOfService);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShopImplCopyWith<_$ShopImpl> get copyWith =>
@@ -484,8 +508,11 @@ abstract class _Shop implements Shop {
   List<String>? get shipsToCountries;
   @override
   TermsOfService? get termsOfService;
+
+  /// Create a copy of Shop
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShopImplCopyWith<_$ShopImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

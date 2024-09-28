@@ -33,6 +33,9 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       image: json['image'] == null
           ? null
           : ShopifyImage.fromJson(json['image'] as Map<String, dynamic>),
+      product: json['product'] == null
+          ? null
+          : Product.fromJson(json['product'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$ProductVariantImplToJson(
@@ -52,4 +55,5 @@ Map<String, dynamic> _$$ProductVariantImplToJson(
       'selectedOptions': instance.selectedOptions,
       'compareAtPrice': instance.compareAtPrice,
       'image': instance.image,
+      'product': instance.product,
     };

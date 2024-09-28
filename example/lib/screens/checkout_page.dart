@@ -20,6 +20,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Future<void> testCheckoutProcess() async {
     final shopifyStore = ShopifyStore.instance;
     final shopifyAuth = ShopifyAuth.instance;
+    // ignore: deprecated_member_use
     final shopifyCheckout = ShopifyCheckout.instance;
 
     try {
@@ -63,7 +64,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
       final status = await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => WebViewCheckout(checkout: checkout),
+          builder: (_) => WebViewCheckout(checkoutUrl: checkout.webUrl!),
         ),
       );
       if (status != null && status) {
@@ -91,6 +92,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Future<void> testCheckoutCompleteWithTokenizedPaymentV3() async {
     final shopifyStore = ShopifyStore.instance;
     final shopifyAuth = ShopifyAuth.instance;
+    // ignore: deprecated_member_use
     final shopifyCheckout = ShopifyCheckout.instance;
 
     try {
@@ -199,7 +201,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         final status = await Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => WebViewCheckout(checkout: checkout),
+            builder: (_) => WebViewCheckout(checkoutUrl: checkout.webUrl!),
           ),
         );
         if (status != null && status) {
@@ -219,50 +221,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
     }
   }
 
-  Future<void> getCartItems() async {
-    final shopifyAuth = ShopifyAuth.instance;
-
-    try {
-      try {
-        cartItems.clear();
-
-        setState(() => _isLoading = true);
-
-        final user = await shopifyAuth.currentUser();
-
-        if (user?.lastIncompleteCheckout?.id != null) {
-          cartItems
-            ..clear()
-            ..addAll(user!.lastIncompleteCheckout!.lineItems!);
-        }
-
-        setState(() => _isLoading = false);
-      } on Exception catch (e) {
-        setState(() => _isLoading = false);
-
-        if (mounted) {
-          ScaffoldMessenger.of(context)
-            ..clearSnackBars()
-            ..showSnackBar(SnackBar(content: Text('$e')));
-        }
-      }
-    } on Exception catch (e) {
-      log('error: $e');
-      setState(() => _isLoading = false);
-      if (!mounted) return;
-      ScaffoldMessenger.of(context)
-        ..clearSnackBars()
-        ..showSnackBar(
-          SnackBar(content: Text('$e')),
-        );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Checkout'),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text('Checkout'),
+            Text(
+              'Depreciated in version 2024-07. Use ShopifyCart instead',
+              style: Theme.of(context).textTheme.bodySmall,
+            )
+          ],
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -289,12 +262,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
             title: const Text('Checkout Complete With Tokenized Payment V3'),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: testCheckoutCompleteWithTokenizedPaymentV3,
-          ),
-          ListTile(
-            leading: const Icon(Icons.shopping_cart_outlined),
-            title: const Text('Get Cart Items'),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: getCartItems,
           ),
           if (cartItems.isNotEmpty)
             Expanded(

@@ -23,8 +23,12 @@ mixin _$LineItemsOrder {
   List<LineItemOrder> get lineItemOrderList =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this LineItemsOrder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LineItemsOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LineItemsOrderCopyWith<LineItemsOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$LineItemsOrderCopyWithImpl<$Res, $Val extends LineItemsOrder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LineItemsOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +87,8 @@ class __$$LineItemsOrderImplCopyWithImpl<$Res>
       _$LineItemsOrderImpl _value, $Res Function(_$LineItemsOrderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LineItemsOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,12 +135,14 @@ class _$LineItemsOrderImpl implements _LineItemsOrder {
                 .equals(other._lineItemOrderList, _lineItemOrderList));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_lineItemOrderList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LineItemsOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
@@ -157,8 +167,11 @@ abstract class _LineItemsOrder implements LineItemsOrder {
 
   @override
   List<LineItemOrder> get lineItemOrderList;
+
+  /// Create a copy of LineItemsOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -1,5 +1,6 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
 
+/// The cache policy to be used for all queries and mutations.
 enum CachePolicy {
   /// Return result from cache. Only fetch from network if cached result is not available.
   cacheFirst,
@@ -17,6 +18,7 @@ enum CachePolicy {
   networkOnly,
 }
 
+/// The ShopifyConfig class holds the configuration for the Shopify Flutter SDK.
 class ShopifyConfig {
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String? _storefrontAccessToken;
@@ -52,6 +54,8 @@ class ShopifyConfig {
 
   /// fetch policy to be used for all queries and mutations
   static CachePolicy? _fetchPolicy;
+
+  /// returns [FetchPolicy] based on the [CachePolicy]
   static FetchPolicy? get fetchPolicy {
     switch (_fetchPolicy) {
       case CachePolicy.noCache:
@@ -74,13 +78,23 @@ class ShopifyConfig {
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
   ///
   /// [adminAccessToken] is optional, but required for some admin API calls like deleteCustomer.
+  ///
+  /// [storefrontApiVersion] is optional, but defaults to "2024-07".
+  ///
+  /// [cachePolicy] is optional, but defaults to [CachePolicy.networkOnly].
+  ///
+  /// [language] is optional, but defaults to "en".
+  /// Used to change language. eg: "en", "np", "fr" etc. Only takes effect if the store supports provided language.
+  ///
+  /// [countryCode] is optional, but defaults to null.
+  /// Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   static void setConfig({
     required String storefrontAccessToken,
     required String storeUrl,
     String? adminAccessToken,
-    String storefrontApiVersion = "2023-07",
-    String language = 'en',
+    String storefrontApiVersion = "2024-07",
     CachePolicy? cachePolicy,
+    String? language,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
@@ -92,7 +106,7 @@ class ShopifyConfig {
         '$_storeUrl/api/$_storefrontApiVersion/graphql.json',
         defaultHeaders: {
           'X-Shopify-Storefront-Access-Token': _storefrontAccessToken!,
-          'Accept-Language': language, // Default to English
+          'Accept-Language': language ?? 'en',
         },
       ),
       cache: GraphQLCache(),
@@ -105,7 +119,7 @@ class ShopifyConfig {
               '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
               defaultHeaders: {
                 'X-Shopify-Access-Token': _adminAccessToken!,
-                'Accept-Language': language, // Default to English
+                'Accept-Language': language ?? 'en',
               },
             ),
             cache: GraphQLCache(),

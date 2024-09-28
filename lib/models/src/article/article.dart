@@ -8,9 +8,12 @@ part 'article.freezed.dart';
 part 'article.g.dart';
 
 @freezed
+
+/// The article class
 class Article with _$Article {
   const Article._();
 
+  /// The article constructor
   factory Article({
     final AuthorV2? author,
     final List<Comment>? commentList,
@@ -27,9 +30,11 @@ class Article with _$Article {
     final String? onlineStoreUrl,
   }) = _Article;
 
+  /// The article from json
   factory Article.fromJson(Map<String, dynamic> json) =>
       _$ArticleFromJson(json);
 
+  ///  The article from graph json
   factory Article.fromGraphJson(Map<String, dynamic> json) => Article(
         author: AuthorV2.fromJson(
             ((json['node'] ?? const {})['authorV2']) ?? const {}),

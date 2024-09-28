@@ -18,10 +18,18 @@ void main() {
   ShopifyConfig.setConfig(
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
-    adminAccessToken: "shpat_*******************", // Optional | Needed only if needed to call admin api
-    storefrontApiVersion: '2023-07', // optional | default: 2023-07
-    cachePolicy: CachePolicy.cacheAndNetwork, // optional | default: null
-    language: 'en' // Store locale | default : en
+
+    // Optional | Needed only if needed to call admin api
+    adminAccessToken: "shpat_*******************", 
+
+    // optional | default: 2024-07
+    storefrontApiVersion: '2024-07',
+
+    // optional | default: null
+    cachePolicy: CachePolicy.cacheAndNetwork,
+
+     // Store locale | default : en
+    language: 'en',
   );
   
   runApp(MyApp());
@@ -31,9 +39,9 @@ void main() {
 > `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
 If you are not using that function, you may not need to provide it.
 
-> `storefrontApiVersion` default vesion is set to '2023-07'
+> `storefrontApiVersion` default vesion is set to '2024-07'
 
-> `language` defaults to 'en'. It is the default locale/language of the store
+> `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
 
 <hr>
 
@@ -46,10 +54,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
 
   Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
-  Future<ShopifyUser> createUserWithEmailAndPassword({required String firstName, required String lastName, required String email, required String password, String? phone, bool? acceptsMarketing})
+  Future<ShopifyUser> createUserWithEmailAndPassword({required String email, required String password, required String phone, String? firstName, String? lastName, bool? acceptsMarketing,})
   Future<void> signOutCurrentUser()
   Future<void> sendPasswordResetEmail({required String email})
-  Future<ShopifyUser> currentUser()
+  Future<ShopifyUser> currentUser({bool forceRefresh = false})
   Future<void> deleteCustomer({required String userId})
   Future<String?> get currentCustomerAccessToken
   Future<bool> get isAccessTokenExpired
@@ -76,9 +84,11 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<List<Product>?> searchProducts(String query, {int limit = 15, String? startCursor, SearchSortKeys sortKey = SearchSortKeys.RELEVANCE, bool reverse = false, Map<String, dynamic>? filters})
 ```
 
-##### Shopify Checkout
+
+##### ~~Shopify Checkout~~
+###### Depreciated in Shopify API Version 2024-07. Use [ShopifyCart](#shopify-cart) Instead
 ```dart
-  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;
+  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;~~
 
   Future<Checkout> getCheckoutInfoQuery({String checkoutId})
   Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
@@ -97,6 +107,27 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<Checkout> updateCheckoutEmail(String checkoutId, String email)
 ```
 
+##### Shopify Cart
+```dart
+  ShopifyCart shopifyCart = ShopifyCart.instance;
+
+  Future<Cart> getCartById(String cartId)
+  Future<Cart> createCart(CartInput cartInput)
+  Future<Cart> addLineItemsToCart({required String cartId, required List<CartLineInput> cartLineInputs})
+  Future<Cart> removeLineItemsFromCart({required String cartId, required List<String> lineIds })
+  Future<Cart> updateLineItemsInCart({ required String cartId, required List<CartLineInput> cartLineInputs })
+  Future<Cart> updateNoteInCart({ required String cartId, required String note })
+  Future<Cart> updateCartDiscountCodes({ required String cartId, required List<String> discountCodes })
+  Future<Cart> updateBuyerIdentityInCart({ required String cartId, required CartBuyerIdentityInput buyerIdentity })
+```
+
+##### Shopify Order
+```dart
+  ShopifyOrder shopifyOrder = ShopifyOrder.instance;
+
+  Future<List<Order>> getAllOrders({String customerAccessToken})
+```
+
 ##### Shopify Customer
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
@@ -106,7 +137,6 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
   Future<void> customerAddressDelete({String customerAccessToken, String addressId})
   Future<void> customerDefaultAddressUpdate({required String addressId, required String customerAccessToken})
-       
 ```
 
 ##### Shopify Blog
@@ -132,6 +162,10 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
 
   Future<List<Page>> getLocalization()
+
+  // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
+  void setCountryCode(String? countryCode)
+
 ```
 
 ##### Shopify Custom
@@ -169,7 +203,7 @@ For more information about filters visit:
   
   1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   
-  2. https://shopify.dev/docs/api/storefront/2023-07/input-objects/productfilter
+  2. https://shopify.dev/docs/api/storefront/2024-07/input-objects/productfilter
 
 <hr>
 

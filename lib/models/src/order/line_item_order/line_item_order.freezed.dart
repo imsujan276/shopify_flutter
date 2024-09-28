@@ -29,8 +29,12 @@ mixin _$LineItemOrder {
       throw _privateConstructorUsedError;
   ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
 
+  /// Serializes this LineItemOrder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LineItemOrderCopyWith<LineItemOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -108,6 +114,8 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
     ) as $Val);
   }
 
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get discountedTotalPrice {
@@ -116,6 +124,8 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
     });
   }
 
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get originalTotalPrice {
@@ -124,6 +134,8 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
     });
   }
 
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductVariantCheckoutCopyWith<$Res>? get variant {
@@ -170,6 +182,8 @@ class __$$LineItemOrderImplCopyWithImpl<$Res>
       _$LineItemOrderImpl _value, $Res Function(_$LineItemOrderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -279,7 +293,7 @@ class _$LineItemOrderImpl extends _LineItemOrder {
             (identical(other.variant, variant) || other.variant == variant));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -291,7 +305,9 @@ class _$LineItemOrderImpl extends _LineItemOrder {
       const DeepCollectionEquality().hash(_discountAllocations),
       variant);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
@@ -333,8 +349,11 @@ abstract class _LineItemOrder extends LineItemOrder {
   List<DiscountAllocations> get discountAllocations;
   @override
   ProductVariantCheckout? get variant;
+
+  /// Create a copy of LineItemOrder
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

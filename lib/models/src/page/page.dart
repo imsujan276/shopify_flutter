@@ -4,8 +4,12 @@ part 'page.freezed.dart';
 part 'page.g.dart';
 
 @freezed
+
+/// The Page class
 class Page with _$Page {
   const Page._();
+
+  /// The Page constructor
   factory Page({
     required String body,
     required String bodySummary,
@@ -17,6 +21,7 @@ class Page with _$Page {
     required String onlineStoreUrl,
   }) = _Page;
 
+  /// The Page from graph json
   factory Page.fromGraphJson(Map<String, dynamic> json) => Page(
         id: (json['node'] ?? {})['id'],
         handle: (json['node'] ?? {})['handle'],
@@ -28,5 +33,6 @@ class Page with _$Page {
         updatedAt: DateTime.parse(((json['node'] ?? const {})['updatedAt'])),
       );
 
+  /// The Page from json
   factory Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
 }

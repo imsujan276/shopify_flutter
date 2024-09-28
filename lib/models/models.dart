@@ -62,10 +62,11 @@ export 'src/shopify_user/shopify_user.dart';
 export 'src/shopify_user/access_token_with_exp_date.dart';
 export 'src/shopify_user/address/address.dart';
 export 'src/shopify_user/addresses/addresses.dart';
-export 'src/shopify_user/last_incomplete_checkout/last_incomplete_checkout.dart';
 
 export 'src/localization/localization.dart';
 export 'src/localization/country/country.dart';
 export 'src/localization/currency/currency.dart';
 export 'src/localization/language/language.dart';
 export 'src/localization/market/market.dart';
+
+export 'src/cart/cart_model.dart';

@@ -21,11 +21,12 @@ ProductVariantCheckout _$ProductVariantCheckoutFromJson(
 
 /// @nodoc
 mixin _$ProductVariantCheckout {
-  PriceV2 get priceV2 => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   bool get availableForSale => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
+  PriceV2? get priceV2 => throw _privateConstructorUsedError;
+  PriceV2? get price => throw _privateConstructorUsedError;
   String? get sku => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
@@ -36,8 +37,12 @@ mixin _$ProductVariantCheckout {
   List<SelectedOption> get selectedOptions =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ProductVariantCheckout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductVariantCheckoutCopyWith<ProductVariantCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,11 +54,12 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
       _$ProductVariantCheckoutCopyWithImpl<$Res, ProductVariantCheckout>;
   @useResult
   $Res call(
-      {PriceV2 priceV2,
-      String title,
+      {String title,
       bool availableForSale,
       bool requiresShipping,
       String id,
+      PriceV2? priceV2,
+      PriceV2? price,
       String? sku,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
@@ -63,7 +69,8 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
       Product? product,
       List<SelectedOption> selectedOptions});
 
-  $PriceV2CopyWith<$Res> get priceV2;
+  $PriceV2CopyWith<$Res>? get priceV2;
+  $PriceV2CopyWith<$Res>? get price;
   $ShopifyImageCopyWith<$Res>? get image;
   $PriceV2CopyWith<$Res>? get compareAtPrice;
   $ProductCopyWith<$Res>? get product;
@@ -80,14 +87,17 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? priceV2 = null,
     Object? title = null,
     Object? availableForSale = null,
     Object? requiresShipping = null,
     Object? id = null,
+    Object? priceV2 = freezed,
+    Object? price = freezed,
     Object? sku = freezed,
     Object? image = freezed,
     Object? compareAtPrice = freezed,
@@ -98,10 +108,6 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     Object? selectedOptions = null,
   }) {
     return _then(_value.copyWith(
-      priceV2: null == priceV2
-          ? _value.priceV2
-          : priceV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -118,6 +124,14 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      priceV2: freezed == priceV2
+          ? _value.priceV2
+          : priceV2 // ignore: cast_nullable_to_non_nullable
+              as PriceV2?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as PriceV2?,
       sku: freezed == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -153,14 +167,36 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $PriceV2CopyWith<$Res> get priceV2 {
-    return $PriceV2CopyWith<$Res>(_value.priceV2, (value) {
+  $PriceV2CopyWith<$Res>? get priceV2 {
+    if (_value.priceV2 == null) {
+      return null;
+    }
+
+    return $PriceV2CopyWith<$Res>(_value.priceV2!, (value) {
       return _then(_value.copyWith(priceV2: value) as $Val);
     });
   }
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PriceV2CopyWith<$Res>? get price {
+    if (_value.price == null) {
+      return null;
+    }
+
+    return $PriceV2CopyWith<$Res>(_value.price!, (value) {
+      return _then(_value.copyWith(price: value) as $Val);
+    });
+  }
+
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -173,6 +209,8 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get compareAtPrice {
@@ -185,6 +223,8 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res,
     });
   }
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductCopyWith<$Res>? get product {
@@ -208,11 +248,12 @@ abstract class _$$ProductVariantCheckoutImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {PriceV2 priceV2,
-      String title,
+      {String title,
       bool availableForSale,
       bool requiresShipping,
       String id,
+      PriceV2? priceV2,
+      PriceV2? price,
       String? sku,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
@@ -223,7 +264,9 @@ abstract class _$$ProductVariantCheckoutImplCopyWith<$Res>
       List<SelectedOption> selectedOptions});
 
   @override
-  $PriceV2CopyWith<$Res> get priceV2;
+  $PriceV2CopyWith<$Res>? get priceV2;
+  @override
+  $PriceV2CopyWith<$Res>? get price;
   @override
   $ShopifyImageCopyWith<$Res>? get image;
   @override
@@ -242,14 +285,17 @@ class __$$ProductVariantCheckoutImplCopyWithImpl<$Res>
       $Res Function(_$ProductVariantCheckoutImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? priceV2 = null,
     Object? title = null,
     Object? availableForSale = null,
     Object? requiresShipping = null,
     Object? id = null,
+    Object? priceV2 = freezed,
+    Object? price = freezed,
     Object? sku = freezed,
     Object? image = freezed,
     Object? compareAtPrice = freezed,
@@ -260,10 +306,6 @@ class __$$ProductVariantCheckoutImplCopyWithImpl<$Res>
     Object? selectedOptions = null,
   }) {
     return _then(_$ProductVariantCheckoutImpl(
-      priceV2: null == priceV2
-          ? _value.priceV2
-          : priceV2 // ignore: cast_nullable_to_non_nullable
-              as PriceV2,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -280,6 +322,14 @@ class __$$ProductVariantCheckoutImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      priceV2: freezed == priceV2
+          ? _value.priceV2
+          : priceV2 // ignore: cast_nullable_to_non_nullable
+              as PriceV2?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as PriceV2?,
       sku: freezed == sku
           ? _value.sku
           : sku // ignore: cast_nullable_to_non_nullable
@@ -320,11 +370,12 @@ class __$$ProductVariantCheckoutImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
   _$ProductVariantCheckoutImpl(
-      {required this.priceV2,
-      required this.title,
+      {required this.title,
       required this.availableForSale,
       required this.requiresShipping,
       required this.id,
+      this.priceV2,
+      this.price,
       this.sku,
       this.image,
       this.compareAtPrice,
@@ -340,8 +391,6 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
       _$$ProductVariantCheckoutImplFromJson(json);
 
   @override
-  final PriceV2 priceV2;
-  @override
   final String title;
   @override
   final bool availableForSale;
@@ -349,6 +398,10 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
   final bool requiresShipping;
   @override
   final String id;
+  @override
+  final PriceV2? priceV2;
+  @override
+  final PriceV2? price;
   @override
   final String? sku;
   @override
@@ -375,7 +428,7 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
 
   @override
   String toString() {
-    return 'ProductVariantCheckout(priceV2: $priceV2, title: $title, availableForSale: $availableForSale, requiresShipping: $requiresShipping, id: $id, sku: $sku, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit, quantityAvailable: $quantityAvailable, product: $product, selectedOptions: $selectedOptions)';
+    return 'ProductVariantCheckout(title: $title, availableForSale: $availableForSale, requiresShipping: $requiresShipping, id: $id, priceV2: $priceV2, price: $price, sku: $sku, image: $image, compareAtPrice: $compareAtPrice, weight: $weight, weightUnit: $weightUnit, quantityAvailable: $quantityAvailable, product: $product, selectedOptions: $selectedOptions)';
   }
 
   @override
@@ -383,13 +436,14 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductVariantCheckoutImpl &&
-            (identical(other.priceV2, priceV2) || other.priceV2 == priceV2) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.availableForSale, availableForSale) ||
                 other.availableForSale == availableForSale) &&
             (identical(other.requiresShipping, requiresShipping) ||
                 other.requiresShipping == requiresShipping) &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.priceV2, priceV2) || other.priceV2 == priceV2) &&
+            (identical(other.price, price) || other.price == price) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.compareAtPrice, compareAtPrice) ||
@@ -404,15 +458,16 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
                 .equals(other._selectedOptions, _selectedOptions));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      priceV2,
       title,
       availableForSale,
       requiresShipping,
       id,
+      priceV2,
+      price,
       sku,
       image,
       compareAtPrice,
@@ -422,7 +477,9 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
       product,
       const DeepCollectionEquality().hash(_selectedOptions));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantCheckoutImplCopyWith<_$ProductVariantCheckoutImpl>
@@ -439,11 +496,12 @@ class _$ProductVariantCheckoutImpl extends _ProductVariantCheckout {
 
 abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   factory _ProductVariantCheckout(
-          {required final PriceV2 priceV2,
-          required final String title,
+          {required final String title,
           required final bool availableForSale,
           required final bool requiresShipping,
           required final String id,
+          final PriceV2? priceV2,
+          final PriceV2? price,
           final String? sku,
           final ShopifyImage? image,
           final PriceV2? compareAtPrice,
@@ -459,8 +517,6 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
       _$ProductVariantCheckoutImpl.fromJson;
 
   @override
-  PriceV2 get priceV2;
-  @override
   String get title;
   @override
   bool get availableForSale;
@@ -468,6 +524,10 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   bool get requiresShipping;
   @override
   String get id;
+  @override
+  PriceV2? get priceV2;
+  @override
+  PriceV2? get price;
   @override
   String? get sku;
   @override
@@ -484,8 +544,11 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   Product? get product;
   @override
   List<SelectedOption> get selectedOptions;
+
+  /// Create a copy of ProductVariantCheckout
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductVariantCheckoutImplCopyWith<_$ProductVariantCheckoutImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

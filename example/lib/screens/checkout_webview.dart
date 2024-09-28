@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:shopify_flutter/shopify_flutter.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 class WebViewCheckout extends StatefulWidget {
-  const WebViewCheckout({super.key, required this.checkout});
-  final Checkout checkout;
+  const WebViewCheckout({super.key, required this.checkoutUrl});
+  final String checkoutUrl;
   @override
   State<WebViewCheckout> createState() => _WebViewCheckoutState();
 }
@@ -23,6 +22,7 @@ class _WebViewCheckoutState extends State<WebViewCheckout> {
         url.contains('thank-you') ||
         url.contains('thank_you')) {
       Future.delayed(const Duration(seconds: 2), () {
+        if (!mounted) return;
         Navigator.pop(context, true);
       });
     }
@@ -47,7 +47,7 @@ class _WebViewCheckoutState extends State<WebViewCheckout> {
         ),
         body: InAppWebView(
           initialUrlRequest: URLRequest(
-            url: WebUri(widget.checkout.webUrl!),
+            url: WebUri(widget.checkoutUrl),
           ),
           onWebViewCreated: (controller) {
             webViewController = controller;

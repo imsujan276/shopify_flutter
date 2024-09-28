@@ -1,5 +1,19 @@
-enum SortKeyPage { UPDATED_AT, TITLE, ID, RELEVANCE }
+/// Enum: SortKeyPage
+enum SortKeyPage {
+  /// sort by updated at
+  UPDATED_AT,
 
+  /// sort by title
+  TITLE,
+
+  /// sort by id
+  ID,
+
+  /// sort by relevance
+  RELEVANCE,
+}
+
+/// Extension for enum SortKeyPage
 extension ParseToStringPage on SortKeyPage {
   /// Returns the string representation of the enum
   String parseToString() {

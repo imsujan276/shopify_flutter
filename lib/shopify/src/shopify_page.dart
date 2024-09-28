@@ -13,6 +13,8 @@ class ShopifyPage with ShopifyError {
   ShopifyPage._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
+
+  /// Singleton instance of [ShopifyPage]
   static final ShopifyPage instance = ShopifyPage._();
 
   /// Returns a List of [Page].

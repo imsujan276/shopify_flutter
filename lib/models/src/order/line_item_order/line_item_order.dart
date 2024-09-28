@@ -7,9 +7,12 @@ part 'line_item_order.freezed.dart';
 part 'line_item_order.g.dart';
 
 @freezed
+
+/// The line item order
 class LineItemOrder with _$LineItemOrder {
   const LineItemOrder._();
 
+  /// The line item order constructor
   factory LineItemOrder({
     required int currentQuantity,
     required PriceV2 discountedTotalPrice,
@@ -20,11 +23,14 @@ class LineItemOrder with _$LineItemOrder {
     @Default(null) ProductVariantCheckout? variant,
   }) = _LineItemOrder;
 
+  /// The line item order from json
   String? get productId => variant?.product?.id;
 
+  /// The line item order from json
   factory LineItemOrder.fromJson(Map<String, dynamic> json) =>
       _$LineItemOrderFromJson(json);
 
+  /// The line item order from json
   factory LineItemOrder.fromGraphJson(Map<String, dynamic> json) =>
       LineItemOrder(
         currentQuantity: (json['node'] ?? const {})['currentQuantity'],

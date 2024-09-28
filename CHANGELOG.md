@@ -1,3 +1,43 @@
+## 2.2.1
+
+* moved `countryCode` to `ShopifyLocalization` class. This class is responsible to handle the store localization
+  - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
+* Added `discountAllocations` in `Cart` and `CartLine.lines` items
+
+## 2.2.0
+
+* Added a feature to set the desired country code to display the prices
+  - In `ShopifyConfig`, set the decired county code to property `countryCode`. 
+    - If left null, the shopify default price currency will be applied
+    - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
+* Updated example app to reflect the changes.
+
+## 2.1.2
+
+* made phone as required while creating user using `createUserWithEmailAndPassword`
+
+
+## 2.1.1
+
+* ability to get the cached current user or updated user from `ShopifyAuth.currentUser` using a boolean value of **forceRefresh**
+* added `product` in cart line merchandise to access the product properties like title.
+
+## 2.1.0
+
+* Removed depreciated proprty **lastIncompleteCheckout** from **ShopifyUser**
+
+## 2.0.1
+
+* Updated default api version to **2024-01**
+* Added code comments for better pub score
+
+## 2.0.0
+
+##### Major Updates:
+* Depreciated **ShopifyCheckout** from Shopify API version **2024-07**
+* Introduced **ShopifyCart** to perform cart operation
+* Introduced **ShopifyOrder** to access customer orders
+
 ## 1.5.21
 
 * [Add order cancel fields](https://github.com/imsujan276/shopify_flutter/pull/75)

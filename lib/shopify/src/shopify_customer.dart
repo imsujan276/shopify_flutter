@@ -13,6 +13,7 @@ import '../../shopify_config.dart';
 class ShopifyCustomer with ShopifyError {
   ShopifyCustomer._();
 
+  /// Singleton instance of [ShopifyCustomer]
   static final ShopifyCustomer instance = ShopifyCustomer._();
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;

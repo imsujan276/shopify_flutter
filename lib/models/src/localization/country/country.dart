@@ -7,7 +7,10 @@ part 'country.freezed.dart';
 part 'country.g.dart';
 
 @freezed
+
+/// The country
 class Country with _$Country {
+  /// The country constructor
   const factory Country({
     required Market market,
     required List<Language> availableLanguages,
@@ -17,6 +20,7 @@ class Country with _$Country {
     required String unitSystem,
   }) = _Country;
 
+  /// The country from json factory
   factory Country.fromJson(Map<String, dynamic> json) =>
       _$CountryFromJson(json);
 }

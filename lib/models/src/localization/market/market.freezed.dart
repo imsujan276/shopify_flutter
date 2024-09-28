@@ -23,8 +23,12 @@ mixin _$Market {
   String get id => throw _privateConstructorUsedError;
   String get handle => throw _privateConstructorUsedError;
 
+  /// Serializes this Market to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Market
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MarketCopyWith<Market> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -46,6 +50,8 @@ class _$MarketCopyWithImpl<$Res, $Val extends Market>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Market
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,6 +89,8 @@ class __$$MarketImplCopyWithImpl<$Res>
       _$MarketImpl _value, $Res Function(_$MarketImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Market
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -129,11 +137,13 @@ class _$MarketImpl implements _Market {
             (identical(other.handle, handle) || other.handle == handle));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, handle);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Market
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MarketImplCopyWith<_$MarketImpl> get copyWith =>
@@ -157,8 +167,11 @@ abstract class _Market implements Market {
   String get id;
   @override
   String get handle;
+
+  /// Create a copy of Market
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MarketImplCopyWith<_$MarketImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -4,7 +4,10 @@ part 'mailing_address.freezed.dart';
 part 'mailing_address.g.dart';
 
 @freezed
+
+/// The mailing address
 class MailingAddress with _$MailingAddress {
+  /// The mailing address constructor
   factory MailingAddress({
     required String id,
     required String address1,
@@ -25,6 +28,7 @@ class MailingAddress with _$MailingAddress {
     String? provinceCode,
   }) = _MailingAddress;
 
+  /// The mailing address from json
   factory MailingAddress.fromJson(Map<String, dynamic> json) =>
       _$MailingAddressFromJson(json);
 }

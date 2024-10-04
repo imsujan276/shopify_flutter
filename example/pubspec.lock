@@ -263,10 +263,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_inappwebview
-      sha256: "93cfcca02bdda4b26cd700cf70d9ddba09d8348e3e8f2857638c23ed23a4fcb4"
+      sha256: e5caf1649d082e333e22031c84a24d345d2e76e136345481d7ab495c2069d8ec
       url: "https://pub.dev"
     source: hosted
-    version: "6.1.4"
+    version: "6.1.0"
   flutter_inappwebview_android:
     dependency: transitive
     description:
@@ -319,10 +319,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_inappwebview_windows
-      sha256: b9dd0f4e5f70f324d1311766b4ecb5070c7eb95966cd99b30283e0c93534a869
+      sha256: "2c1c13c32835c4a0afa49aabc207cd5cf80967c00bfdfe49259d082182d7c81f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.0"
+    version: "0.1.0"
   flutter_lints:
     dependency: "direct dev"
     description:

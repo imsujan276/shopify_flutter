@@ -26,7 +26,6 @@ class Line with _$Line {
   /// The cart line from json
   factory Line.fromGraphJson(Map<String, dynamic> json) {
     Map<String, dynamic> nodeJson = json['node'] ?? {};
-
     return Line(
       id: nodeJson['id'],
       quantity: nodeJson['quantity'],
@@ -41,7 +40,7 @@ class Line with _$Line {
           : null,
       discountAllocations: (nodeJson['discountAllocations'] != null &&
               nodeJson['discountAllocations'] is List)
-          ? nodeJson['discountAllocations']
+          ? (nodeJson['discountAllocations'] as List)
               .map((e) => CartDiscountAllocation.fromJson(e))
               .toList()
           : null,

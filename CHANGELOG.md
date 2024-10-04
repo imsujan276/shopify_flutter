@@ -1,3 +1,8 @@
+# 2.2.5
+
+* Resolved cartline issue when adding line items
+* Upgraded `flutter_inappwebview` to latest in example app
+
 # 2.2.3
 
 * Added cart line cost in cart line items Graph Query

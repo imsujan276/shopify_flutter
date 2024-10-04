@@ -29,15 +29,16 @@ class _CartTabState extends State<CartTab> {
   }
 
   void init() {
-    // createCart();
-    getCartById(
-        "gid://shopify/Cart/Z2NwLWFzaWEtc291dGhlYXN0MTowMUo2VkZYNk1GWTc0U0NYMDhNRUNSRk5TQw?key=521a54e45a74a00ebbcc36fa425d0f61");
+    createCart();
+    // getCartById(
+    //     "gid://shopify/Cart/Z2NwLWFzaWEtc291dGhlYXN0MTowMUo2VkZYNk1GWTc0U0NYMDhNRUNSRk5TQw?key=521a54e45a74a00ebbcc36fa425d0f61");
 
     getNProducts();
   }
 
   void createCart() async {
     final CartInput cartInput = CartInput(
+      // discountCodes: [],
       buyerIdentity: CartBuyerIdentityInput(
         email: 'test@yopmail.com',
       ),

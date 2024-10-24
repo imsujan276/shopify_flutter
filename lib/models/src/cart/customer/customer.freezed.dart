@@ -27,7 +27,7 @@ mixin _$Customer {
   String get lastName => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   MailingAddress? get defaultAddress => throw _privateConstructorUsedError;
-  int? get numberOfOrders => throw _privateConstructorUsedError;
+  dynamic get numberOfOrders => throw _privateConstructorUsedError;
   bool? get acceptsMarketing => throw _privateConstructorUsedError;
 
   /// Serializes this Customer to a JSON map.
@@ -53,7 +53,7 @@ abstract class $CustomerCopyWith<$Res> {
       String lastName,
       String displayName,
       MailingAddress? defaultAddress,
-      int? numberOfOrders,
+      dynamic numberOfOrders,
       bool? acceptsMarketing});
 
   $MailingAddressCopyWith<$Res>? get defaultAddress;
@@ -116,7 +116,7 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
       numberOfOrders: freezed == numberOfOrders
           ? _value.numberOfOrders
           : numberOfOrders // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       acceptsMarketing: freezed == acceptsMarketing
           ? _value.acceptsMarketing
           : acceptsMarketing // ignore: cast_nullable_to_non_nullable
@@ -155,7 +155,7 @@ abstract class _$$CustomerImplCopyWith<$Res>
       String lastName,
       String displayName,
       MailingAddress? defaultAddress,
-      int? numberOfOrders,
+      dynamic numberOfOrders,
       bool? acceptsMarketing});
 
   @override
@@ -217,7 +217,7 @@ class __$$CustomerImplCopyWithImpl<$Res>
       numberOfOrders: freezed == numberOfOrders
           ? _value.numberOfOrders
           : numberOfOrders // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       acceptsMarketing: freezed == acceptsMarketing
           ? _value.acceptsMarketing
           : acceptsMarketing // ignore: cast_nullable_to_non_nullable
@@ -259,7 +259,7 @@ class _$CustomerImpl extends _Customer {
   @override
   final MailingAddress? defaultAddress;
   @override
-  final int? numberOfOrders;
+  final dynamic numberOfOrders;
   @override
   final bool? acceptsMarketing;
 
@@ -284,16 +284,25 @@ class _$CustomerImpl extends _Customer {
                 other.displayName == displayName) &&
             (identical(other.defaultAddress, defaultAddress) ||
                 other.defaultAddress == defaultAddress) &&
-            (identical(other.numberOfOrders, numberOfOrders) ||
-                other.numberOfOrders == numberOfOrders) &&
+            const DeepCollectionEquality()
+                .equals(other.numberOfOrders, numberOfOrders) &&
             (identical(other.acceptsMarketing, acceptsMarketing) ||
                 other.acceptsMarketing == acceptsMarketing));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, phone, firstName,
-      lastName, displayName, defaultAddress, numberOfOrders, acceptsMarketing);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      phone,
+      firstName,
+      lastName,
+      displayName,
+      defaultAddress,
+      const DeepCollectionEquality().hash(numberOfOrders),
+      acceptsMarketing);
 
   /// Create a copy of Customer
   /// with the given fields replaced by the non-null parameter values.
@@ -320,7 +329,7 @@ abstract class _Customer extends Customer {
       required final String lastName,
       required final String displayName,
       required final MailingAddress? defaultAddress,
-      required final int? numberOfOrders,
+      required final dynamic numberOfOrders,
       required final bool? acceptsMarketing}) = _$CustomerImpl;
   _Customer._() : super._();
 
@@ -342,7 +351,7 @@ abstract class _Customer extends Customer {
   @override
   MailingAddress? get defaultAddress;
   @override
-  int? get numberOfOrders;
+  dynamic get numberOfOrders;
   @override
   bool? get acceptsMarketing;
 

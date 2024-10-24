@@ -18,7 +18,7 @@ _$CustomerImpl _$$CustomerImplFromJson(Map<String, dynamic> json) =>
           ? null
           : MailingAddress.fromJson(
               json['defaultAddress'] as Map<String, dynamic>),
-      numberOfOrders: (json['numberOfOrders'] as num?)?.toInt(),
+      numberOfOrders: json['numberOfOrders'],
       acceptsMarketing: json['acceptsMarketing'] as bool?,
     );
 

@@ -37,10 +37,12 @@ class _CartTabState extends State<CartTab> {
   }
 
   void createCart() async {
+    String? accessToken = await ShopifyAuth.instance.currentCustomerAccessToken;
     final CartInput cartInput = CartInput(
       // discountCodes: [],
       buyerIdentity: CartBuyerIdentityInput(
         email: 'test@yopmail.com',
+        customerAccessToken: accessToken,
       ),
     );
     try {

@@ -19,7 +19,7 @@ class Customer with _$Customer {
     required String lastName,
     required String displayName,
     required MailingAddress? defaultAddress,
-    required int? numberOfOrders,
+    required dynamic numberOfOrders,
     required bool? acceptsMarketing,
   }) = _Customer;
 

@@ -297,7 +297,7 @@ class ShopifyAuth with ShopifyError {
     } else if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];
     } else {
-      return null;
+      return _getShopifyUser(accessToken);
     }
   }
 

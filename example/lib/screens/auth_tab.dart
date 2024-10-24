@@ -41,7 +41,6 @@ class _AuthTabState extends State<AuthTab> {
       } else {
         final user = await shopifyAuth.currentUser();
         setState(() => shopifyUser = user);
-        log('Token Expired. Login Again.');
         log('shopifyUser: $shopifyUser');
       }
     } catch (e) {

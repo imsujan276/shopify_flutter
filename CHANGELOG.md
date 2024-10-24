@@ -1,3 +1,7 @@
+# 2.2.6
+* Cart issue resolved when passed customer access token
+
+
 # 2.2.5
 
 * Resolved cartline issue when adding line items

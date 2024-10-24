@@ -115,9 +115,15 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!;
+    // var newResponse = {
+    //   'edges': List.generate(response['nodes'].length,
+    //       (index) => {'node': response['nodes'][index]})
+    // };
     var newResponse = {
-      'edges': List.generate(response['nodes'].length,
-          (index) => {'node': response['nodes'][index]})
+      'edges': List.generate(response['nodes'].length, (index) {
+        var node = response['nodes'][index];
+        return node != null ? {'node': node} : null;
+      }).where((edge) => edge != null).toList()
     };
     productList = Products.fromGraphJson(newResponse).productList;
     return productList;

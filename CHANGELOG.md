@@ -1,3 +1,7 @@
+# 2.2.7
+* Cart Customer: made properties nullable
+  - phone, email, firstName and lastName
+
 # 2.2.6
 * Cart issue resolved when passed customer access token
 

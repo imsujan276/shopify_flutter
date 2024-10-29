@@ -13,10 +13,10 @@ class Customer with _$Customer {
   /// The cart customer constructor
   factory Customer({
     required String? id,
-    required String email,
-    required String phone,
-    required String firstName,
-    required String lastName,
+    required String? email,
+    required String? phone,
+    required String? firstName,
+    required String? lastName,
     required String displayName,
     required MailingAddress? defaultAddress,
     required dynamic numberOfOrders,

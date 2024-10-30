@@ -85,7 +85,7 @@ class _CartTabState extends State<CartTab> {
   }
 
   void addLineItemToCart(Product product) async {
-    final cartLineInput = CartLineInput(
+    final cartLineInput = CartLineUpdateInput(
       quantity: 1,
       merchandiseId: product.productVariants.first.id,
     );
@@ -230,7 +230,7 @@ class _CartInfoState extends State<CartInfo> {
       }
       quantity = increament ? quantity + 1 : quantity - 1;
 
-      final cartLineInput = CartLineInput(
+      final cartLineInput = CartLineUpdateInput(
         id: "${line.id}",
         quantity: quantity,
         merchandiseId: "${line.variantId}",

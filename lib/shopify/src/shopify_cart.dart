@@ -65,7 +65,7 @@ class ShopifyCart with ShopifyError {
   /// add line item to cart
   Future<Cart> addLineItemsToCart({
     required String cartId,
-    required List<CartLineInput> cartLineInputs,
+    required List<CartLineUpdateInput> cartLineInputs,
   }) async {
     final lineInputs = cartLineInputs.map((e) {
       final json = e.toJson();
@@ -110,7 +110,7 @@ class ShopifyCart with ShopifyError {
   /// update line items in cart
   Future<Cart> updateLineItemsInCart({
     required String cartId,
-    required List<CartLineInput> cartLineInputs,
+    required List<CartLineUpdateInput> cartLineInputs,
   }) async {
     final lineInputs = cartLineInputs.map((e) => e.toJson()).toList();
     final MutationOptions updateLineItem = MutationOptions(

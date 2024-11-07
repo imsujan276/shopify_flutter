@@ -1,3 +1,4 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_create.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_discount_code_update_mutation.dart';
@@ -7,10 +8,10 @@ import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/car
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_note_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_cart_by_id.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/models/src/cart/cart_model.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
+import '../../graphql_operations/storefront/mutations/cart/cart_gift_card_code_update_mutation.dart';
 import '../../shopify_config.dart';
 
 /// ShopifyCart provides various method in order to work with carts.
@@ -167,6 +168,28 @@ class ShopifyCart with ShopifyError {
 
     return Cart.fromJson(
         ((result.data!['cartDiscountCodesUpdate'] ?? const {})['cart'] ??
+            const {}));
+  }
+
+  /// update cart Gift Card codes
+  Future<Cart> updateCartGiftCardCodes({
+    required String cartId,
+    required List<String> giftCardCodes,
+  }) async {
+    final MutationOptions updateGiftCardCodes = MutationOptions(
+      document: gql(updateGiftCardCodesMutation),
+      variables: {
+        'cartId': cartId,
+        'giftCardCodes': giftCardCodes,
+        'country': ShopifyLocalization.countryCode,
+      },
+    );
+    QueryResult result = await _graphQLClient!.mutate(updateGiftCardCodes);
+    checkForError(result,
+        key: 'cartGiftCardCodesUpdate', errorKey: 'userErrors');
+
+    return Cart.fromJson(
+        ((result.data!['cartGiftCardCodesUpdate'] ?? const {})['cart'] ??
             const {}));
   }
 

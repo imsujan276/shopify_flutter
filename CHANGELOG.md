@@ -1,3 +1,6 @@
+# 2.2.8
+* Cart Line Input Model updated
+
 # 2.2.7
 * Cart Customer: made properties nullable
   - phone, email, firstName and lastName

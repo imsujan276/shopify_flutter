@@ -1,3 +1,4 @@
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_create.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_discount_code_update_mutation.dart';
@@ -7,7 +8,6 @@ import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/car
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_note_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_cart_by_id.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/models/src/cart/cart_model.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
@@ -25,7 +25,7 @@ class ShopifyCart with ShopifyError {
   /// Returns a [Cart] object.
   ///
   /// Returns the [Cart] object of the Cart with the [cartId].
-  Future<Cart> getCartById(String cartId) async {
+  Future<Cart?> getCartById(String cartId) async {
     final cartById = WatchQueryOptions(
       document: gql(getCartByIdQuery),
       variables: {
@@ -36,6 +36,10 @@ class ShopifyCart with ShopifyError {
     );
     QueryResult result = await _graphQLClient!.query(cartById);
     checkForError(result);
+
+    if (result.data!['cart'] == null) {
+      return null;
+    }
 
     return Cart.fromJson(result.data!['cart'] ?? const {});
   }

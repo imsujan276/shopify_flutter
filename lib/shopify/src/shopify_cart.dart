@@ -25,12 +25,13 @@ class ShopifyCart with ShopifyError {
   /// Returns a [Cart] object.
   ///
   /// Returns the [Cart] object of the Cart with the [cartId].
-  Future<Cart?> getCartById(String cartId) async {
+  Future<Cart?> getCartById(String cartId, {bool reverse = false}) async {
     final cartById = WatchQueryOptions(
       document: gql(getCartByIdQuery),
       variables: {
         'id': cartId,
         'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -70,6 +71,7 @@ class ShopifyCart with ShopifyError {
   Future<Cart> addLineItemsToCart({
     required String cartId,
     required List<CartLineInput> cartLineInputs,
+    bool reverse = false,
   }) async {
     final lineInputs = cartLineInputs.map((e) {
       final json = e.toJson();
@@ -81,7 +83,8 @@ class ShopifyCart with ShopifyError {
       variables: {
         'cartId': cartId,
         'lines': lineInputs,
-        'country': ShopifyLocalization.countryCode
+        'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
     );
     QueryResult result = await _graphQLClient!.mutate(addLineItem);
@@ -95,13 +98,15 @@ class ShopifyCart with ShopifyError {
   Future<Cart> removeLineItemsFromCart({
     required String cartId,
     required List<String> lineIds,
+    bool reverse = false,
   }) async {
     final MutationOptions removeLineItem = MutationOptions(
       document: gql(removeLineItemFromCartMutation),
       variables: {
         'cartId': cartId,
         'lineIds': lineIds,
-        'country': ShopifyLocalization.countryCode
+        'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
     );
     QueryResult result = await _graphQLClient!.mutate(removeLineItem);
@@ -115,6 +120,7 @@ class ShopifyCart with ShopifyError {
   Future<Cart> updateLineItemsInCart({
     required String cartId,
     required List<CartLineInput> cartLineInputs,
+    bool reverse = false,
   }) async {
     final lineInputs = cartLineInputs.map((e) => e.toJson()).toList();
     final MutationOptions updateLineItem = MutationOptions(
@@ -123,6 +129,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'lines': lineInputs,
         'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateLineItem);
@@ -156,6 +163,7 @@ class ShopifyCart with ShopifyError {
   Future<Cart> updateCartDiscountCodes({
     required String cartId,
     required List<String> discountCodes,
+    bool reverse = false,
   }) async {
     final MutationOptions updateDiscountCodes = MutationOptions(
       document: gql(updateCartDiscountCodesMutation),
@@ -163,6 +171,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'discountCodes': discountCodes,
         'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateDiscountCodes);

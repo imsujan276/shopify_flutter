@@ -1,6 +1,6 @@
 /// query to get cart by id
 const String getCartByIdQuery = r'''
-query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
+query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(country: $country) {
   cart(id: $id) {
     id
     checkoutUrl
@@ -98,7 +98,7 @@ query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
         }
       }
     }
-    lines(first: 250, reverse: true) {
+    lines(first: 250, reverse: $reverse) {
         edges {
           cursor
           node {

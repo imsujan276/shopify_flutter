@@ -21,7 +21,7 @@ jobs:
           flutter-version: '3.24.2'
 
       - name: Disable Flutter telemetry
-        run: flutter --disable-telemetry
+        run: echo "FLUTTER_TELEMETRY_DISABLED=true" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: flutter pub get

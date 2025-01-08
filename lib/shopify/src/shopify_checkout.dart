@@ -248,7 +248,7 @@ class ShopifyCheckout with ShopifyError {
         const {})['payment']['id'];
   }
 
-  /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
+  /// Helper method for transforming a list of variant ids into a List of Map which looks like this:
   ///
   /// [{"quantity":AMOUNT,"variantId":"YOUR_VARIANT_ID"}]
   List<Map<String, dynamic>> transformVariantIdListIntoListOfMaps(

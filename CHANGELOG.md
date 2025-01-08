@@ -1,3 +1,8 @@
+# 2.3.1
+
+* Upgraded SDK version to '>=3.3.0 <4.0.0'
+* Upgraded Intl version
+
 # 2.3.0
 
 * Added Selling Plan Allocations in product variants

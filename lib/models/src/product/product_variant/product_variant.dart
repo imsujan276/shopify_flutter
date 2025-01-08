@@ -1,5 +1,6 @@
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
 import 'package:shopify_flutter/models/src/product/selected_option/selected_option.dart';
+import 'package:shopify_flutter/models/src/product/selling_plan_allocation/selling_plan_allocation.dart';
 import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
 import 'package:shopify_flutter/models/src/product/unit_price_measurement/unit_price_measurement.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,11 +33,16 @@ class ProductVariant with _$ProductVariant {
     PriceV2? compareAtPrice,
     ShopifyImage? image,
     Product? product,
+    @Default([]) List<SellingPlanAllocation> sellingPlanAllocations,
   }) = _ProductVariant;
 
   /// the product variant from graphjson
-  factory ProductVariant.fromGraphJson(Map<String, dynamic> json) {
-    Map<String, dynamic> nodeJson = json['node'] ?? const {};
+  factory ProductVariant.fromGraphJson(
+    Map<String, dynamic> json, {
+    bool forceParse = false,
+  }) {
+    Map<String, dynamic> nodeJson =
+        json['node'] ?? (forceParse ? json : const {});
 
     return ProductVariant(
       price: nodeJson.containsKey('priceV2')
@@ -69,6 +75,7 @@ class ProductVariant with _$ProductVariant {
       product: nodeJson['product'] != null
           ? Product.fromJson(nodeJson['product'])
           : null,
+      sellingPlanAllocations: _getSellingPlanAllocationsList(nodeJson),
     );
   }
 
@@ -82,5 +89,16 @@ class ProductVariant with _$ProductVariant {
       if (v != null) optionList.add(SelectedOption.fromJson(v ?? const {}));
     });
     return optionList;
+  }
+
+  static List<SellingPlanAllocation> _getSellingPlanAllocationsList(
+      Map<String, dynamic> json) {
+    List<SellingPlanAllocation> sellingPlanAllocationsList = [];
+    (json['sellingPlanAllocations']?['nodes'] ?? []).forEach((v) {
+      if (v != null) {
+        sellingPlanAllocationsList.add(SellingPlanAllocation.fromJson(v));
+      }
+    });
+    return sellingPlanAllocationsList;
   }
 }

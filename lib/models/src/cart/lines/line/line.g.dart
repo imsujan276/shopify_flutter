@@ -22,6 +22,10 @@ _$LineImpl _$$LineImplFromJson(Map<String, dynamic> json) => _$LineImpl(
               ? null
               : CartDiscountAllocation.fromJson(e as Map<String, dynamic>))
           .toList(),
+      sellingPlanAllocation: json['sellingPlanAllocation'] == null
+          ? null
+          : SellingPlanAllocation.fromJson(
+              json['sellingPlanAllocation'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LineImplToJson(_$LineImpl instance) =>
@@ -32,4 +36,5 @@ Map<String, dynamic> _$$LineImplToJson(_$LineImpl instance) =>
       'merchandise': instance.merchandise,
       'variantId': instance.variantId,
       'discountAllocations': instance.discountAllocations,
+      'sellingPlanAllocation': instance.sellingPlanAllocation,
     };

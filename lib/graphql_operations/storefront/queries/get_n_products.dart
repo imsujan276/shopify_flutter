@@ -37,6 +37,60 @@ query($country: CountryCode, $n : Int, $sortKey : ProductSortKeys, $reverse: Boo
               sku
               requiresShipping
               quantityAvailable
+              sellingPlanAllocations(first: 250) {
+              nodes {
+                checkoutChargeAmount {
+                  amount
+                  currencyCode
+                }
+                remainingBalanceChargeAmount {
+                  amount
+                  currencyCode
+                }
+                sellingPlan {
+                  id
+                  name
+                  options {
+                    name
+                    value
+                  }
+                  description
+                  checkoutCharge {
+                    type
+                    value {
+                      ... on MoneyV2 {
+                        amount
+                        currencyCode
+                      }
+                      ... on SellingPlanCheckoutChargePercentageValue {
+                        percentage
+                      }
+                    }
+                  }
+                  priceAdjustments {
+                    adjustmentValue {
+                      ... on SellingPlanFixedAmountPriceAdjustment {
+                        adjustmentAmount {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanFixedPriceAdjustment {
+                        price {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanPercentagePriceAdjustment {
+                        adjustmentPercentage
+                      }
+                    }
+                    orderCount
+                  }
+                  recurringDeliveries
+                }
+              }
+            }
               selectedOptions {
                 name
                 value

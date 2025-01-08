@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
@@ -19,11 +21,28 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
     product = widget.product;
   }
 
+  Future<void> fetchProductDetails() async {
+    final shopifyStore = ShopifyStore.instance;
+    final productDetails = await shopifyStore.getProductsByIds([product.id]);
+    for (final Product productDetails in (productDetails ?? [])) {
+      final variants = productDetails.productVariants;
+      for (var variant in variants) {
+        log('Variant SellingPlanAllocation: ${variant.sellingPlanAllocations}');
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(product.title),
+        actions: [
+          IconButton(
+            onPressed: fetchProductDetails,
+            icon: const Icon(Icons.refresh),
+          )
+        ],
       ),
       body: ListView(
         children: <Widget>[

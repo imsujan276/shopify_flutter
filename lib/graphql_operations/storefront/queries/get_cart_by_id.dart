@@ -129,10 +129,57 @@ query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
               }
             }
             sellingPlanAllocation {
-              sellingPlan {
-                id
-              }
-            }
+                    checkoutChargeAmount {
+                      amount
+                      currencyCode
+                    }
+                    remainingBalanceChargeAmount {
+                      amount
+                      currencyCode
+                    }
+                    sellingPlan {
+                      id
+                      name
+                      options {
+                        name
+                        value
+                      }
+                      description
+                      checkoutCharge {
+                        type
+                        value {
+                          ... on MoneyV2 {
+                            amount
+                            currencyCode
+                          }
+                          ... on SellingPlanCheckoutChargePercentageValue {
+                            percentage
+                          }
+                        }
+                      }
+                      priceAdjustments {
+                        adjustmentValue {
+                          ... on SellingPlanFixedAmountPriceAdjustment {
+                            adjustmentAmount {
+                              amount
+                              currencyCode
+                            }
+                          }
+                          ... on SellingPlanFixedPriceAdjustment {
+                            price {
+                              amount
+                              currencyCode
+                            }
+                          }
+                          ... on SellingPlanPercentagePriceAdjustment {
+                            adjustmentPercentage
+                          }
+                        }
+                        orderCount
+                      }
+                      recurringDeliveries
+                    }
+                }
             merchandise {
               ... on ProductVariant {
                 id
@@ -186,6 +233,60 @@ query cart($country: CountryCode, $id: ID!) @inContext(country: $country) {
                         sku
                         requiresShipping
                         quantityAvailable
+                        sellingPlanAllocations(first: 250) {
+                          nodes {
+                            checkoutChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            remainingBalanceChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            sellingPlan {
+                              id
+                              name
+                              options {
+                                name
+                                value
+                              }
+                              description
+                              checkoutCharge {
+                                type
+                                value {
+                                  ... on MoneyV2 {
+                                    amount
+                                    currencyCode
+                                  }
+                                  ... on SellingPlanCheckoutChargePercentageValue {
+                                    percentage
+                                  }
+                                }
+                              }
+                              priceAdjustments {
+                                adjustmentValue {
+                                  ... on SellingPlanFixedAmountPriceAdjustment {
+                                    adjustmentAmount {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanFixedPriceAdjustment {
+                                    price {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanPercentagePriceAdjustment {
+                                    adjustmentPercentage
+                                  }
+                                }
+                                orderCount
+                              }
+                              recurringDeliveries
+                            }
+                          }
+                        }
                         selectedOptions {
                           name
                           value

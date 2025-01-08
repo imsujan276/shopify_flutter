@@ -89,25 +89,25 @@ class _CartTabState extends State<CartTab> {
       quantity: 1,
       merchandiseId: product.productVariants.first.id,
     );
-    try {
-      final updatedCart = await shopifyCart.addLineItemsToCart(
-        cartId: cart!.id,
-        cartLineInputs: [cartLineInput],
-      );
-      setState(() {
-        cart = updatedCart;
-      });
-      log('cart: $cart');
-      if (!mounted) return;
-      context.showSnackBar('Added ${product.title} to cart');
-    } on ShopifyException catch (error) {
-      log('addLineItemToCart ShopifyException: $error');
-      context.showSnackBar(
-        error.errors?[0]["message"] ?? 'Error adding item to cart',
-      );
-    } catch (error) {
-      log('addLineItemToCart Error: $error');
-    }
+    // try {
+    final updatedCart = await shopifyCart.addLineItemsToCart(
+      cartId: cart!.id,
+      cartLineInputs: [cartLineInput],
+    );
+    setState(() {
+      cart = updatedCart;
+    });
+    log('cart: $cart');
+    if (!mounted) return;
+    context.showSnackBar('Added ${product.title} to cart');
+    // } on ShopifyException catch (error) {
+    //   log('addLineItemToCart ShopifyException: $error');
+    //   context.showSnackBar(
+    //     error.errors?[0]["message"] ?? 'Error adding item to cart',
+    //   );
+    // } catch (error) {
+    //   log('addLineItemToCart Error: $error');
+    // }
   }
 
   void onCartItemUpdate() async {
@@ -192,6 +192,11 @@ class _CartInfoState extends State<CartInfo> {
     super.initState();
     cart = widget.cart;
     noteCtrl.text = cart.note ?? '';
+    for (final line in cart.lines) {
+      log('line sellingAllocation: ${line.sellingPlanAllocation}');
+      log('line sellingAllocation2: ${line.merchandise?.sellingPlanAllocations}');
+      log('line sellingAllocation3: ${line.merchandise?.product?.productVariants.first.sellingPlanAllocations}');
+    }
   }
 
   void removeLineItemFromCart(String lineId) async {

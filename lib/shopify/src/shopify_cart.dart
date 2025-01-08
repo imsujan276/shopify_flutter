@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_create.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_discount_code_update_mutation.dart';
@@ -82,6 +84,8 @@ class ShopifyCart with ShopifyError {
     );
     QueryResult result = await _graphQLClient!.mutate(addLineItem);
     checkForError(result, key: 'cartLinesAdd', errorKey: 'userErrors');
+
+    log('added cart :${(result.data!['cartLinesAdd'] ?? const {})['cart']}');
 
     return Cart.fromJson(
         ((result.data!['cartLinesAdd'] ?? const {})['cart'] ?? const {}));

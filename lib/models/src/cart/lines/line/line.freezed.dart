@@ -27,6 +27,8 @@ mixin _$Line {
   String? get variantId => throw _privateConstructorUsedError;
   List<CartDiscountAllocation?>? get discountAllocations =>
       throw _privateConstructorUsedError;
+  SellingPlanAllocation? get sellingPlanAllocation =>
+      throw _privateConstructorUsedError;
 
   /// Serializes this Line to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,10 +50,12 @@ abstract class $LineCopyWith<$Res> {
       CartLineCost? cost,
       ProductVariant? merchandise,
       String? variantId,
-      List<CartDiscountAllocation?>? discountAllocations});
+      List<CartDiscountAllocation?>? discountAllocations,
+      SellingPlanAllocation? sellingPlanAllocation});
 
   $CartLineCostCopyWith<$Res>? get cost;
   $ProductVariantCopyWith<$Res>? get merchandise;
+  $SellingPlanAllocationCopyWith<$Res>? get sellingPlanAllocation;
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$LineCopyWithImpl<$Res, $Val extends Line>
     Object? merchandise = freezed,
     Object? variantId = freezed,
     Object? discountAllocations = freezed,
+    Object? sellingPlanAllocation = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -101,6 +106,10 @@ class _$LineCopyWithImpl<$Res, $Val extends Line>
           ? _value.discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
               as List<CartDiscountAllocation?>?,
+      sellingPlanAllocation: freezed == sellingPlanAllocation
+          ? _value.sellingPlanAllocation
+          : sellingPlanAllocation // ignore: cast_nullable_to_non_nullable
+              as SellingPlanAllocation?,
     ) as $Val);
   }
 
@@ -131,6 +140,21 @@ class _$LineCopyWithImpl<$Res, $Val extends Line>
       return _then(_value.copyWith(merchandise: value) as $Val);
     });
   }
+
+  /// Create a copy of Line
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SellingPlanAllocationCopyWith<$Res>? get sellingPlanAllocation {
+    if (_value.sellingPlanAllocation == null) {
+      return null;
+    }
+
+    return $SellingPlanAllocationCopyWith<$Res>(_value.sellingPlanAllocation!,
+        (value) {
+      return _then(_value.copyWith(sellingPlanAllocation: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -146,12 +170,15 @@ abstract class _$$LineImplCopyWith<$Res> implements $LineCopyWith<$Res> {
       CartLineCost? cost,
       ProductVariant? merchandise,
       String? variantId,
-      List<CartDiscountAllocation?>? discountAllocations});
+      List<CartDiscountAllocation?>? discountAllocations,
+      SellingPlanAllocation? sellingPlanAllocation});
 
   @override
   $CartLineCostCopyWith<$Res>? get cost;
   @override
   $ProductVariantCopyWith<$Res>? get merchandise;
+  @override
+  $SellingPlanAllocationCopyWith<$Res>? get sellingPlanAllocation;
 }
 
 /// @nodoc
@@ -172,6 +199,7 @@ class __$$LineImplCopyWithImpl<$Res>
     Object? merchandise = freezed,
     Object? variantId = freezed,
     Object? discountAllocations = freezed,
+    Object? sellingPlanAllocation = freezed,
   }) {
     return _then(_$LineImpl(
       id: freezed == id
@@ -198,6 +226,10 @@ class __$$LineImplCopyWithImpl<$Res>
           ? _value._discountAllocations
           : discountAllocations // ignore: cast_nullable_to_non_nullable
               as List<CartDiscountAllocation?>?,
+      sellingPlanAllocation: freezed == sellingPlanAllocation
+          ? _value.sellingPlanAllocation
+          : sellingPlanAllocation // ignore: cast_nullable_to_non_nullable
+              as SellingPlanAllocation?,
     ));
   }
 }
@@ -211,7 +243,8 @@ class _$LineImpl extends _Line {
       this.cost,
       this.merchandise,
       this.variantId,
-      final List<CartDiscountAllocation?>? discountAllocations})
+      final List<CartDiscountAllocation?>? discountAllocations,
+      this.sellingPlanAllocation})
       : _discountAllocations = discountAllocations,
         super._();
 
@@ -240,8 +273,11 @@ class _$LineImpl extends _Line {
   }
 
   @override
+  final SellingPlanAllocation? sellingPlanAllocation;
+
+  @override
   String toString() {
-    return 'Line(id: $id, quantity: $quantity, cost: $cost, merchandise: $merchandise, variantId: $variantId, discountAllocations: $discountAllocations)';
+    return 'Line(id: $id, quantity: $quantity, cost: $cost, merchandise: $merchandise, variantId: $variantId, discountAllocations: $discountAllocations, sellingPlanAllocation: $sellingPlanAllocation)';
   }
 
   @override
@@ -258,13 +294,22 @@ class _$LineImpl extends _Line {
             (identical(other.variantId, variantId) ||
                 other.variantId == variantId) &&
             const DeepCollectionEquality()
-                .equals(other._discountAllocations, _discountAllocations));
+                .equals(other._discountAllocations, _discountAllocations) &&
+            (identical(other.sellingPlanAllocation, sellingPlanAllocation) ||
+                other.sellingPlanAllocation == sellingPlanAllocation));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, quantity, cost, merchandise,
-      variantId, const DeepCollectionEquality().hash(_discountAllocations));
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      quantity,
+      cost,
+      merchandise,
+      variantId,
+      const DeepCollectionEquality().hash(_discountAllocations),
+      sellingPlanAllocation);
 
   /// Create a copy of Line
   /// with the given fields replaced by the non-null parameter values.
@@ -289,7 +334,8 @@ abstract class _Line extends Line {
       final CartLineCost? cost,
       final ProductVariant? merchandise,
       final String? variantId,
-      final List<CartDiscountAllocation?>? discountAllocations}) = _$LineImpl;
+      final List<CartDiscountAllocation?>? discountAllocations,
+      final SellingPlanAllocation? sellingPlanAllocation}) = _$LineImpl;
   _Line._() : super._();
 
   factory _Line.fromJson(Map<String, dynamic> json) = _$LineImpl.fromJson;
@@ -306,6 +352,8 @@ abstract class _Line extends Line {
   String? get variantId;
   @override
   List<CartDiscountAllocation?>? get discountAllocations;
+  @override
+  SellingPlanAllocation? get sellingPlanAllocation;
 
   /// Create a copy of Line
   /// with the given fields replaced by the non-null parameter values.

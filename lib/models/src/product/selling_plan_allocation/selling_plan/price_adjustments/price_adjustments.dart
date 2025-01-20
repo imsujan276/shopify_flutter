@@ -1,7 +1,7 @@
 /// Selling plan price adjustments
 class PriceAdjustments {
   /// The percentage of the adjustment value
-  final int adjustmentPercentage;
+  final int? adjustmentPercentage;
 
   /// The order count
   final int? orderCount;

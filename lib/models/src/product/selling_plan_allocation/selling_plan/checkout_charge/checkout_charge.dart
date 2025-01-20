@@ -4,7 +4,7 @@ class CheckoutCharge {
   final String type;
 
   /// checkout charge value
-  final double value;
+  final double? value;
 
   /// checkout charge
   CheckoutCharge({

@@ -1,3 +1,7 @@
+# 2.3.3
+
+* Minor fixes in product selling plan allocations
+
 # 2.3.1
 
 * Upgraded SDK version to '>=3.3.0 <4.0.0'

@@ -52,9 +52,7 @@ class BlogTabState extends State<BlogTab> {
               padding: const EdgeInsets.all(8),
               itemCount: blogs.length,
               itemBuilder: (_, int index) => ListTile(
-                  title: blogs[index].title == null
-                      ? const Text('No Title')
-                      : Text(blogs[index].title!),
+                  title: blogs[index].title == null ? const Text('No Title') : Text(blogs[index].title!),
                   trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () {
                     if (blogs[index].articles != null) {
@@ -89,8 +87,7 @@ class BlogTabState extends State<BlogTab> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          PagePage(handle: pages[index].title),
+                      builder: (context) => PagePage(handle: pages[index].title),
                     ),
                   );
                 },

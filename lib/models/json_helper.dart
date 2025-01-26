@@ -30,9 +30,7 @@ class JsonHelper {
       return [];
     }
 
-    return (json['edges'] as List)
-        .map((e) => LineItem.fromGraphJson(e))
-        .toList();
+    return (json['edges'] as List).map((e) => LineItem.fromGraphJson(e)).toList();
   }
 
   /// returns a amount from a json object

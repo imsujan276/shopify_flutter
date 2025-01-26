@@ -16,6 +16,5 @@ class Attribute with _$Attribute {
   }) = _Attribute;
 
   /// The Attribute from json
-  factory Attribute.fromJson(Map<String, dynamic> json) =>
-      _$AttributeFromJson(json);
+  factory Attribute.fromJson(Map<String, dynamic> json) => _$AttributeFromJson(json);
 }

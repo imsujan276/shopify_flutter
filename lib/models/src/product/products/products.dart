@@ -23,13 +23,9 @@ class Products with _$Products {
       );
 
   static List<Product> _getProductList(Map<String, dynamic> json) {
-    return (json['edges'] as List?)
-            ?.map((e) => Product.fromGraphJson(e ?? const {}))
-            .toList() ??
-        const <Product>[];
+    return (json['edges'] as List?)?.map((e) => Product.fromGraphJson(e ?? const {})).toList() ?? const <Product>[];
   }
 
   /// The products from json factory
-  factory Products.fromJson(Map<String, dynamic> json) =>
-      _$ProductsFromJson(json);
+  factory Products.fromJson(Map<String, dynamic> json) => _$ProductsFromJson(json);
 }

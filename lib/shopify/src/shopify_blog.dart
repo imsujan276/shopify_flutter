@@ -24,9 +24,7 @@ class ShopifyBlog with ShopifyError {
   ///
   /// Returns All [Blog] of the Shop.
   Future<List<Blog>?> getAllBlogs(
-      {SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
-      bool reverseBlogs = false,
-      bool reverseArticles = false}) async {
+      {SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE, bool reverseBlogs = false, bool reverseArticles = false}) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getAllBlogsQuery),
       variables: {
@@ -38,8 +36,7 @@ class ShopifyBlog with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    return (Blogs.fromGraphJson((result.data ?? const {})["blogs"] ?? const {}))
-        .blogList;
+    return (Blogs.fromGraphJson((result.data ?? const {})["blogs"] ?? const {})).blogList;
   }
 
   /// Returns a [Blog].
@@ -47,15 +44,10 @@ class ShopifyBlog with ShopifyError {
   /// Returns the [Blog] that is associated to the [handle].
   /// [sortKeyArticle] is meant for the List of [Article] in the [Blog].
   Future<Blog> getBlogByHandle(String handle,
-      {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
-      bool reverse = false}) async {
+      {SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE, bool reverse = false}) async {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getBlogByHandleQuery),
-      variables: {
-        'handle': handle,
-        'sortKey': sortKeyArticle.parseToString(),
-        'reverseArticles': reverse
-      },
+      variables: {'handle': handle, 'sortKey': sortKeyArticle.parseToString(), 'reverseArticles': reverse},
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
     final QueryResult result = await _graphQLClient!.query(_options);
@@ -83,8 +75,6 @@ class ShopifyBlog with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
 
-    return (Articles.fromJson(
-            (result.data ?? const {})['articles'] ?? const {}))
-        .articleList;
+    return (Articles.fromJson((result.data ?? const {})['articles'] ?? const {})).articleList;
   }
 }

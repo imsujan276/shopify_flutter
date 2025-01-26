@@ -1,6 +1,6 @@
 /// Query to get x collections and n products sorted
 const String getXCollectionsAndNProductsSortedQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int, $country: CountryCode)  @inContext(country: $country){
+query($productMetafields: [HasMetafieldsIdentifier!]!, $collectonMetafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int, $country: CountryCode)  @inContext(country: $country){
   collections(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
@@ -19,9 +19,43 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
           id
           originalSrc
         }
+        metafields(identifiers: $collectionMetafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         products(first: $n, sortKey: $sortKeyProduct) {
           edges {
             node {
+              metafields(identifiers: $productMetafields) {
+                id
+                type
+                key
+                namespace
+                value
+                description
+                reference {
+                  ... on MediaImage {
+                    image {
+                      originalSrc
+                      url
+                      id
+                    }
+                  }
+                }
+              }
               variants(first: 250) {
                 edges {
                   node {

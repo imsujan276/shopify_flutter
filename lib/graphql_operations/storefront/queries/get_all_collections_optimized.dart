@@ -1,6 +1,6 @@
 /// Query to get all collections
 const String getAllCollectionsOptimizedQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
   collections(first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
@@ -18,6 +18,23 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
           altText
           id
           originalSrc
+        }
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
         }
       }
     }

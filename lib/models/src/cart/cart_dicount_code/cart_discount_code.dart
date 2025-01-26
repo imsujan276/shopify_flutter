@@ -16,6 +16,5 @@ class CartDiscountCode with _$CartDiscountCode {
   }) = _CartDiscountCode;
 
   /// The CartDiscountCode from json
-  factory CartDiscountCode.fromJson(Map<String, dynamic> json) =>
-      _$CartDiscountCodeFromJson(json);
+  factory CartDiscountCode.fromJson(Map<String, dynamic> json) => _$CartDiscountCodeFromJson(json);
 }

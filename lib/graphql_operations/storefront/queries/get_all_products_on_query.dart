@@ -1,6 +1,6 @@
 /// Query to get all products on query
 const String getAllProductsOnQueryQuery = r'''
-query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
   products(query: $query, first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
@@ -8,7 +8,24 @@ query( $cursor: String, $sortKey : ProductSortKeys, $query: String, $reverse: Bo
             id
             name
             values
-            } 
+            }
+          metafields(identifiers: $metafields) {
+            id
+            type
+            key
+            namespace
+            value
+            description
+            reference {
+              ... on MediaImage {
+                image {
+                  originalSrc
+                  url
+                  id
+                }
+              }
+            }
+          }
         id
         handle
         availableForSale

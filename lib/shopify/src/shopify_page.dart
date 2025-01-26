@@ -36,8 +36,7 @@ class ShopifyPage with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    return (Pages.fromGraphJson((result.data ?? const {})["pages"] ?? const {}))
-        .pageList;
+    return (Pages.fromGraphJson((result.data ?? const {})["pages"] ?? const {})).pageList;
   }
 
   /// Returns a [Page].

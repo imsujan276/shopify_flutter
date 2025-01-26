@@ -421,8 +421,7 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
 
   String randomString(int n) {
     var text = "";
-    var possible =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for (var i = 0; i < n; i++) {
       text += possible[Random().nextInt(possible.length)];
     }
@@ -519,15 +518,13 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
                     initiallyExpanded: true,
                     title: const Text('Delivery Address Preferences'),
                     children: [
-                      if (buyerIndetity?.deliveryAddressPreferences?.isEmpty ??
-                          true)
+                      if (buyerIndetity?.deliveryAddressPreferences?.isEmpty ?? true)
                         const ListTile(
                           title: Text('No delivery address preferences'),
                         ),
                       ...(buyerIndetity?.deliveryAddressPreferences ?? []).map(
                         (mailingAddress) => ListTile(
-                          title: Text(
-                              '${mailingAddress?.firstName} ${mailingAddress?.lastName}'),
+                          title: Text('${mailingAddress?.firstName} ${mailingAddress?.lastName}'),
                           subtitle: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,

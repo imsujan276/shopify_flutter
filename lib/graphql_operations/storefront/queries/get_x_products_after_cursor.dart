@@ -1,6 +1,6 @@
 /// Query to get x products after cursor
 const String getXProductsAfterCursorQuery = r'''
-query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, $country: CountryCode)  @inContext(country: $country){
   products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
@@ -12,7 +12,24 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, 
             id
             name
             values
-            } 
+            }
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         variants(first: 250) {
           edges {
             node {

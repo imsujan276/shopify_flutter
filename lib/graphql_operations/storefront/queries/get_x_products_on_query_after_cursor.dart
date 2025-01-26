@@ -1,14 +1,31 @@
 /// Query to get x products on query after cursor
 const String getXProductsOnQueryAfterCursorQuery = r'''
-query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
   products(query: $query, first: $limit, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     edges {
       node {
-      options(first: 50) {
-            id
-            name
-            values
-            } 
+        options(first: 50) {
+          id
+          name
+          values
+        }
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         id
         handle
         availableForSale

@@ -33,22 +33,20 @@ class ShopifyCustomer with ShopifyError {
     required String customerAccessToken,
     required String id,
   }) async {
-    final MutationOptions _options = MutationOptions(
-        document: gql(customerAddressUpdateMutation),
-        variables: {
-          'address1': address1,
-          'address2': address2,
-          'company': company,
-          'city': city,
-          'country': country,
-          'firstName': firstName,
-          'lastName': lastName,
-          'phone': phone,
-          'province': province,
-          'zip': zip,
-          'customerAccessToken': customerAccessToken,
-          'id': id
-        });
+    final MutationOptions _options = MutationOptions(document: gql(customerAddressUpdateMutation), variables: {
+      'address1': address1,
+      'address2': address2,
+      'company': company,
+      'city': city,
+      'country': country,
+      'firstName': firstName,
+      'lastName': lastName,
+      'phone': phone,
+      'province': province,
+      'zip': zip,
+      'customerAccessToken': customerAccessToken,
+      'id': id
+    });
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -84,9 +82,8 @@ class ShopifyCustomer with ShopifyError {
 
     dataMap.forEach((k, v) => v != {} ? variableMap[k] = v : {});
 
-    final MutationOptions _options = MutationOptions(
-        document: gql(createValidMutationString(variableMap)),
-        variables: variableMap);
+    final MutationOptions _options =
+        MutationOptions(document: gql(createValidMutationString(variableMap)), variables: variableMap);
     QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -109,29 +106,26 @@ class ShopifyCustomer with ShopifyError {
     String? zip,
     String? customerAccessToken,
   }) async {
-    final MutationOptions _options = MutationOptions(
-        document: gql(customerAddressCreateMutation),
-        variables: {
-          'address1': address1,
-          'address2': address2,
-          'company': company,
-          'city': city,
-          'country': country,
-          'firstName': firstName,
-          'lastName': lastName,
-          'phone': phone,
-          'province': province,
-          'zip': zip,
-          'customerAccessToken': customerAccessToken,
-        });
+    final MutationOptions _options = MutationOptions(document: gql(customerAddressCreateMutation), variables: {
+      'address1': address1,
+      'address2': address2,
+      'company': company,
+      'city': city,
+      'country': country,
+      'firstName': firstName,
+      'lastName': lastName,
+      'phone': phone,
+      'province': province,
+      'zip': zip,
+      'customerAccessToken': customerAccessToken,
+    });
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
       key: 'customerAddressCreate',
       errorKey: 'customerUserErrors',
     );
-    return Address.fromJson(
-        (result.data!['customerAddressCreate']['customerAddress'] ?? {}));
+    return Address.fromJson((result.data!['customerAddressCreate']['customerAddress'] ?? {}));
   }
 
   /// Deletes the address associated with the [addressId] from the customer to which [customerAccessToken] belongs to.
@@ -143,10 +137,7 @@ class ShopifyCustomer with ShopifyError {
   }) async {
     final MutationOptions _options = MutationOptions(
         document: gql(customerAddressDeleteMutation),
-        variables: {
-          'customerAccessToken': customerAccessToken,
-          'id': addressId
-        });
+        variables: {'customerAccessToken': customerAccessToken, 'id': addressId});
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -162,10 +153,7 @@ class ShopifyCustomer with ShopifyError {
   }) async {
     final MutationOptions _options = MutationOptions(
         document: gql(customerDefaultAddressUpdateMutation),
-        variables: {
-          'customerAccessToken': customerAccessToken,
-          'addressId': addressId
-        });
+        variables: {'customerAccessToken': customerAccessToken, 'addressId': addressId});
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,

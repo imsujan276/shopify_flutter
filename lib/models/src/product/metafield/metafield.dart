@@ -16,20 +16,21 @@ class Metafield with _$Metafield {
     required String key,
     required String value,
     required String type,
-    @Default('') String description,
+    String? description,
+    Map<String, dynamic>? reference,
   }) = _Metafield;
 
   /// The Metafield from graphjson
   factory Metafield.fromGraphJson(Map<String, dynamic> json) => Metafield(
-        id: (json['node'] ?? const {})['id'],
-        key: (json['node'] ?? const {})['key'],
-        namespace: (json['node'] ?? const {})['namespace'],
-        type: (json['node'] ?? const {})['type'],
-        value: (json['node'] ?? const {})['value'],
-        description: (json['node'] ?? const {})['description'],
+        id: (json.containsKey('id') == true) ? json['id'] : '',
+        key: (json.containsKey('key') == true) ? json['key'] : '',
+        namespace: (json.containsKey('namespace') == true) ? json['namespace'] : '',
+        type: (json.containsKey('type') == true) ? json['type'] : '',
+        value: (json.containsKey('value') == true) ? json['value'] : '',
+        description: (json.containsKey('description') == true) ? json['description'] : null,
+        reference: (json.containsKey('reference') == true) ? json['reference'] : null,
       );
 
   /// The Metafield from json
-  factory Metafield.fromJson(Map<String, dynamic> json) =>
-      _$MetafieldFromJson(json);
+  factory Metafield.fromJson(Map<String, dynamic> json) => _$MetafieldFromJson(json);
 }

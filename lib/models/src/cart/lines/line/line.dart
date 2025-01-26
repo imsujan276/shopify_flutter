@@ -37,16 +37,11 @@ class Line with _$Line {
     return Line(
       id: nodeJson['id'],
       quantity: nodeJson['quantity'],
-      cost: nodeJson['cost'] != null
-          ? CartLineCost.fromJson(nodeJson['cost'])
-          : null,
+      cost: nodeJson['cost'] != null ? CartLineCost.fromJson(nodeJson['cost']) : null,
       merchandise: merchandise,
       variantId: merchandise?.id,
-      discountAllocations: (nodeJson['discountAllocations'] != null &&
-              nodeJson['discountAllocations'] is List)
-          ? (nodeJson['discountAllocations'] as List)
-              .map((e) => CartDiscountAllocation.fromJson(e))
-              .toList()
+      discountAllocations: (nodeJson['discountAllocations'] != null && nodeJson['discountAllocations'] is List)
+          ? (nodeJson['discountAllocations'] as List).map((e) => CartDiscountAllocation.fromJson(e)).toList()
           : null,
       sellingPlanAllocation: nodeJson['sellingPlanAllocation'] != null
           ? SellingPlanAllocation.fromJson(nodeJson['sellingPlanAllocation'])

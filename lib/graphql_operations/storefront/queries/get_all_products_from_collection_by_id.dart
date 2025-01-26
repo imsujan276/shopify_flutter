@@ -1,6 +1,6 @@
 /// get all related products from collection by id
 const String getAllProductsFromCollectionByIdQuery = r'''
-query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys, $country: CountryCode)  @inContext(country: $country){
   node(id: $id) {
     ... on Collection {
       id
@@ -22,7 +22,24 @@ query($id : ID!, $cursor : String, $sortKey: ProductCollectionSortKeys, $country
             id
             name
             values
-            } 
+          }
+          metafields(identifiers: $metafields) {
+            id
+            type
+            key
+            namespace
+            value
+            description
+            reference {
+              ... on MediaImage {
+                image {
+                  originalSrc
+                  url
+                  id
+                }
+              }
+            }
+          }
             availableForSale
             collections(first: 250) {
               edges {

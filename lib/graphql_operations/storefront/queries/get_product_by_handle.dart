@@ -1,11 +1,28 @@
 /// Query to get product by handle
 const String getProductByHandleQuery = r'''
-query getProductByHandle($country: CountryCode, $handle: String!) @inContext(country: $country) {
+query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $handle: String!) @inContext(country: $country) {
   productByHandle(handle: $handle) {
     options(first: 50) {
       id
       name
       values
+    }
+    metafields(identifiers: $metafields) {
+      id
+      type
+      key
+      namespace
+      value
+      description
+      reference {
+        ... on MediaImage {
+          image {
+            originalSrc
+            url
+            id
+          }
+        }
+      }
     }
     id
     handle

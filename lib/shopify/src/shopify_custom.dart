@@ -27,9 +27,8 @@ class ShopifyCustom with ShopifyError {
       variables: variables,
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
-    final QueryResult result = adminAccess
-        ? await _graphQLClientAdmin!.query(_options)
-        : await _graphQLClient!.query(_options);
+    final QueryResult result =
+        adminAccess ? await _graphQLClientAdmin!.query(_options) : await _graphQLClient!.query(_options);
     checkForError(result);
     return result.data;
   }
@@ -48,9 +47,8 @@ class ShopifyCustom with ShopifyError {
       document: gql(gqlMutation),
       variables: variables,
     );
-    final QueryResult result = adminAccess
-        ? await _graphQLClientAdmin!.mutate(_options)
-        : await _graphQLClient!.mutate(_options);
+    final QueryResult result =
+        adminAccess ? await _graphQLClientAdmin!.mutate(_options) : await _graphQLClient!.mutate(_options);
     checkForError(result);
     return result.data;
   }

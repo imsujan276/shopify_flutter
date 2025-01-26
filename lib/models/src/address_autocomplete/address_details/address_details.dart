@@ -24,6 +24,5 @@ class AddressDetails with _$AddressDetails {
   }) = _AddressDetails;
 
   /// A factory constructor for address details
-  factory AddressDetails.fromJson(Map<String, dynamic> json) =>
-      _$AddressDetailsFromJson(json);
+  factory AddressDetails.fromJson(Map<String, dynamic> json) => _$AddressDetailsFromJson(json);
 }

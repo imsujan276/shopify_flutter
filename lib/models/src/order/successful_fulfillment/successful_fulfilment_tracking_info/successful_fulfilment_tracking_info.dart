@@ -6,8 +6,7 @@ part 'successful_fulfilment_tracking_info.g.dart';
 @freezed
 
 ///
-class SuccessfulFullfilmentTrackingInfo
-    with _$SuccessfulFullfilmentTrackingInfo {
+class SuccessfulFullfilmentTrackingInfo with _$SuccessfulFullfilmentTrackingInfo {
   const SuccessfulFullfilmentTrackingInfo._();
 
   /// the successful fullfilment tracking info
@@ -26,7 +25,6 @@ class SuccessfulFullfilmentTrackingInfo
       );
 
   /// the successful fullfilment tracking info from json
-  factory SuccessfulFullfilmentTrackingInfo.fromJson(
-          Map<String, dynamic> json) =>
+  factory SuccessfulFullfilmentTrackingInfo.fromJson(Map<String, dynamic> json) =>
       _$SuccessfulFullfilmentTrackingInfoFromJson(json);
 }

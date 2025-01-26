@@ -21,6 +21,5 @@ class Country with _$Country {
   }) = _Country;
 
   /// The country from json factory
-  factory Country.fromJson(Map<String, dynamic> json) =>
-      _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
 }

@@ -20,6 +20,7 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'options': instance.options,
       'vendor': instance.vendor,
       'media': instance.media,
+      'metafields': instance.metafields,
       'collectionList': instance.collectionList,
       'cursor': instance.cursor,
       'onlineStoreUrl': instance.onlineStoreUrl,

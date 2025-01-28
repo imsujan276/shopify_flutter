@@ -1,3 +1,7 @@
+# 2.4.0
+
+* [Added metafield support](https://github.com/imsujan276/shopify_flutter/pull/112) to products and collections 
+
 # 2.3.3
 
 * Minor fixes in product selling plan allocations

@@ -68,7 +68,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
 
-  Future<List<Product>> getProductsByIds()
+  Future<List<Product>> getProductsByIds(List<String> productIds)
   Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
   Future<List<Product>> getAllProducts()
   Future<List<Product>> getNProducts({required int n, required SortKey sortKey})
@@ -84,27 +84,18 @@ The goal is to make creating an mobile app from your Shopify website easier.
   Future<List<Product>?> searchProducts(String query, {int limit = 15, String? startCursor, SearchSortKeys sortKey = SearchSortKeys.RELEVANCE, bool reverse = false, Map<String, dynamic>? filters})
 ```
 
-
-##### ~~Shopify Checkout~~
-###### Depreciated in Shopify API Version 2024-07. Use [ShopifyCart](#shopify-cart) Instead
+Example to get metafields in product
 ```dart
-  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;~~
-
-  Future<Checkout> getCheckoutInfoQuery({String checkoutId})
-  Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
-  Future<List<Order>> getAllOrders({String customerAccessToken})
-  Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems})
-  Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) 
-  Future<void> checkoutCustomerDisassociate({String checkoutId})
-  Future<void> checkoutDiscountCodeApply({String checkoutId, String discountCode})
-  Future<void> checkoutDiscountCodeRemove({String checkoutId})
-  Future<Checkout> createCheckout()
-  Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes)
-  Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId)
-  Future<void> shippingLineUpdate(String checkoutId, String shippingRateHandle)
-  Future<void> checkoutCompleteFree(String checkoutId)
-  Future<void> updateAttributes(String checkoutId, {bool allowPartialAddresses, Map<String, String> customAttributes, String note})
-  Future<Checkout> updateCheckoutEmail(String checkoutId, String email)
+      final products = await shopifyStore.getProductsByIds(
+        [id],
+        metafields: [
+          MetafieldIdentifier(key: 'content-about-the-brand', namespace: 'pim'),
+          MetafieldIdentifier(key: 'pdp_content_image_1_mobile', namespace: 'custom'),
+          MetafieldIdentifier(key: 'pdp_content_image_2_mobile', namespace: 'custom'),
+          MetafieldIdentifier(key: 'pdp_content_image_3_mobile', namespace: 'custom'),
+          //...
+        ],
+      );
 ```
 
 ##### Shopify Cart

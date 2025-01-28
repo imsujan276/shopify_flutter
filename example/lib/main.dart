@@ -77,13 +77,16 @@ class MyHomePageState extends State<MyHomePage> {
         unselectedItemColor: Colors.black,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.category), label: 'Collections'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category), label: 'Collections'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(icon: Icon(Icons.shopify), label: 'Shop'),
-          BottomNavigationBarItem(icon: Icon(Icons.book_online_outlined), label: 'Blog'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.book_online_outlined), label: 'Blog'),
           // BottomNavigationBarItem(
           //     icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
-          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Orders'),
           BottomNavigationBarItem(icon: Icon(Icons.login), label: 'Login'),
         ],

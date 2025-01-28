@@ -16,5 +16,6 @@ class CartDiscountAllocation with _$CartDiscountAllocation {
   }) = _CartDiscountAllocation;
 
   /// The cart discount allocation from json
-  factory CartDiscountAllocation.fromJson(Map<String, dynamic> json) => _$CartDiscountAllocationFromJson(json);
+  factory CartDiscountAllocation.fromJson(Map<String, dynamic> json) =>
+      _$CartDiscountAllocationFromJson(json);
 }

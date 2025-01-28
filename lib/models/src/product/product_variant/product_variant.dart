@@ -41,14 +41,19 @@ class ProductVariant with _$ProductVariant {
     Map<String, dynamic> json, {
     bool forceParse = false,
   }) {
-    Map<String, dynamic> nodeJson = json['node'] ?? (forceParse ? json : const {});
+    Map<String, dynamic> nodeJson =
+        json['node'] ?? (forceParse ? json : const {});
 
     return ProductVariant(
-      price:
-          nodeJson.containsKey('priceV2') ? PriceV2.fromJson(nodeJson['priceV2']) : PriceV2.fromJson(nodeJson['price']),
+      price: nodeJson.containsKey('priceV2')
+          ? PriceV2.fromJson(nodeJson['priceV2'])
+          : PriceV2.fromJson(nodeJson['price']),
       title: nodeJson['title'],
-      image: nodeJson['image'] != null ? ShopifyImage.fromJson(nodeJson['image']) : null,
-      compareAtPrice: nodeJson['compareAtPrice'] != null || nodeJson['compareAtPriceV2'] != null
+      image: nodeJson['image'] != null
+          ? ShopifyImage.fromJson(nodeJson['image'])
+          : null,
+      compareAtPrice: nodeJson['compareAtPrice'] != null ||
+              nodeJson['compareAtPriceV2'] != null
           ? nodeJson.containsKey('compareAtPrice')
               ? PriceV2.fromJson(nodeJson['compareAtPrice'])
               : PriceV2.fromJson(nodeJson['compareAtPriceV2'])
@@ -60,18 +65,23 @@ class ProductVariant with _$ProductVariant {
       id: nodeJson['id'],
       quantityAvailable: nodeJson['quantityAvailable'],
       sku: nodeJson['sku'],
-      unitPrice: nodeJson['unitPrice'] != null ? PriceV2.fromJson(nodeJson['unitPrice']) : null,
+      unitPrice: nodeJson['unitPrice'] != null
+          ? PriceV2.fromJson(nodeJson['unitPrice'])
+          : null,
       unitPriceMeasurement: nodeJson['unitPriceMeasurement'] != null
           ? UnitPriceMeasurement.fromJson(nodeJson['unitPriceMeasurement'])
           : null,
       selectedOptions: _getOptionList((nodeJson)),
-      product: nodeJson['product'] != null ? Product.fromJson(nodeJson['product']) : null,
+      product: nodeJson['product'] != null
+          ? Product.fromJson(nodeJson['product'])
+          : null,
       sellingPlanAllocations: _getSellingPlanAllocationsList(nodeJson),
     );
   }
 
   /// the product variant from json
-  factory ProductVariant.fromJson(Map<String, dynamic> json) => _$ProductVariantFromJson(json);
+  factory ProductVariant.fromJson(Map<String, dynamic> json) =>
+      _$ProductVariantFromJson(json);
 
   static List<SelectedOption> _getOptionList(Map<String, dynamic> json) {
     List<SelectedOption> optionList = [];
@@ -81,7 +91,8 @@ class ProductVariant with _$ProductVariant {
     return optionList;
   }
 
-  static List<SellingPlanAllocation> _getSellingPlanAllocationsList(Map<String, dynamic> json) {
+  static List<SellingPlanAllocation> _getSellingPlanAllocationsList(
+      Map<String, dynamic> json) {
     List<SellingPlanAllocation> sellingPlanAllocationsList = [];
     (json['sellingPlanAllocations']?['nodes'] ?? []).forEach((v) {
       if (v != null) {

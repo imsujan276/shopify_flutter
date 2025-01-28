@@ -21,5 +21,6 @@ class Localization with _$Localization {
   }) = _Localization;
 
   /// The localization object from json
-  factory Localization.fromJson(Map<String, dynamic> json) => _$LocalizationFromJson(json);
+  factory Localization.fromJson(Map<String, dynamic> json) =>
+      _$LocalizationFromJson(json);
 }

@@ -24,5 +24,6 @@ class MailingAddressInput with _$MailingAddressInput {
   }) = _MailingAddressInput;
 
   /// The mailing address input from json factory
-  factory MailingAddressInput.fromJson(Map<String, dynamic> json) => _$MailingAddressInputFromJson(json);
+  factory MailingAddressInput.fromJson(Map<String, dynamic> json) =>
+      _$MailingAddressInputFromJson(json);
 }

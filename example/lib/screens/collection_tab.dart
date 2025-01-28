@@ -28,7 +28,8 @@ class CollectionTabState extends State<CollectionTab> {
             : ListView.builder(
                 itemCount: collections.length,
                 itemBuilder: (_, int index) => ListTile(
-                  onTap: () => _navigateToCollectionDetailScreen(collections[index].id, collections[index].title),
+                  onTap: () => _navigateToCollectionDetailScreen(
+                      collections[index].id, collections[index].title),
                   title: Text(collections[index].title),
                 ),
               ),
@@ -51,18 +52,21 @@ class CollectionTabState extends State<CollectionTab> {
     }
   }
 
-  void _navigateToCollectionDetailScreen(String collectionId, String collectionTitle) {
+  void _navigateToCollectionDetailScreen(
+      String collectionId, String collectionTitle) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CollectionDetailScreen(collectionId: collectionId),
+        builder: (context) =>
+            CollectionDetailScreen(collectionId: collectionId),
       ),
     );
   }
 }
 
 class CollectionDetailScreen extends StatefulWidget {
-  const CollectionDetailScreen({Key? key, required this.collectionId}) : super(key: key);
+  const CollectionDetailScreen({Key? key, required this.collectionId})
+      : super(key: key);
   final String collectionId;
 
   @override
@@ -104,7 +108,8 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
   Future<void> _fetchProductsByCollectionId() async {
     try {
       final shopifyStore = ShopifyStore.instance;
-      final products = await shopifyStore.getXProductsAfterCursorWithinCollection(
+      final products =
+          await shopifyStore.getXProductsAfterCursorWithinCollection(
         widget.collectionId,
         4,
         startCursor: null,
@@ -127,7 +132,8 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
   Future<void> _fetchCollectionDetail() async {
     try {
       final shopifyStore = ShopifyStore.instance;
-      final collectionInfo = await shopifyStore.getCollectionById(widget.collectionId);
+      final collectionInfo =
+          await shopifyStore.getCollectionById(widget.collectionId);
       setState(() {
         collection = collectionInfo;
       });

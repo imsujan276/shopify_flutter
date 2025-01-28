@@ -42,7 +42,8 @@ class HomeTabState extends State<HomeTab> {
                   crossAxisSpacing: 8,
                 ),
                 itemCount: products.length,
-                itemBuilder: (_, int index) => _buildProductThumbnail(products[index]),
+                itemBuilder: (_, int index) =>
+                    _buildProductThumbnail(products[index]),
               ),
       ),
     );

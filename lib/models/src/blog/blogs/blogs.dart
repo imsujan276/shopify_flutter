@@ -16,11 +16,13 @@ class Blogs with _$Blogs {
   factory Blogs.fromJson(Map<String, dynamic> json) => _$BlogsFromJson(json);
 
   /// The Blogs from graph json
-  factory Blogs.fromGraphJson(Map<String, dynamic> json) => Blogs(blogList: _getBlogList(json));
+  factory Blogs.fromGraphJson(Map<String, dynamic> json) =>
+      Blogs(blogList: _getBlogList(json));
 
   static List<Blog> _getBlogList(Map<String, dynamic> json) {
     List<Blog> blogList = [];
-    json['edges']?.forEach((blog) => blogList.add(Blog.fromGraphJson(blog ?? const {})));
+    json['edges']
+        ?.forEach((blog) => blogList.add(Blog.fromGraphJson(blog ?? const {})));
     return blogList;
   }
 }

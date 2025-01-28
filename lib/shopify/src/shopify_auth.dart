@@ -44,7 +44,8 @@ class ShopifyAuth with ShopifyError {
         accessTokenWithExpDate = AccessTokenWithExpDate.fromJson(
           _prefs.getString(ShopifyConfig.storeUrl!)!,
         );
-        _currentCustomerAccessToken[ShopifyConfig.storeUrl] = accessTokenWithExpDate.toJson();
+        _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+            accessTokenWithExpDate.toJson();
       }
     }
     return accessTokenWithExpDate;
@@ -133,8 +134,10 @@ class ShopifyAuth with ShopifyError {
       key: 'customerCreate',
       errorKey: 'customerUserErrors',
     );
-    final shopifyUser = ShopifyUser.fromGraphJson((result.data!['customerCreate'] ?? const {})['customer']);
-    final AccessTokenWithExpDate accessTokenWithExpDate = await _createAccessToken(
+    final shopifyUser = ShopifyUser.fromGraphJson(
+        (result.data!['customerCreate'] ?? const {})['customer']);
+    final AccessTokenWithExpDate accessTokenWithExpDate =
+        await _createAccessToken(
       email,
       password,
     );
@@ -151,8 +154,8 @@ class ShopifyAuth with ShopifyError {
   Future<void> sendPasswordResetEmail({
     required String email,
   }) async {
-    final MutationOptions _options =
-        MutationOptions(document: gql(customerRecoverMutation), variables: {'email': email});
+    final MutationOptions _options = MutationOptions(
+        document: gql(customerRecoverMutation), variables: {'email': email});
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
       result,
@@ -166,7 +169,8 @@ class ShopifyAuth with ShopifyError {
     required String email,
     required String password,
   }) async {
-    final AccessTokenWithExpDate accessTokenWithExpDate = await _createAccessToken(email, password);
+    final AccessTokenWithExpDate accessTokenWithExpDate =
+        await _createAccessToken(email, password);
     if (accessTokenWithExpDate.accessToken == null) {
       throw Exception('Invalid credentials');
     }
@@ -185,14 +189,16 @@ class ShopifyAuth with ShopifyError {
   /// Renews the current access token.
   Future<void> renewCurrentAccessToken(String accessToken) async {
     final updatedAccessToken = await _renewAccessToken(accessToken);
-    await _setShopifyUser(updatedAccessToken, _shopifyUser[ShopifyConfig.storeUrl]);
+    await _setShopifyUser(
+        updatedAccessToken, _shopifyUser[ShopifyConfig.storeUrl]);
   }
 
   /// Tries to sign in a user with the given Multipass token.
   Future<ShopifyUser> signInWithMultipassToken(
     final String multipassToken,
   ) async {
-    final accessTokenWithExpDate = await _createAccessTokenWithMultipass(multipassToken);
+    final accessTokenWithExpDate =
+        await _createAccessTokenWithMultipass(multipassToken);
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
       document: gql(getCustomerQuery),
       variables: {'customerAccessToken': accessTokenWithExpDate.accessToken},
@@ -211,10 +217,12 @@ class ShopifyAuth with ShopifyError {
     String email,
     String password,
   ) async {
-    final MutationOptions _options =
-        MutationOptions(document: gql(customerAccessTokenCreate), variables: {'email': email, 'password': password});
+    final MutationOptions _options = MutationOptions(
+        document: gql(customerAccessTokenCreate),
+        variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessTokenWithExpDate(result.data, "customerAccessTokenCreate");
+    return _extractAccessTokenWithExpDate(
+        result.data, "customerAccessTokenCreate");
   }
 
   /// Helper method for creating the accessToken with Multipass.
@@ -222,7 +230,8 @@ class ShopifyAuth with ShopifyError {
     String multipassToken,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(customerAccessTokenCreateWithMultipassMutation), variables: {'multipassToken': multipassToken});
+        document: gql(customerAccessTokenCreateWithMultipassMutation),
+        variables: {'multipassToken': multipassToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
     return _extractAccessTokenWithExpDate(
       result.data,
@@ -248,7 +257,8 @@ class ShopifyAuth with ShopifyError {
       return;
     }
     final MutationOptions _options = MutationOptions(
-        document: gql(accessTokenDeleteMutation), variables: {'customerAccessToken': await currentCustomerAccessToken});
+        document: gql(accessTokenDeleteMutation),
+        variables: {'customerAccessToken': await currentCustomerAccessToken});
     await _setShopifyUser(null, null);
     final QueryResult result = await _graphQLClient!.mutate(_options);
     checkForError(
@@ -263,9 +273,11 @@ class ShopifyAuth with ShopifyError {
     String customerAccessToken,
   ) async {
     final MutationOptions _options = MutationOptions(
-        document: gql(customerAccessTokenRenewMutation), variables: {'customerAccessToken': customerAccessToken});
+        document: gql(customerAccessTokenRenewMutation),
+        variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessTokenWithExpDate(result.data, "customerAccessTokenRenew");
+    return _extractAccessTokenWithExpDate(
+        result.data, "customerAccessTokenRenew");
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -298,7 +310,8 @@ class ShopifyAuth with ShopifyError {
     );
     final QueryResult result = (await _graphQLClient!.query(_getCustomer));
     checkForError(result);
-    ShopifyUser user = ShopifyUser.fromGraphJson((result.data ?? const {})['customer'] ?? const {});
+    ShopifyUser user = ShopifyUser.fromGraphJson(
+        (result.data ?? const {})['customer'] ?? const {});
     final updatedAccessToken = await _renewAccessToken(accessToken);
     await _setShopifyUser(updatedAccessToken, user);
     return user;
@@ -318,8 +331,10 @@ class ShopifyAuth with ShopifyError {
       _prefs.remove(ShopifyConfig.storeUrl!);
     } else {
       _shopifyUser[ShopifyConfig.storeUrl] = shopifyUser;
-      _currentCustomerAccessToken[ShopifyConfig.storeUrl] = accessTokenWithExpDate.toJson();
-      _prefs.setString(ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
+      _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
+          accessTokenWithExpDate.toJson();
+      _prefs.setString(
+          ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
     }
   }
 

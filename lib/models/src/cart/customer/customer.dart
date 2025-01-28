@@ -24,5 +24,6 @@ class Customer with _$Customer {
   }) = _Customer;
 
   /// The cart customer from json
-  factory Customer.fromJson(Map<String, dynamic> json) => _$CustomerFromJson(json);
+  factory Customer.fromJson(Map<String, dynamic> json) =>
+      _$CustomerFromJson(json);
 }

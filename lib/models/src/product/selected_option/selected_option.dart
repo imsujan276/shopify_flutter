@@ -16,5 +16,6 @@ class SelectedOption with _$SelectedOption {
   }) = _SelectedOption;
 
   /// The SelectedOption from json
-  factory SelectedOption.fromJson(Map<String, dynamic> json) => _$SelectedOptionFromJson(json);
+  factory SelectedOption.fromJson(Map<String, dynamic> json) =>
+      _$SelectedOptionFromJson(json);
 }

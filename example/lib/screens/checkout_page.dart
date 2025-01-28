@@ -25,7 +25,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     try {
       setState(() => _isLoading = true);
-      await shopifyAuth.signInWithEmailAndPassword(email: kUserEmail, password: kUserPassword);
+      await shopifyAuth.signInWithEmailAndPassword(
+          email: kUserEmail, password: kUserPassword);
 
       final bestSellingProducts = await shopifyStore.getNProducts(
         10,
@@ -96,7 +97,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
     try {
       setState(() => _isLoading = true);
-      await shopifyAuth.signInWithEmailAndPassword(email: kUserEmail, password: kUserPassword);
+      await shopifyAuth.signInWithEmailAndPassword(
+          email: kUserEmail, password: kUserPassword);
 
       final bestSellingProducts = await shopifyStore.getNProducts(
         10,
@@ -172,7 +174,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
       final idempotencyKey = UniqueKey().toString();
       await shopifyCheckout.shippingAddressUpdate(checkout.id, address);
-      final tokanizedCheckout = await shopifyCheckout.checkoutCompleteWithTokenizedPaymentV3(
+      final tokanizedCheckout =
+          await shopifyCheckout.checkoutCompleteWithTokenizedPaymentV3(
         checkout.id,
         checkout: checkout,
         token: r'CQ32pyIRCmIEfekpX8x=',

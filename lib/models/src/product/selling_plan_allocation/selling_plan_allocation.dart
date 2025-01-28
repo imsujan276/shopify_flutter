@@ -19,5 +19,6 @@ class SellingPlanAllocation with _$SellingPlanAllocation {
   }) = _SellingPlanAllocation;
 
   /// The SellingPlanAllocation from json
-  factory SellingPlanAllocation.fromJson(Map<String, dynamic> json) => _$SellingPlanAllocationFromJson(json);
+  factory SellingPlanAllocation.fromJson(Map<String, dynamic> json) =>
+      _$SellingPlanAllocationFromJson(json);
 }

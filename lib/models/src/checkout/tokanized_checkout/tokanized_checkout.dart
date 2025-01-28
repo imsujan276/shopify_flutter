@@ -20,11 +20,13 @@ class TokanizedCheckout with _$TokanizedCheckout {
     required bool ready,
     String? nextActionUrl,
     String? errorMessage,
-    @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson) String? checkoutId,
+    @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson)
+    String? checkoutId,
   }) = _TokanizedCheckout;
 
   /// The tokanized checkout from json
-  factory TokanizedCheckout.fromJson(Map<String, dynamic> json) => _$TokanizedCheckoutFromJson(json);
+  factory TokanizedCheckout.fromJson(Map<String, dynamic> json) =>
+      _$TokanizedCheckoutFromJson(json);
 }
 
 String? _checkoutIdFromJson(Map<String, dynamic> json) {

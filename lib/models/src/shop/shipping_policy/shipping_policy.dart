@@ -17,5 +17,6 @@ class ShippingPolicy with _$ShippingPolicy {
   }) = _ShippingPolicy;
 
   /// The ShippingPolicy from json
-  factory ShippingPolicy.fromJson(Map<String, dynamic> json) => _$ShippingPolicyFromJson(json);
+  factory ShippingPolicy.fromJson(Map<String, dynamic> json) =>
+      _$ShippingPolicyFromJson(json);
 }

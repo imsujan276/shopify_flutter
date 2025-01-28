@@ -11,8 +11,10 @@ class DiscountAllocations with _$DiscountAllocations {
   const DiscountAllocations._();
 
   /// The discount allocations constructor
-  factory DiscountAllocations({required PriceV2? allocatedAmount}) = _DiscountAllocations;
+  factory DiscountAllocations({required PriceV2? allocatedAmount}) =
+      _DiscountAllocations;
 
   /// The discount allocations from json
-  factory DiscountAllocations.fromJson(Map<String, dynamic> json) => _$DiscountAllocationsFromJson(json);
+  factory DiscountAllocations.fromJson(Map<String, dynamic> json) =>
+      _$DiscountAllocationsFromJson(json);
 }

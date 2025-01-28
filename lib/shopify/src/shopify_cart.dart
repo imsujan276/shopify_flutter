@@ -60,7 +60,8 @@ class ShopifyCart with ShopifyError {
     QueryResult result = await _graphQLClient!.mutate(createCart);
     checkForError(result, key: 'cartCreate', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartCreate'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartCreate'] ?? const {})['cart'] ?? const {}));
   }
 
   /// add line item to cart
@@ -75,14 +76,19 @@ class ShopifyCart with ShopifyError {
     }).toList();
     final MutationOptions addLineItem = MutationOptions(
       document: gql(addLineItemToCartMutation),
-      variables: {'cartId': cartId, 'lines': lineInputs, 'country': ShopifyLocalization.countryCode},
+      variables: {
+        'cartId': cartId,
+        'lines': lineInputs,
+        'country': ShopifyLocalization.countryCode
+      },
     );
     QueryResult result = await _graphQLClient!.mutate(addLineItem);
     checkForError(result, key: 'cartLinesAdd', errorKey: 'userErrors');
 
     log('added cart :${(result.data!['cartLinesAdd'] ?? const {})['cart']}');
 
-    return Cart.fromJson(((result.data!['cartLinesAdd'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartLinesAdd'] ?? const {})['cart'] ?? const {}));
   }
 
   /// remove line item from cart
@@ -92,12 +98,17 @@ class ShopifyCart with ShopifyError {
   }) async {
     final MutationOptions removeLineItem = MutationOptions(
       document: gql(removeLineItemFromCartMutation),
-      variables: {'cartId': cartId, 'lineIds': lineIds, 'country': ShopifyLocalization.countryCode},
+      variables: {
+        'cartId': cartId,
+        'lineIds': lineIds,
+        'country': ShopifyLocalization.countryCode
+      },
     );
     QueryResult result = await _graphQLClient!.mutate(removeLineItem);
     checkForError(result, key: 'cartLinesRemove', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartLinesRemove'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartLinesRemove'] ?? const {})['cart'] ?? const {}));
   }
 
   /// update line items in cart
@@ -117,7 +128,8 @@ class ShopifyCart with ShopifyError {
     QueryResult result = await _graphQLClient!.mutate(updateLineItem);
     checkForError(result, key: 'cartLinesUpdate', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartLinesUpdate'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartLinesUpdate'] ?? const {})['cart'] ?? const {}));
   }
 
   /// update note in cart
@@ -136,7 +148,8 @@ class ShopifyCart with ShopifyError {
     QueryResult result = await _graphQLClient!.mutate(updateNote);
     checkForError(result, key: 'cartNoteUpdate', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartNoteUpdate'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartNoteUpdate'] ?? const {})['cart'] ?? const {}));
   }
 
   /// update cart discount codes
@@ -153,9 +166,12 @@ class ShopifyCart with ShopifyError {
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateDiscountCodes);
-    checkForError(result, key: 'cartDiscountCodesUpdate', errorKey: 'userErrors');
+    checkForError(result,
+        key: 'cartDiscountCodesUpdate', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartDiscountCodesUpdate'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartDiscountCodesUpdate'] ?? const {})['cart'] ??
+            const {}));
   }
 
   /// update Buyer identity in cart
@@ -171,11 +187,13 @@ class ShopifyCart with ShopifyError {
           deliveryAddressPreferencesData.add({
             'deliveryAddress': pref.deliveryAddress?.toJson() ?? {},
           });
-        } else if (pref.customerAddressId != null && pref.deliveryAddress == null) {
+        } else if (pref.customerAddressId != null &&
+            pref.deliveryAddress == null) {
           deliveryAddressPreferencesData.add({
             'customerAddressId': pref.customerAddressId,
           });
-        } else if (pref.customerAddressId != null && pref.deliveryAddress != null) {
+        } else if (pref.customerAddressId != null &&
+            pref.deliveryAddress != null) {
           throw Exception(
             'Customer Address Id and Delivery Address cannot be set at the same time, please choose one',
           );
@@ -197,8 +215,11 @@ class ShopifyCart with ShopifyError {
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateBuyerIdentity);
-    checkForError(result, key: 'cartBuyerIdentityUpdate', errorKey: 'userErrors');
+    checkForError(result,
+        key: 'cartBuyerIdentityUpdate', errorKey: 'userErrors');
 
-    return Cart.fromJson(((result.data!['cartBuyerIdentityUpdate'] ?? const {})['cart'] ?? const {}));
+    return Cart.fromJson(
+        ((result.data!['cartBuyerIdentityUpdate'] ?? const {})['cart'] ??
+            const {}));
   }
 }

@@ -22,7 +22,8 @@ class AccessTokenWithExpDate {
 
   factory AccessTokenWithExpDate.fromMap(Map<String, dynamic> map) {
     return AccessTokenWithExpDate(
-      accessToken: map['accessToken'] != null ? map['accessToken'] as String : null,
+      accessToken:
+          map['accessToken'] != null ? map['accessToken'] as String : null,
       expiresAt: map['expiresAt'] != null
           ? map['expiresAt'] is String
               ? DateTime.parse(map['expiresAt'] as String)
@@ -34,8 +35,10 @@ class AccessTokenWithExpDate {
   String toJson() => json.encode(toMap());
 
   factory AccessTokenWithExpDate.fromJson(String source) =>
-      AccessTokenWithExpDate.fromMap(json.decode(source) as Map<String, dynamic>);
+      AccessTokenWithExpDate.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'AccessTokenWithExpDate(accessToken: $accessToken, expiresAt: $expiresAt)';
+  String toString() =>
+      'AccessTokenWithExpDate(accessToken: $accessToken, expiresAt: $expiresAt)';
 }

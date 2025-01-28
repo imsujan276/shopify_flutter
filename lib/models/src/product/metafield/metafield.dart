@@ -24,13 +24,18 @@ class Metafield with _$Metafield {
   factory Metafield.fromGraphJson(Map<String, dynamic> json) => Metafield(
         id: (json.containsKey('id') == true) ? json['id'] : '',
         key: (json.containsKey('key') == true) ? json['key'] : '',
-        namespace: (json.containsKey('namespace') == true) ? json['namespace'] : '',
+        namespace:
+            (json.containsKey('namespace') == true) ? json['namespace'] : '',
         type: (json.containsKey('type') == true) ? json['type'] : '',
         value: (json.containsKey('value') == true) ? json['value'] : '',
-        description: (json.containsKey('description') == true) ? json['description'] : null,
-        reference: (json.containsKey('reference') == true) ? json['reference'] : null,
+        description: (json.containsKey('description') == true)
+            ? json['description']
+            : null,
+        reference:
+            (json.containsKey('reference') == true) ? json['reference'] : null,
       );
 
   /// The Metafield from json
-  factory Metafield.fromJson(Map<String, dynamic> json) => _$MetafieldFromJson(json);
+  factory Metafield.fromJson(Map<String, dynamic> json) =>
+      _$MetafieldFromJson(json);
 }

@@ -20,7 +20,8 @@ class AssociatedCollections with _$AssociatedCollections {
   }) = _AssociatedCollections;
 
   /// The AssociatedCollections from graphjson
-  factory AssociatedCollections.fromGraphJson(Map<String, dynamic> json) => AssociatedCollections(
+  factory AssociatedCollections.fromGraphJson(Map<String, dynamic> json) =>
+      AssociatedCollections(
         description: (json['node'] ?? const {})['description'],
         descriptionHtml: (json['node'] ?? const {})['descriptionHtml'],
         id: (json['node'] ?? const {})['id'],
@@ -30,5 +31,6 @@ class AssociatedCollections with _$AssociatedCollections {
       );
 
   /// The AssociatedCollections from json
-  factory AssociatedCollections.fromJson(Map<String, dynamic> json) => _$AssociatedCollectionsFromJson(json);
+  factory AssociatedCollections.fromJson(Map<String, dynamic> json) =>
+      _$AssociatedCollectionsFromJson(json);
 }

@@ -16,5 +16,6 @@ class SellingPlanOption with _$SellingPlanOption {
   }) = _SellingPlanOption;
 
   /// The SellingPlanOption from json
-  factory SellingPlanOption.fromJson(Map<String, dynamic> json) => _$SellingPlanOptionFromJson(json);
+  factory SellingPlanOption.fromJson(Map<String, dynamic> json) =>
+      _$SellingPlanOptionFromJson(json);
 }

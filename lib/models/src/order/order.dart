@@ -54,15 +54,18 @@ class Order with _$Order {
         processedAt: json['node']['processedAt'],
         financialStatus: json['node']['financialStatus'],
         fulfillmentStatus: json['node']['fulfillmentStatus'],
-        shippingAddress:
-            json['node']['shippingAddress'] == null ? null : ShippingAddress.fromJson(json['node']['shippingAddress']),
-        billingAddress:
-            json['node']['billingAddress'] == null ? null : ShippingAddress.fromJson(json['node']['billingAddress']),
+        shippingAddress: json['node']['shippingAddress'] == null
+            ? null
+            : ShippingAddress.fromJson(json['node']['shippingAddress']),
+        billingAddress: json['node']['billingAddress'] == null
+            ? null
+            : ShippingAddress.fromJson(json['node']['billingAddress']),
         statusUrl: json['node']['statusUrl'],
         subtotalPriceV2: PriceV2.fromJson(json['node']['subtotalPriceV2']),
         totalPriceV2: PriceV2.fromJson(json['node']['totalPriceV2']),
         totalRefundedV2: PriceV2.fromJson(json['node']['totalRefundedV2']),
-        totalShippingPriceV2: PriceV2.fromJson(json['node']['totalShippingPriceV2']),
+        totalShippingPriceV2:
+            PriceV2.fromJson(json['node']['totalShippingPriceV2']),
         totalTaxV2: PriceV2.fromJson(json['node']['totalTaxV2']),
         cursor: json['cursor'],
         canceledAt: json['node']['canceledAt'],

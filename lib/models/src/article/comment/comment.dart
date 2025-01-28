@@ -19,7 +19,8 @@ class Comment with _$Comment {
   }) = _Comment;
 
   /// The Comment from json
-  factory Comment.fromJson(Map<String, dynamic> json) => _$CommentFromJson(json);
+  factory Comment.fromJson(Map<String, dynamic> json) =>
+      _$CommentFromJson(json);
 
   /// The Comment from graph json
   factory Comment.fromGraphJson(Map<String, dynamic> json) => Comment(

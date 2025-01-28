@@ -24,5 +24,6 @@ class SellingPlan with _$SellingPlan {
   }) = _SellingPlan;
 
   /// The SellingPlan from json
-  factory SellingPlan.fromJson(Map<String, dynamic> json) => _$SellingPlanFromJson(json);
+  factory SellingPlan.fromJson(Map<String, dynamic> json) =>
+      _$SellingPlanFromJson(json);
 }

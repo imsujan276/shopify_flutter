@@ -31,19 +31,24 @@ class Article with _$Article {
   }) = _Article;
 
   /// The article from json
-  factory Article.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
 
   ///  The article from graph json
   factory Article.fromGraphJson(Map<String, dynamic> json) => Article(
-        author: AuthorV2.fromJson(((json['node'] ?? const {})['authorV2']) ?? const {}),
-        commentList: _getCommentList((json['node'] ?? const {})['comments'] ?? const {}),
+        author: AuthorV2.fromJson(
+            ((json['node'] ?? const {})['authorV2']) ?? const {}),
+        commentList:
+            _getCommentList((json['node'] ?? const {})['comments'] ?? const {}),
         content: (json['node'] ?? const {})['content'],
         contentHtml: (json['node'] ?? const {})['contentHtml'],
         excerpt: (json['node'] ?? const {})['excerpt'],
         excerptHtml: (json['node'] ?? const {})['excerptHtml'],
         handle: (json['node'] ?? const {})['handle'],
         id: (json['node'] ?? const {})['id'],
-        image: json['node']['image'] == null ? null : ShopifyImage.fromJson(json['node']['image']),
+        image: json['node']['image'] == null
+            ? null
+            : ShopifyImage.fromJson(json['node']['image']),
         publishedAt: (json['node'] ?? const {})['publishedAt'],
         tags: _getTagsList(json),
         title: (json['node'] ?? const {})['title'],
@@ -52,7 +57,8 @@ class Article with _$Article {
 
   static _getCommentList(Map<String, dynamic> json) {
     List<Comment> commentList = [];
-    json['edges']?.forEach((comment) => commentList.add(Comment.fromGraphJson(comment ?? const {})));
+    json['edges']?.forEach((comment) =>
+        commentList.add(Comment.fromGraphJson(comment ?? const {})));
     return commentList;
   }
 

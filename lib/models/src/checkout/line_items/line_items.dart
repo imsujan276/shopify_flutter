@@ -12,5 +12,6 @@ class LineItems with _$LineItems {
   factory LineItems({required List<LineItem> lineItemList}) = _LineItems;
 
   /// The line items from json factory
-  factory LineItems.fromJson(Map<String, dynamic> json) => _$LineItemsFromJson(json);
+  factory LineItems.fromJson(Map<String, dynamic> json) =>
+      _$LineItemsFromJson(json);
 }

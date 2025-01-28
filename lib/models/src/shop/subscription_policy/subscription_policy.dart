@@ -17,5 +17,6 @@ class SubscriptionPolicy with _$SubscriptionPolicy {
   }) = _SubscriptionPolicy;
 
   /// The SubscriptionPolicy from json
-  factory SubscriptionPolicy.fromJson(Map<String, dynamic> json) => _$SubscriptionPolicyFromJson(json);
+  factory SubscriptionPolicy.fromJson(Map<String, dynamic> json) =>
+      _$SubscriptionPolicyFromJson(json);
 }

@@ -25,10 +25,13 @@ class ProductMedia with _$ProductMedia {
       id: nodeJson['id'],
       mediaContentType: nodeJson['mediaContentType'],
       alt: nodeJson['alt'],
-      image: nodeJson['previewImage'] != null ? ShopifyImage.fromJson(nodeJson['previewImage']) : null,
+      image: nodeJson['previewImage'] != null
+          ? ShopifyImage.fromJson(nodeJson['previewImage'])
+          : null,
     );
   }
 
   /// The product media from json
-  factory ProductMedia.fromJson(Map<String, dynamic> json) => _$ProductMediaFromJson(json);
+  factory ProductMedia.fromJson(Map<String, dynamic> json) =>
+      _$ProductMediaFromJson(json);
 }

@@ -17,5 +17,6 @@ class RefundPolicy with _$RefundPolicy {
   }) = _RefundPolicy;
 
   /// The RefundPolicy from json
-  factory RefundPolicy.fromJson(Map<String, dynamic> json) => _$RefundPolicyFromJson(json);
+  factory RefundPolicy.fromJson(Map<String, dynamic> json) =>
+      _$RefundPolicyFromJson(json);
 }

@@ -24,7 +24,8 @@ class PriceV2 with _$PriceV2 {
   }) = _PriceV2;
 
   /// The PriceV2 from json
-  factory PriceV2.fromJson(Map<String, dynamic> json) => _$PriceV2FromJson(json);
+  factory PriceV2.fromJson(Map<String, dynamic> json) =>
+      _$PriceV2FromJson(json);
 
   /// The formatted price
   String get formattedPrice => JsonHelper.chooseRightOrderOnCurrencySymbol(
@@ -34,7 +35,8 @@ class PriceV2 with _$PriceV2 {
       );
 
   /// The formatted price with locale
-  String formattedPriceWithLocale(String? locale) => JsonHelper.chooseRightOrderOnCurrencySymbol(
+  String formattedPriceWithLocale(String? locale) =>
+      JsonHelper.chooseRightOrderOnCurrencySymbol(
         amount,
         currencyCode,
         priceFormat: priceFormat,

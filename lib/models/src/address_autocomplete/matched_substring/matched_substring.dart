@@ -14,5 +14,6 @@ class MatchedSubstring with _$MatchedSubstring {
   }) = _MatchedSubstring;
 
   /// The matched substring from json
-  factory MatchedSubstring.fromJson(Map<String, dynamic> json) => _$MatchedSubstringFromJson(json);
+  factory MatchedSubstring.fromJson(Map<String, dynamic> json) =>
+      _$MatchedSubstringFromJson(json);
 }

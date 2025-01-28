@@ -30,15 +30,22 @@ class LineItem with _$LineItem {
     return LineItem(
       id: nodeJson['id'],
       quantity: nodeJson['quantity'],
-      variant: nodeJson['variant'] != null ? ProductVariantCheckout.fromJson(nodeJson['variant']) : null,
+      variant: nodeJson['variant'] != null
+          ? ProductVariantCheckout.fromJson(nodeJson['variant'])
+          : null,
       title: nodeJson['title'],
       discountAllocations: nodeJson['discountAllocations'] == null
           ? []
-          : (nodeJson['discountAllocations'] as List).map((e) => DiscountAllocations.fromJson(e)).toList(),
-      variantId: nodeJson['variant'] != null ? ProductVariantCheckout.fromJson(nodeJson['variant']).id : null,
+          : (nodeJson['discountAllocations'] as List)
+              .map((e) => DiscountAllocations.fromJson(e))
+              .toList(),
+      variantId: nodeJson['variant'] != null
+          ? ProductVariantCheckout.fromJson(nodeJson['variant']).id
+          : null,
     );
   }
 
   /// The line item from json
-  factory LineItem.fromJson(Map<String, dynamic> json) => _$LineItemFromJson(json);
+  factory LineItem.fromJson(Map<String, dynamic> json) =>
+      _$LineItemFromJson(json);
 }

@@ -81,7 +81,8 @@ query{
   Future<void> _fetchLocalizationInfo() async {
     try {
       setState(() => _isLoading = true);
-      final localizationInfo = await ShopifyLocalization.instance.getLocalization();
+      final localizationInfo =
+          await ShopifyLocalization.instance.getLocalization();
       if (mounted) {
         setState(() {
           localization = localizationInfo;
@@ -138,20 +139,25 @@ query{
                   ),
                   ListTile(
                     title: const Text('Supported Languages'),
-                    subtitle:
-                        Text(localization?.availableLanguages.map((lang) => lang.name).toList().join(', ') ?? 'N/A'),
+                    subtitle: Text(localization?.availableLanguages
+                            .map((lang) => lang.name)
+                            .toList()
+                            .join(', ') ??
+                        'N/A'),
                   ),
                   ListTile(
                     title: const Text('Supported Currencies'),
                     subtitle: Text(localization?.availableCountries
-                            .map((country) => '${country.currency.name} (${country.currency.symbol})')
+                            .map((country) =>
+                                '${country.currency.name} (${country.currency.symbol})')
                             .toSet()
                             .join(', ') ??
                         'N/A'),
                   ),
                   ListTile(
                     title: const Text('Primary Domain SSL Enabled'),
-                    subtitle: Text(shop?.primaryDomain?.sslEnabled.toString() ?? ''),
+                    subtitle:
+                        Text(shop?.primaryDomain?.sslEnabled.toString() ?? ''),
                   ),
                   ListTile(
                     title: const Text('Privacy Policy'),

@@ -14,5 +14,6 @@ class LocationInput with _$LocationInput {
   }) = _LocationInput;
 
   /// The `LocationInput` from json
-  factory LocationInput.fromJson(Map<String, dynamic> json) => _$LocationInputFromJson(json);
+  factory LocationInput.fromJson(Map<String, dynamic> json) =>
+      _$LocationInputFromJson(json);
 }

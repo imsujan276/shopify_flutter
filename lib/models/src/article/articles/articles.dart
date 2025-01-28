@@ -13,14 +13,17 @@ class Articles with _$Articles {
   factory Articles({required List<Article> articleList}) = _Articles;
 
   /// The `Articles` from json
-  factory Articles.fromJson(Map<String, dynamic> json) => _$ArticlesFromJson(json);
+  factory Articles.fromJson(Map<String, dynamic> json) =>
+      _$ArticlesFromJson(json);
 
   /// The `Articles` from graph json
-  factory Articles.fromGraphJson(Map<String, dynamic> json) => Articles(articleList: _getArticleList(json));
+  factory Articles.fromGraphJson(Map<String, dynamic> json) =>
+      Articles(articleList: _getArticleList(json));
 
   static _getArticleList(Map<String, dynamic> json) {
     List<Article> articleList = [];
-    json['edges']?.forEach((article) => articleList.add(Article.fromGraphJson(article ?? const {})));
+    json['edges']?.forEach((article) =>
+        articleList.add(Article.fromGraphJson(article ?? const {})));
     return articleList;
   }
 }

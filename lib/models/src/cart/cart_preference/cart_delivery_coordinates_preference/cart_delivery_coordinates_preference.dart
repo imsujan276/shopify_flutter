@@ -6,7 +6,8 @@ part 'cart_delivery_coordinates_preference.g.dart';
 @freezed
 
 /// The cart delivery coordinates preference
-class CartDeliveryCoordinatesPreference with _$CartDeliveryCoordinatesPreference {
+class CartDeliveryCoordinatesPreference
+    with _$CartDeliveryCoordinatesPreference {
   const CartDeliveryCoordinatesPreference._();
 
   /// The cart delivery coordinates preference constructor
@@ -17,6 +18,7 @@ class CartDeliveryCoordinatesPreference with _$CartDeliveryCoordinatesPreference
   }) = _CartDeliveryCoordinatesPreference;
 
   ///
-  factory CartDeliveryCoordinatesPreference.fromJson(Map<String, dynamic> json) =>
+  factory CartDeliveryCoordinatesPreference.fromJson(
+          Map<String, dynamic> json) =>
       _$CartDeliveryCoordinatesPreferenceFromJson(json);
 }

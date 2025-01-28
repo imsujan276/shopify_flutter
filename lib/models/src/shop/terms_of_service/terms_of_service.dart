@@ -17,5 +17,6 @@ class TermsOfService with _$TermsOfService {
   }) = _TermsOfService;
 
   /// The TermsOfService from json
-  factory TermsOfService.fromJson(Map<String, dynamic> json) => _$TermsOfServiceFromJson(json);
+  factory TermsOfService.fromJson(Map<String, dynamic> json) =>
+      _$TermsOfServiceFromJson(json);
 }

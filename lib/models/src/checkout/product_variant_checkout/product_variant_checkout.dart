@@ -32,5 +32,6 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
   }) = _ProductVariantCheckout;
 
   /// The product variant checkout from json
-  factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) => _$ProductVariantCheckoutFromJson(json);
+  factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
+      _$ProductVariantCheckoutFromJson(json);
 }

@@ -21,5 +21,6 @@ class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
   }) = _CartBuyerIdentityInput;
 
   /// the cart buyer identity input from json factory
-  factory CartBuyerIdentityInput.fromJson(Map<String, dynamic> json) => _$CartBuyerIdentityInputFromJson(json);
+  factory CartBuyerIdentityInput.fromJson(Map<String, dynamic> json) =>
+      _$CartBuyerIdentityInputFromJson(json);
 }

@@ -19,6 +19,5 @@ class PaymentSettings with _$PaymentSettings {
   }) = _PaymentSettings;
 
   /// The PaymentSettings from json
-  factory PaymentSettings.fromJson(Map<String, dynamic> json) =>
-      _$PaymentSettingsFromJson(json);
+  factory PaymentSettings.fromJson(Map<String, dynamic> json) => _$PaymentSettingsFromJson(json);
 }

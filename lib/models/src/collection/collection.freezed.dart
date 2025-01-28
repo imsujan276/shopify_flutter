@@ -23,6 +23,7 @@ mixin _$Collection {
   String get title => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   Products get products => throw _privateConstructorUsedError;
+  List<Metafield> get metafields => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get descriptionHtml => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $CollectionCopyWith<$Res> {
       {String title,
       String id,
       Products products,
+      List<Metafield> metafields,
       String? cursor,
       String? description,
       String? descriptionHtml,
@@ -79,6 +81,7 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
     Object? title = null,
     Object? id = null,
     Object? products = null,
+    Object? metafields = null,
     Object? cursor = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
@@ -99,6 +102,10 @@ class _$CollectionCopyWithImpl<$Res, $Val extends Collection>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as Products,
+      metafields: null == metafields
+          ? _value.metafields
+          : metafields // ignore: cast_nullable_to_non_nullable
+              as List<Metafield>,
       cursor: freezed == cursor
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
@@ -163,6 +170,7 @@ abstract class _$$CollectionImplCopyWith<$Res>
       {String title,
       String id,
       Products products,
+      List<Metafield> metafields,
       String? cursor,
       String? description,
       String? descriptionHtml,
@@ -192,6 +200,7 @@ class __$$CollectionImplCopyWithImpl<$Res>
     Object? title = null,
     Object? id = null,
     Object? products = null,
+    Object? metafields = null,
     Object? cursor = freezed,
     Object? description = freezed,
     Object? descriptionHtml = freezed,
@@ -212,6 +221,10 @@ class __$$CollectionImplCopyWithImpl<$Res>
           ? _value.products
           : products // ignore: cast_nullable_to_non_nullable
               as Products,
+      metafields: null == metafields
+          ? _value._metafields
+          : metafields // ignore: cast_nullable_to_non_nullable
+              as List<Metafield>,
       cursor: freezed == cursor
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
@@ -247,13 +260,15 @@ class _$CollectionImpl extends _Collection {
       {required this.title,
       required this.id,
       required this.products,
+      required final List<Metafield> metafields,
       this.cursor,
       this.description,
       this.descriptionHtml,
       this.handle,
       this.updatedAt,
       this.image})
-      : super._();
+      : _metafields = metafields,
+        super._();
 
   factory _$CollectionImpl.fromJson(Map<String, dynamic> json) =>
       _$$CollectionImplFromJson(json);
@@ -264,6 +279,14 @@ class _$CollectionImpl extends _Collection {
   final String id;
   @override
   final Products products;
+  final List<Metafield> _metafields;
+  @override
+  List<Metafield> get metafields {
+    if (_metafields is EqualUnmodifiableListView) return _metafields;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_metafields);
+  }
+
   @override
   final String? cursor;
   @override
@@ -279,7 +302,7 @@ class _$CollectionImpl extends _Collection {
 
   @override
   String toString() {
-    return 'Collection(title: $title, id: $id, products: $products, cursor: $cursor, description: $description, descriptionHtml: $descriptionHtml, handle: $handle, updatedAt: $updatedAt, image: $image)';
+    return 'Collection(title: $title, id: $id, products: $products, metafields: $metafields, cursor: $cursor, description: $description, descriptionHtml: $descriptionHtml, handle: $handle, updatedAt: $updatedAt, image: $image)';
   }
 
   @override
@@ -291,6 +314,8 @@ class _$CollectionImpl extends _Collection {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.products, products) ||
                 other.products == products) &&
+            const DeepCollectionEquality()
+                .equals(other._metafields, _metafields) &&
             (identical(other.cursor, cursor) || other.cursor == cursor) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -304,8 +329,18 @@ class _$CollectionImpl extends _Collection {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, title, id, products, cursor,
-      description, descriptionHtml, handle, updatedAt, image);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      id,
+      products,
+      const DeepCollectionEquality().hash(_metafields),
+      cursor,
+      description,
+      descriptionHtml,
+      handle,
+      updatedAt,
+      image);
 
   /// Create a copy of Collection
   /// with the given fields replaced by the non-null parameter values.
@@ -328,6 +363,7 @@ abstract class _Collection extends Collection {
       {required final String title,
       required final String id,
       required final Products products,
+      required final List<Metafield> metafields,
       final String? cursor,
       final String? description,
       final String? descriptionHtml,
@@ -345,6 +381,8 @@ abstract class _Collection extends Collection {
   String get id;
   @override
   Products get products;
+  @override
+  List<Metafield> get metafields;
   @override
   String? get cursor;
   @override

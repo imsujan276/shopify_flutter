@@ -17,6 +17,5 @@ class ShopifyImage with _$ShopifyImage {
   }) = _ShopifyImage;
 
   /// The ShopifyImage from json
-  factory ShopifyImage.fromJson(Map<String, dynamic> json) =>
-      _$ShopifyImageFromJson(json);
+  factory ShopifyImage.fromJson(Map<String, dynamic> json) => _$ShopifyImageFromJson(json);
 }

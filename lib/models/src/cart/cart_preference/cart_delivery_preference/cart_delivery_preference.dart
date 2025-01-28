@@ -18,6 +18,5 @@ class CartDeliveryPreference with _$CartDeliveryPreference {
   }) = _CartDeliveryPreference;
 
   /// The cart delivery preference from json
-  factory CartDeliveryPreference.fromJson(Map<String, dynamic> json) =>
-      _$CartDeliveryPreferenceFromJson(json);
+  factory CartDeliveryPreference.fromJson(Map<String, dynamic> json) => _$CartDeliveryPreferenceFromJson(json);
 }

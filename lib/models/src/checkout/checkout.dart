@@ -48,6 +48,5 @@ class Checkout with _$Checkout {
   }) = _Checkout;
 
   /// The checkout from json
-  factory Checkout.fromJson(Map<String, dynamic> json) =>
-      _$CheckoutFromJson(json);
+  factory Checkout.fromJson(Map<String, dynamic> json) => _$CheckoutFromJson(json);
 }

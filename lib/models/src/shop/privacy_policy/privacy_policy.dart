@@ -17,6 +17,5 @@ class PrivacyPolicy with _$PrivacyPolicy {
   }) = _PrivacyPolicy;
 
   /// The PrivacyPolicy from json
-  factory PrivacyPolicy.fromJson(Map<String, dynamic> json) =>
-      _$PrivacyPolicyFromJson(json);
+  factory PrivacyPolicy.fromJson(Map<String, dynamic> json) => _$PrivacyPolicyFromJson(json);
 }

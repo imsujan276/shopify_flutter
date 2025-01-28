@@ -18,6 +18,5 @@ class MetafieldIdentifier with _$MetafieldIdentifier {
   }) = _MetafieldIdentifier;
 
   /// Metafield identifier from json
-  factory MetafieldIdentifier.fromJson(Map<String, dynamic> json) =>
-      _$MetafieldIdentifierFromJson(json);
+  factory MetafieldIdentifier.fromJson(Map<String, dynamic> json) => _$MetafieldIdentifierFromJson(json);
 }

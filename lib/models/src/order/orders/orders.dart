@@ -10,8 +10,7 @@ part 'orders.g.dart';
 /// The Orders class
 class Orders with _$Orders {
   /// The Orders constructor
-  factory Orders({required List<Order> orderList, required bool hasNextPage}) =
-      _Orders;
+  factory Orders({required List<Order> orderList, required bool hasNextPage}) = _Orders;
 
   /// The Orders from json
   factory Orders.fromJson(Map<String, dynamic> json) => _$OrdersFromJson(json);
@@ -25,8 +24,7 @@ class Orders with _$Orders {
   static List<Order> _getOrderList(Map<String, dynamic> json) {
     List<Order> orderList = [];
     if (json.containsKey('edges')) {
-      json['edges']
-          .forEach((e) => orderList.add(Order.fromGraphJson(e ?? const {})));
+      json['edges'].forEach((e) => orderList.add(Order.fromGraphJson(e ?? const {})));
     }
     return orderList;
   }

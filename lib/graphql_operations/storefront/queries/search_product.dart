@@ -1,6 +1,6 @@
 /// Query search products
 const String getSearchedProducts = r'''
-query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys, $reverse: Boolean, $filters: [ProductFilter!], $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys, $reverse: Boolean, $filters: [ProductFilter!], $country: CountryCode)  @inContext(country: $country){
   search(query: $query, first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse, productFilters: $filters, types: PRODUCT){
     pageInfo {
       hasNextPage
@@ -13,7 +13,24 @@ query($query: String!, $cursor : String, $limit : Int, $sortKey : SearchSortKeys
             id
             name
             values
-          } 
+          }
+          metafields(identifiers: $metafields) {
+            id
+            type
+            key
+            namespace
+            value
+            description
+            reference {
+              ... on MediaImage {
+                image {
+                  originalSrc
+                  url
+                  id
+                }
+              }
+            }
+          }
       id
       handle
       collections(first: 250) {

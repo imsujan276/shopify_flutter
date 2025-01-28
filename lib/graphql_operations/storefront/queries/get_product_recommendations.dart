@@ -1,6 +1,6 @@
 /// Query to get product recommendations
 const String getProductRecommendationsQuery = r'''
-query getProductRecommentationsQuery($id: ID!, $country: CountryCode)  @inContext(country: $country){
+query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $id: ID!, $country: CountryCode)  @inContext(country: $country){
   productRecommendations(productId: $id) {
     availableForSale
     createdAt
@@ -36,6 +36,23 @@ query getProductRecommentationsQuery($id: ID!, $country: CountryCode)  @inContex
       id
       name
       values
+    }
+    metafields(identifiers: $metafields) {
+      id
+      type
+      key
+      namespace
+      value
+      description
+      reference {
+        ... on MediaImage {
+          image {
+            originalSrc
+            url
+            id
+          }
+        }
+      }
     }
     productType
     publishedAt

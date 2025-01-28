@@ -27,9 +27,7 @@ class ShopifyUser with _$ShopifyUser {
   /// The shopify user from json factory
   factory ShopifyUser.fromGraphJson(Map<String, dynamic> json) => ShopifyUser(
         address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
-        defaultAddress: json['defaultAddress'] == null
-            ? null
-            : Address.fromJson(json['defaultAddress']),
+        defaultAddress: json['defaultAddress'] == null ? null : Address.fromJson(json['defaultAddress']),
         createdAt: json['createdAt'],
         displayName: json['displayName'],
         email: json['email'],
@@ -41,8 +39,7 @@ class ShopifyUser with _$ShopifyUser {
       );
 
   /// The shopify user from json factory
-  factory ShopifyUser.fromJson(Map<String, dynamic> json) =>
-      _$ShopifyUserFromJson(json);
+  factory ShopifyUser.fromJson(Map<String, dynamic> json) => _$ShopifyUserFromJson(json);
 
   static _getTagList(Map<String, dynamic> json) {
     List<String> tagsList = [];

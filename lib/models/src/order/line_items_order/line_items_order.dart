@@ -9,12 +9,10 @@ part 'line_items_order.g.dart';
 /// The line items order
 class LineItemsOrder with _$LineItemsOrder {
   /// The line items order constructor
-  factory LineItemsOrder({required List<LineItemOrder> lineItemOrderList}) =
-      _LineItemsOrder;
+  factory LineItemsOrder({required List<LineItemOrder> lineItemOrderList}) = _LineItemsOrder;
 
   /// The line items order from json factory
-  factory LineItemsOrder.fromJson(Map<String, dynamic> json) =>
-      _$LineItemsOrderFromJson(json);
+  factory LineItemsOrder.fromJson(Map<String, dynamic> json) => _$LineItemsOrderFromJson(json);
 
   /// The line items order from graph json factory
   factory LineItemsOrder.fromGraphJson(Map<String, dynamic> json) =>
@@ -23,8 +21,7 @@ class LineItemsOrder with _$LineItemsOrder {
   static _getLineItemOrderList(Map<String, dynamic> json) {
     List<LineItemOrder> lineItemListOrder = [];
     if (json.containsKey('edges')) {
-      json['edges'].forEach((lineItemOrder) =>
-          lineItemListOrder.add(LineItemOrder.fromGraphJson(lineItemOrder)));
+      json['edges'].forEach((lineItemOrder) => lineItemListOrder.add(LineItemOrder.fromGraphJson(lineItemOrder)));
     }
     return lineItemListOrder;
   }

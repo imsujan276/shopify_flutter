@@ -1,6 +1,6 @@
 /// Query to get all collections
 const String getAllCollectionsQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
   collections(first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
@@ -14,6 +14,23 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country
         handle
         id
         updatedAt
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         image {
           altText
           id

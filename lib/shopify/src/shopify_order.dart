@@ -20,8 +20,7 @@ class ShopifyOrder with ShopifyError {
     SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
     bool reverse = true,
   }) async {
-    final MutationOptions _options =
-        MutationOptions(document: gql(getAllOrdersQuery), variables: {
+    final MutationOptions _options = MutationOptions(document: gql(getAllOrdersQuery), variables: {
       'accessToken': customerAccessToken,
       'sortKey': sortKey.parseToString(),
       'reverse': reverse,

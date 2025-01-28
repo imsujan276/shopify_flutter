@@ -16,6 +16,5 @@ class AddressPrediction with _$AddressPrediction {
   }) = _AddressPrediction;
 
   /// The address prediction from json
-  factory AddressPrediction.fromJson(Map<String, dynamic> json) =>
-      _$AddressPredictionFromJson(json);
+  factory AddressPrediction.fromJson(Map<String, dynamic> json) => _$AddressPredictionFromJson(json);
 }

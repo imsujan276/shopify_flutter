@@ -21,6 +21,5 @@ class CartInput with _$CartInput {
   }) = _CartInput;
 
   /// The cart input from json factory
-  factory CartInput.fromJson(Map<String, dynamic> json) =>
-      _$CartInputFromJson(json);
+  factory CartInput.fromJson(Map<String, dynamic> json) => _$CartInputFromJson(json);
 }

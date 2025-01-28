@@ -52,6 +52,5 @@ class Address with _$Address {
       );
 
   /// The address from json factory
-  factory Address.fromJson(Map<String, dynamic> json) =>
-      _$AddressFromJson(json);
+  factory Address.fromJson(Map<String, dynamic> json) => _$AddressFromJson(json);
 }

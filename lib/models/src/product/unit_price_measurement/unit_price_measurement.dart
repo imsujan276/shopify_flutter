@@ -19,6 +19,5 @@ class UnitPriceMeasurement with _$UnitPriceMeasurement {
   }) = _UnitPriceMeasurement;
 
   /// The unit price measurement from json
-  factory UnitPriceMeasurement.fromJson(Map<String, dynamic> json) =>
-      _$UnitPriceMeasurementFromJson(json);
+  factory UnitPriceMeasurement.fromJson(Map<String, dynamic> json) => _$UnitPriceMeasurementFromJson(json);
 }

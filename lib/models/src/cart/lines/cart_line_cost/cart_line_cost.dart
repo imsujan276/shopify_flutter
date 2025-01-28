@@ -19,6 +19,5 @@ class CartLineCost with _$CartLineCost {
   }) = _CartLineCost;
 
   /// the cart line cost from json
-  factory CartLineCost.fromJson(Map<String, dynamic> json) =>
-      _$CartLineCostFromJson(json);
+  factory CartLineCost.fromJson(Map<String, dynamic> json) => _$CartLineCostFromJson(json);
 }

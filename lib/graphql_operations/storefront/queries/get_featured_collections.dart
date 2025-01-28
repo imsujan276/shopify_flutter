@@ -1,6 +1,6 @@
 /// Query to get featured collection
 const String getFeaturedCollectionQuery = r'''
-query getFeaturedCollectionQuery($query: String!, $country: CountryCode)  @inContext(country: $country){
+query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $country: CountryCode)  @inContext(country: $country){
   collections(query: $query, first: 1) {
     edges {
       node {
@@ -10,6 +10,23 @@ query getFeaturedCollectionQuery($query: String!, $country: CountryCode)  @inCon
         handle
         id
         updatedAt
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         image {
           altText
           id

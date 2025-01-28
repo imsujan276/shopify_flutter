@@ -23,6 +23,5 @@ class DeliveryAddressInput with _$DeliveryAddressInput {
   }) = _DeliveryAddressInput;
 
   /// The delivery address input from json factory
-  factory DeliveryAddressInput.fromJson(Map<String, dynamic> json) =>
-      _$DeliveryAddressInputFromJson(json);
+  factory DeliveryAddressInput.fromJson(Map<String, dynamic> json) => _$DeliveryAddressInputFromJson(json);
 }

@@ -1,6 +1,6 @@
 /// Query to get n products
 const String getNProductsQuery = r'''
-query($country: CountryCode, $n : Int, $sortKey : ProductSortKeys, $reverse: Boolean) @inContext(country: $country) {
+query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int, $sortKey : ProductSortKeys, $reverse: Boolean) @inContext(country: $country) {
   products(first: $n, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
@@ -12,7 +12,24 @@ query($country: CountryCode, $n : Int, $sortKey : ProductSortKeys, $reverse: Boo
             id
             name
             values
-            } 
+            }
+          metafields(identifiers: $metafields) {
+            id
+            type
+            key
+            namespace
+            value
+            description
+            reference {
+              ... on MediaImage {
+                image {
+                  originalSrc
+                  url
+                  id
+                }
+              }
+            }
+          }
         variants(first: 250) {
           edges {
             node {

@@ -29,6 +29,7 @@ mixin _$Line {
       throw _privateConstructorUsedError;
   SellingPlanAllocation? get sellingPlanAllocation =>
       throw _privateConstructorUsedError;
+  List<Attribute?>? get attributes => throw _privateConstructorUsedError;
 
   /// Serializes this Line to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,7 +52,8 @@ abstract class $LineCopyWith<$Res> {
       ProductVariant? merchandise,
       String? variantId,
       List<CartDiscountAllocation?>? discountAllocations,
-      SellingPlanAllocation? sellingPlanAllocation});
+      SellingPlanAllocation? sellingPlanAllocation,
+      List<Attribute?>? attributes});
 
   $CartLineCostCopyWith<$Res>? get cost;
   $ProductVariantCopyWith<$Res>? get merchandise;
@@ -80,6 +82,7 @@ class _$LineCopyWithImpl<$Res, $Val extends Line>
     Object? variantId = freezed,
     Object? discountAllocations = freezed,
     Object? sellingPlanAllocation = freezed,
+    Object? attributes = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -110,6 +113,10 @@ class _$LineCopyWithImpl<$Res, $Val extends Line>
           ? _value.sellingPlanAllocation
           : sellingPlanAllocation // ignore: cast_nullable_to_non_nullable
               as SellingPlanAllocation?,
+      attributes: freezed == attributes
+          ? _value.attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<Attribute?>?,
     ) as $Val);
   }
 
@@ -171,7 +178,8 @@ abstract class _$$LineImplCopyWith<$Res> implements $LineCopyWith<$Res> {
       ProductVariant? merchandise,
       String? variantId,
       List<CartDiscountAllocation?>? discountAllocations,
-      SellingPlanAllocation? sellingPlanAllocation});
+      SellingPlanAllocation? sellingPlanAllocation,
+      List<Attribute?>? attributes});
 
   @override
   $CartLineCostCopyWith<$Res>? get cost;
@@ -200,6 +208,7 @@ class __$$LineImplCopyWithImpl<$Res>
     Object? variantId = freezed,
     Object? discountAllocations = freezed,
     Object? sellingPlanAllocation = freezed,
+    Object? attributes = freezed,
   }) {
     return _then(_$LineImpl(
       id: freezed == id
@@ -230,6 +239,10 @@ class __$$LineImplCopyWithImpl<$Res>
           ? _value.sellingPlanAllocation
           : sellingPlanAllocation // ignore: cast_nullable_to_non_nullable
               as SellingPlanAllocation?,
+      attributes: freezed == attributes
+          ? _value._attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<Attribute?>?,
     ));
   }
 }
@@ -244,8 +257,10 @@ class _$LineImpl extends _Line {
       this.merchandise,
       this.variantId,
       final List<CartDiscountAllocation?>? discountAllocations,
-      this.sellingPlanAllocation})
+      this.sellingPlanAllocation,
+      final List<Attribute?>? attributes})
       : _discountAllocations = discountAllocations,
+        _attributes = attributes,
         super._();
 
   factory _$LineImpl.fromJson(Map<String, dynamic> json) =>
@@ -274,10 +289,19 @@ class _$LineImpl extends _Line {
 
   @override
   final SellingPlanAllocation? sellingPlanAllocation;
+  final List<Attribute?>? _attributes;
+  @override
+  List<Attribute?>? get attributes {
+    final value = _attributes;
+    if (value == null) return null;
+    if (_attributes is EqualUnmodifiableListView) return _attributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'Line(id: $id, quantity: $quantity, cost: $cost, merchandise: $merchandise, variantId: $variantId, discountAllocations: $discountAllocations, sellingPlanAllocation: $sellingPlanAllocation)';
+    return 'Line(id: $id, quantity: $quantity, cost: $cost, merchandise: $merchandise, variantId: $variantId, discountAllocations: $discountAllocations, sellingPlanAllocation: $sellingPlanAllocation, attributes: $attributes)';
   }
 
   @override
@@ -296,7 +320,9 @@ class _$LineImpl extends _Line {
             const DeepCollectionEquality()
                 .equals(other._discountAllocations, _discountAllocations) &&
             (identical(other.sellingPlanAllocation, sellingPlanAllocation) ||
-                other.sellingPlanAllocation == sellingPlanAllocation));
+                other.sellingPlanAllocation == sellingPlanAllocation) &&
+            const DeepCollectionEquality()
+                .equals(other._attributes, _attributes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -309,7 +335,8 @@ class _$LineImpl extends _Line {
       merchandise,
       variantId,
       const DeepCollectionEquality().hash(_discountAllocations),
-      sellingPlanAllocation);
+      sellingPlanAllocation,
+      const DeepCollectionEquality().hash(_attributes));
 
   /// Create a copy of Line
   /// with the given fields replaced by the non-null parameter values.
@@ -335,7 +362,8 @@ abstract class _Line extends Line {
       final ProductVariant? merchandise,
       final String? variantId,
       final List<CartDiscountAllocation?>? discountAllocations,
-      final SellingPlanAllocation? sellingPlanAllocation}) = _$LineImpl;
+      final SellingPlanAllocation? sellingPlanAllocation,
+      final List<Attribute?>? attributes}) = _$LineImpl;
   _Line._() : super._();
 
   factory _Line.fromJson(Map<String, dynamic> json) = _$LineImpl.fromJson;
@@ -354,6 +382,8 @@ abstract class _Line extends Line {
   List<CartDiscountAllocation?>? get discountAllocations;
   @override
   SellingPlanAllocation? get sellingPlanAllocation;
+  @override
+  List<Attribute?>? get attributes;
 
   /// Create a copy of Line
   /// with the given fields replaced by the non-null parameter values.

@@ -1,3 +1,10 @@
+# 2.5.0
+
+* Added 
+  - `attributes` to cart
+  - `attributes` to cart line items
+  - `updateCartAttributes()` to update the attributes associated to cart
+
 # 2.4.0
 
 * [Added metafield support](https://github.com/imsujan276/shopify_flutter/pull/112) to products and collections 

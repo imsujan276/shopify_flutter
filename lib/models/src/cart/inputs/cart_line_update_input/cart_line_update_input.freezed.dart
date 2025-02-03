@@ -24,6 +24,7 @@ mixin _$CartLineUpdateInput {
   String get merchandiseId => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
   String? get sellingPlanId => throw _privateConstructorUsedError;
+  List<AttributeInput?> get attributes => throw _privateConstructorUsedError;
 
   /// Serializes this CartLineUpdateInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -42,7 +43,11 @@ abstract class $CartLineUpdateInputCopyWith<$Res> {
       _$CartLineUpdateInputCopyWithImpl<$Res, CartLineUpdateInput>;
   @useResult
   $Res call(
-      {String? id, String merchandiseId, int quantity, String? sellingPlanId});
+      {String? id,
+      String merchandiseId,
+      int quantity,
+      String? sellingPlanId,
+      List<AttributeInput?> attributes});
 }
 
 /// @nodoc
@@ -64,6 +69,7 @@ class _$CartLineUpdateInputCopyWithImpl<$Res, $Val extends CartLineUpdateInput>
     Object? merchandiseId = null,
     Object? quantity = null,
     Object? sellingPlanId = freezed,
+    Object? attributes = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -82,6 +88,10 @@ class _$CartLineUpdateInputCopyWithImpl<$Res, $Val extends CartLineUpdateInput>
           ? _value.sellingPlanId
           : sellingPlanId // ignore: cast_nullable_to_non_nullable
               as String?,
+      attributes: null == attributes
+          ? _value.attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<AttributeInput?>,
     ) as $Val);
   }
 }
@@ -95,7 +105,11 @@ abstract class _$$CartLineImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? id, String merchandiseId, int quantity, String? sellingPlanId});
+      {String? id,
+      String merchandiseId,
+      int quantity,
+      String? sellingPlanId,
+      List<AttributeInput?> attributes});
 }
 
 /// @nodoc
@@ -115,6 +129,7 @@ class __$$CartLineImplCopyWithImpl<$Res>
     Object? merchandiseId = null,
     Object? quantity = null,
     Object? sellingPlanId = freezed,
+    Object? attributes = null,
   }) {
     return _then(_$CartLineImpl(
       id: freezed == id
@@ -133,6 +148,10 @@ class __$$CartLineImplCopyWithImpl<$Res>
           ? _value.sellingPlanId
           : sellingPlanId // ignore: cast_nullable_to_non_nullable
               as String?,
+      attributes: null == attributes
+          ? _value._attributes
+          : attributes // ignore: cast_nullable_to_non_nullable
+              as List<AttributeInput?>,
     ));
   }
 }
@@ -144,8 +163,10 @@ class _$CartLineImpl extends _CartLine {
       {this.id,
       required this.merchandiseId,
       required this.quantity,
-      this.sellingPlanId})
-      : super._();
+      this.sellingPlanId,
+      final List<AttributeInput?> attributes = const []})
+      : _attributes = attributes,
+        super._();
 
   factory _$CartLineImpl.fromJson(Map<String, dynamic> json) =>
       _$$CartLineImplFromJson(json);
@@ -158,10 +179,18 @@ class _$CartLineImpl extends _CartLine {
   final int quantity;
   @override
   final String? sellingPlanId;
+  final List<AttributeInput?> _attributes;
+  @override
+  @JsonKey()
+  List<AttributeInput?> get attributes {
+    if (_attributes is EqualUnmodifiableListView) return _attributes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_attributes);
+  }
 
   @override
   String toString() {
-    return 'CartLineUpdateInput(id: $id, merchandiseId: $merchandiseId, quantity: $quantity, sellingPlanId: $sellingPlanId)';
+    return 'CartLineUpdateInput(id: $id, merchandiseId: $merchandiseId, quantity: $quantity, sellingPlanId: $sellingPlanId, attributes: $attributes)';
   }
 
   @override
@@ -175,13 +204,15 @@ class _$CartLineImpl extends _CartLine {
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity) &&
             (identical(other.sellingPlanId, sellingPlanId) ||
-                other.sellingPlanId == sellingPlanId));
+                other.sellingPlanId == sellingPlanId) &&
+            const DeepCollectionEquality()
+                .equals(other._attributes, _attributes));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, merchandiseId, quantity, sellingPlanId);
+  int get hashCode => Object.hash(runtimeType, id, merchandiseId, quantity,
+      sellingPlanId, const DeepCollectionEquality().hash(_attributes));
 
   /// Create a copy of CartLineUpdateInput
   /// with the given fields replaced by the non-null parameter values.
@@ -204,7 +235,8 @@ abstract class _CartLine extends CartLineUpdateInput {
       {final String? id,
       required final String merchandiseId,
       required final int quantity,
-      final String? sellingPlanId}) = _$CartLineImpl;
+      final String? sellingPlanId,
+      final List<AttributeInput?> attributes}) = _$CartLineImpl;
   _CartLine._() : super._();
 
   factory _CartLine.fromJson(Map<String, dynamic> json) =
@@ -218,6 +250,8 @@ abstract class _CartLine extends CartLineUpdateInput {
   int get quantity;
   @override
   String? get sellingPlanId;
+  @override
+  List<AttributeInput?> get attributes;
 
   /// Create a copy of CartLineUpdateInput
   /// with the given fields replaced by the non-null parameter values.

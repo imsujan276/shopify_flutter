@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shopify_flutter/models/src/cart/attribute/attribute.dart';
 import 'package:shopify_flutter/models/src/cart/cart_discount_allocation/cart_discount_allocation.dart';
 import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 import 'package:shopify_flutter/models/src/product/selling_plan_allocation/selling_plan_allocation.dart';
@@ -23,6 +24,7 @@ class Line with _$Line {
     String? variantId,
     List<CartDiscountAllocation?>? discountAllocations,
     SellingPlanAllocation? sellingPlanAllocation,
+    List<Attribute?>? attributes,
   }) = _Line;
 
   /// The cart line from json
@@ -50,6 +52,11 @@ class Line with _$Line {
           : null,
       sellingPlanAllocation: nodeJson['sellingPlanAllocation'] != null
           ? SellingPlanAllocation.fromJson(nodeJson['sellingPlanAllocation'])
+          : null,
+      attributes: nodeJson['attributes'] != null
+          ? (nodeJson['attributes'] as List)
+              .map((e) => Attribute.fromJson(e))
+              .toList()
           : null,
     );
   }

@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
 import 'package:shopify_flutter/enums/enums.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_collections_optimized.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_all_products_from_collection_by_id.dart';
@@ -364,7 +363,6 @@ class ShopifyStore with ShopifyError {
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
       final QueryResult result = await _graphQLClient!.query(_options);
-      debugPrint('result: ${result.data.toString()}');
       checkForError(result);
       tempCollection = (Collections.fromGraphJson(
           (result.data ?? const {})['collections'] ?? {}));

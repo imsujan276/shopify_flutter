@@ -110,6 +110,7 @@ Example to get metafields in product
   Future<Cart> updateNoteInCart({ required String cartId, required String note })
   Future<Cart> updateCartDiscountCodes({ required String cartId, required List<String> discountCodes })
   Future<Cart> updateBuyerIdentityInCart({ required String cartId, required CartBuyerIdentityInput buyerIdentity })
+  Future<Cart> updateCartAttributes({required String cartId,required List<AttributeInput> attributes})
 ```
 
 ##### Shopify Order

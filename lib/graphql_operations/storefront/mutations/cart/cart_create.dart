@@ -7,6 +7,10 @@ mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(countr
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -94,6 +98,10 @@ mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(countr
                 amount
                 currencyCode
               }
+            }
+            attributes {
+              key
+              value
             }
             discountAllocations {
               discountedAmount {

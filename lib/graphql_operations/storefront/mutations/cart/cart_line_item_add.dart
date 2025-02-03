@@ -7,6 +7,10 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -94,6 +98,10 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                 amount
                 currencyCode
               }
+            }
+            attributes {
+              key
+              value
             }
             discountAllocations {
               discountedAmount {

@@ -7,6 +7,10 @@ mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIden
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -94,6 +98,10 @@ mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIden
                 amount
                 currencyCode
               }
+            }
+            attributes {
+              key
+              value
             }
             discountAllocations {
               discountedAmount {

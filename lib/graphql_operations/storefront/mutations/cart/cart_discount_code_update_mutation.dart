@@ -7,6 +7,10 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -94,6 +98,10 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
                 amount
                 currencyCode
               }
+            }
+            attributes {
+              key
+              value
             }
             discountAllocations {
               discountedAmount {

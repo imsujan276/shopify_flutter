@@ -7,6 +7,10 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode)  @i
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -94,6 +98,10 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode)  @i
                 amount
                 currencyCode
               }
+            }
+            attributes {
+              key
+              value
             }
             discountAllocations {
               discountedAmount {

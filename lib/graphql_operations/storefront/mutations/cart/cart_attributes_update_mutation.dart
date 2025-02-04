@@ -1,6 +1,6 @@
 /// mutation to update cart attributes
 const String updateCartAttributesMutation = r'''
-mutation cartAttributesUpdate($cartId: ID!, attributes: [AttributeInput!]!, $country: CountryCode)  @inContext(country: $country) {
+mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $country: CountryCode)  @inContext(country: $country) {
   cartAttributesUpdate(attributes: $attributes, cartId: $cartId) {
     cart {
       id
@@ -236,14 +236,14 @@ mutation cartAttributesUpdate($cartId: ID!, attributes: [AttributeInput!]!, $cou
                               }
                               recurringDeliveries
                             }
-                          }   
+                          }
                 }
                 product {
                   options(first: 5) {
                       id
                       name
                       values
-                      } 
+                      }
                   variants(first: 250) {
                     edges {
                       node {

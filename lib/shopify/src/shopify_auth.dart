@@ -112,7 +112,7 @@ class ShopifyAuth with ShopifyError {
   Future<ShopifyUser> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String phone,
+    String? phone,
     String? firstName,
     String? lastName,
     bool? acceptsMarketing,

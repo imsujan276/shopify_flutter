@@ -1,6 +1,12 @@
+# 2.5.2
+
+* Made phone number option on user/customer creation
+* Better error handling
+* Updated readme file for better experience
+
 # 2.5.1
 
-* `updateCartAttributes()` mutaion fix
+* `updateCartAttributes()` mutation fix
 
 # 2.5.0
 

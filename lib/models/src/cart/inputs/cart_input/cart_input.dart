@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopify_flutter/models/src/cart/inputs/cart_buyer_identity_input/cart_buyer_identity_input.dart';
 
 import '../cart_line_input/cart_line_input.dart';
+import '../attribute_input/attribute_input.dart';
 
 part 'cart_input.freezed.dart';
 part 'cart_input.g.dart';
@@ -17,6 +18,7 @@ class CartInput with _$CartInput {
     @Default([]) List<String?> discountCodes,
     @Default([]) List<CartLineInput?> lines,
     @Default('') String note,
+    @Default([]) List<AttributeInput?> attributes,
     CartBuyerIdentityInput? buyerIdentity,
   }) = _CartInput;
 

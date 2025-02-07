@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:shopify_flutter/models/src/product/metafield/metafield.dart';
 import 'package:shopify_flutter/models/src/product/option/option.dart';
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
 import 'package:shopify_flutter/models/src/product/product_media/product_media.dart';
@@ -35,7 +36,7 @@ class Product with _$Product {
     required List<Option> options,
     required String vendor,
     required List<ProductMedia> media,
-    // required List<Metafield> metafields,
+    required List<Metafield> metafields,
     List<AssociatedCollections>? collectionList,
     String? cursor,
     String? onlineStoreUrl,
@@ -152,7 +153,7 @@ class Product with _$Product {
         options: _getOptionList(json),
         vendor: json['node']?['vendor'],
         media: _getMediaList(json),
-        // metafields: _getMetafieldList(json),
+        metafields: _getMetafieldList(json),
       );
 
   // factory Product.fromJson(Map<String, dynamic> json) =>
@@ -183,7 +184,7 @@ class Product with _$Product {
       options: _getOptionList(json),
       vendor: json['vendor'],
       media: _getMediaList(json),
-      // metafields: _getMetafieldList(json),
+      metafields: _getMetafieldList(json),
     );
   }
 
@@ -355,23 +356,32 @@ class Product with _$Product {
     }
   }
 
-  // static List<Metafield> _getMetafieldList(Map<String, dynamic> json) {
-  //   try {
-  //     if (json.containsKey('node')) {
-  //       if (json['node']?['metafields'] == null) return [];
-  //       return ((json['node']?['metafields']?['edges'] ?? []) as List)
-  //           .map((v) => Metafield.fromGraphJson(v ?? const {}))
-  //           .toList();
-  //     } else {
-  //       if (json['metafields'] == null) return [];
-  //       return ((json['metafields'] ?? []) as List).map((v) {
-  //         final jsonMetafield = v is Metafield ? v.toJson() : v;
-  //         return Metafield.fromJson(jsonMetafield ?? const {});
-  //       }).toList();
-  //     }
-  //   } catch (e) {
-  //     log("_getMetafieldList error: $e");
-  //     return [];
-  //   }
-  // }
+  static List<Metafield> _getMetafieldList(Map<String, dynamic> json) {
+    try {
+      if (json.containsKey('node')) {
+        if (json['node']?['metafields'] == null) return [];
+        final metafields = ((json['node']?['metafields'] ?? []) as List)
+            .map((v) => Metafield.fromGraphJson(v ?? const {}))
+            .toList();
+        // remove null entries from the list
+        return metafields;
+      } else if (json['metafields'] != null) {
+        final metafields = ((json['node']?['metafields'] ?? []) as List)
+            .map((v) => Metafield.fromGraphJson(v ?? const {}))
+            .toList();
+        // remove null entries from the list
+        return metafields;
+      } else if (json['nodes'] != null && json['nodes'].isNotEmpty) {
+        final metafields = ((json['nodes'][0]?['metafields'] ?? []) as List)
+            .map((v) => Metafield.fromGraphJson(v ?? const {}))
+            .toList();
+        // remove null entries from the list
+        return metafields;
+      }
+      return [];
+    } catch (e) {
+      log("_getMetafieldList error: $e");
+      return [];
+    }
+  }
 }

@@ -112,7 +112,7 @@ class ShopifyAuth with ShopifyError {
   Future<ShopifyUser> createUserWithEmailAndPassword({
     required String email,
     required String password,
-    required String phone,
+    String? phone,
     String? firstName,
     String? lastName,
     bool? acceptsMarketing,
@@ -297,7 +297,7 @@ class ShopifyAuth with ShopifyError {
     } else if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];
     } else {
-      return null;
+      return _getShopifyUser(accessToken);
     }
   }
 

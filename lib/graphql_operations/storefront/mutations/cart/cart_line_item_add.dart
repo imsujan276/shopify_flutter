@@ -7,6 +7,10 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
       checkoutUrl
       createdAt
       totalQuantity
+      attributes {
+        key
+        value
+      }
       cost {
         checkoutChargeAmount {
           amount
@@ -95,17 +99,68 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                 currencyCode
               }
             }
+            attributes {
+              key
+              value
+            }
             discountAllocations {
               discountedAmount {
                 amount
                 currencyCode
               }
             }
-            sellingPlanAllocation {
-              sellingPlan {
-                id
-              }
-            }
+            sellingPlanAllocation{
+                    checkoutChargeAmount {
+                      amount
+                      currencyCode
+                    }
+                    remainingBalanceChargeAmount {
+                      amount
+                      currencyCode
+                    }
+                    sellingPlan {
+                      id
+                      name
+                      options {
+                        name
+                        value
+                      }
+                      description
+                      checkoutCharge {
+                        type
+                        value {
+                          ... on MoneyV2 {
+                            amount
+                            currencyCode
+                          }
+                          ... on SellingPlanCheckoutChargePercentageValue {
+                            percentage
+                          }
+                        }
+                      }
+                      priceAdjustments {
+                        adjustmentValue {
+                          ... on SellingPlanFixedAmountPriceAdjustment {
+                            adjustmentAmount {
+                              amount
+                              currencyCode
+                            }
+                          }
+                          ... on SellingPlanFixedPriceAdjustment {
+                            price {
+                              amount
+                              currencyCode
+                            }
+                          }
+                          ... on SellingPlanPercentagePriceAdjustment {
+                            adjustmentPercentage
+                          }
+                        }
+                        orderCount
+                      }
+                      recurringDeliveries
+                    }
+                }
             merchandise {
               ... on ProductVariant {
                 id
@@ -129,6 +184,60 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                 quantityAvailable
                 sku
                 requiresShipping
+                sellingPlanAllocations(first: 250) {
+                    nodes {
+                            checkoutChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            remainingBalanceChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            sellingPlan {
+                              id
+                              name
+                              options {
+                                name
+                                value
+                              }
+                              description
+                              checkoutCharge {
+                                type
+                                value {
+                                  ... on MoneyV2 {
+                                    amount
+                                    currencyCode
+                                  }
+                                  ... on SellingPlanCheckoutChargePercentageValue {
+                                    percentage
+                                  }
+                                }
+                              }
+                              priceAdjustments {
+                                adjustmentValue {
+                                  ... on SellingPlanFixedAmountPriceAdjustment {
+                                    adjustmentAmount {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanFixedPriceAdjustment {
+                                    price {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanPercentagePriceAdjustment {
+                                    adjustmentPercentage
+                                  }
+                                }
+                                orderCount
+                              }
+                              recurringDeliveries
+                            }
+                          }   
+                }
                 product {
                   options(first: 5) {
                       id
@@ -159,6 +268,60 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                         sku
                         requiresShipping
                         quantityAvailable
+                        sellingPlanAllocations(first: 250) {
+                          nodes {
+                            checkoutChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            remainingBalanceChargeAmount {
+                              amount
+                              currencyCode
+                            }
+                            sellingPlan {
+                              id
+                              name
+                              options {
+                                name
+                                value
+                              }
+                              description
+                              checkoutCharge {
+                                type
+                                value {
+                                  ... on MoneyV2 {
+                                    amount
+                                    currencyCode
+                                  }
+                                  ... on SellingPlanCheckoutChargePercentageValue {
+                                    percentage
+                                  }
+                                }
+                              }
+                              priceAdjustments {
+                                adjustmentValue {
+                                  ... on SellingPlanFixedAmountPriceAdjustment {
+                                    adjustmentAmount {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanFixedPriceAdjustment {
+                                    price {
+                                      amount
+                                      currencyCode
+                                    }
+                                  }
+                                  ... on SellingPlanPercentagePriceAdjustment {
+                                    adjustmentPercentage
+                                  }
+                                }
+                                orderCount
+                              }
+                              recurringDeliveries
+                            }
+                          }
+                        }
                         selectedOptions {
                           name
                           value

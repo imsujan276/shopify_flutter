@@ -1,4 +1,5 @@
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_attributes_update_mutation.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_create.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_discount_code_update_mutation.dart';
@@ -9,6 +10,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/car
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_cart_by_id.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/cart/cart_model.dart';
+import 'package:shopify_flutter/models/src/cart/inputs/attribute_input/attribute_input.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
 import '../../shopify_config.dart';
@@ -52,6 +54,7 @@ class ShopifyCart with ShopifyError {
       'lines': cartInput.lines.map((e) => e?.toJson()).toList(),
       'note': cartInput.note,
       'buyerIdentity': cartInput.buyerIdentity?.toJson(),
+      'attributes': cartInput.attributes.map((e) => e?.toJson()).toList(),
     };
     final MutationOptions createCart = MutationOptions(
       document: gql(cartCreateMutation),
@@ -70,8 +73,8 @@ class ShopifyCart with ShopifyError {
   /// add line item to cart
   Future<Cart> addLineItemsToCart({
     required String cartId,
-    required List<CartLineInput> cartLineInputs,
     bool reverse = false,
+    required List<CartLineUpdateInput> cartLineInputs,
   }) async {
     final lineInputs = cartLineInputs.map((e) {
       final json = e.toJson();
@@ -119,8 +122,8 @@ class ShopifyCart with ShopifyError {
   /// update line items in cart
   Future<Cart> updateLineItemsInCart({
     required String cartId,
-    required List<CartLineInput> cartLineInputs,
     bool reverse = false,
+    required List<CartLineUpdateInput> cartLineInputs,
   }) async {
     final lineInputs = cartLineInputs.map((e) => e.toJson()).toList();
     final MutationOptions updateLineItem = MutationOptions(
@@ -229,6 +232,27 @@ class ShopifyCart with ShopifyError {
 
     return Cart.fromJson(
         ((result.data!['cartBuyerIdentityUpdate'] ?? const {})['cart'] ??
+            const {}));
+  }
+
+  /// update cart atributes
+  Future<Cart> updateCartAttributes({
+    required String cartId,
+    required List<AttributeInput> attributes,
+  }) async {
+    final MutationOptions updateAttributes = MutationOptions(
+      document: gql(updateCartAttributesMutation),
+      variables: {
+        'cartId': cartId,
+        'attributes': attributes.map((e) => e.toJson()).toList(),
+        'country': ShopifyLocalization.countryCode,
+      },
+    );
+    QueryResult result = await _graphQLClient!.mutate(updateAttributes);
+    checkForError(result, key: 'cartAttributesUpdate', errorKey: 'userErrors');
+
+    return Cart.fromJson(
+        ((result.data!['cartAttributesUpdate'] ?? const {})['cart'] ??
             const {}));
   }
 }

@@ -21,13 +21,13 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Customer {
   String? get id => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get phone => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get phone => throw _privateConstructorUsedError;
+  String? get firstName => throw _privateConstructorUsedError;
+  String? get lastName => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
   MailingAddress? get defaultAddress => throw _privateConstructorUsedError;
-  int? get numberOfOrders => throw _privateConstructorUsedError;
+  dynamic get numberOfOrders => throw _privateConstructorUsedError;
   bool? get acceptsMarketing => throw _privateConstructorUsedError;
 
   /// Serializes this Customer to a JSON map.
@@ -47,13 +47,13 @@ abstract class $CustomerCopyWith<$Res> {
   @useResult
   $Res call(
       {String? id,
-      String email,
-      String phone,
-      String firstName,
-      String lastName,
+      String? email,
+      String? phone,
+      String? firstName,
+      String? lastName,
       String displayName,
       MailingAddress? defaultAddress,
-      int? numberOfOrders,
+      dynamic numberOfOrders,
       bool? acceptsMarketing});
 
   $MailingAddressCopyWith<$Res>? get defaultAddress;
@@ -75,10 +75,10 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = null,
-    Object? phone = null,
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? email = freezed,
+    Object? phone = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? displayName = null,
     Object? defaultAddress = freezed,
     Object? numberOfOrders = freezed,
@@ -89,22 +89,22 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
+              as String?,
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstName: null == firstName
+              as String?,
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -116,7 +116,7 @@ class _$CustomerCopyWithImpl<$Res, $Val extends Customer>
       numberOfOrders: freezed == numberOfOrders
           ? _value.numberOfOrders
           : numberOfOrders // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       acceptsMarketing: freezed == acceptsMarketing
           ? _value.acceptsMarketing
           : acceptsMarketing // ignore: cast_nullable_to_non_nullable
@@ -149,13 +149,13 @@ abstract class _$$CustomerImplCopyWith<$Res>
   @useResult
   $Res call(
       {String? id,
-      String email,
-      String phone,
-      String firstName,
-      String lastName,
+      String? email,
+      String? phone,
+      String? firstName,
+      String? lastName,
       String displayName,
       MailingAddress? defaultAddress,
-      int? numberOfOrders,
+      dynamic numberOfOrders,
       bool? acceptsMarketing});
 
   @override
@@ -176,10 +176,10 @@ class __$$CustomerImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? email = null,
-    Object? phone = null,
-    Object? firstName = null,
-    Object? lastName = null,
+    Object? email = freezed,
+    Object? phone = freezed,
+    Object? firstName = freezed,
+    Object? lastName = freezed,
     Object? displayName = null,
     Object? defaultAddress = freezed,
     Object? numberOfOrders = freezed,
@@ -190,22 +190,22 @@ class __$$CustomerImplCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      email: null == email
+      email: freezed == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      phone: null == phone
+              as String?,
+      phone: freezed == phone
           ? _value.phone
           : phone // ignore: cast_nullable_to_non_nullable
-              as String,
-      firstName: null == firstName
+              as String?,
+      firstName: freezed == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
+              as String?,
+      lastName: freezed == lastName
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       displayName: null == displayName
           ? _value.displayName
           : displayName // ignore: cast_nullable_to_non_nullable
@@ -217,7 +217,7 @@ class __$$CustomerImplCopyWithImpl<$Res>
       numberOfOrders: freezed == numberOfOrders
           ? _value.numberOfOrders
           : numberOfOrders // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
       acceptsMarketing: freezed == acceptsMarketing
           ? _value.acceptsMarketing
           : acceptsMarketing // ignore: cast_nullable_to_non_nullable
@@ -247,19 +247,19 @@ class _$CustomerImpl extends _Customer {
   @override
   final String? id;
   @override
-  final String email;
+  final String? email;
   @override
-  final String phone;
+  final String? phone;
   @override
-  final String firstName;
+  final String? firstName;
   @override
-  final String lastName;
+  final String? lastName;
   @override
   final String displayName;
   @override
   final MailingAddress? defaultAddress;
   @override
-  final int? numberOfOrders;
+  final dynamic numberOfOrders;
   @override
   final bool? acceptsMarketing;
 
@@ -284,16 +284,25 @@ class _$CustomerImpl extends _Customer {
                 other.displayName == displayName) &&
             (identical(other.defaultAddress, defaultAddress) ||
                 other.defaultAddress == defaultAddress) &&
-            (identical(other.numberOfOrders, numberOfOrders) ||
-                other.numberOfOrders == numberOfOrders) &&
+            const DeepCollectionEquality()
+                .equals(other.numberOfOrders, numberOfOrders) &&
             (identical(other.acceptsMarketing, acceptsMarketing) ||
                 other.acceptsMarketing == acceptsMarketing));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, email, phone, firstName,
-      lastName, displayName, defaultAddress, numberOfOrders, acceptsMarketing);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      email,
+      phone,
+      firstName,
+      lastName,
+      displayName,
+      defaultAddress,
+      const DeepCollectionEquality().hash(numberOfOrders),
+      acceptsMarketing);
 
   /// Create a copy of Customer
   /// with the given fields replaced by the non-null parameter values.
@@ -314,13 +323,13 @@ class _$CustomerImpl extends _Customer {
 abstract class _Customer extends Customer {
   factory _Customer(
       {required final String? id,
-      required final String email,
-      required final String phone,
-      required final String firstName,
-      required final String lastName,
+      required final String? email,
+      required final String? phone,
+      required final String? firstName,
+      required final String? lastName,
       required final String displayName,
       required final MailingAddress? defaultAddress,
-      required final int? numberOfOrders,
+      required final dynamic numberOfOrders,
       required final bool? acceptsMarketing}) = _$CustomerImpl;
   _Customer._() : super._();
 
@@ -330,19 +339,19 @@ abstract class _Customer extends Customer {
   @override
   String? get id;
   @override
-  String get email;
+  String? get email;
   @override
-  String get phone;
+  String? get phone;
   @override
-  String get firstName;
+  String? get firstName;
   @override
-  String get lastName;
+  String? get lastName;
   @override
   String get displayName;
   @override
   MailingAddress? get defaultAddress;
   @override
-  int? get numberOfOrders;
+  dynamic get numberOfOrders;
   @override
   bool? get acceptsMarketing;
 

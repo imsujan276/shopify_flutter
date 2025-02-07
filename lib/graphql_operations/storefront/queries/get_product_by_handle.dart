@@ -1,11 +1,28 @@
 /// Query to get product by handle
 const String getProductByHandleQuery = r'''
-query getProductByHandle($country: CountryCode, $handle: String!) @inContext(country: $country) {
+query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $handle: String!) @inContext(country: $country) {
   productByHandle(handle: $handle) {
     options(first: 50) {
       id
       name
       values
+    }
+    metafields(identifiers: $metafields) {
+      id
+      type
+      key
+      namespace
+      value
+      description
+      reference {
+        ... on MediaImage {
+          image {
+            originalSrc
+            url
+            id
+          }
+        }
+      }
     }
     id
     handle
@@ -66,6 +83,60 @@ query getProductByHandle($country: CountryCode, $handle: String!) @inContext(cou
           }
           id
           quantityAvailable
+          sellingPlanAllocations(first: 250) {
+              nodes {
+                checkoutChargeAmount {
+                  amount
+                  currencyCode
+                }
+                remainingBalanceChargeAmount {
+                  amount
+                  currencyCode
+                }
+                sellingPlan {
+                  id
+                  name
+                  options {
+                    name
+                    value
+                  }
+                  description
+                  checkoutCharge {
+                    type
+                    value {
+                      ... on MoneyV2 {
+                        amount
+                        currencyCode
+                      }
+                      ... on SellingPlanCheckoutChargePercentageValue {
+                        percentage
+                      }
+                    }
+                  }
+                  priceAdjustments {
+                    adjustmentValue {
+                      ... on SellingPlanFixedAmountPriceAdjustment {
+                        adjustmentAmount {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanFixedPriceAdjustment {
+                        price {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanPercentagePriceAdjustment {
+                        adjustmentPercentage
+                      }
+                    }
+                    orderCount
+                  }
+                  recurringDeliveries
+                }
+              }
+            }
         }
       }
     }

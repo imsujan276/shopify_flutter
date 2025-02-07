@@ -25,7 +25,8 @@ mixin _$Metafield {
   String get key => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get reference => throw _privateConstructorUsedError;
 
   /// Serializes this Metafield to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,7 +49,8 @@ abstract class $MetafieldCopyWith<$Res> {
       String key,
       String value,
       String type,
-      String description});
+      String? description,
+      Map<String, dynamic>? reference});
 }
 
 /// @nodoc
@@ -71,7 +73,8 @@ class _$MetafieldCopyWithImpl<$Res, $Val extends Metafield>
     Object? key = null,
     Object? value = null,
     Object? type = null,
-    Object? description = null,
+    Object? description = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -94,10 +97,14 @@ class _$MetafieldCopyWithImpl<$Res, $Val extends Metafield>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      reference: freezed == reference
+          ? _value.reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 }
@@ -116,7 +123,8 @@ abstract class _$$MetafieldImplCopyWith<$Res>
       String key,
       String value,
       String type,
-      String description});
+      String? description,
+      Map<String, dynamic>? reference});
 }
 
 /// @nodoc
@@ -137,7 +145,8 @@ class __$$MetafieldImplCopyWithImpl<$Res>
     Object? key = null,
     Object? value = null,
     Object? type = null,
-    Object? description = null,
+    Object? description = freezed,
+    Object? reference = freezed,
   }) {
     return _then(_$MetafieldImpl(
       id: null == id
@@ -160,10 +169,14 @@ class __$$MetafieldImplCopyWithImpl<$Res>
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
               as String,
-      description: null == description
+      description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      reference: freezed == reference
+          ? _value._reference
+          : reference // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -177,8 +190,10 @@ class _$MetafieldImpl extends _Metafield {
       required this.key,
       required this.value,
       required this.type,
-      this.description = ''})
-      : super._();
+      this.description,
+      final Map<String, dynamic>? reference})
+      : _reference = reference,
+        super._();
 
   factory _$MetafieldImpl.fromJson(Map<String, dynamic> json) =>
       _$$MetafieldImplFromJson(json);
@@ -194,12 +209,20 @@ class _$MetafieldImpl extends _Metafield {
   @override
   final String type;
   @override
-  @JsonKey()
-  final String description;
+  final String? description;
+  final Map<String, dynamic>? _reference;
+  @override
+  Map<String, dynamic>? get reference {
+    final value = _reference;
+    if (value == null) return null;
+    if (_reference is EqualUnmodifiableMapView) return _reference;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value, type: $type, description: $description)';
+    return 'Metafield(id: $id, namespace: $namespace, key: $key, value: $value, type: $type, description: $description, reference: $reference)';
   }
 
   @override
@@ -214,13 +237,15 @@ class _$MetafieldImpl extends _Metafield {
             (identical(other.value, value) || other.value == value) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            const DeepCollectionEquality()
+                .equals(other._reference, _reference));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, namespace, key, value, type, description);
+  int get hashCode => Object.hash(runtimeType, id, namespace, key, value, type,
+      description, const DeepCollectionEquality().hash(_reference));
 
   /// Create a copy of Metafield
   /// with the given fields replaced by the non-null parameter values.
@@ -245,7 +270,8 @@ abstract class _Metafield extends Metafield {
       required final String key,
       required final String value,
       required final String type,
-      final String description}) = _$MetafieldImpl;
+      final String? description,
+      final Map<String, dynamic>? reference}) = _$MetafieldImpl;
   _Metafield._() : super._();
 
   factory _Metafield.fromJson(Map<String, dynamic> json) =
@@ -262,7 +288,9 @@ abstract class _Metafield extends Metafield {
   @override
   String get type;
   @override
-  String get description;
+  String? get description;
+  @override
+  Map<String, dynamic>? get reference;
 
   /// Create a copy of Metafield
   /// with the given fields replaced by the non-null parameter values.

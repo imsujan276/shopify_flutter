@@ -36,9 +36,11 @@ import '../../graphql_operations/storefront/queries/get_checkout_information.dar
 import '../../models/src/checkout/checkout.dart';
 import '../../shopify_config.dart';
 
-@Deprecated('From Shopify API Version 2024-07, use ShopifyCart instead')
+@Deprecated('Use ShopifyCart instead')
 
 /// ShopifyCheckout provides various method in order to work with checkouts.
+///
+/// Depreciated: Use ShopifyCart instead
 class ShopifyCheckout with ShopifyError {
   ShopifyCheckout._();
 
@@ -246,7 +248,7 @@ class ShopifyCheckout with ShopifyError {
         const {})['payment']['id'];
   }
 
-  /// Helper method for transforming a list of variant ids into a List Of Map<String, dynamic> which looks like this:
+  /// Helper method for transforming a list of variant ids into a List of Map which looks like this:
   ///
   /// [{"quantity":AMOUNT,"variantId":"YOUR_VARIANT_ID"}]
   List<Map<String, dynamic>> transformVariantIdListIntoListOfMaps(

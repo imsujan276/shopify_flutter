@@ -1,6 +1,6 @@
 /// Query to get all collections
 const String getAllCollectionsQuery = r'''
-query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country: CountryCode)  @inContext(country: $country){
   collections(first: 250, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
@@ -14,6 +14,23 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country
         handle
         id
         updatedAt
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         image {
           altText
           id
@@ -49,6 +66,60 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean, $country
                     }
                     availableForSale
                     quantityAvailable
+                    sellingPlanAllocations(first: 250) {
+                      nodes {
+                        checkoutChargeAmount {
+                          amount
+                          currencyCode
+                        }
+                        remainingBalanceChargeAmount {
+                          amount
+                          currencyCode
+                        }
+                        sellingPlan {
+                          id
+                          name
+                          options {
+                            name
+                            value
+                          }
+                          description
+                          checkoutCharge {
+                            type
+                            value {
+                              ... on MoneyV2 {
+                                amount
+                                currencyCode
+                              }
+                              ... on SellingPlanCheckoutChargePercentageValue {
+                                percentage
+                              }
+                            }
+                          }
+                          priceAdjustments {
+                            adjustmentValue {
+                              ... on SellingPlanFixedAmountPriceAdjustment {
+                                adjustmentAmount {
+                                  amount
+                                  currencyCode
+                                }
+                              }
+                              ... on SellingPlanFixedPriceAdjustment {
+                                price {
+                                  amount
+                                  currencyCode
+                                }
+                              }
+                              ... on SellingPlanPercentagePriceAdjustment {
+                                adjustmentPercentage
+                              }
+                            }
+                            orderCount
+                          }
+                          recurringDeliveries
+                        }
+                      }
+                    }
                   }
                 }
               }

@@ -9,16 +9,16 @@ part of 'customer.dart';
 _$CustomerImpl _$$CustomerImplFromJson(Map<String, dynamic> json) =>
     _$CustomerImpl(
       id: json['id'] as String?,
-      email: json['email'] as String,
-      phone: json['phone'] as String,
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
+      email: json['email'] as String?,
+      phone: json['phone'] as String?,
+      firstName: json['firstName'] as String?,
+      lastName: json['lastName'] as String?,
       displayName: json['displayName'] as String,
       defaultAddress: json['defaultAddress'] == null
           ? null
           : MailingAddress.fromJson(
               json['defaultAddress'] as Map<String, dynamic>),
-      numberOfOrders: (json['numberOfOrders'] as num?)?.toInt(),
+      numberOfOrders: json['numberOfOrders'],
       acceptsMarketing: json['acceptsMarketing'] as bool?,
     );
 

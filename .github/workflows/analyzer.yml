@@ -18,10 +18,10 @@ jobs:
       - name: Set up Dart and Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.13.6'
+          flutter-version: '3.24.2'
 
       - name: Disable Flutter telemetry
-        run: flutter --disable-telemetry
+        run: echo "FLUTTER_TELEMETRY_DISABLED=true" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: flutter pub get

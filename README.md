@@ -53,14 +53,32 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;
 
-  Future<ShopifyUser> signInWithEmailAndPassword({required String email, required String password})
-  Future<ShopifyUser> createUserWithEmailAndPassword({required String email, required String password, required String phone, String? firstName, String? lastName, bool? acceptsMarketing,})
+  Future<ShopifyUser> signInWithEmailAndPassword({
+    required String email, 
+    required String password
+  })
+
+  Future<ShopifyUser> createUserWithEmailAndPassword({
+    required String email, 
+    required String password, 
+    String? phone, 
+    String? firstName, 
+    String? lastName, 
+    bool? acceptsMarketing
+  })
+
   Future<void> signOutCurrentUser()
+
   Future<void> sendPasswordResetEmail({required String email})
+
   Future<ShopifyUser> currentUser({bool forceRefresh = false})
+
   Future<void> deleteCustomer({required String userId})
+
   Future<String?> get currentCustomerAccessToken
+
   Future<bool> get isAccessTokenExpired
+
   Future<AccessTokenWithExpDate?> get accessTokenWithExpDate
 ```
 
@@ -68,43 +86,75 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart    
   ShopifyStore shopifyStore = ShopifyStore.instance;
 
-  Future<List<Product>> getProductsByIds()
-  Future<List<Product>> getXProductsAfterCursor(int limit,String startCursor)
+  Future<List<Product>> getProductsByIds(List<String> productIds)
+
+  Future<List<Product>> getXProductsAfterCursor(
+    int limit,
+    String startCursor
+  )
+
   Future<List<Product>> getAllProducts()
-  Future<List<Product>> getNProducts({required int n, required SortKey sortKey})
+
+  Future<List<Product>> getNProducts({
+    required int n, 
+    required SortKey sortKey
+  })
+
   Future<Shop> getShop()
+
   Future<Collection> getCollectionById(String collectionId)
+
   Future<List<Collection>> getAllCollections()
+
   Future<List<Product>> getAllProductsFromCollectionById(String id)
-  Future<List<Product>> getAllProductsOnQuery(String cursor, SortKeyProduct sortKey, String query)
-  Future<List<Product>> getXProductsOnQueryAfterCursor(String cursor, int limit, SortKeyProduct sortKey, String query)
+
+  Future<List<Product>> getAllProductsOnQuery(
+    String cursor, 
+    SortKeyProduct sortKey, 
+    String query
+  )
+
+  Future<List<Product>> getXProductsOnQueryAfterCursor(
+    String cursor, 
+    int limit, 
+    SortKeyProduct sortKey, 
+    String query
+  )
 
   /// filters available queries
-  Future<List<Product>> getXProductsAfterCursorWithinCollection(String id, int limit, String startCursor, SortKeyProduct sortKey, Map<String, dynamic>? filters)
-  Future<List<Product>?> searchProducts(String query, {int limit = 15, String? startCursor, SearchSortKeys sortKey = SearchSortKeys.RELEVANCE, bool reverse = false, Map<String, dynamic>? filters})
+  Future<List<Product>> getXProductsAfterCursorWithinCollection(
+    String id, 
+    int limit, 
+    String startCursor, 
+    SortKeyProduct sortKey, 
+    Map<String, dynamic>? filters
+  )
+
+  Future<List<Product>?> searchProducts(
+    String query, 
+    {
+      int limit = 15, 
+      String? startCursor, 
+      SearchSortKeys sortKey = 
+      SearchSortKeys.RELEVANCE, 
+      bool reverse = false, 
+      Map<String, dynamic>? filters
+    }
+  )
 ```
 
-
-##### ~~Shopify Checkout~~
-###### Depreciated in Shopify API Version 2024-07. Use [ShopifyCart](#shopify-cart) Instead
+Example to get metafields in product
 ```dart
-  ShopifyCheckout shopifyCheckout = ShopifyCheckout.instance;~~
-
-  Future<Checkout> getCheckoutInfoQuery({String checkoutId})
-  Future<Checkout> getCheckoutInfoWithAvailableShippingRatesQuery({String checkoutId})
-  Future<List<Order>> getAllOrders({String customerAccessToken})
-  Future<void> checkoutLineItemsReplace({String checkoutId, List<Map<String,dynamic>> checkoutLineItems})
-  Future<void> checkoutCustomerAssociate({String checkoutId, String customerAccessToken}) 
-  Future<void> checkoutCustomerDisassociate({String checkoutId})
-  Future<void> checkoutDiscountCodeApply({String checkoutId, String discountCode})
-  Future<void> checkoutDiscountCodeRemove({String checkoutId})
-  Future<Checkout> createCheckout()
-  Future<void> checkoutGiftCardAppend(String checkoutId, List<String> giftCardCodes)
-  Future<void> checkoutGiftCardRemove(String appliedGiftCardId, String checkoutId)
-  Future<void> shippingLineUpdate(String checkoutId, String shippingRateHandle)
-  Future<void> checkoutCompleteFree(String checkoutId)
-  Future<void> updateAttributes(String checkoutId, {bool allowPartialAddresses, Map<String, String> customAttributes, String note})
-  Future<Checkout> updateCheckoutEmail(String checkoutId, String email)
+      final products = await shopifyStore.getProductsByIds(
+        [id],
+        metafields: [
+          MetafieldIdentifier(key: 'content-about-the-brand', namespace: 'pim'),
+          MetafieldIdentifier(key: 'pdp_content_image_1_mobile', namespace: 'custom'),
+          MetafieldIdentifier(key: 'pdp_content_image_2_mobile', namespace: 'custom'),
+          MetafieldIdentifier(key: 'pdp_content_image_3_mobile', namespace: 'custom'),
+          //...
+        ],
+      );
 ```
 
 ##### Shopify Cart
@@ -112,13 +162,43 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyCart shopifyCart = ShopifyCart.instance;
 
   Future<Cart> getCartById(String cartId)
+
   Future<Cart> createCart(CartInput cartInput)
-  Future<Cart> addLineItemsToCart({required String cartId, required List<CartLineInput> cartLineInputs})
-  Future<Cart> removeLineItemsFromCart({required String cartId, required List<String> lineIds })
-  Future<Cart> updateLineItemsInCart({ required String cartId, required List<CartLineInput> cartLineInputs })
-  Future<Cart> updateNoteInCart({ required String cartId, required String note })
-  Future<Cart> updateCartDiscountCodes({ required String cartId, required List<String> discountCodes })
-  Future<Cart> updateBuyerIdentityInCart({ required String cartId, required CartBuyerIdentityInput buyerIdentity })
+
+  Future<Cart> addLineItemsToCart({
+    required String cartId, 
+    required List<CartLineInput> cartLineInputs
+  })
+
+  Future<Cart> removeLineItemsFromCart({
+    required String cartId, 
+    required List<String> lineIds 
+  })
+
+  Future<Cart> updateLineItemsInCart({ 
+    required String cartId, 
+    required List<CartLineInput> cartLineInputs 
+  })
+
+  Future<Cart> updateNoteInCart({ 
+    required String cartId, 
+    required String note 
+  })
+
+  Future<Cart> updateCartDiscountCodes({ 
+    required String cartId, 
+    required List<String> discountCodes 
+  })
+
+  Future<Cart> updateBuyerIdentityInCart({ 
+    required String cartId, 
+    required CartBuyerIdentityInput buyerIdentity 
+  })
+
+  Future<Cart> updateCartAttributes({
+    required String cartId,
+    required List<AttributeInput> attributes
+  })
 ```
 
 ##### Shopify Order
@@ -132,11 +212,55 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyCustomer shopifyCustomer = ShopifyCustomer.instance;
 
-  Future<void> customerAddressUpdate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken, id})
-  Future<void> customerUpdate({String email, String firstName, String lastName, String password, String phoneNumber, String customerAccessToken, bool acceptsMarketing})
-  Future<void> customerAddressCreate({String address1, String address2, String company, String city, String country, String firstName, String lastName, String phone, String province, String zip, String customerAccessToken})
-  Future<void> customerAddressDelete({String customerAccessToken, String addressId})
-  Future<void> customerDefaultAddressUpdate({required String addressId, required String customerAccessToken})
+  Future<void> customerAddressUpdate({
+    required String customerAccessToken,
+    required String id,
+    String? address1, 
+    String? address2, 
+    String? company, 
+    String? city, 
+    String? country, 
+    String? firstName, 
+    String? lastName, 
+    String? phone, 
+    String? province, 
+    String? zip, 
+  })
+
+  Future<void> customerUpdate({
+    String? email, 
+    String? firstName, 
+    String? lastName, 
+    String? password, 
+    String? phoneNumber, 
+    String? customerAccessToken, 
+    bool? acceptsMarketing
+  })
+
+  Future<void> customerAddressCreate({
+    String? address1, 
+    String? address2, 
+    String? company, 
+    String? city, 
+    String? country, 
+    String? firstName,
+    String? lastName, 
+    String? phone, 
+    String? province, 
+    String? zip, 
+    String? customerAccessToken
+  })
+
+
+  Future<void> customerAddressDelete({
+    String? customerAccessToken, 
+    String? addressId
+  })
+
+  Future<void> customerDefaultAddressUpdate({
+    required String addressId, 
+    required String customerAccessToken
+  })
 ```
 
 ##### Shopify Blog
@@ -144,8 +268,16 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyBlog shopifyBlog = ShopifyBlog.instance;
 
   Future<List<Blog>> getAllBlogs()
-  Future<Blog> getBlogByHandle(String handle, SortKeyArticle sortKeyArticle)
-  Future<List<Article>> getXArticlesSorted({int articleAmount, SortKeyArticle sortKeyArticle})
+
+  Future<Blog> getBlogByHandle(
+    String handle, 
+    SortKeyArticle sortKeyArticle
+  )
+
+  Future<List<Article>> getXArticlesSorted({
+    int articleAmount, 
+    SortKeyArticle sortKeyArticle
+  })
 ```
 
 ##### Shopify Page
@@ -153,6 +285,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
   ShopifyPage shopifyPage = ShopifyPage.instance;
 
   Future<List<Page>> getAllPages()
+
   Future<Page> getPageByHandle(String handle)
 ```
 
@@ -172,8 +305,17 @@ The goal is to make creating an mobile app from your Shopify website easier.
 ```dart
   ShopifyCustom shopifyCustom = ShopifyCustom.instance;
 
-  Future<Map<String, dynamic>?> customQuery({required String gqlQuery, Map<String, dynamic> variables = const {}, bool adminAccess = false})
-  Future<Map<String, dynamic>?> customMutation({required String gqlMutation, Map<String, dynamic> variables = const {}, bool adminAccess = false})
+  Future<Map<String, dynamic>?> customQuery({
+    required String gqlQuery, 
+    Map<String, dynamic> variables = const {}, 
+    bool adminAccess = false
+  })
+
+  Future<Map<String, dynamic>?> customMutation({
+    required String gqlMutation, 
+    Map<String, dynamic> variables = const {}, 
+    bool adminAccess = false
+  })
 ```
 
 Above you see the instance on top and the possible methods and functions which you can use.

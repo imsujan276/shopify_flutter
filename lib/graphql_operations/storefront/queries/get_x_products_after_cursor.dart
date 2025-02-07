@@ -1,6 +1,6 @@
 /// Query to get x products after cursor
 const String getXProductsAfterCursorQuery = r'''
-query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, $country: CountryCode)  @inContext(country: $country){
+query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, $country: CountryCode)  @inContext(country: $country){
   products(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
     pageInfo {
       hasNextPage
@@ -12,7 +12,24 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, 
             id
             name
             values
-            } 
+            }
+        metafields(identifiers: $metafields) {
+          id
+          type
+          key
+          namespace
+          value
+          description
+          reference {
+            ... on MediaImage {
+              image {
+                originalSrc
+                url
+                id
+              }
+            }
+          }
+        }
         variants(first: 250) {
           edges {
             node {
@@ -40,6 +57,60 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys, 
               selectedOptions {
                 name
                 value
+              }
+              sellingPlanAllocations(first: 250) {
+                nodes {
+                  checkoutChargeAmount {
+                    amount
+                    currencyCode
+                  }
+                  remainingBalanceChargeAmount {
+                    amount
+                    currencyCode
+                  }
+                  sellingPlan {
+                    id
+                    name
+                    options {
+                      name
+                      value
+                    }
+                    description
+                    checkoutCharge {
+                      type
+                      value {
+                        ... on MoneyV2 {
+                          amount
+                          currencyCode
+                        }
+                        ... on SellingPlanCheckoutChargePercentageValue {
+                          percentage
+                        }
+                      }
+                    }
+                    priceAdjustments {
+                      adjustmentValue {
+                        ... on SellingPlanFixedAmountPriceAdjustment {
+                          adjustmentAmount {
+                            amount
+                            currencyCode
+                          }
+                        }
+                        ... on SellingPlanFixedPriceAdjustment {
+                          price {
+                            amount
+                            currencyCode
+                          }
+                        }
+                        ... on SellingPlanPercentagePriceAdjustment {
+                          adjustmentPercentage
+                        }
+                      }
+                      orderCount
+                    }
+                    recurringDeliveries
+                  }
+                }
               }
             }
           }

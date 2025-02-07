@@ -16,12 +16,12 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/search_pro
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/collection/collections/collections.dart';
+import 'package:shopify_flutter/models/src/product/metafield_identifier/metafield_identifier.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
-
 import '../../graphql_operations/storefront/queries/get_featured_collections.dart';
 import '../../graphql_operations/storefront/queries/get_n_products.dart';
 import '../../graphql_operations/storefront/queries/get_products.dart';
@@ -42,6 +42,7 @@ class ShopifyStore with ShopifyError {
   /// Simply returns all Products from your Store.
   Future<List<Product>> getAllProducts({
     bool reverse = false,
+    List<MetafieldIdentifier>? metafields,
   }) async {
     List<Product> productList = [];
     Products tempProduct;
@@ -54,6 +55,9 @@ class ShopifyStore with ShopifyError {
           'cursor': cursor,
           'reverse': reverse,
           'country': ShopifyLocalization.countryCode,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -72,9 +76,13 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the first [limit] Products after the given [startCursor].
   /// [limit] has to be in the range of 0 and 250.
-  Future<List<Product>> getXProductsAfterCursor(int limit, String startCursor,
-      {bool reverse = false,
-      SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE}) async {
+  Future<List<Product>> getXProductsAfterCursor(
+    int limit,
+    String startCursor, {
+    bool reverse = false,
+    SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     List<Product> productList = [];
     Products tempProduct;
     String cursor = startCursor;
@@ -86,6 +94,9 @@ class ShopifyStore with ShopifyError {
         'reverse': reverse,
         'sortKey': sortKeyProduct.parseToString(),
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -101,14 +112,18 @@ class ShopifyStore with ShopifyError {
   ///
   /// Returns the Products associated to the given id's in [idList]
   Future<List<Product>?> getProductsByIds(
-    List<String> idList,
-  ) async {
+    List<String> idList, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     List<Product>? productList = [];
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductsByIdsQuery),
       variables: {
         'ids': idList,
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -132,14 +147,16 @@ class ShopifyStore with ShopifyError {
   /// Returns Product.
   ///
   /// Returns Product by [handle]
-  Future<Product?> getProductByHandle(
-    String handle,
-  ) async {
+  Future<Product?> getProductByHandle(String handle,
+      {List<MetafieldIdentifier>? metafields}) async {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductByHandleQuery),
       variables: {
         'handle': handle,
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -167,9 +184,12 @@ class ShopifyStore with ShopifyError {
   ///  SortKey.PRICE,
   ///  SortKey.ID,
   ///  SortKey.RELEVANCE,
-  Future<List<Product>?> getNProducts(int n,
-      {bool? reverse,
-      SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE}) async {
+  Future<List<Product>?> getNProducts(
+    int n, {
+    bool? reverse,
+    SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     List<Product>? productList = [];
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getNProductsQuery),
@@ -177,7 +197,10 @@ class ShopifyStore with ShopifyError {
         'n': n,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'country': ShopifyLocalization.countryCode
+        'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -191,14 +214,18 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a list of recommended [Product] by given id.
   Future<List<Product>?> getProductRecommendations(
-    String productId,
-  ) async {
+    String productId, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getProductRecommendationsQuery),
         variables: {
           'id': productId,
           'country': ShopifyLocalization.countryCode,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -220,12 +247,18 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a List of [Collection]
   Future<List<Collection>?> getCollectionsByIds(
-    List<String> idList,
-  ) async {
+    List<String> idList, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getCollectionsByIdsQuery),
-        variables: {'ids': idList},
+        variables: {
+          'ids': idList,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
+        },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
       final QueryResult result = await _graphQLClient!.query(_options);
@@ -254,14 +287,18 @@ class ShopifyStore with ShopifyError {
   /// Returns a collection by handle.
   @Deprecated('Use [getCollectionById]')
   Future<Collection> getCollectionByHandle(
-    String collectionName,
-  ) async {
+    String collectionName, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getFeaturedCollectionQuery),
         variables: {
           'query': collectionName,
           'country': ShopifyLocalization.countryCode,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -276,12 +313,18 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a collection by id.
-  Future<Collection?> getCollectionById(String collectionId) async {
+  Future<Collection?> getCollectionById(
+    String collectionId, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getCollectionsByIdsQuery),
         variables: {
           'ids': [collectionId],
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -297,9 +340,11 @@ class ShopifyStore with ShopifyError {
   /// Returns all available collections.
   ///
   /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
-  Future<List<Collection>> getAllCollections(
-      {SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT,
-      bool reverse = false}) async {
+  Future<List<Collection>> getAllCollections({
+    SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT,
+    bool reverse = false,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     List<Collection> collectionList = [];
     Collections tempCollection;
     String? cursor;
@@ -310,7 +355,10 @@ class ShopifyStore with ShopifyError {
         variables: {
           'cursor': cursor,
           'sortKey': sortKeyCollection.parseToString(),
-          'reverse': reverse
+          'reverse': reverse,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -334,6 +382,8 @@ class ShopifyStore with ShopifyError {
         SortKeyProductCollection.CREATED,
     SortKeyCollection sortKeyCollection = SortKeyCollection.UPDATED_AT,
     bool reverse = false,
+    List<MetafieldIdentifier>? productMetafields,
+    List<MetafieldIdentifier>? collectionMetafields,
   }) async {
     List<Collection>? collectionList;
     String? cursor;
@@ -348,6 +398,12 @@ class ShopifyStore with ShopifyError {
         'x': x,
         'n': n,
         'country': ShopifyLocalization.countryCode,
+        'productMetafields': productMetafields != null
+            ? productMetafields.map((e) => e.toJson()).toList()
+            : [],
+        'collectionMetafields': collectionMetafields != null
+            ? collectionMetafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -362,9 +418,12 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Returns all Products from the [Collection] with the [id].
-  Future<List<Product>> getAllProductsFromCollectionById(String id,
-      {SortKeyProductCollection sortKeyProductCollection =
-          SortKeyProductCollection.CREATED}) async {
+  Future<List<Product>> getAllProductsFromCollectionById(
+    String id, {
+    SortKeyProductCollection sortKeyProductCollection =
+        SortKeyProductCollection.CREATED,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     String? cursor;
     List<Product> productList = [];
     Collection collection;
@@ -377,6 +436,9 @@ class ShopifyStore with ShopifyError {
           'cursor': cursor,
           'sortKey': sortKeyProductCollection.parseToString(),
           'country': ShopifyLocalization.countryCode,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -415,6 +477,7 @@ class ShopifyStore with ShopifyError {
     SortKeyProductCollection sortKey = SortKeyProductCollection.BEST_SELLING,
     bool reverse = false,
     Map<String, dynamic>? filters,
+    List<MetafieldIdentifier>? metafields,
   }) async {
     String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
@@ -427,6 +490,9 @@ class ShopifyStore with ShopifyError {
         'reverse': reverse,
         'filters': [if (filters != null) filters],
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -447,6 +513,7 @@ class ShopifyStore with ShopifyError {
     SearchSortKeys sortKey = SearchSortKeys.RELEVANCE,
     bool reverse = false,
     Map<String, dynamic>? filters,
+    List<MetafieldIdentifier>? metafields,
   }) async {
     String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
@@ -459,6 +526,9 @@ class ShopifyStore with ShopifyError {
         'reverse': reverse,
         'filters': [if (filters != null) filters],
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
@@ -470,8 +540,13 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
-  Future<List<Product>> getAllProductsOnQuery(String cursor, String query,
-      {SortKeyProduct? sortKey, bool reverse = false}) async {
+  Future<List<Product>> getAllProductsOnQuery(
+    String cursor,
+    String query, {
+    SortKeyProduct? sortKey,
+    bool reverse = false,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     String? cursor;
     List<Product> productList = [];
     Products products;
@@ -485,6 +560,9 @@ class ShopifyStore with ShopifyError {
           'query': query,
           'reverse': reverse,
           'country': ShopifyLocalization.countryCode,
+          'metafields': metafields != null
+              ? metafields.map((e) => e.toJson()).toList()
+              : [],
         },
         fetchPolicy: ShopifyConfig.fetchPolicy,
       );
@@ -503,8 +581,13 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
   Future<List<Product>?> getXProductsOnQueryAfterCursor(
-      String query, int limit, String? cursor,
-      {SortKeyProduct? sortKey, bool reverse = false}) async {
+    String query,
+    int limit,
+    String? cursor, {
+    SortKeyProduct? sortKey,
+    bool reverse = false,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getXProductsOnQueryAfterCursorQuery),
       variables: {
@@ -514,6 +597,9 @@ class ShopifyStore with ShopifyError {
         'query': query,
         'reverse': reverse,
         'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );

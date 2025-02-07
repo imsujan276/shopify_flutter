@@ -9,7 +9,7 @@ import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
-import 'screens/checkout_page.dart';
+// import 'screens/checkout_page.dart';
 import 'screens/orders_tab.dart';
 
 Future<void> main() async {
@@ -57,7 +57,7 @@ class MyHomePageState extends State<MyHomePage> {
     const SearchTab(),
     const ShopTab(),
     const BlogTab(),
-    const CheckoutPage(),
+    // const CheckoutPage(),
     const CartTab(),
     const OrdersTab(),
     const AuthTab(),
@@ -83,8 +83,8 @@ class MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.shopify), label: 'Shop'),
           BottomNavigationBarItem(
               icon: Icon(Icons.book_online_outlined), label: 'Blog'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.checkroom_outlined), label: 'Checkout'),
           BottomNavigationBarItem(
               icon: Icon(Icons.shopping_cart), label: 'Cart'),
           BottomNavigationBarItem(icon: Icon(Icons.history), label: 'Orders'),

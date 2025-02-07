@@ -24,6 +24,10 @@ _$CartImpl _$$CartImplFromJson(Map<String, dynamic> json) => _$CartImpl(
               : CartDiscountCode.fromJson(e as Map<String, dynamic>))
           .toList(),
       createdAt: json['createdAt'] as String?,
+      attributes: (json['attributes'] as List<dynamic>?)
+          ?.map((e) =>
+              e == null ? null : Attribute.fromJson(e as Map<String, dynamic>))
+          .toList(),
       buyerIdentity: json['buyerIdentity'] == null
           ? null
           : CartBuyerIdentity.fromJson(
@@ -42,6 +46,7 @@ Map<String, dynamic> _$$CartImplToJson(_$CartImpl instance) =>
       'discountAllocations': instance.discountAllocations,
       'discountCodes': instance.discountCodes,
       'createdAt': instance.createdAt,
+      'attributes': instance.attributes,
       'buyerIdentity': instance.buyerIdentity,
       'note': instance.note,
       'updatedAt': instance.updatedAt,

@@ -36,6 +36,11 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       product: json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),
+      sellingPlanAllocations: (json['sellingPlanAllocations'] as List<dynamic>?)
+              ?.map((e) =>
+                  SellingPlanAllocation.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$ProductVariantImplToJson(
@@ -56,4 +61,5 @@ Map<String, dynamic> _$$ProductVariantImplToJson(
       'compareAtPrice': instance.compareAtPrice,
       'image': instance.image,
       'product': instance.product,
+      'sellingPlanAllocations': instance.sellingPlanAllocations,
     };

@@ -27,6 +27,8 @@ class ShopifyCart with ShopifyError {
   /// Returns a [Cart] object.
   ///
   /// Returns the [Cart] object of the Cart with the [cartId].
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart?> getCartById(String cartId, {bool reverse = false}) async {
     final cartById = WatchQueryOptions(
       document: gql(getCartByIdQuery),
@@ -40,7 +42,7 @@ class ShopifyCart with ShopifyError {
     QueryResult result = await _graphQLClient!.query(cartById);
     checkForError(result);
 
-    if (result.data!['cart'] == null) {
+    if (result.data?['cart'] == null) {
       return null;
     }
 
@@ -71,10 +73,12 @@ class ShopifyCart with ShopifyError {
   }
 
   /// add line item to cart
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> addLineItemsToCart({
     required String cartId,
-    bool reverse = false,
     required List<CartLineUpdateInput> cartLineInputs,
+    bool reverse = false,
   }) async {
     final lineInputs = cartLineInputs.map((e) {
       final json = e.toJson();
@@ -98,6 +102,8 @@ class ShopifyCart with ShopifyError {
   }
 
   /// remove line item from cart
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> removeLineItemsFromCart({
     required String cartId,
     required List<String> lineIds,
@@ -120,10 +126,12 @@ class ShopifyCart with ShopifyError {
   }
 
   /// update line items in cart
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateLineItemsInCart({
     required String cartId,
-    bool reverse = false,
     required List<CartLineUpdateInput> cartLineInputs,
+    bool reverse = false,
   }) async {
     final lineInputs = cartLineInputs.map((e) => e.toJson()).toList();
     final MutationOptions updateLineItem = MutationOptions(
@@ -143,9 +151,12 @@ class ShopifyCart with ShopifyError {
   }
 
   /// update note in cart
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateNoteInCart({
     required String cartId,
     required String note,
+    bool reverse = false,
   }) async {
     final MutationOptions updateNote = MutationOptions(
       document: gql(updateNoteInCartMutation),
@@ -153,6 +164,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'note': note,
         'country': ShopifyLocalization.countryCode,
+        'reverse': reverse,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateNote);
@@ -163,6 +175,8 @@ class ShopifyCart with ShopifyError {
   }
 
   /// update cart discount codes
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateCartDiscountCodes({
     required String cartId,
     required List<String> discountCodes,
@@ -187,9 +201,12 @@ class ShopifyCart with ShopifyError {
   }
 
   /// update Buyer identity in cart
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateBuyerIdentityInCart({
     required String cartId,
     required CartBuyerIdentityInput buyerIdentity,
+    bool reverse = false,
   }) async {
     final deliveryAddressPreferences = buyerIdentity.deliveryAddressPreferences;
     List<Map<String, dynamic>> deliveryAddressPreferencesData = [];
@@ -216,6 +233,7 @@ class ShopifyCart with ShopifyError {
       document: gql(cartBuyerIdentityUpdate),
       variables: {
         'cartId': cartId,
+        'reverse': reverse,
         'buyerIdentity': {
           'email': buyerIdentity.email,
           'phone': buyerIdentity.phone,
@@ -236,9 +254,12 @@ class ShopifyCart with ShopifyError {
   }
 
   /// update cart atributes
+  ///
+  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateCartAttributes({
     required String cartId,
     required List<AttributeInput> attributes,
+    bool reverse = false,
   }) async {
     final MutationOptions updateAttributes = MutationOptions(
       document: gql(updateCartAttributesMutation),
@@ -246,6 +267,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'attributes': attributes.map((e) => e.toJson()).toList(),
         'country': ShopifyLocalization.countryCode,
+        'reverse': reverse
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateAttributes);

@@ -1,3 +1,8 @@
+# 2.5.3
+
+* Added `reverse` flag in cart
+  - If the `reverse` is set to true, the line items in the cart will be in reverse order.
+
 # 2.5.2
 
 * Made phone number option on user/customer creation

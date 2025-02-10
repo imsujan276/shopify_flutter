@@ -161,43 +161,50 @@ Example to get metafields in product
 ```dart
   ShopifyCart shopifyCart = ShopifyCart.instance;
 
-  Future<Cart> getCartById(String cartId)
+  Future<Cart> getCartById(String cartId, {bool reverse = false})
 
   Future<Cart> createCart(CartInput cartInput)
 
   Future<Cart> addLineItemsToCart({
     required String cartId, 
-    required List<CartLineInput> cartLineInputs
+    required List<CartLineInput> cartLineInputs,
+    bool reverse = false,
   })
 
   Future<Cart> removeLineItemsFromCart({
     required String cartId, 
-    required List<String> lineIds 
+    required List<String> lineIds,
+    bool reverse = false,
   })
 
   Future<Cart> updateLineItemsInCart({ 
     required String cartId, 
-    required List<CartLineInput> cartLineInputs 
+    required List<CartLineInput> cartLineInputs,
+    bool reverse = false,
   })
 
   Future<Cart> updateNoteInCart({ 
     required String cartId, 
-    required String note 
+    required String note,
+    bool reverse = false,
   })
 
   Future<Cart> updateCartDiscountCodes({ 
     required String cartId, 
-    required List<String> discountCodes 
+    required List<String> discountCodes,
+    bool reverse = false,
   })
 
   Future<Cart> updateBuyerIdentityInCart({ 
     required String cartId, 
-    required CartBuyerIdentityInput buyerIdentity 
+    required CartBuyerIdentityInput buyerIdentity,
+    bool reverse = false,
   })
 
   Future<Cart> updateCartAttributes({
     required String cartId,
-    required List<AttributeInput> attributes
+    required List<AttributeInput> attributes,
+    bool reverse = false,
   })
 ```
 

@@ -1,6 +1,6 @@
 /// mutation to update cart discount codes
 const String updateCartDiscountCodesMutation = r'''
-mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $country: CountryCode)  @inContext(country: $country) {
+mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
     cart {
       id
@@ -75,7 +75,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
           }
         }
       }
-      lines(first: 250, reverse: true) {
+      lines(first: 250, reverse: $reverse) {
         edges {
           cursor
           node {

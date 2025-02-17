@@ -1,3 +1,7 @@
+# 2.5.4
+
+* Update type of `adjustmentPercentage` to `num` so that it works for both **int** and **double** data types
+
 # 2.5.3
 
 * Added `reverse` flag in cart

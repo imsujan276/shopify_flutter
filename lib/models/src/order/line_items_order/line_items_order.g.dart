@@ -16,5 +16,6 @@ _$LineItemsOrderImpl _$$LineItemsOrderImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LineItemsOrderImplToJson(
         _$LineItemsOrderImpl instance) =>
     <String, dynamic>{
-      'lineItemOrderList': instance.lineItemOrderList,
+      'lineItemOrderList':
+          instance.lineItemOrderList.map((e) => e.toJson()).toList(),
     };

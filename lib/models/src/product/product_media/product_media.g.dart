@@ -21,6 +21,6 @@ Map<String, dynamic> _$$ProductVariantImplToJson(
     <String, dynamic>{
       'id': instance.id,
       'mediaContentType': instance.mediaContentType,
-      'image': instance.image,
+      'image': instance.image?.toJson(),
       'alt': instance.alt,
     };

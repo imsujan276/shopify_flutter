@@ -17,5 +17,5 @@ _$DiscountAllocationsImpl _$$DiscountAllocationsImplFromJson(
 Map<String, dynamic> _$$DiscountAllocationsImplToJson(
         _$DiscountAllocationsImpl instance) =>
     <String, dynamic>{
-      'allocatedAmount': instance.allocatedAmount,
+      'allocatedAmount': instance.allocatedAmount?.toJson(),
     };

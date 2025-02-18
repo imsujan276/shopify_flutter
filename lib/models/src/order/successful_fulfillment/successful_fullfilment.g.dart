@@ -20,5 +20,5 @@ Map<String, dynamic> _$$SuccessfulFullfilmentImplToJson(
         _$SuccessfulFullfilmentImpl instance) =>
     <String, dynamic>{
       'trackingCompany': instance.trackingCompany,
-      'trackingInfo': instance.trackingInfo,
+      'trackingInfo': instance.trackingInfo?.map((e) => e.toJson()).toList(),
     };

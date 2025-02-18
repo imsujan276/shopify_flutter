@@ -28,12 +28,12 @@ Map<String, dynamic> _$$CollectionImplToJson(_$CollectionImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'id': instance.id,
-      'products': instance.products,
-      'metafields': instance.metafields,
+      'products': instance.products.toJson(),
+      'metafields': instance.metafields.map((e) => e.toJson()).toList(),
       'cursor': instance.cursor,
       'description': instance.description,
       'descriptionHtml': instance.descriptionHtml,
       'handle': instance.handle,
       'updatedAt': instance.updatedAt,
-      'image': instance.image,
+      'image': instance.image?.toJson(),
     };

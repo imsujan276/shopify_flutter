@@ -20,5 +20,5 @@ Map<String, dynamic> _$$CartPreferenceImplToJson(
         _$CartPreferenceImpl instance) =>
     <String, dynamic>{
       'wallet': instance.wallet,
-      'delivery': instance.delivery,
+      'delivery': instance.delivery?.toJson(),
     };

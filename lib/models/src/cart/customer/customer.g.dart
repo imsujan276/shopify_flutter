@@ -30,7 +30,7 @@ Map<String, dynamic> _$$CustomerImplToJson(_$CustomerImpl instance) =>
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'displayName': instance.displayName,
-      'defaultAddress': instance.defaultAddress,
+      'defaultAddress': instance.defaultAddress?.toJson(),
       'numberOfOrders': instance.numberOfOrders,
       'acceptsMarketing': instance.acceptsMarketing,
     };

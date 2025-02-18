@@ -14,5 +14,5 @@ _$PagesImpl _$$PagesImplFromJson(Map<String, dynamic> json) => _$PagesImpl(
 
 Map<String, dynamic> _$$PagesImplToJson(_$PagesImpl instance) =>
     <String, dynamic>{
-      'pageList': instance.pageList,
+      'pageList': instance.pageList.map((e) => e.toJson()).toList(),
     };

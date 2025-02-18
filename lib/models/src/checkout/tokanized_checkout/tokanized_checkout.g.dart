@@ -22,7 +22,7 @@ Map<String, dynamic> _$$TokanizedCheckoutImplToJson(
         _$TokanizedCheckoutImpl instance) =>
     <String, dynamic>{
       'id': instance.paymentId,
-      'amountV2': instance.amountV2,
+      'amountV2': instance.amountV2.toJson(),
       'test': instance.test,
       'ready': instance.ready,
       'nextActionUrl': instance.nextActionUrl,

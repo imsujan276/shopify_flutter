@@ -15,6 +15,6 @@ _$OrdersImpl _$$OrdersImplFromJson(Map<String, dynamic> json) => _$OrdersImpl(
 
 Map<String, dynamic> _$$OrdersImplToJson(_$OrdersImpl instance) =>
     <String, dynamic>{
-      'orderList': instance.orderList,
+      'orderList': instance.orderList.map((e) => e.toJson()).toList(),
       'hasNextPage': instance.hasNextPage,
     };

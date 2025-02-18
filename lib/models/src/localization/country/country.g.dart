@@ -20,9 +20,10 @@ _$CountryImpl _$$CountryImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CountryImplToJson(_$CountryImpl instance) =>
     <String, dynamic>{
-      'market': instance.market,
-      'availableLanguages': instance.availableLanguages,
-      'currency': instance.currency,
+      'market': instance.market.toJson(),
+      'availableLanguages':
+          instance.availableLanguages.map((e) => e.toJson()).toList(),
+      'currency': instance.currency.toJson(),
       'isoCode': instance.isoCode,
       'name': instance.name,
       'unitSystem': instance.unitSystem,

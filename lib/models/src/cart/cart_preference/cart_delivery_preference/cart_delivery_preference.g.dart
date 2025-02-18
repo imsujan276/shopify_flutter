@@ -24,5 +24,5 @@ Map<String, dynamic> _$$CartDeliveryPreferenceImplToJson(
     <String, dynamic>{
       'deliveryMethod': instance.deliveryMethod,
       'pickupHandle': instance.pickupHandle,
-      'coordinates': instance.coordinates,
+      'coordinates': instance.coordinates?.toJson(),
     };

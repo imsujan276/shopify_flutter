@@ -26,5 +26,5 @@ Map<String, dynamic> _$$CartLineImplToJson(_$CartLineImpl instance) =>
       'merchandiseId': instance.merchandiseId,
       'quantity': instance.quantity,
       'sellingPlanId': instance.sellingPlanId,
-      'attributes': instance.attributes,
+      'attributes': instance.attributes.map((e) => e?.toJson()).toList(),
     };

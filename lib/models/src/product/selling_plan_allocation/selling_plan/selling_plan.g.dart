@@ -33,7 +33,8 @@ Map<String, dynamic> _$$SellingPlanImplToJson(_$SellingPlanImpl instance) =>
       'name': instance.name,
       'description': instance.description,
       'recurringDeliveries': instance.recurringDeliveries,
-      'checkoutCharge': instance.checkoutCharge,
-      'priceAdjustments': instance.priceAdjustments,
-      'options': instance.options,
+      'checkoutCharge': instance.checkoutCharge?.toJson(),
+      'priceAdjustments':
+          instance.priceAdjustments.map((e) => e.toJson()).toList(),
+      'options': instance.options.map((e) => e.toJson()).toList(),
     };

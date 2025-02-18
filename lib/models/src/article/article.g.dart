@@ -31,15 +31,15 @@ _$ArticleImpl _$$ArticleImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ArticleImplToJson(_$ArticleImpl instance) =>
     <String, dynamic>{
-      'author': instance.author,
-      'commentList': instance.commentList,
+      'author': instance.author?.toJson(),
+      'commentList': instance.commentList?.map((e) => e.toJson()).toList(),
       'content': instance.content,
       'contentHtml': instance.contentHtml,
       'excerpt': instance.excerpt,
       'excerptHtml': instance.excerptHtml,
       'handle': instance.handle,
       'id': instance.id,
-      'image': instance.image,
+      'image': instance.image?.toJson(),
       'publishedAt': instance.publishedAt,
       'tags': instance.tags,
       'title': instance.title,

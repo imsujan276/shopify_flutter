@@ -41,14 +41,15 @@ Map<String, dynamic> _$$CartImplToJson(_$CartImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'checkoutUrl': instance.checkoutUrl,
-      'cost': instance.cost,
+      'cost': instance.cost?.toJson(),
       'totalQuantity': instance.totalQuantity,
-      'discountAllocations': instance.discountAllocations,
-      'discountCodes': instance.discountCodes,
+      'discountAllocations':
+          instance.discountAllocations?.map((e) => e?.toJson()).toList(),
+      'discountCodes': instance.discountCodes?.map((e) => e?.toJson()).toList(),
       'createdAt': instance.createdAt,
-      'attributes': instance.attributes,
-      'buyerIdentity': instance.buyerIdentity,
+      'attributes': instance.attributes?.map((e) => e?.toJson()).toList(),
+      'buyerIdentity': instance.buyerIdentity?.toJson(),
       'note': instance.note,
       'updatedAt': instance.updatedAt,
-      'lines': instance.lines,
+      'lines': instance.lines.map((e) => e.toJson()).toList(),
     };

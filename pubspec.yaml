@@ -28,7 +28,7 @@ dependencies:
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
   shared_preferences: ^2.0.20
-  intl: ^0.20.1
+  intl: ">=0.19.0 <0.21.2"
   url_launcher: ^6.1.10
 
 dev_dependencies:

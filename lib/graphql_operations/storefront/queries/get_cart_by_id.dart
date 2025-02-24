@@ -74,7 +74,6 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
           }
         }
       }
-    }
     lines(first: 250, reverse: $reverse) {
         edges {
           cursor

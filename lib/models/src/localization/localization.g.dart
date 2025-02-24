@@ -21,9 +21,11 @@ _$LocalizationImpl _$$LocalizationImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LocalizationImplToJson(_$LocalizationImpl instance) =>
     <String, dynamic>{
-      'availableLanguages': instance.availableLanguages,
-      'availableCountries': instance.availableCountries,
-      'language': instance.language,
-      'country': instance.country,
-      'market': instance.market,
+      'availableLanguages':
+          instance.availableLanguages.map((e) => e.toJson()).toList(),
+      'availableCountries':
+          instance.availableCountries.map((e) => e.toJson()).toList(),
+      'language': instance.language.toJson(),
+      'country': instance.country.toJson(),
+      'market': instance.market.toJson(),
     };

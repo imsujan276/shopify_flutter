@@ -28,13 +28,13 @@ _$CartCostImpl _$$CartCostImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CartCostImplToJson(_$CartCostImpl instance) =>
     <String, dynamic>{
-      'checkoutChargeAmount': instance.checkoutChargeAmount,
-      'subtotalAmount': instance.subtotalAmount,
+      'checkoutChargeAmount': instance.checkoutChargeAmount.toJson(),
+      'subtotalAmount': instance.subtotalAmount.toJson(),
       'subtotalAmountEstimated': instance.subtotalAmountEstimated,
-      'totalAmount': instance.totalAmount,
+      'totalAmount': instance.totalAmount.toJson(),
       'totalAmountEstimated': instance.totalAmountEstimated,
-      'totalDutyAmount': instance.totalDutyAmount,
+      'totalDutyAmount': instance.totalDutyAmount?.toJson(),
       'totalDutyAmountEstimated': instance.totalDutyAmountEstimated,
-      'totalTaxAmount': instance.totalTaxAmount,
+      'totalTaxAmount': instance.totalTaxAmount?.toJson(),
       'totalTaxAmountEstimated': instance.totalTaxAmountEstimated,
     };

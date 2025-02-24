@@ -15,5 +15,5 @@ _$AddressesImpl _$$AddressesImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$AddressesImplToJson(_$AddressesImpl instance) =>
     <String, dynamic>{
-      'addressList': instance.addressList,
+      'addressList': instance.addressList.map((e) => e.toJson()).toList(),
     };

@@ -15,5 +15,5 @@ _$LineItemsImpl _$$LineItemsImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$LineItemsImplToJson(_$LineItemsImpl instance) =>
     <String, dynamic>{
-      'lineItemList': instance.lineItemList,
+      'lineItemList': instance.lineItemList.map((e) => e.toJson()).toList(),
     };

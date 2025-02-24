@@ -17,5 +17,5 @@ _$CartDiscountAllocationImpl _$$CartDiscountAllocationImplFromJson(
 Map<String, dynamic> _$$CartDiscountAllocationImplToJson(
         _$CartDiscountAllocationImpl instance) =>
     <String, dynamic>{
-      'discountedAmount': instance.discountedAmount,
+      'discountedAmount': instance.discountedAmount?.toJson(),
     };

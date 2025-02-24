@@ -46,7 +46,7 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$ProductVariantImplToJson(
         _$ProductVariantImpl instance) =>
     <String, dynamic>{
-      'price': instance.price,
+      'price': instance.price.toJson(),
       'title': instance.title,
       'weight': instance.weight,
       'weightUnit': instance.weightUnit,
@@ -55,11 +55,13 @@ Map<String, dynamic> _$$ProductVariantImplToJson(
       'id': instance.id,
       'quantityAvailable': instance.quantityAvailable,
       'sku': instance.sku,
-      'unitPrice': instance.unitPrice,
-      'unitPriceMeasurement': instance.unitPriceMeasurement,
-      'selectedOptions': instance.selectedOptions,
-      'compareAtPrice': instance.compareAtPrice,
-      'image': instance.image,
-      'product': instance.product,
-      'sellingPlanAllocations': instance.sellingPlanAllocations,
+      'unitPrice': instance.unitPrice?.toJson(),
+      'unitPriceMeasurement': instance.unitPriceMeasurement?.toJson(),
+      'selectedOptions':
+          instance.selectedOptions?.map((e) => e.toJson()).toList(),
+      'compareAtPrice': instance.compareAtPrice?.toJson(),
+      'image': instance.image?.toJson(),
+      'product': instance.product?.toJson(),
+      'sellingPlanAllocations':
+          instance.sellingPlanAllocations.map((e) => e.toJson()).toList(),
     };

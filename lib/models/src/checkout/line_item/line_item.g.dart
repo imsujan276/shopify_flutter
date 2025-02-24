@@ -31,9 +31,11 @@ Map<String, dynamic> _$$LineItemImplToJson(_$LineItemImpl instance) =>
     <String, dynamic>{
       'title': instance.title,
       'quantity': instance.quantity,
-      'discountAllocations': instance.discountAllocations,
-      'customAttributes': instance.customAttributes,
+      'discountAllocations':
+          instance.discountAllocations.map((e) => e.toJson()).toList(),
+      'customAttributes':
+          instance.customAttributes.map((e) => e.toJson()).toList(),
       'variantId': instance.variantId,
       'id': instance.id,
-      'variant': instance.variant,
+      'variant': instance.variant?.toJson(),
     };

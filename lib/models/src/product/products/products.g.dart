@@ -16,6 +16,6 @@ _$ProductsImpl _$$ProductsImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$ProductsImplToJson(_$ProductsImpl instance) =>
     <String, dynamic>{
-      'productList': instance.productList,
+      'productList': instance.productList.map((e) => e.toJson()).toList(),
       'hasNextPage': instance.hasNextPage,
     };

@@ -29,10 +29,11 @@ _$LineItemOrderImpl _$$LineItemOrderImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$LineItemOrderImplToJson(_$LineItemOrderImpl instance) =>
     <String, dynamic>{
       'currentQuantity': instance.currentQuantity,
-      'discountedTotalPrice': instance.discountedTotalPrice,
-      'originalTotalPrice': instance.originalTotalPrice,
+      'discountedTotalPrice': instance.discountedTotalPrice.toJson(),
+      'originalTotalPrice': instance.originalTotalPrice.toJson(),
       'quantity': instance.quantity,
       'title': instance.title,
-      'discountAllocations': instance.discountAllocations,
-      'variant': instance.variant,
+      'discountAllocations':
+          instance.discountAllocations.map((e) => e.toJson()).toList(),
+      'variant': instance.variant?.toJson(),
     };

@@ -25,7 +25,8 @@ _$SellingPlanAllocationImpl _$$SellingPlanAllocationImplFromJson(
 Map<String, dynamic> _$$SellingPlanAllocationImplToJson(
         _$SellingPlanAllocationImpl instance) =>
     <String, dynamic>{
-      'checkoutChargeAmount': instance.checkoutChargeAmount,
-      'remainingBalanceChargeAmount': instance.remainingBalanceChargeAmount,
-      'sellingPlan': instance.sellingPlan,
+      'checkoutChargeAmount': instance.checkoutChargeAmount?.toJson(),
+      'remainingBalanceChargeAmount':
+          instance.remainingBalanceChargeAmount?.toJson(),
+      'sellingPlan': instance.sellingPlan?.toJson(),
     };

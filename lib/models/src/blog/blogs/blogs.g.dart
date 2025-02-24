@@ -14,5 +14,5 @@ _$BlogsImpl _$$BlogsImplFromJson(Map<String, dynamic> json) => _$BlogsImpl(
 
 Map<String, dynamic> _$$BlogsImplToJson(_$BlogsImpl instance) =>
     <String, dynamic>{
-      'blogList': instance.blogList,
+      'blogList': instance.blogList.map((e) => e.toJson()).toList(),
     };

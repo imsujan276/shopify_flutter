@@ -29,5 +29,6 @@ Map<String, dynamic> _$$CartBuyerIdentityInputImplToJson(
       'phone': instance.phone,
       'countryCode': instance.countryCode,
       'customerAccessToken': instance.customerAccessToken,
-      'deliveryAddressPreferences': instance.deliveryAddressPreferences,
+      'deliveryAddressPreferences':
+          instance.deliveryAddressPreferences.map((e) => e?.toJson()).toList(),
     };

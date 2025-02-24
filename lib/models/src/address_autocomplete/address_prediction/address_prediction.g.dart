@@ -21,5 +21,6 @@ Map<String, dynamic> _$$AddressPredictionImplToJson(
     <String, dynamic>{
       'addressId': instance.addressId,
       'description': instance.description,
-      'matchedSubstrings': instance.matchedSubstrings,
+      'matchedSubstrings':
+          instance.matchedSubstrings?.map((e) => e.toJson()).toList(),
     };

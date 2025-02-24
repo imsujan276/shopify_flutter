@@ -16,6 +16,6 @@ _$CollectionsImpl _$$CollectionsImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CollectionsImplToJson(_$CollectionsImpl instance) =>
     <String, dynamic>{
-      'collectionList': instance.collectionList,
+      'collectionList': instance.collectionList.map((e) => e.toJson()).toList(),
       'hasNextPage': instance.hasNextPage,
     };

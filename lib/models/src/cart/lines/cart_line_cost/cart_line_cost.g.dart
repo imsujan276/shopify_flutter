@@ -22,8 +22,9 @@ _$CartLineCostImpl _$$CartLineCostImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$CartLineCostImplToJson(_$CartLineCostImpl instance) =>
     <String, dynamic>{
-      'amountPerQuantity': instance.amountPerQuantity,
-      'subtotalAmount': instance.subtotalAmount,
-      'totalAmount': instance.totalAmount,
-      'compareAtAmountPerQuantity': instance.compareAtAmountPerQuantity,
+      'amountPerQuantity': instance.amountPerQuantity.toJson(),
+      'subtotalAmount': instance.subtotalAmount.toJson(),
+      'totalAmount': instance.totalAmount.toJson(),
+      'compareAtAmountPerQuantity':
+          instance.compareAtAmountPerQuantity?.toJson(),
     };

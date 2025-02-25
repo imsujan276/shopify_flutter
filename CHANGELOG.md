@@ -1,3 +1,9 @@
+# 2.5.6
+
+* [GraphQL Intl plugin compatibility](https://github.com/imsujan276/shopify_flutter/pull/120)
+* [Generate toJson for nested models](https://github.com/imsujan276/shopify_flutter/pull/121)
+* Updated example app
+
 # 2.5.4
 
 * Update type of `adjustmentPercentage` to `num` so that it works for both **int** and **double** data types

@@ -40,7 +40,7 @@ class _CartTabState extends State<CartTab> {
   void init() {
     createCart();
     // getCartById(
-    //     "gid://shopify/Cart/Z2NwLWFzaWEtc291dGhlYXN0MTowMUo2VkZYNk1GWTc0U0NYMDhNRUNSRk5TQw?key=521a54e45a74a00ebbcc36fa425d0f61");
+    //     "gid://shopify/Cart/Z2NwLWFzaWEtc291dGhlYXN0MTowMUpNVlpEVzM2NzBIUDRRMkFDVlRSQlBTQw?key=dae05650ee227d4a76f893756fa1be48");
     getNProducts();
   }
 
@@ -142,6 +142,13 @@ class _CartTabState extends State<CartTab> {
       appBar: AppBar(
         title: const Text('Cart'),
         actions: [
+          if (cart != null)
+            IconButton(
+              onPressed: () {
+                getCartById(cart!.id);
+              },
+              icon: const Icon(Icons.refresh),
+            ),
           if (cart != null)
             IconButton(
               onPressed: () {

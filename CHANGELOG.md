@@ -1,4 +1,4 @@
-# 2.5.6
+# 2.5.5
 
 * [GraphQL Intl plugin compatibility](https://github.com/imsujan276/shopify_flutter/pull/120)
 * [Generate toJson for nested models](https://github.com/imsujan276/shopify_flutter/pull/121)

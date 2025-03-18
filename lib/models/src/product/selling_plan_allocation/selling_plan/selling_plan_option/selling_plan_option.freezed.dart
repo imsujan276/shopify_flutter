@@ -23,12 +23,8 @@ mixin _$SellingPlanOption {
   String get name => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  /// Serializes this SellingPlanOption to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SellingPlanOption
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SellingPlanOptionCopyWith<SellingPlanOption> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,8 +48,6 @@ class _$SellingPlanOptionCopyWithImpl<$Res, $Val extends SellingPlanOption>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SellingPlanOption
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,8 +86,6 @@ class __$$SellingPlanOptionImplCopyWithImpl<$Res>
       $Res Function(_$SellingPlanOptionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SellingPlanOption
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,13 +133,11 @@ class _$SellingPlanOptionImpl extends _SellingPlanOption {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  /// Create a copy of SellingPlanOption
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SellingPlanOptionImplCopyWith<_$SellingPlanOptionImpl> get copyWith =>
@@ -175,11 +165,8 @@ abstract class _SellingPlanOption extends SellingPlanOption {
   String get name;
   @override
   String get value;
-
-  /// Create a copy of SellingPlanOption
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SellingPlanOptionImplCopyWith<_$SellingPlanOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

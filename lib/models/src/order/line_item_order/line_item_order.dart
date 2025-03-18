@@ -1,7 +1,7 @@
-import 'package:shopify_flutter/models/src/checkout/product_variant_checkout/product_variant_checkout.dart';
 import 'package:shopify_flutter/models/src/order/discount_allocations/discount_allocations.dart';
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 
 part 'line_item_order.freezed.dart';
 part 'line_item_order.g.dart';
@@ -20,7 +20,7 @@ class LineItemOrder with _$LineItemOrder {
     required int quantity,
     required String title,
     @Default([]) List<DiscountAllocations> discountAllocations,
-    @Default(null) ProductVariantCheckout? variant,
+    @Default(null) ProductVariant? variant,
   }) = _LineItemOrder;
 
   /// The line item order from json
@@ -43,7 +43,10 @@ class LineItemOrder with _$LineItemOrder {
         title: (json['node'] ?? const {})['title'],
         variant: json['node']['variant'] == null
             ? null
-            : ProductVariantCheckout.fromJson(json['node']['variant']),
+            : ProductVariant.fromGraphJson(
+                json['node']['variant'],
+                forceParse: true,
+              ),
         // variant: ProductVariantCheckout.fromJson(
         //     (json['node'] ?? const {})['variant'] ?? const {})
       );

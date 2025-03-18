@@ -22,12 +22,8 @@ Addresses _$AddressesFromJson(Map<String, dynamic> json) {
 mixin _$Addresses {
   List<Address> get addressList => throw _privateConstructorUsedError;
 
-  /// Serializes this Addresses to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Addresses
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddressesCopyWith<Addresses> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,8 +46,6 @@ class _$AddressesCopyWithImpl<$Res, $Val extends Addresses>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Addresses
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,8 +79,6 @@ class __$$AddressesImplCopyWithImpl<$Res>
       _$AddressesImpl _value, $Res Function(_$AddressesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Addresses
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,14 +125,12 @@ class _$AddressesImpl extends _Addresses {
                 .equals(other._addressList, _addressList));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_addressList));
 
-  /// Create a copy of Addresses
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressesImplCopyWith<_$AddressesImpl> get copyWith =>
@@ -164,11 +154,8 @@ abstract class _Addresses extends Addresses {
 
   @override
   List<Address> get addressList;
-
-  /// Create a copy of Addresses
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddressesImplCopyWith<_$AddressesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

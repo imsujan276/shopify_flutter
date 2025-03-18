@@ -47,12 +47,8 @@ mixin _$Checkout {
   String? get webUrl => throw _privateConstructorUsedError;
   String? get updatedAt => throw _privateConstructorUsedError;
 
-  /// Serializes this Checkout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CheckoutCopyWith<Checkout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -106,8 +102,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,8 +225,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     ) as $Val);
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AvailableShippingRatesCopyWith<$Res>? get availableShippingRates {
@@ -246,8 +238,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalTaxV2 {
@@ -256,8 +246,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalPriceV2 {
@@ -266,8 +254,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get subtotalPriceV2 {
@@ -276,8 +262,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $OrderCopyWith<$Res>? get order {
@@ -290,8 +274,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MailingAddressCopyWith<$Res>? get shippingAddress {
@@ -304,8 +286,6 @@ class _$CheckoutCopyWithImpl<$Res, $Val extends Checkout>
     });
   }
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShippingRatesCopyWith<$Res>? get shippingLine {
@@ -376,8 +356,6 @@ class __$$CheckoutImplCopyWithImpl<$Res>
       _$CheckoutImpl _value, $Res Function(_$CheckoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -652,7 +630,7 @@ class _$CheckoutImpl extends _Checkout {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -681,9 +659,7 @@ class _$CheckoutImpl extends _Checkout {
         updatedAt
       ]);
 
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CheckoutImplCopyWith<_$CheckoutImpl> get copyWith =>
@@ -775,11 +751,8 @@ abstract class _Checkout extends Checkout {
   String? get webUrl;
   @override
   String? get updatedAt;
-
-  /// Create a copy of Checkout
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CheckoutImplCopyWith<_$CheckoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

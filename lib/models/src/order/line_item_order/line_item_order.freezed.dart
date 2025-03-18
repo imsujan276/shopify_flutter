@@ -27,14 +27,10 @@ mixin _$LineItemOrder {
   String get title => throw _privateConstructorUsedError;
   List<DiscountAllocations> get discountAllocations =>
       throw _privateConstructorUsedError;
-  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
+  ProductVariant? get variant => throw _privateConstructorUsedError;
 
-  /// Serializes this LineItemOrder to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LineItemOrderCopyWith<LineItemOrder> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,11 +48,11 @@ abstract class $LineItemOrderCopyWith<$Res> {
       int quantity,
       String title,
       List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant});
+      ProductVariant? variant});
 
   $PriceV2CopyWith<$Res> get discountedTotalPrice;
   $PriceV2CopyWith<$Res> get originalTotalPrice;
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+  $ProductVariantCopyWith<$Res>? get variant;
 }
 
 /// @nodoc
@@ -69,8 +65,6 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -110,12 +104,10 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
       variant: freezed == variant
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
+              as ProductVariant?,
     ) as $Val);
   }
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get discountedTotalPrice {
@@ -124,8 +116,6 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
     });
   }
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get originalTotalPrice {
@@ -134,16 +124,14 @@ class _$LineItemOrderCopyWithImpl<$Res, $Val extends LineItemOrder>
     });
   }
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
-  $ProductVariantCheckoutCopyWith<$Res>? get variant {
+  $ProductVariantCopyWith<$Res>? get variant {
     if (_value.variant == null) {
       return null;
     }
 
-    return $ProductVariantCheckoutCopyWith<$Res>(_value.variant!, (value) {
+    return $ProductVariantCopyWith<$Res>(_value.variant!, (value) {
       return _then(_value.copyWith(variant: value) as $Val);
     });
   }
@@ -164,14 +152,14 @@ abstract class _$$LineItemOrderImplCopyWith<$Res>
       int quantity,
       String title,
       List<DiscountAllocations> discountAllocations,
-      ProductVariantCheckout? variant});
+      ProductVariant? variant});
 
   @override
   $PriceV2CopyWith<$Res> get discountedTotalPrice;
   @override
   $PriceV2CopyWith<$Res> get originalTotalPrice;
   @override
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+  $ProductVariantCopyWith<$Res>? get variant;
 }
 
 /// @nodoc
@@ -182,8 +170,6 @@ class __$$LineItemOrderImplCopyWithImpl<$Res>
       _$LineItemOrderImpl _value, $Res Function(_$LineItemOrderImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -223,7 +209,7 @@ class __$$LineItemOrderImplCopyWithImpl<$Res>
       variant: freezed == variant
           ? _value.variant
           : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
+              as ProductVariant?,
     ));
   }
 }
@@ -267,7 +253,7 @@ class _$LineItemOrderImpl extends _LineItemOrder {
 
   @override
   @JsonKey()
-  final ProductVariantCheckout? variant;
+  final ProductVariant? variant;
 
   @override
   String toString() {
@@ -293,7 +279,7 @@ class _$LineItemOrderImpl extends _LineItemOrder {
             (identical(other.variant, variant) || other.variant == variant));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -305,9 +291,7 @@ class _$LineItemOrderImpl extends _LineItemOrder {
       const DeepCollectionEquality().hash(_discountAllocations),
       variant);
 
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
@@ -329,7 +313,7 @@ abstract class _LineItemOrder extends LineItemOrder {
       required final int quantity,
       required final String title,
       final List<DiscountAllocations> discountAllocations,
-      final ProductVariantCheckout? variant}) = _$LineItemOrderImpl;
+      final ProductVariant? variant}) = _$LineItemOrderImpl;
   _LineItemOrder._() : super._();
 
   factory _LineItemOrder.fromJson(Map<String, dynamic> json) =
@@ -348,12 +332,9 @@ abstract class _LineItemOrder extends LineItemOrder {
   @override
   List<DiscountAllocations> get discountAllocations;
   @override
-  ProductVariantCheckout? get variant;
-
-  /// Create a copy of LineItemOrder
-  /// with the given fields replaced by the non-null parameter values.
+  ProductVariant? get variant;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LineItemOrderImplCopyWith<_$LineItemOrderImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

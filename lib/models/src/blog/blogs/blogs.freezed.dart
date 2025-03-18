@@ -22,12 +22,8 @@ Blogs _$BlogsFromJson(Map<String, dynamic> json) {
 mixin _$Blogs {
   List<Blog> get blogList => throw _privateConstructorUsedError;
 
-  /// Serializes this Blogs to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Blogs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $BlogsCopyWith<Blogs> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -49,8 +45,6 @@ class _$BlogsCopyWithImpl<$Res, $Val extends Blogs>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Blogs
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -83,8 +77,6 @@ class __$$BlogsImplCopyWithImpl<$Res>
       _$BlogsImpl _value, $Res Function(_$BlogsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Blogs
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -128,14 +120,12 @@ class _$BlogsImpl implements _Blogs {
             const DeepCollectionEquality().equals(other._blogList, _blogList));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_blogList));
 
-  /// Create a copy of Blogs
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$BlogsImplCopyWith<_$BlogsImpl> get copyWith =>
@@ -156,11 +146,8 @@ abstract class _Blogs implements Blogs {
 
   @override
   List<Blog> get blogList;
-
-  /// Create a copy of Blogs
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$BlogsImplCopyWith<_$BlogsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

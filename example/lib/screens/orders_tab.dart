@@ -81,8 +81,19 @@ class _OrdersTabState extends State<OrdersTab> {
                           ...order.lineItems.lineItemOrderList
                               .map((e) => ListTile(
                                     title: Text(e.title),
-                                    subtitle: Text(
-                                      "Price: ${e.discountedTotalPrice.formattedPrice} \n Product ID: ${e.productId}",
+                                    subtitle: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Text(
+                                          "Price: ${e.discountedTotalPrice.formattedPrice}",
+                                        ),
+                                        Text('Quantity: ${e.currentQuantity}'),
+                                        Text(
+                                            'Original Price: ${e.originalTotalPrice.formattedPrice}'),
+                                        Text("Product ID: ${e.productId}")
+                                      ],
                                     ),
                                   ))
                               .toList()

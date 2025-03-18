@@ -38,12 +38,8 @@ mixin _$MailingAddress {
   String? get province => throw _privateConstructorUsedError;
   String? get provinceCode => throw _privateConstructorUsedError;
 
-  /// Serializes this MailingAddress to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MailingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MailingAddressCopyWith<MailingAddress> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -84,8 +80,6 @@ class _$MailingAddressCopyWithImpl<$Res, $Val extends MailingAddress>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MailingAddress
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -216,8 +210,6 @@ class __$$MailingAddressImplCopyWithImpl<$Res>
       _$MailingAddressImpl _value, $Res Function(_$MailingAddressImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MailingAddress
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -411,7 +403,7 @@ class _$MailingAddressImpl implements _MailingAddress {
                 other.provinceCode == provinceCode));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -433,9 +425,7 @@ class _$MailingAddressImpl implements _MailingAddress {
       province,
       provinceCode);
 
-  /// Create a copy of MailingAddress
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MailingAddressImplCopyWith<_$MailingAddressImpl> get copyWith =>
@@ -507,11 +497,8 @@ abstract class _MailingAddress implements MailingAddress {
   String? get province;
   @override
   String? get provinceCode;
-
-  /// Create a copy of MailingAddress
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MailingAddressImplCopyWith<_$MailingAddressImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

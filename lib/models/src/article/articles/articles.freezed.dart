@@ -22,12 +22,8 @@ Articles _$ArticlesFromJson(Map<String, dynamic> json) {
 mixin _$Articles {
   List<Article> get articleList => throw _privateConstructorUsedError;
 
-  /// Serializes this Articles to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Articles
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ArticlesCopyWith<Articles> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,8 +46,6 @@ class _$ArticlesCopyWithImpl<$Res, $Val extends Articles>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Articles
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,8 +79,6 @@ class __$$ArticlesImplCopyWithImpl<$Res>
       _$ArticlesImpl _value, $Res Function(_$ArticlesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Articles
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,14 +124,12 @@ class _$ArticlesImpl implements _Articles {
                 .equals(other._articleList, _articleList));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_articleList));
 
-  /// Create a copy of Articles
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
@@ -162,11 +152,8 @@ abstract class _Articles implements Articles {
 
   @override
   List<Article> get articleList;
-
-  /// Create a copy of Articles
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ArticlesImplCopyWith<_$ArticlesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

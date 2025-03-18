@@ -26,12 +26,8 @@ mixin _$AuthorV2 {
   String? get lastName => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
 
-  /// Serializes this AuthorV2 to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AuthorV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AuthorV2CopyWith<AuthorV2> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,8 +55,6 @@ class _$AuthorV2CopyWithImpl<$Res, $Val extends AuthorV2>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AuthorV2
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,8 +113,6 @@ class __$$AuthorV2ImplCopyWithImpl<$Res>
       _$AuthorV2Impl _value, $Res Function(_$AuthorV2Impl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AuthorV2
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -194,14 +186,12 @@ class _$AuthorV2Impl implements _AuthorV2 {
             (identical(other.name, name) || other.name == name));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, bio, email, firstName, lastName, name);
 
-  /// Create a copy of AuthorV2
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthorV2ImplCopyWith<_$AuthorV2Impl> get copyWith =>
@@ -236,11 +226,8 @@ abstract class _AuthorV2 implements AuthorV2 {
   String? get lastName;
   @override
   String? get name;
-
-  /// Create a copy of AuthorV2
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AuthorV2ImplCopyWith<_$AuthorV2Impl> get copyWith =>
       throw _privateConstructorUsedError;
 }

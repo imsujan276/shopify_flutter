@@ -25,12 +25,8 @@ mixin _$ProductMedia {
   ShopifyImage? get image => throw _privateConstructorUsedError;
   String? get alt => throw _privateConstructorUsedError;
 
-  /// Serializes this ProductMedia to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ProductMediaCopyWith<ProductMedia> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,8 +53,6 @@ class _$ProductMediaCopyWithImpl<$Res, $Val extends ProductMedia>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,8 +81,6 @@ class _$ProductMediaCopyWithImpl<$Res, $Val extends ProductMedia>
     ) as $Val);
   }
 
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -125,8 +117,6 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
       _$ProductVariantImpl _value, $Res Function(_$ProductVariantImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,14 +182,12 @@ class _$ProductVariantImpl extends _ProductVariant {
             (identical(other.alt, alt) || other.alt == alt));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, mediaContentType, image, alt);
 
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
@@ -233,11 +221,8 @@ abstract class _ProductVariant extends ProductMedia {
   ShopifyImage? get image;
   @override
   String? get alt;
-
-  /// Create a copy of ProductMedia
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

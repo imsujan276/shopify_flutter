@@ -27,12 +27,8 @@ mixin _$Country {
   String get name => throw _privateConstructorUsedError;
   String get unitSystem => throw _privateConstructorUsedError;
 
-  /// Serializes this Country to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CountryCopyWith<Country> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -63,8 +59,6 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -103,8 +97,6 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
     ) as $Val);
   }
 
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MarketCopyWith<$Res> get market {
@@ -113,8 +105,6 @@ class _$CountryCopyWithImpl<$Res, $Val extends Country>
     });
   }
 
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CurrencyCopyWith<$Res> get currency {
@@ -153,8 +143,6 @@ class __$$CountryImplCopyWithImpl<$Res>
       _$CountryImpl _value, $Res Function(_$CountryImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -250,7 +238,7 @@ class _$CountryImpl implements _Country {
                 other.unitSystem == unitSystem));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -261,9 +249,7 @@ class _$CountryImpl implements _Country {
       name,
       unitSystem);
 
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
@@ -300,11 +286,8 @@ abstract class _Country implements Country {
   String get name;
   @override
   String get unitSystem;
-
-  /// Create a copy of Country
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

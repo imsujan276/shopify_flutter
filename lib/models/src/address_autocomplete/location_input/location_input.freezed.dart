@@ -23,12 +23,8 @@ mixin _$LocationInput {
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
 
-  /// Serializes this LocationInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of LocationInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $LocationInputCopyWith<LocationInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,8 +48,6 @@ class _$LocationInputCopyWithImpl<$Res, $Val extends LocationInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of LocationInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,8 +86,6 @@ class __$$LocationInputImplCopyWithImpl<$Res>
       _$LocationInputImpl _value, $Res Function(_$LocationInputImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of LocationInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,13 +134,11 @@ class _$LocationInputImpl implements _LocationInput {
                 other.longitude == longitude));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, latitude, longitude);
 
-  /// Create a copy of LocationInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
@@ -173,11 +163,8 @@ abstract class _LocationInput implements LocationInput {
   double? get latitude;
   @override
   double? get longitude;
-
-  /// Create a copy of LocationInput
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LocationInputImplCopyWith<_$LocationInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

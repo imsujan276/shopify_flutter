@@ -1,3 +1,7 @@
+# 2.5.6
+
+* Added `sellingPlanAllocations` to the Order Item Variant
+
 # 2.5.5
 
 * [GraphQL Intl plugin compatibility](https://github.com/imsujan276/shopify_flutter/pull/120)

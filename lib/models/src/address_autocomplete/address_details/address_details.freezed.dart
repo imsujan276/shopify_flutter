@@ -33,12 +33,8 @@ mixin _$AddressDetails {
   String? get provinceCode => throw _privateConstructorUsedError;
   String? get zip => throw _privateConstructorUsedError;
 
-  /// Serializes this AddressDetails to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $AddressDetailsCopyWith<AddressDetails> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -74,8 +70,6 @@ class _$AddressDetailsCopyWithImpl<$Res, $Val extends AddressDetails>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,8 +170,6 @@ class __$$AddressDetailsImplCopyWithImpl<$Res>
       _$AddressDetailsImpl _value, $Res Function(_$AddressDetailsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -324,7 +316,7 @@ class _$AddressDetailsImpl implements _AddressDetails {
             (identical(other.zip, zip) || other.zip == zip));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -341,9 +333,7 @@ class _$AddressDetailsImpl implements _AddressDetails {
       provinceCode,
       zip);
 
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
@@ -400,11 +390,8 @@ abstract class _AddressDetails implements AddressDetails {
   String? get provinceCode;
   @override
   String? get zip;
-
-  /// Create a copy of AddressDetails
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AddressDetailsImplCopyWith<_$AddressDetailsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

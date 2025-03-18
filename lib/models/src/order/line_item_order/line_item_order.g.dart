@@ -22,8 +22,7 @@ _$LineItemOrderImpl _$$LineItemOrderImplFromJson(Map<String, dynamic> json) =>
           const [],
       variant: json['variant'] == null
           ? null
-          : ProductVariantCheckout.fromJson(
-              json['variant'] as Map<String, dynamic>),
+          : ProductVariant.fromJson(json['variant'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$LineItemOrderImplToJson(_$LineItemOrderImpl instance) =>

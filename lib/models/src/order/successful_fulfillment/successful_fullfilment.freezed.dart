@@ -25,12 +25,8 @@ mixin _$SuccessfulFullfilment {
   List<SuccessfulFullfilmentTrackingInfo>? get trackingInfo =>
       throw _privateConstructorUsedError;
 
-  /// Serializes this SuccessfulFullfilment to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SuccessfulFullfilment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SuccessfulFullfilmentCopyWith<SuccessfulFullfilment> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,8 +53,6 @@ class _$SuccessfulFullfilmentCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SuccessfulFullfilment
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -101,8 +95,6 @@ class __$$SuccessfulFullfilmentImplCopyWithImpl<$Res>
       $Res Function(_$SuccessfulFullfilmentImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SuccessfulFullfilment
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,14 +154,12 @@ class _$SuccessfulFullfilmentImpl extends _SuccessfulFullfilment {
                 .equals(other._trackingInfo, _trackingInfo));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, trackingCompany,
       const DeepCollectionEquality().hash(_trackingInfo));
 
-  /// Create a copy of SuccessfulFullfilment
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessfulFullfilmentImplCopyWith<_$SuccessfulFullfilmentImpl>
@@ -198,11 +188,8 @@ abstract class _SuccessfulFullfilment extends SuccessfulFullfilment {
   String? get trackingCompany;
   @override
   List<SuccessfulFullfilmentTrackingInfo>? get trackingInfo;
-
-  /// Create a copy of SuccessfulFullfilment
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SuccessfulFullfilmentImplCopyWith<_$SuccessfulFullfilmentImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

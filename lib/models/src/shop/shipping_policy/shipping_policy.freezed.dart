@@ -26,12 +26,8 @@ mixin _$ShippingPolicy {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
-  /// Serializes this ShippingPolicy to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of ShippingPolicy
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $ShippingPolicyCopyWith<ShippingPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -56,8 +52,6 @@ class _$ShippingPolicyCopyWithImpl<$Res, $Val extends ShippingPolicy>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of ShippingPolicy
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,8 +106,6 @@ class __$$ShippingPolicyImplCopyWithImpl<$Res>
       _$ShippingPolicyImpl _value, $Res Function(_$ShippingPolicyImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of ShippingPolicy
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,13 +176,11 @@ class _$ShippingPolicyImpl implements _ShippingPolicy {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
 
-  /// Create a copy of ShippingPolicy
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$ShippingPolicyImplCopyWith<_$ShippingPolicyImpl> get copyWith =>
@@ -226,11 +216,8 @@ abstract class _ShippingPolicy implements ShippingPolicy {
   String? get title;
   @override
   String? get url;
-
-  /// Create a copy of ShippingPolicy
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$ShippingPolicyImplCopyWith<_$ShippingPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

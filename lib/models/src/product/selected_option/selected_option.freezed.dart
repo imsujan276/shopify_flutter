@@ -23,12 +23,8 @@ mixin _$SelectedOption {
   String get name => throw _privateConstructorUsedError;
   String get value => throw _privateConstructorUsedError;
 
-  /// Serializes this SelectedOption to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SelectedOption
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SelectedOptionCopyWith<SelectedOption> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,8 +48,6 @@ class _$SelectedOptionCopyWithImpl<$Res, $Val extends SelectedOption>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SelectedOption
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,8 +86,6 @@ class __$$SelectedOptionImplCopyWithImpl<$Res>
       _$SelectedOptionImpl _value, $Res Function(_$SelectedOptionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SelectedOption
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,13 +132,11 @@ class _$SelectedOptionImpl extends _SelectedOption {
             (identical(other.value, value) || other.value == value));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, value);
 
-  /// Create a copy of SelectedOption
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
@@ -174,11 +164,8 @@ abstract class _SelectedOption extends SelectedOption {
   String get name;
   @override
   String get value;
-
-  /// Create a copy of SelectedOption
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SelectedOptionImplCopyWith<_$SelectedOptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

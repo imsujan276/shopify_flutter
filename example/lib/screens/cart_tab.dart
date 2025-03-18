@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:math' hide log;
 
+import 'package:example/constants.dart';
 import 'package:example/extension.dart';
 import 'package:example/screens/checkout_webview.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,7 @@ class _CartTabState extends State<CartTab> {
     final CartInput cartInput = CartInput(
       // discountCodes: [],
       buyerIdentity: CartBuyerIdentityInput(
-        email: 'test@yopmail.com',
+        email: kUserEmail,
         customerAccessToken: accessToken,
       ),
       attributes: [

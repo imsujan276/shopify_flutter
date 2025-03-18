@@ -31,12 +31,8 @@ mixin _$MailingAddressInput {
   String? get province => throw _privateConstructorUsedError;
   String? get zip => throw _privateConstructorUsedError;
 
-  /// Serializes this MailingAddressInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of MailingAddressInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $MailingAddressInputCopyWith<MailingAddressInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -70,8 +66,6 @@ class _$MailingAddressInputCopyWithImpl<$Res, $Val extends MailingAddressInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of MailingAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,8 +154,6 @@ class __$$MailingAddressInputImplCopyWithImpl<$Res>
       $Res Function(_$MailingAddressInputImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of MailingAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,14 +280,12 @@ class _$MailingAddressInputImpl extends _MailingAddressInput {
             (identical(other.zip, zip) || other.zip == zip));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, address1, address2, city,
       company, country, firstName, lastName, phone, province, zip);
 
-  /// Create a copy of MailingAddressInput
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$MailingAddressInputImplCopyWith<_$MailingAddressInputImpl> get copyWith =>
@@ -347,11 +337,8 @@ abstract class _MailingAddressInput extends MailingAddressInput {
   String? get province;
   @override
   String? get zip;
-
-  /// Create a copy of MailingAddressInput
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$MailingAddressInputImplCopyWith<_$MailingAddressInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

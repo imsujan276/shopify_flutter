@@ -23,12 +23,8 @@ mixin _$Collections {
   List<Collection> get collectionList => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
 
-  /// Serializes this Collections to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of Collections
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $CollectionsCopyWith<Collections> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,8 +48,6 @@ class _$CollectionsCopyWithImpl<$Res, $Val extends Collections>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of Collections
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -92,8 +86,6 @@ class __$$CollectionsImplCopyWithImpl<$Res>
       _$CollectionsImpl _value, $Res Function(_$CollectionsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of Collections
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,14 +143,12 @@ class _$CollectionsImpl implements _Collections {
                 other.hasNextPage == hasNextPage));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_collectionList), hasNextPage);
 
-  /// Create a copy of Collections
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$CollectionsImplCopyWith<_$CollectionsImpl> get copyWith =>
@@ -184,11 +174,8 @@ abstract class _Collections implements Collections {
   List<Collection> get collectionList;
   @override
   bool get hasNextPage;
-
-  /// Create a copy of Collections
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$CollectionsImplCopyWith<_$CollectionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

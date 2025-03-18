@@ -30,12 +30,8 @@ mixin _$TokanizedCheckout {
   @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson)
   String? get checkoutId => throw _privateConstructorUsedError;
 
-  /// Serializes this TokanizedCheckout to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $TokanizedCheckoutCopyWith<TokanizedCheckout> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,8 +65,6 @@ class _$TokanizedCheckoutCopyWithImpl<$Res, $Val extends TokanizedCheckout>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,8 +108,6 @@ class _$TokanizedCheckoutCopyWithImpl<$Res, $Val extends TokanizedCheckout>
     ) as $Val);
   }
 
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get amountV2 {
@@ -155,8 +147,6 @@ class __$$TokanizedCheckoutImplCopyWithImpl<$Res>
       $Res Function(_$TokanizedCheckoutImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -259,14 +249,12 @@ class _$TokanizedCheckoutImpl extends _TokanizedCheckout {
                 other.checkoutId == checkoutId));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, paymentId, amountV2, test, ready,
       nextActionUrl, errorMessage, checkoutId);
 
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$TokanizedCheckoutImplCopyWith<_$TokanizedCheckoutImpl> get copyWith =>
@@ -312,11 +300,8 @@ abstract class _TokanizedCheckout extends TokanizedCheckout {
   @override
   @JsonKey(name: 'checkout', fromJson: _checkoutIdFromJson)
   String? get checkoutId;
-
-  /// Create a copy of TokanizedCheckout
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$TokanizedCheckoutImplCopyWith<_$TokanizedCheckoutImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

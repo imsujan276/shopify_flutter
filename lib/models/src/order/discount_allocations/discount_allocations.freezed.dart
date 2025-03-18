@@ -22,12 +22,8 @@ DiscountAllocations _$DiscountAllocationsFromJson(Map<String, dynamic> json) {
 mixin _$DiscountAllocations {
   PriceV2? get allocatedAmount => throw _privateConstructorUsedError;
 
-  /// Serializes this DiscountAllocations to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $DiscountAllocationsCopyWith<DiscountAllocations> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,8 +49,6 @@ class _$DiscountAllocationsCopyWithImpl<$Res, $Val extends DiscountAllocations>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,8 +62,6 @@ class _$DiscountAllocationsCopyWithImpl<$Res, $Val extends DiscountAllocations>
     ) as $Val);
   }
 
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get allocatedAmount {
@@ -105,8 +97,6 @@ class __$$DiscountAllocationsImplCopyWithImpl<$Res>
       $Res Function(_$DiscountAllocationsImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -146,13 +136,11 @@ class _$DiscountAllocationsImpl extends _DiscountAllocations {
                 other.allocatedAmount == allocatedAmount));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, allocatedAmount);
 
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$DiscountAllocationsImplCopyWith<_$DiscountAllocationsImpl> get copyWith =>
@@ -177,11 +165,8 @@ abstract class _DiscountAllocations extends DiscountAllocations {
 
   @override
   PriceV2? get allocatedAmount;
-
-  /// Create a copy of DiscountAllocations
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$DiscountAllocationsImplCopyWith<_$DiscountAllocationsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -26,12 +26,8 @@ mixin _$SellingPlanAllocation {
       throw _privateConstructorUsedError;
   SellingPlan? get sellingPlan => throw _privateConstructorUsedError;
 
-  /// Serializes this SellingPlanAllocation to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   $SellingPlanAllocationCopyWith<SellingPlanAllocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,8 +59,6 @@ class _$SellingPlanAllocationCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -88,8 +82,6 @@ class _$SellingPlanAllocationCopyWithImpl<$Res,
     ) as $Val);
   }
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get checkoutChargeAmount {
@@ -102,8 +94,6 @@ class _$SellingPlanAllocationCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount {
@@ -118,8 +108,6 @@ class _$SellingPlanAllocationCopyWithImpl<$Res,
     });
   }
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $SellingPlanCopyWith<$Res>? get sellingPlan {
@@ -164,8 +152,6 @@ class __$$SellingPlanAllocationImplCopyWithImpl<$Res>
       $Res Function(_$SellingPlanAllocationImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,14 +215,12 @@ class _$SellingPlanAllocationImpl extends _SellingPlanAllocation {
                 other.sellingPlan == sellingPlan));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, checkoutChargeAmount,
       remainingBalanceChargeAmount, sellingPlan);
 
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$SellingPlanAllocationImplCopyWith<_$SellingPlanAllocationImpl>
@@ -267,11 +251,8 @@ abstract class _SellingPlanAllocation extends SellingPlanAllocation {
   PriceV2? get remainingBalanceChargeAmount;
   @override
   SellingPlan? get sellingPlan;
-
-  /// Create a copy of SellingPlanAllocation
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$SellingPlanAllocationImplCopyWith<_$SellingPlanAllocationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

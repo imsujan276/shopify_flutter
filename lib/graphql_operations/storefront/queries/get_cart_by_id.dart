@@ -351,10 +351,8 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

@@ -352,10 +352,8 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

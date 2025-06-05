@@ -155,10 +155,8 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                 id
                 onlineStoreUrl
                 productType
-                publishedAt
                 tags
                 title
-                updatedAt
                 vendor
                 images(first: 5) {
                   edges {

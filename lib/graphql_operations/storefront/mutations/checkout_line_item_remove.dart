@@ -146,10 +146,8 @@ mutation checkoutLineItemsRemove($lineItemIds: [ID!]!, $checkoutId: ID!) {
                 id
                 onlineStoreUrl
                 productType
-                publishedAt
                 tags
                 title
-                updatedAt
                 vendor
                 images(first: 5) {
                   edges {

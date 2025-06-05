@@ -151,10 +151,8 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                 id
                 onlineStoreUrl
                 productType
-                publishedAt
                 tags
                 title
-                updatedAt
                 vendor
                 images(first: 5) {
                   edges {

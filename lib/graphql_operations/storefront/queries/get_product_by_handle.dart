@@ -142,9 +142,7 @@ query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: Cou
     }
     onlineStoreUrl
     productType
-    publishedAt
     tags
-    updatedAt
     vendor
   }
 }

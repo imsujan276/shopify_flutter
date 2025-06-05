@@ -140,9 +140,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $ids : [I
       }
       onlineStoreUrl
       productType
-      publishedAt
       tags
-      updatedAt
       vendor
       media(first: 250) {
           edges {

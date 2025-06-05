@@ -42,9 +42,7 @@ customer(customerAccessToken: $accessToken) {
                     handle
                     onlineStoreUrl
                     productType
-                    publishedAt
                     title
-                    updatedAt
                     vendor
                   }
                   title

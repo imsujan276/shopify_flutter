@@ -166,10 +166,8 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
               }
               onlineStoreUrl
               productType
-              publishedAt
               tags
               title
-              updatedAt
               vendor
             }
             cursor

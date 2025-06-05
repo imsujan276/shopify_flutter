@@ -23,9 +23,7 @@ mixin _$Product {
   List<ProductVariant> get productVariants =>
       throw _privateConstructorUsedError;
   String get productType => throw _privateConstructorUsedError;
-  String get publishedAt => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
   List<Option> get options => throw _privateConstructorUsedError;
   String get vendor => throw _privateConstructorUsedError;
@@ -55,9 +53,7 @@ abstract class $ProductCopyWith<$Res> {
       String createdAt,
       List<ProductVariant> productVariants,
       String productType,
-      String publishedAt,
       List<String> tags,
-      String updatedAt,
       List<ShopifyImage> images,
       List<Option> options,
       String vendor,
@@ -90,9 +86,7 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
     Object? createdAt = null,
     Object? productVariants = null,
     Object? productType = null,
-    Object? publishedAt = null,
     Object? tags = null,
-    Object? updatedAt = null,
     Object? images = null,
     Object? options = null,
     Object? vendor = null,
@@ -130,18 +124,10 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedAt: null == publishedAt
-          ? _value.publishedAt
-          : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
       tags: null == tags
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -204,9 +190,7 @@ abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String createdAt,
       List<ProductVariant> productVariants,
       String productType,
-      String publishedAt,
       List<String> tags,
-      String updatedAt,
       List<ShopifyImage> images,
       List<Option> options,
       String vendor,
@@ -237,9 +221,7 @@ class __$$ProductImplCopyWithImpl<$Res>
     Object? createdAt = null,
     Object? productVariants = null,
     Object? productType = null,
-    Object? publishedAt = null,
     Object? tags = null,
-    Object? updatedAt = null,
     Object? images = null,
     Object? options = null,
     Object? vendor = null,
@@ -277,18 +259,10 @@ class __$$ProductImplCopyWithImpl<$Res>
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedAt: null == publishedAt
-          ? _value.publishedAt
-          : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
       tags: null == tags
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      updatedAt: null == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -347,9 +321,7 @@ class _$ProductImpl extends _Product {
       required this.createdAt,
       required final List<ProductVariant> productVariants,
       required this.productType,
-      required this.publishedAt,
       required final List<String> tags,
-      required this.updatedAt,
       required final List<ShopifyImage> images,
       required final List<Option> options,
       required this.vendor,
@@ -388,8 +360,6 @@ class _$ProductImpl extends _Product {
 
   @override
   final String productType;
-  @override
-  final String publishedAt;
   final List<String> _tags;
   @override
   List<String> get tags {
@@ -398,8 +368,6 @@ class _$ProductImpl extends _Product {
     return EqualUnmodifiableListView(_tags);
   }
 
-  @override
-  final String updatedAt;
   final List<ShopifyImage> _images;
   @override
   List<ShopifyImage> get images {
@@ -457,7 +425,7 @@ class _$ProductImpl extends _Product {
 
   @override
   String toString() {
-    return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, publishedAt: $publishedAt, tags: $tags, updatedAt: $updatedAt, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+    return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, tags: $tags, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
   }
 
   @override
@@ -475,11 +443,7 @@ class _$ProductImpl extends _Product {
                 .equals(other._productVariants, _productVariants) &&
             (identical(other.productType, productType) ||
                 other.productType == productType) &&
-            (identical(other.publishedAt, publishedAt) ||
-                other.publishedAt == publishedAt) &&
             const DeepCollectionEquality().equals(other._tags, _tags) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality().equals(other._options, _options) &&
             (identical(other.vendor, vendor) || other.vendor == vendor) &&
@@ -499,29 +463,26 @@ class _$ProductImpl extends _Product {
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        title,
-        id,
-        availableForSale,
-        createdAt,
-        const DeepCollectionEquality().hash(_productVariants),
-        productType,
-        publishedAt,
-        const DeepCollectionEquality().hash(_tags),
-        updatedAt,
-        const DeepCollectionEquality().hash(_images),
-        const DeepCollectionEquality().hash(_options),
-        vendor,
-        const DeepCollectionEquality().hash(_media),
-        const DeepCollectionEquality().hash(_metafields),
-        const DeepCollectionEquality().hash(_collectionList),
-        cursor,
-        onlineStoreUrl,
-        description,
-        descriptionHtml,
-        handle
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      title,
+      id,
+      availableForSale,
+      createdAt,
+      const DeepCollectionEquality().hash(_productVariants),
+      productType,
+      const DeepCollectionEquality().hash(_tags),
+      const DeepCollectionEquality().hash(_images),
+      const DeepCollectionEquality().hash(_options),
+      vendor,
+      const DeepCollectionEquality().hash(_media),
+      const DeepCollectionEquality().hash(_metafields),
+      const DeepCollectionEquality().hash(_collectionList),
+      cursor,
+      onlineStoreUrl,
+      description,
+      descriptionHtml,
+      handle);
 
   @JsonKey(ignore: true)
   @override
@@ -538,9 +499,7 @@ abstract class _Product extends Product {
       required final String createdAt,
       required final List<ProductVariant> productVariants,
       required final String productType,
-      required final String publishedAt,
       required final List<String> tags,
-      required final String updatedAt,
       required final List<ShopifyImage> images,
       required final List<Option> options,
       required final String vendor,
@@ -567,11 +526,7 @@ abstract class _Product extends Product {
   @override
   String get productType;
   @override
-  String get publishedAt;
-  @override
   List<String> get tags;
-  @override
-  String get updatedAt;
   @override
   List<ShopifyImage> get images;
   @override

@@ -352,10 +352,8 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode, $re
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

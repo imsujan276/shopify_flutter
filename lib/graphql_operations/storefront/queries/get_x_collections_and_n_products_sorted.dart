@@ -171,10 +171,8 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectonMetafields: [Ha
               }
               onlineStoreUrl
               productType
-              publishedAt
               tags
               title
-              updatedAt
               vendor
             }
             cursor

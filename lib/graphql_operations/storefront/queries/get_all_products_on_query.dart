@@ -34,10 +34,8 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
         descriptionHtml
         onlineStoreUrl
         productType
-        publishedAt
         tags
         title
-        updatedAt
         vendor
         images(first: 250) {
           edges {

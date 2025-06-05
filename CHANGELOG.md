@@ -1,3 +1,7 @@
+# 2.6.0
+
+* Removed published and updated date from product
+
 # 2.5.6
 
 * Added `sellingPlanAllocations` to the Order Item Variant

@@ -14,9 +14,7 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'productVariants':
           instance.productVariants.map((e) => e.toJson()).toList(),
       'productType': instance.productType,
-      'publishedAt': instance.publishedAt,
       'tags': instance.tags,
-      'updatedAt': instance.updatedAt,
       'images': instance.images.map((e) => e.toJson()).toList(),
       'options': instance.options.map((e) => e.toJson()).toList(),
       'vendor': instance.vendor,

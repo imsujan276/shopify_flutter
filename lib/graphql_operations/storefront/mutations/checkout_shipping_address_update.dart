@@ -146,10 +146,8 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                 id
                 onlineStoreUrl
                 productType
-                publishedAt
                 tags
                 title
-                updatedAt
                 vendor
                 images(first: 5) {
                   edges {

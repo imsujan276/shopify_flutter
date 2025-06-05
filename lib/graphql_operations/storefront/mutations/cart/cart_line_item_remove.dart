@@ -352,10 +352,8 @@ mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!, 
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

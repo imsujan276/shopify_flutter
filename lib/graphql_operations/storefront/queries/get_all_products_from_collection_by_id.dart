@@ -83,10 +83,8 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
             }
             onlineStoreUrl
             productType
-            publishedAt
             tags
             title
-            updatedAt
             vendor
             variants(first: 250) {
               edges {

@@ -160,9 +160,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
       }
       onlineStoreUrl
       productType
-      publishedAt
       tags
-      updatedAt
       vendor
         }
       }

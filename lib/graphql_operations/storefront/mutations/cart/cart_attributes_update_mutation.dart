@@ -352,10 +352,8 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

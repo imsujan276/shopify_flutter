@@ -138,10 +138,8 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
         id
         onlineStoreUrl
         productType
-        publishedAt
         tags
         title
-        updatedAt
         vendor
         images(first: 250) {
           edges {

@@ -146,10 +146,8 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                 id
                 onlineStoreUrl
                 productType
-                publishedAt
                 tags
                 title
-                updatedAt
                 vendor
                 images(first: 5) {
                   edges {

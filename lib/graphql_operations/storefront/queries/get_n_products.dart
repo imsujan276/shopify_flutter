@@ -138,10 +138,8 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
         id
         onlineStoreUrl
         productType
-        publishedAt
         tags
         title
-        updatedAt
         vendor
         images(first: 250) {
           edges {

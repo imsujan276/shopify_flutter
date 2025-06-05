@@ -162,10 +162,8 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
               }
               onlineStoreUrl
               productType
-              publishedAt
               tags
               title
-              updatedAt
               vendor
             }
             cursor

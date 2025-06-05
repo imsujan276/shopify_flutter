@@ -55,10 +55,8 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
       }
     }
     productType
-    publishedAt
     tags
     title
-    updatedAt
     vendor
     variants(first: 250) {
       edges {

@@ -352,10 +352,8 @@ mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineU
                   id
                   onlineStoreUrl
                   productType
-                  publishedAt
                   tags
                   title
-                  updatedAt
                   vendor
                   images(first: 5) {
                     edges {

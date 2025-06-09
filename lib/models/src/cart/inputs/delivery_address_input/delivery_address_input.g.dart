@@ -19,6 +19,8 @@ _$DeliveryAddressInputImpl _$$DeliveryAddressInputImplFromJson(
 Map<String, dynamic> _$$DeliveryAddressInputImplToJson(
         _$DeliveryAddressInputImpl instance) =>
     <String, dynamic>{
-      'customerAddressId': instance.customerAddressId,
-      'deliveryAddress': instance.deliveryAddress?.toJson(),
+      if (instance.customerAddressId != null)
+        'customerAddressId': instance.customerAddressId,
+      if (instance.deliveryAddress != null)
+        'deliveryAddress': instance.deliveryAddress!.toJson(),
     };

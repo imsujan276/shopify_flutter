@@ -1,12 +1,13 @@
 name: shopify_flutter
-description: A Flutter package to seamlessly connect your Shopify store with your app.
-version: 2.6.0
-repository: https://github.com/imsujan276/shopify_flutter
-issue_tracker: https://github.com/imsujan276/shopify_flutter/issues
+description: A Fork of shopify_flutter
+version: 1.0.0
+repository: https://github.com/ngabovictor/shopify_flutter_plus
+issue_tracker: https://github.com/ngabovictor/shopify_flutter_plus/issues
 
 tags:
   - shopify
   - shopify_flutter
+  - shopify_flutter_plus
 
 platforms:
   android:

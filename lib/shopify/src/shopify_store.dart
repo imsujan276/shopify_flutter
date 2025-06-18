@@ -14,12 +14,14 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_prod
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_after_cursor_within_collection.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/search_product.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_on_query_after_cursor.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/predictive_search.dart';
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/collection/collections/collections.dart';
 import 'package:shopify_flutter/models/src/product/metafield_identifier/metafield_identifier.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
+import 'package:shopify_flutter/models/src/predictive_search/predictive_search.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 import '../../graphql_operations/storefront/queries/get_featured_collections.dart';
@@ -608,5 +610,44 @@ class ShopifyStore with ShopifyError {
     checkForError(result);
     return Products.fromGraphJson((result.data ?? const {})['products'])
         .productList;
+  }
+
+  /// Returns predictive search results for the given query.
+  ///
+  /// [query] is the search term to look for.
+  /// [limit] is the maximum number of results to return (1-10, default is 10).
+  /// [limitScope] determines how the limit is applied across different result types.
+  /// [searchableFields] specifies which fields to search in.
+  /// [types] specifies which types of results to return.
+  /// [unavailableProducts] specifies how to handle unavailable products.
+  Future<PredictiveSearch?> getPredictiveSearch(
+    String query, {
+    int? limit,
+    String? limitScope,
+    List<String>? searchableFields,
+    List<String>? types,
+    String? unavailableProducts,
+  }) async {
+    try {
+      final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(predictiveSearchQuery),
+        variables: {
+          'query': query,
+          if (limit != null) 'limit': limit,
+          if (limitScope != null) 'limitScope': limitScope,
+          if (searchableFields != null) 'searchableFields': searchableFields,
+          if (types != null) 'types': types,
+          if (unavailableProducts != null)
+            'unavailableProducts': unavailableProducts,
+        },
+        fetchPolicy: ShopifyConfig.fetchPolicy,
+      );
+      final QueryResult result = await _graphQLClient!.query(_options);
+      checkForError(result);
+      return PredictiveSearch.fromJson(result.data?['predictiveSearch'] ?? {});
+    } catch (e) {
+      log(e.toString());
+      return null;
+    }
   }
 }

@@ -17,6 +17,12 @@ class PredictiveCollection {
     this.image,
   });
 
+  /// get imageUrl method
+  String get originalSrc => image == null
+      ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
+      : image!['originalSrc'] ??
+          'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg';
+
   factory PredictiveCollection.fromJson(Map<String, dynamic> json) {
     return PredictiveCollection(
       id: json['id'] as String,

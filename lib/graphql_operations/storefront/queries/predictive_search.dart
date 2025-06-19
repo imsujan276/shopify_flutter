@@ -17,36 +17,42 @@ query predictiveSearch(\$query: String!, \$limit: Int, \$limitScope: PredictiveS
       availableForSale
       productType
       tags
-      priceRange {
-        minVariantPrice {
-          amount
-          currencyCode
-        }
-        maxVariantPrice {
-          amount
-          currencyCode
-        }
-      }
-      images(first: 1) {
+      vendor
+      createdAt
+      onlineStoreUrl
+      images(first: 250) {
         edges {
           node {
             originalSrc
             altText
-            width
-            height
+            id
           }
         }
       }
-      variants(first: 1) {
+      media(first: 250) {
+        edges {
+          node {
+            alt
+            id
+            mediaContentType
+            previewImage {
+              altText
+              id
+              originalSrc
+            }
+          }
+        }
+      }
+      variants(first: 250) {
         edges {
           node {
             id
             title
-            price {
+            priceV2 {
               amount
               currencyCode
             }
-            compareAtPrice {
+            compareAtPriceV2 {
               amount
               currencyCode
             }
@@ -54,8 +60,78 @@ query predictiveSearch(\$query: String!, \$limit: Int, \$limitScope: PredictiveS
               name
               value
             }
+            availableForSale
+            quantityAvailable
+            weight
+            weightUnit
+            requiresShipping
+            sku
+            image {
+              originalSrc
+              altText
+              id
+            }
+            sellingPlanAllocations(first: 250) {
+              nodes {
+                checkoutChargeAmount {
+                  amount
+                  currencyCode
+                }
+                remainingBalanceChargeAmount {
+                  amount
+                  currencyCode
+                }
+                sellingPlan {
+                  id
+                  name
+                  options {
+                    name
+                    value
+                  }
+                  description
+                  checkoutCharge {
+                    type
+                    value {
+                      ... on MoneyV2 {
+                        amount
+                        currencyCode
+                      }
+                      ... on SellingPlanCheckoutChargePercentageValue {
+                        percentage
+                      }
+                    }
+                  }
+                  priceAdjustments {
+                    adjustmentValue {
+                      ... on SellingPlanFixedAmountPriceAdjustment {
+                        adjustmentAmount {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanFixedPriceAdjustment {
+                        price {
+                          amount
+                          currencyCode
+                        }
+                      }
+                      ... on SellingPlanPercentagePriceAdjustment {
+                        adjustmentPercentage
+                      }
+                    }
+                    orderCount
+                  }
+                  recurringDeliveries
+                }
+              }
+            }
           }
         }
+      }
+      options(first: 50) {
+        id
+        name
+        values
       }
     }
     collections {
@@ -67,8 +143,7 @@ query predictiveSearch(\$query: String!, \$limit: Int, \$limitScope: PredictiveS
       image {
         originalSrc
         altText
-        width
-        height
+        id
       }
     }
     pages {
@@ -77,6 +152,9 @@ query predictiveSearch(\$query: String!, \$limit: Int, \$limitScope: PredictiveS
       handle
       body
       bodySummary
+      onlineStoreUrl
+      createdAt
+      updatedAt
     }
     articles {
       id
@@ -87,11 +165,11 @@ query predictiveSearch(\$query: String!, \$limit: Int, \$limitScope: PredictiveS
       excerpt
       excerptHtml
       publishedAt
+      onlineStoreUrl
       image {
         originalSrc
         altText
-        width
-        height
+        id
       }
     }
     queries {

@@ -1,9 +1,13 @@
+import 'dart:developer';
 import 'package:shopify_flutter/models/src/collection/collection.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
+import 'package:shopify_flutter/models/src/page/page.dart';
+import 'package:shopify_flutter/models/src/article/article.dart';
+import 'package:shopify_flutter/models/src/predictive_search/predictive_collection.dart';
 
 class PredictiveSearch {
   final List<Product> products;
-  final List<Collection> collections;
+  final List<PredictiveCollection> collections;
   final List<Page> pages;
   final List<Article> articles;
   final List<Query> queries;
@@ -17,115 +21,52 @@ class PredictiveSearch {
   });
 
   factory PredictiveSearch.fromJson(Map<String, dynamic> json) {
-    return PredictiveSearch(
-      products: (json['products'] as List<dynamic>?)
-              ?.map((e) => Product.fromGraphJson(e))
-              .toList() ??
-          [],
-      collections: (json['collections'] as List<dynamic>?)
-              ?.map((e) => Collection.fromJson(e))
-              .toList() ??
-          [],
-      pages: (json['pages'] as List<dynamic>?)
-              ?.map((e) => Page.fromJson(e))
-              .toList() ??
-          [],
-      articles: (json['articles'] as List<dynamic>?)
-              ?.map((e) => Article.fromJson(e))
-              .toList() ??
-          [],
-      queries: (json['queries'] as List<dynamic>?)
-              ?.map((e) => Query.fromJson(e))
-              .toList() ??
-          [],
-    );
+    try {
+      // Handle the case where the response is wrapped in a data object
+      final data = json['data'] ?? json;
+
+      // Extract the predictiveSearch object
+      final predictiveSearchData = data['predictiveSearch'] ?? data;
+
+      // Add debug logging
+      log('PredictiveSearch.fromJson - Input json keys: ${json.keys.toList()}');
+      log('PredictiveSearch.fromJson - predictiveSearchData keys: ${predictiveSearchData.keys.toList()}');
+
+      return PredictiveSearch(
+        products: (predictiveSearchData['products'] as List<dynamic>?)
+                ?.map((e) => Product.fromJson(e))
+                .toList() ??
+            [],
+        collections: (predictiveSearchData['collections'] as List<dynamic>?)
+                ?.where((e) => e != null)
+                ?.map((e) =>
+                    PredictiveCollection.fromJson(e as Map<String, dynamic>))
+                .toList() ??
+            [],
+        pages: (predictiveSearchData['pages'] as List<dynamic>?)
+                ?.map((e) => Page.fromJson(e))
+                .toList() ??
+            [],
+        articles: (predictiveSearchData['articles'] as List<dynamic>?)
+                ?.map((e) => Article.fromJson(e))
+                .toList() ??
+            [],
+        queries: (predictiveSearchData['queries'] as List<dynamic>?)
+                ?.map((e) => Query.fromJson(e))
+                .toList() ??
+            [],
+      );
+    } catch (e, stackTrace) {
+      log('Error parsing PredictiveSearch: $e');
+      log('Stack trace: $stackTrace');
+      log('Input json: $json');
+      rethrow;
+    }
   }
-}
 
-class Page {
-  final String id;
-  final String title;
-  final String handle;
-  final String body;
-  final String bodySummary;
-
-  Page({
-    required this.id,
-    required this.title,
-    required this.handle,
-    required this.body,
-    required this.bodySummary,
-  });
-
-  factory Page.fromJson(Map<String, dynamic> json) {
-    return Page(
-      id: json['id'] ?? '',
-      title: json['title'] ?? '',
-      handle: json['handle'] ?? '',
-      body: json['body'] ?? '',
-      bodySummary: json['bodySummary'] ?? '',
-    );
-  }
-}
-
-class Article {
-  final String id;
-  final String title;
-  final String handle;
-  final String content;
-  final String contentHtml;
-  final String excerpt;
-  final String excerptHtml;
-  final String publishedAt;
-  final Image? image;
-
-  Article({
-    required this.id,
-    required this.title,
-    required this.handle,
-    required this.content,
-    required this.contentHtml,
-    required this.excerpt,
-    required this.excerptHtml,
-    required this.publishedAt,
-    this.image,
-  });
-
-  factory Article.fromJson(Map<String, dynamic> json) {
-    return Article(
-      id: json['id'] ?? '',
-      title: json['title'] ?? '',
-      handle: json['handle'] ?? '',
-      content: json['content'] ?? '',
-      contentHtml: json['contentHtml'] ?? '',
-      excerpt: json['excerpt'] ?? '',
-      excerptHtml: json['excerptHtml'] ?? '',
-      publishedAt: json['publishedAt'] ?? '',
-      image: json['image'] != null ? Image.fromJson(json['image']) : null,
-    );
-  }
-}
-
-class Image {
-  final String originalSrc;
-  final String altText;
-  final int width;
-  final int height;
-
-  Image({
-    required this.originalSrc,
-    required this.altText,
-    required this.width,
-    required this.height,
-  });
-
-  factory Image.fromJson(Map<String, dynamic> json) {
-    return Image(
-      originalSrc: json['originalSrc'] ?? '',
-      altText: json['altText'] ?? '',
-      width: json['width'] ?? 0,
-      height: json['height'] ?? 0,
-    );
+  @override
+  String toString() {
+    return 'PredictiveSearch(products: ${products.length}, collections: ${collections.length}, pages: ${pages.length}, articles: ${articles.length}, queries: ${queries.length})';
   }
 }
 
@@ -143,5 +84,10 @@ class Query {
       text: json['text'] ?? '',
       styledText: json['styledText'] ?? '',
     );
+  }
+
+  @override
+  String toString() {
+    return 'Query(text: $text)';
   }
 }

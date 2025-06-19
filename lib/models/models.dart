@@ -37,6 +37,8 @@ export 'src/order/successful_fulfillment/successful_fulfilment_tracking_info/suc
 export 'src/page/page.dart';
 export 'src/page/pages/pages.dart';
 
+export 'src/predictive_search/predictive_search.dart';
+
 export 'src/product/product.dart';
 export 'src/product/products/products.dart';
 export 'src/product/associated_collections/associated_collections.dart';

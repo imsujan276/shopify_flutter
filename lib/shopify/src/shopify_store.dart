@@ -629,6 +629,11 @@ class ShopifyStore with ShopifyError {
     String? unavailableProducts,
   }) async {
     try {
+      if (query.isEmpty) {
+        log('Predictive search query is empty');
+        return null;
+      }
+
       final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(predictiveSearchQuery),
         variables: {
@@ -640,13 +645,38 @@ class ShopifyStore with ShopifyError {
           if (unavailableProducts != null)
             'unavailableProducts': unavailableProducts,
         },
-        fetchPolicy: ShopifyConfig.fetchPolicy,
+        fetchPolicy: FetchPolicy
+            .networkOnly, // Force network request to avoid cache issues
       );
+
       final QueryResult result = await _graphQLClient!.query(_options);
-      checkForError(result);
-      return PredictiveSearch.fromJson(result.data?['predictiveSearch'] ?? {});
-    } catch (e) {
-      log(e.toString());
+
+      // Handle GraphQL errors
+      if (result.hasException) {
+        log('GraphQL query error: ${result.exception.toString()}');
+        return null;
+      }
+
+      if (result.data == null) {
+        log('GraphQL query returned null data');
+        return null;
+      }
+
+      // Extract the predictiveSearch data from the response
+      final predictiveSearchData = result.data!['predictiveSearch'];
+      if (predictiveSearchData == null) {
+        log('No predictiveSearch data found in response');
+        return null;
+      }
+
+      // Create the response structure expected by PredictiveSearch.fromJson
+      final responseData = {'predictiveSearch': predictiveSearchData};
+
+      final searchResult = PredictiveSearch.fromJson(responseData);
+      return searchResult;
+    } catch (e, stackTrace) {
+      log('Error in predictive search: $e');
+      log('Stack trace: $stackTrace');
       return null;
     }
   }

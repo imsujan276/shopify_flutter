@@ -23,8 +23,12 @@ mixin _$Products {
   List<Product> get productList => throw _privateConstructorUsedError;
   bool get hasNextPage => throw _privateConstructorUsedError;
 
+  /// Serializes this Products to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Products
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductsCopyWith<Products> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$ProductsCopyWithImpl<$Res, $Val extends Products>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Products
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +91,8 @@ class __$$ProductsImplCopyWithImpl<$Res>
       _$ProductsImpl _value, $Res Function(_$ProductsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Products
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,12 +150,14 @@ class _$ProductsImpl extends _Products {
                 other.hasNextPage == hasNextPage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType,
       const DeepCollectionEquality().hash(_productList), hasNextPage);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Products
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductsImplCopyWith<_$ProductsImpl> get copyWith =>
@@ -174,8 +184,11 @@ abstract class _Products extends Products {
   List<Product> get productList;
   @override
   bool get hasNextPage;
+
+  /// Create a copy of Products
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductsImplCopyWith<_$ProductsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

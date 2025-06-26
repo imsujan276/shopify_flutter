@@ -25,8 +25,12 @@ mixin _$CartDeliveryCoordinatesPreference {
   double? get longitude => throw _privateConstructorUsedError;
   String? get countryCode => throw _privateConstructorUsedError;
 
+  /// Serializes this CartDeliveryCoordinatesPreference to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartDeliveryCoordinatesPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartDeliveryCoordinatesPreferenceCopyWith<CartDeliveryCoordinatesPreference>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$CartDeliveryCoordinatesPreferenceCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartDeliveryCoordinatesPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -99,6 +105,8 @@ class __$$CartDeliveryCoordinatesPreferenceImplCopyWithImpl<$Res>
       $Res Function(_$CartDeliveryCoordinatesPreferenceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartDeliveryCoordinatesPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,12 +170,14 @@ class _$CartDeliveryCoordinatesPreferenceImpl
                 other.countryCode == countryCode));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, latitude, longitude, countryCode);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartDeliveryCoordinatesPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartDeliveryCoordinatesPreferenceImplCopyWith<
@@ -202,8 +212,11 @@ abstract class _CartDeliveryCoordinatesPreference
   double? get longitude;
   @override
   String? get countryCode;
+
+  /// Create a copy of CartDeliveryCoordinatesPreference
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartDeliveryCoordinatesPreferenceImplCopyWith<
           _$CartDeliveryCoordinatesPreferenceImpl>
       get copyWith => throw _privateConstructorUsedError;

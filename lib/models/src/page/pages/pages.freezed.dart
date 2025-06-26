@@ -22,8 +22,12 @@ Pages _$PagesFromJson(Map<String, dynamic> json) {
 mixin _$Pages {
   List<Page> get pageList => throw _privateConstructorUsedError;
 
+  /// Serializes this Pages to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Pages
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PagesCopyWith<Pages> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -45,6 +49,8 @@ class _$PagesCopyWithImpl<$Res, $Val extends Pages>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Pages
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +83,8 @@ class __$$PagesImplCopyWithImpl<$Res>
       _$PagesImpl _value, $Res Function(_$PagesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Pages
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,12 +128,14 @@ class _$PagesImpl implements _Pages {
             const DeepCollectionEquality().equals(other._pageList, _pageList));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_pageList));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Pages
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PagesImplCopyWith<_$PagesImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _Pages implements Pages {
 
   @override
   List<Page> get pageList;
+
+  /// Create a copy of Pages
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PagesImplCopyWith<_$PagesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

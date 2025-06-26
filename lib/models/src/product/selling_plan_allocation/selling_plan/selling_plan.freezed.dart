@@ -29,8 +29,12 @@ mixin _$SellingPlan {
       throw _privateConstructorUsedError;
   List<SellingPlanOption> get options => throw _privateConstructorUsedError;
 
+  /// Serializes this SellingPlan to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SellingPlan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SellingPlanCopyWith<SellingPlan> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$SellingPlanCopyWithImpl<$Res, $Val extends SellingPlan>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SellingPlan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +137,8 @@ class __$$SellingPlanImplCopyWithImpl<$Res>
       _$SellingPlanImpl _value, $Res Function(_$SellingPlanImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SellingPlan
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -245,7 +253,7 @@ class _$SellingPlanImpl extends _SellingPlan {
             const DeepCollectionEquality().equals(other._options, _options));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -257,7 +265,9 @@ class _$SellingPlanImpl extends _SellingPlan {
       const DeepCollectionEquality().hash(_priceAdjustments),
       const DeepCollectionEquality().hash(_options));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SellingPlan
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SellingPlanImplCopyWith<_$SellingPlanImpl> get copyWith =>
@@ -299,8 +309,11 @@ abstract class _SellingPlan extends SellingPlan {
   List<PriceAdjustments> get priceAdjustments;
   @override
   List<SellingPlanOption> get options;
+
+  /// Create a copy of SellingPlan
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SellingPlanImplCopyWith<_$SellingPlanImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

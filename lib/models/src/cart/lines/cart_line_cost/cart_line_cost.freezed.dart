@@ -25,8 +25,12 @@ mixin _$CartLineCost {
   PriceV2 get totalAmount => throw _privateConstructorUsedError;
   PriceV2? get compareAtAmountPerQuantity => throw _privateConstructorUsedError;
 
+  /// Serializes this CartLineCost to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartLineCostCopyWith<CartLineCost> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$CartLineCostCopyWithImpl<$Res, $Val extends CartLineCost>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +93,8 @@ class _$CartLineCostCopyWithImpl<$Res, $Val extends CartLineCost>
     ) as $Val);
   }
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get amountPerQuantity {
@@ -95,6 +103,8 @@ class _$CartLineCostCopyWithImpl<$Res, $Val extends CartLineCost>
     });
   }
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get subtotalAmount {
@@ -103,6 +113,8 @@ class _$CartLineCostCopyWithImpl<$Res, $Val extends CartLineCost>
     });
   }
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get totalAmount {
@@ -111,6 +123,8 @@ class _$CartLineCostCopyWithImpl<$Res, $Val extends CartLineCost>
     });
   }
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get compareAtAmountPerQuantity {
@@ -156,6 +170,8 @@ class __$$CartLineCostImplCopyWithImpl<$Res>
       _$CartLineCostImpl _value, $Res Function(_$CartLineCostImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,12 +245,14 @@ class _$CartLineCostImpl extends _CartLineCost {
                     compareAtAmountPerQuantity));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, amountPerQuantity,
       subtotalAmount, totalAmount, compareAtAmountPerQuantity);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartLineCostImplCopyWith<_$CartLineCostImpl> get copyWith =>
@@ -267,8 +285,11 @@ abstract class _CartLineCost extends CartLineCost {
   PriceV2 get totalAmount;
   @override
   PriceV2? get compareAtAmountPerQuantity;
+
+  /// Create a copy of CartLineCost
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartLineCostImplCopyWith<_$CartLineCostImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

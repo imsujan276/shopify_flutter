@@ -23,8 +23,12 @@ mixin _$CartDiscountCode {
   bool? get applicable => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
 
+  /// Serializes this CartDiscountCode to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartDiscountCode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartDiscountCodeCopyWith<CartDiscountCode> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -48,6 +52,8 @@ class _$CartDiscountCodeCopyWithImpl<$Res, $Val extends CartDiscountCode>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartDiscountCode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +92,8 @@ class __$$CartDiscountCodeImplCopyWithImpl<$Res>
       $Res Function(_$CartDiscountCodeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartDiscountCode
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -134,11 +142,13 @@ class _$CartDiscountCodeImpl extends _CartDiscountCode {
             (identical(other.code, code) || other.code == code));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, applicable, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartDiscountCode
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartDiscountCodeImplCopyWith<_$CartDiscountCodeImpl> get copyWith =>
@@ -166,8 +176,11 @@ abstract class _CartDiscountCode extends CartDiscountCode {
   bool? get applicable;
   @override
   String? get code;
+
+  /// Create a copy of CartDiscountCode
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartDiscountCodeImplCopyWith<_$CartDiscountCodeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

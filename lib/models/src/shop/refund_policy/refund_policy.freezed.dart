@@ -26,8 +26,12 @@ mixin _$RefundPolicy {
   String? get title => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this RefundPolicy to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of RefundPolicy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $RefundPolicyCopyWith<RefundPolicy> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$RefundPolicyCopyWithImpl<$Res, $Val extends RefundPolicy>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of RefundPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$RefundPolicyImplCopyWithImpl<$Res>
       _$RefundPolicyImpl _value, $Res Function(_$RefundPolicyImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of RefundPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,11 +184,13 @@ class _$RefundPolicyImpl implements _RefundPolicy {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, body, handle, id, title, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of RefundPolicy
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$RefundPolicyImplCopyWith<_$RefundPolicyImpl> get copyWith =>
@@ -215,8 +225,11 @@ abstract class _RefundPolicy implements RefundPolicy {
   String? get title;
   @override
   String? get url;
+
+  /// Create a copy of RefundPolicy
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$RefundPolicyImplCopyWith<_$RefundPolicyImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

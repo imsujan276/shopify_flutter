@@ -26,8 +26,12 @@ mixin _$Localization {
   Country get country => throw _privateConstructorUsedError;
   Market get market => throw _privateConstructorUsedError;
 
+  /// Serializes this Localization to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocalizationCopyWith<Localization> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -60,6 +64,8 @@ class _$LocalizationCopyWithImpl<$Res, $Val extends Localization>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -93,6 +99,8 @@ class _$LocalizationCopyWithImpl<$Res, $Val extends Localization>
     ) as $Val);
   }
 
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $LanguageCopyWith<$Res> get language {
@@ -101,6 +109,8 @@ class _$LocalizationCopyWithImpl<$Res, $Val extends Localization>
     });
   }
 
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CountryCopyWith<$Res> get country {
@@ -109,6 +119,8 @@ class _$LocalizationCopyWithImpl<$Res, $Val extends Localization>
     });
   }
 
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MarketCopyWith<$Res> get market {
@@ -149,6 +161,8 @@ class __$$LocalizationImplCopyWithImpl<$Res>
       _$LocalizationImpl _value, $Res Function(_$LocalizationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -243,7 +257,7 @@ class _$LocalizationImpl implements _Localization {
             (identical(other.market, market) || other.market == market));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -253,7 +267,9 @@ class _$LocalizationImpl implements _Localization {
       country,
       market);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocalizationImplCopyWith<_$LocalizationImpl> get copyWith =>
@@ -288,8 +304,11 @@ abstract class _Localization implements Localization {
   Country get country;
   @override
   Market get market;
+
+  /// Create a copy of Localization
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocalizationImplCopyWith<_$LocalizationImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

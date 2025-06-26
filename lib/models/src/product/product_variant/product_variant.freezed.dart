@@ -40,8 +40,12 @@ mixin _$ProductVariant {
   List<SellingPlanAllocation> get sellingPlanAllocations =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this ProductVariant to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ProductVariantCopyWith<ProductVariant> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -88,6 +92,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -176,6 +182,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     ) as $Val);
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res> get price {
@@ -184,6 +192,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get unitPrice {
@@ -196,6 +206,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UnitPriceMeasurementCopyWith<$Res>? get unitPriceMeasurement {
@@ -209,6 +221,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get compareAtPrice {
@@ -221,6 +235,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ShopifyImageCopyWith<$Res>? get image {
@@ -233,6 +249,8 @@ class _$ProductVariantCopyWithImpl<$Res, $Val extends ProductVariant>
     });
   }
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ProductCopyWith<$Res>? get product {
@@ -294,6 +312,8 @@ class __$$ProductVariantImplCopyWithImpl<$Res>
       _$ProductVariantImpl _value, $Res Function(_$ProductVariantImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -495,7 +515,7 @@ class _$ProductVariantImpl extends _ProductVariant {
                 other._sellingPlanAllocations, _sellingPlanAllocations));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -516,7 +536,9 @@ class _$ProductVariantImpl extends _ProductVariant {
       product,
       const DeepCollectionEquality().hash(_sellingPlanAllocations));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
@@ -587,8 +609,11 @@ abstract class _ProductVariant extends ProductVariant {
   Product? get product;
   @override
   List<SellingPlanAllocation> get sellingPlanAllocations;
+
+  /// Create a copy of ProductVariant
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ProductVariantImplCopyWith<_$ProductVariantImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

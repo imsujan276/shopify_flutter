@@ -28,8 +28,12 @@ mixin _$CartBuyerIdentityInput {
   List<DeliveryAddressInput?> get deliveryAddressPreferences =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CartBuyerIdentityInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartBuyerIdentityInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartBuyerIdentityInputCopyWith<CartBuyerIdentityInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -59,6 +63,8 @@ class _$CartBuyerIdentityInputCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartBuyerIdentityInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -120,6 +126,8 @@ class __$$CartBuyerIdentityInputImplCopyWithImpl<$Res>
       $Res Function(_$CartBuyerIdentityInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartBuyerIdentityInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -208,7 +216,7 @@ class _$CartBuyerIdentityInputImpl extends _CartBuyerIdentityInput {
                 _deliveryAddressPreferences));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -218,7 +226,9 @@ class _$CartBuyerIdentityInputImpl extends _CartBuyerIdentityInput {
       customerAccessToken,
       const DeepCollectionEquality().hash(_deliveryAddressPreferences));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartBuyerIdentityInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartBuyerIdentityInputImplCopyWith<_$CartBuyerIdentityInputImpl>
@@ -256,8 +266,11 @@ abstract class _CartBuyerIdentityInput extends CartBuyerIdentityInput {
   String? get customerAccessToken;
   @override
   List<DeliveryAddressInput?> get deliveryAddressPreferences;
+
+  /// Create a copy of CartBuyerIdentityInput
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartBuyerIdentityInputImplCopyWith<_$CartBuyerIdentityInputImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

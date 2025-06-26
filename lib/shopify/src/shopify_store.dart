@@ -20,6 +20,8 @@ import 'package:shopify_flutter/models/src/collection/collections/collections.da
 import 'package:shopify_flutter/models/src/product/metafield_identifier/metafield_identifier.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
+import 'package:shopify_flutter/models/src/product/paginated_products/paginated_products.dart';
+import 'package:shopify_flutter/models/src/product/page_info/page_info.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
 import 'package:shopify_flutter/models/src/predictive_search/predictive_search.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -452,6 +454,50 @@ class ShopifyStore with ShopifyError {
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (collection.products.hasNextPage == true);
     return productList;
+  }
+
+  /// Returns a List of [Product] with pagination support.
+  ///
+  /// Returns Products from the [Collection] with the [id].
+  /// [first] specifies how many products to fetch per page (1-250).
+  /// [cursor] is the pagination cursor (null for first page).
+  /// Returns a [PaginatedProducts] object containing products and pagination information.
+  Future<PaginatedProducts> getProductsFromCollectionById(
+    String id, {
+    int first = 10,
+    String? cursor,
+    SortKeyProductCollection sortKeyProductCollection =
+        SortKeyProductCollection.CREATED,
+    List<MetafieldIdentifier>? metafields,
+  }) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getAllProductsFromCollectionByIdQuery),
+      variables: {
+        'id': id,
+        'first': first,
+        'cursor': cursor,
+        'sortKey': sortKeyProductCollection.parseToString(),
+        'country': ShopifyLocalization.countryCode,
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+
+    final collection = Collection.fromGraphJson(result.data!);
+    final products = collection.products.productList;
+
+    // Extract pageInfo from the GraphQL response
+    final pageInfo = (result.data!['node']?['products']?['pageInfo'] ?? {})
+        as Map<String, dynamic>;
+
+    return PaginatedProducts(
+      products: products,
+      pageInfo: PageInfo.fromGraphJson(pageInfo),
+    );
   }
 
   /// Returns a List of [Product].

@@ -26,8 +26,12 @@ mixin _$CartDeliveryPreference {
   CartDeliveryCoordinatesPreference? get coordinates =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this CartDeliveryPreference to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartDeliveryPreferenceCopyWith<CartDeliveryPreference> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -57,6 +61,8 @@ class _$CartDeliveryPreferenceCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class _$CartDeliveryPreferenceCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $CartDeliveryCoordinatesPreferenceCopyWith<$Res>? get coordinates {
@@ -122,6 +130,8 @@ class __$$CartDeliveryPreferenceImplCopyWithImpl<$Res>
       $Res Function(_$CartDeliveryPreferenceImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -192,12 +202,14 @@ class _$CartDeliveryPreferenceImpl extends _CartDeliveryPreference {
                 other.coordinates == coordinates));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, deliveryMethod,
       const DeepCollectionEquality().hash(_pickupHandle), coordinates);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartDeliveryPreferenceImplCopyWith<_$CartDeliveryPreferenceImpl>
@@ -229,8 +241,11 @@ abstract class _CartDeliveryPreference extends CartDeliveryPreference {
   List<String?>? get pickupHandle;
   @override
   CartDeliveryCoordinatesPreference? get coordinates;
+
+  /// Create a copy of CartDeliveryPreference
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartDeliveryPreferenceImplCopyWith<_$CartDeliveryPreferenceImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

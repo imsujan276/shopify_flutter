@@ -25,8 +25,12 @@ mixin _$CartLineInput {
   String? get sellingPlanId => throw _privateConstructorUsedError;
   List<AttributeInput?> get attributes => throw _privateConstructorUsedError;
 
+  /// Serializes this CartLineInput to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartLineInputCopyWith<CartLineInput> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -54,6 +58,8 @@ class _$CartLineInputCopyWithImpl<$Res, $Val extends CartLineInput>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -106,6 +112,8 @@ class __$$CartLineInputImplCopyWithImpl<$Res>
       _$CartLineInputImpl _value, $Res Function(_$CartLineInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -184,12 +192,14 @@ class _$CartLineInputImpl extends _CartLineInput {
                 .equals(other._attributes, _attributes));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, merchandiseId, quantity,
       sellingPlanId, const DeepCollectionEquality().hash(_attributes));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartLineInputImplCopyWith<_$CartLineInputImpl> get copyWith =>
@@ -222,8 +232,11 @@ abstract class _CartLineInput extends CartLineInput {
   String? get sellingPlanId;
   @override
   List<AttributeInput?> get attributes;
+
+  /// Create a copy of CartLineInput
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartLineInputImplCopyWith<_$CartLineInputImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

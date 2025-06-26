@@ -23,8 +23,12 @@ CartDiscountAllocation _$CartDiscountAllocationFromJson(
 mixin _$CartDiscountAllocation {
   PriceV2? get discountedAmount => throw _privateConstructorUsedError;
 
+  /// Serializes this CartDiscountAllocation to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CartDiscountAllocationCopyWith<CartDiscountAllocation> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$CartDiscountAllocationCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -64,6 +70,8 @@ class _$CartDiscountAllocationCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PriceV2CopyWith<$Res>? get discountedAmount {
@@ -102,6 +110,8 @@ class __$$CartDiscountAllocationImplCopyWithImpl<$Res>
       $Res Function(_$CartDiscountAllocationImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -141,11 +151,13 @@ class _$CartDiscountAllocationImpl extends _CartDiscountAllocation {
                 other.discountedAmount == discountedAmount));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, discountedAmount);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CartDiscountAllocationImplCopyWith<_$CartDiscountAllocationImpl>
@@ -170,8 +182,11 @@ abstract class _CartDiscountAllocation extends CartDiscountAllocation {
 
   @override
   PriceV2? get discountedAmount;
+
+  /// Create a copy of CartDiscountAllocation
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CartDiscountAllocationImplCopyWith<_$CartDiscountAllocationImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

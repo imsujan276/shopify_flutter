@@ -31,8 +31,12 @@ mixin _$ShopifyUser {
   List<String>? get tags => throw _privateConstructorUsedError;
   Address? get defaultAddress => throw _privateConstructorUsedError;
 
+  /// Serializes this ShopifyUser to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ShopifyUserCopyWith<ShopifyUser> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -69,6 +73,8 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,6 +133,8 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
     ) as $Val);
   }
 
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressesCopyWith<$Res>? get address {
@@ -139,6 +147,8 @@ class _$ShopifyUserCopyWithImpl<$Res, $Val extends ShopifyUser>
     });
   }
 
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AddressCopyWith<$Res>? get defaultAddress {
@@ -186,6 +196,8 @@ class __$$ShopifyUserImplCopyWithImpl<$Res>
       _$ShopifyUserImpl _value, $Res Function(_$ShopifyUserImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,7 +332,7 @@ class _$ShopifyUserImpl implements _ShopifyUser {
                 other.defaultAddress == defaultAddress));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -335,7 +347,9 @@ class _$ShopifyUserImpl implements _ShopifyUser {
       const DeepCollectionEquality().hash(_tags),
       defaultAddress);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ShopifyUserImplCopyWith<_$ShopifyUserImpl> get copyWith =>
@@ -385,8 +399,11 @@ abstract class _ShopifyUser implements ShopifyUser {
   List<String>? get tags;
   @override
   Address? get defaultAddress;
+
+  /// Create a copy of ShopifyUser
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ShopifyUserImplCopyWith<_$ShopifyUserImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

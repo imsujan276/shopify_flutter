@@ -41,6 +41,8 @@ export 'src/predictive_search/predictive_search.dart';
 
 export 'src/product/product.dart';
 export 'src/product/products/products.dart';
+export 'src/product/paginated_products/paginated_products.dart';
+export 'src/product/page_info/page_info.dart';
 export 'src/product/associated_collections/associated_collections.dart';
 export 'src/product/metafield/metafield.dart';
 export 'src/product/metafield_identifier/metafield_identifier.dart';

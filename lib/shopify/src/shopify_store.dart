@@ -560,8 +560,8 @@ class ShopifyStore with ShopifyError {
     String? startCursor,
     SearchSortKeys sortKey = SearchSortKeys.RELEVANCE,
     bool reverse = false,
-    Map<String, dynamic>? filters,
-    List<MetafieldIdentifier>? metafields,
+    Map? filters,
+    List? metafields,
   }) async {
     String? cursor = startCursor;
     final WatchQueryOptions _options = WatchQueryOptions(
@@ -572,7 +572,9 @@ class ShopifyStore with ShopifyError {
         'limit': limit,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'filters': [if (filters != null) filters],
+        'filters': filters != null
+            ? convertToProductFilters(filters.cast<String, dynamic>())
+            : [],
         'country': ShopifyLocalization.countryCode,
         'metafields': metafields != null
             ? metafields.map((e) => e.toJson()).toList()
@@ -580,9 +582,34 @@ class ShopifyStore with ShopifyError {
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
+
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     return Products.fromGraphJson(result.data?['search']).productList;
+  }
+
+  List<Map<String, dynamic>> convertToProductFilters(
+      Map<String, dynamic> filters) {
+    final List<Map<String, dynamic>> filterList = [];
+
+    if (filters.containsKey("available")) {
+      filterList.add({"available": filters["available"]});
+    }
+
+    if (filters.containsKey("vendor")) {
+      filterList.add({"productVendor": filters["vendor"]});
+    }
+
+    if (filters.containsKey("price")) {
+      filterList.add({
+        "price": {
+          "min": filters["price"]["min"],
+          "max": filters["price"]["max"],
+        }
+      });
+    }
+
+    return filterList;
   }
 
   /// Returns a List of [Product].

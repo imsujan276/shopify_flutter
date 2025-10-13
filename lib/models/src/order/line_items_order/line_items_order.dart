@@ -20,7 +20,7 @@ class LineItemsOrder with _$LineItemsOrder {
   factory LineItemsOrder.fromGraphJson(Map<String, dynamic> json) =>
       LineItemsOrder(lineItemOrderList: _getLineItemOrderList(json));
 
-  static _getLineItemOrderList(Map<String, dynamic> json) {
+  static List<LineItemOrder> _getLineItemOrderList(Map<String, dynamic> json) {
     List<LineItemOrder> lineItemListOrder = [];
     if (json.containsKey('edges')) {
       json['edges'].forEach((lineItemOrder) =>

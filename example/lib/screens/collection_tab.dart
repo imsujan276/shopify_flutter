@@ -65,8 +65,7 @@ class CollectionTabState extends State<CollectionTab> {
 }
 
 class CollectionDetailScreen extends StatefulWidget {
-  const CollectionDetailScreen({Key? key, required this.collectionId})
-      : super(key: key);
+  const CollectionDetailScreen({super.key, required this.collectionId});
   final String collectionId;
 
   @override

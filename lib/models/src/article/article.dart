@@ -55,14 +55,14 @@ class Article with _$Article {
         onlineStoreUrl: (json['node'] ?? const {})['onlineStoreUrl'],
       );
 
-  static _getCommentList(Map<String, dynamic> json) {
+  static List<Comment> _getCommentList(Map<String, dynamic> json) {
     List<Comment> commentList = [];
     json['edges']?.forEach((comment) =>
         commentList.add(Comment.fromGraphJson(comment ?? const {})));
     return commentList;
   }
 
-  static _getTagsList(Map<String, dynamic> json) {
+  static List<String> _getTagsList(Map<String, dynamic> json) {
     List<String> tagsList = [];
     (json['node'] ?? const {})['tags']?.forEach((tag) => tagsList.add(tag));
     return tagsList;

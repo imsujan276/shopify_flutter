@@ -78,7 +78,8 @@ class Order with _$Order {
   /// The order from json
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
-  static _getSuccessfulFulfilments(List<dynamic> fulfilments) {
+  static List<SuccessfulFullfilment> _getSuccessfulFulfilments(
+      List<dynamic> fulfilments) {
     List<SuccessfulFullfilment> list = [];
     for (var f in fulfilments) {
       list.add(SuccessfulFullfilment.fromGraphJson(f));

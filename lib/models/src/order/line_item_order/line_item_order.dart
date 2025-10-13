@@ -51,7 +51,8 @@ class LineItemOrder with _$LineItemOrder {
         //     (json['node'] ?? const {})['variant'] ?? const {})
       );
 
-  static _getDiscountAllocationsList(Map<String, dynamic> json) {
+  static List<DiscountAllocations> _getDiscountAllocationsList(
+      Map<String, dynamic> json) {
     List<DiscountAllocations> discountList = [];
     (json['node'] ?? const {})['discountAllocations']?.forEach(
         (discount) => discountList.add(DiscountAllocations.fromJson(discount)));

@@ -18,19 +18,19 @@ class _OrdersTabState extends State<OrdersTab> {
     init();
   }
 
-  init() async {
+  Future<void> init() async {
     await checkLoggedIn();
     getOrders();
   }
 
-  checkLoggedIn() async {
+  Future<void> checkLoggedIn() async {
     final accessToken = await ShopifyAuth.instance.currentCustomerAccessToken;
     setState(() {
       isLoggedIn = accessToken != null;
     });
   }
 
-  getOrders() async {
+  Future<void> getOrders() async {
     if (isLoggedIn) {
       final accessToken = await ShopifyAuth.instance.currentCustomerAccessToken;
       final allOrders = await ShopifyOrder.instance.getAllOrders(
@@ -96,7 +96,6 @@ class _OrdersTabState extends State<OrdersTab> {
                                       ],
                                     ),
                                   ))
-                              .toList()
                         ],
                       ),
                     );

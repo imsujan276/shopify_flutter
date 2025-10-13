@@ -21,7 +21,7 @@ class Addresses with _$Addresses {
   factory Addresses.fromGraphJson(Map<String, dynamic> json) =>
       Addresses(addressList: _getAddressList(json));
 
-  static _getAddressList(Map<String, dynamic> json) {
+  static List<Address> _getAddressList(Map<String, dynamic> json) {
     List<Address> addressList = [];
     json['edges']?.forEach((address) =>
         addressList.add(Address.fromGraphJson(address ?? const [])));

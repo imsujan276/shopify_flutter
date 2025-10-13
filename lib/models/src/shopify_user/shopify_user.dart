@@ -44,7 +44,7 @@ class ShopifyUser with _$ShopifyUser {
   factory ShopifyUser.fromJson(Map<String, dynamic> json) =>
       _$ShopifyUserFromJson(json);
 
-  static _getTagList(Map<String, dynamic> json) {
+  static List<String> _getTagList(Map<String, dynamic> json) {
     List<String> tagsList = [];
     json['tags']?.forEach((tag) => tagsList.add(tag));
     return tagsList;

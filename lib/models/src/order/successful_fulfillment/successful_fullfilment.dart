@@ -27,7 +27,8 @@ class SuccessfulFullfilment with _$SuccessfulFullfilment {
   factory SuccessfulFullfilment.fromJson(Map<String, dynamic> json) =>
       _$SuccessfulFullfilmentFromJson(json);
 
-  static _getTrackingInfoList(List<dynamic> data) {
+  static List<SuccessfulFullfilmentTrackingInfo> _getTrackingInfoList(
+      List<dynamic> data) {
     List<SuccessfulFullfilmentTrackingInfo> list = [];
     for (var d in data) {
       list.add(SuccessfulFullfilmentTrackingInfo.fromGraphJson(d));

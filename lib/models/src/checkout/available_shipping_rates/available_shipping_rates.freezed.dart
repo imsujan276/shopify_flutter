@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,181 +9,280 @@ part of 'available_shipping_rates.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AvailableShippingRates _$AvailableShippingRatesFromJson(
-    Map<String, dynamic> json) {
-  return _AvailableShippingRates.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AvailableShippingRates {
-  bool get ready => throw _privateConstructorUsedError;
-  List<ShippingRates>? get shippingRates => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AvailableShippingRatesCopyWith<AvailableShippingRates> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get ready; List<ShippingRates>? get shippingRates;
+/// Create a copy of AvailableShippingRates
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AvailableShippingRatesCopyWith<AvailableShippingRates> get copyWith => _$AvailableShippingRatesCopyWithImpl<AvailableShippingRates>(this as AvailableShippingRates, _$identity);
+
+  /// Serializes this AvailableShippingRates to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AvailableShippingRates&&(identical(other.ready, ready) || other.ready == ready)&&const DeepCollectionEquality().equals(other.shippingRates, shippingRates));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,ready,const DeepCollectionEquality().hash(shippingRates));
+
+@override
+String toString() {
+  return 'AvailableShippingRates(ready: $ready, shippingRates: $shippingRates)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AvailableShippingRatesCopyWith<$Res> {
-  factory $AvailableShippingRatesCopyWith(AvailableShippingRates value,
-          $Res Function(AvailableShippingRates) then) =
-      _$AvailableShippingRatesCopyWithImpl<$Res, AvailableShippingRates>;
-  @useResult
-  $Res call({bool ready, List<ShippingRates>? shippingRates});
-}
+abstract mixin class $AvailableShippingRatesCopyWith<$Res>  {
+  factory $AvailableShippingRatesCopyWith(AvailableShippingRates value, $Res Function(AvailableShippingRates) _then) = _$AvailableShippingRatesCopyWithImpl;
+@useResult
+$Res call({
+ bool ready, List<ShippingRates>? shippingRates
+});
 
+
+
+
+}
 /// @nodoc
-class _$AvailableShippingRatesCopyWithImpl<$Res,
-        $Val extends AvailableShippingRates>
+class _$AvailableShippingRatesCopyWithImpl<$Res>
     implements $AvailableShippingRatesCopyWith<$Res> {
-  _$AvailableShippingRatesCopyWithImpl(this._value, this._then);
+  _$AvailableShippingRatesCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AvailableShippingRates _self;
+  final $Res Function(AvailableShippingRates) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ready = null,
-    Object? shippingRates = freezed,
-  }) {
-    return _then(_value.copyWith(
-      ready: null == ready
-          ? _value.ready
-          : ready // ignore: cast_nullable_to_non_nullable
-              as bool,
-      shippingRates: freezed == shippingRates
-          ? _value.shippingRates
-          : shippingRates // ignore: cast_nullable_to_non_nullable
-              as List<ShippingRates>?,
-    ) as $Val);
-  }
+/// Create a copy of AvailableShippingRates
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? ready = null,Object? shippingRates = freezed,}) {
+  return _then(_self.copyWith(
+ready: null == ready ? _self.ready : ready // ignore: cast_nullable_to_non_nullable
+as bool,shippingRates: freezed == shippingRates ? _self.shippingRates : shippingRates // ignore: cast_nullable_to_non_nullable
+as List<ShippingRates>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AvailableShippingRatesImplCopyWith<$Res>
-    implements $AvailableShippingRatesCopyWith<$Res> {
-  factory _$$AvailableShippingRatesImplCopyWith(
-          _$AvailableShippingRatesImpl value,
-          $Res Function(_$AvailableShippingRatesImpl) then) =
-      __$$AvailableShippingRatesImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool ready, List<ShippingRates>? shippingRates});
 }
 
-/// @nodoc
-class __$$AvailableShippingRatesImplCopyWithImpl<$Res>
-    extends _$AvailableShippingRatesCopyWithImpl<$Res,
-        _$AvailableShippingRatesImpl>
-    implements _$$AvailableShippingRatesImplCopyWith<$Res> {
-  __$$AvailableShippingRatesImplCopyWithImpl(
-      _$AvailableShippingRatesImpl _value,
-      $Res Function(_$AvailableShippingRatesImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? ready = null,
-    Object? shippingRates = freezed,
-  }) {
-    return _then(_$AvailableShippingRatesImpl(
-      ready: null == ready
-          ? _value.ready
-          : ready // ignore: cast_nullable_to_non_nullable
-              as bool,
-      shippingRates: freezed == shippingRates
-          ? _value._shippingRates
-          : shippingRates // ignore: cast_nullable_to_non_nullable
-              as List<ShippingRates>?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [AvailableShippingRates].
+extension AvailableShippingRatesPatterns on AvailableShippingRates {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AvailableShippingRates value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AvailableShippingRates() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AvailableShippingRates value)  $default,){
+final _that = this;
+switch (_that) {
+case _AvailableShippingRates():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AvailableShippingRates value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AvailableShippingRates() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool ready,  List<ShippingRates>? shippingRates)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AvailableShippingRates() when $default != null:
+return $default(_that.ready,_that.shippingRates);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool ready,  List<ShippingRates>? shippingRates)  $default,) {final _that = this;
+switch (_that) {
+case _AvailableShippingRates():
+return $default(_that.ready,_that.shippingRates);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool ready,  List<ShippingRates>? shippingRates)?  $default,) {final _that = this;
+switch (_that) {
+case _AvailableShippingRates() when $default != null:
+return $default(_that.ready,_that.shippingRates);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AvailableShippingRatesImpl extends _AvailableShippingRates {
-  _$AvailableShippingRatesImpl(
-      {required this.ready, required final List<ShippingRates>? shippingRates})
-      : _shippingRates = shippingRates,
-        super._();
 
-  factory _$AvailableShippingRatesImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AvailableShippingRatesImplFromJson(json);
+class _AvailableShippingRates extends AvailableShippingRates {
+  const _AvailableShippingRates({required this.ready, required final  List<ShippingRates>? shippingRates}): _shippingRates = shippingRates,super._();
+  factory _AvailableShippingRates.fromJson(Map<String, dynamic> json) => _$AvailableShippingRatesFromJson(json);
 
-  @override
-  final bool ready;
-  final List<ShippingRates>? _shippingRates;
-  @override
-  List<ShippingRates>? get shippingRates {
-    final value = _shippingRates;
-    if (value == null) return null;
-    if (_shippingRates is EqualUnmodifiableListView) return _shippingRates;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'AvailableShippingRates(ready: $ready, shippingRates: $shippingRates)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AvailableShippingRatesImpl &&
-            (identical(other.ready, ready) || other.ready == ready) &&
-            const DeepCollectionEquality()
-                .equals(other._shippingRates, _shippingRates));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, ready, const DeepCollectionEquality().hash(_shippingRates));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
-      get copyWith => __$$AvailableShippingRatesImplCopyWithImpl<
-          _$AvailableShippingRatesImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AvailableShippingRatesImplToJson(
-      this,
-    );
-  }
+@override final  bool ready;
+ final  List<ShippingRates>? _shippingRates;
+@override List<ShippingRates>? get shippingRates {
+  final value = _shippingRates;
+  if (value == null) return null;
+  if (_shippingRates is EqualUnmodifiableListView) return _shippingRates;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _AvailableShippingRates extends AvailableShippingRates {
-  factory _AvailableShippingRates(
-          {required final bool ready,
-          required final List<ShippingRates>? shippingRates}) =
-      _$AvailableShippingRatesImpl;
-  _AvailableShippingRates._() : super._();
 
-  factory _AvailableShippingRates.fromJson(Map<String, dynamic> json) =
-      _$AvailableShippingRatesImpl.fromJson;
+/// Create a copy of AvailableShippingRates
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AvailableShippingRatesCopyWith<_AvailableShippingRates> get copyWith => __$AvailableShippingRatesCopyWithImpl<_AvailableShippingRates>(this, _$identity);
 
-  @override
-  bool get ready;
-  @override
-  List<ShippingRates>? get shippingRates;
-  @override
-  @JsonKey(ignore: true)
-  _$$AvailableShippingRatesImplCopyWith<_$AvailableShippingRatesImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$AvailableShippingRatesToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AvailableShippingRates&&(identical(other.ready, ready) || other.ready == ready)&&const DeepCollectionEquality().equals(other._shippingRates, _shippingRates));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,ready,const DeepCollectionEquality().hash(_shippingRates));
+
+@override
+String toString() {
+  return 'AvailableShippingRates(ready: $ready, shippingRates: $shippingRates)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AvailableShippingRatesCopyWith<$Res> implements $AvailableShippingRatesCopyWith<$Res> {
+  factory _$AvailableShippingRatesCopyWith(_AvailableShippingRates value, $Res Function(_AvailableShippingRates) _then) = __$AvailableShippingRatesCopyWithImpl;
+@override @useResult
+$Res call({
+ bool ready, List<ShippingRates>? shippingRates
+});
+
+
+
+
+}
+/// @nodoc
+class __$AvailableShippingRatesCopyWithImpl<$Res>
+    implements _$AvailableShippingRatesCopyWith<$Res> {
+  __$AvailableShippingRatesCopyWithImpl(this._self, this._then);
+
+  final _AvailableShippingRates _self;
+  final $Res Function(_AvailableShippingRates) _then;
+
+/// Create a copy of AvailableShippingRates
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? ready = null,Object? shippingRates = freezed,}) {
+  return _then(_AvailableShippingRates(
+ready: null == ready ? _self.ready : ready // ignore: cast_nullable_to_non_nullable
+as bool,shippingRates: freezed == shippingRates ? _self._shippingRates : shippingRates // ignore: cast_nullable_to_non_nullable
+as List<ShippingRates>?,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -6,11 +6,11 @@ part 'address.g.dart';
 @freezed
 
 /// The address
-class Address with _$Address {
+abstract class Address with _$Address {
   const Address._();
 
   /// The address constructor
-  factory Address({
+  const factory Address({
     String? id,
     String? address1,
     String? address2,

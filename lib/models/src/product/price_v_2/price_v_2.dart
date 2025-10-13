@@ -9,16 +9,15 @@ part 'price_v_2.freezed.dart';
 part 'price_v_2.g.dart';
 
 @freezed
-
 /// The PriceV2 class
-class PriceV2 with _$PriceV2 {
+abstract class PriceV2 with _$PriceV2 {
   /// the number formatter for price
   static NumberFormat? priceFormat;
 
-  PriceV2._();
+  const PriceV2._();
 
   /// The PriceV2 constructor
-  factory PriceV2({
+  const factory PriceV2({
     @JsonKey(fromJson: JsonHelper.amountFromJson) required double amount,
     required String currencyCode,
   }) = _PriceV2;
@@ -29,10 +28,10 @@ class PriceV2 with _$PriceV2 {
 
   /// The formatted price
   String get formattedPrice => JsonHelper.chooseRightOrderOnCurrencySymbol(
-        amount,
-        currencyCode,
-        priceFormat: priceFormat,
-      );
+    amount,
+    currencyCode,
+    priceFormat: priceFormat,
+  );
 
   /// The formatted price with locale
   String formattedPriceWithLocale(String? locale) =>

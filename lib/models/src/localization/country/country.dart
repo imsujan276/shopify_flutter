@@ -9,7 +9,7 @@ part 'country.g.dart';
 @freezed
 
 /// The country
-class Country with _$Country {
+abstract class Country with _$Country {
   /// The country constructor
   const factory Country({
     required Market market,

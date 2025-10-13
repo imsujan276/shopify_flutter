@@ -10,11 +10,11 @@ part 'article.g.dart';
 @freezed
 
 /// The article class
-class Article with _$Article {
+abstract class Article with _$Article {
   const Article._();
 
   /// The article constructor
-  factory Article({
+  const factory Article({
     final AuthorV2? author,
     final List<Comment>? commentList,
     final String? content,

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,169 +9,293 @@ part of 'cart_discount_allocation.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-CartDiscountAllocation _$CartDiscountAllocationFromJson(
-    Map<String, dynamic> json) {
-  return _CartDiscountAllocation.fromJson(json);
-}
 
 /// @nodoc
 mixin _$CartDiscountAllocation {
-  PriceV2? get discountedAmount => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CartDiscountAllocationCopyWith<CartDiscountAllocation> get copyWith =>
-      throw _privateConstructorUsedError;
+ PriceV2? get discountedAmount;
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CartDiscountAllocationCopyWith<CartDiscountAllocation> get copyWith => _$CartDiscountAllocationCopyWithImpl<CartDiscountAllocation>(this as CartDiscountAllocation, _$identity);
+
+  /// Serializes this CartDiscountAllocation to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartDiscountAllocation&&(identical(other.discountedAmount, discountedAmount) || other.discountedAmount == discountedAmount));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,discountedAmount);
+
+@override
+String toString() {
+  return 'CartDiscountAllocation(discountedAmount: $discountedAmount)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CartDiscountAllocationCopyWith<$Res> {
-  factory $CartDiscountAllocationCopyWith(CartDiscountAllocation value,
-          $Res Function(CartDiscountAllocation) then) =
-      _$CartDiscountAllocationCopyWithImpl<$Res, CartDiscountAllocation>;
-  @useResult
-  $Res call({PriceV2? discountedAmount});
+abstract mixin class $CartDiscountAllocationCopyWith<$Res>  {
+  factory $CartDiscountAllocationCopyWith(CartDiscountAllocation value, $Res Function(CartDiscountAllocation) _then) = _$CartDiscountAllocationCopyWithImpl;
+@useResult
+$Res call({
+ PriceV2? discountedAmount
+});
 
-  $PriceV2CopyWith<$Res>? get discountedAmount;
+
+$PriceV2CopyWith<$Res>? get discountedAmount;
+
 }
-
 /// @nodoc
-class _$CartDiscountAllocationCopyWithImpl<$Res,
-        $Val extends CartDiscountAllocation>
+class _$CartDiscountAllocationCopyWithImpl<$Res>
     implements $CartDiscountAllocationCopyWith<$Res> {
-  _$CartDiscountAllocationCopyWithImpl(this._value, this._then);
+  _$CartDiscountAllocationCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final CartDiscountAllocation _self;
+  final $Res Function(CartDiscountAllocation) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? discountedAmount = freezed,
-  }) {
-    return _then(_value.copyWith(
-      discountedAmount: freezed == discountedAmount
-          ? _value.discountedAmount
-          : discountedAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-    ) as $Val);
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? discountedAmount = freezed,}) {
+  return _then(_self.copyWith(
+discountedAmount: freezed == discountedAmount ? _self.discountedAmount : discountedAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,
+  ));
+}
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get discountedAmount {
+    if (_self.discountedAmount == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceV2CopyWith<$Res>? get discountedAmount {
-    if (_value.discountedAmount == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.discountedAmount!, (value) {
-      return _then(_value.copyWith(discountedAmount: value) as $Val);
-    });
-  }
+  return $PriceV2CopyWith<$Res>(_self.discountedAmount!, (value) {
+    return _then(_self.copyWith(discountedAmount: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$CartDiscountAllocationImplCopyWith<$Res>
-    implements $CartDiscountAllocationCopyWith<$Res> {
-  factory _$$CartDiscountAllocationImplCopyWith(
-          _$CartDiscountAllocationImpl value,
-          $Res Function(_$CartDiscountAllocationImpl) then) =
-      __$$CartDiscountAllocationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({PriceV2? discountedAmount});
 
-  @override
-  $PriceV2CopyWith<$Res>? get discountedAmount;
+/// Adds pattern-matching-related methods to [CartDiscountAllocation].
+extension CartDiscountAllocationPatterns on CartDiscountAllocation {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _CartDiscountAllocation value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _CartDiscountAllocation() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _CartDiscountAllocation value)  $default,){
+final _that = this;
+switch (_that) {
+case _CartDiscountAllocation():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _CartDiscountAllocation value)?  $default,){
+final _that = this;
+switch (_that) {
+case _CartDiscountAllocation() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PriceV2? discountedAmount)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _CartDiscountAllocation() when $default != null:
+return $default(_that.discountedAmount);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PriceV2? discountedAmount)  $default,) {final _that = this;
+switch (_that) {
+case _CartDiscountAllocation():
+return $default(_that.discountedAmount);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PriceV2? discountedAmount)?  $default,) {final _that = this;
+switch (_that) {
+case _CartDiscountAllocation() when $default != null:
+return $default(_that.discountedAmount);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$CartDiscountAllocationImplCopyWithImpl<$Res>
-    extends _$CartDiscountAllocationCopyWithImpl<$Res,
-        _$CartDiscountAllocationImpl>
-    implements _$$CartDiscountAllocationImplCopyWith<$Res> {
-  __$$CartDiscountAllocationImplCopyWithImpl(
-      _$CartDiscountAllocationImpl _value,
-      $Res Function(_$CartDiscountAllocationImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? discountedAmount = freezed,
-  }) {
-    return _then(_$CartDiscountAllocationImpl(
-      discountedAmount: freezed == discountedAmount
-          ? _value.discountedAmount
-          : discountedAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CartDiscountAllocationImpl extends _CartDiscountAllocation {
-  _$CartDiscountAllocationImpl({required this.discountedAmount}) : super._();
 
-  factory _$CartDiscountAllocationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CartDiscountAllocationImplFromJson(json);
+class _CartDiscountAllocation extends CartDiscountAllocation {
+  const _CartDiscountAllocation({required this.discountedAmount}): super._();
+  factory _CartDiscountAllocation.fromJson(Map<String, dynamic> json) => _$CartDiscountAllocationFromJson(json);
 
-  @override
-  final PriceV2? discountedAmount;
+@override final  PriceV2? discountedAmount;
 
-  @override
-  String toString() {
-    return 'CartDiscountAllocation(discountedAmount: $discountedAmount)';
-  }
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CartDiscountAllocationCopyWith<_CartDiscountAllocation> get copyWith => __$CartDiscountAllocationCopyWithImpl<_CartDiscountAllocation>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CartDiscountAllocationImpl &&
-            (identical(other.discountedAmount, discountedAmount) ||
-                other.discountedAmount == discountedAmount));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, discountedAmount);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CartDiscountAllocationImplCopyWith<_$CartDiscountAllocationImpl>
-      get copyWith => __$$CartDiscountAllocationImplCopyWithImpl<
-          _$CartDiscountAllocationImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CartDiscountAllocationImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$CartDiscountAllocationToJson(this, );
 }
 
-abstract class _CartDiscountAllocation extends CartDiscountAllocation {
-  factory _CartDiscountAllocation({required final PriceV2? discountedAmount}) =
-      _$CartDiscountAllocationImpl;
-  _CartDiscountAllocation._() : super._();
-
-  factory _CartDiscountAllocation.fromJson(Map<String, dynamic> json) =
-      _$CartDiscountAllocationImpl.fromJson;
-
-  @override
-  PriceV2? get discountedAmount;
-  @override
-  @JsonKey(ignore: true)
-  _$$CartDiscountAllocationImplCopyWith<_$CartDiscountAllocationImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartDiscountAllocation&&(identical(other.discountedAmount, discountedAmount) || other.discountedAmount == discountedAmount));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,discountedAmount);
+
+@override
+String toString() {
+  return 'CartDiscountAllocation(discountedAmount: $discountedAmount)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CartDiscountAllocationCopyWith<$Res> implements $CartDiscountAllocationCopyWith<$Res> {
+  factory _$CartDiscountAllocationCopyWith(_CartDiscountAllocation value, $Res Function(_CartDiscountAllocation) _then) = __$CartDiscountAllocationCopyWithImpl;
+@override @useResult
+$Res call({
+ PriceV2? discountedAmount
+});
+
+
+@override $PriceV2CopyWith<$Res>? get discountedAmount;
+
+}
+/// @nodoc
+class __$CartDiscountAllocationCopyWithImpl<$Res>
+    implements _$CartDiscountAllocationCopyWith<$Res> {
+  __$CartDiscountAllocationCopyWithImpl(this._self, this._then);
+
+  final _CartDiscountAllocation _self;
+  final $Res Function(_CartDiscountAllocation) _then;
+
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? discountedAmount = freezed,}) {
+  return _then(_CartDiscountAllocation(
+discountedAmount: freezed == discountedAmount ? _self.discountedAmount : discountedAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,
+  ));
+}
+
+/// Create a copy of CartDiscountAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get discountedAmount {
+    if (_self.discountedAmount == null) {
+    return null;
+  }
+
+  return $PriceV2CopyWith<$Res>(_self.discountedAmount!, (value) {
+    return _then(_self.copyWith(discountedAmount: value));
+  });
+}
+}
+
+// dart format on

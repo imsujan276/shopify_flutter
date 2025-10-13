@@ -12,11 +12,11 @@ part 'line.g.dart';
 @freezed
 
 /// The cart line
-class Line with _$Line {
+abstract class Line with _$Line {
   const Line._();
 
   /// The cart line constructor
-  factory Line({
+  const factory Line({
     String? id,
     int? quantity,
     CartLineCost? cost,

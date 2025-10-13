@@ -6,11 +6,12 @@ part 'blogs.freezed.dart';
 part 'blogs.g.dart';
 
 @freezed
-
 /// The Blogs class
-class Blogs with _$Blogs {
+abstract class Blogs with _$Blogs {
+  const Blogs._();
+
   ///  The Blogs constructor
-  factory Blogs({required List<Blog> blogList}) = _Blogs;
+  const factory Blogs({required List<Blog> blogList}) = _Blogs;
 
   /// The Blogs from json
   factory Blogs.fromJson(Map<String, dynamic> json) => _$BlogsFromJson(json);
@@ -21,8 +22,9 @@ class Blogs with _$Blogs {
 
   static List<Blog> _getBlogList(Map<String, dynamic> json) {
     List<Blog> blogList = [];
-    json['edges']
-        ?.forEach((blog) => blogList.add(Blog.fromGraphJson(blog ?? const {})));
+    json['edges']?.forEach(
+      (blog) => blogList.add(Blog.fromGraphJson(blog ?? const {})),
+    );
     return blogList;
   }
 }

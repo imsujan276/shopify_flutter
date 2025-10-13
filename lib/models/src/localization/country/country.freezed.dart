@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,285 +9,326 @@ part of 'country.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Country _$CountryFromJson(Map<String, dynamic> json) {
-  return _Country.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Country {
-  Market get market => throw _privateConstructorUsedError;
-  List<Language> get availableLanguages => throw _privateConstructorUsedError;
-  Currency get currency => throw _privateConstructorUsedError;
-  String get isoCode => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get unitSystem => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CountryCopyWith<Country> get copyWith => throw _privateConstructorUsedError;
+ Market get market; List<Language> get availableLanguages; Currency get currency; String get isoCode; String get name; String get unitSystem;
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CountryCopyWith<Country> get copyWith => _$CountryCopyWithImpl<Country>(this as Country, _$identity);
+
+  /// Serializes this Country to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Country&&(identical(other.market, market) || other.market == market)&&const DeepCollectionEquality().equals(other.availableLanguages, availableLanguages)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.unitSystem, unitSystem) || other.unitSystem == unitSystem));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,market,const DeepCollectionEquality().hash(availableLanguages),currency,isoCode,name,unitSystem);
+
+@override
+String toString() {
+  return 'Country(market: $market, availableLanguages: $availableLanguages, currency: $currency, isoCode: $isoCode, name: $name, unitSystem: $unitSystem)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $CountryCopyWith<$Res> {
-  factory $CountryCopyWith(Country value, $Res Function(Country) then) =
-      _$CountryCopyWithImpl<$Res, Country>;
-  @useResult
-  $Res call(
-      {Market market,
-      List<Language> availableLanguages,
-      Currency currency,
-      String isoCode,
-      String name,
-      String unitSystem});
+abstract mixin class $CountryCopyWith<$Res>  {
+  factory $CountryCopyWith(Country value, $Res Function(Country) _then) = _$CountryCopyWithImpl;
+@useResult
+$Res call({
+ Market market, List<Language> availableLanguages, Currency currency, String isoCode, String name, String unitSystem
+});
 
-  $MarketCopyWith<$Res> get market;
-  $CurrencyCopyWith<$Res> get currency;
+
+$MarketCopyWith<$Res> get market;$CurrencyCopyWith<$Res> get currency;
+
 }
-
 /// @nodoc
-class _$CountryCopyWithImpl<$Res, $Val extends Country>
+class _$CountryCopyWithImpl<$Res>
     implements $CountryCopyWith<$Res> {
-  _$CountryCopyWithImpl(this._value, this._then);
+  _$CountryCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Country _self;
+  final $Res Function(Country) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? market = null,
-    Object? availableLanguages = null,
-    Object? currency = null,
-    Object? isoCode = null,
-    Object? name = null,
-    Object? unitSystem = null,
-  }) {
-    return _then(_value.copyWith(
-      market: null == market
-          ? _value.market
-          : market // ignore: cast_nullable_to_non_nullable
-              as Market,
-      availableLanguages: null == availableLanguages
-          ? _value.availableLanguages
-          : availableLanguages // ignore: cast_nullable_to_non_nullable
-              as List<Language>,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as Currency,
-      isoCode: null == isoCode
-          ? _value.isoCode
-          : isoCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitSystem: null == unitSystem
-          ? _value.unitSystem
-          : unitSystem // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MarketCopyWith<$Res> get market {
-    return $MarketCopyWith<$Res>(_value.market, (value) {
-      return _then(_value.copyWith(market: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CurrencyCopyWith<$Res> get currency {
-    return $CurrencyCopyWith<$Res>(_value.currency, (value) {
-      return _then(_value.copyWith(currency: value) as $Val);
-    });
-  }
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? market = null,Object? availableLanguages = null,Object? currency = null,Object? isoCode = null,Object? name = null,Object? unitSystem = null,}) {
+  return _then(_self.copyWith(
+market: null == market ? _self.market : market // ignore: cast_nullable_to_non_nullable
+as Market,availableLanguages: null == availableLanguages ? _self.availableLanguages : availableLanguages // ignore: cast_nullable_to_non_nullable
+as List<Language>,currency: null == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as Currency,isoCode: null == isoCode ? _self.isoCode : isoCode // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,unitSystem: null == unitSystem ? _self.unitSystem : unitSystem // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MarketCopyWith<$Res> get market {
+  
+  return $MarketCopyWith<$Res>(_self.market, (value) {
+    return _then(_self.copyWith(market: value));
+  });
+}/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CurrencyCopyWith<$Res> get currency {
+  
+  return $CurrencyCopyWith<$Res>(_self.currency, (value) {
+    return _then(_self.copyWith(currency: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$CountryImplCopyWith<$Res> implements $CountryCopyWith<$Res> {
-  factory _$$CountryImplCopyWith(
-          _$CountryImpl value, $Res Function(_$CountryImpl) then) =
-      __$$CountryImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {Market market,
-      List<Language> availableLanguages,
-      Currency currency,
-      String isoCode,
-      String name,
-      String unitSystem});
 
-  @override
-  $MarketCopyWith<$Res> get market;
-  @override
-  $CurrencyCopyWith<$Res> get currency;
+/// Adds pattern-matching-related methods to [Country].
+extension CountryPatterns on Country {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Country value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Country() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Country value)  $default,){
+final _that = this;
+switch (_that) {
+case _Country():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Country value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Country() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Market market,  List<Language> availableLanguages,  Currency currency,  String isoCode,  String name,  String unitSystem)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Country() when $default != null:
+return $default(_that.market,_that.availableLanguages,_that.currency,_that.isoCode,_that.name,_that.unitSystem);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Market market,  List<Language> availableLanguages,  Currency currency,  String isoCode,  String name,  String unitSystem)  $default,) {final _that = this;
+switch (_that) {
+case _Country():
+return $default(_that.market,_that.availableLanguages,_that.currency,_that.isoCode,_that.name,_that.unitSystem);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Market market,  List<Language> availableLanguages,  Currency currency,  String isoCode,  String name,  String unitSystem)?  $default,) {final _that = this;
+switch (_that) {
+case _Country() when $default != null:
+return $default(_that.market,_that.availableLanguages,_that.currency,_that.isoCode,_that.name,_that.unitSystem);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$CountryImplCopyWithImpl<$Res>
-    extends _$CountryCopyWithImpl<$Res, _$CountryImpl>
-    implements _$$CountryImplCopyWith<$Res> {
-  __$$CountryImplCopyWithImpl(
-      _$CountryImpl _value, $Res Function(_$CountryImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? market = null,
-    Object? availableLanguages = null,
-    Object? currency = null,
-    Object? isoCode = null,
-    Object? name = null,
-    Object? unitSystem = null,
-  }) {
-    return _then(_$CountryImpl(
-      market: null == market
-          ? _value.market
-          : market // ignore: cast_nullable_to_non_nullable
-              as Market,
-      availableLanguages: null == availableLanguages
-          ? _value._availableLanguages
-          : availableLanguages // ignore: cast_nullable_to_non_nullable
-              as List<Language>,
-      currency: null == currency
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
-              as Currency,
-      isoCode: null == isoCode
-          ? _value.isoCode
-          : isoCode // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      unitSystem: null == unitSystem
-          ? _value.unitSystem
-          : unitSystem // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$CountryImpl implements _Country {
-  const _$CountryImpl(
-      {required this.market,
-      required final List<Language> availableLanguages,
-      required this.currency,
-      required this.isoCode,
-      required this.name,
-      required this.unitSystem})
-      : _availableLanguages = availableLanguages;
 
-  factory _$CountryImpl.fromJson(Map<String, dynamic> json) =>
-      _$$CountryImplFromJson(json);
+class _Country implements Country {
+  const _Country({required this.market, required final  List<Language> availableLanguages, required this.currency, required this.isoCode, required this.name, required this.unitSystem}): _availableLanguages = availableLanguages;
+  factory _Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
 
-  @override
-  final Market market;
-  final List<Language> _availableLanguages;
-  @override
-  List<Language> get availableLanguages {
-    if (_availableLanguages is EqualUnmodifiableListView)
-      return _availableLanguages;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_availableLanguages);
-  }
-
-  @override
-  final Currency currency;
-  @override
-  final String isoCode;
-  @override
-  final String name;
-  @override
-  final String unitSystem;
-
-  @override
-  String toString() {
-    return 'Country(market: $market, availableLanguages: $availableLanguages, currency: $currency, isoCode: $isoCode, name: $name, unitSystem: $unitSystem)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CountryImpl &&
-            (identical(other.market, market) || other.market == market) &&
-            const DeepCollectionEquality()
-                .equals(other._availableLanguages, _availableLanguages) &&
-            (identical(other.currency, currency) ||
-                other.currency == currency) &&
-            (identical(other.isoCode, isoCode) || other.isoCode == isoCode) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.unitSystem, unitSystem) ||
-                other.unitSystem == unitSystem));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      market,
-      const DeepCollectionEquality().hash(_availableLanguages),
-      currency,
-      isoCode,
-      name,
-      unitSystem);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
-      __$$CountryImplCopyWithImpl<_$CountryImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$CountryImplToJson(
-      this,
-    );
-  }
+@override final  Market market;
+ final  List<Language> _availableLanguages;
+@override List<Language> get availableLanguages {
+  if (_availableLanguages is EqualUnmodifiableListView) return _availableLanguages;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_availableLanguages);
 }
 
-abstract class _Country implements Country {
-  const factory _Country(
-      {required final Market market,
-      required final List<Language> availableLanguages,
-      required final Currency currency,
-      required final String isoCode,
-      required final String name,
-      required final String unitSystem}) = _$CountryImpl;
+@override final  Currency currency;
+@override final  String isoCode;
+@override final  String name;
+@override final  String unitSystem;
 
-  factory _Country.fromJson(Map<String, dynamic> json) = _$CountryImpl.fromJson;
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$CountryCopyWith<_Country> get copyWith => __$CountryCopyWithImpl<_Country>(this, _$identity);
 
-  @override
-  Market get market;
-  @override
-  List<Language> get availableLanguages;
-  @override
-  Currency get currency;
-  @override
-  String get isoCode;
-  @override
-  String get name;
-  @override
-  String get unitSystem;
-  @override
-  @JsonKey(ignore: true)
-  _$$CountryImplCopyWith<_$CountryImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$CountryToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Country&&(identical(other.market, market) || other.market == market)&&const DeepCollectionEquality().equals(other._availableLanguages, _availableLanguages)&&(identical(other.currency, currency) || other.currency == currency)&&(identical(other.isoCode, isoCode) || other.isoCode == isoCode)&&(identical(other.name, name) || other.name == name)&&(identical(other.unitSystem, unitSystem) || other.unitSystem == unitSystem));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,market,const DeepCollectionEquality().hash(_availableLanguages),currency,isoCode,name,unitSystem);
+
+@override
+String toString() {
+  return 'Country(market: $market, availableLanguages: $availableLanguages, currency: $currency, isoCode: $isoCode, name: $name, unitSystem: $unitSystem)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$CountryCopyWith<$Res> implements $CountryCopyWith<$Res> {
+  factory _$CountryCopyWith(_Country value, $Res Function(_Country) _then) = __$CountryCopyWithImpl;
+@override @useResult
+$Res call({
+ Market market, List<Language> availableLanguages, Currency currency, String isoCode, String name, String unitSystem
+});
+
+
+@override $MarketCopyWith<$Res> get market;@override $CurrencyCopyWith<$Res> get currency;
+
+}
+/// @nodoc
+class __$CountryCopyWithImpl<$Res>
+    implements _$CountryCopyWith<$Res> {
+  __$CountryCopyWithImpl(this._self, this._then);
+
+  final _Country _self;
+  final $Res Function(_Country) _then;
+
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? market = null,Object? availableLanguages = null,Object? currency = null,Object? isoCode = null,Object? name = null,Object? unitSystem = null,}) {
+  return _then(_Country(
+market: null == market ? _self.market : market // ignore: cast_nullable_to_non_nullable
+as Market,availableLanguages: null == availableLanguages ? _self._availableLanguages : availableLanguages // ignore: cast_nullable_to_non_nullable
+as List<Language>,currency: null == currency ? _self.currency : currency // ignore: cast_nullable_to_non_nullable
+as Currency,isoCode: null == isoCode ? _self.isoCode : isoCode // ignore: cast_nullable_to_non_nullable
+as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,unitSystem: null == unitSystem ? _self.unitSystem : unitSystem // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MarketCopyWith<$Res> get market {
+  
+  return $MarketCopyWith<$Res>(_self.market, (value) {
+    return _then(_self.copyWith(market: value));
+  });
+}/// Create a copy of Country
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CurrencyCopyWith<$Res> get currency {
+  
+  return $CurrencyCopyWith<$Res>(_self.currency, (value) {
+    return _then(_self.copyWith(currency: value));
+  });
+}
+}
+
+// dart format on

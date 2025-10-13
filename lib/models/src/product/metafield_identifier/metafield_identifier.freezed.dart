@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,165 +9,272 @@ part of 'metafield_identifier.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-MetafieldIdentifier _$MetafieldIdentifierFromJson(Map<String, dynamic> json) {
-  return _MetafieldIdentifier.fromJson(json);
-}
 
 /// @nodoc
 mixin _$MetafieldIdentifier {
-  String get key => throw _privateConstructorUsedError;
-  String get namespace => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MetafieldIdentifierCopyWith<MetafieldIdentifier> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get key; String get namespace;
+/// Create a copy of MetafieldIdentifier
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MetafieldIdentifierCopyWith<MetafieldIdentifier> get copyWith => _$MetafieldIdentifierCopyWithImpl<MetafieldIdentifier>(this as MetafieldIdentifier, _$identity);
+
+  /// Serializes this MetafieldIdentifier to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MetafieldIdentifier&&(identical(other.key, key) || other.key == key)&&(identical(other.namespace, namespace) || other.namespace == namespace));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,namespace);
+
+@override
+String toString() {
+  return 'MetafieldIdentifier(key: $key, namespace: $namespace)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $MetafieldIdentifierCopyWith<$Res> {
-  factory $MetafieldIdentifierCopyWith(
-          MetafieldIdentifier value, $Res Function(MetafieldIdentifier) then) =
-      _$MetafieldIdentifierCopyWithImpl<$Res, MetafieldIdentifier>;
-  @useResult
-  $Res call({String key, String namespace});
-}
+abstract mixin class $MetafieldIdentifierCopyWith<$Res>  {
+  factory $MetafieldIdentifierCopyWith(MetafieldIdentifier value, $Res Function(MetafieldIdentifier) _then) = _$MetafieldIdentifierCopyWithImpl;
+@useResult
+$Res call({
+ String key, String namespace
+});
 
+
+
+
+}
 /// @nodoc
-class _$MetafieldIdentifierCopyWithImpl<$Res, $Val extends MetafieldIdentifier>
+class _$MetafieldIdentifierCopyWithImpl<$Res>
     implements $MetafieldIdentifierCopyWith<$Res> {
-  _$MetafieldIdentifierCopyWithImpl(this._value, this._then);
+  _$MetafieldIdentifierCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final MetafieldIdentifier _self;
+  final $Res Function(MetafieldIdentifier) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? key = null,
-    Object? namespace = null,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      namespace: null == namespace
-          ? _value.namespace
-          : namespace // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of MetafieldIdentifier
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? key = null,Object? namespace = null,}) {
+  return _then(_self.copyWith(
+key: null == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String,namespace: null == namespace ? _self.namespace : namespace // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MetafieldIdentifierImplCopyWith<$Res>
-    implements $MetafieldIdentifierCopyWith<$Res> {
-  factory _$$MetafieldIdentifierImplCopyWith(_$MetafieldIdentifierImpl value,
-          $Res Function(_$MetafieldIdentifierImpl) then) =
-      __$$MetafieldIdentifierImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String key, String namespace});
 }
 
-/// @nodoc
-class __$$MetafieldIdentifierImplCopyWithImpl<$Res>
-    extends _$MetafieldIdentifierCopyWithImpl<$Res, _$MetafieldIdentifierImpl>
-    implements _$$MetafieldIdentifierImplCopyWith<$Res> {
-  __$$MetafieldIdentifierImplCopyWithImpl(_$MetafieldIdentifierImpl _value,
-      $Res Function(_$MetafieldIdentifierImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? key = null,
-    Object? namespace = null,
-  }) {
-    return _then(_$MetafieldIdentifierImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      namespace: null == namespace
-          ? _value.namespace
-          : namespace // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [MetafieldIdentifier].
+extension MetafieldIdentifierPatterns on MetafieldIdentifier {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MetafieldIdentifier value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _MetafieldIdentifier() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MetafieldIdentifier value)  $default,){
+final _that = this;
+switch (_that) {
+case _MetafieldIdentifier():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MetafieldIdentifier value)?  $default,){
+final _that = this;
+switch (_that) {
+case _MetafieldIdentifier() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String key,  String namespace)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _MetafieldIdentifier() when $default != null:
+return $default(_that.key,_that.namespace);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String key,  String namespace)  $default,) {final _that = this;
+switch (_that) {
+case _MetafieldIdentifier():
+return $default(_that.key,_that.namespace);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String key,  String namespace)?  $default,) {final _that = this;
+switch (_that) {
+case _MetafieldIdentifier() when $default != null:
+return $default(_that.key,_that.namespace);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$MetafieldIdentifierImpl extends _MetafieldIdentifier {
-  _$MetafieldIdentifierImpl({required this.key, required this.namespace})
-      : super._();
 
-  factory _$MetafieldIdentifierImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MetafieldIdentifierImplFromJson(json);
+class _MetafieldIdentifier extends MetafieldIdentifier {
+  const _MetafieldIdentifier({required this.key, required this.namespace}): super._();
+  factory _MetafieldIdentifier.fromJson(Map<String, dynamic> json) => _$MetafieldIdentifierFromJson(json);
 
-  @override
-  final String key;
-  @override
-  final String namespace;
+@override final  String key;
+@override final  String namespace;
 
-  @override
-  String toString() {
-    return 'MetafieldIdentifier(key: $key, namespace: $namespace)';
-  }
+/// Create a copy of MetafieldIdentifier
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MetafieldIdentifierCopyWith<_MetafieldIdentifier> get copyWith => __$MetafieldIdentifierCopyWithImpl<_MetafieldIdentifier>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MetafieldIdentifierImpl &&
-            (identical(other.key, key) || other.key == key) &&
-            (identical(other.namespace, namespace) ||
-                other.namespace == namespace));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, key, namespace);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MetafieldIdentifierImplCopyWith<_$MetafieldIdentifierImpl> get copyWith =>
-      __$$MetafieldIdentifierImplCopyWithImpl<_$MetafieldIdentifierImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MetafieldIdentifierImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$MetafieldIdentifierToJson(this, );
 }
 
-abstract class _MetafieldIdentifier extends MetafieldIdentifier {
-  factory _MetafieldIdentifier(
-      {required final String key,
-      required final String namespace}) = _$MetafieldIdentifierImpl;
-  _MetafieldIdentifier._() : super._();
-
-  factory _MetafieldIdentifier.fromJson(Map<String, dynamic> json) =
-      _$MetafieldIdentifierImpl.fromJson;
-
-  @override
-  String get key;
-  @override
-  String get namespace;
-  @override
-  @JsonKey(ignore: true)
-  _$$MetafieldIdentifierImplCopyWith<_$MetafieldIdentifierImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MetafieldIdentifier&&(identical(other.key, key) || other.key == key)&&(identical(other.namespace, namespace) || other.namespace == namespace));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,namespace);
+
+@override
+String toString() {
+  return 'MetafieldIdentifier(key: $key, namespace: $namespace)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MetafieldIdentifierCopyWith<$Res> implements $MetafieldIdentifierCopyWith<$Res> {
+  factory _$MetafieldIdentifierCopyWith(_MetafieldIdentifier value, $Res Function(_MetafieldIdentifier) _then) = __$MetafieldIdentifierCopyWithImpl;
+@override @useResult
+$Res call({
+ String key, String namespace
+});
+
+
+
+
+}
+/// @nodoc
+class __$MetafieldIdentifierCopyWithImpl<$Res>
+    implements _$MetafieldIdentifierCopyWith<$Res> {
+  __$MetafieldIdentifierCopyWithImpl(this._self, this._then);
+
+  final _MetafieldIdentifier _self;
+  final $Res Function(_MetafieldIdentifier) _then;
+
+/// Create a copy of MetafieldIdentifier
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? key = null,Object? namespace = null,}) {
+  return _then(_MetafieldIdentifier(
+key: null == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String,namespace: null == namespace ? _self.namespace : namespace // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

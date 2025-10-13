@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,483 +9,475 @@ part of 'shop.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Shop _$ShopFromJson(Map<String, dynamic> json) {
-  return _Shop.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Shop {
-  String? get description => throw _privateConstructorUsedError;
-  String? get moneyFormat => throw _privateConstructorUsedError;
-  String? get name => throw _privateConstructorUsedError;
-  PaymentSettings? get paymentSettings => throw _privateConstructorUsedError;
-  PrimaryDomain? get primaryDomain => throw _privateConstructorUsedError;
-  PrivacyPolicy? get privacyPolicy => throw _privateConstructorUsedError;
-  RefundPolicy? get refundPolicy => throw _privateConstructorUsedError;
-  ShippingPolicy? get shippingPolicy => throw _privateConstructorUsedError;
-  SubscriptionPolicy? get subscriptionPolicy =>
-      throw _privateConstructorUsedError;
-  List<String>? get shipsToCountries => throw _privateConstructorUsedError;
-  TermsOfService? get termsOfService => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $ShopCopyWith<Shop> get copyWith => throw _privateConstructorUsedError;
+ String? get description; String? get moneyFormat; String? get name; PaymentSettings? get paymentSettings; PrimaryDomain? get primaryDomain; PrivacyPolicy? get privacyPolicy; RefundPolicy? get refundPolicy; ShippingPolicy? get shippingPolicy; SubscriptionPolicy? get subscriptionPolicy; List<String>? get shipsToCountries; TermsOfService? get termsOfService;
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$ShopCopyWith<Shop> get copyWith => _$ShopCopyWithImpl<Shop>(this as Shop, _$identity);
+
+  /// Serializes this Shop to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Shop&&(identical(other.description, description) || other.description == description)&&(identical(other.moneyFormat, moneyFormat) || other.moneyFormat == moneyFormat)&&(identical(other.name, name) || other.name == name)&&(identical(other.paymentSettings, paymentSettings) || other.paymentSettings == paymentSettings)&&(identical(other.primaryDomain, primaryDomain) || other.primaryDomain == primaryDomain)&&(identical(other.privacyPolicy, privacyPolicy) || other.privacyPolicy == privacyPolicy)&&(identical(other.refundPolicy, refundPolicy) || other.refundPolicy == refundPolicy)&&(identical(other.shippingPolicy, shippingPolicy) || other.shippingPolicy == shippingPolicy)&&(identical(other.subscriptionPolicy, subscriptionPolicy) || other.subscriptionPolicy == subscriptionPolicy)&&const DeepCollectionEquality().equals(other.shipsToCountries, shipsToCountries)&&(identical(other.termsOfService, termsOfService) || other.termsOfService == termsOfService));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,description,moneyFormat,name,paymentSettings,primaryDomain,privacyPolicy,refundPolicy,shippingPolicy,subscriptionPolicy,const DeepCollectionEquality().hash(shipsToCountries),termsOfService);
+
+@override
+String toString() {
+  return 'Shop(description: $description, moneyFormat: $moneyFormat, name: $name, paymentSettings: $paymentSettings, primaryDomain: $primaryDomain, privacyPolicy: $privacyPolicy, refundPolicy: $refundPolicy, shippingPolicy: $shippingPolicy, subscriptionPolicy: $subscriptionPolicy, shipsToCountries: $shipsToCountries, termsOfService: $termsOfService)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $ShopCopyWith<$Res> {
-  factory $ShopCopyWith(Shop value, $Res Function(Shop) then) =
-      _$ShopCopyWithImpl<$Res, Shop>;
-  @useResult
-  $Res call(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      ShippingPolicy? shippingPolicy,
-      SubscriptionPolicy? subscriptionPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService});
+abstract mixin class $ShopCopyWith<$Res>  {
+  factory $ShopCopyWith(Shop value, $Res Function(Shop) _then) = _$ShopCopyWithImpl;
+@useResult
+$Res call({
+ String? description, String? moneyFormat, String? name, PaymentSettings? paymentSettings, PrimaryDomain? primaryDomain, PrivacyPolicy? privacyPolicy, RefundPolicy? refundPolicy, ShippingPolicy? shippingPolicy, SubscriptionPolicy? subscriptionPolicy, List<String>? shipsToCountries, TermsOfService? termsOfService
+});
 
-  $PaymentSettingsCopyWith<$Res>? get paymentSettings;
-  $PrimaryDomainCopyWith<$Res>? get primaryDomain;
-  $PrivacyPolicyCopyWith<$Res>? get privacyPolicy;
-  $RefundPolicyCopyWith<$Res>? get refundPolicy;
-  $ShippingPolicyCopyWith<$Res>? get shippingPolicy;
-  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;
-  $TermsOfServiceCopyWith<$Res>? get termsOfService;
+
+$PaymentSettingsCopyWith<$Res>? get paymentSettings;$PrimaryDomainCopyWith<$Res>? get primaryDomain;$PrivacyPolicyCopyWith<$Res>? get privacyPolicy;$RefundPolicyCopyWith<$Res>? get refundPolicy;$ShippingPolicyCopyWith<$Res>? get shippingPolicy;$SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;$TermsOfServiceCopyWith<$Res>? get termsOfService;
+
 }
-
 /// @nodoc
-class _$ShopCopyWithImpl<$Res, $Val extends Shop>
+class _$ShopCopyWithImpl<$Res>
     implements $ShopCopyWith<$Res> {
-  _$ShopCopyWithImpl(this._value, this._then);
+  _$ShopCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Shop _self;
+  final $Res Function(Shop) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? description = freezed,
-    Object? moneyFormat = freezed,
-    Object? name = freezed,
-    Object? paymentSettings = freezed,
-    Object? primaryDomain = freezed,
-    Object? privacyPolicy = freezed,
-    Object? refundPolicy = freezed,
-    Object? shippingPolicy = freezed,
-    Object? subscriptionPolicy = freezed,
-    Object? shipsToCountries = freezed,
-    Object? termsOfService = freezed,
-  }) {
-    return _then(_value.copyWith(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      moneyFormat: freezed == moneyFormat
-          ? _value.moneyFormat
-          : moneyFormat // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentSettings: freezed == paymentSettings
-          ? _value.paymentSettings
-          : paymentSettings // ignore: cast_nullable_to_non_nullable
-              as PaymentSettings?,
-      primaryDomain: freezed == primaryDomain
-          ? _value.primaryDomain
-          : primaryDomain // ignore: cast_nullable_to_non_nullable
-              as PrimaryDomain?,
-      privacyPolicy: freezed == privacyPolicy
-          ? _value.privacyPolicy
-          : privacyPolicy // ignore: cast_nullable_to_non_nullable
-              as PrivacyPolicy?,
-      refundPolicy: freezed == refundPolicy
-          ? _value.refundPolicy
-          : refundPolicy // ignore: cast_nullable_to_non_nullable
-              as RefundPolicy?,
-      shippingPolicy: freezed == shippingPolicy
-          ? _value.shippingPolicy
-          : shippingPolicy // ignore: cast_nullable_to_non_nullable
-              as ShippingPolicy?,
-      subscriptionPolicy: freezed == subscriptionPolicy
-          ? _value.subscriptionPolicy
-          : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
-              as SubscriptionPolicy?,
-      shipsToCountries: freezed == shipsToCountries
-          ? _value.shipsToCountries
-          : shipsToCountries // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      termsOfService: freezed == termsOfService
-          ? _value.termsOfService
-          : termsOfService // ignore: cast_nullable_to_non_nullable
-              as TermsOfService?,
-    ) as $Val);
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? description = freezed,Object? moneyFormat = freezed,Object? name = freezed,Object? paymentSettings = freezed,Object? primaryDomain = freezed,Object? privacyPolicy = freezed,Object? refundPolicy = freezed,Object? shippingPolicy = freezed,Object? subscriptionPolicy = freezed,Object? shipsToCountries = freezed,Object? termsOfService = freezed,}) {
+  return _then(_self.copyWith(
+description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,moneyFormat: freezed == moneyFormat ? _self.moneyFormat : moneyFormat // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,paymentSettings: freezed == paymentSettings ? _self.paymentSettings : paymentSettings // ignore: cast_nullable_to_non_nullable
+as PaymentSettings?,primaryDomain: freezed == primaryDomain ? _self.primaryDomain : primaryDomain // ignore: cast_nullable_to_non_nullable
+as PrimaryDomain?,privacyPolicy: freezed == privacyPolicy ? _self.privacyPolicy : privacyPolicy // ignore: cast_nullable_to_non_nullable
+as PrivacyPolicy?,refundPolicy: freezed == refundPolicy ? _self.refundPolicy : refundPolicy // ignore: cast_nullable_to_non_nullable
+as RefundPolicy?,shippingPolicy: freezed == shippingPolicy ? _self.shippingPolicy : shippingPolicy // ignore: cast_nullable_to_non_nullable
+as ShippingPolicy?,subscriptionPolicy: freezed == subscriptionPolicy ? _self.subscriptionPolicy : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
+as SubscriptionPolicy?,shipsToCountries: freezed == shipsToCountries ? _self.shipsToCountries : shipsToCountries // ignore: cast_nullable_to_non_nullable
+as List<String>?,termsOfService: freezed == termsOfService ? _self.termsOfService : termsOfService // ignore: cast_nullable_to_non_nullable
+as TermsOfService?,
+  ));
+}
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentSettingsCopyWith<$Res>? get paymentSettings {
+    if (_self.paymentSettings == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PaymentSettingsCopyWith<$Res>? get paymentSettings {
-    if (_value.paymentSettings == null) {
-      return null;
-    }
-
-    return $PaymentSettingsCopyWith<$Res>(_value.paymentSettings!, (value) {
-      return _then(_value.copyWith(paymentSettings: value) as $Val);
-    });
+  return $PaymentSettingsCopyWith<$Res>(_self.paymentSettings!, (value) {
+    return _then(_self.copyWith(paymentSettings: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PrimaryDomainCopyWith<$Res>? get primaryDomain {
+    if (_self.primaryDomain == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PrimaryDomainCopyWith<$Res>? get primaryDomain {
-    if (_value.primaryDomain == null) {
-      return null;
-    }
-
-    return $PrimaryDomainCopyWith<$Res>(_value.primaryDomain!, (value) {
-      return _then(_value.copyWith(primaryDomain: value) as $Val);
-    });
+  return $PrimaryDomainCopyWith<$Res>(_self.primaryDomain!, (value) {
+    return _then(_self.copyWith(primaryDomain: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PrivacyPolicyCopyWith<$Res>? get privacyPolicy {
+    if (_self.privacyPolicy == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PrivacyPolicyCopyWith<$Res>? get privacyPolicy {
-    if (_value.privacyPolicy == null) {
-      return null;
-    }
-
-    return $PrivacyPolicyCopyWith<$Res>(_value.privacyPolicy!, (value) {
-      return _then(_value.copyWith(privacyPolicy: value) as $Val);
-    });
+  return $PrivacyPolicyCopyWith<$Res>(_self.privacyPolicy!, (value) {
+    return _then(_self.copyWith(privacyPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RefundPolicyCopyWith<$Res>? get refundPolicy {
+    if (_self.refundPolicy == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $RefundPolicyCopyWith<$Res>? get refundPolicy {
-    if (_value.refundPolicy == null) {
-      return null;
-    }
-
-    return $RefundPolicyCopyWith<$Res>(_value.refundPolicy!, (value) {
-      return _then(_value.copyWith(refundPolicy: value) as $Val);
-    });
+  return $RefundPolicyCopyWith<$Res>(_self.refundPolicy!, (value) {
+    return _then(_self.copyWith(refundPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ShippingPolicyCopyWith<$Res>? get shippingPolicy {
+    if (_self.shippingPolicy == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $ShippingPolicyCopyWith<$Res>? get shippingPolicy {
-    if (_value.shippingPolicy == null) {
-      return null;
-    }
-
-    return $ShippingPolicyCopyWith<$Res>(_value.shippingPolicy!, (value) {
-      return _then(_value.copyWith(shippingPolicy: value) as $Val);
-    });
+  return $ShippingPolicyCopyWith<$Res>(_self.shippingPolicy!, (value) {
+    return _then(_self.copyWith(shippingPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy {
+    if (_self.subscriptionPolicy == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy {
-    if (_value.subscriptionPolicy == null) {
-      return null;
-    }
-
-    return $SubscriptionPolicyCopyWith<$Res>(_value.subscriptionPolicy!,
-        (value) {
-      return _then(_value.copyWith(subscriptionPolicy: value) as $Val);
-    });
+  return $SubscriptionPolicyCopyWith<$Res>(_self.subscriptionPolicy!, (value) {
+    return _then(_self.copyWith(subscriptionPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TermsOfServiceCopyWith<$Res>? get termsOfService {
+    if (_self.termsOfService == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $TermsOfServiceCopyWith<$Res>? get termsOfService {
-    if (_value.termsOfService == null) {
-      return null;
-    }
-
-    return $TermsOfServiceCopyWith<$Res>(_value.termsOfService!, (value) {
-      return _then(_value.copyWith(termsOfService: value) as $Val);
-    });
-  }
+  return $TermsOfServiceCopyWith<$Res>(_self.termsOfService!, (value) {
+    return _then(_self.copyWith(termsOfService: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$ShopImplCopyWith<$Res> implements $ShopCopyWith<$Res> {
-  factory _$$ShopImplCopyWith(
-          _$ShopImpl value, $Res Function(_$ShopImpl) then) =
-      __$$ShopImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? description,
-      String? moneyFormat,
-      String? name,
-      PaymentSettings? paymentSettings,
-      PrimaryDomain? primaryDomain,
-      PrivacyPolicy? privacyPolicy,
-      RefundPolicy? refundPolicy,
-      ShippingPolicy? shippingPolicy,
-      SubscriptionPolicy? subscriptionPolicy,
-      List<String>? shipsToCountries,
-      TermsOfService? termsOfService});
 
-  @override
-  $PaymentSettingsCopyWith<$Res>? get paymentSettings;
-  @override
-  $PrimaryDomainCopyWith<$Res>? get primaryDomain;
-  @override
-  $PrivacyPolicyCopyWith<$Res>? get privacyPolicy;
-  @override
-  $RefundPolicyCopyWith<$Res>? get refundPolicy;
-  @override
-  $ShippingPolicyCopyWith<$Res>? get shippingPolicy;
-  @override
-  $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;
-  @override
-  $TermsOfServiceCopyWith<$Res>? get termsOfService;
+/// Adds pattern-matching-related methods to [Shop].
+extension ShopPatterns on Shop {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Shop value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Shop() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Shop value)  $default,){
+final _that = this;
+switch (_that) {
+case _Shop():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Shop value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Shop() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? description,  String? moneyFormat,  String? name,  PaymentSettings? paymentSettings,  PrimaryDomain? primaryDomain,  PrivacyPolicy? privacyPolicy,  RefundPolicy? refundPolicy,  ShippingPolicy? shippingPolicy,  SubscriptionPolicy? subscriptionPolicy,  List<String>? shipsToCountries,  TermsOfService? termsOfService)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Shop() when $default != null:
+return $default(_that.description,_that.moneyFormat,_that.name,_that.paymentSettings,_that.primaryDomain,_that.privacyPolicy,_that.refundPolicy,_that.shippingPolicy,_that.subscriptionPolicy,_that.shipsToCountries,_that.termsOfService);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? description,  String? moneyFormat,  String? name,  PaymentSettings? paymentSettings,  PrimaryDomain? primaryDomain,  PrivacyPolicy? privacyPolicy,  RefundPolicy? refundPolicy,  ShippingPolicy? shippingPolicy,  SubscriptionPolicy? subscriptionPolicy,  List<String>? shipsToCountries,  TermsOfService? termsOfService)  $default,) {final _that = this;
+switch (_that) {
+case _Shop():
+return $default(_that.description,_that.moneyFormat,_that.name,_that.paymentSettings,_that.primaryDomain,_that.privacyPolicy,_that.refundPolicy,_that.shippingPolicy,_that.subscriptionPolicy,_that.shipsToCountries,_that.termsOfService);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? description,  String? moneyFormat,  String? name,  PaymentSettings? paymentSettings,  PrimaryDomain? primaryDomain,  PrivacyPolicy? privacyPolicy,  RefundPolicy? refundPolicy,  ShippingPolicy? shippingPolicy,  SubscriptionPolicy? subscriptionPolicy,  List<String>? shipsToCountries,  TermsOfService? termsOfService)?  $default,) {final _that = this;
+switch (_that) {
+case _Shop() when $default != null:
+return $default(_that.description,_that.moneyFormat,_that.name,_that.paymentSettings,_that.primaryDomain,_that.privacyPolicy,_that.refundPolicy,_that.shippingPolicy,_that.subscriptionPolicy,_that.shipsToCountries,_that.termsOfService);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$ShopImplCopyWithImpl<$Res>
-    extends _$ShopCopyWithImpl<$Res, _$ShopImpl>
-    implements _$$ShopImplCopyWith<$Res> {
-  __$$ShopImplCopyWithImpl(_$ShopImpl _value, $Res Function(_$ShopImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? description = freezed,
-    Object? moneyFormat = freezed,
-    Object? name = freezed,
-    Object? paymentSettings = freezed,
-    Object? primaryDomain = freezed,
-    Object? privacyPolicy = freezed,
-    Object? refundPolicy = freezed,
-    Object? shippingPolicy = freezed,
-    Object? subscriptionPolicy = freezed,
-    Object? shipsToCountries = freezed,
-    Object? termsOfService = freezed,
-  }) {
-    return _then(_$ShopImpl(
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      moneyFormat: freezed == moneyFormat
-          ? _value.moneyFormat
-          : moneyFormat // ignore: cast_nullable_to_non_nullable
-              as String?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      paymentSettings: freezed == paymentSettings
-          ? _value.paymentSettings
-          : paymentSettings // ignore: cast_nullable_to_non_nullable
-              as PaymentSettings?,
-      primaryDomain: freezed == primaryDomain
-          ? _value.primaryDomain
-          : primaryDomain // ignore: cast_nullable_to_non_nullable
-              as PrimaryDomain?,
-      privacyPolicy: freezed == privacyPolicy
-          ? _value.privacyPolicy
-          : privacyPolicy // ignore: cast_nullable_to_non_nullable
-              as PrivacyPolicy?,
-      refundPolicy: freezed == refundPolicy
-          ? _value.refundPolicy
-          : refundPolicy // ignore: cast_nullable_to_non_nullable
-              as RefundPolicy?,
-      shippingPolicy: freezed == shippingPolicy
-          ? _value.shippingPolicy
-          : shippingPolicy // ignore: cast_nullable_to_non_nullable
-              as ShippingPolicy?,
-      subscriptionPolicy: freezed == subscriptionPolicy
-          ? _value.subscriptionPolicy
-          : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
-              as SubscriptionPolicy?,
-      shipsToCountries: freezed == shipsToCountries
-          ? _value._shipsToCountries
-          : shipsToCountries // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      termsOfService: freezed == termsOfService
-          ? _value.termsOfService
-          : termsOfService // ignore: cast_nullable_to_non_nullable
-              as TermsOfService?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$ShopImpl implements _Shop {
-  _$ShopImpl(
-      {this.description,
-      this.moneyFormat,
-      this.name,
-      this.paymentSettings,
-      this.primaryDomain,
-      this.privacyPolicy,
-      this.refundPolicy,
-      this.shippingPolicy,
-      this.subscriptionPolicy,
-      final List<String>? shipsToCountries,
-      this.termsOfService})
-      : _shipsToCountries = shipsToCountries;
 
-  factory _$ShopImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ShopImplFromJson(json);
+class _Shop implements Shop {
+  const _Shop({this.description, this.moneyFormat, this.name, this.paymentSettings, this.primaryDomain, this.privacyPolicy, this.refundPolicy, this.shippingPolicy, this.subscriptionPolicy, final  List<String>? shipsToCountries, this.termsOfService}): _shipsToCountries = shipsToCountries;
+  factory _Shop.fromJson(Map<String, dynamic> json) => _$ShopFromJson(json);
 
-  @override
-  final String? description;
-  @override
-  final String? moneyFormat;
-  @override
-  final String? name;
-  @override
-  final PaymentSettings? paymentSettings;
-  @override
-  final PrimaryDomain? primaryDomain;
-  @override
-  final PrivacyPolicy? privacyPolicy;
-  @override
-  final RefundPolicy? refundPolicy;
-  @override
-  final ShippingPolicy? shippingPolicy;
-  @override
-  final SubscriptionPolicy? subscriptionPolicy;
-  final List<String>? _shipsToCountries;
-  @override
-  List<String>? get shipsToCountries {
-    final value = _shipsToCountries;
-    if (value == null) return null;
-    if (_shipsToCountries is EqualUnmodifiableListView)
-      return _shipsToCountries;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final TermsOfService? termsOfService;
-
-  @override
-  String toString() {
-    return 'Shop(description: $description, moneyFormat: $moneyFormat, name: $name, paymentSettings: $paymentSettings, primaryDomain: $primaryDomain, privacyPolicy: $privacyPolicy, refundPolicy: $refundPolicy, shippingPolicy: $shippingPolicy, subscriptionPolicy: $subscriptionPolicy, shipsToCountries: $shipsToCountries, termsOfService: $termsOfService)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$ShopImpl &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.moneyFormat, moneyFormat) ||
-                other.moneyFormat == moneyFormat) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.paymentSettings, paymentSettings) ||
-                other.paymentSettings == paymentSettings) &&
-            (identical(other.primaryDomain, primaryDomain) ||
-                other.primaryDomain == primaryDomain) &&
-            (identical(other.privacyPolicy, privacyPolicy) ||
-                other.privacyPolicy == privacyPolicy) &&
-            (identical(other.refundPolicy, refundPolicy) ||
-                other.refundPolicy == refundPolicy) &&
-            (identical(other.shippingPolicy, shippingPolicy) ||
-                other.shippingPolicy == shippingPolicy) &&
-            (identical(other.subscriptionPolicy, subscriptionPolicy) ||
-                other.subscriptionPolicy == subscriptionPolicy) &&
-            const DeepCollectionEquality()
-                .equals(other._shipsToCountries, _shipsToCountries) &&
-            (identical(other.termsOfService, termsOfService) ||
-                other.termsOfService == termsOfService));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      description,
-      moneyFormat,
-      name,
-      paymentSettings,
-      primaryDomain,
-      privacyPolicy,
-      refundPolicy,
-      shippingPolicy,
-      subscriptionPolicy,
-      const DeepCollectionEquality().hash(_shipsToCountries),
-      termsOfService);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ShopImplCopyWith<_$ShopImpl> get copyWith =>
-      __$$ShopImplCopyWithImpl<_$ShopImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ShopImplToJson(
-      this,
-    );
-  }
+@override final  String? description;
+@override final  String? moneyFormat;
+@override final  String? name;
+@override final  PaymentSettings? paymentSettings;
+@override final  PrimaryDomain? primaryDomain;
+@override final  PrivacyPolicy? privacyPolicy;
+@override final  RefundPolicy? refundPolicy;
+@override final  ShippingPolicy? shippingPolicy;
+@override final  SubscriptionPolicy? subscriptionPolicy;
+ final  List<String>? _shipsToCountries;
+@override List<String>? get shipsToCountries {
+  final value = _shipsToCountries;
+  if (value == null) return null;
+  if (_shipsToCountries is EqualUnmodifiableListView) return _shipsToCountries;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _Shop implements Shop {
-  factory _Shop(
-      {final String? description,
-      final String? moneyFormat,
-      final String? name,
-      final PaymentSettings? paymentSettings,
-      final PrimaryDomain? primaryDomain,
-      final PrivacyPolicy? privacyPolicy,
-      final RefundPolicy? refundPolicy,
-      final ShippingPolicy? shippingPolicy,
-      final SubscriptionPolicy? subscriptionPolicy,
-      final List<String>? shipsToCountries,
-      final TermsOfService? termsOfService}) = _$ShopImpl;
+@override final  TermsOfService? termsOfService;
 
-  factory _Shop.fromJson(Map<String, dynamic> json) = _$ShopImpl.fromJson;
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$ShopCopyWith<_Shop> get copyWith => __$ShopCopyWithImpl<_Shop>(this, _$identity);
 
-  @override
-  String? get description;
-  @override
-  String? get moneyFormat;
-  @override
-  String? get name;
-  @override
-  PaymentSettings? get paymentSettings;
-  @override
-  PrimaryDomain? get primaryDomain;
-  @override
-  PrivacyPolicy? get privacyPolicy;
-  @override
-  RefundPolicy? get refundPolicy;
-  @override
-  ShippingPolicy? get shippingPolicy;
-  @override
-  SubscriptionPolicy? get subscriptionPolicy;
-  @override
-  List<String>? get shipsToCountries;
-  @override
-  TermsOfService? get termsOfService;
-  @override
-  @JsonKey(ignore: true)
-  _$$ShopImplCopyWith<_$ShopImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$ShopToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Shop&&(identical(other.description, description) || other.description == description)&&(identical(other.moneyFormat, moneyFormat) || other.moneyFormat == moneyFormat)&&(identical(other.name, name) || other.name == name)&&(identical(other.paymentSettings, paymentSettings) || other.paymentSettings == paymentSettings)&&(identical(other.primaryDomain, primaryDomain) || other.primaryDomain == primaryDomain)&&(identical(other.privacyPolicy, privacyPolicy) || other.privacyPolicy == privacyPolicy)&&(identical(other.refundPolicy, refundPolicy) || other.refundPolicy == refundPolicy)&&(identical(other.shippingPolicy, shippingPolicy) || other.shippingPolicy == shippingPolicy)&&(identical(other.subscriptionPolicy, subscriptionPolicy) || other.subscriptionPolicy == subscriptionPolicy)&&const DeepCollectionEquality().equals(other._shipsToCountries, _shipsToCountries)&&(identical(other.termsOfService, termsOfService) || other.termsOfService == termsOfService));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,description,moneyFormat,name,paymentSettings,primaryDomain,privacyPolicy,refundPolicy,shippingPolicy,subscriptionPolicy,const DeepCollectionEquality().hash(_shipsToCountries),termsOfService);
+
+@override
+String toString() {
+  return 'Shop(description: $description, moneyFormat: $moneyFormat, name: $name, paymentSettings: $paymentSettings, primaryDomain: $primaryDomain, privacyPolicy: $privacyPolicy, refundPolicy: $refundPolicy, shippingPolicy: $shippingPolicy, subscriptionPolicy: $subscriptionPolicy, shipsToCountries: $shipsToCountries, termsOfService: $termsOfService)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$ShopCopyWith<$Res> implements $ShopCopyWith<$Res> {
+  factory _$ShopCopyWith(_Shop value, $Res Function(_Shop) _then) = __$ShopCopyWithImpl;
+@override @useResult
+$Res call({
+ String? description, String? moneyFormat, String? name, PaymentSettings? paymentSettings, PrimaryDomain? primaryDomain, PrivacyPolicy? privacyPolicy, RefundPolicy? refundPolicy, ShippingPolicy? shippingPolicy, SubscriptionPolicy? subscriptionPolicy, List<String>? shipsToCountries, TermsOfService? termsOfService
+});
+
+
+@override $PaymentSettingsCopyWith<$Res>? get paymentSettings;@override $PrimaryDomainCopyWith<$Res>? get primaryDomain;@override $PrivacyPolicyCopyWith<$Res>? get privacyPolicy;@override $RefundPolicyCopyWith<$Res>? get refundPolicy;@override $ShippingPolicyCopyWith<$Res>? get shippingPolicy;@override $SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy;@override $TermsOfServiceCopyWith<$Res>? get termsOfService;
+
+}
+/// @nodoc
+class __$ShopCopyWithImpl<$Res>
+    implements _$ShopCopyWith<$Res> {
+  __$ShopCopyWithImpl(this._self, this._then);
+
+  final _Shop _self;
+  final $Res Function(_Shop) _then;
+
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? description = freezed,Object? moneyFormat = freezed,Object? name = freezed,Object? paymentSettings = freezed,Object? primaryDomain = freezed,Object? privacyPolicy = freezed,Object? refundPolicy = freezed,Object? shippingPolicy = freezed,Object? subscriptionPolicy = freezed,Object? shipsToCountries = freezed,Object? termsOfService = freezed,}) {
+  return _then(_Shop(
+description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,moneyFormat: freezed == moneyFormat ? _self.moneyFormat : moneyFormat // ignore: cast_nullable_to_non_nullable
+as String?,name: freezed == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String?,paymentSettings: freezed == paymentSettings ? _self.paymentSettings : paymentSettings // ignore: cast_nullable_to_non_nullable
+as PaymentSettings?,primaryDomain: freezed == primaryDomain ? _self.primaryDomain : primaryDomain // ignore: cast_nullable_to_non_nullable
+as PrimaryDomain?,privacyPolicy: freezed == privacyPolicy ? _self.privacyPolicy : privacyPolicy // ignore: cast_nullable_to_non_nullable
+as PrivacyPolicy?,refundPolicy: freezed == refundPolicy ? _self.refundPolicy : refundPolicy // ignore: cast_nullable_to_non_nullable
+as RefundPolicy?,shippingPolicy: freezed == shippingPolicy ? _self.shippingPolicy : shippingPolicy // ignore: cast_nullable_to_non_nullable
+as ShippingPolicy?,subscriptionPolicy: freezed == subscriptionPolicy ? _self.subscriptionPolicy : subscriptionPolicy // ignore: cast_nullable_to_non_nullable
+as SubscriptionPolicy?,shipsToCountries: freezed == shipsToCountries ? _self._shipsToCountries : shipsToCountries // ignore: cast_nullable_to_non_nullable
+as List<String>?,termsOfService: freezed == termsOfService ? _self.termsOfService : termsOfService // ignore: cast_nullable_to_non_nullable
+as TermsOfService?,
+  ));
+}
+
+/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PaymentSettingsCopyWith<$Res>? get paymentSettings {
+    if (_self.paymentSettings == null) {
+    return null;
+  }
+
+  return $PaymentSettingsCopyWith<$Res>(_self.paymentSettings!, (value) {
+    return _then(_self.copyWith(paymentSettings: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PrimaryDomainCopyWith<$Res>? get primaryDomain {
+    if (_self.primaryDomain == null) {
+    return null;
+  }
+
+  return $PrimaryDomainCopyWith<$Res>(_self.primaryDomain!, (value) {
+    return _then(_self.copyWith(primaryDomain: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PrivacyPolicyCopyWith<$Res>? get privacyPolicy {
+    if (_self.privacyPolicy == null) {
+    return null;
+  }
+
+  return $PrivacyPolicyCopyWith<$Res>(_self.privacyPolicy!, (value) {
+    return _then(_self.copyWith(privacyPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$RefundPolicyCopyWith<$Res>? get refundPolicy {
+    if (_self.refundPolicy == null) {
+    return null;
+  }
+
+  return $RefundPolicyCopyWith<$Res>(_self.refundPolicy!, (value) {
+    return _then(_self.copyWith(refundPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ShippingPolicyCopyWith<$Res>? get shippingPolicy {
+    if (_self.shippingPolicy == null) {
+    return null;
+  }
+
+  return $ShippingPolicyCopyWith<$Res>(_self.shippingPolicy!, (value) {
+    return _then(_self.copyWith(shippingPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SubscriptionPolicyCopyWith<$Res>? get subscriptionPolicy {
+    if (_self.subscriptionPolicy == null) {
+    return null;
+  }
+
+  return $SubscriptionPolicyCopyWith<$Res>(_self.subscriptionPolicy!, (value) {
+    return _then(_self.copyWith(subscriptionPolicy: value));
+  });
+}/// Create a copy of Shop
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TermsOfServiceCopyWith<$Res>? get termsOfService {
+    if (_self.termsOfService == null) {
+    return null;
+  }
+
+  return $TermsOfServiceCopyWith<$Res>(_self.termsOfService!, (value) {
+    return _then(_self.copyWith(termsOfService: value));
+  });
+}
+}
+
+// dart format on

@@ -11,11 +11,11 @@ part 'order.g.dart';
 @freezed
 
 /// The order
-class Order with _$Order {
+abstract class Order with _$Order {
   const Order._();
 
   /// The order constructor
-  factory Order({
+  const factory Order({
     required String id,
     required String email,
     required String currencyCode,

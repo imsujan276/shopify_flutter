@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,156 +9,272 @@ part of 'market.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Market _$MarketFromJson(Map<String, dynamic> json) {
-  return _Market.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Market {
-  String get id => throw _privateConstructorUsedError;
-  String get handle => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $MarketCopyWith<Market> get copyWith => throw _privateConstructorUsedError;
+ String get id; String get handle;
+/// Create a copy of Market
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$MarketCopyWith<Market> get copyWith => _$MarketCopyWithImpl<Market>(this as Market, _$identity);
+
+  /// Serializes this Market to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Market&&(identical(other.id, id) || other.id == id)&&(identical(other.handle, handle) || other.handle == handle));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,handle);
+
+@override
+String toString() {
+  return 'Market(id: $id, handle: $handle)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $MarketCopyWith<$Res> {
-  factory $MarketCopyWith(Market value, $Res Function(Market) then) =
-      _$MarketCopyWithImpl<$Res, Market>;
-  @useResult
-  $Res call({String id, String handle});
-}
+abstract mixin class $MarketCopyWith<$Res>  {
+  factory $MarketCopyWith(Market value, $Res Function(Market) _then) = _$MarketCopyWithImpl;
+@useResult
+$Res call({
+ String id, String handle
+});
 
+
+
+
+}
 /// @nodoc
-class _$MarketCopyWithImpl<$Res, $Val extends Market>
+class _$MarketCopyWithImpl<$Res>
     implements $MarketCopyWith<$Res> {
-  _$MarketCopyWithImpl(this._value, this._then);
+  _$MarketCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Market _self;
+  final $Res Function(Market) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? handle = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      handle: null == handle
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of Market
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? handle = null,}) {
+  return _then(_self.copyWith(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,handle: null == handle ? _self.handle : handle // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$MarketImplCopyWith<$Res> implements $MarketCopyWith<$Res> {
-  factory _$$MarketImplCopyWith(
-          _$MarketImpl value, $Res Function(_$MarketImpl) then) =
-      __$$MarketImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String id, String handle});
 }
 
-/// @nodoc
-class __$$MarketImplCopyWithImpl<$Res>
-    extends _$MarketCopyWithImpl<$Res, _$MarketImpl>
-    implements _$$MarketImplCopyWith<$Res> {
-  __$$MarketImplCopyWithImpl(
-      _$MarketImpl _value, $Res Function(_$MarketImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? handle = null,
-  }) {
-    return _then(_$MarketImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      handle: null == handle
-          ? _value.handle
-          : handle // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [Market].
+extension MarketPatterns on Market {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Market value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _Market() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Market value)  $default,){
+final _that = this;
+switch (_that) {
+case _Market():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Market value)?  $default,){
+final _that = this;
+switch (_that) {
+case _Market() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String handle)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _Market() when $default != null:
+return $default(_that.id,_that.handle);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String handle)  $default,) {final _that = this;
+switch (_that) {
+case _Market():
+return $default(_that.id,_that.handle);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String handle)?  $default,) {final _that = this;
+switch (_that) {
+case _Market() when $default != null:
+return $default(_that.id,_that.handle);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$MarketImpl implements _Market {
-  const _$MarketImpl({required this.id, required this.handle});
 
-  factory _$MarketImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MarketImplFromJson(json);
+class _Market implements Market {
+  const _Market({required this.id, required this.handle});
+  factory _Market.fromJson(Map<String, dynamic> json) => _$MarketFromJson(json);
 
-  @override
-  final String id;
-  @override
-  final String handle;
+@override final  String id;
+@override final  String handle;
 
-  @override
-  String toString() {
-    return 'Market(id: $id, handle: $handle)';
-  }
+/// Create a copy of Market
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$MarketCopyWith<_Market> get copyWith => __$MarketCopyWithImpl<_Market>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MarketImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.handle, handle) || other.handle == handle));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, handle);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$MarketImplCopyWith<_$MarketImpl> get copyWith =>
-      __$$MarketImplCopyWithImpl<_$MarketImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MarketImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$MarketToJson(this, );
 }
 
-abstract class _Market implements Market {
-  const factory _Market(
-      {required final String id, required final String handle}) = _$MarketImpl;
-
-  factory _Market.fromJson(Map<String, dynamic> json) = _$MarketImpl.fromJson;
-
-  @override
-  String get id;
-  @override
-  String get handle;
-  @override
-  @JsonKey(ignore: true)
-  _$$MarketImplCopyWith<_$MarketImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Market&&(identical(other.id, id) || other.id == id)&&(identical(other.handle, handle) || other.handle == handle));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,id,handle);
+
+@override
+String toString() {
+  return 'Market(id: $id, handle: $handle)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$MarketCopyWith<$Res> implements $MarketCopyWith<$Res> {
+  factory _$MarketCopyWith(_Market value, $Res Function(_Market) _then) = __$MarketCopyWithImpl;
+@override @useResult
+$Res call({
+ String id, String handle
+});
+
+
+
+
+}
+/// @nodoc
+class __$MarketCopyWithImpl<$Res>
+    implements _$MarketCopyWith<$Res> {
+  __$MarketCopyWithImpl(this._self, this._then);
+
+  final _Market _self;
+  final $Res Function(_Market) _then;
+
+/// Create a copy of Market
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? handle = null,}) {
+  return _then(_Market(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String,handle: null == handle ? _self.handle : handle // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

@@ -7,11 +7,11 @@ part 'products.g.dart';
 @freezed
 
 /// The products
-class Products with _$Products {
+abstract class Products with _$Products {
   const Products._();
 
   /// The products constructor
-  factory Products({
+  const factory Products({
     required List<Product> productList,
     required bool hasNextPage,
   }) = _Products;

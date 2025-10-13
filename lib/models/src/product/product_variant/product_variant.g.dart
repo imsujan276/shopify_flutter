@@ -6,8 +6,8 @@ part of 'product_variant.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
-    _$ProductVariantImpl(
+_ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) =>
+    _ProductVariant(
       price: PriceV2.fromJson(json['price'] as Map<String, dynamic>),
       title: json['title'] as String,
       weight: (json['weight'] as num).toDouble(),
@@ -23,7 +23,8 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       unitPriceMeasurement: json['unitPriceMeasurement'] == null
           ? null
           : UnitPriceMeasurement.fromJson(
-              json['unitPriceMeasurement'] as Map<String, dynamic>),
+              json['unitPriceMeasurement'] as Map<String, dynamic>,
+            ),
       selectedOptions: (json['selectedOptions'] as List<dynamic>?)
           ?.map((e) => SelectedOption.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -36,32 +37,35 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       product: json['product'] == null
           ? null
           : Product.fromJson(json['product'] as Map<String, dynamic>),
-      sellingPlanAllocations: (json['sellingPlanAllocations'] as List<dynamic>?)
-              ?.map((e) =>
-                  SellingPlanAllocation.fromJson(e as Map<String, dynamic>))
+      sellingPlanAllocations:
+          (json['sellingPlanAllocations'] as List<dynamic>?)
+              ?.map(
+                (e) =>
+                    SellingPlanAllocation.fromJson(e as Map<String, dynamic>),
+              )
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$ProductVariantImplToJson(
-        _$ProductVariantImpl instance) =>
-    <String, dynamic>{
-      'price': instance.price.toJson(),
-      'title': instance.title,
-      'weight': instance.weight,
-      'weightUnit': instance.weightUnit,
-      'availableForSale': instance.availableForSale,
-      'requiresShipping': instance.requiresShipping,
-      'id': instance.id,
-      'quantityAvailable': instance.quantityAvailable,
-      'sku': instance.sku,
-      'unitPrice': instance.unitPrice?.toJson(),
-      'unitPriceMeasurement': instance.unitPriceMeasurement?.toJson(),
-      'selectedOptions':
-          instance.selectedOptions?.map((e) => e.toJson()).toList(),
-      'compareAtPrice': instance.compareAtPrice?.toJson(),
-      'image': instance.image?.toJson(),
-      'product': instance.product?.toJson(),
-      'sellingPlanAllocations':
-          instance.sellingPlanAllocations.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$ProductVariantToJson(
+  _ProductVariant instance,
+) => <String, dynamic>{
+  'price': instance.price.toJson(),
+  'title': instance.title,
+  'weight': instance.weight,
+  'weightUnit': instance.weightUnit,
+  'availableForSale': instance.availableForSale,
+  'requiresShipping': instance.requiresShipping,
+  'id': instance.id,
+  'quantityAvailable': instance.quantityAvailable,
+  'sku': instance.sku,
+  'unitPrice': instance.unitPrice?.toJson(),
+  'unitPriceMeasurement': instance.unitPriceMeasurement?.toJson(),
+  'selectedOptions': instance.selectedOptions?.map((e) => e.toJson()).toList(),
+  'compareAtPrice': instance.compareAtPrice?.toJson(),
+  'image': instance.image?.toJson(),
+  'product': instance.product?.toJson(),
+  'sellingPlanAllocations': instance.sellingPlanAllocations
+      .map((e) => e.toJson())
+      .toList(),
+};

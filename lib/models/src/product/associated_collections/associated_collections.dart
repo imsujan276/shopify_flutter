@@ -6,11 +6,11 @@ part 'associated_collections.g.dart';
 @freezed
 
 /// The AssociatedCollections class
-class AssociatedCollections with _$AssociatedCollections {
+abstract class AssociatedCollections with _$AssociatedCollections {
   const AssociatedCollections._();
 
   /// The AssociatedCollections constructor
-  factory AssociatedCollections({
+  const factory AssociatedCollections({
     required String id,
     required String title,
     required String description,

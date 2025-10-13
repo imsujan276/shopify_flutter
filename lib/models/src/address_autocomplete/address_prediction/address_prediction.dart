@@ -7,7 +7,7 @@ part 'address_prediction.g.dart';
 @freezed
 
 /// The address prediction
-class AddressPrediction with _$AddressPrediction {
+abstract class AddressPrediction with _$AddressPrediction {
   /// The address prediction constructor
   const factory AddressPrediction({
     String? addressId,

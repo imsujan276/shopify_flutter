@@ -6,11 +6,11 @@ part 'attribute.g.dart';
 @freezed
 
 /// The attribute input
-class Attribute with _$Attribute {
+abstract class Attribute with _$Attribute {
   const Attribute._();
 
   /// The attribute input constructor
-  factory Attribute({
+  const factory Attribute({
     required String key,
     String? value,
   }) = _Attribute;

@@ -9,11 +9,11 @@ part 'line_item_order.g.dart';
 @freezed
 
 /// The line item order
-class LineItemOrder with _$LineItemOrder {
+abstract class LineItemOrder with _$LineItemOrder {
   const LineItemOrder._();
 
   /// The line item order constructor
-  factory LineItemOrder({
+  const factory LineItemOrder({
     required int currentQuantity,
     required PriceV2 discountedTotalPrice,
     required PriceV2 originalTotalPrice,

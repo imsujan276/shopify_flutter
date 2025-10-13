@@ -15,11 +15,11 @@ part 'cart.g.dart';
 @freezed
 
 /// The cart
-class Cart with _$Cart {
+abstract class Cart with _$Cart {
   const Cart._();
 
   /// The cart constructor
-  factory Cart({
+  const factory Cart({
     required String id,
     required String? checkoutUrl,
     required CartCost? cost,

@@ -9,11 +9,11 @@ part 'tokanized_checkout.g.dart';
 @freezed
 
 /// The tokanized checkout
-class TokanizedCheckout with _$TokanizedCheckout {
+abstract class TokanizedCheckout with _$TokanizedCheckout {
   const TokanizedCheckout._();
 
   /// The tokanized checkout constructor
-  factory TokanizedCheckout({
+  const factory TokanizedCheckout({
     @JsonKey(name: 'id') required String paymentId,
     required PriceV2 amountV2,
     required bool test,

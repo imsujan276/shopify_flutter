@@ -10,7 +10,7 @@ part 'localization.g.dart';
 @freezed
 
 /// The localization object
-class Localization with _$Localization {
+abstract class Localization with _$Localization {
   /// The localization object constructor
   const factory Localization({
     required List<Language> availableLanguages,

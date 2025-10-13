@@ -6,24 +6,24 @@ part of 'associated_collections.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AssociatedCollectionsImpl _$$AssociatedCollectionsImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AssociatedCollectionsImpl(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      description: json['description'] as String,
-      updatedAt: json['updatedAt'] as String,
-      descriptionHtml: json['descriptionHtml'] as String?,
-      handle: json['handle'] as String?,
-    );
+_AssociatedCollections _$AssociatedCollectionsFromJson(
+  Map<String, dynamic> json,
+) => _AssociatedCollections(
+  id: json['id'] as String,
+  title: json['title'] as String,
+  description: json['description'] as String,
+  updatedAt: json['updatedAt'] as String,
+  descriptionHtml: json['descriptionHtml'] as String?,
+  handle: json['handle'] as String?,
+);
 
-Map<String, dynamic> _$$AssociatedCollectionsImplToJson(
-        _$AssociatedCollectionsImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'description': instance.description,
-      'updatedAt': instance.updatedAt,
-      'descriptionHtml': instance.descriptionHtml,
-      'handle': instance.handle,
-    };
+Map<String, dynamic> _$AssociatedCollectionsToJson(
+  _AssociatedCollections instance,
+) => <String, dynamic>{
+  'id': instance.id,
+  'title': instance.title,
+  'description': instance.description,
+  'updatedAt': instance.updatedAt,
+  'descriptionHtml': instance.descriptionHtml,
+  'handle': instance.handle,
+};

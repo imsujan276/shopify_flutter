@@ -8,11 +8,11 @@ part 'cart_buyer_identity_input.g.dart';
 @freezed
 
 /// the cart buyer identity input
-class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
+abstract class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
   const CartBuyerIdentityInput._();
 
   /// the cart buyer identity input constructor
-  factory CartBuyerIdentityInput({
+  const factory CartBuyerIdentityInput({
     required String email,
     String? phone,
     String? countryCode,

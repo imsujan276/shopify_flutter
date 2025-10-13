@@ -6,9 +6,8 @@ part of 'mailing_address_input.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MailingAddressInputImpl _$$MailingAddressInputImplFromJson(
-        Map<String, dynamic> json) =>
-    _$MailingAddressInputImpl(
+_MailingAddressInput _$MailingAddressInputFromJson(Map<String, dynamic> json) =>
+    _MailingAddressInput(
       address1: json['address1'] as String,
       address2: json['address2'] as String?,
       city: json['city'] as String?,
@@ -21,17 +20,17 @@ _$MailingAddressInputImpl _$$MailingAddressInputImplFromJson(
       zip: json['zip'] as String?,
     );
 
-Map<String, dynamic> _$$MailingAddressInputImplToJson(
-        _$MailingAddressInputImpl instance) =>
-    <String, dynamic>{
-      'address1': instance.address1,
-      'address2': instance.address2,
-      'city': instance.city,
-      'company': instance.company,
-      'country': instance.country,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
-      'phone': instance.phone,
-      'province': instance.province,
-      'zip': instance.zip,
-    };
+Map<String, dynamic> _$MailingAddressInputToJson(
+  _MailingAddressInput instance,
+) => <String, dynamic>{
+  'address1': instance.address1,
+  'address2': instance.address2,
+  'city': instance.city,
+  'company': instance.company,
+  'country': instance.country,
+  'firstName': instance.firstName,
+  'lastName': instance.lastName,
+  'phone': instance.phone,
+  'province': instance.province,
+  'zip': instance.zip,
+};

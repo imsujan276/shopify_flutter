@@ -6,16 +6,11 @@ part of 'selling_plan_option.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SellingPlanOptionImpl _$$SellingPlanOptionImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SellingPlanOptionImpl(
+_SellingPlanOption _$SellingPlanOptionFromJson(Map<String, dynamic> json) =>
+    _SellingPlanOption(
       name: json['name'] as String,
       value: json['value'] as String,
     );
 
-Map<String, dynamic> _$$SellingPlanOptionImplToJson(
-        _$SellingPlanOptionImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'value': instance.value,
-    };
+Map<String, dynamic> _$SellingPlanOptionToJson(_SellingPlanOption instance) =>
+    <String, dynamic>{'name': instance.name, 'value': instance.value};

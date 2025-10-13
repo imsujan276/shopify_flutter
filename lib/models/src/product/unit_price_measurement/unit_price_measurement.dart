@@ -6,11 +6,11 @@ part 'unit_price_measurement.g.dart';
 @freezed
 
 /// The unit price measurement
-class UnitPriceMeasurement with _$UnitPriceMeasurement {
+abstract class UnitPriceMeasurement with _$UnitPriceMeasurement {
   const UnitPriceMeasurement._();
 
   /// The unit price measurement constructor
-  factory UnitPriceMeasurement({
+  const factory UnitPriceMeasurement({
     required String measuredType,
     required String quantityUnit,
     required double quantityValue,

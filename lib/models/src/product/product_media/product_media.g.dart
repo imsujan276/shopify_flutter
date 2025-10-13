@@ -6,8 +6,8 @@ part of 'product_media.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
-    _$ProductVariantImpl(
+_ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) =>
+    _ProductVariant(
       id: json['id'] as String,
       mediaContentType: json['mediaContentType'] as String,
       image: json['image'] == null
@@ -16,8 +16,7 @@ _$ProductVariantImpl _$$ProductVariantImplFromJson(Map<String, dynamic> json) =>
       alt: json['alt'] as String?,
     );
 
-Map<String, dynamic> _$$ProductVariantImplToJson(
-        _$ProductVariantImpl instance) =>
+Map<String, dynamic> _$ProductVariantToJson(_ProductVariant instance) =>
     <String, dynamic>{
       'id': instance.id,
       'mediaContentType': instance.mediaContentType,

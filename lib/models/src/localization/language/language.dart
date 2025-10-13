@@ -6,7 +6,7 @@ part 'language.g.dart';
 @freezed
 
 /// The Language class
-class Language with _$Language {
+abstract class Language with _$Language {
   /// The Language constructor
   const factory Language({
     required String isoCode,

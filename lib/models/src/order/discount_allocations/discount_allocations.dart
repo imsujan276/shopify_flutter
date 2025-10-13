@@ -7,11 +7,11 @@ part 'discount_allocations.g.dart';
 @freezed
 
 /// The discount allocations
-class DiscountAllocations with _$DiscountAllocations {
+abstract class DiscountAllocations with _$DiscountAllocations {
   const DiscountAllocations._();
 
   /// The discount allocations constructor
-  factory DiscountAllocations({required PriceV2? allocatedAmount}) =
+  const factory DiscountAllocations({required PriceV2? allocatedAmount}) =
       _DiscountAllocations;
 
   /// The discount allocations from json

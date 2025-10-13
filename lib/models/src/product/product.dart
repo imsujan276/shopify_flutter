@@ -18,11 +18,11 @@ part 'product.g.dart';
 /// The product
 @freezed
 @JsonSerializable(createFactory: false)
-class Product with _$Product {
+abstract class Product with _$Product {
   const Product._();
 
   /// The product constructor
-  factory Product({
+  const factory Product({
     required String title,
     required String id,
     required bool availableForSale,

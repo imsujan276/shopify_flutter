@@ -7,11 +7,11 @@ part 'addresses.g.dart';
 @freezed
 
 /// The addresses
-class Addresses with _$Addresses {
+abstract class Addresses with _$Addresses {
   const Addresses._();
 
   /// The addresses constructor
-  factory Addresses({required List<Address> addressList}) = _Addresses;
+  const factory Addresses({required List<Address> addressList}) = _Addresses;
 
   /// The addresses from json factory
   factory Addresses.fromJson(Map<String, dynamic> json) =>

@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,316 +9,323 @@ part of 'line_item.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LineItem _$LineItemFromJson(Map<String, dynamic> json) {
-  return _LineItem.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LineItem {
-  String get title => throw _privateConstructorUsedError;
-  int get quantity => throw _privateConstructorUsedError;
-  List<DiscountAllocations> get discountAllocations =>
-      throw _privateConstructorUsedError;
-  List<Attribute> get customAttributes => throw _privateConstructorUsedError;
-  String? get variantId => throw _privateConstructorUsedError;
-  String? get id => throw _privateConstructorUsedError;
-  ProductVariantCheckout? get variant => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LineItemCopyWith<LineItem> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get title; int get quantity; List<DiscountAllocations> get discountAllocations; List<Attribute> get customAttributes; String? get variantId; String? get id; ProductVariantCheckout? get variant;
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LineItemCopyWith<LineItem> get copyWith => _$LineItemCopyWithImpl<LineItem>(this as LineItem, _$identity);
+
+  /// Serializes this LineItem to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LineItem&&(identical(other.title, title) || other.title == title)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&const DeepCollectionEquality().equals(other.discountAllocations, discountAllocations)&&const DeepCollectionEquality().equals(other.customAttributes, customAttributes)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.id, id) || other.id == id)&&(identical(other.variant, variant) || other.variant == variant));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,quantity,const DeepCollectionEquality().hash(discountAllocations),const DeepCollectionEquality().hash(customAttributes),variantId,id,variant);
+
+@override
+String toString() {
+  return 'LineItem(title: $title, quantity: $quantity, discountAllocations: $discountAllocations, customAttributes: $customAttributes, variantId: $variantId, id: $id, variant: $variant)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LineItemCopyWith<$Res> {
-  factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) then) =
-      _$LineItemCopyWithImpl<$Res, LineItem>;
-  @useResult
-  $Res call(
-      {String title,
-      int quantity,
-      List<DiscountAllocations> discountAllocations,
-      List<Attribute> customAttributes,
-      String? variantId,
-      String? id,
-      ProductVariantCheckout? variant});
+abstract mixin class $LineItemCopyWith<$Res>  {
+  factory $LineItemCopyWith(LineItem value, $Res Function(LineItem) _then) = _$LineItemCopyWithImpl;
+@useResult
+$Res call({
+ String title, int quantity, List<DiscountAllocations> discountAllocations, List<Attribute> customAttributes, String? variantId, String? id, ProductVariantCheckout? variant
+});
 
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+
+$ProductVariantCheckoutCopyWith<$Res>? get variant;
+
 }
-
 /// @nodoc
-class _$LineItemCopyWithImpl<$Res, $Val extends LineItem>
+class _$LineItemCopyWithImpl<$Res>
     implements $LineItemCopyWith<$Res> {
-  _$LineItemCopyWithImpl(this._value, this._then);
+  _$LineItemCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LineItem _self;
+  final $Res Function(LineItem) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? quantity = null,
-    Object? discountAllocations = null,
-    Object? customAttributes = null,
-    Object? variantId = freezed,
-    Object? id = freezed,
-    Object? variant = freezed,
-  }) {
-    return _then(_value.copyWith(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      discountAllocations: null == discountAllocations
-          ? _value.discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations>,
-      customAttributes: null == customAttributes
-          ? _value.customAttributes
-          : customAttributes // ignore: cast_nullable_to_non_nullable
-              as List<Attribute>,
-      variantId: freezed == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variant: freezed == variant
-          ? _value.variant
-          : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
-    ) as $Val);
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? quantity = null,Object? discountAllocations = null,Object? customAttributes = null,Object? variantId = freezed,Object? id = freezed,Object? variant = freezed,}) {
+  return _then(_self.copyWith(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,discountAllocations: null == discountAllocations ? _self.discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
+as List<DiscountAllocations>,customAttributes: null == customAttributes ? _self.customAttributes : customAttributes // ignore: cast_nullable_to_non_nullable
+as List<Attribute>,variantId: freezed == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,variant: freezed == variant ? _self.variant : variant // ignore: cast_nullable_to_non_nullable
+as ProductVariantCheckout?,
+  ));
+}
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCheckoutCopyWith<$Res>? get variant {
+    if (_self.variant == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductVariantCheckoutCopyWith<$Res>? get variant {
-    if (_value.variant == null) {
-      return null;
-    }
-
-    return $ProductVariantCheckoutCopyWith<$Res>(_value.variant!, (value) {
-      return _then(_value.copyWith(variant: value) as $Val);
-    });
-  }
+  return $ProductVariantCheckoutCopyWith<$Res>(_self.variant!, (value) {
+    return _then(_self.copyWith(variant: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$LineItemImplCopyWith<$Res>
-    implements $LineItemCopyWith<$Res> {
-  factory _$$LineItemImplCopyWith(
-          _$LineItemImpl value, $Res Function(_$LineItemImpl) then) =
-      __$$LineItemImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String title,
-      int quantity,
-      List<DiscountAllocations> discountAllocations,
-      List<Attribute> customAttributes,
-      String? variantId,
-      String? id,
-      ProductVariantCheckout? variant});
 
-  @override
-  $ProductVariantCheckoutCopyWith<$Res>? get variant;
+/// Adds pattern-matching-related methods to [LineItem].
+extension LineItemPatterns on LineItem {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LineItem value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _LineItem() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LineItem value)  $default,){
+final _that = this;
+switch (_that) {
+case _LineItem():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LineItem value)?  $default,){
+final _that = this;
+switch (_that) {
+case _LineItem() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  int quantity,  List<DiscountAllocations> discountAllocations,  List<Attribute> customAttributes,  String? variantId,  String? id,  ProductVariantCheckout? variant)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _LineItem() when $default != null:
+return $default(_that.title,_that.quantity,_that.discountAllocations,_that.customAttributes,_that.variantId,_that.id,_that.variant);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  int quantity,  List<DiscountAllocations> discountAllocations,  List<Attribute> customAttributes,  String? variantId,  String? id,  ProductVariantCheckout? variant)  $default,) {final _that = this;
+switch (_that) {
+case _LineItem():
+return $default(_that.title,_that.quantity,_that.discountAllocations,_that.customAttributes,_that.variantId,_that.id,_that.variant);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  int quantity,  List<DiscountAllocations> discountAllocations,  List<Attribute> customAttributes,  String? variantId,  String? id,  ProductVariantCheckout? variant)?  $default,) {final _that = this;
+switch (_that) {
+case _LineItem() when $default != null:
+return $default(_that.title,_that.quantity,_that.discountAllocations,_that.customAttributes,_that.variantId,_that.id,_that.variant);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$LineItemImplCopyWithImpl<$Res>
-    extends _$LineItemCopyWithImpl<$Res, _$LineItemImpl>
-    implements _$$LineItemImplCopyWith<$Res> {
-  __$$LineItemImplCopyWithImpl(
-      _$LineItemImpl _value, $Res Function(_$LineItemImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? title = null,
-    Object? quantity = null,
-    Object? discountAllocations = null,
-    Object? customAttributes = null,
-    Object? variantId = freezed,
-    Object? id = freezed,
-    Object? variant = freezed,
-  }) {
-    return _then(_$LineItemImpl(
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      quantity: null == quantity
-          ? _value.quantity
-          : quantity // ignore: cast_nullable_to_non_nullable
-              as int,
-      discountAllocations: null == discountAllocations
-          ? _value._discountAllocations
-          : discountAllocations // ignore: cast_nullable_to_non_nullable
-              as List<DiscountAllocations>,
-      customAttributes: null == customAttributes
-          ? _value._customAttributes
-          : customAttributes // ignore: cast_nullable_to_non_nullable
-              as List<Attribute>,
-      variantId: freezed == variantId
-          ? _value.variantId
-          : variantId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      variant: freezed == variant
-          ? _value.variant
-          : variant // ignore: cast_nullable_to_non_nullable
-              as ProductVariantCheckout?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LineItemImpl extends _LineItem {
-  _$LineItemImpl(
-      {required this.title,
-      required this.quantity,
-      final List<DiscountAllocations> discountAllocations = const [],
-      final List<Attribute> customAttributes = const [],
-      this.variantId,
-      this.id,
-      this.variant})
-      : _discountAllocations = discountAllocations,
-        _customAttributes = customAttributes,
-        super._();
 
-  factory _$LineItemImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LineItemImplFromJson(json);
+class _LineItem extends LineItem {
+  const _LineItem({required this.title, required this.quantity, final  List<DiscountAllocations> discountAllocations = const [], final  List<Attribute> customAttributes = const [], this.variantId, this.id, this.variant}): _discountAllocations = discountAllocations,_customAttributes = customAttributes,super._();
+  factory _LineItem.fromJson(Map<String, dynamic> json) => _$LineItemFromJson(json);
 
-  @override
-  final String title;
-  @override
-  final int quantity;
-  final List<DiscountAllocations> _discountAllocations;
-  @override
-  @JsonKey()
-  List<DiscountAllocations> get discountAllocations {
-    if (_discountAllocations is EqualUnmodifiableListView)
-      return _discountAllocations;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_discountAllocations);
-  }
-
-  final List<Attribute> _customAttributes;
-  @override
-  @JsonKey()
-  List<Attribute> get customAttributes {
-    if (_customAttributes is EqualUnmodifiableListView)
-      return _customAttributes;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_customAttributes);
-  }
-
-  @override
-  final String? variantId;
-  @override
-  final String? id;
-  @override
-  final ProductVariantCheckout? variant;
-
-  @override
-  String toString() {
-    return 'LineItem(title: $title, quantity: $quantity, discountAllocations: $discountAllocations, customAttributes: $customAttributes, variantId: $variantId, id: $id, variant: $variant)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LineItemImpl &&
-            (identical(other.title, title) || other.title == title) &&
-            (identical(other.quantity, quantity) ||
-                other.quantity == quantity) &&
-            const DeepCollectionEquality()
-                .equals(other._discountAllocations, _discountAllocations) &&
-            const DeepCollectionEquality()
-                .equals(other._customAttributes, _customAttributes) &&
-            (identical(other.variantId, variantId) ||
-                other.variantId == variantId) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.variant, variant) || other.variant == variant));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      title,
-      quantity,
-      const DeepCollectionEquality().hash(_discountAllocations),
-      const DeepCollectionEquality().hash(_customAttributes),
-      variantId,
-      id,
-      variant);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LineItemImplCopyWith<_$LineItemImpl> get copyWith =>
-      __$$LineItemImplCopyWithImpl<_$LineItemImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LineItemImplToJson(
-      this,
-    );
-  }
+@override final  String title;
+@override final  int quantity;
+ final  List<DiscountAllocations> _discountAllocations;
+@override@JsonKey() List<DiscountAllocations> get discountAllocations {
+  if (_discountAllocations is EqualUnmodifiableListView) return _discountAllocations;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_discountAllocations);
 }
 
-abstract class _LineItem extends LineItem {
-  factory _LineItem(
-      {required final String title,
-      required final int quantity,
-      final List<DiscountAllocations> discountAllocations,
-      final List<Attribute> customAttributes,
-      final String? variantId,
-      final String? id,
-      final ProductVariantCheckout? variant}) = _$LineItemImpl;
-  _LineItem._() : super._();
-
-  factory _LineItem.fromJson(Map<String, dynamic> json) =
-      _$LineItemImpl.fromJson;
-
-  @override
-  String get title;
-  @override
-  int get quantity;
-  @override
-  List<DiscountAllocations> get discountAllocations;
-  @override
-  List<Attribute> get customAttributes;
-  @override
-  String? get variantId;
-  @override
-  String? get id;
-  @override
-  ProductVariantCheckout? get variant;
-  @override
-  @JsonKey(ignore: true)
-  _$$LineItemImplCopyWith<_$LineItemImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+ final  List<Attribute> _customAttributes;
+@override@JsonKey() List<Attribute> get customAttributes {
+  if (_customAttributes is EqualUnmodifiableListView) return _customAttributes;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_customAttributes);
 }
+
+@override final  String? variantId;
+@override final  String? id;
+@override final  ProductVariantCheckout? variant;
+
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LineItemCopyWith<_LineItem> get copyWith => __$LineItemCopyWithImpl<_LineItem>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$LineItemToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LineItem&&(identical(other.title, title) || other.title == title)&&(identical(other.quantity, quantity) || other.quantity == quantity)&&const DeepCollectionEquality().equals(other._discountAllocations, _discountAllocations)&&const DeepCollectionEquality().equals(other._customAttributes, _customAttributes)&&(identical(other.variantId, variantId) || other.variantId == variantId)&&(identical(other.id, id) || other.id == id)&&(identical(other.variant, variant) || other.variant == variant));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,title,quantity,const DeepCollectionEquality().hash(_discountAllocations),const DeepCollectionEquality().hash(_customAttributes),variantId,id,variant);
+
+@override
+String toString() {
+  return 'LineItem(title: $title, quantity: $quantity, discountAllocations: $discountAllocations, customAttributes: $customAttributes, variantId: $variantId, id: $id, variant: $variant)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LineItemCopyWith<$Res> implements $LineItemCopyWith<$Res> {
+  factory _$LineItemCopyWith(_LineItem value, $Res Function(_LineItem) _then) = __$LineItemCopyWithImpl;
+@override @useResult
+$Res call({
+ String title, int quantity, List<DiscountAllocations> discountAllocations, List<Attribute> customAttributes, String? variantId, String? id, ProductVariantCheckout? variant
+});
+
+
+@override $ProductVariantCheckoutCopyWith<$Res>? get variant;
+
+}
+/// @nodoc
+class __$LineItemCopyWithImpl<$Res>
+    implements _$LineItemCopyWith<$Res> {
+  __$LineItemCopyWithImpl(this._self, this._then);
+
+  final _LineItem _self;
+  final $Res Function(_LineItem) _then;
+
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? quantity = null,Object? discountAllocations = null,Object? customAttributes = null,Object? variantId = freezed,Object? id = freezed,Object? variant = freezed,}) {
+  return _then(_LineItem(
+title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as int,discountAllocations: null == discountAllocations ? _self._discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
+as List<DiscountAllocations>,customAttributes: null == customAttributes ? _self._customAttributes : customAttributes // ignore: cast_nullable_to_non_nullable
+as List<Attribute>,variantId: freezed == variantId ? _self.variantId : variantId // ignore: cast_nullable_to_non_nullable
+as String?,id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,variant: freezed == variant ? _self.variant : variant // ignore: cast_nullable_to_non_nullable
+as ProductVariantCheckout?,
+  ));
+}
+
+/// Create a copy of LineItem
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$ProductVariantCheckoutCopyWith<$Res>? get variant {
+    if (_self.variant == null) {
+    return null;
+  }
+
+  return $ProductVariantCheckoutCopyWith<$Res>(_self.variant!, (value) {
+    return _then(_self.copyWith(variant: value));
+  });
+}
+}
+
+// dart format on

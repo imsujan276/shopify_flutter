@@ -13,7 +13,7 @@ dependencies:
   flutter_inappwebview: 6.0.0
   flutter_dotenv: ^5.1.0
   cupertino_icons: ^1.0.2
-  flutter_widget_from_html: ^0.14.11
+  flutter_widget_from_html: ^0.17.1
   alerter: ^1.0.2
 
 dev_dependencies:
@@ -24,5 +24,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # assets:
-  #   - .env
+  assets:
+    - .env

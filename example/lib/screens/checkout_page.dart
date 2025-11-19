@@ -43,7 +43,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           title: bestSellingProducts[0].title,
           id: bestSellingProducts[0].id));
 
-      var address = Address(
+      var address = const Address(
         address1: '11 Hinkler Avenue',
         city: 'Sydney',
         country: 'Australia',

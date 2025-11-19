@@ -54,7 +54,7 @@ class _CartTabState extends State<CartTab> {
         customerAccessToken: accessToken,
       ),
       attributes: [
-        AttributeInput(
+        const AttributeInput(
           key: 'color',
           value: 'Blue',
         ),
@@ -106,7 +106,7 @@ class _CartTabState extends State<CartTab> {
       quantity: 1,
       merchandiseId: product.productVariants.first.id,
       attributes: [
-        AttributeInput(
+        const AttributeInput(
           key: 'color',
           value: 'red',
         ),
@@ -266,11 +266,11 @@ class _CartInfoState extends State<CartInfo> {
         quantity: quantity,
         merchandiseId: "${line.variantId}",
         attributes: [
-          AttributeInput(
+          const AttributeInput(
             key: 'color',
             value: 'blue',
           ),
-          AttributeInput(key: 'Misc', value: '1')
+          const AttributeInput(key: 'Misc', value: '1')
         ],
       );
       final updatedCart = await shopifyCart.updateLineItemsInCart(
@@ -481,7 +481,7 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
           phone: randomPhone(),
           countryCode: buyerIndetity?.countryCode,
           deliveryAddressPreferences: [
-            DeliveryAddressInput(
+            const DeliveryAddressInput(
               deliveryAddress: MailingAddressInput(
                 address1: '11 Hinkler Avenue',
                 city: 'Sydney',

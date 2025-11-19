@@ -7,11 +7,11 @@ part 'cart_line_cost.g.dart';
 @freezed
 
 /// The cart line cost
-class CartLineCost with _$CartLineCost {
+abstract class CartLineCost with _$CartLineCost {
   const CartLineCost._();
 
   /// The cart line cost constructor
-  factory CartLineCost({
+  const factory CartLineCost({
     required PriceV2 amountPerQuantity,
     required PriceV2 subtotalAmount,
     required PriceV2 totalAmount,

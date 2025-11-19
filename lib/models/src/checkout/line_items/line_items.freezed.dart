@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,151 +9,275 @@ part of 'line_items.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LineItems _$LineItemsFromJson(Map<String, dynamic> json) {
-  return _LineItems.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LineItems {
-  List<LineItem> get lineItemList => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LineItemsCopyWith<LineItems> get copyWith =>
-      throw _privateConstructorUsedError;
+ List<LineItem> get lineItemList;
+/// Create a copy of LineItems
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LineItemsCopyWith<LineItems> get copyWith => _$LineItemsCopyWithImpl<LineItems>(this as LineItems, _$identity);
+
+  /// Serializes this LineItems to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LineItems&&const DeepCollectionEquality().equals(other.lineItemList, lineItemList));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(lineItemList));
+
+@override
+String toString() {
+  return 'LineItems(lineItemList: $lineItemList)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LineItemsCopyWith<$Res> {
-  factory $LineItemsCopyWith(LineItems value, $Res Function(LineItems) then) =
-      _$LineItemsCopyWithImpl<$Res, LineItems>;
-  @useResult
-  $Res call({List<LineItem> lineItemList});
-}
+abstract mixin class $LineItemsCopyWith<$Res>  {
+  factory $LineItemsCopyWith(LineItems value, $Res Function(LineItems) _then) = _$LineItemsCopyWithImpl;
+@useResult
+$Res call({
+ List<LineItem> lineItemList
+});
 
+
+
+
+}
 /// @nodoc
-class _$LineItemsCopyWithImpl<$Res, $Val extends LineItems>
+class _$LineItemsCopyWithImpl<$Res>
     implements $LineItemsCopyWith<$Res> {
-  _$LineItemsCopyWithImpl(this._value, this._then);
+  _$LineItemsCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LineItems _self;
+  final $Res Function(LineItems) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lineItemList = null,
-  }) {
-    return _then(_value.copyWith(
-      lineItemList: null == lineItemList
-          ? _value.lineItemList
-          : lineItemList // ignore: cast_nullable_to_non_nullable
-              as List<LineItem>,
-    ) as $Val);
-  }
+/// Create a copy of LineItems
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? lineItemList = null,}) {
+  return _then(_self.copyWith(
+lineItemList: null == lineItemList ? _self.lineItemList : lineItemList // ignore: cast_nullable_to_non_nullable
+as List<LineItem>,
+  ));
 }
 
-/// @nodoc
-abstract class _$$LineItemsImplCopyWith<$Res>
-    implements $LineItemsCopyWith<$Res> {
-  factory _$$LineItemsImplCopyWith(
-          _$LineItemsImpl value, $Res Function(_$LineItemsImpl) then) =
-      __$$LineItemsImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<LineItem> lineItemList});
 }
 
-/// @nodoc
-class __$$LineItemsImplCopyWithImpl<$Res>
-    extends _$LineItemsCopyWithImpl<$Res, _$LineItemsImpl>
-    implements _$$LineItemsImplCopyWith<$Res> {
-  __$$LineItemsImplCopyWithImpl(
-      _$LineItemsImpl _value, $Res Function(_$LineItemsImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lineItemList = null,
-  }) {
-    return _then(_$LineItemsImpl(
-      lineItemList: null == lineItemList
-          ? _value._lineItemList
-          : lineItemList // ignore: cast_nullable_to_non_nullable
-              as List<LineItem>,
-    ));
-  }
+/// Adds pattern-matching-related methods to [LineItems].
+extension LineItemsPatterns on LineItems {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LineItems value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _LineItems() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LineItems value)  $default,){
+final _that = this;
+switch (_that) {
+case _LineItems():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LineItems value)?  $default,){
+final _that = this;
+switch (_that) {
+case _LineItems() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<LineItem> lineItemList)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _LineItems() when $default != null:
+return $default(_that.lineItemList);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<LineItem> lineItemList)  $default,) {final _that = this;
+switch (_that) {
+case _LineItems():
+return $default(_that.lineItemList);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<LineItem> lineItemList)?  $default,) {final _that = this;
+switch (_that) {
+case _LineItems() when $default != null:
+return $default(_that.lineItemList);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LineItemsImpl implements _LineItems {
-  _$LineItemsImpl({required final List<LineItem> lineItemList})
-      : _lineItemList = lineItemList;
 
-  factory _$LineItemsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LineItemsImplFromJson(json);
+class _LineItems implements LineItems {
+  const _LineItems({required final  List<LineItem> lineItemList}): _lineItemList = lineItemList;
+  factory _LineItems.fromJson(Map<String, dynamic> json) => _$LineItemsFromJson(json);
 
-  final List<LineItem> _lineItemList;
-  @override
-  List<LineItem> get lineItemList {
-    if (_lineItemList is EqualUnmodifiableListView) return _lineItemList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_lineItemList);
-  }
-
-  @override
-  String toString() {
-    return 'LineItems(lineItemList: $lineItemList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LineItemsImpl &&
-            const DeepCollectionEquality()
-                .equals(other._lineItemList, _lineItemList));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_lineItemList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
-      __$$LineItemsImplCopyWithImpl<_$LineItemsImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LineItemsImplToJson(
-      this,
-    );
-  }
+ final  List<LineItem> _lineItemList;
+@override List<LineItem> get lineItemList {
+  if (_lineItemList is EqualUnmodifiableListView) return _lineItemList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_lineItemList);
 }
 
-abstract class _LineItems implements LineItems {
-  factory _LineItems({required final List<LineItem> lineItemList}) =
-      _$LineItemsImpl;
 
-  factory _LineItems.fromJson(Map<String, dynamic> json) =
-      _$LineItemsImpl.fromJson;
+/// Create a copy of LineItems
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LineItemsCopyWith<_LineItems> get copyWith => __$LineItemsCopyWithImpl<_LineItems>(this, _$identity);
 
-  @override
-  List<LineItem> get lineItemList;
-  @override
-  @JsonKey(ignore: true)
-  _$$LineItemsImplCopyWith<_$LineItemsImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$LineItemsToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LineItems&&const DeepCollectionEquality().equals(other._lineItemList, _lineItemList));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_lineItemList));
+
+@override
+String toString() {
+  return 'LineItems(lineItemList: $lineItemList)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LineItemsCopyWith<$Res> implements $LineItemsCopyWith<$Res> {
+  factory _$LineItemsCopyWith(_LineItems value, $Res Function(_LineItems) _then) = __$LineItemsCopyWithImpl;
+@override @useResult
+$Res call({
+ List<LineItem> lineItemList
+});
+
+
+
+
+}
+/// @nodoc
+class __$LineItemsCopyWithImpl<$Res>
+    implements _$LineItemsCopyWith<$Res> {
+  __$LineItemsCopyWithImpl(this._self, this._then);
+
+  final _LineItems _self;
+  final $Res Function(_LineItems) _then;
+
+/// Create a copy of LineItems
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? lineItemList = null,}) {
+  return _then(_LineItems(
+lineItemList: null == lineItemList ? _self._lineItemList : lineItemList // ignore: cast_nullable_to_non_nullable
+as List<LineItem>,
+  ));
+}
+
+
+}
+
+// dart format on

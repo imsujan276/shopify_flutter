@@ -6,11 +6,11 @@ part 'page.g.dart';
 @freezed
 
 /// The Page class
-class Page with _$Page {
+abstract class Page with _$Page {
   const Page._();
 
   /// The Page constructor
-  factory Page({
+  const factory Page({
     required String body,
     required String bodySummary,
     required DateTime createdAt,

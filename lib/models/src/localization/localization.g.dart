@@ -6,8 +6,8 @@ part of 'localization.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LocalizationImpl _$$LocalizationImplFromJson(Map<String, dynamic> json) =>
-    _$LocalizationImpl(
+_Localization _$LocalizationFromJson(Map<String, dynamic> json) =>
+    _Localization(
       availableLanguages: (json['availableLanguages'] as List<dynamic>)
           .map((e) => Language.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -19,12 +19,14 @@ _$LocalizationImpl _$$LocalizationImplFromJson(Map<String, dynamic> json) =>
       market: Market.fromJson(json['market'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LocalizationImplToJson(_$LocalizationImpl instance) =>
+Map<String, dynamic> _$LocalizationToJson(_Localization instance) =>
     <String, dynamic>{
-      'availableLanguages':
-          instance.availableLanguages.map((e) => e.toJson()).toList(),
-      'availableCountries':
-          instance.availableCountries.map((e) => e.toJson()).toList(),
+      'availableLanguages': instance.availableLanguages
+          .map((e) => e.toJson())
+          .toList(),
+      'availableCountries': instance.availableCountries
+          .map((e) => e.toJson())
+          .toList(),
       'language': instance.language.toJson(),
       'country': instance.country.toJson(),
       'market': instance.market.toJson(),

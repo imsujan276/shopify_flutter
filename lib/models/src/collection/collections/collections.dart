@@ -6,13 +6,15 @@ part 'collections.freezed.dart';
 part 'collections.g.dart';
 
 @freezed
-
 /// The Collections class
-class Collections with _$Collections {
+abstract class Collections with _$Collections {
+  const Collections._();
+
   /// The Collections constructor
-  factory Collections(
-      {required List<Collection> collectionList,
-      required bool hasNextPage}) = _Collections;
+  const factory Collections({
+    required List<Collection> collectionList,
+    required bool hasNextPage,
+  }) = _Collections;
 
   /// The Collections from json
   factory Collections.fromJson(Map<String, dynamic> json) =>
@@ -20,14 +22,15 @@ class Collections with _$Collections {
 
   /// The Collections from graph json
   factory Collections.fromGraphJson(Map<String, dynamic> json) => Collections(
-        collectionList: _getCollectionList(json),
-        hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'],
-      );
+    collectionList: _getCollectionList(json),
+    hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'],
+  );
 
   static List<Collection> _getCollectionList(Map<String, dynamic> json) {
     List<Collection> collectionList = [];
     json['edges']?.forEach(
-        (e) => collectionList.add(Collection.fromGraphJson(e ?? const {})));
+      (e) => collectionList.add(Collection.fromGraphJson(e ?? const {})),
+    );
     return collectionList;
   }
 }

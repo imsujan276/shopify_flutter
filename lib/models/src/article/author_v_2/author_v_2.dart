@@ -6,9 +6,9 @@ part 'author_v_2.g.dart';
 @freezed
 
 /// The AuthorV2 class
-class AuthorV2 with _$AuthorV2 {
+abstract class AuthorV2 with _$AuthorV2 {
   /// The AuthorV2 constructor
-  factory AuthorV2(
+  const factory AuthorV2(
       {String? bio,
       String? email,
       String? firstName,

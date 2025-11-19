@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,156 +9,275 @@ part of 'line_items_order.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-LineItemsOrder _$LineItemsOrderFromJson(Map<String, dynamic> json) {
-  return _LineItemsOrder.fromJson(json);
-}
 
 /// @nodoc
 mixin _$LineItemsOrder {
-  List<LineItemOrder> get lineItemOrderList =>
-      throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LineItemsOrderCopyWith<LineItemsOrder> get copyWith =>
-      throw _privateConstructorUsedError;
+ List<LineItemOrder> get lineItemOrderList;
+/// Create a copy of LineItemsOrder
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$LineItemsOrderCopyWith<LineItemsOrder> get copyWith => _$LineItemsOrderCopyWithImpl<LineItemsOrder>(this as LineItemsOrder, _$identity);
+
+  /// Serializes this LineItemsOrder to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is LineItemsOrder&&const DeepCollectionEquality().equals(other.lineItemOrderList, lineItemOrderList));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(lineItemOrderList));
+
+@override
+String toString() {
+  return 'LineItemsOrder(lineItemOrderList: $lineItemOrderList)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $LineItemsOrderCopyWith<$Res> {
-  factory $LineItemsOrderCopyWith(
-          LineItemsOrder value, $Res Function(LineItemsOrder) then) =
-      _$LineItemsOrderCopyWithImpl<$Res, LineItemsOrder>;
-  @useResult
-  $Res call({List<LineItemOrder> lineItemOrderList});
-}
+abstract mixin class $LineItemsOrderCopyWith<$Res>  {
+  factory $LineItemsOrderCopyWith(LineItemsOrder value, $Res Function(LineItemsOrder) _then) = _$LineItemsOrderCopyWithImpl;
+@useResult
+$Res call({
+ List<LineItemOrder> lineItemOrderList
+});
 
+
+
+
+}
 /// @nodoc
-class _$LineItemsOrderCopyWithImpl<$Res, $Val extends LineItemsOrder>
+class _$LineItemsOrderCopyWithImpl<$Res>
     implements $LineItemsOrderCopyWith<$Res> {
-  _$LineItemsOrderCopyWithImpl(this._value, this._then);
+  _$LineItemsOrderCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final LineItemsOrder _self;
+  final $Res Function(LineItemsOrder) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lineItemOrderList = null,
-  }) {
-    return _then(_value.copyWith(
-      lineItemOrderList: null == lineItemOrderList
-          ? _value.lineItemOrderList
-          : lineItemOrderList // ignore: cast_nullable_to_non_nullable
-              as List<LineItemOrder>,
-    ) as $Val);
-  }
+/// Create a copy of LineItemsOrder
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? lineItemOrderList = null,}) {
+  return _then(_self.copyWith(
+lineItemOrderList: null == lineItemOrderList ? _self.lineItemOrderList : lineItemOrderList // ignore: cast_nullable_to_non_nullable
+as List<LineItemOrder>,
+  ));
 }
 
-/// @nodoc
-abstract class _$$LineItemsOrderImplCopyWith<$Res>
-    implements $LineItemsOrderCopyWith<$Res> {
-  factory _$$LineItemsOrderImplCopyWith(_$LineItemsOrderImpl value,
-          $Res Function(_$LineItemsOrderImpl) then) =
-      __$$LineItemsOrderImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<LineItemOrder> lineItemOrderList});
 }
 
-/// @nodoc
-class __$$LineItemsOrderImplCopyWithImpl<$Res>
-    extends _$LineItemsOrderCopyWithImpl<$Res, _$LineItemsOrderImpl>
-    implements _$$LineItemsOrderImplCopyWith<$Res> {
-  __$$LineItemsOrderImplCopyWithImpl(
-      _$LineItemsOrderImpl _value, $Res Function(_$LineItemsOrderImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? lineItemOrderList = null,
-  }) {
-    return _then(_$LineItemsOrderImpl(
-      lineItemOrderList: null == lineItemOrderList
-          ? _value._lineItemOrderList
-          : lineItemOrderList // ignore: cast_nullable_to_non_nullable
-              as List<LineItemOrder>,
-    ));
-  }
+/// Adds pattern-matching-related methods to [LineItemsOrder].
+extension LineItemsOrderPatterns on LineItemsOrder {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _LineItemsOrder value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _LineItemsOrder() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _LineItemsOrder value)  $default,){
+final _that = this;
+switch (_that) {
+case _LineItemsOrder():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _LineItemsOrder value)?  $default,){
+final _that = this;
+switch (_that) {
+case _LineItemsOrder() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<LineItemOrder> lineItemOrderList)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _LineItemsOrder() when $default != null:
+return $default(_that.lineItemOrderList);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<LineItemOrder> lineItemOrderList)  $default,) {final _that = this;
+switch (_that) {
+case _LineItemsOrder():
+return $default(_that.lineItemOrderList);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<LineItemOrder> lineItemOrderList)?  $default,) {final _that = this;
+switch (_that) {
+case _LineItemsOrder() when $default != null:
+return $default(_that.lineItemOrderList);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$LineItemsOrderImpl implements _LineItemsOrder {
-  _$LineItemsOrderImpl({required final List<LineItemOrder> lineItemOrderList})
-      : _lineItemOrderList = lineItemOrderList;
 
-  factory _$LineItemsOrderImpl.fromJson(Map<String, dynamic> json) =>
-      _$$LineItemsOrderImplFromJson(json);
+class _LineItemsOrder extends LineItemsOrder {
+  const _LineItemsOrder({required final  List<LineItemOrder> lineItemOrderList}): _lineItemOrderList = lineItemOrderList,super._();
+  factory _LineItemsOrder.fromJson(Map<String, dynamic> json) => _$LineItemsOrderFromJson(json);
 
-  final List<LineItemOrder> _lineItemOrderList;
-  @override
-  List<LineItemOrder> get lineItemOrderList {
-    if (_lineItemOrderList is EqualUnmodifiableListView)
-      return _lineItemOrderList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_lineItemOrderList);
-  }
-
-  @override
-  String toString() {
-    return 'LineItemsOrder(lineItemOrderList: $lineItemOrderList)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LineItemsOrderImpl &&
-            const DeepCollectionEquality()
-                .equals(other._lineItemOrderList, _lineItemOrderList));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_lineItemOrderList));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
-      __$$LineItemsOrderImplCopyWithImpl<_$LineItemsOrderImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$LineItemsOrderImplToJson(
-      this,
-    );
-  }
+ final  List<LineItemOrder> _lineItemOrderList;
+@override List<LineItemOrder> get lineItemOrderList {
+  if (_lineItemOrderList is EqualUnmodifiableListView) return _lineItemOrderList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_lineItemOrderList);
 }
 
-abstract class _LineItemsOrder implements LineItemsOrder {
-  factory _LineItemsOrder(
-          {required final List<LineItemOrder> lineItemOrderList}) =
-      _$LineItemsOrderImpl;
 
-  factory _LineItemsOrder.fromJson(Map<String, dynamic> json) =
-      _$LineItemsOrderImpl.fromJson;
+/// Create a copy of LineItemsOrder
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$LineItemsOrderCopyWith<_LineItemsOrder> get copyWith => __$LineItemsOrderCopyWithImpl<_LineItemsOrder>(this, _$identity);
 
-  @override
-  List<LineItemOrder> get lineItemOrderList;
-  @override
-  @JsonKey(ignore: true)
-  _$$LineItemsOrderImplCopyWith<_$LineItemsOrderImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$LineItemsOrderToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _LineItemsOrder&&const DeepCollectionEquality().equals(other._lineItemOrderList, _lineItemOrderList));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_lineItemOrderList));
+
+@override
+String toString() {
+  return 'LineItemsOrder(lineItemOrderList: $lineItemOrderList)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$LineItemsOrderCopyWith<$Res> implements $LineItemsOrderCopyWith<$Res> {
+  factory _$LineItemsOrderCopyWith(_LineItemsOrder value, $Res Function(_LineItemsOrder) _then) = __$LineItemsOrderCopyWithImpl;
+@override @useResult
+$Res call({
+ List<LineItemOrder> lineItemOrderList
+});
+
+
+
+
+}
+/// @nodoc
+class __$LineItemsOrderCopyWithImpl<$Res>
+    implements _$LineItemsOrderCopyWith<$Res> {
+  __$LineItemsOrderCopyWithImpl(this._self, this._then);
+
+  final _LineItemsOrder _self;
+  final $Res Function(_LineItemsOrder) _then;
+
+/// Create a copy of LineItemsOrder
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? lineItemOrderList = null,}) {
+  return _then(_LineItemsOrder(
+lineItemOrderList: null == lineItemOrderList ? _self._lineItemOrderList : lineItemOrderList // ignore: cast_nullable_to_non_nullable
+as List<LineItemOrder>,
+  ));
+}
+
+
+}
+
+// dart format on

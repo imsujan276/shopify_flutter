@@ -10,11 +10,11 @@ part 'cart_input.g.dart';
 @freezed
 
 /// The cart input
-class CartInput with _$CartInput {
+abstract class CartInput with _$CartInput {
   const CartInput._();
 
   /// The cart input constructor
-  factory CartInput({
+  const factory CartInput({
     @Default([]) List<String?> discountCodes,
     @Default([]) List<CartLineInput?> lines,
     @Default('') String note,

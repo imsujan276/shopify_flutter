@@ -17,11 +17,11 @@ part 'checkout.g.dart';
 @freezed
 
 /// The checkout
-class Checkout with _$Checkout {
+abstract class Checkout with _$Checkout {
   const Checkout._();
 
   /// The checkout constructor
-  factory Checkout({
+  const factory Checkout({
     required String id,
     required bool ready,
     required AvailableShippingRates? availableShippingRates,

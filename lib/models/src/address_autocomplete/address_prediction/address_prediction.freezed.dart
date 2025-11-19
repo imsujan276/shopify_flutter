@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,203 +9,283 @@ part of 'address_prediction.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AddressPrediction _$AddressPredictionFromJson(Map<String, dynamic> json) {
-  return _AddressPrediction.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AddressPrediction {
-  String? get addressId => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  List<MatchedSubstring>? get matchedSubstrings =>
-      throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AddressPredictionCopyWith<AddressPrediction> get copyWith =>
-      throw _privateConstructorUsedError;
+ String? get addressId; String? get description; List<MatchedSubstring>? get matchedSubstrings;
+/// Create a copy of AddressPrediction
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AddressPredictionCopyWith<AddressPrediction> get copyWith => _$AddressPredictionCopyWithImpl<AddressPrediction>(this as AddressPrediction, _$identity);
+
+  /// Serializes this AddressPrediction to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AddressPrediction&&(identical(other.addressId, addressId) || other.addressId == addressId)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other.matchedSubstrings, matchedSubstrings));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,addressId,description,const DeepCollectionEquality().hash(matchedSubstrings));
+
+@override
+String toString() {
+  return 'AddressPrediction(addressId: $addressId, description: $description, matchedSubstrings: $matchedSubstrings)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AddressPredictionCopyWith<$Res> {
-  factory $AddressPredictionCopyWith(
-          AddressPrediction value, $Res Function(AddressPrediction) then) =
-      _$AddressPredictionCopyWithImpl<$Res, AddressPrediction>;
-  @useResult
-  $Res call(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings});
-}
+abstract mixin class $AddressPredictionCopyWith<$Res>  {
+  factory $AddressPredictionCopyWith(AddressPrediction value, $Res Function(AddressPrediction) _then) = _$AddressPredictionCopyWithImpl;
+@useResult
+$Res call({
+ String? addressId, String? description, List<MatchedSubstring>? matchedSubstrings
+});
 
+
+
+
+}
 /// @nodoc
-class _$AddressPredictionCopyWithImpl<$Res, $Val extends AddressPrediction>
+class _$AddressPredictionCopyWithImpl<$Res>
     implements $AddressPredictionCopyWith<$Res> {
-  _$AddressPredictionCopyWithImpl(this._value, this._then);
+  _$AddressPredictionCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AddressPrediction _self;
+  final $Res Function(AddressPrediction) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? addressId = freezed,
-    Object? description = freezed,
-    Object? matchedSubstrings = freezed,
-  }) {
-    return _then(_value.copyWith(
-      addressId: freezed == addressId
-          ? _value.addressId
-          : addressId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      matchedSubstrings: freezed == matchedSubstrings
-          ? _value.matchedSubstrings
-          : matchedSubstrings // ignore: cast_nullable_to_non_nullable
-              as List<MatchedSubstring>?,
-    ) as $Val);
-  }
+/// Create a copy of AddressPrediction
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? addressId = freezed,Object? description = freezed,Object? matchedSubstrings = freezed,}) {
+  return _then(_self.copyWith(
+addressId: freezed == addressId ? _self.addressId : addressId // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,matchedSubstrings: freezed == matchedSubstrings ? _self.matchedSubstrings : matchedSubstrings // ignore: cast_nullable_to_non_nullable
+as List<MatchedSubstring>?,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AddressPredictionImplCopyWith<$Res>
-    implements $AddressPredictionCopyWith<$Res> {
-  factory _$$AddressPredictionImplCopyWith(_$AddressPredictionImpl value,
-          $Res Function(_$AddressPredictionImpl) then) =
-      __$$AddressPredictionImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {String? addressId,
-      String? description,
-      List<MatchedSubstring>? matchedSubstrings});
 }
 
-/// @nodoc
-class __$$AddressPredictionImplCopyWithImpl<$Res>
-    extends _$AddressPredictionCopyWithImpl<$Res, _$AddressPredictionImpl>
-    implements _$$AddressPredictionImplCopyWith<$Res> {
-  __$$AddressPredictionImplCopyWithImpl(_$AddressPredictionImpl _value,
-      $Res Function(_$AddressPredictionImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? addressId = freezed,
-    Object? description = freezed,
-    Object? matchedSubstrings = freezed,
-  }) {
-    return _then(_$AddressPredictionImpl(
-      addressId: freezed == addressId
-          ? _value.addressId
-          : addressId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      matchedSubstrings: freezed == matchedSubstrings
-          ? _value._matchedSubstrings
-          : matchedSubstrings // ignore: cast_nullable_to_non_nullable
-              as List<MatchedSubstring>?,
-    ));
-  }
+/// Adds pattern-matching-related methods to [AddressPrediction].
+extension AddressPredictionPatterns on AddressPrediction {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AddressPrediction value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AddressPrediction() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AddressPrediction value)  $default,){
+final _that = this;
+switch (_that) {
+case _AddressPrediction():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AddressPrediction value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AddressPrediction() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? addressId,  String? description,  List<MatchedSubstring>? matchedSubstrings)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AddressPrediction() when $default != null:
+return $default(_that.addressId,_that.description,_that.matchedSubstrings);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? addressId,  String? description,  List<MatchedSubstring>? matchedSubstrings)  $default,) {final _that = this;
+switch (_that) {
+case _AddressPrediction():
+return $default(_that.addressId,_that.description,_that.matchedSubstrings);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? addressId,  String? description,  List<MatchedSubstring>? matchedSubstrings)?  $default,) {final _that = this;
+switch (_that) {
+case _AddressPrediction() when $default != null:
+return $default(_that.addressId,_that.description,_that.matchedSubstrings);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AddressPredictionImpl implements _AddressPrediction {
-  const _$AddressPredictionImpl(
-      {this.addressId,
-      this.description,
-      final List<MatchedSubstring>? matchedSubstrings})
-      : _matchedSubstrings = matchedSubstrings;
 
-  factory _$AddressPredictionImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AddressPredictionImplFromJson(json);
+class _AddressPrediction implements AddressPrediction {
+  const _AddressPrediction({this.addressId, this.description, final  List<MatchedSubstring>? matchedSubstrings}): _matchedSubstrings = matchedSubstrings;
+  factory _AddressPrediction.fromJson(Map<String, dynamic> json) => _$AddressPredictionFromJson(json);
 
-  @override
-  final String? addressId;
-  @override
-  final String? description;
-  final List<MatchedSubstring>? _matchedSubstrings;
-  @override
-  List<MatchedSubstring>? get matchedSubstrings {
-    final value = _matchedSubstrings;
-    if (value == null) return null;
-    if (_matchedSubstrings is EqualUnmodifiableListView)
-      return _matchedSubstrings;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'AddressPrediction(addressId: $addressId, description: $description, matchedSubstrings: $matchedSubstrings)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AddressPredictionImpl &&
-            (identical(other.addressId, addressId) ||
-                other.addressId == addressId) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            const DeepCollectionEquality()
-                .equals(other._matchedSubstrings, _matchedSubstrings));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, addressId, description,
-      const DeepCollectionEquality().hash(_matchedSubstrings));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
-      __$$AddressPredictionImplCopyWithImpl<_$AddressPredictionImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AddressPredictionImplToJson(
-      this,
-    );
-  }
+@override final  String? addressId;
+@override final  String? description;
+ final  List<MatchedSubstring>? _matchedSubstrings;
+@override List<MatchedSubstring>? get matchedSubstrings {
+  final value = _matchedSubstrings;
+  if (value == null) return null;
+  if (_matchedSubstrings is EqualUnmodifiableListView) return _matchedSubstrings;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(value);
 }
 
-abstract class _AddressPrediction implements AddressPrediction {
-  const factory _AddressPrediction(
-          {final String? addressId,
-          final String? description,
-          final List<MatchedSubstring>? matchedSubstrings}) =
-      _$AddressPredictionImpl;
 
-  factory _AddressPrediction.fromJson(Map<String, dynamic> json) =
-      _$AddressPredictionImpl.fromJson;
+/// Create a copy of AddressPrediction
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AddressPredictionCopyWith<_AddressPrediction> get copyWith => __$AddressPredictionCopyWithImpl<_AddressPrediction>(this, _$identity);
 
-  @override
-  String? get addressId;
-  @override
-  String? get description;
-  @override
-  List<MatchedSubstring>? get matchedSubstrings;
-  @override
-  @JsonKey(ignore: true)
-  _$$AddressPredictionImplCopyWith<_$AddressPredictionImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+Map<String, dynamic> toJson() {
+  return _$AddressPredictionToJson(this, );
 }
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AddressPrediction&&(identical(other.addressId, addressId) || other.addressId == addressId)&&(identical(other.description, description) || other.description == description)&&const DeepCollectionEquality().equals(other._matchedSubstrings, _matchedSubstrings));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,addressId,description,const DeepCollectionEquality().hash(_matchedSubstrings));
+
+@override
+String toString() {
+  return 'AddressPrediction(addressId: $addressId, description: $description, matchedSubstrings: $matchedSubstrings)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AddressPredictionCopyWith<$Res> implements $AddressPredictionCopyWith<$Res> {
+  factory _$AddressPredictionCopyWith(_AddressPrediction value, $Res Function(_AddressPrediction) _then) = __$AddressPredictionCopyWithImpl;
+@override @useResult
+$Res call({
+ String? addressId, String? description, List<MatchedSubstring>? matchedSubstrings
+});
+
+
+
+
+}
+/// @nodoc
+class __$AddressPredictionCopyWithImpl<$Res>
+    implements _$AddressPredictionCopyWith<$Res> {
+  __$AddressPredictionCopyWithImpl(this._self, this._then);
+
+  final _AddressPrediction _self;
+  final $Res Function(_AddressPrediction) _then;
+
+/// Create a copy of AddressPrediction
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? addressId = freezed,Object? description = freezed,Object? matchedSubstrings = freezed,}) {
+  return _then(_AddressPrediction(
+addressId: freezed == addressId ? _self.addressId : addressId // ignore: cast_nullable_to_non_nullable
+as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
+as String?,matchedSubstrings: freezed == matchedSubstrings ? _self._matchedSubstrings : matchedSubstrings // ignore: cast_nullable_to_non_nullable
+as List<MatchedSubstring>?,
+  ));
+}
+
+
+}
+
+// dart format on

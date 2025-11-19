@@ -7,11 +7,11 @@ part 'applied_gift_cards.g.dart';
 @freezed
 
 /// The applied gift cards
-class AppliedGiftCards with _$AppliedGiftCards {
+abstract class AppliedGiftCards with _$AppliedGiftCards {
   const AppliedGiftCards._();
 
   /// The applied gift cards constructor
-  factory AppliedGiftCards(
+  const factory AppliedGiftCards(
       {required PriceV2 amountUsedV2,
       required PriceV2 balanceV2,
       required String id}) = _AppliedGiftCards;

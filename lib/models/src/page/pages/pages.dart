@@ -6,11 +6,12 @@ part 'pages.freezed.dart';
 part 'pages.g.dart';
 
 @freezed
-
 /// The Pages class
-class Pages with _$Pages {
+abstract class Pages with _$Pages {
+  const Pages._();
+
   /// The Pages constructor
-  factory Pages({required List<Page> pageList}) = _Pages;
+  const factory Pages({required List<Page> pageList}) = _Pages;
 
   /// The Pages from json
   factory Pages.fromJson(Map<String, dynamic> json) => _$PagesFromJson(json);
@@ -21,8 +22,9 @@ class Pages with _$Pages {
 
   static List<Page> _getPageList(Map<String, dynamic> json) {
     List<Page> pageList = [];
-    json['edges']
-        ?.forEach((blog) => pageList.add(Page.fromGraphJson(blog ?? const {})));
+    json['edges']?.forEach(
+      (blog) => pageList.add(Page.fromGraphJson(blog ?? const {})),
+    );
     return pageList;
   }
 }

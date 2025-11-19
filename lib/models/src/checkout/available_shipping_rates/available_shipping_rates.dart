@@ -7,11 +7,11 @@ part 'available_shipping_rates.g.dart';
 @freezed
 
 /// The available shipping rates
-class AvailableShippingRates with _$AvailableShippingRates {
+abstract class AvailableShippingRates with _$AvailableShippingRates {
   const AvailableShippingRates._();
 
   /// The available shipping rates constructor
-  factory AvailableShippingRates(
+  const factory AvailableShippingRates(
       {required bool ready,
       required List<ShippingRates>? shippingRates}) = _AvailableShippingRates;
 

@@ -10,11 +10,11 @@ part 'product_variant_checkout.g.dart';
 @freezed
 
 /// The product variant checkout
-class ProductVariantCheckout with _$ProductVariantCheckout {
+abstract class ProductVariantCheckout with _$ProductVariantCheckout {
   const ProductVariantCheckout._();
 
   /// The product variant checkout constructor
-  factory ProductVariantCheckout({
+  const factory ProductVariantCheckout({
     required String title,
     required bool availableForSale,
     required bool requiresShipping,

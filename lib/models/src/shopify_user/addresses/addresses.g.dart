@@ -6,14 +6,13 @@ part of 'addresses.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AddressesImpl _$$AddressesImplFromJson(Map<String, dynamic> json) =>
-    _$AddressesImpl(
-      addressList: (json['addressList'] as List<dynamic>)
-          .map((e) => Address.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
+_Addresses _$AddressesFromJson(Map<String, dynamic> json) => _Addresses(
+  addressList: (json['addressList'] as List<dynamic>)
+      .map((e) => Address.fromJson(e as Map<String, dynamic>))
+      .toList(),
+);
 
-Map<String, dynamic> _$$AddressesImplToJson(_$AddressesImpl instance) =>
+Map<String, dynamic> _$AddressesToJson(_Addresses instance) =>
     <String, dynamic>{
       'addressList': instance.addressList.map((e) => e.toJson()).toList(),
     };

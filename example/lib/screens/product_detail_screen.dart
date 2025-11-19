@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class ProductDetailScreen extends StatefulWidget {
-  const ProductDetailScreen({Key? key, required this.product})
-      : super(key: key);
+  const ProductDetailScreen({super.key, required this.product});
   final Product product;
 
   @override

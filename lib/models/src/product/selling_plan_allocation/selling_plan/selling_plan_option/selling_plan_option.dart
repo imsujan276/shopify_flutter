@@ -6,11 +6,11 @@ part 'selling_plan_option.g.dart';
 @freezed
 
 /// The SellingPlanOption class
-class SellingPlanOption with _$SellingPlanOption {
+abstract class SellingPlanOption with _$SellingPlanOption {
   const SellingPlanOption._();
 
   /// The SellingPlanOption constructor
-  factory SellingPlanOption({
+  const factory SellingPlanOption({
     required String name,
     required String value,
   }) = _SellingPlanOption;

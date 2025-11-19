@@ -1,4 +1,4 @@
-library shopify_flutter;
+library;
 
 export 'shopify/shopify.dart';
 export 'enums/enums.dart';

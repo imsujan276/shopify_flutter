@@ -6,8 +6,8 @@ part of 'refund_policy.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RefundPolicyImpl _$$RefundPolicyImplFromJson(Map<String, dynamic> json) =>
-    _$RefundPolicyImpl(
+_RefundPolicy _$RefundPolicyFromJson(Map<String, dynamic> json) =>
+    _RefundPolicy(
       body: json['body'] as String?,
       handle: json['handle'] as String?,
       id: json['id'] as String?,
@@ -15,7 +15,7 @@ _$RefundPolicyImpl _$$RefundPolicyImplFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$RefundPolicyImplToJson(_$RefundPolicyImpl instance) =>
+Map<String, dynamic> _$RefundPolicyToJson(_RefundPolicy instance) =>
     <String, dynamic>{
       'body': instance.body,
       'handle': instance.handle,

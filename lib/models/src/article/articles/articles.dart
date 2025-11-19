@@ -6,11 +6,12 @@ part 'articles.freezed.dart';
 part 'articles.g.dart';
 
 @freezed
-
 ///  The `Articles` class
-class Articles with _$Articles {
+abstract class Articles with _$Articles {
+  const Articles._();
+
   /// The `Articles` constructor
-  factory Articles({required List<Article> articleList}) = _Articles;
+  const factory Articles({required List<Article> articleList}) = _Articles;
 
   /// The `Articles` from json
   factory Articles.fromJson(Map<String, dynamic> json) =>
@@ -20,10 +21,11 @@ class Articles with _$Articles {
   factory Articles.fromGraphJson(Map<String, dynamic> json) =>
       Articles(articleList: _getArticleList(json));
 
-  static _getArticleList(Map<String, dynamic> json) {
+  static List<Article> _getArticleList(Map<String, dynamic> json) {
     List<Article> articleList = [];
-    json['edges']?.forEach((article) =>
-        articleList.add(Article.fromGraphJson(article ?? const {})));
+    json['edges']?.forEach(
+      (article) => articleList.add(Article.fromGraphJson(article ?? const {})),
+    );
     return articleList;
   }
 }

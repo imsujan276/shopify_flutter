@@ -6,7 +6,7 @@ part 'matched_substring.g.dart';
 @freezed
 
 /// The matched substring
-class MatchedSubstring with _$MatchedSubstring {
+abstract class MatchedSubstring with _$MatchedSubstring {
   /// The matched substring constructor
   const factory MatchedSubstring({
     int? length,

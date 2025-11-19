@@ -17,15 +17,15 @@ platforms:
   windows:
 
 environment:
-  sdk: '>=3.3.0 <4.0.0'
+  sdk: ">=3.8.0 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
   flutter:
     sdk: flutter
   graphql_flutter: ^5.1.2
-  freezed_annotation: ^2.4.1
-  json_annotation: ^4.8.1
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
   json_serializable: ^6.7.1
   shared_preferences: ^2.0.20
   intl: ">=0.19.0 <0.21.2"
@@ -34,12 +34,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.1
-  # dart run build_runner watch --delete-conflicting-outputs 
+  flutter_lints: ^6.0.0
+  # dart run build_runner watch --delete-conflicting-outputs
   build_runner: ^2.3.3
-  freezed: ^2.3.2
-  analyzer: ^6.2.0
+  freezed: ^3.2.3
+  analyzer: ^8.3.0
 
 screenshots:
- - description: 'Search Example of the shopify storefront'
-   path: example/screenshot/search.png
+  - description: "Search Example of the shopify storefront"
+    path: example/screenshot/search.png

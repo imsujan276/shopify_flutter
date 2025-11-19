@@ -7,11 +7,11 @@ part 'successful_fullfilment.g.dart';
 @freezed
 
 /// The successful fullfilment
-class SuccessfulFullfilment with _$SuccessfulFullfilment {
+abstract class SuccessfulFullfilment with _$SuccessfulFullfilment {
   const SuccessfulFullfilment._();
 
   /// The successful fullfilment constructor
-  factory SuccessfulFullfilment({
+  const factory SuccessfulFullfilment({
     required String? trackingCompany,
     required List<SuccessfulFullfilmentTrackingInfo>? trackingInfo,
   }) = _SuccessfulFullfilment;
@@ -27,7 +27,8 @@ class SuccessfulFullfilment with _$SuccessfulFullfilment {
   factory SuccessfulFullfilment.fromJson(Map<String, dynamic> json) =>
       _$SuccessfulFullfilmentFromJson(json);
 
-  static _getTrackingInfoList(List<dynamic> data) {
+  static List<SuccessfulFullfilmentTrackingInfo> _getTrackingInfoList(
+      List<dynamic> data) {
     List<SuccessfulFullfilmentTrackingInfo> list = [];
     for (var d in data) {
       list.add(SuccessfulFullfilmentTrackingInfo.fromGraphJson(d));

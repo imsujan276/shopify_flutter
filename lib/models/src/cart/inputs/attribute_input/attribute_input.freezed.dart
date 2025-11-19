@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,163 +9,272 @@ part of 'attribute_input.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-AttributeInput _$AttributeInputFromJson(Map<String, dynamic> json) {
-  return _AttributeInput.fromJson(json);
-}
 
 /// @nodoc
 mixin _$AttributeInput {
-  String get key => throw _privateConstructorUsedError;
-  String get value => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $AttributeInputCopyWith<AttributeInput> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get key; String get value;
+/// Create a copy of AttributeInput
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AttributeInputCopyWith<AttributeInput> get copyWith => _$AttributeInputCopyWithImpl<AttributeInput>(this as AttributeInput, _$identity);
+
+  /// Serializes this AttributeInput to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AttributeInput&&(identical(other.key, key) || other.key == key)&&(identical(other.value, value) || other.value == value));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,value);
+
+@override
+String toString() {
+  return 'AttributeInput(key: $key, value: $value)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $AttributeInputCopyWith<$Res> {
-  factory $AttributeInputCopyWith(
-          AttributeInput value, $Res Function(AttributeInput) then) =
-      _$AttributeInputCopyWithImpl<$Res, AttributeInput>;
-  @useResult
-  $Res call({String key, String value});
-}
+abstract mixin class $AttributeInputCopyWith<$Res>  {
+  factory $AttributeInputCopyWith(AttributeInput value, $Res Function(AttributeInput) _then) = _$AttributeInputCopyWithImpl;
+@useResult
+$Res call({
+ String key, String value
+});
 
+
+
+
+}
 /// @nodoc
-class _$AttributeInputCopyWithImpl<$Res, $Val extends AttributeInput>
+class _$AttributeInputCopyWithImpl<$Res>
     implements $AttributeInputCopyWith<$Res> {
-  _$AttributeInputCopyWithImpl(this._value, this._then);
+  _$AttributeInputCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final AttributeInput _self;
+  final $Res Function(AttributeInput) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? key = null,
-    Object? value = null,
-  }) {
-    return _then(_value.copyWith(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of AttributeInput
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? key = null,Object? value = null,}) {
+  return _then(_self.copyWith(
+key: null == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$AttributeInputImplCopyWith<$Res>
-    implements $AttributeInputCopyWith<$Res> {
-  factory _$$AttributeInputImplCopyWith(_$AttributeInputImpl value,
-          $Res Function(_$AttributeInputImpl) then) =
-      __$$AttributeInputImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String key, String value});
 }
 
-/// @nodoc
-class __$$AttributeInputImplCopyWithImpl<$Res>
-    extends _$AttributeInputCopyWithImpl<$Res, _$AttributeInputImpl>
-    implements _$$AttributeInputImplCopyWith<$Res> {
-  __$$AttributeInputImplCopyWithImpl(
-      _$AttributeInputImpl _value, $Res Function(_$AttributeInputImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? key = null,
-    Object? value = null,
-  }) {
-    return _then(_$AttributeInputImpl(
-      key: null == key
-          ? _value.key
-          : key // ignore: cast_nullable_to_non_nullable
-              as String,
-      value: null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [AttributeInput].
+extension AttributeInputPatterns on AttributeInput {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AttributeInput value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AttributeInput() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AttributeInput value)  $default,){
+final _that = this;
+switch (_that) {
+case _AttributeInput():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AttributeInput value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AttributeInput() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String key,  String value)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AttributeInput() when $default != null:
+return $default(_that.key,_that.value);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String key,  String value)  $default,) {final _that = this;
+switch (_that) {
+case _AttributeInput():
+return $default(_that.key,_that.value);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String key,  String value)?  $default,) {final _that = this;
+switch (_that) {
+case _AttributeInput() when $default != null:
+return $default(_that.key,_that.value);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AttributeInputImpl extends _AttributeInput {
-  _$AttributeInputImpl({required this.key, required this.value}) : super._();
 
-  factory _$AttributeInputImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AttributeInputImplFromJson(json);
+class _AttributeInput extends AttributeInput {
+  const _AttributeInput({required this.key, required this.value}): super._();
+  factory _AttributeInput.fromJson(Map<String, dynamic> json) => _$AttributeInputFromJson(json);
 
-  @override
-  final String key;
-  @override
-  final String value;
+@override final  String key;
+@override final  String value;
 
-  @override
-  String toString() {
-    return 'AttributeInput(key: $key, value: $value)';
-  }
+/// Create a copy of AttributeInput
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AttributeInputCopyWith<_AttributeInput> get copyWith => __$AttributeInputCopyWithImpl<_AttributeInput>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AttributeInputImpl &&
-            (identical(other.key, key) || other.key == key) &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, key, value);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AttributeInputImplCopyWith<_$AttributeInputImpl> get copyWith =>
-      __$$AttributeInputImplCopyWithImpl<_$AttributeInputImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$AttributeInputImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$AttributeInputToJson(this, );
 }
 
-abstract class _AttributeInput extends AttributeInput {
-  factory _AttributeInput(
-      {required final String key,
-      required final String value}) = _$AttributeInputImpl;
-  _AttributeInput._() : super._();
-
-  factory _AttributeInput.fromJson(Map<String, dynamic> json) =
-      _$AttributeInputImpl.fromJson;
-
-  @override
-  String get key;
-  @override
-  String get value;
-  @override
-  @JsonKey(ignore: true)
-  _$$AttributeInputImplCopyWith<_$AttributeInputImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AttributeInput&&(identical(other.key, key) || other.key == key)&&(identical(other.value, value) || other.value == value));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,key,value);
+
+@override
+String toString() {
+  return 'AttributeInput(key: $key, value: $value)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AttributeInputCopyWith<$Res> implements $AttributeInputCopyWith<$Res> {
+  factory _$AttributeInputCopyWith(_AttributeInput value, $Res Function(_AttributeInput) _then) = __$AttributeInputCopyWithImpl;
+@override @useResult
+$Res call({
+ String key, String value
+});
+
+
+
+
+}
+/// @nodoc
+class __$AttributeInputCopyWithImpl<$Res>
+    implements _$AttributeInputCopyWith<$Res> {
+  __$AttributeInputCopyWithImpl(this._self, this._then);
+
+  final _AttributeInput _self;
+  final $Res Function(_AttributeInput) _then;
+
+/// Create a copy of AttributeInput
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? key = null,Object? value = null,}) {
+  return _then(_AttributeInput(
+key: null == key ? _self.key : key // ignore: cast_nullable_to_non_nullable
+as String,value: null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

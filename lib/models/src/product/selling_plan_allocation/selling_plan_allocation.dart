@@ -8,11 +8,11 @@ part 'selling_plan_allocation.g.dart';
 @freezed
 
 /// The SellingPlanAllocation class
-class SellingPlanAllocation with _$SellingPlanAllocation {
+abstract class SellingPlanAllocation with _$SellingPlanAllocation {
   const SellingPlanAllocation._();
 
   /// The SellingPlanAllocation constructor
-  factory SellingPlanAllocation({
+  const factory SellingPlanAllocation({
     required PriceV2? checkoutChargeAmount,
     required PriceV2? remainingBalanceChargeAmount,
     required SellingPlan? sellingPlan,

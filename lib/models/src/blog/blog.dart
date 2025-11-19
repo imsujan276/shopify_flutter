@@ -7,11 +7,11 @@ part 'blog.g.dart';
 @freezed
 
 /// The blog
-class Blog with _$Blog {
+abstract class Blog with _$Blog {
   const Blog._();
 
   /// The blog constructor
-  factory Blog({
+  const factory Blog({
     String? id,
     String? handle,
     String? title,

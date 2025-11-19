@@ -6,9 +6,9 @@ part 'location_input.g.dart';
 @freezed
 
 /// The `LocationInput` class
-class LocationInput with _$LocationInput {
+abstract class LocationInput with _$LocationInput {
   /// The `LocationInput` constructor
-  factory LocationInput({
+  const factory LocationInput({
     double? latitude,
     double? longitude,
   }) = _LocationInput;

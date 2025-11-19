@@ -7,11 +7,11 @@ part 'cart_delivery_preference.g.dart';
 @freezed
 
 /// The cart delivery preference
-class CartDeliveryPreference with _$CartDeliveryPreference {
+abstract class CartDeliveryPreference with _$CartDeliveryPreference {
   const CartDeliveryPreference._();
 
   ///  The cart delivery preference constructor
-  factory CartDeliveryPreference({
+  const factory CartDeliveryPreference({
     required String? deliveryMethod,
     required List<String?>? pickupHandle,
     CartDeliveryCoordinatesPreference? coordinates,

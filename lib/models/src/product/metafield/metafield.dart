@@ -6,11 +6,11 @@ part 'metafield.g.dart';
 @freezed
 
 /// The Metafield class
-class Metafield with _$Metafield {
+abstract class Metafield with _$Metafield {
   const Metafield._();
 
   /// The Metafield constructor
-  factory Metafield({
+  const factory Metafield({
     required String id,
     required String namespace,
     required String key,

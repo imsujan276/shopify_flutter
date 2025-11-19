@@ -6,9 +6,9 @@ part 'refund_policy.g.dart';
 @freezed
 
 /// The RefundPolicy class
-class RefundPolicy with _$RefundPolicy {
+abstract class RefundPolicy with _$RefundPolicy {
   /// The RefundPolicy constructor
-  factory RefundPolicy({
+  const factory RefundPolicy({
     String? body,
     String? handle,
     String? id,

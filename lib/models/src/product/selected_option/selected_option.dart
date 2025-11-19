@@ -6,11 +6,11 @@ part 'selected_option.g.dart';
 @freezed
 
 /// The SelectedOption class
-class SelectedOption with _$SelectedOption {
+abstract class SelectedOption with _$SelectedOption {
   const SelectedOption._();
 
   /// The SelectedOption constructor
-  factory SelectedOption({
+  const factory SelectedOption({
     required String name,
     required String value,
   }) = _SelectedOption;

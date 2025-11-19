@@ -6,11 +6,11 @@ part 'cart_discount_code.g.dart';
 @freezed
 
 /// The CartDiscountCode class
-class CartDiscountCode with _$CartDiscountCode {
+abstract class CartDiscountCode with _$CartDiscountCode {
   const CartDiscountCode._();
 
   /// The CartDiscountCode constructor
-  factory CartDiscountCode({
+  const factory CartDiscountCode({
     required bool? applicable,
     required String? code,
   }) = _CartDiscountCode;

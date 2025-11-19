@@ -6,11 +6,11 @@ part 'comment.g.dart';
 @freezed
 
 /// The Comment class
-class Comment with _$Comment {
+abstract class Comment with _$Comment {
   const Comment._();
 
   /// The Comment constructor
-  factory Comment({
+  const factory Comment({
     String? email,
     String? name,
     String? content,

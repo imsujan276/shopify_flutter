@@ -6,9 +6,9 @@ part 'terms_of_service.g.dart';
 @freezed
 
 /// The TermsOfService class
-class TermsOfService with _$TermsOfService {
+abstract class TermsOfService with _$TermsOfService {
   /// the TermsOfService constructor
-  factory TermsOfService({
+  const factory TermsOfService({
     String? body,
     String? handle,
     String? id,

@@ -8,11 +8,11 @@ part 'metafield_identifier.g.dart';
 /// This class is used to fetch the metafields related to the product
 ///
 @freezed
-class MetafieldIdentifier with _$MetafieldIdentifier {
+abstract class MetafieldIdentifier with _$MetafieldIdentifier {
   const MetafieldIdentifier._();
 
   /// Metafield identifier constructor
-  factory MetafieldIdentifier({
+  const factory MetafieldIdentifier({
     required String key,
     required String namespace,
   }) = _MetafieldIdentifier;

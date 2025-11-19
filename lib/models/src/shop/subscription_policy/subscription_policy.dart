@@ -6,9 +6,9 @@ part 'subscription_policy.g.dart';
 @freezed
 
 /// The SubscriptionPolicy class
-class SubscriptionPolicy with _$SubscriptionPolicy {
+abstract class SubscriptionPolicy with _$SubscriptionPolicy {
   /// The SubscriptionPolicy constructor
-  factory SubscriptionPolicy({
+  const factory SubscriptionPolicy({
     String? body,
     String? handle,
     String? id,

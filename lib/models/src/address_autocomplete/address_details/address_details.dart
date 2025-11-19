@@ -6,7 +6,7 @@ part 'address_details.g.dart';
 @freezed
 
 /// The address details
-class AddressDetails with _$AddressDetails {
+abstract class AddressDetails with _$AddressDetails {
   /// A constructor for address details
   const factory AddressDetails({
     String? address1,

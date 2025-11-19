@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,250 +9,347 @@ part of 'selling_plan_allocation.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-SellingPlanAllocation _$SellingPlanAllocationFromJson(
-    Map<String, dynamic> json) {
-  return _SellingPlanAllocation.fromJson(json);
-}
 
 /// @nodoc
 mixin _$SellingPlanAllocation {
-  PriceV2? get checkoutChargeAmount => throw _privateConstructorUsedError;
-  PriceV2? get remainingBalanceChargeAmount =>
-      throw _privateConstructorUsedError;
-  SellingPlan? get sellingPlan => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $SellingPlanAllocationCopyWith<SellingPlanAllocation> get copyWith =>
-      throw _privateConstructorUsedError;
+ PriceV2? get checkoutChargeAmount; PriceV2? get remainingBalanceChargeAmount; SellingPlan? get sellingPlan;
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$SellingPlanAllocationCopyWith<SellingPlanAllocation> get copyWith => _$SellingPlanAllocationCopyWithImpl<SellingPlanAllocation>(this as SellingPlanAllocation, _$identity);
+
+  /// Serializes this SellingPlanAllocation to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SellingPlanAllocation&&(identical(other.checkoutChargeAmount, checkoutChargeAmount) || other.checkoutChargeAmount == checkoutChargeAmount)&&(identical(other.remainingBalanceChargeAmount, remainingBalanceChargeAmount) || other.remainingBalanceChargeAmount == remainingBalanceChargeAmount)&&(identical(other.sellingPlan, sellingPlan) || other.sellingPlan == sellingPlan));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,checkoutChargeAmount,remainingBalanceChargeAmount,sellingPlan);
+
+@override
+String toString() {
+  return 'SellingPlanAllocation(checkoutChargeAmount: $checkoutChargeAmount, remainingBalanceChargeAmount: $remainingBalanceChargeAmount, sellingPlan: $sellingPlan)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $SellingPlanAllocationCopyWith<$Res> {
-  factory $SellingPlanAllocationCopyWith(SellingPlanAllocation value,
-          $Res Function(SellingPlanAllocation) then) =
-      _$SellingPlanAllocationCopyWithImpl<$Res, SellingPlanAllocation>;
-  @useResult
-  $Res call(
-      {PriceV2? checkoutChargeAmount,
-      PriceV2? remainingBalanceChargeAmount,
-      SellingPlan? sellingPlan});
+abstract mixin class $SellingPlanAllocationCopyWith<$Res>  {
+  factory $SellingPlanAllocationCopyWith(SellingPlanAllocation value, $Res Function(SellingPlanAllocation) _then) = _$SellingPlanAllocationCopyWithImpl;
+@useResult
+$Res call({
+ PriceV2? checkoutChargeAmount, PriceV2? remainingBalanceChargeAmount, SellingPlan? sellingPlan
+});
 
-  $PriceV2CopyWith<$Res>? get checkoutChargeAmount;
-  $PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount;
-  $SellingPlanCopyWith<$Res>? get sellingPlan;
+
+$PriceV2CopyWith<$Res>? get checkoutChargeAmount;$PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount;$SellingPlanCopyWith<$Res>? get sellingPlan;
+
 }
-
 /// @nodoc
-class _$SellingPlanAllocationCopyWithImpl<$Res,
-        $Val extends SellingPlanAllocation>
+class _$SellingPlanAllocationCopyWithImpl<$Res>
     implements $SellingPlanAllocationCopyWith<$Res> {
-  _$SellingPlanAllocationCopyWithImpl(this._value, this._then);
+  _$SellingPlanAllocationCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final SellingPlanAllocation _self;
+  final $Res Function(SellingPlanAllocation) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? checkoutChargeAmount = freezed,
-    Object? remainingBalanceChargeAmount = freezed,
-    Object? sellingPlan = freezed,
-  }) {
-    return _then(_value.copyWith(
-      checkoutChargeAmount: freezed == checkoutChargeAmount
-          ? _value.checkoutChargeAmount
-          : checkoutChargeAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-      remainingBalanceChargeAmount: freezed == remainingBalanceChargeAmount
-          ? _value.remainingBalanceChargeAmount
-          : remainingBalanceChargeAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-      sellingPlan: freezed == sellingPlan
-          ? _value.sellingPlan
-          : sellingPlan // ignore: cast_nullable_to_non_nullable
-              as SellingPlan?,
-    ) as $Val);
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? checkoutChargeAmount = freezed,Object? remainingBalanceChargeAmount = freezed,Object? sellingPlan = freezed,}) {
+  return _then(_self.copyWith(
+checkoutChargeAmount: freezed == checkoutChargeAmount ? _self.checkoutChargeAmount : checkoutChargeAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,remainingBalanceChargeAmount: freezed == remainingBalanceChargeAmount ? _self.remainingBalanceChargeAmount : remainingBalanceChargeAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,sellingPlan: freezed == sellingPlan ? _self.sellingPlan : sellingPlan // ignore: cast_nullable_to_non_nullable
+as SellingPlan?,
+  ));
+}
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get checkoutChargeAmount {
+    if (_self.checkoutChargeAmount == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceV2CopyWith<$Res>? get checkoutChargeAmount {
-    if (_value.checkoutChargeAmount == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.checkoutChargeAmount!, (value) {
-      return _then(_value.copyWith(checkoutChargeAmount: value) as $Val);
-    });
+  return $PriceV2CopyWith<$Res>(_self.checkoutChargeAmount!, (value) {
+    return _then(_self.copyWith(checkoutChargeAmount: value));
+  });
+}/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount {
+    if (_self.remainingBalanceChargeAmount == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount {
-    if (_value.remainingBalanceChargeAmount == null) {
-      return null;
-    }
-
-    return $PriceV2CopyWith<$Res>(_value.remainingBalanceChargeAmount!,
-        (value) {
-      return _then(
-          _value.copyWith(remainingBalanceChargeAmount: value) as $Val);
-    });
+  return $PriceV2CopyWith<$Res>(_self.remainingBalanceChargeAmount!, (value) {
+    return _then(_self.copyWith(remainingBalanceChargeAmount: value));
+  });
+}/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SellingPlanCopyWith<$Res>? get sellingPlan {
+    if (_self.sellingPlan == null) {
+    return null;
   }
 
-  @override
-  @pragma('vm:prefer-inline')
-  $SellingPlanCopyWith<$Res>? get sellingPlan {
-    if (_value.sellingPlan == null) {
-      return null;
-    }
-
-    return $SellingPlanCopyWith<$Res>(_value.sellingPlan!, (value) {
-      return _then(_value.copyWith(sellingPlan: value) as $Val);
-    });
-  }
+  return $SellingPlanCopyWith<$Res>(_self.sellingPlan!, (value) {
+    return _then(_self.copyWith(sellingPlan: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$SellingPlanAllocationImplCopyWith<$Res>
-    implements $SellingPlanAllocationCopyWith<$Res> {
-  factory _$$SellingPlanAllocationImplCopyWith(
-          _$SellingPlanAllocationImpl value,
-          $Res Function(_$SellingPlanAllocationImpl) then) =
-      __$$SellingPlanAllocationImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {PriceV2? checkoutChargeAmount,
-      PriceV2? remainingBalanceChargeAmount,
-      SellingPlan? sellingPlan});
 
-  @override
-  $PriceV2CopyWith<$Res>? get checkoutChargeAmount;
-  @override
-  $PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount;
-  @override
-  $SellingPlanCopyWith<$Res>? get sellingPlan;
+/// Adds pattern-matching-related methods to [SellingPlanAllocation].
+extension SellingPlanAllocationPatterns on SellingPlanAllocation {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _SellingPlanAllocation value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _SellingPlanAllocation() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _SellingPlanAllocation value)  $default,){
+final _that = this;
+switch (_that) {
+case _SellingPlanAllocation():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _SellingPlanAllocation value)?  $default,){
+final _that = this;
+switch (_that) {
+case _SellingPlanAllocation() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PriceV2? checkoutChargeAmount,  PriceV2? remainingBalanceChargeAmount,  SellingPlan? sellingPlan)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _SellingPlanAllocation() when $default != null:
+return $default(_that.checkoutChargeAmount,_that.remainingBalanceChargeAmount,_that.sellingPlan);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PriceV2? checkoutChargeAmount,  PriceV2? remainingBalanceChargeAmount,  SellingPlan? sellingPlan)  $default,) {final _that = this;
+switch (_that) {
+case _SellingPlanAllocation():
+return $default(_that.checkoutChargeAmount,_that.remainingBalanceChargeAmount,_that.sellingPlan);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PriceV2? checkoutChargeAmount,  PriceV2? remainingBalanceChargeAmount,  SellingPlan? sellingPlan)?  $default,) {final _that = this;
+switch (_that) {
+case _SellingPlanAllocation() when $default != null:
+return $default(_that.checkoutChargeAmount,_that.remainingBalanceChargeAmount,_that.sellingPlan);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$SellingPlanAllocationImplCopyWithImpl<$Res>
-    extends _$SellingPlanAllocationCopyWithImpl<$Res,
-        _$SellingPlanAllocationImpl>
-    implements _$$SellingPlanAllocationImplCopyWith<$Res> {
-  __$$SellingPlanAllocationImplCopyWithImpl(_$SellingPlanAllocationImpl _value,
-      $Res Function(_$SellingPlanAllocationImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? checkoutChargeAmount = freezed,
-    Object? remainingBalanceChargeAmount = freezed,
-    Object? sellingPlan = freezed,
-  }) {
-    return _then(_$SellingPlanAllocationImpl(
-      checkoutChargeAmount: freezed == checkoutChargeAmount
-          ? _value.checkoutChargeAmount
-          : checkoutChargeAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-      remainingBalanceChargeAmount: freezed == remainingBalanceChargeAmount
-          ? _value.remainingBalanceChargeAmount
-          : remainingBalanceChargeAmount // ignore: cast_nullable_to_non_nullable
-              as PriceV2?,
-      sellingPlan: freezed == sellingPlan
-          ? _value.sellingPlan
-          : sellingPlan // ignore: cast_nullable_to_non_nullable
-              as SellingPlan?,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$SellingPlanAllocationImpl extends _SellingPlanAllocation {
-  _$SellingPlanAllocationImpl(
-      {required this.checkoutChargeAmount,
-      required this.remainingBalanceChargeAmount,
-      required this.sellingPlan})
-      : super._();
 
-  factory _$SellingPlanAllocationImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SellingPlanAllocationImplFromJson(json);
+class _SellingPlanAllocation extends SellingPlanAllocation {
+  const _SellingPlanAllocation({required this.checkoutChargeAmount, required this.remainingBalanceChargeAmount, required this.sellingPlan}): super._();
+  factory _SellingPlanAllocation.fromJson(Map<String, dynamic> json) => _$SellingPlanAllocationFromJson(json);
 
-  @override
-  final PriceV2? checkoutChargeAmount;
-  @override
-  final PriceV2? remainingBalanceChargeAmount;
-  @override
-  final SellingPlan? sellingPlan;
+@override final  PriceV2? checkoutChargeAmount;
+@override final  PriceV2? remainingBalanceChargeAmount;
+@override final  SellingPlan? sellingPlan;
 
-  @override
-  String toString() {
-    return 'SellingPlanAllocation(checkoutChargeAmount: $checkoutChargeAmount, remainingBalanceChargeAmount: $remainingBalanceChargeAmount, sellingPlan: $sellingPlan)';
-  }
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SellingPlanAllocationCopyWith<_SellingPlanAllocation> get copyWith => __$SellingPlanAllocationCopyWithImpl<_SellingPlanAllocation>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$SellingPlanAllocationImpl &&
-            (identical(other.checkoutChargeAmount, checkoutChargeAmount) ||
-                other.checkoutChargeAmount == checkoutChargeAmount) &&
-            (identical(other.remainingBalanceChargeAmount,
-                    remainingBalanceChargeAmount) ||
-                other.remainingBalanceChargeAmount ==
-                    remainingBalanceChargeAmount) &&
-            (identical(other.sellingPlan, sellingPlan) ||
-                other.sellingPlan == sellingPlan));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, checkoutChargeAmount,
-      remainingBalanceChargeAmount, sellingPlan);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$SellingPlanAllocationImplCopyWith<_$SellingPlanAllocationImpl>
-      get copyWith => __$$SellingPlanAllocationImplCopyWithImpl<
-          _$SellingPlanAllocationImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$SellingPlanAllocationImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$SellingPlanAllocationToJson(this, );
 }
 
-abstract class _SellingPlanAllocation extends SellingPlanAllocation {
-  factory _SellingPlanAllocation(
-      {required final PriceV2? checkoutChargeAmount,
-      required final PriceV2? remainingBalanceChargeAmount,
-      required final SellingPlan? sellingPlan}) = _$SellingPlanAllocationImpl;
-  _SellingPlanAllocation._() : super._();
-
-  factory _SellingPlanAllocation.fromJson(Map<String, dynamic> json) =
-      _$SellingPlanAllocationImpl.fromJson;
-
-  @override
-  PriceV2? get checkoutChargeAmount;
-  @override
-  PriceV2? get remainingBalanceChargeAmount;
-  @override
-  SellingPlan? get sellingPlan;
-  @override
-  @JsonKey(ignore: true)
-  _$$SellingPlanAllocationImplCopyWith<_$SellingPlanAllocationImpl>
-      get copyWith => throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SellingPlanAllocation&&(identical(other.checkoutChargeAmount, checkoutChargeAmount) || other.checkoutChargeAmount == checkoutChargeAmount)&&(identical(other.remainingBalanceChargeAmount, remainingBalanceChargeAmount) || other.remainingBalanceChargeAmount == remainingBalanceChargeAmount)&&(identical(other.sellingPlan, sellingPlan) || other.sellingPlan == sellingPlan));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,checkoutChargeAmount,remainingBalanceChargeAmount,sellingPlan);
+
+@override
+String toString() {
+  return 'SellingPlanAllocation(checkoutChargeAmount: $checkoutChargeAmount, remainingBalanceChargeAmount: $remainingBalanceChargeAmount, sellingPlan: $sellingPlan)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SellingPlanAllocationCopyWith<$Res> implements $SellingPlanAllocationCopyWith<$Res> {
+  factory _$SellingPlanAllocationCopyWith(_SellingPlanAllocation value, $Res Function(_SellingPlanAllocation) _then) = __$SellingPlanAllocationCopyWithImpl;
+@override @useResult
+$Res call({
+ PriceV2? checkoutChargeAmount, PriceV2? remainingBalanceChargeAmount, SellingPlan? sellingPlan
+});
+
+
+@override $PriceV2CopyWith<$Res>? get checkoutChargeAmount;@override $PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount;@override $SellingPlanCopyWith<$Res>? get sellingPlan;
+
+}
+/// @nodoc
+class __$SellingPlanAllocationCopyWithImpl<$Res>
+    implements _$SellingPlanAllocationCopyWith<$Res> {
+  __$SellingPlanAllocationCopyWithImpl(this._self, this._then);
+
+  final _SellingPlanAllocation _self;
+  final $Res Function(_SellingPlanAllocation) _then;
+
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? checkoutChargeAmount = freezed,Object? remainingBalanceChargeAmount = freezed,Object? sellingPlan = freezed,}) {
+  return _then(_SellingPlanAllocation(
+checkoutChargeAmount: freezed == checkoutChargeAmount ? _self.checkoutChargeAmount : checkoutChargeAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,remainingBalanceChargeAmount: freezed == remainingBalanceChargeAmount ? _self.remainingBalanceChargeAmount : remainingBalanceChargeAmount // ignore: cast_nullable_to_non_nullable
+as PriceV2?,sellingPlan: freezed == sellingPlan ? _self.sellingPlan : sellingPlan // ignore: cast_nullable_to_non_nullable
+as SellingPlan?,
+  ));
+}
+
+/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get checkoutChargeAmount {
+    if (_self.checkoutChargeAmount == null) {
+    return null;
+  }
+
+  return $PriceV2CopyWith<$Res>(_self.checkoutChargeAmount!, (value) {
+    return _then(_self.copyWith(checkoutChargeAmount: value));
+  });
+}/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$PriceV2CopyWith<$Res>? get remainingBalanceChargeAmount {
+    if (_self.remainingBalanceChargeAmount == null) {
+    return null;
+  }
+
+  return $PriceV2CopyWith<$Res>(_self.remainingBalanceChargeAmount!, (value) {
+    return _then(_self.copyWith(remainingBalanceChargeAmount: value));
+  });
+}/// Create a copy of SellingPlanAllocation
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$SellingPlanCopyWith<$Res>? get sellingPlan {
+    if (_self.sellingPlan == null) {
+    return null;
+  }
+
+  return $SellingPlanCopyWith<$Res>(_self.sellingPlan!, (value) {
+    return _then(_self.copyWith(sellingPlan: value));
+  });
+}
+}
+
+// dart format on

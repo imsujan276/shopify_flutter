@@ -63,8 +63,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      tempProduct =
-          (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
+      tempProduct = (Products.fromGraphJson(
+        (result.data ?? const {})["products"] ?? {},
+      ));
 
       productList += tempProduct.productList;
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
@@ -102,8 +103,9 @@ class ShopifyStore with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    tempProduct =
-        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}));
+    tempProduct = (Products.fromGraphJson(
+      (result.data ?? const {})["products"] ?? {},
+    ));
     productList += tempProduct.productList;
     return productList;
   }
@@ -138,7 +140,7 @@ class ShopifyStore with ShopifyError {
       'edges': List.generate(response['nodes'].length, (index) {
         var node = response['nodes'][index];
         return node != null ? {'node': node} : null;
-      }).where((edge) => edge != null).toList()
+      }).where((edge) => edge != null).toList(),
     };
     productList = Products.fromGraphJson(newResponse).productList;
     return productList;
@@ -147,8 +149,10 @@ class ShopifyStore with ShopifyError {
   /// Returns Product.
   ///
   /// Returns Product by [handle]
-  Future<Product?> getProductByHandle(String handle,
-      {List<MetafieldIdentifier>? metafields}) async {
+  Future<Product?> getProductByHandle(
+    String handle, {
+    List<MetafieldIdentifier>? metafields,
+  }) async {
     final QueryOptions _options = WatchQueryOptions(
       document: gql(getProductByHandleQuery),
       variables: {
@@ -206,9 +210,9 @@ class ShopifyStore with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    productList =
-        (Products.fromGraphJson((result.data ?? const {})["products"] ?? {}))
-            .productList;
+    productList = (Products.fromGraphJson(
+      (result.data ?? const {})["products"] ?? {},
+    )).productList;
     return productList;
   }
 
@@ -232,11 +236,11 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       var newResponse = List.generate(
-          result.data!['productRecommendations']?.length ?? 0,
-          (index) => {
-                "node":
-                    (result.data!['productRecommendations'] ?? const {})[index]
-              });
+        result.data!['productRecommendations']?.length ?? 0,
+        (index) => {
+          "node": (result.data!['productRecommendations'] ?? const {})[index],
+        },
+      );
       var tempProducts = {"edges": newResponse};
       return Products.fromGraphJson(tempProducts).productList;
     } catch (e) {
@@ -263,8 +267,10 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
-          (index) => {"node": (result.data!['nodes'] ?? const {})[index]});
+      var newResponse = List.generate(
+        result.data!['nodes']?.length ?? 0,
+        (index) => {"node": (result.data!['nodes'] ?? const {})[index]},
+      );
       var tempCollection = {"edges": newResponse};
       return Collections.fromGraphJson(tempCollection).collectionList;
     } catch (e) {
@@ -304,8 +310,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      return Collections.fromGraphJson(result.data!['collections'])
-          .collectionList[0];
+      return Collections.fromGraphJson(
+        result.data!['collections'],
+      ).collectionList[0];
     } catch (e) {
       log(e.toString());
     }
@@ -365,7 +372,8 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       tempCollection = (Collections.fromGraphJson(
-          (result.data ?? const {})['collections'] ?? {}));
+        (result.data ?? const {})['collections'] ?? {},
+      ));
       collectionList.addAll(tempCollection.collectionList);
       cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
     } while ((tempCollection.hasNextPage == true));
@@ -410,8 +418,8 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     collectionList = (Collections.fromGraphJson(
-            (result.data ?? const {})['collections'] ?? {}))
-        .collectionList;
+      (result.data ?? const {})['collections'] ?? {},
+    )).collectionList;
     return collectionList;
   }
 
@@ -444,8 +452,9 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList
-          .addAll(Collection.fromGraphJson(result.data!).products.productList);
+      productList.addAll(
+        Collection.fromGraphJson(result.data!).products.productList,
+      );
       collection = (Collection.fromGraphJson(result.data!));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (collection.products.hasNextPage == true);
@@ -488,7 +497,7 @@ class ShopifyStore with ShopifyError {
         'limit': limit,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'filters': [if (filters != null) filters],
+        'filters': [?filters],
         'country': ShopifyLocalization.countryCode,
         'metafields': metafields != null
             ? metafields.map((e) => e.toJson()).toList()
@@ -524,7 +533,7 @@ class ShopifyStore with ShopifyError {
         'limit': limit,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
-        'filters': [if (filters != null) filters],
+        'filters': [?filters],
         'country': ShopifyLocalization.countryCode,
         'metafields': metafields != null
             ? metafields.map((e) => e.toJson()).toList()
@@ -569,9 +578,11 @@ class ShopifyStore with ShopifyError {
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       productList.addAll(
-          (Products.fromGraphJson((result.data!)['products'])).productList);
-      products =
-          (Products.fromGraphJson((result.data ?? const {})['products']));
+        (Products.fromGraphJson((result.data!)['products'])).productList,
+      );
+      products = (Products.fromGraphJson(
+        (result.data ?? const {})['products'],
+      ));
       cursor = productList.isNotEmpty ? productList.last.cursor : '';
     } while (products.hasNextPage == true);
     return productList;
@@ -591,7 +602,7 @@ class ShopifyStore with ShopifyError {
     final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getXProductsOnQueryAfterCursorQuery),
       variables: {
-        if (cursor != null) 'cursor': cursor,
+        'cursor': ?cursor,
         'limit': limit,
         'sortKey': sortKey?.parseToString(),
         'query': query,
@@ -603,10 +614,12 @@ class ShopifyStore with ShopifyError {
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
     );
-    final QueryResult result =
-        await ShopifyConfig.graphQLClient!.query(_options);
+    final QueryResult result = await ShopifyConfig.graphQLClient!.query(
+      _options,
+    );
     checkForError(result);
-    return Products.fromGraphJson((result.data ?? const {})['products'])
-        .productList;
+    return Products.fromGraphJson(
+      (result.data ?? const {})['products'],
+    ).productList;
   }
 }

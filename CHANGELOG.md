@@ -1,3 +1,6 @@
+# 2.6.3
+* Updated the "if" conditions with the null aware operator "?"
+
 # 2.6.1
 * [Update dependencies and upgrade to next freezed version](https://github.com/imsujan276/shopify_flutter/pull/133)
 * Upgraded example app android platform

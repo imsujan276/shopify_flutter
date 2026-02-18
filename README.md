@@ -4,6 +4,10 @@
 
 A flutter package that works as a bridge between your Shopify Store and Flutter Application.
 
+# Support
+
+If you like the package and find it helpful, you can [Buy Me MO:MO](https://buymemomo.com/sujang). 
+
 ## How To Use
 
 Create a private app on your Shopify store. Please follow [THIS DOC](https://shopify.dev/docs/storefront-api/getting-started) to get started with it.

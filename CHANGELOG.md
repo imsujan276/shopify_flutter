@@ -1,3 +1,7 @@
+# 2.7.0
+* Added category information in all product related gql.
+* Updated example to show the product category
+
 # 2.6.3
 * Updated the "if" conditions with the null aware operator "?"
 

@@ -146,6 +146,14 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

@@ -138,6 +138,14 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
         id
         onlineStoreUrl
         productType
+        category {
+          id
+          name
+          ancestors {
+            id
+            name
+          }
+        }
         tags
         title
         vendor

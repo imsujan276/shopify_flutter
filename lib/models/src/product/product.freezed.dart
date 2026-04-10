@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Product {
 
- String get title; String get id; bool get availableForSale; String get createdAt; List<ProductVariant> get productVariants; String get productType; List<String> get tags; List<ShopifyImage> get images; List<Option> get options; String get vendor; List<ProductMedia> get media; List<Metafield> get metafields; List<AssociatedCollections>? get collectionList; String? get cursor; String? get onlineStoreUrl; String? get description; String? get descriptionHtml; String? get handle;
+ String get title; String get id; bool get availableForSale; String get createdAt; List<ProductVariant> get productVariants; String get productType; List<String> get tags; List<ShopifyImage> get images; List<Option> get options; String get vendor; List<ProductMedia> get media; List<Metafield> get metafields; List<AssociatedCollections>? get collectionList; TaxonomyCategory? get category; String? get cursor; String? get onlineStoreUrl; String? get description; String? get descriptionHtml; String? get handle;
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ProductCopyWith<Product> get copyWith => _$ProductCopyWithImpl<Product>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.availableForSale, availableForSale) || other.availableForSale == availableForSale)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other.productVariants, productVariants)&&(identical(other.productType, productType) || other.productType == productType)&&const DeepCollectionEquality().equals(other.tags, tags)&&const DeepCollectionEquality().equals(other.images, images)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.vendor, vendor) || other.vendor == vendor)&&const DeepCollectionEquality().equals(other.media, media)&&const DeepCollectionEquality().equals(other.metafields, metafields)&&const DeepCollectionEquality().equals(other.collectionList, collectionList)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.onlineStoreUrl, onlineStoreUrl) || other.onlineStoreUrl == onlineStoreUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.handle, handle) || other.handle == handle));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Product&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.availableForSale, availableForSale) || other.availableForSale == availableForSale)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other.productVariants, productVariants)&&(identical(other.productType, productType) || other.productType == productType)&&const DeepCollectionEquality().equals(other.tags, tags)&&const DeepCollectionEquality().equals(other.images, images)&&const DeepCollectionEquality().equals(other.options, options)&&(identical(other.vendor, vendor) || other.vendor == vendor)&&const DeepCollectionEquality().equals(other.media, media)&&const DeepCollectionEquality().equals(other.metafields, metafields)&&const DeepCollectionEquality().equals(other.collectionList, collectionList)&&(identical(other.category, category) || other.category == category)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.onlineStoreUrl, onlineStoreUrl) || other.onlineStoreUrl == onlineStoreUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.handle, handle) || other.handle == handle));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,availableForSale,createdAt,const DeepCollectionEquality().hash(productVariants),productType,const DeepCollectionEquality().hash(tags),const DeepCollectionEquality().hash(images),const DeepCollectionEquality().hash(options),vendor,const DeepCollectionEquality().hash(media),const DeepCollectionEquality().hash(metafields),const DeepCollectionEquality().hash(collectionList),cursor,onlineStoreUrl,description,descriptionHtml,handle);
+int get hashCode => Object.hashAll([runtimeType,title,id,availableForSale,createdAt,const DeepCollectionEquality().hash(productVariants),productType,const DeepCollectionEquality().hash(tags),const DeepCollectionEquality().hash(images),const DeepCollectionEquality().hash(options),vendor,const DeepCollectionEquality().hash(media),const DeepCollectionEquality().hash(metafields),const DeepCollectionEquality().hash(collectionList),category,cursor,onlineStoreUrl,description,descriptionHtml,handle]);
 
 @override
 String toString() {
-  return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, tags: $tags, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+  return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, tags: $tags, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, category: $category, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $ProductCopyWith<$Res>  {
   factory $ProductCopyWith(Product value, $Res Function(Product) _then) = _$ProductCopyWithImpl;
 @useResult
 $Res call({
- String title, String id, bool availableForSale, String createdAt, List<ProductVariant> productVariants, String productType, List<String> tags, List<ShopifyImage> images, List<Option> options, String vendor, List<ProductMedia> media, List<Metafield> metafields, List<AssociatedCollections>? collectionList, String? cursor, String? onlineStoreUrl, String? description, String? descriptionHtml, String? handle
+ String title, String id, bool availableForSale, String createdAt, List<ProductVariant> productVariants, String productType, List<String> tags, List<ShopifyImage> images, List<Option> options, String vendor, List<ProductMedia> media, List<Metafield> metafields, List<AssociatedCollections>? collectionList, TaxonomyCategory? category, String? cursor, String? onlineStoreUrl, String? description, String? descriptionHtml, String? handle
 });
 
 
-
+$TaxonomyCategoryCopyWith<$Res>? get category;
 
 }
 /// @nodoc
@@ -62,7 +62,7 @@ class _$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? id = null,Object? availableForSale = null,Object? createdAt = null,Object? productVariants = null,Object? productType = null,Object? tags = null,Object? images = null,Object? options = null,Object? vendor = null,Object? media = null,Object? metafields = null,Object? collectionList = freezed,Object? cursor = freezed,Object? onlineStoreUrl = freezed,Object? description = freezed,Object? descriptionHtml = freezed,Object? handle = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? title = null,Object? id = null,Object? availableForSale = null,Object? createdAt = null,Object? productVariants = null,Object? productType = null,Object? tags = null,Object? images = null,Object? options = null,Object? vendor = null,Object? media = null,Object? metafields = null,Object? collectionList = freezed,Object? category = freezed,Object? cursor = freezed,Object? onlineStoreUrl = freezed,Object? description = freezed,Object? descriptionHtml = freezed,Object? handle = freezed,}) {
   return _then(_self.copyWith(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
@@ -77,7 +77,8 @@ as List<Option>,vendor: null == vendor ? _self.vendor : vendor // ignore: cast_n
 as String,media: null == media ? _self.media : media // ignore: cast_nullable_to_non_nullable
 as List<ProductMedia>,metafields: null == metafields ? _self.metafields : metafields // ignore: cast_nullable_to_non_nullable
 as List<Metafield>,collectionList: freezed == collectionList ? _self.collectionList : collectionList // ignore: cast_nullable_to_non_nullable
-as List<AssociatedCollections>?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
+as List<AssociatedCollections>?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as TaxonomyCategory?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
 as String?,onlineStoreUrl: freezed == onlineStoreUrl ? _self.onlineStoreUrl : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,descriptionHtml: freezed == descriptionHtml ? _self.descriptionHtml : descriptionHtml // ignore: cast_nullable_to_non_nullable
@@ -85,7 +86,19 @@ as String?,handle: freezed == handle ? _self.handle : handle // ignore: cast_nul
 as String?,
   ));
 }
+/// Create a copy of Product
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TaxonomyCategoryCopyWith<$Res>? get category {
+    if (_self.category == null) {
+    return null;
+  }
 
+  return $TaxonomyCategoryCopyWith<$Res>(_self.category!, (value) {
+    return _then(_self.copyWith(category: value));
+  });
+}
 }
 
 
@@ -167,10 +180,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  TaxonomyCategory? category,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
+return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.category,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
   return orElse();
 
 }
@@ -188,10 +201,10 @@ return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  TaxonomyCategory? category,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)  $default,) {final _that = this;
 switch (_that) {
 case _Product():
-return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
+return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.category,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -208,10 +221,10 @@ return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String title,  String id,  bool availableForSale,  String createdAt,  List<ProductVariant> productVariants,  String productType,  List<String> tags,  List<ShopifyImage> images,  List<Option> options,  String vendor,  List<ProductMedia> media,  List<Metafield> metafields,  List<AssociatedCollections>? collectionList,  TaxonomyCategory? category,  String? cursor,  String? onlineStoreUrl,  String? description,  String? descriptionHtml,  String? handle)?  $default,) {final _that = this;
 switch (_that) {
 case _Product() when $default != null:
-return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
+return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_that.productVariants,_that.productType,_that.tags,_that.images,_that.options,_that.vendor,_that.media,_that.metafields,_that.collectionList,_that.category,_that.cursor,_that.onlineStoreUrl,_that.description,_that.descriptionHtml,_that.handle);case _:
   return null;
 
 }
@@ -223,7 +236,7 @@ return $default(_that.title,_that.id,_that.availableForSale,_that.createdAt,_tha
 
 
 class _Product extends Product {
-  const _Product({required this.title, required this.id, required this.availableForSale, required this.createdAt, required final  List<ProductVariant> productVariants, required this.productType, required final  List<String> tags, required final  List<ShopifyImage> images, required final  List<Option> options, required this.vendor, required final  List<ProductMedia> media, required final  List<Metafield> metafields, final  List<AssociatedCollections>? collectionList, this.cursor, this.onlineStoreUrl, this.description, this.descriptionHtml, this.handle}): _productVariants = productVariants,_tags = tags,_images = images,_options = options,_media = media,_metafields = metafields,_collectionList = collectionList,super._();
+  const _Product({required this.title, required this.id, required this.availableForSale, required this.createdAt, required final  List<ProductVariant> productVariants, required this.productType, required final  List<String> tags, required final  List<ShopifyImage> images, required final  List<Option> options, required this.vendor, required final  List<ProductMedia> media, required final  List<Metafield> metafields, final  List<AssociatedCollections>? collectionList, this.category, this.cursor, this.onlineStoreUrl, this.description, this.descriptionHtml, this.handle}): _productVariants = productVariants,_tags = tags,_images = images,_options = options,_media = media,_metafields = metafields,_collectionList = collectionList,super._();
   
 
 @override final  String title;
@@ -283,6 +296,7 @@ class _Product extends Product {
   return EqualUnmodifiableListView(value);
 }
 
+@override final  TaxonomyCategory? category;
 @override final  String? cursor;
 @override final  String? onlineStoreUrl;
 @override final  String? description;
@@ -299,16 +313,16 @@ _$ProductCopyWith<_Product> get copyWith => __$ProductCopyWithImpl<_Product>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.availableForSale, availableForSale) || other.availableForSale == availableForSale)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other._productVariants, _productVariants)&&(identical(other.productType, productType) || other.productType == productType)&&const DeepCollectionEquality().equals(other._tags, _tags)&&const DeepCollectionEquality().equals(other._images, _images)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.vendor, vendor) || other.vendor == vendor)&&const DeepCollectionEquality().equals(other._media, _media)&&const DeepCollectionEquality().equals(other._metafields, _metafields)&&const DeepCollectionEquality().equals(other._collectionList, _collectionList)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.onlineStoreUrl, onlineStoreUrl) || other.onlineStoreUrl == onlineStoreUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.handle, handle) || other.handle == handle));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Product&&(identical(other.title, title) || other.title == title)&&(identical(other.id, id) || other.id == id)&&(identical(other.availableForSale, availableForSale) || other.availableForSale == availableForSale)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other._productVariants, _productVariants)&&(identical(other.productType, productType) || other.productType == productType)&&const DeepCollectionEquality().equals(other._tags, _tags)&&const DeepCollectionEquality().equals(other._images, _images)&&const DeepCollectionEquality().equals(other._options, _options)&&(identical(other.vendor, vendor) || other.vendor == vendor)&&const DeepCollectionEquality().equals(other._media, _media)&&const DeepCollectionEquality().equals(other._metafields, _metafields)&&const DeepCollectionEquality().equals(other._collectionList, _collectionList)&&(identical(other.category, category) || other.category == category)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.onlineStoreUrl, onlineStoreUrl) || other.onlineStoreUrl == onlineStoreUrl)&&(identical(other.description, description) || other.description == description)&&(identical(other.descriptionHtml, descriptionHtml) || other.descriptionHtml == descriptionHtml)&&(identical(other.handle, handle) || other.handle == handle));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,title,id,availableForSale,createdAt,const DeepCollectionEquality().hash(_productVariants),productType,const DeepCollectionEquality().hash(_tags),const DeepCollectionEquality().hash(_images),const DeepCollectionEquality().hash(_options),vendor,const DeepCollectionEquality().hash(_media),const DeepCollectionEquality().hash(_metafields),const DeepCollectionEquality().hash(_collectionList),cursor,onlineStoreUrl,description,descriptionHtml,handle);
+int get hashCode => Object.hashAll([runtimeType,title,id,availableForSale,createdAt,const DeepCollectionEquality().hash(_productVariants),productType,const DeepCollectionEquality().hash(_tags),const DeepCollectionEquality().hash(_images),const DeepCollectionEquality().hash(_options),vendor,const DeepCollectionEquality().hash(_media),const DeepCollectionEquality().hash(_metafields),const DeepCollectionEquality().hash(_collectionList),category,cursor,onlineStoreUrl,description,descriptionHtml,handle]);
 
 @override
 String toString() {
-  return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, tags: $tags, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
+  return 'Product(title: $title, id: $id, availableForSale: $availableForSale, createdAt: $createdAt, productVariants: $productVariants, productType: $productType, tags: $tags, images: $images, options: $options, vendor: $vendor, media: $media, metafields: $metafields, collectionList: $collectionList, category: $category, cursor: $cursor, onlineStoreUrl: $onlineStoreUrl, description: $description, descriptionHtml: $descriptionHtml, handle: $handle)';
 }
 
 
@@ -319,11 +333,11 @@ abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) = __$ProductCopyWithImpl;
 @override @useResult
 $Res call({
- String title, String id, bool availableForSale, String createdAt, List<ProductVariant> productVariants, String productType, List<String> tags, List<ShopifyImage> images, List<Option> options, String vendor, List<ProductMedia> media, List<Metafield> metafields, List<AssociatedCollections>? collectionList, String? cursor, String? onlineStoreUrl, String? description, String? descriptionHtml, String? handle
+ String title, String id, bool availableForSale, String createdAt, List<ProductVariant> productVariants, String productType, List<String> tags, List<ShopifyImage> images, List<Option> options, String vendor, List<ProductMedia> media, List<Metafield> metafields, List<AssociatedCollections>? collectionList, TaxonomyCategory? category, String? cursor, String? onlineStoreUrl, String? description, String? descriptionHtml, String? handle
 });
 
 
-
+@override $TaxonomyCategoryCopyWith<$Res>? get category;
 
 }
 /// @nodoc
@@ -336,7 +350,7 @@ class __$ProductCopyWithImpl<$Res>
 
 /// Create a copy of Product
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? id = null,Object? availableForSale = null,Object? createdAt = null,Object? productVariants = null,Object? productType = null,Object? tags = null,Object? images = null,Object? options = null,Object? vendor = null,Object? media = null,Object? metafields = null,Object? collectionList = freezed,Object? cursor = freezed,Object? onlineStoreUrl = freezed,Object? description = freezed,Object? descriptionHtml = freezed,Object? handle = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? title = null,Object? id = null,Object? availableForSale = null,Object? createdAt = null,Object? productVariants = null,Object? productType = null,Object? tags = null,Object? images = null,Object? options = null,Object? vendor = null,Object? media = null,Object? metafields = null,Object? collectionList = freezed,Object? category = freezed,Object? cursor = freezed,Object? onlineStoreUrl = freezed,Object? description = freezed,Object? descriptionHtml = freezed,Object? handle = freezed,}) {
   return _then(_Product(
 title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
@@ -351,7 +365,8 @@ as List<Option>,vendor: null == vendor ? _self.vendor : vendor // ignore: cast_n
 as String,media: null == media ? _self._media : media // ignore: cast_nullable_to_non_nullable
 as List<ProductMedia>,metafields: null == metafields ? _self._metafields : metafields // ignore: cast_nullable_to_non_nullable
 as List<Metafield>,collectionList: freezed == collectionList ? _self._collectionList : collectionList // ignore: cast_nullable_to_non_nullable
-as List<AssociatedCollections>?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
+as List<AssociatedCollections>?,category: freezed == category ? _self.category : category // ignore: cast_nullable_to_non_nullable
+as TaxonomyCategory?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
 as String?,onlineStoreUrl: freezed == onlineStoreUrl ? _self.onlineStoreUrl : onlineStoreUrl // ignore: cast_nullable_to_non_nullable
 as String?,description: freezed == description ? _self.description : description // ignore: cast_nullable_to_non_nullable
 as String?,descriptionHtml: freezed == descriptionHtml ? _self.descriptionHtml : descriptionHtml // ignore: cast_nullable_to_non_nullable
@@ -360,7 +375,19 @@ as String?,
   ));
 }
 
+/// Create a copy of Product
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TaxonomyCategoryCopyWith<$Res>? get category {
+    if (_self.category == null) {
+    return null;
+  }
 
+  return $TaxonomyCategoryCopyWith<$Res>(_self.category!, (value) {
+    return _then(_self.copyWith(category: value));
+  });
+}
 }
 
 // dart format on

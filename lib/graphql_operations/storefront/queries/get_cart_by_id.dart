@@ -351,6 +351,14 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                   id
                   onlineStoreUrl
                   productType
+                  category {
+                    id
+                    name
+                    ancestors {
+                      id
+                      name
+                    }
+                  }
                   tags
                   title
                   vendor

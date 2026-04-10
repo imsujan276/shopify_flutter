@@ -142,6 +142,14 @@ query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: Cou
     }
     onlineStoreUrl
     productType
+    category {
+      id
+      name
+      ancestors {
+        id
+        name
+      }
+    }
     tags
     vendor
   }

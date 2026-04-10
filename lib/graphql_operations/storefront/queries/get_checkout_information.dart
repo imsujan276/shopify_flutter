@@ -157,6 +157,14 @@ query($id: ID!){
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

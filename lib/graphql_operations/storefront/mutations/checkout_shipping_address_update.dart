@@ -146,6 +146,14 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

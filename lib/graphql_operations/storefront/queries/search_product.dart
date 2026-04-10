@@ -160,6 +160,14 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
       }
       onlineStoreUrl
       productType
+      category {
+        id
+        name
+        ancestors {
+          id
+          name
+        }
+      }
       tags
       vendor
         }

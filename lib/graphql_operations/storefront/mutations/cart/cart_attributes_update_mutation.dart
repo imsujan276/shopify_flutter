@@ -352,6 +352,14 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                   id
                   onlineStoreUrl
                   productType
+                  category {
+                    id
+                    name
+                    ancestors {
+                      id
+                      name
+                    }
+                  }
                   tags
                   title
                   vendor

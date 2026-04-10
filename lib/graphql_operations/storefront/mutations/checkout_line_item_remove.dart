@@ -146,6 +146,14 @@ mutation checkoutLineItemsRemove($lineItemIds: [ID!]!, $checkoutId: ID!) {
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

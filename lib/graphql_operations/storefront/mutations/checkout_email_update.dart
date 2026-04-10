@@ -149,6 +149,14 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

@@ -88,10 +88,59 @@ class SearchTabState extends State<SearchTab> {
   List<Widget> _buildProductList() {
     List<Widget> widgetList = [];
     for (var product in products) {
-      widgetList.add(ListTile(
-        title: Text(product.title),
-        subtitle: Text(product.formattedPrice),
-      ));
+      widgetList.add(
+        Card(
+          margin: const EdgeInsets.symmetric(vertical: 4),
+          child: ListTile(
+            title: Text(product.title),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  product.formattedPrice,
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.green,
+                  ),
+                ),
+                if (product.category != null) ...[
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.category,
+                        size: 14,
+                        color: Colors.grey,
+                      ),
+                      const SizedBox(width: 4),
+                      Expanded(
+                        child: Text(
+                          product.category!.fullPath,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.grey,
+                            fontStyle: FontStyle.italic,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ],
+            ),
+            leading: product.images.isNotEmpty
+                ? Image.network(
+                    product.images.first.originalSrc,
+                    width: 60,
+                    height: 60,
+                    fit: BoxFit.cover,
+                  )
+                : const Icon(Icons.image_not_supported),
+          ),
+        ),
+      );
     }
     return widgetList;
   }

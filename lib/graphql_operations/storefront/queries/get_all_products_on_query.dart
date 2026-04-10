@@ -34,6 +34,14 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
         descriptionHtml
         onlineStoreUrl
         productType
+        category {
+          id
+          name
+          ancestors {
+            id
+            name
+          }
+        }
         tags
         title
         vendor

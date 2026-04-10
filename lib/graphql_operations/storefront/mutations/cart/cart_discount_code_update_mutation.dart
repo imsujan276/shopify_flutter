@@ -352,6 +352,14 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $count
                   id
                   onlineStoreUrl
                   productType
+                  category {
+                    id
+                    name
+                    ancestors {
+                      id
+                      name
+                    }
+                  }
                   tags
                   title
                   vendor

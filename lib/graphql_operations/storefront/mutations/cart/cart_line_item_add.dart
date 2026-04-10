@@ -352,6 +352,14 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                   id
                   onlineStoreUrl
                   productType
+                  category {
+                    id
+                    name
+                    ancestors {
+                      id
+                      name
+                    }
+                  }
                   tags
                   title
                   vendor

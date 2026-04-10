@@ -42,6 +42,14 @@ customer(customerAccessToken: $accessToken) {
                     handle
                     onlineStoreUrl
                     productType
+                    category {
+                      id
+                      name
+                      ancestors {
+                        id
+                        name
+                      }
+                    }
                     title
                     vendor
                   }

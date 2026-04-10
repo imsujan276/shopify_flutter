@@ -138,6 +138,14 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $reverse: Bool
         id
         onlineStoreUrl
         productType
+        category {
+          id
+          name
+          ancestors {
+            id
+            name
+          }
+        }
         tags
         title
         vendor

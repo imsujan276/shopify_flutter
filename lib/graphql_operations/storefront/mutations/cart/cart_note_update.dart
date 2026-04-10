@@ -352,6 +352,14 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode, $re
                   id
                   onlineStoreUrl
                   productType
+                  category {
+                    id
+                    name
+                    ancestors {
+                      id
+                      name
+                    }
+                  }
                   tags
                   title
                   vendor

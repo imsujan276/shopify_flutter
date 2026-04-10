@@ -151,6 +151,14 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                 id
                 onlineStoreUrl
                 productType
+                category {
+                  id
+                  name
+                  ancestors {
+                    id
+                    name
+                  }
+                }
                 tags
                 title
                 vendor

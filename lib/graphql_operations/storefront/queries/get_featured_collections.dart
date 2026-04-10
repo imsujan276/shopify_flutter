@@ -162,6 +162,14 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
               }
               onlineStoreUrl
               productType
+              category {
+                id
+                name
+                ancestors {
+                  id
+                  name
+                }
+              }
               tags
               title
               vendor

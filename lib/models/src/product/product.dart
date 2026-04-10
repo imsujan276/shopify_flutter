@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:shopify_flutter/models/src/product/metafield/metafield.dart';
 import 'package:shopify_flutter/models/src/product/option/option.dart';
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
+import 'package:shopify_flutter/models/src/product/taxonomy_category/taxonomy_category.dart';
 import 'package:shopify_flutter/models/src/product/product_media/product_media.dart';
 import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 import 'package:shopify_flutter/models/src/product/shopify_image/shopify_image.dart';
@@ -36,6 +37,7 @@ abstract class Product with _$Product {
     required List<ProductMedia> media,
     required List<Metafield> metafields,
     List<AssociatedCollections>? collectionList,
+    TaxonomyCategory? category,
     String? cursor,
     String? onlineStoreUrl,
     String? description,
@@ -150,6 +152,7 @@ abstract class Product with _$Product {
         vendor: json['node']?['vendor'],
         media: _getMediaList(json),
         metafields: _getMetafieldList(json),
+        category: _getCategory(json),
       );
 
   // factory Product.fromJson(Map<String, dynamic> json) =>
@@ -179,6 +182,7 @@ abstract class Product with _$Product {
       vendor: json['vendor'],
       media: _getMediaList(json),
       metafields: _getMetafieldList(json),
+      category: _getCategory(json),
     );
   }
 
@@ -376,6 +380,25 @@ abstract class Product with _$Product {
     } catch (e) {
       log("_getMetafieldList error: $e");
       return [];
+    }
+  }
+
+  static TaxonomyCategory? _getCategory(Map<String, dynamic> json) {
+    try {
+      if (json.containsKey('node')) {
+        if (json['node']?['category'] == null) return null;
+        return TaxonomyCategory.fromGraphJson(json['node']?['category']);
+      } else {
+        if (json['category'] == null) return null;
+        final category = json['category'];
+        if (category is TaxonomyCategory) {
+          return category;
+        }
+        return TaxonomyCategory.fromGraphJson(category);
+      }
+    } catch (e) {
+      log("_getCategory error: $e");
+      return null;
     }
   }
 }

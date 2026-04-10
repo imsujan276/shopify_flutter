@@ -95,10 +95,63 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
             ? const CircularProgressIndicator()
             : ListView.builder(
                 itemCount: products.length,
-                itemBuilder: (_, int index) => ListTile(
-                  title: Text(products[index].title),
-                  subtitle: Text(products[index].formattedPrice),
-                ),
+                itemBuilder: (_, int index) {
+                  final product = products[index];
+                  return Card(
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    child: ListTile(
+                      title: Text(product.title),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            product.formattedPrice,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                            ),
+                          ),
+                          if (product.category != null) ...[
+                            const SizedBox(height: 4),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.category_outlined,
+                                  size: 14,
+                                  color: Colors.grey,
+                                ),
+                                const SizedBox(width: 4),
+                                Expanded(
+                                  child: Text(
+                                    product.category!.name,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    ),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ],
+                      ),
+                      leading: product.images.isNotEmpty
+                          ? ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: Image.network(
+                                product.images.first.originalSrc,
+                                width: 60,
+                                height: 60,
+                                fit: BoxFit.cover,
+                              ),
+                            )
+                          : const Icon(Icons.image_not_supported, size: 60),
+                    ),
+                  );
+                },
               ),
       ),
     );

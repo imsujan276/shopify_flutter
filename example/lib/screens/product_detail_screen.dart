@@ -53,6 +53,8 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
                   fit: BoxFit.cover,
                 )
               : Container(),
+          _buildProductCategoryInfo(),
+          const Divider(thickness: 2),
           Column(
             children: _buildProductVariants(),
           )
@@ -61,8 +63,111 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
     );
   }
 
+  Widget _buildProductCategoryInfo() {
+    if (product.category == null) {
+      return const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              'No category information available',
+              style: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey),
+            ),
+          ),
+        ),
+      );
+    }
+
+    final category = product.category!;
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Card(
+        elevation: 4,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Product Category',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const SizedBox(height: 12),
+              _buildCategoryInfoRow('Category Name', category.name),
+              _buildCategoryInfoRow('Full Path', category.fullPath),
+              _buildCategoryInfoRow('Category ID', category.id),
+              Row(
+                children: [
+                  if (category.isRoot)
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Chip(
+                        label: const Text('Root Category'),
+                        backgroundColor: Colors.blue.shade100,
+                        labelStyle: const TextStyle(fontSize: 12),
+                      ),
+                    ),
+                  if (category.isLeaf)
+                    Chip(
+                      label: const Text('Leaf Category'),
+                      backgroundColor: Colors.green.shade100,
+                      labelStyle: const TextStyle(fontSize: 12),
+                    ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCategoryInfoRow(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 100,
+            child: Text(
+              '$label:',
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                color: Colors.black87,
+              ),
+            ),
+          ),
+          Expanded(
+            child: Text(
+              value,
+              style: const TextStyle(color: Colors.black54),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   List<Widget> _buildProductVariants() {
     List<Widget> widgetList = [];
+    widgetList.add(
+      const Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text(
+          'Product Variants',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
     for (var variant in product.productVariants) {
       widgetList.add(
         ListTile(

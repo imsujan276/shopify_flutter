@@ -95,6 +95,11 @@ class ShopifyConfig {
   ///
   /// [adminCache] is optional. Inject a custom [GraphQLCache] for the Admin
   /// API client. Defaults to a new in-memory [GraphQLCache] when omitted.
+  ///
+  /// [queryRequestTimeout] overrides the per-request timeout on the underlying `graphql`
+  /// package, which otherwise applies a 5 s default that frequently trips on mobile
+  /// networks and can surface as a "Future already completed" crash when a late HTTP
+  /// response arrives after the timeout has fired. Pass `null` to disable the timeout.
   static void setConfig({
     required String storefrontAccessToken,
     required String storeUrl,
@@ -104,6 +109,7 @@ class ShopifyConfig {
     String? language,
     GraphQLCache? storefrontCache,
     GraphQLCache? adminCache,
+    Duration? queryRequestTimeout = const Duration(seconds: 30),
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
@@ -119,6 +125,7 @@ class ShopifyConfig {
         },
       ),
       cache: storefrontCache ?? GraphQLCache(),
+      queryRequestTimeout: queryRequestTimeout,
     );
 
     _graphQLClientAdmin = _adminAccessToken == null
@@ -132,6 +139,7 @@ class ShopifyConfig {
               },
             ),
             cache: adminCache ?? GraphQLCache(),
+            queryRequestTimeout: queryRequestTimeout,
           );
   }
 }

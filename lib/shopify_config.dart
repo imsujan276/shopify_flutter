@@ -88,6 +88,13 @@ class ShopifyConfig {
   ///
   /// [countryCode] is optional, but defaults to null.
   /// Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
+  ///
+  /// [cache] is optional. Inject a custom [GraphQLCache] (e.g. backed by
+  /// `HiveStore` for disk persistence) for the Storefront API client.
+  /// Defaults to a new in-memory [GraphQLCache] when omitted.
+  ///
+  /// [adminCache] is optional. Inject a custom [GraphQLCache] for the Admin
+  /// API client. Defaults to a new in-memory [GraphQLCache] when omitted.
   static void setConfig({
     required String storefrontAccessToken,
     required String storeUrl,
@@ -95,6 +102,8 @@ class ShopifyConfig {
     String storefrontApiVersion = "2024-07",
     CachePolicy? cachePolicy,
     String? language,
+    GraphQLCache? cache,
+    GraphQLCache? adminCache,
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;
@@ -109,7 +118,7 @@ class ShopifyConfig {
           'Accept-Language': language ?? 'en',
         },
       ),
-      cache: GraphQLCache(),
+      cache: cache ?? GraphQLCache(),
     );
 
     _graphQLClientAdmin = _adminAccessToken == null
@@ -122,7 +131,7 @@ class ShopifyConfig {
                 'Accept-Language': language ?? 'en',
               },
             ),
-            cache: GraphQLCache(),
+            cache: adminCache ?? GraphQLCache(),
           );
   }
 }

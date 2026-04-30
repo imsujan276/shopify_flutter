@@ -34,6 +34,15 @@ void main() {
 
      // Store locale | default : en
     language: 'en',
+
+    // optional | default: in-memory GraphQLCache()
+    // Inject a custom GraphQLCache for the Storefront client (e.g. disk-backed
+    // via HiveStore from graphql_flutter).
+    // cache: GraphQLCache(store: await HiveStore.open()),
+
+    // optional | default: in-memory GraphQLCache()
+    // Inject a custom GraphQLCache for the Admin client.
+    // adminCache: GraphQLCache(store: await HiveStore.open(boxName: 'admin')),
   );
   
   runApp(MyApp());
@@ -46,6 +55,8 @@ If you are not using that function, you may not need to provide it.
 > `storefrontApiVersion` default vesion is set to '2024-07'
 
 > `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
+
+> `cache` / `adminCache` let you supply a `GraphQLCache` from `graphql_flutter` so query results can be persisted to disk (e.g. via `HiveStore`) and survive app restarts. When omitted, fresh in-memory caches are created as before.
 
 <hr>
 

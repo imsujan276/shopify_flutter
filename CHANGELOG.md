@@ -1,5 +1,5 @@
 # 2.8.0
-* Added `cache` and `adminCache` optional parameters to `ShopifyConfig.setConfig`, allowing callers to inject a custom `GraphQLCache` (e.g. backed by `HiveStore` for disk persistence) for the Storefront and Admin API clients. Defaults preserve the previous in-memory behaviour.
+* Added `storefrontCache` and `adminCache` optional parameters to `ShopifyConfig.setConfig`, allowing callers to inject a custom `GraphQLCache` (e.g. backed by `HiveStore` for disk persistence) for the Storefront and Admin API clients. Defaults preserve the previous in-memory behaviour.
 
 # 2.7.0
 * Added category information in all product related gql.

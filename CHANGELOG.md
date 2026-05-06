@@ -1,3 +1,6 @@
+# 2.8.1
+* Added `queryRequestTimeout` to `ShopifyConfig.setConfig` to set the GraphQL query timeout. `GraphQLClient` default timeout of 5s causes issue on late HTTP requests
+
 # 2.8.0
 * Added `storefrontCache` and `adminCache` optional parameters to `ShopifyConfig.setConfig`, allowing callers to inject a custom `GraphQLCache` (e.g. backed by `HiveStore` for disk persistence) for the Storefront and Admin API clients. Defaults preserve the previous in-memory behaviour.
 

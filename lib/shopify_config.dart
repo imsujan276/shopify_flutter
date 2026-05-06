@@ -109,7 +109,7 @@ class ShopifyConfig {
     String? language,
     GraphQLCache? storefrontCache,
     GraphQLCache? adminCache,
-    Duration? queryRequestTimeout = const Duration(seconds: 30),
+    Duration queryRequestTimeout = const Duration(seconds: 30),
   }) {
     _storefrontAccessToken = storefrontAccessToken;
     _adminAccessToken = adminAccessToken;

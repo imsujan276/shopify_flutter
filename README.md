@@ -38,11 +38,14 @@ void main() {
     // optional | default: in-memory GraphQLCache()
     // Inject a custom GraphQLCache for the Storefront client (e.g. disk-backed
     // via HiveStore from graphql_flutter).
-    // storefrontCache: GraphQLCache(store: await HiveStore.open()),
+    storefrontCache: GraphQLCache(store: await HiveStore.open()),
 
     // optional | default: in-memory GraphQLCache()
     // Inject a custom GraphQLCache for the Admin client.
-    // adminCache: GraphQLCache(store: await HiveStore.open(boxName: 'admin')),
+    adminCache: GraphQLCache(store: await HiveStore.open(boxName: 'admin')),
+
+    // optional | default: 30s
+    queryRequestTimeout: const Duration(seconds: 30)
   );
   
   runApp(MyApp());

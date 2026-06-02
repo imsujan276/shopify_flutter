@@ -1,5 +1,5 @@
 # 2.8.1+1 (qeepcologne fork)
-* Fix Shopify-side validation error `Nullability mismatch on variable $discountCodes and argument discountCodes ([String!] / [String!]!)` from `ShopifyCart.updateCartDiscountCodes`: the `cartDiscountCodesUpdate` mutation declared `$discountCodes: [String!]` but Shopify's Storefront schema requires `[String!]!`. Promoted the variable to a non-null list.
+* Fix Shopify-side validation error `Nullability mismatch on variable $discountCodes and argument discountCodes ([String!] / [String!]!)` from `ShopifyCart.updateCartDiscountCodes` against newer Storefront API versions (e.g. `2026-01`) that promoted the `cartDiscountCodesUpdate` argument from `[String!]` to `[String!]!`. The SDK's mutation document still declared the variable as the older nullable type, so the server rejected the request. Promoted the variable to `[String!]!`. Per the GraphQL spec ("All Variable Usages Are Allowed"), a non-null variable is also valid for the older nullable argument shape, so this change is forward- and backward-compatible across Storefront API versions; the Dart caller signature (`required List<String> discountCodes`) already enforces non-null.
 
 # 2.8.1
 * Added `queryRequestTimeout` to `ShopifyConfig.setConfig` to set the GraphQL query timeout. `GraphQLClient` default timeout of 5s causes issue on late HTTP requests

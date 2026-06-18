@@ -1,5 +1,6 @@
-/// mutation to update cart discount codes
-const String updateCartDiscountCodesMutation = r'''
+/// head of the cart discount codes mutation (everything up to and including userErrors);
+/// assembled with the optional warnings fragment by [updateCartDiscountCodesMutation].
+const String _updateCartDiscountCodesHead = r'''
 mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
     cart {
@@ -398,6 +399,27 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
       field
       message
     }
+''';
+
+/// optional payload-level warnings (CartWarningCode + localized message) explaining why a discount
+/// code is not applicable; only included when the caller opts in (requires a Storefront API version
+/// that supports cartDiscountCodesUpdate.warnings).
+const String _updateCartDiscountCodesWarnings = r'''
+    warnings {
+      code
+      message
+      target
+    }
+''';
+
+const String _updateCartDiscountCodesTail = r'''
   }
 }
 ''';
+
+/// mutation to update cart discount codes. [includeWarnings] appends the payload-level `warnings`
+/// field; off by default so the query is unchanged from upstream for callers on older API versions.
+String updateCartDiscountCodesMutation({bool includeWarnings = false}) =>
+    _updateCartDiscountCodesHead +
+    (includeWarnings ? _updateCartDiscountCodesWarnings : '') +
+    _updateCartDiscountCodesTail;

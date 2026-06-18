@@ -181,9 +181,10 @@ class ShopifyCart with ShopifyError {
     required String cartId,
     required List<String> discountCodes,
     bool reverse = false,
+    bool includeWarnings = false,
   }) async {
     final MutationOptions updateDiscountCodes = MutationOptions(
-      document: gql(updateCartDiscountCodesMutation),
+      document: gql(updateCartDiscountCodesMutation(includeWarnings: includeWarnings)),
       variables: {
         'cartId': cartId,
         'discountCodes': discountCodes,
@@ -195,9 +196,29 @@ class ShopifyCart with ShopifyError {
     checkForError(result,
         key: 'cartDiscountCodesUpdate', errorKey: 'userErrors');
 
-    return Cart.fromJson(
-        ((result.data!['cartDiscountCodesUpdate'] ?? const {})['cart'] ??
-            const {}));
+    final Map payload = result.data?['cartDiscountCodesUpdate'] ?? const {};
+    final Cart cart = Cart.fromJson(payload['cart'] ?? const {});
+    if (!includeWarnings) return cart;
+
+    // `warnings` (CartWarningCode + localized message) are payload-level, not linked to a specific
+    // code, so pair them positionally with the non-applicable codes and surface them on each
+    // CartDiscountCode (errorCode/errorMessage). In practice a single code is applied at a time → 1:1.
+    final List warnings = payload['warnings'] ?? const [];
+    if (warnings.isEmpty) return cart;
+    int w = 0;
+    final codes = <CartDiscountCode?>[];
+    for (final c in cart.discountCodes ?? const <CartDiscountCode?>[]) {
+      if (c != null && c.applicable == false && w < warnings.length) {
+        final warning = warnings[w++];
+        codes.add(c.copyWith(
+          errorCode: warning['code'] as String?,
+          errorMessage: warning['message'] as String?,
+        ));
+      } else {
+        codes.add(c);
+      }
+    }
+    return cart.copyWith(discountCodes: codes);
   }
 
   /// update Buyer identity in cart

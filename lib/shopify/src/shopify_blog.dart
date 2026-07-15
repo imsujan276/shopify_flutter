@@ -60,7 +60,7 @@ class ShopifyBlog with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    var response = result.data!['blogByHandle'];
+    var response = result.data!['blog'];
     var newResponse = {'node': response};
     return Blog.fromGraphJson(newResponse);
   }

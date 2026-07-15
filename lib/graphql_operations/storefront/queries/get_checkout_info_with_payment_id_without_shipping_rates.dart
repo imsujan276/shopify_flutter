@@ -21,7 +21,7 @@ query($id: ID!){
       requiresShipping
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -48,7 +48,7 @@ query($id: ID!){
       }
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -75,17 +75,17 @@ query($id: ID!){
             }
             variant {
               id
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
               title
               image {
                 altText
-                originalSrc
+                url
                 id
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -99,7 +99,10 @@ query($id: ID!){
                 options(first: 5) {
                     id
                     name
-                    values
+                    optionValues {
+                      id
+                      name
+                    }
                     } 
                 variants(first: 250) {
                   edges {
@@ -109,13 +112,13 @@ query($id: ID!){
                       image {
                         altText
                         id
-                        originalSrc
+                        url
                       }
-                      priceV2 {
+                      price {
                         amount
                         currencyCode
                       }
-                      compareAtPriceV2 {
+                      compareAtPrice {
                         amount
                         currencyCode
                       }
@@ -171,7 +174,7 @@ query($id: ID!){
                     node {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }
@@ -184,7 +187,7 @@ query($id: ID!){
                       previewImage {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -197,17 +200,17 @@ query($id: ID!){
       note
       webUrl
       updatedAt
-      totalTaxV2 {
+      totalTax {
         amount
         currencyCode
       }
-      totalPriceV2 {
+      totalPrice {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPriceV2 {
+      subtotalPrice {
         amount
         currencyCode
       }

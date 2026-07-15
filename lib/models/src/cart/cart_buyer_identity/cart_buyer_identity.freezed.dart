@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartBuyerIdentity {
 
- String? get email; String? get phone; String? get countryCode; CartPreference? get preferences; Customer? get customer; List<MailingAddress?>? get deliveryAddressPreferences;
+ String? get email; String? get phone; String? get countryCode; CartPreference? get preferences; Customer? get customer;
 /// Create a copy of CartBuyerIdentity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CartBuyerIdentityCopyWith<CartBuyerIdentity> get copyWith => _$CartBuyerIdentit
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartBuyerIdentity&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.preferences, preferences) || other.preferences == preferences)&&(identical(other.customer, customer) || other.customer == customer)&&const DeepCollectionEquality().equals(other.deliveryAddressPreferences, deliveryAddressPreferences));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartBuyerIdentity&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.preferences, preferences) || other.preferences == preferences)&&(identical(other.customer, customer) || other.customer == customer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,phone,countryCode,preferences,customer,const DeepCollectionEquality().hash(deliveryAddressPreferences));
+int get hashCode => Object.hash(runtimeType,email,phone,countryCode,preferences,customer);
 
 @override
 String toString() {
-  return 'CartBuyerIdentity(email: $email, phone: $phone, countryCode: $countryCode, preferences: $preferences, customer: $customer, deliveryAddressPreferences: $deliveryAddressPreferences)';
+  return 'CartBuyerIdentity(email: $email, phone: $phone, countryCode: $countryCode, preferences: $preferences, customer: $customer)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CartBuyerIdentityCopyWith<$Res>  {
   factory $CartBuyerIdentityCopyWith(CartBuyerIdentity value, $Res Function(CartBuyerIdentity) _then) = _$CartBuyerIdentityCopyWithImpl;
 @useResult
 $Res call({
- String? email, String? phone, String? countryCode, CartPreference? preferences, Customer? customer, List<MailingAddress?>? deliveryAddressPreferences
+ String? email, String? phone, String? countryCode, CartPreference? preferences, Customer? customer
 });
 
 
@@ -65,15 +65,14 @@ class _$CartBuyerIdentityCopyWithImpl<$Res>
 
 /// Create a copy of CartBuyerIdentity
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? phone = freezed,Object? countryCode = freezed,Object? preferences = freezed,Object? customer = freezed,Object? deliveryAddressPreferences = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? email = freezed,Object? phone = freezed,Object? countryCode = freezed,Object? preferences = freezed,Object? customer = freezed,}) {
   return _then(_self.copyWith(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,countryCode: freezed == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String?,preferences: freezed == preferences ? _self.preferences : preferences // ignore: cast_nullable_to_non_nullable
 as CartPreference?,customer: freezed == customer ? _self.customer : customer // ignore: cast_nullable_to_non_nullable
-as Customer?,deliveryAddressPreferences: freezed == deliveryAddressPreferences ? _self.deliveryAddressPreferences : deliveryAddressPreferences // ignore: cast_nullable_to_non_nullable
-as List<MailingAddress?>?,
+as Customer?,
   ));
 }
 /// Create a copy of CartBuyerIdentity
@@ -182,10 +181,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer,  List<MailingAddress?>? deliveryAddressPreferences)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentity() when $default != null:
-return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer,_that.deliveryAddressPreferences);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer);case _:
   return orElse();
 
 }
@@ -203,10 +202,10 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer,  List<MailingAddress?>? deliveryAddressPreferences)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer)  $default,) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentity():
-return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer,_that.deliveryAddressPreferences);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -223,10 +222,10 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer,  List<MailingAddress?>? deliveryAddressPreferences)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? email,  String? phone,  String? countryCode,  CartPreference? preferences,  Customer? customer)?  $default,) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentity() when $default != null:
-return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer,_that.deliveryAddressPreferences);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_that.customer);case _:
   return null;
 
 }
@@ -238,7 +237,7 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.preferences,_tha
 @JsonSerializable()
 
 class _CartBuyerIdentity extends CartBuyerIdentity {
-  const _CartBuyerIdentity({this.email, this.phone, this.countryCode, this.preferences, this.customer, final  List<MailingAddress?>? deliveryAddressPreferences}): _deliveryAddressPreferences = deliveryAddressPreferences,super._();
+  const _CartBuyerIdentity({this.email, this.phone, this.countryCode, this.preferences, this.customer}): super._();
   factory _CartBuyerIdentity.fromJson(Map<String, dynamic> json) => _$CartBuyerIdentityFromJson(json);
 
 @override final  String? email;
@@ -246,15 +245,6 @@ class _CartBuyerIdentity extends CartBuyerIdentity {
 @override final  String? countryCode;
 @override final  CartPreference? preferences;
 @override final  Customer? customer;
- final  List<MailingAddress?>? _deliveryAddressPreferences;
-@override List<MailingAddress?>? get deliveryAddressPreferences {
-  final value = _deliveryAddressPreferences;
-  if (value == null) return null;
-  if (_deliveryAddressPreferences is EqualUnmodifiableListView) return _deliveryAddressPreferences;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
 
 /// Create a copy of CartBuyerIdentity
 /// with the given fields replaced by the non-null parameter values.
@@ -269,16 +259,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartBuyerIdentity&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.preferences, preferences) || other.preferences == preferences)&&(identical(other.customer, customer) || other.customer == customer)&&const DeepCollectionEquality().equals(other._deliveryAddressPreferences, _deliveryAddressPreferences));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartBuyerIdentity&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.preferences, preferences) || other.preferences == preferences)&&(identical(other.customer, customer) || other.customer == customer));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,phone,countryCode,preferences,customer,const DeepCollectionEquality().hash(_deliveryAddressPreferences));
+int get hashCode => Object.hash(runtimeType,email,phone,countryCode,preferences,customer);
 
 @override
 String toString() {
-  return 'CartBuyerIdentity(email: $email, phone: $phone, countryCode: $countryCode, preferences: $preferences, customer: $customer, deliveryAddressPreferences: $deliveryAddressPreferences)';
+  return 'CartBuyerIdentity(email: $email, phone: $phone, countryCode: $countryCode, preferences: $preferences, customer: $customer)';
 }
 
 
@@ -289,7 +279,7 @@ abstract mixin class _$CartBuyerIdentityCopyWith<$Res> implements $CartBuyerIden
   factory _$CartBuyerIdentityCopyWith(_CartBuyerIdentity value, $Res Function(_CartBuyerIdentity) _then) = __$CartBuyerIdentityCopyWithImpl;
 @override @useResult
 $Res call({
- String? email, String? phone, String? countryCode, CartPreference? preferences, Customer? customer, List<MailingAddress?>? deliveryAddressPreferences
+ String? email, String? phone, String? countryCode, CartPreference? preferences, Customer? customer
 });
 
 
@@ -306,15 +296,14 @@ class __$CartBuyerIdentityCopyWithImpl<$Res>
 
 /// Create a copy of CartBuyerIdentity
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? phone = freezed,Object? countryCode = freezed,Object? preferences = freezed,Object? customer = freezed,Object? deliveryAddressPreferences = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? email = freezed,Object? phone = freezed,Object? countryCode = freezed,Object? preferences = freezed,Object? customer = freezed,}) {
   return _then(_CartBuyerIdentity(
 email: freezed == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,countryCode: freezed == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String?,preferences: freezed == preferences ? _self.preferences : preferences // ignore: cast_nullable_to_non_nullable
 as CartPreference?,customer: freezed == customer ? _self.customer : customer // ignore: cast_nullable_to_non_nullable
-as Customer?,deliveryAddressPreferences: freezed == deliveryAddressPreferences ? _self._deliveryAddressPreferences : deliveryAddressPreferences // ignore: cast_nullable_to_non_nullable
-as List<MailingAddress?>?,
+as Customer?,
   ));
 }
 

@@ -25,22 +25,6 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
           currencyCode
         }
         totalAmountEstimated
-        totalDutyAmount {
-          amount
-          currencyCode
-        }
-        totalDutyAmountEstimated
-        totalTaxAmount {
-          amount
-          currencyCode
-        }
-        totalTaxAmountEstimated
-      }
-      discountAllocations {
-        discountedAmount {
-          amount
-          currencyCode
-        }
       }
       discountCodes {
         applicable
@@ -51,26 +35,30 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
         countryCode
         email
         phone
-        deliveryAddressPreferences {
-          ... on MailingAddress {
-            id
-            name
-            address1
-            address2
-            city
-            company
-            country
-            countryCodeV2
-            firstName
-            formattedArea
-            formatted
-            lastName
-            latitude
-            longitude
-            phone
-            province
-            provinceCode
-            zip
+      }
+      delivery {
+        addresses {
+          id
+          selected
+          oneTimeUse
+          address {
+            ... on CartDeliveryAddress {
+              address1
+              address2
+              city
+              company
+              countryCode
+              firstName
+              formatted
+              formattedArea
+              lastName
+              latitude
+              longitude
+              name
+              phone
+              provinceCode
+              zip
+            }
           }
         }
       }
@@ -102,7 +90,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
               key
               value
             }
-            discountAllocations {
+            discountAllocations(lineLevelOnly: false) {
               discountedAmount {
                 amount
                 currencyCode
@@ -170,7 +158,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                 title
                 image {
                   altText
-                  originalSrc
+                  url
                   id
                 }
                 compareAtPrice {
@@ -241,7 +229,10 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                   options(first: 5) {
                       id
                       name
-                      values
+                      optionValues {
+                        id
+                        name
+                      }
                       } 
                   variants(first: 250) {
                     edges {
@@ -251,13 +242,13 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                         image {
                           altText
                           id
-                          originalSrc
+                          url
                         }
-                        priceV2 {
+                        price {
                           amount
                           currencyCode
                         }
-                        compareAtPriceV2 {
+                        compareAtPrice {
                           amount
                           currencyCode
                         }
@@ -367,7 +358,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                       node {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -380,7 +371,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                         previewImage {
                           altText
                           id
-                          originalSrc
+                          url
                         }
                       }
                     }

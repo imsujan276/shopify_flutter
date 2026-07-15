@@ -20,7 +20,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
       requiresShipping
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -31,7 +31,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
         shippingRates {
           handle
           title
-          priceV2 {
+          price {
             amount
             currencyCode
           }
@@ -77,17 +77,17 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
             }
             variant {
               id
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
               title
               image {
                 altText
-                originalSrc
+                url
                 id
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -101,7 +101,10 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
                 options(first: 5) {
                     id
                     name
-                    values
+                    optionValues {
+                      id
+                      name
+                    }
                     } 
                 variants(first: 250) {
                   edges {
@@ -111,13 +114,13 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
                       image {
                         altText
                         id
-                        originalSrc
+                        url
                       }
-                      priceV2 {
+                      price {
                         amount
                         currencyCode
                       }
-                      compareAtPriceV2 {
+                      compareAtPrice {
                         amount
                         currencyCode
                       }
@@ -173,7 +176,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
                     node {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }
@@ -186,7 +189,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
                       previewImage {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -199,17 +202,17 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
       note
       webUrl
       updatedAt
-      totalTaxV2 {
+      totalTax {
         amount
         currencyCode
       }
-      totalPriceV2 {
+      totalPrice {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPriceV2 {
+      subtotalPrice {
         amount
         currencyCode
       }

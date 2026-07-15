@@ -1,7 +1,7 @@
 /// Query to get blog by handle
 const String getBlogByHandleQuery = r'''
 query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
-  blogByHandle(handle: $handle) {
+  blog(handle: $handle) {
     articles(first: 250, sortKey: $sortKey, reverse: $reverseArticles) {
       edges {
         node {
@@ -34,7 +34,7 @@ query($handle : String!, $sortKey: ArticleSortKeys, $reverseArticles: Boolean){
           image {
             altText
             id
-            originalSrc
+            url
           }
           publishedAt
           tags

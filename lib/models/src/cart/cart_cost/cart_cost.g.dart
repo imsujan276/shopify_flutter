@@ -16,14 +16,6 @@ _CartCost _$CartCostFromJson(Map<String, dynamic> json) => _CartCost(
   subtotalAmountEstimated: json['subtotalAmountEstimated'] as bool,
   totalAmount: PriceV2.fromJson(json['totalAmount'] as Map<String, dynamic>),
   totalAmountEstimated: json['totalAmountEstimated'] as bool,
-  totalDutyAmount: json['totalDutyAmount'] == null
-      ? null
-      : PriceV2.fromJson(json['totalDutyAmount'] as Map<String, dynamic>),
-  totalDutyAmountEstimated: json['totalDutyAmountEstimated'] as bool,
-  totalTaxAmount: json['totalTaxAmount'] == null
-      ? null
-      : PriceV2.fromJson(json['totalTaxAmount'] as Map<String, dynamic>),
-  totalTaxAmountEstimated: json['totalTaxAmountEstimated'] as bool,
 );
 
 Map<String, dynamic> _$CartCostToJson(_CartCost instance) => <String, dynamic>{
@@ -32,8 +24,4 @@ Map<String, dynamic> _$CartCostToJson(_CartCost instance) => <String, dynamic>{
   'subtotalAmountEstimated': instance.subtotalAmountEstimated,
   'totalAmount': instance.totalAmount.toJson(),
   'totalAmountEstimated': instance.totalAmountEstimated,
-  'totalDutyAmount': instance.totalDutyAmount?.toJson(),
-  'totalDutyAmountEstimated': instance.totalDutyAmountEstimated,
-  'totalTaxAmount': instance.totalTaxAmount?.toJson(),
-  'totalTaxAmountEstimated': instance.totalTaxAmountEstimated,
 };

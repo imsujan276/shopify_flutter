@@ -12,7 +12,10 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
           options(first: 50) {
             id
             name
-            values
+            optionValues {
+              id
+              name
+            }
           }
           metafields(identifiers: $metafields) {
             id
@@ -24,7 +27,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
             reference {
               ... on MediaImage {
                 image {
-                  originalSrc
                   url
                   id
                 }
@@ -55,7 +57,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
             node {
               altText
               id
-              originalSrc
+              url
             }
           }
         }
@@ -68,7 +70,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
               previewImage {
                 altText
                 id
-                originalSrc
+                url
               }
             }
           }
@@ -76,17 +78,17 @@ query($metafields: [HasMetafieldsIdentifier!]!, $query: String!, $cursor : Strin
       variants(first: 250) {
         edges {
           node {
-            priceV2 {
+            price {
               amount
               currencyCode
             }
             title
             image {
               altText
-              originalSrc
+              url
               id
             }
-            compareAtPriceV2 {
+            compareAtPrice {
               amount
               currencyCode
             }

@@ -25,7 +25,7 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
       requiresShipping
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -71,17 +71,17 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
             }
             variant {
               id
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
               title
               image {
                 altText
-                originalSrc
+                url
                 id
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -95,7 +95,10 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                 options(first: 5) {
                     id
                     name
-                    values
+                    optionValues {
+                      id
+                      name
+                    }
                     } 
                 variants(first: 250) {
                   edges {
@@ -105,13 +108,13 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                       image {
                         altText
                         id
-                        originalSrc
+                        url
                       }
-                      priceV2 {
+                      price {
                         amount
                         currencyCode
                       }
-                      compareAtPriceV2 {
+                      compareAtPrice {
                         amount
                         currencyCode
                       }
@@ -167,7 +170,7 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                     node {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }
@@ -180,7 +183,7 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
                       previewImage {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -193,17 +196,17 @@ mutation checkoutDiscountCodeApplyV2($checkoutId : ID!, $discountCode : String!)
       note
       webUrl
       updatedAt
-      totalTaxV2 {
+      totalTax {
         amount
         currencyCode
       }
-      totalPriceV2 {
+      totalPrice {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPriceV2 {
+      subtotalPrice {
         amount
         currencyCode
       }

@@ -11,7 +11,10 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
       options(first: 50) {
             id
             name
-            values
+            optionValues {
+              id
+              name
+            }
             }
         metafields(identifiers: $metafields) {
           id
@@ -23,7 +26,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
           reference {
             ... on MediaImage {
               image {
-                originalSrc
                 url
                 id
               }
@@ -38,13 +40,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
               image {
                 altText
                 id
-                originalSrc
+                url
               }
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -154,7 +156,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
             node {
               altText
               id
-              originalSrc
+              url
             }
           }
         }
@@ -167,7 +169,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor : String, $x : Int, $rev
               previewImage {
                 altText
                 id
-                originalSrc
+                url
               }
             }
           }

@@ -53,7 +53,7 @@ class ShopifyPage with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    var response = result.data!['pageByHandle'];
+    var response = result.data!['page'];
     return Page.fromJson(response);
   }
 }

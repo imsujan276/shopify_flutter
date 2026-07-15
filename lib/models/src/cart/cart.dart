@@ -2,7 +2,7 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopify_flutter/models/json_helper.dart';
-import 'package:shopify_flutter/models/src/cart/cart_discount_allocation/cart_discount_allocation.dart';
+import 'package:shopify_flutter/models/src/cart/cart_delivery/cart_delivery.dart';
 import 'package:shopify_flutter/models/src/cart/lines/line/line.dart';
 import 'attribute/attribute.dart';
 import 'cart_buyer_identity/cart_buyer_identity.dart';
@@ -24,11 +24,14 @@ abstract class Cart with _$Cart {
     required String? checkoutUrl,
     required CartCost? cost,
     required int? totalQuantity,
-    required List<CartDiscountAllocation?>? discountAllocations,
     required List<CartDiscountCode?>? discountCodes,
     required String? createdAt,
     List<Attribute?>? attributes,
     CartBuyerIdentity? buyerIdentity,
+
+    /// Delivery addresses on the cart. Replaces the deprecated
+    /// `buyerIdentity.deliveryAddressPreferences`.
+    CartDelivery? delivery,
     String? note,
     String? updatedAt,
     @JsonKey(fromJson: JsonHelper.lines) required List<Line> lines,

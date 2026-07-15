@@ -1,11 +1,14 @@
 /// Query to get product by handle
 const String getProductByHandleQuery = r'''
 query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $handle: String!) @inContext(country: $country) {
-  productByHandle(handle: $handle) {
+  product(handle: $handle) {
     options(first: 50) {
       id
       name
-      values
+      optionValues {
+        id
+        name
+      }
     }
     metafields(identifiers: $metafields) {
       id
@@ -17,7 +20,6 @@ query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: Cou
       reference {
         ... on MediaImage {
           image {
-            originalSrc
             url
             id
           }
@@ -51,24 +53,24 @@ query getProductByHandle($metafields: [HasMetafieldsIdentifier!]!, $country: Cou
         node {
           altText
           id
-          originalSrc
+          url
         }
       }
     }
     variants(first: 250) {
       edges {
         node {
-          priceV2 {
+          price {
             amount
             currencyCode
           }
           title
           image {
             altText
-            originalSrc
+            url
             id
           }
-          compareAtPriceV2 {
+          compareAtPrice {
             amount
             currencyCode
           }

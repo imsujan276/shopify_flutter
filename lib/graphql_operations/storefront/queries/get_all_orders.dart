@@ -57,13 +57,13 @@ customer(customerAccessToken: $accessToken) {
                   image {
                     altText
                     id
-                    originalSrc
+                    url
                   }
-                  priceV2 {
+                  price {
                     amount
                     currencyCode
                   }
-                  compareAtPriceV2 {
+                  compareAtPrice {
                     amount
                     currencyCode
                   }
@@ -183,23 +183,23 @@ customer(customerAccessToken: $accessToken) {
             zip
           }
           statusUrl
-          subtotalPriceV2 {
+          subtotalPrice {
             amount
             currencyCode
           }
-          totalPriceV2 {
+          totalPrice {
             amount
             currencyCode
           }
-          totalRefundedV2 {
+          totalRefunded {
             amount
             currencyCode
           }
-          totalShippingPriceV2 {
+          totalShippingPrice {
             amount
             currencyCode
           }
-          totalTaxV2 {
+          totalTax {
             amount
             currencyCode
           }

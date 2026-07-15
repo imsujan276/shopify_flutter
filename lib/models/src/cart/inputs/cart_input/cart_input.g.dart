@@ -36,6 +36,9 @@ _CartInput _$CartInputFromJson(Map<String, dynamic> json) => _CartInput(
       : CartBuyerIdentityInput.fromJson(
           json['buyerIdentity'] as Map<String, dynamic>,
         ),
+  delivery: json['delivery'] == null
+      ? null
+      : CartDeliveryInput.fromJson(json['delivery'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$CartInputToJson(_CartInput instance) =>
@@ -45,4 +48,5 @@ Map<String, dynamic> _$CartInputToJson(_CartInput instance) =>
       'note': instance.note,
       'attributes': instance.attributes.map((e) => e?.toJson()).toList(),
       'buyerIdentity': instance.buyerIdentity?.toJson(),
+      'delivery': instance.delivery?.toJson(),
     };

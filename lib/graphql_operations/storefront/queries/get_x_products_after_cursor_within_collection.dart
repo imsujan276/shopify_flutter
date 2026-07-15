@@ -12,7 +12,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
       image {
         altText
         id
-        originalSrc
+        url
       }
       products(first: $limit, sortKey: $sortKey, after: $cursor, reverse: $reverse, filters: $filters) {
         edges {
@@ -21,7 +21,10 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
           options(first: 50) {
             id
             name
-            values
+            optionValues {
+              id
+              name
+            }
             }
           metafields(identifiers: $metafields) {
             id
@@ -33,7 +36,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
             reference {
               ... on MediaImage {
                 image {
-                  originalSrc
                   url
                   id
                 }
@@ -63,7 +65,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
                 node {
                   altText
                   id
-                  originalSrc
+                  url
                 }
               }
             }
@@ -76,7 +78,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
                   previewImage {
                     altText
                     id
-                    originalSrc
+                    url
                   }
                 }
               }
@@ -101,13 +103,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $li
                   image {
                     altText
                     id
-                    originalSrc
+                    url
                   }
-                  priceV2 {
+                  price {
                     amount
                     currencyCode
                   }
-                  compareAtPriceV2 {
+                  compareAtPrice {
                     amount
                     currencyCode
                   }

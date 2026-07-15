@@ -1,7 +1,7 @@
 /// Query to get collection by id
 const String getCollectionByIdQuery = r'''
-query getCollectionById($id: ID!) {
-  collection(id: $id) {
+query getCollectionById($ids: [ID!]!) {
+  collection(ids: $ids) {
     id
     description
     descriptionHtml
@@ -11,7 +11,7 @@ query getCollectionById($id: ID!) {
     image {
       altText
       id
-      url
+      originalSrc
     }
   }
 }

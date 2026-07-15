@@ -45,13 +45,18 @@ abstract class ProductVariant with _$ProductVariant {
         json['node'] ?? (forceParse ? json : const {});
 
     return ProductVariant(
-      price: PriceV2.fromJson(nodeJson['price']),
+      price: nodeJson.containsKey('priceV2')
+          ? PriceV2.fromJson(nodeJson['priceV2'])
+          : PriceV2.fromJson(nodeJson['price']),
       title: nodeJson['title'],
       image: nodeJson['image'] != null
           ? ShopifyImage.fromJson(nodeJson['image'])
           : null,
-      compareAtPrice: nodeJson['compareAtPrice'] != null
-          ? PriceV2.fromJson(nodeJson['compareAtPrice'])
+      compareAtPrice: nodeJson['compareAtPrice'] != null ||
+              nodeJson['compareAtPriceV2'] != null
+          ? nodeJson.containsKey('compareAtPrice')
+              ? PriceV2.fromJson(nodeJson['compareAtPrice'])
+              : PriceV2.fromJson(nodeJson['compareAtPriceV2'])
           : null,
       weight: double.tryParse(nodeJson['weight'].toString()) ?? 0.0,
       weightUnit: nodeJson['weightUnit'],

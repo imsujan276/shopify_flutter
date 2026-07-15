@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shopify_flutter/models/src/product/product_option_value/product_option_value.dart';
 
 part 'option.freezed.dart';
 part 'option.g.dart';
@@ -14,7 +13,7 @@ abstract class Option with _$Option {
   const factory Option({
     required String id,
     required String name,
-    required List<ProductOptionValue> optionValues,
+    required List<String> values,
   }) = _Option;
 
   /// The Option from json

@@ -12,7 +12,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
       image {
         altText
         id
-        url
+        originalSrc
       }
       products(first: 10, sortKey: $sortKey, after: $cursor) {
         edges {
@@ -21,10 +21,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
           options(first: 50) {
             id
             name
-            optionValues {
-              id
-              name
-            }
+            values
           }
           metafields(identifiers: $metafields) {
             id
@@ -36,6 +33,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
             reference {
               ... on MediaImage {
                 image {
+                  originalSrc
                   url
                   id
                 }
@@ -65,7 +63,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
                 node {
                   altText
                   id
-                  url
+                  originalSrc
                 }
               }
             }
@@ -78,7 +76,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
                   previewImage {
                     altText
                     id
-                    url
+                    originalSrc
                   }
                 }
               }
@@ -103,13 +101,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $id : ID!, $cursor : String, $so
                   image {
                     altText
                     id
-                    url
+                    originalSrc
                   }
-                  price {
+                  priceV2 {
                     amount
                     currencyCode
                   }
-                  compareAtPrice {
+                  compareAtPriceV2 {
                     amount
                     currencyCode
                   }

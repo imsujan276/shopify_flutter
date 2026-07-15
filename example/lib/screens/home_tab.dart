@@ -80,7 +80,7 @@ class HomeTabState extends State<HomeTab> {
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      product.images.first.url,
+                      product.images.first.originalSrc,
                     )))
             : const BoxDecoration(),
         child: Stack(

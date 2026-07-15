@@ -26,19 +26,19 @@ _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
           json['billingAddress'] as Map<String, dynamic>,
         ),
   statusUrl: json['statusUrl'] as String,
-  subtotalPrice: PriceV2.fromJson(
-    json['subtotalPrice'] as Map<String, dynamic>,
+  subtotalPriceV2: PriceV2.fromJson(
+    json['subtotalPriceV2'] as Map<String, dynamic>,
   ),
-  totalPrice: PriceV2.fromJson(json['totalPrice'] as Map<String, dynamic>),
-  totalShippingPrice: PriceV2.fromJson(
-    json['totalShippingPrice'] as Map<String, dynamic>,
+  totalPriceV2: PriceV2.fromJson(json['totalPriceV2'] as Map<String, dynamic>),
+  totalShippingPriceV2: PriceV2.fromJson(
+    json['totalShippingPriceV2'] as Map<String, dynamic>,
   ),
-  totalTax: PriceV2.fromJson(json['totalTax'] as Map<String, dynamic>),
+  totalTaxV2: PriceV2.fromJson(json['totalTaxV2'] as Map<String, dynamic>),
   financialStatus: json['financialStatus'] as String,
   fulfillmentStatus: json['fulfillmentStatus'] as String,
-  totalRefunded: json['totalRefunded'] == null
+  totalRefundedV2: json['totalRefundedV2'] == null
       ? null
-      : PriceV2.fromJson(json['totalRefunded'] as Map<String, dynamic>),
+      : PriceV2.fromJson(json['totalRefundedV2'] as Map<String, dynamic>),
   phone: json['phone'] as String?,
   cursor: json['cursor'] as String?,
   canceledAt: json['canceledAt'] as String?,
@@ -60,13 +60,13 @@ Map<String, dynamic> _$OrderToJson(_Order instance) => <String, dynamic>{
   'shippingAddress': instance.shippingAddress?.toJson(),
   'billingAddress': instance.billingAddress?.toJson(),
   'statusUrl': instance.statusUrl,
-  'subtotalPrice': instance.subtotalPrice.toJson(),
-  'totalPrice': instance.totalPrice.toJson(),
-  'totalShippingPrice': instance.totalShippingPrice.toJson(),
-  'totalTax': instance.totalTax.toJson(),
+  'subtotalPriceV2': instance.subtotalPriceV2.toJson(),
+  'totalPriceV2': instance.totalPriceV2.toJson(),
+  'totalShippingPriceV2': instance.totalShippingPriceV2.toJson(),
+  'totalTaxV2': instance.totalTaxV2.toJson(),
   'financialStatus': instance.financialStatus,
   'fulfillmentStatus': instance.fulfillmentStatus,
-  'totalRefunded': instance.totalRefunded?.toJson(),
+  'totalRefundedV2': instance.totalRefundedV2?.toJson(),
   'phone': instance.phone,
   'cursor': instance.cursor,
   'canceledAt': instance.canceledAt,

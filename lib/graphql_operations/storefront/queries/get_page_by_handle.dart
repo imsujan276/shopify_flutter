@@ -1,7 +1,7 @@
 /// Query to get page by handle
 const String getPageByHandleQuery = r'''
 query($handle : String!){
-  page(handle: $handle) {
+  pageByHandle(handle: $handle) {
     id
     handle
     title

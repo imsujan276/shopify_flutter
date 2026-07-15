@@ -1,6 +1,5 @@
-/// head of the cart discount codes mutation (everything up to and including userErrors);
-/// assembled with the optional warnings fragment by [updateCartDiscountCodesMutation].
-const String _updateCartDiscountCodesHead = r'''
+/// mutation to update cart discount codes
+const String updateCartDiscountCodesMutation = r'''
 mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
     cart {
@@ -27,6 +26,22 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
           currencyCode
         }
         totalAmountEstimated
+        totalDutyAmount {
+          amount
+          currencyCode
+        }
+        totalDutyAmountEstimated
+        totalTaxAmount {
+          amount
+          currencyCode
+        }
+        totalTaxAmountEstimated
+      }
+      discountAllocations {
+        discountedAmount {
+          amount
+          currencyCode
+        }
       }
       discountCodes {
         applicable
@@ -37,30 +52,26 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
         countryCode
         email
         phone
-      }
-      delivery {
-        addresses {
-          id
-          selected
-          oneTimeUse
-          address {
-            ... on CartDeliveryAddress {
-              address1
-              address2
-              city
-              company
-              countryCode
-              firstName
-              formatted
-              formattedArea
-              lastName
-              latitude
-              longitude
-              name
-              phone
-              provinceCode
-              zip
-            }
+        deliveryAddressPreferences {
+          ... on MailingAddress {
+            id
+            name
+            address1
+            address2
+            city
+            company
+            country
+            countryCodeV2
+            firstName
+            formattedArea
+            formatted
+            lastName
+            latitude
+            longitude
+            phone
+            province
+            provinceCode
+            zip
           }
         }
       }
@@ -92,7 +103,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
               key
               value
             }
-            discountAllocations(lineLevelOnly: false) {
+            discountAllocations {
               discountedAmount {
                 amount
                 currencyCode
@@ -160,7 +171,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                 title
                 image {
                   altText
-                  url
+                  originalSrc
                   id
                 }
                 compareAtPrice {
@@ -231,10 +242,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                   options(first: 5) {
                       id
                       name
-                      optionValues {
-                        id
-                        name
-                      }
+                      values
                       } 
                   variants(first: 250) {
                     edges {
@@ -244,13 +252,13 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                         image {
                           altText
                           id
-                          url
+                          originalSrc
                         }
-                        price {
+                        priceV2 {
                           amount
                           currencyCode
                         }
-                        compareAtPrice {
+                        compareAtPriceV2 {
                           amount
                           currencyCode
                         }
@@ -360,7 +368,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                       node {
                         altText
                         id
-                        url
+                        originalSrc
                       }
                     }
                   }
@@ -373,7 +381,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                         previewImage {
                           altText
                           id
-                          url
+                          originalSrc
                         }
                       }
                     }
@@ -390,27 +398,6 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
       field
       message
     }
-''';
-
-/// optional payload-level warnings (CartWarningCode + localized message) explaining why a discount
-/// code is not applicable; only included when the caller opts in (requires a Storefront API version
-/// that supports cartDiscountCodesUpdate.warnings).
-const String _updateCartDiscountCodesWarnings = r'''
-    warnings {
-      code
-      message
-      target
-    }
-''';
-
-const String _updateCartDiscountCodesTail = r'''
   }
 }
 ''';
-
-/// mutation to update cart discount codes. [includeWarnings] appends the payload-level `warnings`
-/// field; off by default so the query is unchanged from upstream for callers on older API versions.
-String updateCartDiscountCodesMutation({bool includeWarnings = false}) =>
-    _updateCartDiscountCodesHead +
-    (includeWarnings ? _updateCartDiscountCodesWarnings : '') +
-    _updateCartDiscountCodesTail;

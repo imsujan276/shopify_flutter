@@ -13,12 +13,6 @@ abstract class CartDiscountCode with _$CartDiscountCode {
   const factory CartDiscountCode({
     required bool? applicable,
     required String? code,
-
-    /// Why the code is not [applicable], attached in code from the cart mutation's payload-level
-    /// `warnings` (`errorCode` = CartWarningCode, `errorMessage` = localized text). Absent from the
-    /// discountCodes JSON, so fromJson leaves them null; they're populated via copyWith after parsing.
-    String? errorCode,
-    String? errorMessage,
   }) = _CartDiscountCode;
 
   /// The CartDiscountCode from json

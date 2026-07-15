@@ -40,7 +40,7 @@ query getBlogs($reverseBlogs: Boolean, $reverseArticles: Boolean, $sortKey: Blog
               image {
                 altText
                 id
-                url
+                originalSrc
               }
               publishedAt
               tags

@@ -2,7 +2,6 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_attributes_update_mutation.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_create.dart';
-import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_delivery_addresses_add.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_discount_code_update_mutation.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_line_item_add.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_line_item_remove.dart';
@@ -58,7 +57,6 @@ class ShopifyCart with ShopifyError {
       'note': cartInput.note,
       'buyerIdentity': cartInput.buyerIdentity?.toJson(),
       'attributes': cartInput.attributes.map((e) => e?.toJson()).toList(),
-      if (cartInput.delivery != null) 'delivery': cartInput.delivery!.toJson(),
     };
     final MutationOptions createCart = MutationOptions(
       document: gql(cartCreateMutation),
@@ -183,10 +181,9 @@ class ShopifyCart with ShopifyError {
     required String cartId,
     required List<String> discountCodes,
     bool reverse = false,
-    bool includeWarnings = false,
   }) async {
     final MutationOptions updateDiscountCodes = MutationOptions(
-      document: gql(updateCartDiscountCodesMutation(includeWarnings: includeWarnings)),
+      document: gql(updateCartDiscountCodesMutation),
       variables: {
         'cartId': cartId,
         'discountCodes': discountCodes,
@@ -198,37 +195,12 @@ class ShopifyCart with ShopifyError {
     checkForError(result,
         key: 'cartDiscountCodesUpdate', errorKey: 'userErrors');
 
-    final Map payload = result.data?['cartDiscountCodesUpdate'] ?? const {};
-    final Cart cart = Cart.fromJson(payload['cart'] ?? const {});
-    if (!includeWarnings) return cart;
-
-    // `warnings` (CartWarningCode + localized message) are payload-level, not linked to a specific
-    // code, so pair them positionally with the non-applicable codes and surface them on each
-    // CartDiscountCode (errorCode/errorMessage). In practice a single code is applied at a time → 1:1.
-    final List warnings = payload['warnings'] ?? const [];
-    if (warnings.isEmpty) return cart;
-    int w = 0;
-    final codes = <CartDiscountCode?>[];
-    for (final c in cart.discountCodes ?? const <CartDiscountCode?>[]) {
-      if (c != null && c.applicable == false && w < warnings.length) {
-        final warning = warnings[w++];
-        codes.add(c.copyWith(
-          errorCode: warning['code'] as String?,
-          errorMessage: warning['message'] as String?,
-        ));
-      } else {
-        codes.add(c);
-      }
-    }
-    return cart.copyWith(discountCodes: codes);
+    return Cart.fromJson(
+        ((result.data!['cartDiscountCodesUpdate'] ?? const {})['cart'] ??
+            const {}));
   }
 
   /// update Buyer identity in cart
-  ///
-  /// Delivery addresses are no longer part of the buyer identity: Shopify
-  /// deprecated `CartBuyerIdentityInput.deliveryAddressPreferences`. Use
-  /// [addDeliveryAddresses] on an existing cart, or `CartInput.delivery` when
-  /// calling [createCart].
   ///
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateBuyerIdentityInCart({
@@ -236,6 +208,27 @@ class ShopifyCart with ShopifyError {
     required CartBuyerIdentityInput buyerIdentity,
     bool reverse = false,
   }) async {
+    final deliveryAddressPreferences = buyerIdentity.deliveryAddressPreferences;
+    List<Map<String, dynamic>> deliveryAddressPreferencesData = [];
+    for (var pref in deliveryAddressPreferences) {
+      if (pref != null) {
+        if (pref.deliveryAddress != null && pref.customerAddressId == null) {
+          deliveryAddressPreferencesData.add({
+            'deliveryAddress': pref.deliveryAddress?.toJson() ?? {},
+          });
+        } else if (pref.customerAddressId != null &&
+            pref.deliveryAddress == null) {
+          deliveryAddressPreferencesData.add({
+            'customerAddressId': pref.customerAddressId,
+          });
+        } else if (pref.customerAddressId != null &&
+            pref.deliveryAddress != null) {
+          throw Exception(
+            'Customer Address Id and Delivery Address cannot be set at the same time, please choose one',
+          );
+        }
+      }
+    }
     final MutationOptions updateBuyerIdentity = MutationOptions(
       document: gql(cartBuyerIdentityUpdate),
       variables: {
@@ -246,6 +239,7 @@ class ShopifyCart with ShopifyError {
           'phone': buyerIdentity.phone,
           'countryCode': buyerIdentity.countryCode,
           'customerAccessToken': buyerIdentity.customerAccessToken,
+          'deliveryAddressPreferences': deliveryAddressPreferencesData,
         },
         'country': ShopifyLocalization.countryCode,
       },
@@ -256,36 +250,6 @@ class ShopifyCart with ShopifyError {
 
     return Cart.fromJson(
         ((result.data!['cartBuyerIdentityUpdate'] ?? const {})['cart'] ??
-            const {}));
-  }
-
-  /// Adds delivery addresses to an existing cart.
-  ///
-  /// Replaces passing `deliveryAddressPreferences` through
-  /// [updateBuyerIdentityInCart], which Shopify deprecated. The added
-  /// addresses are available on [Cart.delivery].
-  ///
-  /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
-  Future<Cart> addDeliveryAddresses({
-    required String cartId,
-    required List<CartSelectableAddressInput> addresses,
-    bool reverse = false,
-  }) async {
-    final MutationOptions addAddresses = MutationOptions(
-      document: gql(cartDeliveryAddressesAddMutation),
-      variables: {
-        'cartId': cartId,
-        'addresses': addresses.map((e) => e.toJson()).toList(),
-        'reverse': reverse,
-        'country': ShopifyLocalization.countryCode,
-      },
-    );
-    QueryResult result = await _graphQLClient!.mutate(addAddresses);
-    checkForError(result,
-        key: 'cartDeliveryAddressesAdd', errorKey: 'userErrors');
-
-    return Cart.fromJson(
-        ((result.data!['cartDeliveryAddressesAdd'] ?? const {})['cart'] ??
             const {}));
   }
 

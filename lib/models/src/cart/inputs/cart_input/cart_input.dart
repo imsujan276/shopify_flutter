@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopify_flutter/models/src/cart/inputs/cart_buyer_identity_input/cart_buyer_identity_input.dart';
 
-import '../cart_delivery_input/cart_delivery_input.dart';
 import '../cart_line_input/cart_line_input.dart';
 import '../attribute_input/attribute_input.dart';
 
@@ -21,10 +20,6 @@ abstract class CartInput with _$CartInput {
     @Default('') String note,
     @Default([]) List<AttributeInput?> attributes,
     CartBuyerIdentityInput? buyerIdentity,
-
-    /// Delivery addresses for the cart. Replaces the deprecated
-    /// `buyerIdentity.deliveryAddressPreferences`.
-    CartDeliveryInput? delivery,
   }) = _CartInput;
 
   /// The cart input from json factory

@@ -11,7 +11,7 @@ abstract class ShopifyImage with _$ShopifyImage {
 
   /// The ShopifyImage constructor
   const factory ShopifyImage({
-    required String url,
+    required String originalSrc,
     required String id,
     String? altText,
   }) = _ShopifyImage;

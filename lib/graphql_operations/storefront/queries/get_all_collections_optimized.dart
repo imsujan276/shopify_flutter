@@ -17,7 +17,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
         image {
           altText
           id
-          url
+          originalSrc
         }
         metafields(identifiers: $metafields) {
           id
@@ -29,6 +29,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
           reference {
             ... on MediaImage {
               image {
+                originalSrc
                 url
                 id
               }

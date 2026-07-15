@@ -1,37 +1,3 @@
-# 3.0.0
-Removes every deprecated Storefront API field the package still queried, migrating to the 2026-07 replacements. Because several of these change the shape of the public Dart models, this is a breaking release. **This version now requires Storefront API `2026-07` or newer** (it relies on `Cart.lines.discountAllocations(lineLevelOnly:)` and cart-level `delivery`, both added in 2026-07); the default `storefrontApiVersion` is already `2026-07`.
-
-Breaking model changes:
-* `ShopifyImage.originalSrc` → **`ShopifyImage.url`** (`Image.originalSrc`/`src` were deprecated in favour of `url`). Affects every image across products, collections, articles and media.
-* `Option.values` (`List<String>`) → **`Option.optionValues`** (`List<ProductOptionValue>`, each with `id` + `name`). New exported model `ProductOptionValue`. Mirrors `ProductOption.values` → `optionValues` in the API.
-* `Order.subtotalPriceV2`/`totalPriceV2`/`totalShippingPriceV2`/`totalTaxV2`/`totalRefundedV2` → **`subtotalPrice`/`totalPrice`/`totalShippingPrice`/`totalTax`/`totalRefunded`** (the `*V2` money fields were deprecated).
-* `CartCost` lost `totalTaxAmount`, `totalTaxAmountEstimated`, `totalDutyAmount`, `totalDutyAmountEstimated`. Shopify no longer returns tax/duty amounts on the cart ("no longer available and will be removed in a future version"), so these always returned null/false.
-* Cart delivery addresses moved off the buyer identity:
-  * Removed `CartBuyerIdentity.deliveryAddressPreferences` and `CartBuyerIdentityInput.deliveryAddressPreferences` (the input field was deprecated).
-  * `Cart` gains **`delivery`** (`CartDelivery` → `List<CartSelectableAddress>`, each exposing `id`, `selected`, `oneTimeUse`, and a `CartDeliveryAddress`). New exported models: `CartDelivery`, `CartSelectableAddress`, `CartDeliveryAddress`.
-  * `CartInput` gains **`delivery`** (`CartDeliveryInput`). New exported inputs: `CartDeliveryInput`, `CartSelectableAddressInput`, `CartAddressInput`, `CartDeliveryAddressInput`. These replace the removed `DeliveryAddressInput` (`MailingAddressInput` remains for other uses). Note the new delivery inputs take `countryCode`/`provinceCode` (e.g. `AU`/`NSW`) rather than full names.
-  * New `ShopifyCart.addDeliveryAddresses(cartId:, addresses:)` (mutation `cartDeliveryAddressesAdd`) to add delivery addresses to an existing cart; `updateBuyerIdentityInCart` no longer accepts addresses.
-* Removed the `Market` model and its export, and the `market` field on `Localization` and `Country` (`Localization.market`/`Country.market` were deprecated with no Storefront replacement).
-
-Other:
-* Line-level `discountAllocations` now requests `lineLevelOnly: false` so order-level allocations are included, and the deprecated cart-level `Cart.discountAllocations` selection was dropped (use the per-line allocations).
-* Internal query fields migrated with no public-API impact: `Image` `originalSrc`→`url` in all documents, `ProductVariant.priceV2`/`compareAtPriceV2`→`price`/`compareAtPrice`, and `productByHandle`/`blogByHandle`/`pageByHandle`→`product`/`blog`/`page`.
-* Updated the default `storefrontApiVersion` from **2024-07** to **2026-07**. 2024-07 has been sunset since July 2025; Shopify serves requests for an unsupported version from the oldest supported version instead, so callers relying on the default were silently drifting across versions as each one sunset. Callers that already pass `storefrontApiVersion` explicitly should ensure it is `2026-07` or newer (see the requirement above).
-* Fixed three GraphQL documents that were rejected by the Storefront API on every currently supported version:
-  * `getXCollectionsAndNProductsSorted` declared `$collectonMetafields` (typo) but used `$collectionMetafields`, so the server rejected the document with `Variable "$collectionMetafields" is not defined`. The Dart caller was already passing the correctly spelled variable, so this method could never have succeeded.
-  * `getNArticlesSorted` selected the removed `Article.url` field. Replaced with `onlineStoreUrl`, which is what the `Article` model already parses.
-  * `getCollectionByIdQuery` passed a list to the single-collection lookup (`collection(ids: $ids)`); corrected to `collection(id: $id)`. This query has no caller in the package.
-
-Migration guide:
-* Replace `image.originalSrc` with `image.url`.
-* Replace `option.values` (strings) with `option.optionValues.map((v) => v.name)`.
-* Replace `order.totalPriceV2` etc. with `order.totalPrice` (drop the `V2` suffix).
-* Replace `CartBuyerIdentityInput(deliveryAddressPreferences: [...])` with either `CartInput(delivery: CartDeliveryInput(addresses: [...]))` on create, or `ShopifyCart.addDeliveryAddresses(...)` on an existing cart, and read addresses back from `cart.delivery`.
-* Remove any use of `localization.market` / `country.market`.
-
-# 2.8.3
-* `cartDiscountCodesUpdate`: optional warnings (`CartWarningCode` `errorCode` + localized `message`) surfaced on `CartDiscountCode`. When a discount code is not applicable, the payload-level `warnings` (`errorCode`/`errorMessage`) are attached to the corresponding `CartDiscountCode` via `copyWith` after parsing. These fields are absent from the `discountCodes` JSON, so `fromJson` leaves them null.
-
 # 2.8.2
 * Fix Shopify-side validation error `Nullability mismatch on variable $discountCodes and argument discountCodes ([String!] / [String!]!)` from `ShopifyCart.updateCartDiscountCodes` against newer Storefront API versions (e.g. `2026-01`) that promoted the `cartDiscountCodesUpdate` argument from `[String!]` to `[String!]!`. The SDK's mutation document still declared the variable as the older nullable type, so the server rejected the request. Promoted the variable to `[String!]!`. Per the GraphQL spec ("All Variable Usages Are Allowed"), a non-null variable is also valid for the older nullable argument shape, so this change is forward- and backward-compatible across Storefront API versions; the Dart caller signature (`required List<String> discountCodes`) already enforces non-null.
 

@@ -8,14 +8,14 @@ part of 'shopify_image.dart';
 
 _ShopifyImage _$ShopifyImageFromJson(Map<String, dynamic> json) =>
     _ShopifyImage(
-      url: json['url'] as String,
+      originalSrc: json['originalSrc'] as String,
       id: json['id'] as String,
       altText: json['altText'] as String?,
     );
 
 Map<String, dynamic> _$ShopifyImageToJson(_ShopifyImage instance) =>
     <String, dynamic>{
-      'url': instance.url,
+      'originalSrc': instance.originalSrc,
       'id': instance.id,
       'altText': instance.altText,
     };

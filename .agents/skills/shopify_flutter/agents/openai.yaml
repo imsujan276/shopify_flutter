@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shopify Flutter"
+  short_description: "Repo-specific patterns and workflows for shopify_flutter"
+  default_prompt: "Use the shopify_flutter repo skill to follow existing architecture, testing, and workflow conventions."
+policy:
+  allow_implicit_invocation: true

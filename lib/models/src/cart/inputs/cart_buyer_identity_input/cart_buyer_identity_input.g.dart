@@ -13,6 +13,15 @@ _CartBuyerIdentityInput _$CartBuyerIdentityInputFromJson(
   phone: json['phone'] as String?,
   countryCode: json['countryCode'] as String?,
   customerAccessToken: json['customerAccessToken'] as String?,
+  deliveryAddressPreferences:
+      (json['deliveryAddressPreferences'] as List<dynamic>?)
+          ?.map(
+            (e) => e == null
+                ? null
+                : DeliveryAddressInput.fromJson(e as Map<String, dynamic>),
+          )
+          .toList() ??
+      const [],
 );
 
 Map<String, dynamic> _$CartBuyerIdentityInputToJson(
@@ -22,4 +31,7 @@ Map<String, dynamic> _$CartBuyerIdentityInputToJson(
   'phone': instance.phone,
   'countryCode': instance.countryCode,
   'customerAccessToken': instance.customerAccessToken,
+  'deliveryAddressPreferences': instance.deliveryAddressPreferences
+      .map((e) => e?.toJson())
+      .toList(),
 };

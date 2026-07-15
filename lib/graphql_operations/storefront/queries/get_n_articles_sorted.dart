@@ -33,12 +33,12 @@ query($x : Int, $sortKey : ArticleSortKeys, $reverse: Boolean){
         image {
           altText
           id
-          url
+          originalSrc
         }
         publishedAt
         tags
         title
-        onlineStoreUrl
+        url
       }
     }
   }

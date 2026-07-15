@@ -132,7 +132,7 @@ class SearchTabState extends State<SearchTab> {
             ),
             leading: product.images.isNotEmpty
                 ? Image.network(
-                    product.images.first.url,
+                    product.images.first.originalSrc,
                     width: 60,
                     height: 60,
                     fit: BoxFit.cover,

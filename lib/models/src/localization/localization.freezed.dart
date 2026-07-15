@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Localization {
 
- List<Language> get availableLanguages; List<Country> get availableCountries; Language get language; Country get country;
+ List<Language> get availableLanguages; List<Country> get availableCountries; Language get language; Country get country; Market get market;
 /// Create a copy of Localization
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $LocalizationCopyWith<Localization> get copyWith => _$LocalizationCopyWithImpl<L
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Localization&&const DeepCollectionEquality().equals(other.availableLanguages, availableLanguages)&&const DeepCollectionEquality().equals(other.availableCountries, availableCountries)&&(identical(other.language, language) || other.language == language)&&(identical(other.country, country) || other.country == country));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Localization&&const DeepCollectionEquality().equals(other.availableLanguages, availableLanguages)&&const DeepCollectionEquality().equals(other.availableCountries, availableCountries)&&(identical(other.language, language) || other.language == language)&&(identical(other.country, country) || other.country == country)&&(identical(other.market, market) || other.market == market));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(availableLanguages),const DeepCollectionEquality().hash(availableCountries),language,country);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(availableLanguages),const DeepCollectionEquality().hash(availableCountries),language,country,market);
 
 @override
 String toString() {
-  return 'Localization(availableLanguages: $availableLanguages, availableCountries: $availableCountries, language: $language, country: $country)';
+  return 'Localization(availableLanguages: $availableLanguages, availableCountries: $availableCountries, language: $language, country: $country, market: $market)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $LocalizationCopyWith<$Res>  {
   factory $LocalizationCopyWith(Localization value, $Res Function(Localization) _then) = _$LocalizationCopyWithImpl;
 @useResult
 $Res call({
- List<Language> availableLanguages, List<Country> availableCountries, Language language, Country country
+ List<Language> availableLanguages, List<Country> availableCountries, Language language, Country country, Market market
 });
 
 
-$LanguageCopyWith<$Res> get language;$CountryCopyWith<$Res> get country;
+$LanguageCopyWith<$Res> get language;$CountryCopyWith<$Res> get country;$MarketCopyWith<$Res> get market;
 
 }
 /// @nodoc
@@ -65,13 +65,14 @@ class _$LocalizationCopyWithImpl<$Res>
 
 /// Create a copy of Localization
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? availableLanguages = null,Object? availableCountries = null,Object? language = null,Object? country = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? availableLanguages = null,Object? availableCountries = null,Object? language = null,Object? country = null,Object? market = null,}) {
   return _then(_self.copyWith(
 availableLanguages: null == availableLanguages ? _self.availableLanguages : availableLanguages // ignore: cast_nullable_to_non_nullable
 as List<Language>,availableCountries: null == availableCountries ? _self.availableCountries : availableCountries // ignore: cast_nullable_to_non_nullable
 as List<Country>,language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as Language,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
-as Country,
+as Country,market: null == market ? _self.market : market // ignore: cast_nullable_to_non_nullable
+as Market,
   ));
 }
 /// Create a copy of Localization
@@ -91,6 +92,15 @@ $CountryCopyWith<$Res> get country {
   
   return $CountryCopyWith<$Res>(_self.country, (value) {
     return _then(_self.copyWith(country: value));
+  });
+}/// Create a copy of Localization
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MarketCopyWith<$Res> get market {
+  
+  return $MarketCopyWith<$Res>(_self.market, (value) {
+    return _then(_self.copyWith(market: value));
   });
 }
 }
@@ -174,10 +184,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country,  Market market)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Localization() when $default != null:
-return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country);case _:
+return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country,_that.market);case _:
   return orElse();
 
 }
@@ -195,10 +205,10 @@ return $default(_that.availableLanguages,_that.availableCountries,_that.language
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country,  Market market)  $default,) {final _that = this;
 switch (_that) {
 case _Localization():
-return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country);case _:
+return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country,_that.market);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -215,10 +225,10 @@ return $default(_that.availableLanguages,_that.availableCountries,_that.language
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Language> availableLanguages,  List<Country> availableCountries,  Language language,  Country country,  Market market)?  $default,) {final _that = this;
 switch (_that) {
 case _Localization() when $default != null:
-return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country);case _:
+return $default(_that.availableLanguages,_that.availableCountries,_that.language,_that.country,_that.market);case _:
   return null;
 
 }
@@ -230,7 +240,7 @@ return $default(_that.availableLanguages,_that.availableCountries,_that.language
 @JsonSerializable()
 
 class _Localization implements Localization {
-  const _Localization({required final  List<Language> availableLanguages, required final  List<Country> availableCountries, required this.language, required this.country}): _availableLanguages = availableLanguages,_availableCountries = availableCountries;
+  const _Localization({required final  List<Language> availableLanguages, required final  List<Country> availableCountries, required this.language, required this.country, required this.market}): _availableLanguages = availableLanguages,_availableCountries = availableCountries;
   factory _Localization.fromJson(Map<String, dynamic> json) => _$LocalizationFromJson(json);
 
  final  List<Language> _availableLanguages;
@@ -249,6 +259,7 @@ class _Localization implements Localization {
 
 @override final  Language language;
 @override final  Country country;
+@override final  Market market;
 
 /// Create a copy of Localization
 /// with the given fields replaced by the non-null parameter values.
@@ -263,16 +274,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Localization&&const DeepCollectionEquality().equals(other._availableLanguages, _availableLanguages)&&const DeepCollectionEquality().equals(other._availableCountries, _availableCountries)&&(identical(other.language, language) || other.language == language)&&(identical(other.country, country) || other.country == country));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Localization&&const DeepCollectionEquality().equals(other._availableLanguages, _availableLanguages)&&const DeepCollectionEquality().equals(other._availableCountries, _availableCountries)&&(identical(other.language, language) || other.language == language)&&(identical(other.country, country) || other.country == country)&&(identical(other.market, market) || other.market == market));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_availableLanguages),const DeepCollectionEquality().hash(_availableCountries),language,country);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_availableLanguages),const DeepCollectionEquality().hash(_availableCountries),language,country,market);
 
 @override
 String toString() {
-  return 'Localization(availableLanguages: $availableLanguages, availableCountries: $availableCountries, language: $language, country: $country)';
+  return 'Localization(availableLanguages: $availableLanguages, availableCountries: $availableCountries, language: $language, country: $country, market: $market)';
 }
 
 
@@ -283,11 +294,11 @@ abstract mixin class _$LocalizationCopyWith<$Res> implements $LocalizationCopyWi
   factory _$LocalizationCopyWith(_Localization value, $Res Function(_Localization) _then) = __$LocalizationCopyWithImpl;
 @override @useResult
 $Res call({
- List<Language> availableLanguages, List<Country> availableCountries, Language language, Country country
+ List<Language> availableLanguages, List<Country> availableCountries, Language language, Country country, Market market
 });
 
 
-@override $LanguageCopyWith<$Res> get language;@override $CountryCopyWith<$Res> get country;
+@override $LanguageCopyWith<$Res> get language;@override $CountryCopyWith<$Res> get country;@override $MarketCopyWith<$Res> get market;
 
 }
 /// @nodoc
@@ -300,13 +311,14 @@ class __$LocalizationCopyWithImpl<$Res>
 
 /// Create a copy of Localization
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? availableLanguages = null,Object? availableCountries = null,Object? language = null,Object? country = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? availableLanguages = null,Object? availableCountries = null,Object? language = null,Object? country = null,Object? market = null,}) {
   return _then(_Localization(
 availableLanguages: null == availableLanguages ? _self._availableLanguages : availableLanguages // ignore: cast_nullable_to_non_nullable
 as List<Language>,availableCountries: null == availableCountries ? _self._availableCountries : availableCountries // ignore: cast_nullable_to_non_nullable
 as List<Country>,language: null == language ? _self.language : language // ignore: cast_nullable_to_non_nullable
 as Language,country: null == country ? _self.country : country // ignore: cast_nullable_to_non_nullable
-as Country,
+as Country,market: null == market ? _self.market : market // ignore: cast_nullable_to_non_nullable
+as Market,
   ));
 }
 
@@ -327,6 +339,15 @@ $CountryCopyWith<$Res> get country {
   
   return $CountryCopyWith<$Res>(_self.country, (value) {
     return _then(_self.copyWith(country: value));
+  });
+}/// Create a copy of Localization
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MarketCopyWith<$Res> get market {
+  
+  return $MarketCopyWith<$Res>(_self.market, (value) {
+    return _then(_self.copyWith(market: value));
   });
 }
 }

@@ -11,10 +11,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
       options(first: 50) {
             id
             name
-            optionValues {
-              id
-              name
-            }
+            values
             }
           metafields(identifiers: $metafields) {
             id
@@ -26,6 +23,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
             reference {
               ... on MediaImage {
                 image {
+                  originalSrc
                   url
                   id
                 }
@@ -40,13 +38,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
               image {
                 altText
                 id
-                url
+                originalSrc
               }
-              price {
+              priceV2 {
                 amount
                 currencyCode
               }
-              compareAtPrice {
+              compareAtPriceV2 {
                 amount
                 currencyCode
               }
@@ -156,7 +154,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
             node {
               altText
               id
-              url
+              originalSrc
             }
           }
         }
@@ -169,7 +167,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $n : Int,
               previewImage {
                 altText
                 id
-                url
+                originalSrc
               }
             }
           }

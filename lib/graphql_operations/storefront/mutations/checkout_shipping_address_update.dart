@@ -20,7 +20,7 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
       requiresShipping
       shippingLine {
         handle
-        price {
+        priceV2 {
           amount
           currencyCode
         }
@@ -66,17 +66,17 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
             }
             variant {
               id
-              price {
+              priceV2 {
                 amount
                 currencyCode
               }
               title
               image {
                 altText
-                url
+                originalSrc
                 id
               }
-              compareAtPrice {
+              compareAtPriceV2 {
                 amount
                 currencyCode
               }
@@ -90,10 +90,7 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                 options(first: 5) {
                     id
                     name
-                    optionValues {
-                      id
-                      name
-                    }
+                    values
                     } 
                 variants(first: 250) {
                   edges {
@@ -103,13 +100,13 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                       image {
                         altText
                         id
-                        url
+                        originalSrc
                       }
-                      price {
+                      priceV2 {
                         amount
                         currencyCode
                       }
-                      compareAtPrice {
+                      compareAtPriceV2 {
                         amount
                         currencyCode
                       }
@@ -165,7 +162,7 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                     node {
                       altText
                       id
-                      url
+                      originalSrc
                     }
                   }
                 }
@@ -178,7 +175,7 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
                       previewImage {
                         altText
                         id
-                        url
+                        originalSrc
                       }
                     }
                   }
@@ -191,17 +188,17 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
       note
       webUrl
       updatedAt
-      totalTax {
+      totalTaxV2 {
         amount
         currencyCode
       }
-      totalPrice {
+      totalPriceV2 {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPrice {
+      subtotalPriceV2 {
         amount
         currencyCode
       }

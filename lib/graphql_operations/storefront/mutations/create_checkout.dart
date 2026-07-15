@@ -25,7 +25,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
       requiresShipping
       shippingLine {
         handle
-        price {
+        priceV2 {
           amount
           currencyCode
         }
@@ -75,17 +75,17 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
             }
             variant {
               id
-              price {
+              priceV2 {
                 amount
                 currencyCode
               }
               title
               image {
                 altText
-                url
+                originalSrc
                 id
               }
-              compareAtPrice {
+              compareAtPriceV2 {
                 amount
                 currencyCode
               }
@@ -99,10 +99,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                 options(first: 5) {
                     id
                     name
-                    optionValues {
-                      id
-                      name
-                    }
+                    values
                     } 
                 variants(first: 250) {
                   edges {
@@ -112,13 +109,13 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                       image {
                         altText
                         id
-                        url
+                        originalSrc
                       }
-                      price {
+                      priceV2 {
                         amount
                         currencyCode
                       }
-                      compareAtPrice {
+                      compareAtPriceV2 {
                         amount
                         currencyCode
                       }
@@ -174,7 +171,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                     node {
                       altText
                       id
-                      url
+                      originalSrc
                     }
                   }
                 }
@@ -187,7 +184,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                       previewImage {
                         altText
                         id
-                        url
+                        originalSrc
                       }
                     }
                   }
@@ -200,17 +197,17 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
       note
       webUrl
       updatedAt
-      totalTax {
+      totalTaxV2 {
         amount
         currencyCode
       }
-      totalPrice {
+      totalPriceV2 {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPrice {
+      subtotalPriceV2 {
         amount
         currencyCode
       }

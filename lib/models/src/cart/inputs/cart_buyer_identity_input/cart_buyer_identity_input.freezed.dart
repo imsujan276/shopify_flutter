@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartBuyerIdentityInput {
 
- String get email; String? get phone; String? get countryCode; String? get customerAccessToken;
+ String get email; String? get phone; String? get countryCode; String? get customerAccessToken; List<DeliveryAddressInput?> get deliveryAddressPreferences;
 /// Create a copy of CartBuyerIdentityInput
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CartBuyerIdentityInputCopyWith<CartBuyerIdentityInput> get copyWith => _$CartBu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartBuyerIdentityInput&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.customerAccessToken, customerAccessToken) || other.customerAccessToken == customerAccessToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartBuyerIdentityInput&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.customerAccessToken, customerAccessToken) || other.customerAccessToken == customerAccessToken)&&const DeepCollectionEquality().equals(other.deliveryAddressPreferences, deliveryAddressPreferences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,phone,countryCode,customerAccessToken);
+int get hashCode => Object.hash(runtimeType,email,phone,countryCode,customerAccessToken,const DeepCollectionEquality().hash(deliveryAddressPreferences));
 
 @override
 String toString() {
-  return 'CartBuyerIdentityInput(email: $email, phone: $phone, countryCode: $countryCode, customerAccessToken: $customerAccessToken)';
+  return 'CartBuyerIdentityInput(email: $email, phone: $phone, countryCode: $countryCode, customerAccessToken: $customerAccessToken, deliveryAddressPreferences: $deliveryAddressPreferences)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CartBuyerIdentityInputCopyWith<$Res>  {
   factory $CartBuyerIdentityInputCopyWith(CartBuyerIdentityInput value, $Res Function(CartBuyerIdentityInput) _then) = _$CartBuyerIdentityInputCopyWithImpl;
 @useResult
 $Res call({
- String email, String? phone, String? countryCode, String? customerAccessToken
+ String email, String? phone, String? countryCode, String? customerAccessToken, List<DeliveryAddressInput?> deliveryAddressPreferences
 });
 
 
@@ -65,13 +65,14 @@ class _$CartBuyerIdentityInputCopyWithImpl<$Res>
 
 /// Create a copy of CartBuyerIdentityInput
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? phone = freezed,Object? countryCode = freezed,Object? customerAccessToken = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? email = null,Object? phone = freezed,Object? countryCode = freezed,Object? customerAccessToken = freezed,Object? deliveryAddressPreferences = null,}) {
   return _then(_self.copyWith(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,countryCode: freezed == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String?,customerAccessToken: freezed == customerAccessToken ? _self.customerAccessToken : customerAccessToken // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,deliveryAddressPreferences: null == deliveryAddressPreferences ? _self.deliveryAddressPreferences : deliveryAddressPreferences // ignore: cast_nullable_to_non_nullable
+as List<DeliveryAddressInput?>,
   ));
 }
 
@@ -156,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken,  List<DeliveryAddressInput?> deliveryAddressPreferences)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentityInput() when $default != null:
-return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken,_that.deliveryAddressPreferences);case _:
   return orElse();
 
 }
@@ -177,10 +178,10 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessTo
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken,  List<DeliveryAddressInput?> deliveryAddressPreferences)  $default,) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentityInput():
-return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken,_that.deliveryAddressPreferences);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -197,10 +198,10 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessTo
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String email,  String? phone,  String? countryCode,  String? customerAccessToken,  List<DeliveryAddressInput?> deliveryAddressPreferences)?  $default,) {final _that = this;
 switch (_that) {
 case _CartBuyerIdentityInput() when $default != null:
-return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken);case _:
+return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessToken,_that.deliveryAddressPreferences);case _:
   return null;
 
 }
@@ -212,13 +213,20 @@ return $default(_that.email,_that.phone,_that.countryCode,_that.customerAccessTo
 @JsonSerializable()
 
 class _CartBuyerIdentityInput extends CartBuyerIdentityInput {
-  const _CartBuyerIdentityInput({required this.email, this.phone, this.countryCode, this.customerAccessToken}): super._();
+  const _CartBuyerIdentityInput({required this.email, this.phone, this.countryCode, this.customerAccessToken, final  List<DeliveryAddressInput?> deliveryAddressPreferences = const []}): _deliveryAddressPreferences = deliveryAddressPreferences,super._();
   factory _CartBuyerIdentityInput.fromJson(Map<String, dynamic> json) => _$CartBuyerIdentityInputFromJson(json);
 
 @override final  String email;
 @override final  String? phone;
 @override final  String? countryCode;
 @override final  String? customerAccessToken;
+ final  List<DeliveryAddressInput?> _deliveryAddressPreferences;
+@override@JsonKey() List<DeliveryAddressInput?> get deliveryAddressPreferences {
+  if (_deliveryAddressPreferences is EqualUnmodifiableListView) return _deliveryAddressPreferences;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_deliveryAddressPreferences);
+}
+
 
 /// Create a copy of CartBuyerIdentityInput
 /// with the given fields replaced by the non-null parameter values.
@@ -233,16 +241,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartBuyerIdentityInput&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.customerAccessToken, customerAccessToken) || other.customerAccessToken == customerAccessToken));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartBuyerIdentityInput&&(identical(other.email, email) || other.email == email)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.countryCode, countryCode) || other.countryCode == countryCode)&&(identical(other.customerAccessToken, customerAccessToken) || other.customerAccessToken == customerAccessToken)&&const DeepCollectionEquality().equals(other._deliveryAddressPreferences, _deliveryAddressPreferences));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,email,phone,countryCode,customerAccessToken);
+int get hashCode => Object.hash(runtimeType,email,phone,countryCode,customerAccessToken,const DeepCollectionEquality().hash(_deliveryAddressPreferences));
 
 @override
 String toString() {
-  return 'CartBuyerIdentityInput(email: $email, phone: $phone, countryCode: $countryCode, customerAccessToken: $customerAccessToken)';
+  return 'CartBuyerIdentityInput(email: $email, phone: $phone, countryCode: $countryCode, customerAccessToken: $customerAccessToken, deliveryAddressPreferences: $deliveryAddressPreferences)';
 }
 
 
@@ -253,7 +261,7 @@ abstract mixin class _$CartBuyerIdentityInputCopyWith<$Res> implements $CartBuye
   factory _$CartBuyerIdentityInputCopyWith(_CartBuyerIdentityInput value, $Res Function(_CartBuyerIdentityInput) _then) = __$CartBuyerIdentityInputCopyWithImpl;
 @override @useResult
 $Res call({
- String email, String? phone, String? countryCode, String? customerAccessToken
+ String email, String? phone, String? countryCode, String? customerAccessToken, List<DeliveryAddressInput?> deliveryAddressPreferences
 });
 
 
@@ -270,13 +278,14 @@ class __$CartBuyerIdentityInputCopyWithImpl<$Res>
 
 /// Create a copy of CartBuyerIdentityInput
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? phone = freezed,Object? countryCode = freezed,Object? customerAccessToken = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? email = null,Object? phone = freezed,Object? countryCode = freezed,Object? customerAccessToken = freezed,Object? deliveryAddressPreferences = null,}) {
   return _then(_CartBuyerIdentityInput(
 email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
 as String,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,countryCode: freezed == countryCode ? _self.countryCode : countryCode // ignore: cast_nullable_to_non_nullable
 as String?,customerAccessToken: freezed == customerAccessToken ? _self.customerAccessToken : customerAccessToken // ignore: cast_nullable_to_non_nullable
-as String?,
+as String?,deliveryAddressPreferences: null == deliveryAddressPreferences ? _self._deliveryAddressPreferences : deliveryAddressPreferences // ignore: cast_nullable_to_non_nullable
+as List<DeliveryAddressInput?>,
   ));
 }
 

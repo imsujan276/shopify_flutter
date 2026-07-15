@@ -79,16 +79,7 @@ class ShopifyConfig {
   ///
   /// [adminAccessToken] is optional, but required for some admin API calls like deleteCustomer.
   ///
-  /// [storefrontApiVersion] is optional, but defaults to "2026-07".
-  ///
-  /// This package requires Storefront API "2026-07" or newer: the cart queries
-  /// use `lines.discountAllocations(lineLevelOnly:)` and cart-level `delivery`,
-  /// both introduced in 2026-07. Passing an older version will cause those
-  /// cart operations to fail.
-  ///
-  /// Shopify sunsets each version 12 months after release and falls forward to
-  /// the oldest still-supported version, so pinning an unsupported version here
-  /// silently drifts to whatever Shopify serves instead.
+  /// [storefrontApiVersion] is optional, but defaults to "2024-07".
   ///
   /// [cachePolicy] is optional, but defaults to [CachePolicy.networkOnly].
   ///
@@ -113,7 +104,7 @@ class ShopifyConfig {
     required String storefrontAccessToken,
     required String storeUrl,
     String? adminAccessToken,
-    String storefrontApiVersion = "2026-07",
+    String storefrontApiVersion = "2024-07",
     CachePolicy? cachePolicy,
     String? language,
     GraphQLCache? storefrontCache,

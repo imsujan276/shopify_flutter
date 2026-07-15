@@ -17,6 +17,10 @@ abstract class CartCost with _$CartCost {
     required bool subtotalAmountEstimated,
     required PriceV2 totalAmount,
     required bool totalAmountEstimated,
+    PriceV2? totalDutyAmount,
+    required bool totalDutyAmountEstimated,
+    PriceV2? totalTaxAmount,
+    required bool totalTaxAmountEstimated,
   }) = _CartCost;
 
   /// cart cost from json

@@ -14,6 +14,7 @@ query getCollectionsByIds($metafields: [HasMetafieldsIdentifier!]!, $ids: [ID!]!
         reference {
           ... on MediaImage {
             image {
+              originalSrc
               url
               id
             }
@@ -23,7 +24,8 @@ query getCollectionsByIds($metafields: [HasMetafieldsIdentifier!]!, $ids: [ID!]!
       handle
       descriptionHtml
       image {
-        url
+        src
+        originalSrc
         id
         altText
       }

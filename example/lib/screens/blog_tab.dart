@@ -191,7 +191,7 @@ class ArtilePage extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: NetworkImage(
-                                  article.image!.url,
+                                  article.image!.originalSrc,
                                 ))),
                       ),
                       const SizedBox(height: 10),

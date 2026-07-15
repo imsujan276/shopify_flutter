@@ -1,6 +1,6 @@
 /// Query to get x collections and n products sorted
 const String getXCollectionsAndNProductsSortedQuery = r'''
-query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int, $country: CountryCode)  @inContext(country: $country){
+query($productMetafields: [HasMetafieldsIdentifier!]!, $collectonMetafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCollectionSortKeys, $reverse: Boolean, $x: Int, $n: Int, $country: CountryCode)  @inContext(country: $country){
   collections(first: $x, after: $cursor, sortKey: $sortKey, reverse: $reverse) {
   pageInfo{
     hasNextPage
@@ -17,7 +17,7 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
         image {
           altText
           id
-          url
+          originalSrc
         }
         metafields(identifiers: $collectionMetafields) {
           id
@@ -29,6 +29,7 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
           reference {
             ... on MediaImage {
               image {
+                originalSrc
                 url
                 id
               }
@@ -48,6 +49,7 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
                 reference {
                   ... on MediaImage {
                     image {
+                      originalSrc
                       url
                       id
                     }
@@ -61,13 +63,13 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
                     image {
                       altText
                       id
-                      url
+                      originalSrc
                     }
-                    price {
+                    priceV2 {
                       amount
                       currencyCode
                     }
-                    compareAtPrice {
+                    compareAtPriceV2 {
                       amount
                       currencyCode
                     }
@@ -149,7 +151,7 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
                   node {
                     altText
                     id
-                    url
+                    originalSrc
                   }
                 }
               }
@@ -162,7 +164,7 @@ query($productMetafields: [HasMetafieldsIdentifier!]!, $collectionMetafields: [H
                     previewImage {
                       altText
                       id
-                      url
+                      originalSrc
                     }
                   }
                 }

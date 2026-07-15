@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../delivery_address_input/delivery_address_input.dart';
+
 part 'cart_buyer_identity_input.freezed.dart';
 part 'cart_buyer_identity_input.g.dart';
 
@@ -15,6 +17,7 @@ abstract class CartBuyerIdentityInput with _$CartBuyerIdentityInput {
     String? phone,
     String? countryCode,
     String? customerAccessToken,
+    @Default([]) List<DeliveryAddressInput?> deliveryAddressPreferences,
   }) = _CartBuyerIdentityInput;
 
   /// the cart buyer identity input from json factory

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ShopifyImage {
 
- String get url; String get id; String? get altText;
+ String get originalSrc; String get id; String? get altText;
 /// Create a copy of ShopifyImage
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ShopifyImageCopyWith<ShopifyImage> get copyWith => _$ShopifyImageCopyWithImpl<S
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShopifyImage&&(identical(other.url, url) || other.url == url)&&(identical(other.id, id) || other.id == id)&&(identical(other.altText, altText) || other.altText == altText));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ShopifyImage&&(identical(other.originalSrc, originalSrc) || other.originalSrc == originalSrc)&&(identical(other.id, id) || other.id == id)&&(identical(other.altText, altText) || other.altText == altText));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url,id,altText);
+int get hashCode => Object.hash(runtimeType,originalSrc,id,altText);
 
 @override
 String toString() {
-  return 'ShopifyImage(url: $url, id: $id, altText: $altText)';
+  return 'ShopifyImage(originalSrc: $originalSrc, id: $id, altText: $altText)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ShopifyImageCopyWith<$Res>  {
   factory $ShopifyImageCopyWith(ShopifyImage value, $Res Function(ShopifyImage) _then) = _$ShopifyImageCopyWithImpl;
 @useResult
 $Res call({
- String url, String id, String? altText
+ String originalSrc, String id, String? altText
 });
 
 
@@ -65,9 +65,9 @@ class _$ShopifyImageCopyWithImpl<$Res>
 
 /// Create a copy of ShopifyImage
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? url = null,Object? id = null,Object? altText = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? originalSrc = null,Object? id = null,Object? altText = freezed,}) {
   return _then(_self.copyWith(
-url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+originalSrc: null == originalSrc ? _self.originalSrc : originalSrc // ignore: cast_nullable_to_non_nullable
 as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,altText: freezed == altText ? _self.altText : altText // ignore: cast_nullable_to_non_nullable
 as String?,
@@ -155,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String url,  String id,  String? altText)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String originalSrc,  String id,  String? altText)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ShopifyImage() when $default != null:
-return $default(_that.url,_that.id,_that.altText);case _:
+return $default(_that.originalSrc,_that.id,_that.altText);case _:
   return orElse();
 
 }
@@ -176,10 +176,10 @@ return $default(_that.url,_that.id,_that.altText);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String url,  String id,  String? altText)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String originalSrc,  String id,  String? altText)  $default,) {final _that = this;
 switch (_that) {
 case _ShopifyImage():
-return $default(_that.url,_that.id,_that.altText);case _:
+return $default(_that.originalSrc,_that.id,_that.altText);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +196,10 @@ return $default(_that.url,_that.id,_that.altText);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String url,  String id,  String? altText)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String originalSrc,  String id,  String? altText)?  $default,) {final _that = this;
 switch (_that) {
 case _ShopifyImage() when $default != null:
-return $default(_that.url,_that.id,_that.altText);case _:
+return $default(_that.originalSrc,_that.id,_that.altText);case _:
   return null;
 
 }
@@ -211,10 +211,10 @@ return $default(_that.url,_that.id,_that.altText);case _:
 @JsonSerializable()
 
 class _ShopifyImage extends ShopifyImage {
-  const _ShopifyImage({required this.url, required this.id, this.altText}): super._();
+  const _ShopifyImage({required this.originalSrc, required this.id, this.altText}): super._();
   factory _ShopifyImage.fromJson(Map<String, dynamic> json) => _$ShopifyImageFromJson(json);
 
-@override final  String url;
+@override final  String originalSrc;
 @override final  String id;
 @override final  String? altText;
 
@@ -231,16 +231,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShopifyImage&&(identical(other.url, url) || other.url == url)&&(identical(other.id, id) || other.id == id)&&(identical(other.altText, altText) || other.altText == altText));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ShopifyImage&&(identical(other.originalSrc, originalSrc) || other.originalSrc == originalSrc)&&(identical(other.id, id) || other.id == id)&&(identical(other.altText, altText) || other.altText == altText));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,url,id,altText);
+int get hashCode => Object.hash(runtimeType,originalSrc,id,altText);
 
 @override
 String toString() {
-  return 'ShopifyImage(url: $url, id: $id, altText: $altText)';
+  return 'ShopifyImage(originalSrc: $originalSrc, id: $id, altText: $altText)';
 }
 
 
@@ -251,7 +251,7 @@ abstract mixin class _$ShopifyImageCopyWith<$Res> implements $ShopifyImageCopyWi
   factory _$ShopifyImageCopyWith(_ShopifyImage value, $Res Function(_ShopifyImage) _then) = __$ShopifyImageCopyWithImpl;
 @override @useResult
 $Res call({
- String url, String id, String? altText
+ String originalSrc, String id, String? altText
 });
 
 
@@ -268,9 +268,9 @@ class __$ShopifyImageCopyWithImpl<$Res>
 
 /// Create a copy of ShopifyImage
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? url = null,Object? id = null,Object? altText = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? originalSrc = null,Object? id = null,Object? altText = freezed,}) {
   return _then(_ShopifyImage(
-url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+originalSrc: null == originalSrc ? _self.originalSrc : originalSrc // ignore: cast_nullable_to_non_nullable
 as String,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,altText: freezed == altText ? _self.altText : altText // ignore: cast_nullable_to_non_nullable
 as String?,

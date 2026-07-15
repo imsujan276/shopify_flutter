@@ -41,7 +41,10 @@ dev_dependencies:
   # dart run build_runner watch --delete-conflicting-outputs
   build_runner: ^2.15.1
   freezed: ^3.2.5
-  analyzer: ^10.2.0
+  # No explicit `analyzer` pin: nothing here imports it directly, it is only a
+  # transitive codegen dependency. Pinning it (e.g. ^10.2.0, which needs
+  # meta ^1.18.0) breaks resolution on Flutter SDKs whose flutter_test pins the
+  # older meta 1.17.0 — let pub pick an analyzer compatible with the active SDK.
 
 screenshots:
   - description: "Search Example of the shopify storefront"

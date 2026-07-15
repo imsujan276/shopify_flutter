@@ -15,7 +15,10 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartDiscountCode {
 
- bool? get applicable; String? get code;
+ bool? get applicable; String? get code;/// Why the code is not [applicable], attached in code from the cart mutation's payload-level
+/// `warnings` (`errorCode` = CartWarningCode, `errorMessage` = localized text). Absent from the
+/// discountCodes JSON, so fromJson leaves them null; they're populated via copyWith after parsing.
+ String? get errorCode; String? get errorMessage;
 /// Create a copy of CartDiscountCode
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +31,16 @@ $CartDiscountCodeCopyWith<CartDiscountCode> get copyWith => _$CartDiscountCodeCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartDiscountCode&&(identical(other.applicable, applicable) || other.applicable == applicable)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CartDiscountCode&&(identical(other.applicable, applicable) || other.applicable == applicable)&&(identical(other.code, code) || other.code == code)&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicable,code);
+int get hashCode => Object.hash(runtimeType,applicable,code,errorCode,errorMessage);
 
 @override
 String toString() {
-  return 'CartDiscountCode(applicable: $applicable, code: $code)';
+  return 'CartDiscountCode(applicable: $applicable, code: $code, errorCode: $errorCode, errorMessage: $errorMessage)';
 }
 
 
@@ -48,7 +51,7 @@ abstract mixin class $CartDiscountCodeCopyWith<$Res>  {
   factory $CartDiscountCodeCopyWith(CartDiscountCode value, $Res Function(CartDiscountCode) _then) = _$CartDiscountCodeCopyWithImpl;
 @useResult
 $Res call({
- bool? applicable, String? code
+ bool? applicable, String? code, String? errorCode, String? errorMessage
 });
 
 
@@ -65,10 +68,12 @@ class _$CartDiscountCodeCopyWithImpl<$Res>
 
 /// Create a copy of CartDiscountCode
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? applicable = freezed,Object? code = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? applicable = freezed,Object? code = freezed,Object? errorCode = freezed,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 applicable: freezed == applicable ? _self.applicable : applicable // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String?,errorCode: freezed == errorCode ? _self.errorCode : errorCode // ignore: cast_nullable_to_non_nullable
+as String?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }
@@ -154,10 +159,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? applicable,  String? code)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool? applicable,  String? code,  String? errorCode,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartDiscountCode() when $default != null:
-return $default(_that.applicable,_that.code);case _:
+return $default(_that.applicable,_that.code,_that.errorCode,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -175,10 +180,10 @@ return $default(_that.applicable,_that.code);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? applicable,  String? code)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool? applicable,  String? code,  String? errorCode,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _CartDiscountCode():
-return $default(_that.applicable,_that.code);case _:
+return $default(_that.applicable,_that.code,_that.errorCode,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +200,10 @@ return $default(_that.applicable,_that.code);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? applicable,  String? code)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool? applicable,  String? code,  String? errorCode,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _CartDiscountCode() when $default != null:
-return $default(_that.applicable,_that.code);case _:
+return $default(_that.applicable,_that.code,_that.errorCode,_that.errorMessage);case _:
   return null;
 
 }
@@ -210,11 +215,16 @@ return $default(_that.applicable,_that.code);case _:
 @JsonSerializable()
 
 class _CartDiscountCode extends CartDiscountCode {
-  const _CartDiscountCode({required this.applicable, required this.code}): super._();
+  const _CartDiscountCode({required this.applicable, required this.code, this.errorCode, this.errorMessage}): super._();
   factory _CartDiscountCode.fromJson(Map<String, dynamic> json) => _$CartDiscountCodeFromJson(json);
 
 @override final  bool? applicable;
 @override final  String? code;
+/// Why the code is not [applicable], attached in code from the cart mutation's payload-level
+/// `warnings` (`errorCode` = CartWarningCode, `errorMessage` = localized text). Absent from the
+/// discountCodes JSON, so fromJson leaves them null; they're populated via copyWith after parsing.
+@override final  String? errorCode;
+@override final  String? errorMessage;
 
 /// Create a copy of CartDiscountCode
 /// with the given fields replaced by the non-null parameter values.
@@ -229,16 +239,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartDiscountCode&&(identical(other.applicable, applicable) || other.applicable == applicable)&&(identical(other.code, code) || other.code == code));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CartDiscountCode&&(identical(other.applicable, applicable) || other.applicable == applicable)&&(identical(other.code, code) || other.code == code)&&(identical(other.errorCode, errorCode) || other.errorCode == errorCode)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,applicable,code);
+int get hashCode => Object.hash(runtimeType,applicable,code,errorCode,errorMessage);
 
 @override
 String toString() {
-  return 'CartDiscountCode(applicable: $applicable, code: $code)';
+  return 'CartDiscountCode(applicable: $applicable, code: $code, errorCode: $errorCode, errorMessage: $errorMessage)';
 }
 
 
@@ -249,7 +259,7 @@ abstract mixin class _$CartDiscountCodeCopyWith<$Res> implements $CartDiscountCo
   factory _$CartDiscountCodeCopyWith(_CartDiscountCode value, $Res Function(_CartDiscountCode) _then) = __$CartDiscountCodeCopyWithImpl;
 @override @useResult
 $Res call({
- bool? applicable, String? code
+ bool? applicable, String? code, String? errorCode, String? errorMessage
 });
 
 
@@ -266,10 +276,12 @@ class __$CartDiscountCodeCopyWithImpl<$Res>
 
 /// Create a copy of CartDiscountCode
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? applicable = freezed,Object? code = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? applicable = freezed,Object? code = freezed,Object? errorCode = freezed,Object? errorMessage = freezed,}) {
   return _then(_CartDiscountCode(
 applicable: freezed == applicable ? _self.applicable : applicable // ignore: cast_nullable_to_non_nullable
 as bool?,code: freezed == code ? _self.code : code // ignore: cast_nullable_to_non_nullable
+as String?,errorCode: freezed == errorCode ? _self.errorCode : errorCode // ignore: cast_nullable_to_non_nullable
+as String?,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
 }

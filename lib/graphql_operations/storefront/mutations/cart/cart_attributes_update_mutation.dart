@@ -26,22 +26,6 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
           currencyCode
         }
         totalAmountEstimated
-        totalDutyAmount {
-          amount
-          currencyCode
-        }
-        totalDutyAmountEstimated
-        totalTaxAmount {
-          amount
-          currencyCode
-        }
-        totalTaxAmountEstimated
-      }
-      discountAllocations {
-        discountedAmount {
-          amount
-          currencyCode
-        }
       }
       discountCodes {
         applicable
@@ -52,26 +36,30 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
         countryCode
         email
         phone
-        deliveryAddressPreferences {
-          ... on MailingAddress {
-            id
-            name
-            address1
-            address2
-            city
-            company
-            country
-            countryCodeV2
-            firstName
-            formattedArea
-            formatted
-            lastName
-            latitude
-            longitude
-            phone
-            province
-            provinceCode
-            zip
+      }
+      delivery {
+        addresses {
+          id
+          selected
+          oneTimeUse
+          address {
+            ... on CartDeliveryAddress {
+              address1
+              address2
+              city
+              company
+              countryCode
+              firstName
+              formatted
+              formattedArea
+              lastName
+              latitude
+              longitude
+              name
+              phone
+              provinceCode
+              zip
+            }
           }
         }
       }
@@ -103,7 +91,7 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
               key
               value
             }
-            discountAllocations {
+            discountAllocations(lineLevelOnly: false) {
               discountedAmount {
                 amount
                 currencyCode
@@ -171,7 +159,7 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                 title
                 image {
                   altText
-                  originalSrc
+                  url
                   id
                 }
                 compareAtPrice {
@@ -242,7 +230,10 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                   options(first: 5) {
                       id
                       name
-                      values
+                      optionValues {
+                        id
+                        name
+                      }
                       }
                   variants(first: 250) {
                     edges {
@@ -252,13 +243,13 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                         image {
                           altText
                           id
-                          originalSrc
+                          url
                         }
-                        priceV2 {
+                        price {
                           amount
                           currencyCode
                         }
-                        compareAtPriceV2 {
+                        compareAtPrice {
                           amount
                           currencyCode
                         }
@@ -368,7 +359,7 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                       node {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -381,7 +372,7 @@ mutation cartAttributesUpdate($cartId: ID!, $attributes: [AttributeInput!]!, $co
                         previewImage {
                           altText
                           id
-                          originalSrc
+                          url
                         }
                       }
                     }

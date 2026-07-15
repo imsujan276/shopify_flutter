@@ -10,7 +10,14 @@ _CartDiscountCode _$CartDiscountCodeFromJson(Map<String, dynamic> json) =>
     _CartDiscountCode(
       applicable: json['applicable'] as bool?,
       code: json['code'] as String?,
+      errorCode: json['errorCode'] as String?,
+      errorMessage: json['errorMessage'] as String?,
     );
 
 Map<String, dynamic> _$CartDiscountCodeToJson(_CartDiscountCode instance) =>
-    <String, dynamic>{'applicable': instance.applicable, 'code': instance.code};
+    <String, dynamic>{
+      'applicable': instance.applicable,
+      'code': instance.code,
+      'errorCode': instance.errorCode,
+      'errorMessage': instance.errorMessage,
+    };

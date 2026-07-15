@@ -480,20 +480,29 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
           email: randomEmail(),
           phone: randomPhone(),
           countryCode: buyerIndetity?.countryCode,
-          deliveryAddressPreferences: [
-            const DeliveryAddressInput(
-              deliveryAddress: MailingAddressInput(
+        ),
+      );
+      // Delivery addresses moved off the buyer identity in the 2026-07
+      // Storefront API. Add them to the cart directly instead.
+      await shopifyCart.addDeliveryAddresses(
+        cartId: cart.id,
+        addresses: [
+          const CartSelectableAddressInput(
+            selected: true,
+            address: CartAddressInput(
+              deliveryAddress: CartDeliveryAddressInput(
                 address1: '11 Hinkler Avenue',
                 city: 'Sydney',
-                country: 'Australia',
+                countryCode: 'AU',
+                provinceCode: 'NSW',
                 firstName: 'Anderson',
                 lastName: 'Fetter',
                 phone: '044444444',
                 zip: '2229',
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       );
       setState(() {
         cart = updatedCart;
@@ -550,30 +559,30 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
                   ),
                   ExpansionTile(
                     initiallyExpanded: true,
-                    title: const Text('Delivery Address Preferences'),
+                    title: const Text('Delivery Addresses'),
                     children: [
-                      if (buyerIndetity?.deliveryAddressPreferences?.isEmpty ??
-                          true)
+                      if (cart.delivery?.addresses.isEmpty ?? true)
                         const ListTile(
-                          title: Text('No delivery address preferences'),
+                          title: Text('No delivery addresses'),
                         ),
-                      ...(buyerIndetity?.deliveryAddressPreferences ?? []).map(
-                        (mailingAddress) => ListTile(
-                          title: Text(
-                              '${mailingAddress?.firstName} ${mailingAddress?.lastName}'),
-                          subtitle: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '${mailingAddress?.address1}',
-                              ),
-                              Text(
-                                '${mailingAddress?.city}, ${mailingAddress?.country}',
-                              ),
-                            ],
-                          ),
-                        ),
+                      ...(cart.delivery?.addresses ?? []).map(
+                        (selectable) {
+                          final address = selectable.address;
+                          return ListTile(
+                            title: Text(
+                                '${address.firstName} ${address.lastName}'),
+                            subtitle: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text('${address.address1}'),
+                                Text(
+                                  '${address.city}, ${address.countryCode}',
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
                     ],
                   ),

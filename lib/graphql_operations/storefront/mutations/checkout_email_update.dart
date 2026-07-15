@@ -23,7 +23,7 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
       requiresShipping
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -69,7 +69,7 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
             }
             variant {
               id
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
@@ -77,10 +77,10 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
               quantityAvailable
               image {
                 altText
-                originalSrc
+                url
                 id
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -93,7 +93,10 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
                 options(first: 5) {
                     id
                     name
-                    values
+                    optionValues {
+                      id
+                      name
+                    }
                     } 
                 variants(first: 250) {
                   edges {
@@ -103,13 +106,13 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
                       image {
                         altText
                         id
-                        originalSrc
+                        url
                       }
-                      priceV2 {
+                      price {
                         amount
                         currencyCode
                       }
-                      compareAtPriceV2 {
+                      compareAtPrice {
                         amount
                         currencyCode
                       }
@@ -165,7 +168,7 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
                     node {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }
@@ -178,7 +181,7 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
                       previewImage {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -191,17 +194,17 @@ mutation checkoutEmailUpdate($checkoutId : ID!, $email : String!) {
       note
       webUrl
       updatedAt
-      totalTaxV2 {
+      totalTax {
         amount
         currencyCode
       }
-      totalPriceV2 {
+      totalPrice {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPriceV2 {
+      subtotalPrice {
         amount
         currencyCode
       }

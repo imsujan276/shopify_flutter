@@ -142,7 +142,7 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
                           ? ClipRRect(
                               borderRadius: BorderRadius.circular(4),
                               child: Image.network(
-                                product.images.first.originalSrc,
+                                product.images.first.url,
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,

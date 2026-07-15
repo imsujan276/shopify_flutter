@@ -13,7 +13,7 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
         node {
           altText
           id
-          originalSrc
+          url
         }
       }
     }
@@ -26,7 +26,7 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
               previewImage {
                 altText
                 id
-                originalSrc
+                url
               }
             }
           }
@@ -35,7 +35,10 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
     options(first: 50) {
       id
       name
-      values
+      optionValues {
+        id
+        name
+      }
     }
     metafields(identifiers: $metafields) {
       id
@@ -47,7 +50,6 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
       reference {
         ... on MediaImage {
           image {
-            originalSrc
             url
             id
           }
@@ -74,13 +76,13 @@ query getProductRecommentationsQuery($metafields: [HasMetafieldsIdentifier!]!, $
           image {
             altText
             id
-            originalSrc
+            url
           }
-          priceV2 {
+          price {
             amount
             currencyCode
           }
-          compareAtPriceV2 {
+          compareAtPrice {
             amount
             currencyCode
           }

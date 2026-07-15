@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shopify_flutter/models/src/checkout/mailing_address/mailing_address.dart';
 
 import '../cart_preference/cart_preference.dart';
 import '../customer/customer.dart';
@@ -20,7 +19,6 @@ abstract class CartBuyerIdentity with _$CartBuyerIdentity {
     String? countryCode,
     CartPreference? preferences,
     Customer? customer,
-    List<MailingAddress?>? deliveryAddressPreferences,
   }) = _CartBuyerIdentity;
 
   /// cart buyer identity from json factory

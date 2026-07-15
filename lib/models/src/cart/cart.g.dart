@@ -13,13 +13,6 @@ _Cart _$CartFromJson(Map<String, dynamic> json) => _Cart(
       ? null
       : CartCost.fromJson(json['cost'] as Map<String, dynamic>),
   totalQuantity: (json['totalQuantity'] as num?)?.toInt(),
-  discountAllocations: (json['discountAllocations'] as List<dynamic>?)
-      ?.map(
-        (e) => e == null
-            ? null
-            : CartDiscountAllocation.fromJson(e as Map<String, dynamic>),
-      )
-      .toList(),
   discountCodes: (json['discountCodes'] as List<dynamic>?)
       ?.map(
         (e) => e == null
@@ -38,6 +31,9 @@ _Cart _$CartFromJson(Map<String, dynamic> json) => _Cart(
       : CartBuyerIdentity.fromJson(
           json['buyerIdentity'] as Map<String, dynamic>,
         ),
+  delivery: json['delivery'] == null
+      ? null
+      : CartDelivery.fromJson(json['delivery'] as Map<String, dynamic>),
   note: json['note'] as String?,
   updatedAt: json['updatedAt'] as String?,
   lines: JsonHelper.lines(json['lines']),
@@ -48,13 +44,11 @@ Map<String, dynamic> _$CartToJson(_Cart instance) => <String, dynamic>{
   'checkoutUrl': instance.checkoutUrl,
   'cost': instance.cost?.toJson(),
   'totalQuantity': instance.totalQuantity,
-  'discountAllocations': instance.discountAllocations
-      ?.map((e) => e?.toJson())
-      .toList(),
   'discountCodes': instance.discountCodes?.map((e) => e?.toJson()).toList(),
   'createdAt': instance.createdAt,
   'attributes': instance.attributes?.map((e) => e?.toJson()).toList(),
   'buyerIdentity': instance.buyerIdentity?.toJson(),
+  'delivery': instance.delivery?.toJson(),
   'note': instance.note,
   'updatedAt': instance.updatedAt,
   'lines': instance.lines.map((e) => e.toJson()).toList(),

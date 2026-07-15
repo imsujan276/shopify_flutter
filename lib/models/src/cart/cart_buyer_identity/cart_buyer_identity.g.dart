@@ -19,14 +19,6 @@ _CartBuyerIdentity _$CartBuyerIdentityFromJson(Map<String, dynamic> json) =>
       customer: json['customer'] == null
           ? null
           : Customer.fromJson(json['customer'] as Map<String, dynamic>),
-      deliveryAddressPreferences:
-          (json['deliveryAddressPreferences'] as List<dynamic>?)
-              ?.map(
-                (e) => e == null
-                    ? null
-                    : MailingAddress.fromJson(e as Map<String, dynamic>),
-              )
-              .toList(),
     );
 
 Map<String, dynamic> _$CartBuyerIdentityToJson(_CartBuyerIdentity instance) =>
@@ -36,7 +28,4 @@ Map<String, dynamic> _$CartBuyerIdentityToJson(_CartBuyerIdentity instance) =>
       'countryCode': instance.countryCode,
       'preferences': instance.preferences?.toJson(),
       'customer': instance.customer?.toJson(),
-      'deliveryAddressPreferences': instance.deliveryAddressPreferences
-          ?.map((e) => e?.toJson())
-          .toList(),
     };

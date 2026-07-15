@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Option {
 
- String get id; String get name; List<String> get values;
+ String get id; String get name; List<ProductOptionValue> get optionValues;
 /// Create a copy of Option
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $OptionCopyWith<Option> get copyWith => _$OptionCopyWithImpl<Option>(this as Opt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Option&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.values, values));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Option&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other.optionValues, optionValues));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(values));
+int get hashCode => Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(optionValues));
 
 @override
 String toString() {
-  return 'Option(id: $id, name: $name, values: $values)';
+  return 'Option(id: $id, name: $name, optionValues: $optionValues)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $OptionCopyWith<$Res>  {
   factory $OptionCopyWith(Option value, $Res Function(Option) _then) = _$OptionCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, List<String> values
+ String id, String name, List<ProductOptionValue> optionValues
 });
 
 
@@ -65,12 +65,12 @@ class _$OptionCopyWithImpl<$Res>
 
 /// Create a copy of Option
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? values = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? optionValues = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,values: null == values ? _self.values : values // ignore: cast_nullable_to_non_nullable
-as List<String>,
+as String,optionValues: null == optionValues ? _self.optionValues : optionValues // ignore: cast_nullable_to_non_nullable
+as List<ProductOptionValue>,
   ));
 }
 
@@ -155,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  List<String> values)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  List<ProductOptionValue> optionValues)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Option() when $default != null:
-return $default(_that.id,_that.name,_that.values);case _:
+return $default(_that.id,_that.name,_that.optionValues);case _:
   return orElse();
 
 }
@@ -176,10 +176,10 @@ return $default(_that.id,_that.name,_that.values);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  List<String> values)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  List<ProductOptionValue> optionValues)  $default,) {final _that = this;
 switch (_that) {
 case _Option():
-return $default(_that.id,_that.name,_that.values);case _:
+return $default(_that.id,_that.name,_that.optionValues);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +196,10 @@ return $default(_that.id,_that.name,_that.values);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  List<String> values)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  List<ProductOptionValue> optionValues)?  $default,) {final _that = this;
 switch (_that) {
 case _Option() when $default != null:
-return $default(_that.id,_that.name,_that.values);case _:
+return $default(_that.id,_that.name,_that.optionValues);case _:
   return null;
 
 }
@@ -211,16 +211,16 @@ return $default(_that.id,_that.name,_that.values);case _:
 @JsonSerializable()
 
 class _Option extends Option {
-  const _Option({required this.id, required this.name, required final  List<String> values}): _values = values,super._();
+  const _Option({required this.id, required this.name, required final  List<ProductOptionValue> optionValues}): _optionValues = optionValues,super._();
   factory _Option.fromJson(Map<String, dynamic> json) => _$OptionFromJson(json);
 
 @override final  String id;
 @override final  String name;
- final  List<String> _values;
-@override List<String> get values {
-  if (_values is EqualUnmodifiableListView) return _values;
+ final  List<ProductOptionValue> _optionValues;
+@override List<ProductOptionValue> get optionValues {
+  if (_optionValues is EqualUnmodifiableListView) return _optionValues;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_values);
+  return EqualUnmodifiableListView(_optionValues);
 }
 
 
@@ -237,16 +237,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Option&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other._values, _values));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Option&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&const DeepCollectionEquality().equals(other._optionValues, _optionValues));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(_values));
+int get hashCode => Object.hash(runtimeType,id,name,const DeepCollectionEquality().hash(_optionValues));
 
 @override
 String toString() {
-  return 'Option(id: $id, name: $name, values: $values)';
+  return 'Option(id: $id, name: $name, optionValues: $optionValues)';
 }
 
 
@@ -257,7 +257,7 @@ abstract mixin class _$OptionCopyWith<$Res> implements $OptionCopyWith<$Res> {
   factory _$OptionCopyWith(_Option value, $Res Function(_Option) _then) = __$OptionCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, List<String> values
+ String id, String name, List<ProductOptionValue> optionValues
 });
 
 
@@ -274,12 +274,12 @@ class __$OptionCopyWithImpl<$Res>
 
 /// Create a copy of Option
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? values = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? optionValues = null,}) {
   return _then(_Option(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
-as String,values: null == values ? _self._values : values // ignore: cast_nullable_to_non_nullable
-as List<String>,
+as String,optionValues: null == optionValues ? _self._optionValues : optionValues // ignore: cast_nullable_to_non_nullable
+as List<ProductOptionValue>,
   ));
 }
 

@@ -104,7 +104,7 @@ abstract class Product with _$Product {
   /// It is useful to show the image of the product in the product list
   String get image => images.isEmpty
       ? 'https://trello-attachments.s3.amazonaws.com/5d64f19a7cd71013a9a418cf/640x480/1dfc14f78ab0dbb3de0e62ae7ebded0c/placeholder.jpg'
-      : images.first.originalSrc;
+      : images.first.url;
 
   /// returns cuurency code of the first product variant or empty string if the list is empty
   ///

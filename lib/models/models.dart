@@ -43,6 +43,7 @@ export 'src/product/associated_collections/associated_collections.dart';
 export 'src/product/metafield/metafield.dart';
 export 'src/product/metafield_identifier/metafield_identifier.dart';
 export 'src/product/option/option.dart';
+export 'src/product/product_option_value/product_option_value.dart';
 export 'src/product/price_v_2/price_v_2.dart';
 export 'src/product/product_variant/product_variant.dart';
 export 'src/product/selected_option/selected_option.dart';
@@ -67,6 +68,5 @@ export 'src/localization/localization.dart';
 export 'src/localization/country/country.dart';
 export 'src/localization/currency/currency.dart';
 export 'src/localization/language/language.dart';
-export 'src/localization/market/market.dart';
 
 export 'src/cart/cart_model.dart';

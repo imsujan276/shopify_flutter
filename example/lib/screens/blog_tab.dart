@@ -12,8 +12,10 @@ class BlogTab extends StatefulWidget {
 class BlogTabState extends State<BlogTab> {
   List<Blog> blogs = [];
   bool _isBlogsLoading = true;
+  String? _blogsError;
   List<Page> pages = [];
   bool _isPagesLoading = true;
+  String? _pagesError;
 
   @override
   void initState() {
@@ -44,7 +46,33 @@ class BlogTabState extends State<BlogTab> {
     );
   }
 
+  Widget _errorView(String title, String message) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Icon(Icons.error_outline, color: Colors.red, size: 40),
+            const SizedBox(height: 12),
+            Text(title,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.red)),
+            const SizedBox(height: 8),
+            Text(message, textAlign: TextAlign.center),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildBlogList() {
+    if (!_isBlogsLoading && _blogsError != null) {
+      return _errorView('Failed to load blogs', _blogsError!);
+    }
+    if (!_isBlogsLoading && blogs.isEmpty) {
+      return const Center(child: Text('No blogs'));
+    }
     return Center(
       child: _isBlogsLoading
           ? const CircularProgressIndicator()
@@ -76,6 +104,12 @@ class BlogTabState extends State<BlogTab> {
   }
 
   Widget _buildPagesList() {
+    if (!_isPagesLoading && _pagesError != null) {
+      return _errorView('Failed to load pages', _pagesError!);
+    }
+    if (!_isPagesLoading && pages.isEmpty) {
+      return const Center(child: Text('No pages'));
+    }
     return Center(
       child: _isPagesLoading
           ? const CircularProgressIndicator()
@@ -110,7 +144,15 @@ class BlogTabState extends State<BlogTab> {
         });
       }
     } catch (e) {
-      _isPagesLoading = false;
+      // Surface the error in the tab (e.g. ACCESS_DENIED when the Storefront
+      // token lacks the `unauthenticated_read_content` scope) instead of
+      // spinning forever. Must go through setState to rebuild.
+      if (mounted) {
+        setState(() {
+          _isPagesLoading = false;
+          _pagesError = e.toString();
+        });
+      }
       debugPrint(e.toString());
     }
   }
@@ -126,7 +168,12 @@ class BlogTabState extends State<BlogTab> {
         });
       }
     } catch (e) {
-      _isBlogsLoading = false;
+      if (mounted) {
+        setState(() {
+          _isBlogsLoading = false;
+          _blogsError = e.toString();
+        });
+      }
       debugPrint(e.toString());
     }
   }
@@ -191,7 +238,7 @@ class ArtilePage extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.contain,
                                 image: NetworkImage(
-                                  article.image!.originalSrc,
+                                  article.image!.url,
                                 ))),
                       ),
                       const SizedBox(height: 10),
@@ -240,7 +287,7 @@ class _PagePageState extends State<PagePage> {
         });
       }
     } catch (e) {
-      _isLoading = false;
+      if (mounted) setState(() => _isLoading = false);
       debugPrint(e.toString());
     }
   }

@@ -20,7 +20,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
       requiresShipping
       shippingLine {
         handle
-        priceV2 {
+        price {
           amount
           currencyCode
         }
@@ -66,7 +66,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
             }
             variant {
               id
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
@@ -74,10 +74,10 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
               quantityAvailable
               image {
                 altText
-                originalSrc
+                url
                 id
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }
@@ -90,7 +90,10 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                 options(first: 5) {
                     id
                     name
-                    values
+                    optionValues {
+                      id
+                      name
+                    }
                     } 
                 variants(first: 250) {
                   edges {
@@ -100,13 +103,13 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                       image {
                         altText
                         id
-                        originalSrc
+                        url
                       }
-                      priceV2 {
+                      price {
                         amount
                         currencyCode
                       }
-                      compareAtPriceV2 {
+                      compareAtPrice {
                         amount
                         currencyCode
                       }
@@ -162,7 +165,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                     node {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }
@@ -175,7 +178,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
                       previewImage {
                         altText
                         id
-                        originalSrc
+                        url
                       }
                     }
                   }
@@ -188,17 +191,17 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
       note
       webUrl
       updatedAt
-      totalTaxV2 {
+      totalTax {
         amount
         currencyCode
       }
-      totalPriceV2 {
+      totalPrice {
         amount
         currencyCode
       }
       taxesIncluded
       taxExempt
-      subtotalPriceV2 {
+      subtotalPrice {
         amount
         currencyCode
       }

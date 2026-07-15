@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Order {
 
- String get id; String get email; String get currencyCode; String get customerUrl; LineItemsOrder get lineItems; String get name; int get orderNumber; String get processedAt; ShippingAddress? get shippingAddress; ShippingAddress? get billingAddress; String get statusUrl; PriceV2 get subtotalPriceV2; PriceV2 get totalPriceV2; PriceV2 get totalShippingPriceV2; PriceV2 get totalTaxV2; String get financialStatus; String get fulfillmentStatus; PriceV2? get totalRefundedV2; String? get phone; String? get cursor; String? get canceledAt; String? get cancelReason; List<SuccessfulFullfilment>? get successfulFulfillments;
+ String get id; String get email; String get currencyCode; String get customerUrl; LineItemsOrder get lineItems; String get name; int get orderNumber; String get processedAt; ShippingAddress? get shippingAddress; ShippingAddress? get billingAddress; String get statusUrl; PriceV2 get subtotalPrice; PriceV2 get totalPrice; PriceV2 get totalShippingPrice; PriceV2 get totalTax; String get financialStatus; String get fulfillmentStatus; PriceV2? get totalRefunded; String? get phone; String? get cursor; String? get canceledAt; String? get cancelReason; List<SuccessfulFullfilment>? get successfulFulfillments;
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $OrderCopyWith<Order> get copyWith => _$OrderCopyWithImpl<Order>(this as Order, 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Order&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.customerUrl, customerUrl) || other.customerUrl == customerUrl)&&(identical(other.lineItems, lineItems) || other.lineItems == lineItems)&&(identical(other.name, name) || other.name == name)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.processedAt, processedAt) || other.processedAt == processedAt)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.statusUrl, statusUrl) || other.statusUrl == statusUrl)&&(identical(other.subtotalPriceV2, subtotalPriceV2) || other.subtotalPriceV2 == subtotalPriceV2)&&(identical(other.totalPriceV2, totalPriceV2) || other.totalPriceV2 == totalPriceV2)&&(identical(other.totalShippingPriceV2, totalShippingPriceV2) || other.totalShippingPriceV2 == totalShippingPriceV2)&&(identical(other.totalTaxV2, totalTaxV2) || other.totalTaxV2 == totalTaxV2)&&(identical(other.financialStatus, financialStatus) || other.financialStatus == financialStatus)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.totalRefundedV2, totalRefundedV2) || other.totalRefundedV2 == totalRefundedV2)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancelReason, cancelReason) || other.cancelReason == cancelReason)&&const DeepCollectionEquality().equals(other.successfulFulfillments, successfulFulfillments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Order&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.customerUrl, customerUrl) || other.customerUrl == customerUrl)&&(identical(other.lineItems, lineItems) || other.lineItems == lineItems)&&(identical(other.name, name) || other.name == name)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.processedAt, processedAt) || other.processedAt == processedAt)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.statusUrl, statusUrl) || other.statusUrl == statusUrl)&&(identical(other.subtotalPrice, subtotalPrice) || other.subtotalPrice == subtotalPrice)&&(identical(other.totalPrice, totalPrice) || other.totalPrice == totalPrice)&&(identical(other.totalShippingPrice, totalShippingPrice) || other.totalShippingPrice == totalShippingPrice)&&(identical(other.totalTax, totalTax) || other.totalTax == totalTax)&&(identical(other.financialStatus, financialStatus) || other.financialStatus == financialStatus)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.totalRefunded, totalRefunded) || other.totalRefunded == totalRefunded)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancelReason, cancelReason) || other.cancelReason == cancelReason)&&const DeepCollectionEquality().equals(other.successfulFulfillments, successfulFulfillments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,email,currencyCode,customerUrl,lineItems,name,orderNumber,processedAt,shippingAddress,billingAddress,statusUrl,subtotalPriceV2,totalPriceV2,totalShippingPriceV2,totalTaxV2,financialStatus,fulfillmentStatus,totalRefundedV2,phone,cursor,canceledAt,cancelReason,const DeepCollectionEquality().hash(successfulFulfillments)]);
+int get hashCode => Object.hashAll([runtimeType,id,email,currencyCode,customerUrl,lineItems,name,orderNumber,processedAt,shippingAddress,billingAddress,statusUrl,subtotalPrice,totalPrice,totalShippingPrice,totalTax,financialStatus,fulfillmentStatus,totalRefunded,phone,cursor,canceledAt,cancelReason,const DeepCollectionEquality().hash(successfulFulfillments)]);
 
 @override
 String toString() {
-  return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, canceledAt: $canceledAt, cancelReason: $cancelReason, successfulFulfillments: $successfulFulfillments)';
+  return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPrice: $subtotalPrice, totalPrice: $totalPrice, totalShippingPrice: $totalShippingPrice, totalTax: $totalTax, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefunded: $totalRefunded, phone: $phone, cursor: $cursor, canceledAt: $canceledAt, cancelReason: $cancelReason, successfulFulfillments: $successfulFulfillments)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $OrderCopyWith<$Res>  {
   factory $OrderCopyWith(Order value, $Res Function(Order) _then) = _$OrderCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPriceV2, PriceV2 totalPriceV2, PriceV2 totalShippingPriceV2, PriceV2 totalTaxV2, String financialStatus, String fulfillmentStatus, PriceV2? totalRefundedV2, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
+ String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice, PriceV2 totalTax, String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
 });
 
 
-$LineItemsOrderCopyWith<$Res> get lineItems;$ShippingAddressCopyWith<$Res>? get shippingAddress;$ShippingAddressCopyWith<$Res>? get billingAddress;$PriceV2CopyWith<$Res> get subtotalPriceV2;$PriceV2CopyWith<$Res> get totalPriceV2;$PriceV2CopyWith<$Res> get totalShippingPriceV2;$PriceV2CopyWith<$Res> get totalTaxV2;$PriceV2CopyWith<$Res>? get totalRefundedV2;
+$LineItemsOrderCopyWith<$Res> get lineItems;$ShippingAddressCopyWith<$Res>? get shippingAddress;$ShippingAddressCopyWith<$Res>? get billingAddress;$PriceV2CopyWith<$Res> get subtotalPrice;$PriceV2CopyWith<$Res> get totalPrice;$PriceV2CopyWith<$Res> get totalShippingPrice;$PriceV2CopyWith<$Res> get totalTax;$PriceV2CopyWith<$Res>? get totalRefunded;
 
 }
 /// @nodoc
@@ -65,7 +65,7 @@ class _$OrderCopyWithImpl<$Res>
 
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? currencyCode = null,Object? customerUrl = null,Object? lineItems = null,Object? name = null,Object? orderNumber = null,Object? processedAt = null,Object? shippingAddress = freezed,Object? billingAddress = freezed,Object? statusUrl = null,Object? subtotalPriceV2 = null,Object? totalPriceV2 = null,Object? totalShippingPriceV2 = null,Object? totalTaxV2 = null,Object? financialStatus = null,Object? fulfillmentStatus = null,Object? totalRefundedV2 = freezed,Object? phone = freezed,Object? cursor = freezed,Object? canceledAt = freezed,Object? cancelReason = freezed,Object? successfulFulfillments = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? email = null,Object? currencyCode = null,Object? customerUrl = null,Object? lineItems = null,Object? name = null,Object? orderNumber = null,Object? processedAt = null,Object? shippingAddress = freezed,Object? billingAddress = freezed,Object? statusUrl = null,Object? subtotalPrice = null,Object? totalPrice = null,Object? totalShippingPrice = null,Object? totalTax = null,Object? financialStatus = null,Object? fulfillmentStatus = null,Object? totalRefunded = freezed,Object? phone = freezed,Object? cursor = freezed,Object? canceledAt = freezed,Object? cancelReason = freezed,Object? successfulFulfillments = freezed,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -78,13 +78,13 @@ as int,processedAt: null == processedAt ? _self.processedAt : processedAt // ign
 as String,shippingAddress: freezed == shippingAddress ? _self.shippingAddress : shippingAddress // ignore: cast_nullable_to_non_nullable
 as ShippingAddress?,billingAddress: freezed == billingAddress ? _self.billingAddress : billingAddress // ignore: cast_nullable_to_non_nullable
 as ShippingAddress?,statusUrl: null == statusUrl ? _self.statusUrl : statusUrl // ignore: cast_nullable_to_non_nullable
-as String,subtotalPriceV2: null == subtotalPriceV2 ? _self.subtotalPriceV2 : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalPriceV2: null == totalPriceV2 ? _self.totalPriceV2 : totalPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalShippingPriceV2: null == totalShippingPriceV2 ? _self.totalShippingPriceV2 : totalShippingPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalTaxV2: null == totalTaxV2 ? _self.totalTaxV2 : totalTaxV2 // ignore: cast_nullable_to_non_nullable
+as String,subtotalPrice: null == subtotalPrice ? _self.subtotalPrice : subtotalPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalShippingPrice: null == totalShippingPrice ? _self.totalShippingPrice : totalShippingPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalTax: null == totalTax ? _self.totalTax : totalTax // ignore: cast_nullable_to_non_nullable
 as PriceV2,financialStatus: null == financialStatus ? _self.financialStatus : financialStatus // ignore: cast_nullable_to_non_nullable
 as String,fulfillmentStatus: null == fulfillmentStatus ? _self.fulfillmentStatus : fulfillmentStatus // ignore: cast_nullable_to_non_nullable
-as String,totalRefundedV2: freezed == totalRefundedV2 ? _self.totalRefundedV2 : totalRefundedV2 // ignore: cast_nullable_to_non_nullable
+as String,totalRefunded: freezed == totalRefunded ? _self.totalRefunded : totalRefunded // ignore: cast_nullable_to_non_nullable
 as PriceV2?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
 as String?,canceledAt: freezed == canceledAt ? _self.canceledAt : canceledAt // ignore: cast_nullable_to_non_nullable
@@ -130,49 +130,49 @@ $ShippingAddressCopyWith<$Res>? get billingAddress {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get subtotalPriceV2 {
+$PriceV2CopyWith<$Res> get subtotalPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.subtotalPriceV2, (value) {
-    return _then(_self.copyWith(subtotalPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.subtotalPrice, (value) {
+    return _then(_self.copyWith(subtotalPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalPriceV2 {
+$PriceV2CopyWith<$Res> get totalPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.totalPriceV2, (value) {
-    return _then(_self.copyWith(totalPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalPrice, (value) {
+    return _then(_self.copyWith(totalPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalShippingPriceV2 {
+$PriceV2CopyWith<$Res> get totalShippingPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.totalShippingPriceV2, (value) {
-    return _then(_self.copyWith(totalShippingPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalShippingPrice, (value) {
+    return _then(_self.copyWith(totalShippingPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalTaxV2 {
+$PriceV2CopyWith<$Res> get totalTax {
   
-  return $PriceV2CopyWith<$Res>(_self.totalTaxV2, (value) {
-    return _then(_self.copyWith(totalTaxV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalTax, (value) {
+    return _then(_self.copyWith(totalTax: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res>? get totalRefundedV2 {
-    if (_self.totalRefundedV2 == null) {
+$PriceV2CopyWith<$Res>? get totalRefunded {
+    if (_self.totalRefunded == null) {
     return null;
   }
 
-  return $PriceV2CopyWith<$Res>(_self.totalRefundedV2!, (value) {
-    return _then(_self.copyWith(totalRefundedV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalRefunded!, (value) {
+    return _then(_self.copyWith(totalRefunded: value));
   });
 }
 }
@@ -256,10 +256,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPriceV2,  PriceV2 totalPriceV2,  PriceV2 totalShippingPriceV2,  PriceV2 totalTaxV2,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefundedV2,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
-return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPriceV2,_that.totalPriceV2,_that.totalShippingPriceV2,_that.totalTaxV2,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefundedV2,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
+return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
   return orElse();
 
 }
@@ -277,10 +277,10 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPriceV2,  PriceV2 totalPriceV2,  PriceV2 totalShippingPriceV2,  PriceV2 totalTaxV2,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefundedV2,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)  $default,) {final _that = this;
 switch (_that) {
 case _Order():
-return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPriceV2,_that.totalPriceV2,_that.totalShippingPriceV2,_that.totalTaxV2,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefundedV2,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
+return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -297,10 +297,10 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPriceV2,  PriceV2 totalPriceV2,  PriceV2 totalShippingPriceV2,  PriceV2 totalTaxV2,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefundedV2,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
-return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPriceV2,_that.totalPriceV2,_that.totalShippingPriceV2,_that.totalTaxV2,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefundedV2,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
+return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
   return null;
 
 }
@@ -312,7 +312,7 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 @JsonSerializable()
 
 class _Order extends Order {
-  const _Order({required this.id, required this.email, required this.currencyCode, required this.customerUrl, required this.lineItems, required this.name, required this.orderNumber, required this.processedAt, required this.shippingAddress, required this.billingAddress, required this.statusUrl, required this.subtotalPriceV2, required this.totalPriceV2, required this.totalShippingPriceV2, required this.totalTaxV2, required this.financialStatus, required this.fulfillmentStatus, this.totalRefundedV2, this.phone, this.cursor, this.canceledAt, this.cancelReason, final  List<SuccessfulFullfilment>? successfulFulfillments}): _successfulFulfillments = successfulFulfillments,super._();
+  const _Order({required this.id, required this.email, required this.currencyCode, required this.customerUrl, required this.lineItems, required this.name, required this.orderNumber, required this.processedAt, required this.shippingAddress, required this.billingAddress, required this.statusUrl, required this.subtotalPrice, required this.totalPrice, required this.totalShippingPrice, required this.totalTax, required this.financialStatus, required this.fulfillmentStatus, this.totalRefunded, this.phone, this.cursor, this.canceledAt, this.cancelReason, final  List<SuccessfulFullfilment>? successfulFulfillments}): _successfulFulfillments = successfulFulfillments,super._();
   factory _Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
 @override final  String id;
@@ -326,13 +326,13 @@ class _Order extends Order {
 @override final  ShippingAddress? shippingAddress;
 @override final  ShippingAddress? billingAddress;
 @override final  String statusUrl;
-@override final  PriceV2 subtotalPriceV2;
-@override final  PriceV2 totalPriceV2;
-@override final  PriceV2 totalShippingPriceV2;
-@override final  PriceV2 totalTaxV2;
+@override final  PriceV2 subtotalPrice;
+@override final  PriceV2 totalPrice;
+@override final  PriceV2 totalShippingPrice;
+@override final  PriceV2 totalTax;
 @override final  String financialStatus;
 @override final  String fulfillmentStatus;
-@override final  PriceV2? totalRefundedV2;
+@override final  PriceV2? totalRefunded;
 @override final  String? phone;
 @override final  String? cursor;
 @override final  String? canceledAt;
@@ -360,16 +360,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Order&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.customerUrl, customerUrl) || other.customerUrl == customerUrl)&&(identical(other.lineItems, lineItems) || other.lineItems == lineItems)&&(identical(other.name, name) || other.name == name)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.processedAt, processedAt) || other.processedAt == processedAt)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.statusUrl, statusUrl) || other.statusUrl == statusUrl)&&(identical(other.subtotalPriceV2, subtotalPriceV2) || other.subtotalPriceV2 == subtotalPriceV2)&&(identical(other.totalPriceV2, totalPriceV2) || other.totalPriceV2 == totalPriceV2)&&(identical(other.totalShippingPriceV2, totalShippingPriceV2) || other.totalShippingPriceV2 == totalShippingPriceV2)&&(identical(other.totalTaxV2, totalTaxV2) || other.totalTaxV2 == totalTaxV2)&&(identical(other.financialStatus, financialStatus) || other.financialStatus == financialStatus)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.totalRefundedV2, totalRefundedV2) || other.totalRefundedV2 == totalRefundedV2)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancelReason, cancelReason) || other.cancelReason == cancelReason)&&const DeepCollectionEquality().equals(other._successfulFulfillments, _successfulFulfillments));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Order&&(identical(other.id, id) || other.id == id)&&(identical(other.email, email) || other.email == email)&&(identical(other.currencyCode, currencyCode) || other.currencyCode == currencyCode)&&(identical(other.customerUrl, customerUrl) || other.customerUrl == customerUrl)&&(identical(other.lineItems, lineItems) || other.lineItems == lineItems)&&(identical(other.name, name) || other.name == name)&&(identical(other.orderNumber, orderNumber) || other.orderNumber == orderNumber)&&(identical(other.processedAt, processedAt) || other.processedAt == processedAt)&&(identical(other.shippingAddress, shippingAddress) || other.shippingAddress == shippingAddress)&&(identical(other.billingAddress, billingAddress) || other.billingAddress == billingAddress)&&(identical(other.statusUrl, statusUrl) || other.statusUrl == statusUrl)&&(identical(other.subtotalPrice, subtotalPrice) || other.subtotalPrice == subtotalPrice)&&(identical(other.totalPrice, totalPrice) || other.totalPrice == totalPrice)&&(identical(other.totalShippingPrice, totalShippingPrice) || other.totalShippingPrice == totalShippingPrice)&&(identical(other.totalTax, totalTax) || other.totalTax == totalTax)&&(identical(other.financialStatus, financialStatus) || other.financialStatus == financialStatus)&&(identical(other.fulfillmentStatus, fulfillmentStatus) || other.fulfillmentStatus == fulfillmentStatus)&&(identical(other.totalRefunded, totalRefunded) || other.totalRefunded == totalRefunded)&&(identical(other.phone, phone) || other.phone == phone)&&(identical(other.cursor, cursor) || other.cursor == cursor)&&(identical(other.canceledAt, canceledAt) || other.canceledAt == canceledAt)&&(identical(other.cancelReason, cancelReason) || other.cancelReason == cancelReason)&&const DeepCollectionEquality().equals(other._successfulFulfillments, _successfulFulfillments));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hashAll([runtimeType,id,email,currencyCode,customerUrl,lineItems,name,orderNumber,processedAt,shippingAddress,billingAddress,statusUrl,subtotalPriceV2,totalPriceV2,totalShippingPriceV2,totalTaxV2,financialStatus,fulfillmentStatus,totalRefundedV2,phone,cursor,canceledAt,cancelReason,const DeepCollectionEquality().hash(_successfulFulfillments)]);
+int get hashCode => Object.hashAll([runtimeType,id,email,currencyCode,customerUrl,lineItems,name,orderNumber,processedAt,shippingAddress,billingAddress,statusUrl,subtotalPrice,totalPrice,totalShippingPrice,totalTax,financialStatus,fulfillmentStatus,totalRefunded,phone,cursor,canceledAt,cancelReason,const DeepCollectionEquality().hash(_successfulFulfillments)]);
 
 @override
 String toString() {
-  return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, canceledAt: $canceledAt, cancelReason: $cancelReason, successfulFulfillments: $successfulFulfillments)';
+  return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, billingAddress: $billingAddress, statusUrl: $statusUrl, subtotalPrice: $subtotalPrice, totalPrice: $totalPrice, totalShippingPrice: $totalShippingPrice, totalTax: $totalTax, financialStatus: $financialStatus, fulfillmentStatus: $fulfillmentStatus, totalRefunded: $totalRefunded, phone: $phone, cursor: $cursor, canceledAt: $canceledAt, cancelReason: $cancelReason, successfulFulfillments: $successfulFulfillments)';
 }
 
 
@@ -380,11 +380,11 @@ abstract mixin class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
   factory _$OrderCopyWith(_Order value, $Res Function(_Order) _then) = __$OrderCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPriceV2, PriceV2 totalPriceV2, PriceV2 totalShippingPriceV2, PriceV2 totalTaxV2, String financialStatus, String fulfillmentStatus, PriceV2? totalRefundedV2, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
+ String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice, PriceV2 totalTax, String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
 });
 
 
-@override $LineItemsOrderCopyWith<$Res> get lineItems;@override $ShippingAddressCopyWith<$Res>? get shippingAddress;@override $ShippingAddressCopyWith<$Res>? get billingAddress;@override $PriceV2CopyWith<$Res> get subtotalPriceV2;@override $PriceV2CopyWith<$Res> get totalPriceV2;@override $PriceV2CopyWith<$Res> get totalShippingPriceV2;@override $PriceV2CopyWith<$Res> get totalTaxV2;@override $PriceV2CopyWith<$Res>? get totalRefundedV2;
+@override $LineItemsOrderCopyWith<$Res> get lineItems;@override $ShippingAddressCopyWith<$Res>? get shippingAddress;@override $ShippingAddressCopyWith<$Res>? get billingAddress;@override $PriceV2CopyWith<$Res> get subtotalPrice;@override $PriceV2CopyWith<$Res> get totalPrice;@override $PriceV2CopyWith<$Res> get totalShippingPrice;@override $PriceV2CopyWith<$Res> get totalTax;@override $PriceV2CopyWith<$Res>? get totalRefunded;
 
 }
 /// @nodoc
@@ -397,7 +397,7 @@ class __$OrderCopyWithImpl<$Res>
 
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? currencyCode = null,Object? customerUrl = null,Object? lineItems = null,Object? name = null,Object? orderNumber = null,Object? processedAt = null,Object? shippingAddress = freezed,Object? billingAddress = freezed,Object? statusUrl = null,Object? subtotalPriceV2 = null,Object? totalPriceV2 = null,Object? totalShippingPriceV2 = null,Object? totalTaxV2 = null,Object? financialStatus = null,Object? fulfillmentStatus = null,Object? totalRefundedV2 = freezed,Object? phone = freezed,Object? cursor = freezed,Object? canceledAt = freezed,Object? cancelReason = freezed,Object? successfulFulfillments = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? email = null,Object? currencyCode = null,Object? customerUrl = null,Object? lineItems = null,Object? name = null,Object? orderNumber = null,Object? processedAt = null,Object? shippingAddress = freezed,Object? billingAddress = freezed,Object? statusUrl = null,Object? subtotalPrice = null,Object? totalPrice = null,Object? totalShippingPrice = null,Object? totalTax = null,Object? financialStatus = null,Object? fulfillmentStatus = null,Object? totalRefunded = freezed,Object? phone = freezed,Object? cursor = freezed,Object? canceledAt = freezed,Object? cancelReason = freezed,Object? successfulFulfillments = freezed,}) {
   return _then(_Order(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,email: null == email ? _self.email : email // ignore: cast_nullable_to_non_nullable
@@ -410,13 +410,13 @@ as int,processedAt: null == processedAt ? _self.processedAt : processedAt // ign
 as String,shippingAddress: freezed == shippingAddress ? _self.shippingAddress : shippingAddress // ignore: cast_nullable_to_non_nullable
 as ShippingAddress?,billingAddress: freezed == billingAddress ? _self.billingAddress : billingAddress // ignore: cast_nullable_to_non_nullable
 as ShippingAddress?,statusUrl: null == statusUrl ? _self.statusUrl : statusUrl // ignore: cast_nullable_to_non_nullable
-as String,subtotalPriceV2: null == subtotalPriceV2 ? _self.subtotalPriceV2 : subtotalPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalPriceV2: null == totalPriceV2 ? _self.totalPriceV2 : totalPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalShippingPriceV2: null == totalShippingPriceV2 ? _self.totalShippingPriceV2 : totalShippingPriceV2 // ignore: cast_nullable_to_non_nullable
-as PriceV2,totalTaxV2: null == totalTaxV2 ? _self.totalTaxV2 : totalTaxV2 // ignore: cast_nullable_to_non_nullable
+as String,subtotalPrice: null == subtotalPrice ? _self.subtotalPrice : subtotalPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalShippingPrice: null == totalShippingPrice ? _self.totalShippingPrice : totalShippingPrice // ignore: cast_nullable_to_non_nullable
+as PriceV2,totalTax: null == totalTax ? _self.totalTax : totalTax // ignore: cast_nullable_to_non_nullable
 as PriceV2,financialStatus: null == financialStatus ? _self.financialStatus : financialStatus // ignore: cast_nullable_to_non_nullable
 as String,fulfillmentStatus: null == fulfillmentStatus ? _self.fulfillmentStatus : fulfillmentStatus // ignore: cast_nullable_to_non_nullable
-as String,totalRefundedV2: freezed == totalRefundedV2 ? _self.totalRefundedV2 : totalRefundedV2 // ignore: cast_nullable_to_non_nullable
+as String,totalRefunded: freezed == totalRefunded ? _self.totalRefunded : totalRefunded // ignore: cast_nullable_to_non_nullable
 as PriceV2?,phone: freezed == phone ? _self.phone : phone // ignore: cast_nullable_to_non_nullable
 as String?,cursor: freezed == cursor ? _self.cursor : cursor // ignore: cast_nullable_to_non_nullable
 as String?,canceledAt: freezed == canceledAt ? _self.canceledAt : canceledAt // ignore: cast_nullable_to_non_nullable
@@ -463,49 +463,49 @@ $ShippingAddressCopyWith<$Res>? get billingAddress {
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get subtotalPriceV2 {
+$PriceV2CopyWith<$Res> get subtotalPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.subtotalPriceV2, (value) {
-    return _then(_self.copyWith(subtotalPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.subtotalPrice, (value) {
+    return _then(_self.copyWith(subtotalPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalPriceV2 {
+$PriceV2CopyWith<$Res> get totalPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.totalPriceV2, (value) {
-    return _then(_self.copyWith(totalPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalPrice, (value) {
+    return _then(_self.copyWith(totalPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalShippingPriceV2 {
+$PriceV2CopyWith<$Res> get totalShippingPrice {
   
-  return $PriceV2CopyWith<$Res>(_self.totalShippingPriceV2, (value) {
-    return _then(_self.copyWith(totalShippingPriceV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalShippingPrice, (value) {
+    return _then(_self.copyWith(totalShippingPrice: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res> get totalTaxV2 {
+$PriceV2CopyWith<$Res> get totalTax {
   
-  return $PriceV2CopyWith<$Res>(_self.totalTaxV2, (value) {
-    return _then(_self.copyWith(totalTaxV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalTax, (value) {
+    return _then(_self.copyWith(totalTax: value));
   });
 }/// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$PriceV2CopyWith<$Res>? get totalRefundedV2 {
-    if (_self.totalRefundedV2 == null) {
+$PriceV2CopyWith<$Res>? get totalRefunded {
+    if (_self.totalRefunded == null) {
     return null;
   }
 
-  return $PriceV2CopyWith<$Res>(_self.totalRefundedV2!, (value) {
-    return _then(_self.copyWith(totalRefundedV2: value));
+  return $PriceV2CopyWith<$Res>(_self.totalRefunded!, (value) {
+    return _then(_self.copyWith(totalRefunded: value));
   });
 }
 }

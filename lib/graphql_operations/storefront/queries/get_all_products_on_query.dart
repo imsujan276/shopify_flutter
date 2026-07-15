@@ -7,7 +7,10 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
       options(first: 50) {
             id
             name
-            values
+            optionValues {
+              id
+              name
+            }
             }
           metafields(identifiers: $metafields) {
             id
@@ -19,7 +22,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
             reference {
               ... on MediaImage {
                 image {
-                  originalSrc
                   url
                   id
                 }
@@ -50,7 +52,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
             node {
               altText
               id
-              originalSrc
+              url
             }
           }
         }
@@ -63,7 +65,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
               previewImage {
                 altText
                 id
-                originalSrc
+                url
               }
             }
           }
@@ -75,13 +77,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey : Prod
               image {
                 altText
                 id
-                originalSrc
+                url
               }
-              priceV2 {
+              price {
                 amount
                 currencyCode
               }
-              compareAtPriceV2 {
+              compareAtPrice {
                 amount
                 currencyCode
               }

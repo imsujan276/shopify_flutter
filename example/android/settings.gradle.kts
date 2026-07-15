@@ -19,7 +19,9 @@ pluginManagement {
 
 plugins {
     id("dev.flutter.flutter-plugin-loader") version "1.0.0"
-    id("com.android.application") version "8.11.1" apply false
+    id("com.android.application") version "9.3.0" apply false
+    id("com.android.built-in-kotlin") version "9.3.0" apply false
+    // Kept on the classpath for legacy Flutter plugins that still apply KGP.
     id("org.jetbrains.kotlin.android") version "2.2.20" apply false
 }
 

@@ -24,7 +24,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
           reference {
             ... on MediaImage {
               image {
-                originalSrc
                 url
                 id
               }
@@ -34,7 +33,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
         image {
           altText
           id
-          originalSrc
+          url
         }
         products(first: 250) {
           edges {
@@ -46,13 +45,13 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
                     image {
                       altText
                       id
-                      originalSrc
+                      url
                     }
-                    priceV2 {
+                    price {
                       amount
                       currencyCode
                     }
-                    compareAtPriceV2 {
+                    compareAtPrice {
                       amount
                       currencyCode
                     }
@@ -146,7 +145,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
                   node {
                     altText
                     id
-                    originalSrc
+                    url
                   }
                 }
               }
@@ -159,7 +158,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $cursor: String, $sortKey: Colle
                     previewImage {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }

@@ -26,8 +26,8 @@ void main() {
     // Optional | Needed only if needed to call admin api
     adminAccessToken: "shpat_*******************", 
 
-    // optional | default: 2024-07
-    storefrontApiVersion: '2024-07',
+    // optional | default: 2026-07
+    storefrontApiVersion: '2026-07',
 
     // optional | default: null
     cachePolicy: CachePolicy.cacheAndNetwork,
@@ -55,7 +55,7 @@ void main() {
 > `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
 If you are not using that function, you may not need to provide it.
 
-> `storefrontApiVersion` default vesion is set to '2024-07'
+> `storefrontApiVersion` default vesion is set to '2026-07'. This package requires **2026-07 or newer** (the cart operations rely on fields added in 2026-07). Shopify supports each version for 12 months after release and then falls forward to the oldest supported version, so prefer keeping this current.
 
 > `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
 
@@ -370,7 +370,7 @@ For more information about filters visit:
   
   1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   
-  2. https://shopify.dev/docs/api/storefront/2024-07/input-objects/productfilter
+  2. https://shopify.dev/docs/api/storefront/2026-07/input-objects/productfilter
 
 <hr>
 

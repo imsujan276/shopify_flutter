@@ -28,5 +28,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  assets:
-    - .env
+  # To run the example, copy .env.example to example/.env, fill it in, and
+  # uncomment the asset below. It stays commented on the repo because .env is
+  # git-ignored (holds a Storefront token), and a declared-but-missing asset
+  # fails `dart analyze --fatal-infos` on a clean checkout / CI.
+  # assets:
+  #   - .env

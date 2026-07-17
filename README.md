@@ -324,6 +324,13 @@ Example to get metafields in product
   // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   void setCountryCode(String? countryCode)
 
+  // Used to set language code, eg: "EN", "DE", "FIL", "ZH_CN" etc.
+  void setLanguageCode(String? languageCode)
+
+  // Getters
+  countryCode // get the stored country code
+  languageCode // get the stored language code
+
 ```
 
 ##### Shopify Custom

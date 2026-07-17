@@ -78,24 +78,35 @@ class _OrdersTabState extends State<OrdersTab> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          ...order.lineItems.lineItemOrderList
-                              .map((e) => ListTile(
-                                    title: Text(e.title),
-                                    subtitle: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Text(
-                                          "Price: ${e.discountedTotalPrice.formattedPrice}",
-                                        ),
-                                        Text('Quantity: ${e.currentQuantity}'),
-                                        Text(
-                                            'Original Price: ${e.originalTotalPrice.formattedPrice}'),
-                                        Text("Product ID: ${e.productId}")
-                                      ],
-                                    ),
-                                  ))
+                          Text('Status: ${order.fulfillmentStatus}'),
+                          Text('Financial Status: ${order.financialStatus}'),
+                          Text(
+                              "Line Items: ${order.lineItems.lineItemOrderList.length}"),
+                          ...order.lineItems.lineItemOrderList.map(
+                            (e) => ListTile(
+                              title: Text(e.title),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text('Quantity: ${e.currentQuantity}'),
+                                  Text(
+                                    "Discounted Price: ${e.discountedTotalPrice.formattedPrice}",
+                                  ),
+                                  Text(
+                                      'Original Price: ${e.originalTotalPrice.formattedPrice}'),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Text(
+                              'Total Shipping Price: ${order.totalShippingPrice.formattedPrice}'),
+                          Text('Total Tax: ${order.totalTax.formattedPrice}'),
+                          Text(
+                              'Total Price: ${order.totalPrice.formattedPrice}'),
+                          order.canceledAt != null
+                              ? Text('Canceled At: ${order.canceledAt}')
+                              : SizedBox.shrink(),
                         ],
                       ),
                     );

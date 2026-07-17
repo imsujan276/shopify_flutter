@@ -9,6 +9,17 @@ import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/cart/inputs/attribute_input/attribute_input.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
+/// The first variant that can actually be bought, or null if none can.
+///
+/// A cart line for a variant with `availableForSale == false` is created with
+/// quantity 0, so adding one looks like nothing happened.
+ProductVariant? purchasableVariant(Product product) {
+  for (final variant in product.productVariants) {
+    if (variant.availableForSale) return variant;
+  }
+  return null;
+}
+
 void logCartInfo(Cart cart) {
   log('log => cart id: ${cart.id}');
   log('log => cart attributes: ${cart.attributes}');
@@ -102,9 +113,18 @@ class _CartTabState extends State<CartTab> {
   }
 
   void addLineItemToCart(Product product) async {
+    // Shopify accepts a line for a variant that isn't purchasable, but clamps
+    // its quantity to 0 and reports no userErrors — the line just sits in the
+    // cart as "0x". So pick a variant that is actually available for sale
+    // instead of blindly taking the first one.
+    final variant = purchasableVariant(product);
+    if (variant == null) {
+      context.showSnackBar('${product.title} is out of stock');
+      return;
+    }
     final cartLineInput = CartLineUpdateInput(
       quantity: 1,
-      merchandiseId: product.productVariants.first.id,
+      merchandiseId: variant.id,
       attributes: [
         const AttributeInput(
           key: 'color',
@@ -112,25 +132,26 @@ class _CartTabState extends State<CartTab> {
         ),
       ],
     );
-    // try {
-    final updatedCart = await shopifyCart.addLineItemsToCart(
-      cartId: cart!.id,
-      cartLineInputs: [cartLineInput],
-    );
-    setState(() {
-      cart = updatedCart;
-    });
-    logCartInfo(updatedCart);
-    if (!mounted) return;
-    context.showSnackBar('Added ${product.title} to cart');
-    // } on ShopifyException catch (error) {
-    //   log('addLineItemToCart ShopifyException: $error');
-    //   context.showSnackBar(
-    //     error.errors?[0]["message"] ?? 'Error adding item to cart',
-    //   );
-    // } catch (error) {
-    //   log('addLineItemToCart Error: $error');
-    // }
+    try {
+      final updatedCart = await shopifyCart.addLineItemsToCart(
+        cartId: cart!.id,
+        cartLineInputs: [cartLineInput],
+      );
+      setState(() {
+        cart = updatedCart;
+      });
+      logCartInfo(updatedCart);
+      if (!mounted) return;
+      context.showSnackBar('Added ${product.title} to cart');
+    } on ShopifyException catch (error) {
+      log('addLineItemToCart ShopifyException: $error');
+      if (!mounted) return;
+      context.showSnackBar(
+        error.errors?[0]["message"] ?? 'Error adding item to cart',
+      );
+    } catch (error) {
+      log('addLineItemToCart Error: $error');
+    }
   }
 
   void onCartItemUpdate() async {
@@ -186,14 +207,20 @@ class _CartTabState extends State<CartTab> {
           child: Column(
             children: [
               ...products.map(
-                (product) => ListTile(
-                  title: Text(product.title),
-                  subtitle: Text(product.description ?? ''),
-                  trailing: IconButton(
-                    onPressed: () => addLineItemToCart(product),
-                    icon: const Icon(Icons.add_shopping_cart),
-                  ),
-                ),
+                (product) {
+                  final inStock = purchasableVariant(product) != null;
+                  return ListTile(
+                    title: Text(product.title),
+                    subtitle: Text(
+                      inStock ? (product.description ?? '') : 'Out of stock',
+                    ),
+                    trailing: IconButton(
+                      onPressed:
+                          inStock ? () => addLineItemToCart(product) : null,
+                      icon: const Icon(Icons.add_shopping_cart),
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -282,6 +309,17 @@ class _CartInfoState extends State<CartInfo> {
       });
       widget.onCartItemUpdate?.call();
       if (!mounted) return;
+      // Shopify silently clamps the quantity to what it can actually fulfil
+      // (0 when the variant is out of stock), so say so rather than letting the
+      // button look broken.
+      final matches = updatedCart.lines.where((l) => l.id == line.id);
+      if (matches.isNotEmpty && matches.first.quantity != quantity) {
+        context.showSnackBar(
+          'Shopify limited the quantity to ${matches.first.quantity} '
+          '(requested $quantity) — not enough stock',
+        );
+        return;
+      }
       context.showSnackBar('Updated item in cart');
     } on ShopifyException catch (error) {
       log('onCartItemUpdate ShopifyException: ${error.errors?[0]["message"]}');
@@ -397,6 +435,13 @@ class _CartInfoState extends State<CartInfo> {
                           Text(
                             'Price: ${merchandise.price.amount} ${merchandise.price.currencyCode}',
                           ),
+                          if (!merchandise.availableForSale)
+                            Text(
+                              'Out of stock — Shopify keeps this line at 0',
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.error,
+                              ),
+                            ),
                           Row(
                             children: [
                               IconButton(

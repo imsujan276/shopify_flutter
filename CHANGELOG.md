@@ -1,3 +1,6 @@
+# 3.0.1
+Added language code getter/setter in shopify_localization
+
 # 3.0.0
 Removes every deprecated Storefront API field the package still queried, migrating to the 2026-07 replacements. Because several of these change the shape of the public Dart models, this is a breaking release. **This version now requires Storefront API `2026-07` or newer** (it relies on `Cart.lines.discountAllocations(lineLevelOnly:)` and cart-level `delivery`, both added in 2026-07); the default `storefrontApiVersion` is already `2026-07`.
 

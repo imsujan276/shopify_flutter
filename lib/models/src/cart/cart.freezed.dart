@@ -15,7 +15,9 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Cart {
 
- String get id; String? get checkoutUrl; CartCost? get cost; int? get totalQuantity; List<CartDiscountAllocation?>? get discountAllocations; List<CartDiscountCode?>? get discountCodes; String? get createdAt; List<Attribute?>? get attributes; CartBuyerIdentity? get buyerIdentity; String? get note; String? get updatedAt;@JsonKey(fromJson: JsonHelper.lines) List<Line> get lines;
+ String get id; String? get checkoutUrl; CartCost? get cost; int? get totalQuantity; List<CartDiscountCode?>? get discountCodes; String? get createdAt; List<Attribute?>? get attributes; CartBuyerIdentity? get buyerIdentity;/// Delivery addresses on the cart. Replaces the deprecated
+/// `buyerIdentity.deliveryAddressPreferences`.
+ CartDelivery? get delivery; String? get note; String? get updatedAt;@JsonKey(fromJson: JsonHelper.lines) List<Line> get lines;
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +30,16 @@ $CartCopyWith<Cart> get copyWith => _$CartCopyWithImpl<Cart>(this as Cart, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Cart&&(identical(other.id, id) || other.id == id)&&(identical(other.checkoutUrl, checkoutUrl) || other.checkoutUrl == checkoutUrl)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&const DeepCollectionEquality().equals(other.discountAllocations, discountAllocations)&&const DeepCollectionEquality().equals(other.discountCodes, discountCodes)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other.attributes, attributes)&&(identical(other.buyerIdentity, buyerIdentity) || other.buyerIdentity == buyerIdentity)&&(identical(other.note, note) || other.note == note)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other.lines, lines));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Cart&&(identical(other.id, id) || other.id == id)&&(identical(other.checkoutUrl, checkoutUrl) || other.checkoutUrl == checkoutUrl)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&const DeepCollectionEquality().equals(other.discountCodes, discountCodes)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other.attributes, attributes)&&(identical(other.buyerIdentity, buyerIdentity) || other.buyerIdentity == buyerIdentity)&&(identical(other.delivery, delivery) || other.delivery == delivery)&&(identical(other.note, note) || other.note == note)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other.lines, lines));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,checkoutUrl,cost,totalQuantity,const DeepCollectionEquality().hash(discountAllocations),const DeepCollectionEquality().hash(discountCodes),createdAt,const DeepCollectionEquality().hash(attributes),buyerIdentity,note,updatedAt,const DeepCollectionEquality().hash(lines));
+int get hashCode => Object.hash(runtimeType,id,checkoutUrl,cost,totalQuantity,const DeepCollectionEquality().hash(discountCodes),createdAt,const DeepCollectionEquality().hash(attributes),buyerIdentity,delivery,note,updatedAt,const DeepCollectionEquality().hash(lines));
 
 @override
 String toString() {
-  return 'Cart(id: $id, checkoutUrl: $checkoutUrl, cost: $cost, totalQuantity: $totalQuantity, discountAllocations: $discountAllocations, discountCodes: $discountCodes, createdAt: $createdAt, attributes: $attributes, buyerIdentity: $buyerIdentity, note: $note, updatedAt: $updatedAt, lines: $lines)';
+  return 'Cart(id: $id, checkoutUrl: $checkoutUrl, cost: $cost, totalQuantity: $totalQuantity, discountCodes: $discountCodes, createdAt: $createdAt, attributes: $attributes, buyerIdentity: $buyerIdentity, delivery: $delivery, note: $note, updatedAt: $updatedAt, lines: $lines)';
 }
 
 
@@ -48,11 +50,11 @@ abstract mixin class $CartCopyWith<$Res>  {
   factory $CartCopyWith(Cart value, $Res Function(Cart) _then) = _$CartCopyWithImpl;
 @useResult
 $Res call({
- String id, String? checkoutUrl, CartCost? cost, int? totalQuantity, List<CartDiscountAllocation?>? discountAllocations, List<CartDiscountCode?>? discountCodes, String? createdAt, List<Attribute?>? attributes, CartBuyerIdentity? buyerIdentity, String? note, String? updatedAt,@JsonKey(fromJson: JsonHelper.lines) List<Line> lines
+ String id, String? checkoutUrl, CartCost? cost, int? totalQuantity, List<CartDiscountCode?>? discountCodes, String? createdAt, List<Attribute?>? attributes, CartBuyerIdentity? buyerIdentity, CartDelivery? delivery, String? note, String? updatedAt,@JsonKey(fromJson: JsonHelper.lines) List<Line> lines
 });
 
 
-$CartCostCopyWith<$Res>? get cost;$CartBuyerIdentityCopyWith<$Res>? get buyerIdentity;
+$CartCostCopyWith<$Res>? get cost;$CartBuyerIdentityCopyWith<$Res>? get buyerIdentity;$CartDeliveryCopyWith<$Res>? get delivery;
 
 }
 /// @nodoc
@@ -65,18 +67,18 @@ class _$CartCopyWithImpl<$Res>
 
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? checkoutUrl = freezed,Object? cost = freezed,Object? totalQuantity = freezed,Object? discountAllocations = freezed,Object? discountCodes = freezed,Object? createdAt = freezed,Object? attributes = freezed,Object? buyerIdentity = freezed,Object? note = freezed,Object? updatedAt = freezed,Object? lines = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? checkoutUrl = freezed,Object? cost = freezed,Object? totalQuantity = freezed,Object? discountCodes = freezed,Object? createdAt = freezed,Object? attributes = freezed,Object? buyerIdentity = freezed,Object? delivery = freezed,Object? note = freezed,Object? updatedAt = freezed,Object? lines = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,checkoutUrl: freezed == checkoutUrl ? _self.checkoutUrl : checkoutUrl // ignore: cast_nullable_to_non_nullable
 as String?,cost: freezed == cost ? _self.cost : cost // ignore: cast_nullable_to_non_nullable
 as CartCost?,totalQuantity: freezed == totalQuantity ? _self.totalQuantity : totalQuantity // ignore: cast_nullable_to_non_nullable
-as int?,discountAllocations: freezed == discountAllocations ? _self.discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
-as List<CartDiscountAllocation?>?,discountCodes: freezed == discountCodes ? _self.discountCodes : discountCodes // ignore: cast_nullable_to_non_nullable
+as int?,discountCodes: freezed == discountCodes ? _self.discountCodes : discountCodes // ignore: cast_nullable_to_non_nullable
 as List<CartDiscountCode?>?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String?,attributes: freezed == attributes ? _self.attributes : attributes // ignore: cast_nullable_to_non_nullable
 as List<Attribute?>?,buyerIdentity: freezed == buyerIdentity ? _self.buyerIdentity : buyerIdentity // ignore: cast_nullable_to_non_nullable
-as CartBuyerIdentity?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as CartBuyerIdentity?,delivery: freezed == delivery ? _self.delivery : delivery // ignore: cast_nullable_to_non_nullable
+as CartDelivery?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String?,lines: null == lines ? _self.lines : lines // ignore: cast_nullable_to_non_nullable
 as List<Line>,
@@ -105,6 +107,18 @@ $CartBuyerIdentityCopyWith<$Res>? get buyerIdentity {
 
   return $CartBuyerIdentityCopyWith<$Res>(_self.buyerIdentity!, (value) {
     return _then(_self.copyWith(buyerIdentity: value));
+  });
+}/// Create a copy of Cart
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CartDeliveryCopyWith<$Res>? get delivery {
+    if (_self.delivery == null) {
+    return null;
+  }
+
+  return $CartDeliveryCopyWith<$Res>(_self.delivery!, (value) {
+    return _then(_self.copyWith(delivery: value));
   });
 }
 }
@@ -188,10 +202,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountAllocation?>? discountAllocations,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  CartDelivery? delivery,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
-return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountAllocations,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.note,_that.updatedAt,_that.lines);case _:
+return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.delivery,_that.note,_that.updatedAt,_that.lines);case _:
   return orElse();
 
 }
@@ -209,10 +223,10 @@ return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountAllocation?>? discountAllocations,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  CartDelivery? delivery,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)  $default,) {final _that = this;
 switch (_that) {
 case _Cart():
-return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountAllocations,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.note,_that.updatedAt,_that.lines);case _:
+return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.delivery,_that.note,_that.updatedAt,_that.lines);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -229,10 +243,10 @@ return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountAllocation?>? discountAllocations,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String? checkoutUrl,  CartCost? cost,  int? totalQuantity,  List<CartDiscountCode?>? discountCodes,  String? createdAt,  List<Attribute?>? attributes,  CartBuyerIdentity? buyerIdentity,  CartDelivery? delivery,  String? note,  String? updatedAt, @JsonKey(fromJson: JsonHelper.lines)  List<Line> lines)?  $default,) {final _that = this;
 switch (_that) {
 case _Cart() when $default != null:
-return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountAllocations,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.note,_that.updatedAt,_that.lines);case _:
+return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.discountCodes,_that.createdAt,_that.attributes,_that.buyerIdentity,_that.delivery,_that.note,_that.updatedAt,_that.lines);case _:
   return null;
 
 }
@@ -244,22 +258,13 @@ return $default(_that.id,_that.checkoutUrl,_that.cost,_that.totalQuantity,_that.
 @JsonSerializable()
 
 class _Cart extends Cart {
-  const _Cart({required this.id, required this.checkoutUrl, required this.cost, required this.totalQuantity, required final  List<CartDiscountAllocation?>? discountAllocations, required final  List<CartDiscountCode?>? discountCodes, required this.createdAt, final  List<Attribute?>? attributes, this.buyerIdentity, this.note, this.updatedAt, @JsonKey(fromJson: JsonHelper.lines) required final  List<Line> lines}): _discountAllocations = discountAllocations,_discountCodes = discountCodes,_attributes = attributes,_lines = lines,super._();
+  const _Cart({required this.id, required this.checkoutUrl, required this.cost, required this.totalQuantity, required final  List<CartDiscountCode?>? discountCodes, required this.createdAt, final  List<Attribute?>? attributes, this.buyerIdentity, this.delivery, this.note, this.updatedAt, @JsonKey(fromJson: JsonHelper.lines) required final  List<Line> lines}): _discountCodes = discountCodes,_attributes = attributes,_lines = lines,super._();
   factory _Cart.fromJson(Map<String, dynamic> json) => _$CartFromJson(json);
 
 @override final  String id;
 @override final  String? checkoutUrl;
 @override final  CartCost? cost;
 @override final  int? totalQuantity;
- final  List<CartDiscountAllocation?>? _discountAllocations;
-@override List<CartDiscountAllocation?>? get discountAllocations {
-  final value = _discountAllocations;
-  if (value == null) return null;
-  if (_discountAllocations is EqualUnmodifiableListView) return _discountAllocations;
-  // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(value);
-}
-
  final  List<CartDiscountCode?>? _discountCodes;
 @override List<CartDiscountCode?>? get discountCodes {
   final value = _discountCodes;
@@ -280,6 +285,9 @@ class _Cart extends Cart {
 }
 
 @override final  CartBuyerIdentity? buyerIdentity;
+/// Delivery addresses on the cart. Replaces the deprecated
+/// `buyerIdentity.deliveryAddressPreferences`.
+@override final  CartDelivery? delivery;
 @override final  String? note;
 @override final  String? updatedAt;
  final  List<Line> _lines;
@@ -303,16 +311,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.id, id) || other.id == id)&&(identical(other.checkoutUrl, checkoutUrl) || other.checkoutUrl == checkoutUrl)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&const DeepCollectionEquality().equals(other._discountAllocations, _discountAllocations)&&const DeepCollectionEquality().equals(other._discountCodes, _discountCodes)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other._attributes, _attributes)&&(identical(other.buyerIdentity, buyerIdentity) || other.buyerIdentity == buyerIdentity)&&(identical(other.note, note) || other.note == note)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other._lines, _lines));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Cart&&(identical(other.id, id) || other.id == id)&&(identical(other.checkoutUrl, checkoutUrl) || other.checkoutUrl == checkoutUrl)&&(identical(other.cost, cost) || other.cost == cost)&&(identical(other.totalQuantity, totalQuantity) || other.totalQuantity == totalQuantity)&&const DeepCollectionEquality().equals(other._discountCodes, _discountCodes)&&(identical(other.createdAt, createdAt) || other.createdAt == createdAt)&&const DeepCollectionEquality().equals(other._attributes, _attributes)&&(identical(other.buyerIdentity, buyerIdentity) || other.buyerIdentity == buyerIdentity)&&(identical(other.delivery, delivery) || other.delivery == delivery)&&(identical(other.note, note) || other.note == note)&&(identical(other.updatedAt, updatedAt) || other.updatedAt == updatedAt)&&const DeepCollectionEquality().equals(other._lines, _lines));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,id,checkoutUrl,cost,totalQuantity,const DeepCollectionEquality().hash(_discountAllocations),const DeepCollectionEquality().hash(_discountCodes),createdAt,const DeepCollectionEquality().hash(_attributes),buyerIdentity,note,updatedAt,const DeepCollectionEquality().hash(_lines));
+int get hashCode => Object.hash(runtimeType,id,checkoutUrl,cost,totalQuantity,const DeepCollectionEquality().hash(_discountCodes),createdAt,const DeepCollectionEquality().hash(_attributes),buyerIdentity,delivery,note,updatedAt,const DeepCollectionEquality().hash(_lines));
 
 @override
 String toString() {
-  return 'Cart(id: $id, checkoutUrl: $checkoutUrl, cost: $cost, totalQuantity: $totalQuantity, discountAllocations: $discountAllocations, discountCodes: $discountCodes, createdAt: $createdAt, attributes: $attributes, buyerIdentity: $buyerIdentity, note: $note, updatedAt: $updatedAt, lines: $lines)';
+  return 'Cart(id: $id, checkoutUrl: $checkoutUrl, cost: $cost, totalQuantity: $totalQuantity, discountCodes: $discountCodes, createdAt: $createdAt, attributes: $attributes, buyerIdentity: $buyerIdentity, delivery: $delivery, note: $note, updatedAt: $updatedAt, lines: $lines)';
 }
 
 
@@ -323,11 +331,11 @@ abstract mixin class _$CartCopyWith<$Res> implements $CartCopyWith<$Res> {
   factory _$CartCopyWith(_Cart value, $Res Function(_Cart) _then) = __$CartCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String? checkoutUrl, CartCost? cost, int? totalQuantity, List<CartDiscountAllocation?>? discountAllocations, List<CartDiscountCode?>? discountCodes, String? createdAt, List<Attribute?>? attributes, CartBuyerIdentity? buyerIdentity, String? note, String? updatedAt,@JsonKey(fromJson: JsonHelper.lines) List<Line> lines
+ String id, String? checkoutUrl, CartCost? cost, int? totalQuantity, List<CartDiscountCode?>? discountCodes, String? createdAt, List<Attribute?>? attributes, CartBuyerIdentity? buyerIdentity, CartDelivery? delivery, String? note, String? updatedAt,@JsonKey(fromJson: JsonHelper.lines) List<Line> lines
 });
 
 
-@override $CartCostCopyWith<$Res>? get cost;@override $CartBuyerIdentityCopyWith<$Res>? get buyerIdentity;
+@override $CartCostCopyWith<$Res>? get cost;@override $CartBuyerIdentityCopyWith<$Res>? get buyerIdentity;@override $CartDeliveryCopyWith<$Res>? get delivery;
 
 }
 /// @nodoc
@@ -340,18 +348,18 @@ class __$CartCopyWithImpl<$Res>
 
 /// Create a copy of Cart
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? checkoutUrl = freezed,Object? cost = freezed,Object? totalQuantity = freezed,Object? discountAllocations = freezed,Object? discountCodes = freezed,Object? createdAt = freezed,Object? attributes = freezed,Object? buyerIdentity = freezed,Object? note = freezed,Object? updatedAt = freezed,Object? lines = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? checkoutUrl = freezed,Object? cost = freezed,Object? totalQuantity = freezed,Object? discountCodes = freezed,Object? createdAt = freezed,Object? attributes = freezed,Object? buyerIdentity = freezed,Object? delivery = freezed,Object? note = freezed,Object? updatedAt = freezed,Object? lines = null,}) {
   return _then(_Cart(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,checkoutUrl: freezed == checkoutUrl ? _self.checkoutUrl : checkoutUrl // ignore: cast_nullable_to_non_nullable
 as String?,cost: freezed == cost ? _self.cost : cost // ignore: cast_nullable_to_non_nullable
 as CartCost?,totalQuantity: freezed == totalQuantity ? _self.totalQuantity : totalQuantity // ignore: cast_nullable_to_non_nullable
-as int?,discountAllocations: freezed == discountAllocations ? _self._discountAllocations : discountAllocations // ignore: cast_nullable_to_non_nullable
-as List<CartDiscountAllocation?>?,discountCodes: freezed == discountCodes ? _self._discountCodes : discountCodes // ignore: cast_nullable_to_non_nullable
+as int?,discountCodes: freezed == discountCodes ? _self._discountCodes : discountCodes // ignore: cast_nullable_to_non_nullable
 as List<CartDiscountCode?>?,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
 as String?,attributes: freezed == attributes ? _self._attributes : attributes // ignore: cast_nullable_to_non_nullable
 as List<Attribute?>?,buyerIdentity: freezed == buyerIdentity ? _self.buyerIdentity : buyerIdentity // ignore: cast_nullable_to_non_nullable
-as CartBuyerIdentity?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
+as CartBuyerIdentity?,delivery: freezed == delivery ? _self.delivery : delivery // ignore: cast_nullable_to_non_nullable
+as CartDelivery?,note: freezed == note ? _self.note : note // ignore: cast_nullable_to_non_nullable
 as String?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as String?,lines: null == lines ? _self._lines : lines // ignore: cast_nullable_to_non_nullable
 as List<Line>,
@@ -381,6 +389,18 @@ $CartBuyerIdentityCopyWith<$Res>? get buyerIdentity {
 
   return $CartBuyerIdentityCopyWith<$Res>(_self.buyerIdentity!, (value) {
     return _then(_self.copyWith(buyerIdentity: value));
+  });
+}/// Create a copy of Cart
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CartDeliveryCopyWith<$Res>? get delivery {
+    if (_self.delivery == null) {
+    return null;
+  }
+
+  return $CartDeliveryCopyWith<$Res>(_self.delivery!, (value) {
+    return _then(_self.copyWith(delivery: value));
   });
 }
 }

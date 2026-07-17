@@ -13,7 +13,6 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $ids : [I
         reference {
           ... on MediaImage {
             image {
-              originalSrc
               url
               id
             }
@@ -23,7 +22,10 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $ids : [I
     options(first: 50) {
             id
             name
-            values
+            optionValues {
+              id
+              name
+            }
             }
       id
       handle
@@ -49,24 +51,24 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $ids : [I
             node {
               altText
               id
-              originalSrc
+              url
             }
           }
         }
       variants(first: 250) {
         edges {
           node {
-            priceV2 {
+            price {
               amount
               currencyCode
             }
             title
             image {
               altText
-              originalSrc
+              url
               id
             }
-            compareAtPriceV2 {
+            compareAtPrice {
               amount
               currencyCode
             }
@@ -159,7 +161,7 @@ query($metafields: [HasMetafieldsIdentifier!]!, $country: CountryCode, $ids : [I
               previewImage {
                 altText
                 id
-                originalSrc
+                url
               }
             }
           }

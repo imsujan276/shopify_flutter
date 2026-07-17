@@ -9,11 +9,13 @@ part of 'option.dart';
 _Option _$OptionFromJson(Map<String, dynamic> json) => _Option(
   id: json['id'] as String,
   name: json['name'] as String,
-  values: (json['values'] as List<dynamic>).map((e) => e as String).toList(),
+  optionValues: (json['optionValues'] as List<dynamic>)
+      .map((e) => ProductOptionValue.fromJson(e as Map<String, dynamic>))
+      .toList(),
 );
 
 Map<String, dynamic> _$OptionToJson(_Option instance) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
-  'values': instance.values,
+  'optionValues': instance.optionValues.map((e) => e.toJson()).toList(),
 };

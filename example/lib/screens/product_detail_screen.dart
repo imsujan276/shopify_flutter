@@ -47,7 +47,7 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
         children: <Widget>[
           product.images.isNotEmpty
               ? Image.network(
-                  product.images.first.originalSrc,
+                  product.images.first.url,
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 3,
                   fit: BoxFit.cover,

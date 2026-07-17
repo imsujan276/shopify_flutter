@@ -142,7 +142,7 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
                           ? ClipRRect(
                               borderRadius: BorderRadius.circular(4),
                               child: Image.network(
-                                product.images.first.originalSrc,
+                                product.images.first.url,
                                 width: 60,
                                 height: 60,
                                 fit: BoxFit.cover,
@@ -166,9 +166,10 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
         4,
         startCursor: null,
         sortKey: SortKeyProductCollection.RELEVANCE,
-        filters: {
-          "price": {"min": 500, "max": 600},
-        },
+        // No filter: show every product in the collection. `filters` takes a
+        // Storefront `ProductFilter`, e.g. a price range —
+        // `filters: {"price": {"min": 0, "max": 100}}` — but a hard-coded range
+        // hides everything outside it, which looks like an empty collection.
       );
       if (mounted) {
         setState(() {

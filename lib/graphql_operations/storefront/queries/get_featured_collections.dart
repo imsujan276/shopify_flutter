@@ -20,7 +20,6 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
           reference {
             ... on MediaImage {
               image {
-                originalSrc
                 url
                 id
               }
@@ -30,7 +29,7 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
         image {
           altText
           id
-          originalSrc
+          url
         }
         products(first: 20) {
           edges {
@@ -42,13 +41,13 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
                     image {
                       altText
                       id
-                      originalSrc
+                      url
                     }
-                    priceV2 {
+                    price {
                       amount
                       currencyCode
                     }
-                    compareAtPriceV2 {
+                    compareAtPrice {
                       amount
                       currencyCode
                     }
@@ -142,7 +141,7 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
                   node {
                     altText
                     id
-                    originalSrc
+                    url
                   }
                 }
               }
@@ -155,7 +154,7 @@ query getFeaturedCollectionQuery($metafields: [HasMetafieldsIdentifier!]!, $quer
                     previewImage {
                       altText
                       id
-                      originalSrc
+                      url
                     }
                   }
                 }

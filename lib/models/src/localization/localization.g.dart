@@ -16,7 +16,6 @@ _Localization _$LocalizationFromJson(Map<String, dynamic> json) =>
           .toList(),
       language: Language.fromJson(json['language'] as Map<String, dynamic>),
       country: Country.fromJson(json['country'] as Map<String, dynamic>),
-      market: Market.fromJson(json['market'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$LocalizationToJson(_Localization instance) =>
@@ -29,5 +28,4 @@ Map<String, dynamic> _$LocalizationToJson(_Localization instance) =>
           .toList(),
       'language': instance.language.toJson(),
       'country': instance.country.toJson(),
-      'market': instance.market.toJson(),
     };

@@ -167,10 +167,10 @@ class ShopifyStore with ShopifyError {
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     var response = result.data!;
-    if (response['productByHandle'] == null) {
+    if (response['product'] == null) {
       return null;
     }
-    return Product.fromJson(response['productByHandle']);
+    return Product.fromJson(response['product']);
   }
 
   /// Returns [n] Products.
@@ -478,7 +478,7 @@ class ShopifyStore with ShopifyError {
   ///
   /// 1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   ///
-  /// 2. https://shopify.dev/docs/api/storefront/2024-07/input-objects/productfilter
+  /// 2. https://shopify.dev/docs/api/storefront/2026-07/input-objects/productfilter
   Future<List<Product>?> getXProductsAfterCursorWithinCollection(
     String id,
     int limit, {

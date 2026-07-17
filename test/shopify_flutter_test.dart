@@ -56,6 +56,53 @@ void main() {
       expect(cart.cost?.totalAmount.amount, 10.0);
     });
 
+    test('Cart line parses quantity from a cartLinesAdd payload', () {
+      // Guards the lines edges -> node -> quantity parse path. A line whose
+      // merchandise is unavailable comes back from Shopify with quantity 0 (and
+      // no userErrors), so 0 here must mean "the server said 0", never "we
+      // dropped the field".
+      final cart = Cart.fromJson({
+        'id': 'gid://shopify/Cart/1',
+        'checkoutUrl': 'https://example.myshopify.com/cart/c/1',
+        'createdAt': '2026-07-14T00:00:00Z',
+        'totalQuantity': 3,
+        'discountCodes': [],
+        'cost': null,
+        'lines': {
+          'edges': [
+            {
+              'node': {
+                'id': 'gid://shopify/CartLine/1?cart=abc',
+                'quantity': 3,
+                'merchandise': _merchandise(
+                  id: 'gid://shopify/ProductVariant/1',
+                  title: 'Small',
+                  availableForSale: true,
+                  quantityAvailable: 5,
+                ),
+              },
+            },
+            {
+              'node': {
+                'id': 'gid://shopify/CartLine/2?cart=abc',
+                'quantity': 0,
+                'merchandise': _merchandise(
+                  id: 'gid://shopify/ProductVariant/2',
+                  title: 'Large',
+                  availableForSale: false,
+                  quantityAvailable: 0,
+                ),
+              },
+            },
+          ],
+        },
+      });
+
+      expect(cart.lines.map((l) => l.quantity), [3, 0]);
+      expect(cart.lines.first.variantId, 'gid://shopify/ProductVariant/1');
+      expect(cart.lines.last.merchandise?.availableForSale, isFalse);
+    });
+
     test('ShopifyImage parses url (was originalSrc)', () {
       final image = ShopifyImage.fromJson({
         'id': 'gid://shopify/ImageSource/1',
@@ -175,3 +222,25 @@ void main() {
     });
   });
 }
+
+/// A cart line's `merchandise` (a ProductVariant) as the Storefront API returns it.
+Map<String, dynamic> _merchandise({
+  required String id,
+  required String title,
+  required bool availableForSale,
+  required int quantityAvailable,
+}) =>
+    {
+      'id': id,
+      'title': title,
+      'price': {'amount': '10.0', 'currencyCode': 'USD'},
+      'weight': 0.5,
+      'weightUnit': 'KILOGRAMS',
+      'requiresShipping': true,
+      'sku': 'SKU-$title',
+      'availableForSale': availableForSale,
+      'quantityAvailable': quantityAvailable,
+      'selectedOptions': [
+        {'name': 'Size', 'value': title},
+      ],
+    };

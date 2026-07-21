@@ -117,7 +117,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Returns the Products associated to the given id's in [idList]
-  Future<List<Product>?> getProductsByIds(
+  Future<List<Product>> getProductsByIds(
     List<String> idList, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -192,7 +192,7 @@ class ShopifyStore with ShopifyError {
   ///  SortKey.PRICE,
   ///  SortKey.ID,
   ///  SortKey.RELEVANCE,
-  Future<List<Product>?> getNProducts(
+  Future<List<Product>> getNProducts(
     int n, {
     bool? reverse,
     SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE,
@@ -221,7 +221,7 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a list of recommended [Product] by given id.
-  Future<List<Product>?> getProductRecommendations(
+  Future<List<Product>> getProductRecommendations(
     String productId, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -254,7 +254,7 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a List of [Collection]
-  Future<List<Collection>?> getCollectionsByIds(
+  Future<List<Collection>> getCollectionsByIds(
     List<String> idList, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -328,24 +328,26 @@ class ShopifyStore with ShopifyError {
     String collectionId, {
     List<MetafieldIdentifier>? metafields,
   }) async {
-    try {
-      final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getCollectionsByIdsQuery),
-        variables: {
-          'ids': [collectionId],
-          'metafields': metafields != null
-              ? metafields.map((e) => e.toJson()).toList()
-              : [],
-        },
-        fetchPolicy: ShopifyConfig.fetchPolicy,
-      );
-      final QueryResult result = await _graphQLClient!.query(_options);
-      checkForError(result);
-      return Collection.fromGraphJson(result.data!);
-    } catch (e) {
-      log(e.toString());
-    }
-    return null;
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getCollectionsByIdsQuery),
+      variables: {
+        'ids': [collectionId],
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    // `nodes(ids:)` yields [null] for an id that doesn't resolve. Detect that
+    // explicitly and return null only for a genuine "not found" — this used to
+    // be reached by letting the parse throw and swallowing it, which made a
+    // failed request (bad token, no connectivity) indistinguishable from a
+    // missing collection.
+    final nodes = result.data?['nodes'] as List?;
+    if (nodes == null || nodes.isEmpty || nodes.first == null) return null;
+    return Collection.fromGraphJson(result.data!);
   }
 
   /// Returns all available collections.
@@ -391,7 +393,7 @@ class ShopifyStore with ShopifyError {
   /// Returns N products from each X collections.
   ///
   /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
-  Future<List<Collection>?> getXCollectionsAndNProductsSorted(
+  Future<List<Collection>> getXCollectionsAndNProductsSorted(
     int n,
     int x, {
     SortKeyProductCollection sortKeyProductCollection =
@@ -489,7 +491,7 @@ class ShopifyStore with ShopifyError {
   /// 1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   ///
   /// 2. https://shopify.dev/docs/api/storefront/2026-07/input-objects/productfilter
-  Future<List<Product>?> getXProductsAfterCursorWithinCollection(
+  Future<List<Product>> getXProductsAfterCursorWithinCollection(
     String id,
     int limit, {
     String? startCursor,
@@ -525,7 +527,7 @@ class ShopifyStore with ShopifyError {
   /// Returns the first [limit] Products after the given [startCursor].
   ///
   /// [limit] has to be in the range of 0 and 250.
-  Future<List<Product>?> searchProducts(
+  Future<List<Product>> searchProducts(
     String query, {
     int limit = 15,
     String? startCursor,
@@ -604,7 +606,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
-  Future<List<Product>?> getXProductsOnQueryAfterCursor(
+  Future<List<Product>> getXProductsOnQueryAfterCursor(
     String query,
     int limit,
     String? cursor, {

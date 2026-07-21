@@ -105,7 +105,7 @@ class _CartTabState extends State<CartTab> {
   void getNProducts() {
     shopifyStore.getNProducts(10).then((value) {
       setState(() {
-        products = value ?? [];
+        products = value;
       });
     });
   }

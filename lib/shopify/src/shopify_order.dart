@@ -14,7 +14,7 @@ class ShopifyOrder with ShopifyError {
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>?> getAllOrders(
+  Future<List<Order>> getAllOrders(
     String customerAccessToken, {
     SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
     bool reverse = true,

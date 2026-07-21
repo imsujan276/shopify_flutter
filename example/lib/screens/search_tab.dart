@@ -76,7 +76,7 @@ class SearchTabState extends State<SearchTab> {
       );
       if (mounted) {
         setState(() {
-          this.products = products ?? [];
+          this.products = products;
           _isLoading = false;
         });
       }

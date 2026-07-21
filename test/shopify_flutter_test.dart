@@ -254,6 +254,34 @@ void main() {
       }
     });
 
+    test('Collection.fromGraphJson reads the nodes(ids:) shape', () {
+      // getCollectionById passes the raw `{nodes: [...]}` payload. A resolved
+      // node must parse; an unresolved id comes back as {nodes: [null]}, which
+      // the service now detects before parsing instead of letting the parse
+      // throw and swallowing it.
+      final collection = Collection.fromGraphJson({
+        'nodes': [
+          {
+            'id': 'gid://shopify/Collection/1',
+            'title': 'Freestyle',
+            'handle': 'freestyle',
+            'updatedAt': '2026-07-14T00:00:00Z',
+            'description': 'desc',
+          },
+        ],
+      });
+      expect(collection.title, 'Freestyle');
+    });
+
+    test('Collections parses a payload with no pageInfo', () {
+      // getCollectionsByIds synthesises {"edges": [...]} with no pageInfo.
+      // hasNextPage had no `?? false` (unlike Products/Orders), so this threw
+      // "type 'Null' is not a subtype of type 'bool'".
+      final empty = Collections.fromGraphJson({'edges': []});
+      expect(empty.collectionList, isEmpty);
+      expect(empty.hasNextPage, isFalse);
+    });
+
     test('ShopifyImage parses url (was originalSrc)', () {
       final image = ShopifyImage.fromJson({
         'id': 'gid://shopify/ImageSource/1',

@@ -11,16 +11,7 @@ export 'src/article/comment/comment.dart';
 export 'src/blog/blog.dart';
 export 'src/blog/blogs/blogs.dart';
 
-export 'src/checkout/checkout.dart';
-export 'src/checkout/applied_gift_cards/applied_gift_cards.dart';
-export 'src/checkout/attribute/attribute.dart';
-export 'src/checkout/available_shipping_rates/available_shipping_rates.dart';
-export 'src/checkout/line_item/line_item.dart';
-export 'src/checkout/line_items/line_items.dart';
-export 'src/checkout/mailing_address/mailing_address.dart';
-export 'src/checkout/product_variant_checkout/product_variant_checkout.dart';
-export 'src/checkout/shipping_rates/shipping_rates.dart';
-export 'src/checkout/tokanized_checkout/tokanized_checkout.dart';
+export 'src/mailing_address/mailing_address.dart';
 
 export 'src/collection/collection.dart';
 export 'src/collection/collections/collections.dart';

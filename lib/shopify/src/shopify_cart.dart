@@ -1,3 +1,4 @@
+import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_attributes_update_mutation.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_buyer_identity_update.dart';
@@ -9,9 +10,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/car
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_line_item_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/mutations/cart/cart_note_update.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_cart_by_id.dart';
-import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/cart/cart_model.dart';
-import 'package:shopify_flutter/models/src/cart/inputs/attribute_input/attribute_input.dart';
 import 'package:shopify_flutter/shopify/src/shopify_localization.dart';
 
 import '../../shopify_config.dart';

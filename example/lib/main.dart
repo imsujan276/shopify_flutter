@@ -9,7 +9,6 @@ import 'screens/collection_tab.dart';
 import 'screens/home_tab.dart';
 import 'screens/shop_tab.dart';
 import 'screens/search_tab.dart';
-// import 'screens/checkout_page.dart';
 import 'screens/orders_tab.dart';
 
 Future<void> main() async {
@@ -19,7 +18,6 @@ Future<void> main() async {
   ShopifyConfig.setConfig(
     storefrontAccessToken: dotenv.env['STOREFRONT_ACCESS_TOKEN'] ?? '',
     storeUrl: dotenv.env['STORE_URL'] ?? '',
-    adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
     cachePolicy: CachePolicy.networkOnly,
     language: dotenv.env['COUNTRY_LOCALE'],
@@ -57,7 +55,6 @@ class MyHomePageState extends State<MyHomePage> {
     const SearchTab(),
     const ShopTab(),
     const BlogTab(),
-    // const CheckoutPage(),
     const CartTab(),
     const OrdersTab(),
     const AuthTab(),

@@ -23,7 +23,7 @@ class ShopifyBlog with ShopifyError {
   /// Returns a List of [Blog].
   ///
   /// Returns All [Blog] of the Shop.
-  Future<List<Blog>?> getAllBlogs(
+  Future<List<Blog>> getAllBlogs(
       {SortKeyBlog sortKeyBlog = SortKeyBlog.HANDLE,
       bool reverseBlogs = false,
       bool reverseArticles = false}) async {
@@ -68,7 +68,7 @@ class ShopifyBlog with ShopifyError {
   /// Returns a List of [Article].
   ///
   /// Returns a the first [articleAmount] of [Article] sorted by [sortKeyArticle].
-  Future<List<Article>?> getXArticlesSorted(
+  Future<List<Article>> getXArticlesSorted(
     int articleAmount, {
     SortKeyArticle sortKeyArticle = SortKeyArticle.RELEVANCE,
   }) async {

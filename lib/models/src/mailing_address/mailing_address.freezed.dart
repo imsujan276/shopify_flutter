@@ -15,7 +15,10 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MailingAddress {
 
- String get id; String get address1; String get city; String get country; String? get zip; String? get lastName; String? get name; String? get firstName; String? get address2; String? get company; String? get countryCodeV2; String? get formattedArea; double? get latitude; double? get longitude; String? get phone; String? get province; String? get provinceCode;
+ String get id;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get address1;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get city;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get country; String? get zip; String? get lastName; String? get name; String? get firstName; String? get address2; String? get company; String? get countryCodeV2; String? get formattedArea; double? get latitude; double? get longitude; String? get phone; String? get province; String? get provinceCode;
 /// Create a copy of MailingAddress
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +51,7 @@ abstract mixin class $MailingAddressCopyWith<$Res>  {
   factory $MailingAddressCopyWith(MailingAddress value, $Res Function(MailingAddress) _then) = _$MailingAddressCopyWithImpl;
 @useResult
 $Res call({
- String id, String address1, String city, String country, String? zip, String? lastName, String? name, String? firstName, String? address2, String? company, String? countryCodeV2, String? formattedArea, double? latitude, double? longitude, String? phone, String? province, String? provinceCode
+ String id,@JsonKey(defaultValue: '') String address1,@JsonKey(defaultValue: '') String city,@JsonKey(defaultValue: '') String country, String? zip, String? lastName, String? name, String? firstName, String? address2, String? company, String? countryCodeV2, String? formattedArea, double? latitude, double? longitude, String? phone, String? province, String? provinceCode
 });
 
 
@@ -169,7 +172,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String address1,  String city,  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(defaultValue: '')  String address1, @JsonKey(defaultValue: '')  String city, @JsonKey(defaultValue: '')  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MailingAddress() when $default != null:
 return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that.lastName,_that.name,_that.firstName,_that.address2,_that.company,_that.countryCodeV2,_that.formattedArea,_that.latitude,_that.longitude,_that.phone,_that.province,_that.provinceCode);case _:
@@ -190,7 +193,7 @@ return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String address1,  String city,  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(defaultValue: '')  String address1, @JsonKey(defaultValue: '')  String city, @JsonKey(defaultValue: '')  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)  $default,) {final _that = this;
 switch (_that) {
 case _MailingAddress():
 return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that.lastName,_that.name,_that.firstName,_that.address2,_that.company,_that.countryCodeV2,_that.formattedArea,_that.latitude,_that.longitude,_that.phone,_that.province,_that.provinceCode);case _:
@@ -210,7 +213,7 @@ return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String address1,  String city,  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(defaultValue: '')  String address1, @JsonKey(defaultValue: '')  String city, @JsonKey(defaultValue: '')  String country,  String? zip,  String? lastName,  String? name,  String? firstName,  String? address2,  String? company,  String? countryCodeV2,  String? formattedArea,  double? latitude,  double? longitude,  String? phone,  String? province,  String? provinceCode)?  $default,) {final _that = this;
 switch (_that) {
 case _MailingAddress() when $default != null:
 return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that.lastName,_that.name,_that.firstName,_that.address2,_that.company,_that.countryCodeV2,_that.formattedArea,_that.latitude,_that.longitude,_that.phone,_that.province,_that.provinceCode);case _:
@@ -225,13 +228,16 @@ return $default(_that.id,_that.address1,_that.city,_that.country,_that.zip,_that
 @JsonSerializable()
 
 class _MailingAddress implements MailingAddress {
-  const _MailingAddress({required this.id, required this.address1, required this.city, required this.country, this.zip, this.lastName, this.name, this.firstName, this.address2, this.company, this.countryCodeV2, this.formattedArea, this.latitude, this.longitude, this.phone, this.province, this.provinceCode});
+  const _MailingAddress({required this.id, @JsonKey(defaultValue: '') required this.address1, @JsonKey(defaultValue: '') required this.city, @JsonKey(defaultValue: '') required this.country, this.zip, this.lastName, this.name, this.firstName, this.address2, this.company, this.countryCodeV2, this.formattedArea, this.latitude, this.longitude, this.phone, this.province, this.provinceCode});
   factory _MailingAddress.fromJson(Map<String, dynamic> json) => _$MailingAddressFromJson(json);
 
 @override final  String id;
-@override final  String address1;
-@override final  String city;
-@override final  String country;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String address1;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String city;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String country;
 @override final  String? zip;
 @override final  String? lastName;
 @override final  String? name;
@@ -279,7 +285,7 @@ abstract mixin class _$MailingAddressCopyWith<$Res> implements $MailingAddressCo
   factory _$MailingAddressCopyWith(_MailingAddress value, $Res Function(_MailingAddress) _then) = __$MailingAddressCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String address1, String city, String country, String? zip, String? lastName, String? name, String? firstName, String? address2, String? company, String? countryCodeV2, String? formattedArea, double? latitude, double? longitude, String? phone, String? province, String? provinceCode
+ String id,@JsonKey(defaultValue: '') String address1,@JsonKey(defaultValue: '') String city,@JsonKey(defaultValue: '') String country, String? zip, String? lastName, String? name, String? firstName, String? address2, String? company, String? countryCodeV2, String? formattedArea, double? latitude, double? longitude, String? phone, String? province, String? provinceCode
 });
 
 

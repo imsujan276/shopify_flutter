@@ -103,6 +103,185 @@ void main() {
       expect(cart.lines.last.merchandise?.availableForSale, isFalse);
     });
 
+    test('variants survive a null quantityAvailable', () {
+      // Storefront `quantityAvailable` is nullable — it is only returned when
+      // the token carries `unauthenticated_read_product_inventory`. It used to
+      // be parsed into a non-null `int`, so the TypeError was swallowed by
+      // _getProductVariants and the product came back with *no* variants.
+      final product = Product.fromJson(_product({
+        'variants': {
+          'edges': [
+            {'node': _variant(quantityAvailable: null)},
+          ],
+        },
+      }));
+
+      expect(product.productVariants, hasLength(1));
+      expect(product.price, 10.0);
+      expect(product.productVariants.first.quantityAvailable, 0);
+    });
+
+    test('isAvailableForSale follows availableForSale, not stock count', () {
+      // Stores that allow overselling report a negative quantityAvailable while
+      // availableForSale stays true. Gating on `quantityAvailable > 0` marked
+      // every such product unavailable.
+      final oversold = Product.fromJson(_product({
+        'variants': {
+          'edges': [
+            {'node': _variant(quantityAvailable: -2853)},
+          ],
+        },
+      }));
+      expect(oversold.isAvailableForSale, isTrue);
+
+      final unavailable = Product.fromJson(_product({
+        'variants': {
+          'edges': [
+            {'node': _variant(quantityAvailable: 0, availableForSale: false)},
+          ],
+        },
+      }));
+      expect(unavailable.isAvailableForSale, isFalse);
+    });
+
+    test('metafields parse on the unwrapped (no "node") payload', () {
+      // getProductByHandle passes the product map directly. The branch handling
+      // that case read json['node']['metafields'], which is null by definition
+      // there, so metafields were always dropped.
+      final product = Product.fromJson(_product({
+        'variants': {'edges': []},
+        'metafields': [
+          {
+            'id': 'gid://shopify/Metafield/1',
+            'namespace': 'custom',
+            'key': 'care',
+            'value': 'machine wash',
+            'type': 'single_line_text_field',
+          },
+        ],
+      }));
+
+      expect(product.metafields, hasLength(1));
+      expect(product.metafields.first.value, 'machine wash');
+    });
+
+    test('Order parses with null financialStatus, subtotalPrice and totalTax',
+        () {
+      // All three are nullable on the Storefront API (e.g. a fully discounted
+      // order) but were parsed into non-null Dart fields, so one such order
+      // threw and failed the entire order list.
+      final order = Order.fromGraphJson({
+        'node': {
+          'id': 'gid://shopify/Order/1',
+          'email': null,
+          'currencyCode': 'EUR',
+          'customerUrl': null,
+          'lineItems': {'edges': []},
+          'name': '#1001',
+          'orderNumber': 1001,
+          'processedAt': '2026-07-14T00:00:00Z',
+          'financialStatus': null,
+          'fulfillmentStatus': 'FULFILLED',
+          'shippingAddress': null,
+          'billingAddress': null,
+          'statusUrl': 'https://example.com/orders/1/status',
+          'subtotalPrice': null,
+          'totalPrice': {'amount': '0.0', 'currencyCode': 'EUR'},
+          'totalRefunded': null,
+          'totalShippingPrice': {'amount': '0.0', 'currencyCode': 'EUR'},
+          'totalTax': null,
+        },
+      });
+
+      expect(order.financialStatus, '');
+      expect(order.customerUrl, '');
+      expect(order.subtotalPrice.amount, 0.0);
+      // the zero fallback keeps the order's own currency
+      expect(order.subtotalPrice.currencyCode, 'EUR');
+      expect(order.totalTax.amount, 0.0);
+      expect(order.totalRefunded, isNull);
+    });
+
+    test('unpublished Page parses with a null onlineStoreUrl', () {
+      final page = Page.fromJson({
+        'id': 'gid://shopify/Page/1',
+        'title': 'About',
+        'handle': 'about',
+        'body': 'x',
+        'bodySummary': 'x',
+        'createdAt': '2026-07-14T00:00:00Z',
+        'updatedAt': '2026-07-14T00:00:00Z',
+        'onlineStoreUrl': null,
+      });
+      expect(page.onlineStoreUrl, '');
+    });
+
+    test('address parses when optional MailingAddress fields are null', () {
+      // Only `id` is non-null on Storefront MailingAddress; a single-name
+      // entry or a digital order leaves lastName/address1/city null.
+      final address = ShippingAddress.fromJson({
+        'id': 'gid://shopify/MailingAddress/1',
+        'address1': null,
+        'city': null,
+        'country': null,
+        'firstName': 'Cher',
+        'lastName': null,
+        'name': 'Cher',
+      });
+      expect(address.lastName, '');
+      expect(address.address1, '');
+      expect(address.name, 'Cher');
+    });
+
+    test('currency symbols cover the current ISO codes, never render "null"',
+        () {
+      // BYR/STD/VEF are deprecated CurrencyCode enum values; the symbol map
+      // listed those but not their replacements, so a store trading in BYN,
+      // STN or VES formatted every price as "null12.50".
+      expect(const PriceV2(amount: 12.5, currencyCode: 'BYN').formattedPrice,
+          startsWith('Br'));
+      expect(const PriceV2(amount: 12.5, currencyCode: 'STN').formattedPrice,
+          startsWith('Db'));
+      expect(const PriceV2(amount: 12.5, currencyCode: 'VES').formattedPrice,
+          startsWith('Bs'));
+
+      // anything not in the map falls back to the ISO code, never "null"
+      for (final code in ['XYZ', 'BYR', 'VEF']) {
+        final formatted =
+            PriceV2(amount: 12.5, currencyCode: code).formattedPrice;
+        expect(formatted, isNot(contains('null')));
+        expect(formatted, startsWith(code));
+      }
+    });
+
+    test('Collection.fromGraphJson reads the nodes(ids:) shape', () {
+      // getCollectionById passes the raw `{nodes: [...]}` payload. A resolved
+      // node must parse; an unresolved id comes back as {nodes: [null]}, which
+      // the service now detects before parsing instead of letting the parse
+      // throw and swallowing it.
+      final collection = Collection.fromGraphJson({
+        'nodes': [
+          {
+            'id': 'gid://shopify/Collection/1',
+            'title': 'Freestyle',
+            'handle': 'freestyle',
+            'updatedAt': '2026-07-14T00:00:00Z',
+            'description': 'desc',
+          },
+        ],
+      });
+      expect(collection.title, 'Freestyle');
+    });
+
+    test('Collections parses a payload with no pageInfo', () {
+      // getCollectionsByIds synthesises {"edges": [...]} with no pageInfo.
+      // hasNextPage had no `?? false` (unlike Products/Orders), so this threw
+      // "type 'Null' is not a subtype of type 'bool'".
+      final empty = Collections.fromGraphJson({'edges': []});
+      expect(empty.collectionList, isEmpty);
+      expect(empty.hasNextPage, isFalse);
+    });
+
     test('ShopifyImage parses url (was originalSrc)', () {
       final image = ShopifyImage.fromJson({
         'id': 'gid://shopify/ImageSource/1',
@@ -243,4 +422,33 @@ Map<String, dynamic> _merchandise({
       'selectedOptions': [
         {'name': 'Size', 'value': title},
       ],
+    };
+
+/// A product payload in the unwrapped shape `Product.fromJson` receives.
+Map<String, dynamic> _product(Map<String, dynamic> extra) => {
+      'id': 'gid://shopify/Product/1',
+      'title': 'Shirt',
+      'handle': 'shirt',
+      'availableForSale': true,
+      'createdAt': '2026-07-14T00:00:00Z',
+      'vendor': 'Acme',
+      'productType': 'Apparel',
+      'publishedAt': '2026-07-14T00:00:00Z',
+      ...extra,
+    };
+
+/// A ProductVariant node as the Storefront API returns it.
+Map<String, dynamic> _variant({
+  required Object? quantityAvailable,
+  bool availableForSale = true,
+}) =>
+    {
+      'id': 'gid://shopify/ProductVariant/1',
+      'title': 'S',
+      'price': {'amount': '10.0', 'currencyCode': 'EUR'},
+      'weight': 1,
+      'weightUnit': 'KILOGRAMS',
+      'availableForSale': availableForSale,
+      'requiresShipping': true,
+      'quantityAvailable': quantityAvailable,
     };

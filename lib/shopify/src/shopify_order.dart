@@ -1,4 +1,3 @@
-import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 import '../../graphql_operations/storefront/queries/get_all_orders.dart';
@@ -15,19 +14,24 @@ class ShopifyOrder with ShopifyError {
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>?> getAllOrders(
+  Future<List<Order>> getAllOrders(
     String customerAccessToken, {
     SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
     bool reverse = true,
   }) async {
-    final MutationOptions _options =
-        MutationOptions(document: gql(getAllOrdersQuery), variables: {
-      'accessToken': customerAccessToken,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse,
-      'country': ShopifyLocalization.countryCode,
-    });
-    QueryResult result = await _graphQLClient!.mutate(_options);
+    // getAllOrdersQuery is a read-only `query`; sending it through mutate()
+    // bypassed the cache entirely and ignored ShopifyConfig.fetchPolicy.
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getAllOrdersQuery),
+      variables: {
+        'accessToken': customerAccessToken,
+        'sortKey': sortKey.parseToString(),
+        'reverse': reverse,
+        'country': ShopifyLocalization.countryCode,
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     final ordersData = result.data!['customer']?['orders'];
     if (ordersData == null) return [];

@@ -1,7 +1,6 @@
 import 'package:intl/intl.dart';
 import 'package:shopify_flutter/models/src/cart/lines/line/line.dart';
 
-import 'src/checkout/line_item/line_item.dart';
 
 /// A helper class for parsing json objects
 class JsonHelper {
@@ -18,21 +17,6 @@ class JsonHelper {
     }
 
     return (json['edges'] as List).map((e) => Line.fromGraphJson(e)).toList();
-  }
-
-  /// returns a list of line items from a json object
-  static List<LineItem> lineItems(dynamic json) {
-    if (json == null) {
-      return [];
-    } else if (json is List) {
-      return json.map((e) => LineItem.fromJson(e)).toList();
-    } else if (json['edges'] == null) {
-      return [];
-    }
-
-    return (json['edges'] as List)
-        .map((e) => LineItem.fromGraphJson(e))
-        .toList();
   }
 
   /// returns a amount from a json object
@@ -55,9 +39,13 @@ class JsonHelper {
     NumberFormat? priceFormat,
     String? locale,
   }) {
+    // Fall back to the ISO code when the symbol is unknown. Interpolating the
+    // lookup directly rendered the literal string "null" as the symbol for any
+    // currency missing from the map.
+    final symbol = _simpleCurrencySymbols[currencyCode] ?? currencyCode;
     return NumberFormat.currency(
       name: currencyCode,
-      symbol: '${_simpleCurrencySymbols[currencyCode]}',
+      symbol: symbol,
       locale: locale,
     ).format(amountFromJson(amount));
   }
@@ -69,7 +57,7 @@ class JsonHelper {
     'THB': '\u0e3f',
     'PAB': 'B/.',
     'ETB': 'Birr',
-    'VEF': 'Bs',
+    'VES': 'Bs',
     'BOB': 'Bs',
     'GHS': 'GHS',
     'CRC': '\u20a1',
@@ -86,7 +74,7 @@ class JsonHelper {
     'TND': 'din',
     'AED': 'dh',
     'MAD': 'dh',
-    'STD': 'Db',
+    'STN': 'Db',
     'BSD': r'$',
     'FJD': r'$',
     'GYD': r'$',
@@ -190,7 +178,7 @@ class JsonHelper {
     'KHR': 'Riel',
     'MYR': 'RM',
     'SAR': 'Riyal',
-    'BYR': 'BYR',
+    'BYN': 'Br',
     'RUB': 'руб.',
     'MUR': 'Rs',
     'SCR': 'SCR',

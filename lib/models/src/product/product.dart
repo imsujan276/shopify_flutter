@@ -112,24 +112,24 @@ abstract class Product with _$Product {
   String get currencyCode =>
       productVariants.isEmpty ? '' : productVariants.first.price.currencyCode;
 
-  /// Checks if the product is available for sale by checking its variants availability and quantity
+  /// Whether any variant of this product can currently be bought.
+  ///
+  /// This relies on `ProductVariant.availableForSale`, which Shopify documents
+  /// as the non-null, authoritative purchasability flag — it already accounts
+  /// for the store's inventory policy.
+  ///
+  /// It deliberately does *not* additionally require `quantityAvailable > 0`.
+  /// That field is null (reported as `0`) unless the token carries the
+  /// `unauthenticated_read_product_inventory` scope, and it goes negative on
+  /// stores that allow overselling, so gating on it reported perfectly
+  /// purchasable products as unavailable.
   bool get isAvailableForSale {
-    final temp =
+    final defaultVariants =
         productVariants.where((e) => e.title == 'Default Title').toList();
-    if (temp.isNotEmpty) {
-      return temp.first.availableForSale && temp.first.quantityAvailable > 0;
-    } else {
-      bool isAvailable = false;
-      final variants =
-          productVariants.where((e) => e.title != 'Default Title').toList();
-      for (int i = 0; i < variants.length; i++) {
-        if (variants[i].availableForSale && variants[i].quantityAvailable > 0) {
-          isAvailable = true;
-          break;
-        }
-      }
-      return isAvailable;
+    if (defaultVariants.isNotEmpty) {
+      return defaultVariants.first.availableForSale;
     }
+    return productVariants.any((e) => e.availableForSale);
   }
 
   /// The product from graphjson
@@ -364,7 +364,11 @@ abstract class Product with _$Product {
         // remove null entries from the list
         return metafields;
       } else if (json['metafields'] != null) {
-        final metafields = ((json['node']?['metafields'] ?? []) as List)
+        // This branch is only reached when there is no 'node' key, so the
+        // metafields must be read off `json` itself — reading json['node']
+        // here silently returned an empty list for every unwrapped payload
+        // (e.g. the getProductByHandle / getCollectionByHandle path).
+        final metafields = ((json['metafields'] ?? []) as List)
             .map((v) => Metafield.fromGraphJson(v ?? const {}))
             .toList();
         // remove null entries from the list

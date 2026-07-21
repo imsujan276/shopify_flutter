@@ -23,9 +23,6 @@ void main() {
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
 
-    // Optional | Needed only if needed to call admin api
-    adminAccessToken: "shpat_*******************", 
-
     // optional | default: 2026-07
     storefrontApiVersion: '2026-07',
 
@@ -40,10 +37,6 @@ void main() {
     // via HiveStore from graphql_flutter).
     storefrontCache: GraphQLCache(store: await HiveStore.open()),
 
-    // optional | default: in-memory GraphQLCache()
-    // Inject a custom GraphQLCache for the Admin client.
-    adminCache: GraphQLCache(store: await HiveStore.open(boxName: 'admin')),
-
     // optional | default: 30s
     queryRequestTimeout: const Duration(seconds: 30)
   );
@@ -52,20 +45,44 @@ void main() {
 }
 ```
 
-> `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
-If you are not using that function, you may not need to provide it.
+> **This package talks to the Storefront API only.** Admin API support was removed in 4.0.0: an Admin token grants broad read/write access to the whole shop and can be extracted from any distributed app binary, so it does not belong in a client. Perform admin operations (deleting a customer, reading shop settings, etc.) from your own backend.
 
 > `storefrontApiVersion` default vesion is set to '2026-07'. This package requires **2026-07 or newer** (the cart operations rely on fields added in 2026-07). Shopify supports each version for 12 months after release and then falls forward to the oldest supported version, so prefer keeping this current.
 
 > `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
 
-> `storefrontCache` / `adminCache` let you supply a `GraphQLCache` from `graphql_flutter` so query results can be persisted to disk (e.g. via `HiveStore`) and survive app restarts. When omitted, fresh in-memory caches are created as before.
+> `storefrontCache` lets you supply a `GraphQLCache` from `graphql_flutter` so query results can be persisted to disk (e.g. via `HiveStore`) and survive app restarts. When omitted, fresh in-memory caches are created as before.
 
 <hr>
 
-These are the five possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
+These are the possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
 
 The goal is to make creating an mobile app from your Shopify website easier.
+
+##### Error handling
+
+Every method throws a `ShopifyException` when a call fails — whether Shopify
+returned GraphQL/user errors, or the request never completed (no connectivity,
+timeout, HTTP error). One `catch` covers both:
+
+```dart
+try {
+  final products = await ShopifyStore.instance.getAllProducts();
+} on ShopifyException catch (e) {
+  // e.key       -> the operation, e.g. 'cartLinesAdd'
+  // e.errorKey  -> the kind of error, e.g. 'userErrors'
+  // e.errors    -> the messages Shopify returned
+  print(e);
+}
+```
+
+`ShopifyException` is exported from `package:shopify_flutter/shopify_flutter.dart`.
+
+> **Changed in 3.1.0.** Failed requests previously threw a bare `String` — which
+> is not an `Exception`, so `on Exception catch` did not catch it, and for
+> connectivity errors the thrown value was an empty string with the real cause
+> discarded. If you relied on catching a `String`, switch to `ShopifyException`.
+> Code using a bare `catch (e)` keeps working.
 
 ##### Shopify Auth
 ```dart
@@ -89,9 +106,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 
   Future<void> sendPasswordResetEmail({required String email})
 
-  Future<ShopifyUser> currentUser({bool forceRefresh = false})
-
-  Future<void> deleteCustomer({required String userId})
+  Future<ShopifyUser?> currentUser({bool forceRefresh = false})
 
   Future<String?> get currentCustomerAccessToken
 
@@ -120,7 +135,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 
   Future<Shop> getShop()
 
-  Future<Collection> getCollectionById(String collectionId)
+  Future<Collection?> getCollectionById(String collectionId)
 
   Future<List<Collection>> getAllCollections()
 
@@ -148,7 +163,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Map<String, dynamic>? filters
   )
 
-  Future<List<Product>?> searchProducts(
+  Future<List<Product>> searchProducts(
     String query, 
     {
       int limit = 15, 
@@ -179,7 +194,7 @@ Example to get metafields in product
 ```dart
   ShopifyCart shopifyCart = ShopifyCart.instance;
 
-  Future<Cart> getCartById(String cartId, {bool reverse = false})
+  Future<Cart?> getCartById(String cartId, {bool reverse = false})
 
   Future<Cart> createCart(CartInput cartInput)
 
@@ -210,6 +225,14 @@ Example to get metafields in product
   Future<Cart> updateCartDiscountCodes({ 
     required String cartId, 
     required List<String> discountCodes,
+    bool reverse = false,
+  })
+
+  /// Adds delivery addresses to an existing cart.
+  /// Replaces the removed `buyerIdentity.deliveryAddressPreferences`.
+  Future<Cart> addDeliveryAddresses({
+    required String cartId,
+    required List<CartSelectableAddressInput> addresses,
     bool reverse = false,
   })
 
@@ -262,7 +285,7 @@ Example to get metafields in product
     bool? acceptsMarketing
   })
 
-  Future<void> customerAddressCreate({
+  Future<Address> customerAddressCreate({
     String? address1, 
     String? address2, 
     String? company, 
@@ -319,7 +342,7 @@ Example to get metafields in product
 ```dart
   ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
 
-  Future<List<Page>> getLocalization()
+  Future<Localization> getLocalization()
 
   // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   void setCountryCode(String? countryCode)
@@ -340,13 +363,11 @@ Example to get metafields in product
   Future<Map<String, dynamic>?> customQuery({
     required String gqlQuery, 
     Map<String, dynamic> variables = const {}, 
-    bool adminAccess = false
   })
 
   Future<Map<String, dynamic>?> customMutation({
     required String gqlMutation, 
     Map<String, dynamic> variables = const {}, 
-    bool adminAccess = false
   })
 ```
 
@@ -388,5 +409,5 @@ Everybody can contribute and is invited to do so!
 **Important:** 
 If you add a new field to a model please consider also adding this to every mutation/query that is associated with the model.
 
-**Example:** Adding a new field to Checkout which is the webUrl, now you will need to go through the various queries/mutations and search for "Checkout" and add webUrl to each one of those.
+**Example:** adding a new field to `Cart` means going through every cart query/mutation in `lib/graphql_operations/storefront/` and adding it to each one.
 (adding a new field to a Model also requires you to update the fromJson)

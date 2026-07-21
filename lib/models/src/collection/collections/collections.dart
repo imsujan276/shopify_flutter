@@ -23,7 +23,10 @@ abstract class Collections with _$Collections {
   /// The Collections from graph json
   factory Collections.fromGraphJson(Map<String, dynamic> json) => Collections(
     collectionList: _getCollectionList(json),
-    hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'],
+    // Default to false like Products/Orders do: a payload without pageInfo
+    // (e.g. the synthesized edge list in getCollectionsByIds, or a connection
+    // queried without pageInfo) otherwise threw a TypeError on a null bool.
+    hasNextPage: (json['pageInfo'] ?? const {})['hasNextPage'] ?? false,
   );
 
   static List<Collection> _getCollectionList(Map<String, dynamic> json) {

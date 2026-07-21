@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:shopify_flutter/models/src/checkout/mailing_address/mailing_address.dart';
+import 'package:shopify_flutter/models/src/mailing_address/mailing_address.dart';
 
 part 'customer.freezed.dart';
 part 'customer.g.dart';

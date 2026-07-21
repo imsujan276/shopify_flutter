@@ -355,13 +355,16 @@ class ShopifyAuth with ShopifyError {
         accessTokenWithExpDate.expiresAt == null) {
       _shopifyUser.remove(ShopifyConfig.storeUrl);
       _currentCustomerAccessToken.remove(ShopifyConfig.storeUrl);
-      _prefs.remove(_shopifyKey);
-      _prefs.remove(ShopifyConfig.storeUrl!);
+      // Awaited so the caller can rely on the token actually being gone from
+      // disk once this future completes — an un-awaited remove let
+      // signOutCurrentUser return with the token still persisted.
+      await _prefs.remove(_shopifyKey);
+      await _prefs.remove(ShopifyConfig.storeUrl!);
     } else {
       _shopifyUser[ShopifyConfig.storeUrl] = shopifyUser;
       _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
           accessTokenWithExpDate.toJson();
-      _prefs.setString(
+      await _prefs.setString(
           ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
     }
   }

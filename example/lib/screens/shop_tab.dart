@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
@@ -20,46 +19,6 @@ class ShopTabState extends State<ShopTab> {
     super.initState();
     _fetchShopInfo();
     _fetchLocalizationInfo();
-  }
-
-  Future<void> fetchShopAdminInfo() async {
-    try {
-      final shopInfo = await ShopifyCustom.instance.customQuery(
-        gqlQuery: """
-query{
-  shop {
-    name
-    currencyCode
-    checkoutApiSupported
-    taxesIncluded
-    resourceLimits {
-      maxProductVariants
-    }
-    billingAddress {
-      id
-      address1
-      address2
-      city
-      company
-      country
-      countryCodeV2
-      formattedArea
-      latitude
-      longitude
-      phone
-      province
-      provinceCode
-      zip
-    }
-  }
-}
-""",
-        adminAccess: true,
-      );
-      log('shopInfo: $shopInfo');
-    } catch (e) {
-      debugPrint(e.toString());
-    }
   }
 
   Future<void> _fetchShopInfo() async {
@@ -101,10 +60,6 @@ query{
       appBar: AppBar(
         title: const Text('Shop'),
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: fetchShopAdminInfo,
-          ),
         ],
       ),
       body: Column(

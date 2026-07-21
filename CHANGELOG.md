@@ -17,6 +17,18 @@ Kept, but moved: **`MailingAddress`**. The type is not deprecated — it is very
 
 **Migration.** Use `ShopifyCart` and send the buyer to `cart.checkoutUrl` (Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api)); mobile apps can also use Shopify's Checkout Sheet Kit. The example app already does this — see `cart_tab.dart`'s `onCheckoutTap` with `checkout_webview.dart`.
 
+**Removes Admin API support — it does not belong in a client.**
+
+A Storefront access token is designed to be public and scope-limited. An **Admin** token is not: it grants broad read/write access to the entire shop, and anything shipped in a distributed app binary can be extracted from it. Offering Admin calls from a Flutter package invites a serious credential exposure, so the whole surface is gone. Perform admin operations from a backend you control.
+
+Removed:
+* `ShopifyConfig.setConfig`'s `adminAccessToken` and `adminCache` parameters, the `graphQLClientAdmin` getter, and the admin `GraphQLClient` entirely. The package now opens exactly one client, against the Storefront endpoint.
+* `ShopifyAuth.deleteCustomer` and the `customerDelete` Admin mutation — the package's only Admin document. (For the record it is *not* deprecated; this is a security decision, not an API-lifecycle one.)
+* The `adminAccess` parameter on `ShopifyCustom.customQuery` / `customMutation`. Both now always use the Storefront client.
+* The example's admin usage: the "Delete Account" button, the admin shop-info query, and `ADMIN_ACCESS_TOKEN` from `.env.example`.
+
+This also removes a latent bug: the admin client built its URL from `storefrontApiVersion`, silently pinning the Admin API to a Storefront version even though the two are versioned independently.
+
 **Return types no longer claim to be nullable when they never are.** Twelve methods were declared `Future<List<X>?>` but every return path produced a non-null list, forcing callers into `?? []` that could never fire. They are now `Future<List<X>>`: `getAllBlogs`, `getXArticlesSorted`, `getAllOrders`, `getAllPages`, `getProductsByIds`, `getNProducts`, `getProductRecommendations`, `getCollectionsByIds`, `getXCollectionsAndNProductsSorted`, `getXProductsAfterCursorWithinCollection`, `searchProducts`, `getXProductsOnQueryAfterCursor`. Removing the dead `?? []` from the example deleted 8 such call sites.
   * Methods that genuinely can return null keep the `?`: `currentUser`, `getCartById`, `getProductByHandle` and `getCollectionById` all have real "not found" paths, and `ShopifyCustom.customQuery`/`customMutation` return `result.data`, which is nullable.
   * Existing calls still compile — a non-null value is assignable where a nullable one was expected. You may get `dead_null_aware_expression` warnings where you previously wrote `?? []`; delete the fallback.

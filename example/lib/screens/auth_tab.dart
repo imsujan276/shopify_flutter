@@ -98,20 +98,6 @@ class _AuthTabState extends State<AuthTab> {
     }
   }
 
-  Future<void> _deleteAccount() async {
-    if (shopifyUser == null || shopifyUser!.id == null) return;
-    try {
-      await shopifyAuth.deleteCustomer(userId: '${shopifyUser?.id}');
-      setState(() {
-        shopifyUser = null;
-      });
-      showSnackbar('Account deleted successfully');
-    } catch (e) {
-      if (!mounted) return;
-      showSnackbar(e.toString());
-      debugPrint(e.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,10 +119,6 @@ class _AuthTabState extends State<AuthTab> {
               ElevatedButton(
                 onPressed: () => _signout(),
                 child: const Text('Sign Out'),
-              ),
-              ElevatedButton(
-                onPressed: () => _deleteAccount(),
-                child: const Text('Delete Account'),
               ),
             ],
             if (shopifyUser == null) ...[

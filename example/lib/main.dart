@@ -18,7 +18,6 @@ Future<void> main() async {
   ShopifyConfig.setConfig(
     storefrontAccessToken: dotenv.env['STOREFRONT_ACCESS_TOKEN'] ?? '',
     storeUrl: dotenv.env['STORE_URL'] ?? '',
-    adminAccessToken: dotenv.env['ADMIN_ACCESS_TOKEN'],
     storefrontApiVersion: dotenv.env['STOREFRONT_API_VERSION'] ?? '2023-07',
     cachePolicy: CachePolicy.networkOnly,
     language: dotenv.env['COUNTRY_LOCALE'],

@@ -47,8 +47,6 @@ abstract class LineItemOrder with _$LineItemOrder {
                 json['node']['variant'],
                 forceParse: true,
               ),
-        // variant: ProductVariantCheckout.fromJson(
-        //     (json['node'] ?? const {})['variant'] ?? const {})
       );
 
   static List<DiscountAllocations> _getDiscountAllocationsList(

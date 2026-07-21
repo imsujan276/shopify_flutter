@@ -1,3 +1,22 @@
+# 4.0.0
+
+**Removes the Checkout API surface, which no longer exists on the Storefront API.**
+
+Shopify [deprecated the Checkout APIs in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), [removed the checkout types in 2024-07](https://shopify.dev/docs/api/release-notes/previous-versions/2024-07), and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025). Verified against a live 2026-07 storefront: `Checkout` is not a type in the schema, and every `checkout*` mutation resolves to `Field '...' doesn't exist on type 'Mutation'`. So this code could not work on any supported API version — calls failed at the GraphQL layer with a confusing "field doesn't exist" error rather than a clear one.
+
+Removed:
+* `ShopifyCheckout` and all of its methods. Its `getAllOrders` was a duplicate of `ShopifyOrder.getAllOrders`, which is unaffected.
+* 26 GraphQL documents (19 checkout mutations, 7 checkout queries including `getWebUrl`, which selected `... on Checkout`).
+* Checkout-only models: `Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, and the checkout-specific `Attribute`. Removing the last one also resolves a latent export ambiguity — `Attribute` was exported from both `src/cart/` and `src/checkout/`.
+* `JsonHelper.lineItems`, whose only consumer was `Checkout`.
+* The example's unreachable `checkout_page.dart` (already commented out of the app's navigation).
+
+Kept: `MailingAddress` — it lives under `src/checkout/` but is used by the live cart/customer path.
+
+**Migration.** Use `ShopifyCart` and send the buyer to `cart.checkoutUrl` (Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api)); mobile apps can also use Shopify's Checkout Sheet Kit. The example app already does this — see `cart_tab.dart`'s `onCheckoutTap` with `checkout_webview.dart`.
+
+Also verified in this release: all 50 remaining Storefront documents validate against live 2026-07, and a type-aware walk of every selection set against the schema finds **no deprecated fields** in use.
+
 # 3.1.0
 
 Code-review fixes. No changes to the shape of any response, and no public model

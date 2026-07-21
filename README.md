@@ -63,7 +63,7 @@ If you are not using that function, you may not need to provide it.
 
 <hr>
 
-These are the five possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
+These are the possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
 
 The goal is to make creating an mobile app from your Shopify website easier.
 

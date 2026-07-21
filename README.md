@@ -106,9 +106,7 @@ try {
 
   Future<void> sendPasswordResetEmail({required String email})
 
-  Future<ShopifyUser> currentUser({bool forceRefresh = false})
-
-  Future<void> deleteCustomer({required String userId})
+  Future<ShopifyUser?> currentUser({bool forceRefresh = false})
 
   Future<String?> get currentCustomerAccessToken
 
@@ -137,7 +135,7 @@ try {
 
   Future<Shop> getShop()
 
-  Future<Collection> getCollectionById(String collectionId)
+  Future<Collection?> getCollectionById(String collectionId)
 
   Future<List<Collection>> getAllCollections()
 
@@ -165,7 +163,7 @@ try {
     Map<String, dynamic>? filters
   )
 
-  Future<List<Product>?> searchProducts(
+  Future<List<Product>> searchProducts(
     String query, 
     {
       int limit = 15, 
@@ -196,7 +194,7 @@ Example to get metafields in product
 ```dart
   ShopifyCart shopifyCart = ShopifyCart.instance;
 
-  Future<Cart> getCartById(String cartId, {bool reverse = false})
+  Future<Cart?> getCartById(String cartId, {bool reverse = false})
 
   Future<Cart> createCart(CartInput cartInput)
 
@@ -227,6 +225,14 @@ Example to get metafields in product
   Future<Cart> updateCartDiscountCodes({ 
     required String cartId, 
     required List<String> discountCodes,
+    bool reverse = false,
+  })
+
+  /// Adds delivery addresses to an existing cart.
+  /// Replaces the removed `buyerIdentity.deliveryAddressPreferences`.
+  Future<Cart> addDeliveryAddresses({
+    required String cartId,
+    required List<CartSelectableAddressInput> addresses,
     bool reverse = false,
   })
 
@@ -279,7 +285,7 @@ Example to get metafields in product
     bool? acceptsMarketing
   })
 
-  Future<void> customerAddressCreate({
+  Future<Address> customerAddressCreate({
     String? address1, 
     String? address2, 
     String? company, 
@@ -336,7 +342,7 @@ Example to get metafields in product
 ```dart
   ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
 
-  Future<List<Page>> getLocalization()
+  Future<Localization> getLocalization()
 
   // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   void setCountryCode(String? countryCode)
@@ -403,5 +409,5 @@ Everybody can contribute and is invited to do so!
 **Important:** 
 If you add a new field to a model please consider also adding this to every mutation/query that is associated with the model.
 
-**Example:** Adding a new field to Checkout which is the webUrl, now you will need to go through the various queries/mutations and search for "Checkout" and add webUrl to each one of those.
+**Example:** adding a new field to `Cart` means going through every cart query/mutation in `lib/graphql_operations/storefront/` and adding it to each one.
 (adding a new field to a Model also requires you to update the fromJson)

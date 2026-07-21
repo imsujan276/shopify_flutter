@@ -39,9 +39,13 @@ class JsonHelper {
     NumberFormat? priceFormat,
     String? locale,
   }) {
+    // Fall back to the ISO code when the symbol is unknown. Interpolating the
+    // lookup directly rendered the literal string "null" as the symbol for any
+    // currency missing from the map.
+    final symbol = _simpleCurrencySymbols[currencyCode] ?? currencyCode;
     return NumberFormat.currency(
       name: currencyCode,
-      symbol: '${_simpleCurrencySymbols[currencyCode]}',
+      symbol: symbol,
       locale: locale,
     ).format(amountFromJson(amount));
   }
@@ -53,7 +57,7 @@ class JsonHelper {
     'THB': '\u0e3f',
     'PAB': 'B/.',
     'ETB': 'Birr',
-    'VEF': 'Bs',
+    'VES': 'Bs',
     'BOB': 'Bs',
     'GHS': 'GHS',
     'CRC': '\u20a1',
@@ -70,7 +74,7 @@ class JsonHelper {
     'TND': 'din',
     'AED': 'dh',
     'MAD': 'dh',
-    'STD': 'Db',
+    'STN': 'Db',
     'BSD': r'$',
     'FJD': r'$',
     'GYD': r'$',
@@ -174,7 +178,7 @@ class JsonHelper {
     'KHR': 'Riel',
     'MYR': 'RM',
     'SAR': 'Riyal',
-    'BYR': 'BYR',
+    'BYN': 'Br',
     'RUB': 'руб.',
     'MUR': 'Rs',
     'SCR': 'SCR',

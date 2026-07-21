@@ -233,6 +233,27 @@ void main() {
       expect(address.name, 'Cher');
     });
 
+    test('currency symbols cover the current ISO codes, never render "null"',
+        () {
+      // BYR/STD/VEF are deprecated CurrencyCode enum values; the symbol map
+      // listed those but not their replacements, so a store trading in BYN,
+      // STN or VES formatted every price as "null12.50".
+      expect(const PriceV2(amount: 12.5, currencyCode: 'BYN').formattedPrice,
+          startsWith('Br'));
+      expect(const PriceV2(amount: 12.5, currencyCode: 'STN').formattedPrice,
+          startsWith('Db'));
+      expect(const PriceV2(amount: 12.5, currencyCode: 'VES').formattedPrice,
+          startsWith('Bs'));
+
+      // anything not in the map falls back to the ISO code, never "null"
+      for (final code in ['XYZ', 'BYR', 'VEF']) {
+        final formatted =
+            PriceV2(amount: 12.5, currencyCode: code).formattedPrice;
+        expect(formatted, isNot(contains('null')));
+        expect(formatted, startsWith(code));
+      }
+    });
+
     test('ShopifyImage parses url (was originalSrc)', () {
       final image = ShopifyImage.fromJson({
         'id': 'gid://shopify/ImageSource/1',

@@ -11,11 +11,15 @@ Removed:
 * `JsonHelper.lineItems`, whose only consumer was `Checkout`.
 * The example's unreachable `checkout_page.dart` (already commented out of the app's navigation).
 
-Kept: `MailingAddress` — it lives under `src/checkout/` but is used by the live cart/customer path.
+Kept, but moved: **`MailingAddress`**. The type is not deprecated — it is very much live on 2026-07, returned by `Customer.defaultAddress`, `Order.shippingAddress`/`billingAddress`, `CustomerAddressCreate`/`UpdatePayload.customerAddress` and `CartDeliveryGroup.deliveryAddress`. It was only ever filed under `src/checkout/` by accident; its actual consumer is `Customer.defaultAddress`. It now lives at `src/mailing_address/`, and `src/checkout/` is gone entirely. Consumers importing the package barrel are unaffected; only a deep `package:shopify_flutter/models/src/checkout/mailing_address/...` import would need updating.
+
+(For the record, one of its 19 fields *is* deprecated — `countryCode`, superseded by `countryCodeV2` — but the model already used `countryCodeV2`.)
 
 **Migration.** Use `ShopifyCart` and send the buyer to `cart.checkoutUrl` (Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api)); mobile apps can also use Shopify's Checkout Sheet Kit. The example app already does this — see `cart_tab.dart`'s `onCheckoutTap` with `checkout_webview.dart`.
 
-Also verified in this release: all 50 remaining Storefront documents validate against live 2026-07, and a type-aware walk of every selection set against the schema finds **no deprecated fields** in use.
+**Deprecated currency codes replaced.** `CurrencyCode.BYR`, `STD` and `VEF` are deprecated enum values (superseded by `BYN`, `STN` and `VES`). The currency-symbol table listed the three deprecated codes but *not* their replacements, so a store trading in BYN, STN or VES formatted every price as `"null12.50"` — the literal string `null` in place of the symbol. The deprecated codes are replaced by their successors, and an unknown code now falls back to the ISO code itself rather than interpolating a null.
+
+Also verified in this release: all 50 remaining Storefront documents validate against live 2026-07, and a schema-driven audit of every **field, argument, input-object field and enum value** the package uses finds no remaining deprecated usage. (The schema has no deprecated arguments at all; the only deprecated input field that applied, `CartBuyerIdentityInput.deliveryAddressPreferences`, was already removed in 3.0.0.)
 
 # 3.1.0
 

@@ -31,6 +31,11 @@ round of parsing and error-handling fixes.
 * **`ShopifyException` and `AttributeInput` are now exported.** Both previously required reaching into `src/` — `updateCartAttributes` could not be called without one.
 * Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse twice per page.
 
+### Dependencies
+
+* `json_serializable` moved from `dependencies` to `dev_dependencies`. It is a codegen tool with no runtime import, but as a regular dependency it pulled `analyzer`, `build`, `build_config`, `dart_style`, `source_gen`, `source_helper`, `pub_semver` and `pubspec_parse` into the runtime graph of every consuming app — and its `analyzer` pin is exactly what makes this package hard to resolve on older Flutter SDKs. The runtime closure is now just `graphql_flutter`, `freezed_annotation`, `json_annotation`, `shared_preferences` and `intl`.
+* `url_launcher` removed — unused by the package and by the example.
+
 # 3.0.1
 Added language code getter/setter in shopify_localization
 

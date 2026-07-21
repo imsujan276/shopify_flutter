@@ -14,7 +14,7 @@ _Page _$PageFromJson(Map<String, dynamic> json) => _Page(
   id: json['id'] as String,
   title: json['title'] as String,
   updatedAt: DateTime.parse(json['updatedAt'] as String),
-  onlineStoreUrl: json['onlineStoreUrl'] as String,
+  onlineStoreUrl: json['onlineStoreUrl'] as String? ?? '',
 );
 
 Map<String, dynamic> _$PageToJson(_Page instance) => <String, dynamic>{

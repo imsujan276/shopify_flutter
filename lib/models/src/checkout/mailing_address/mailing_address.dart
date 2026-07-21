@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'mailing_address.freezed.dart';
@@ -10,9 +12,15 @@ abstract class MailingAddress with _$MailingAddress {
   /// The mailing address constructor
   const factory MailingAddress({
     required String id,
-    required String address1,
-    required String city,
-    required String country,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String address1,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String city,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String country,
     String? zip,
     String? lastName,
     String? name,

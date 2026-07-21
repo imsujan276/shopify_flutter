@@ -132,15 +132,18 @@ class ShopifyCheckout with ShopifyError {
     // });
     // final QueryResult result =
     //     await ShopifyConfig.graphQLClient!.query(_options);
-    final MutationOptions _options = MutationOptions(
+    // getAllOrdersQuery is a read-only `query`; sending it through mutate()
+    // bypassed the cache entirely and ignored ShopifyConfig.fetchPolicy.
+    final WatchQueryOptions _options = WatchQueryOptions(
       document: gql(getAllOrdersQuery),
       variables: {
         'accessToken': customerAccessToken,
         'sortKey': sortKey.parseToString(),
         'reverse': reverse,
       },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
     );
-    QueryResult result = await _graphQLClient!.mutate(_options);
+    QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
     final ordersData = result.data!['customer']?['orders'];
     if (ordersData == null) return [];

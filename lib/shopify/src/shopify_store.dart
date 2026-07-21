@@ -68,7 +68,11 @@ class ShopifyStore with ShopifyError {
       ));
 
       productList += tempProduct.productList;
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (tempProduct.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while ((tempProduct.hasNextPage == true));
     return productList;
   }
@@ -245,8 +249,8 @@ class ShopifyStore with ShopifyError {
       return Products.fromGraphJson(tempProducts).productList;
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return [Product.fromGraphJson({})];
   }
 
   /// Returns a List of [Collection]
@@ -275,8 +279,8 @@ class ShopifyStore with ShopifyError {
       return Collections.fromGraphJson(tempCollection).collectionList;
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return [Collection.fromJson({})];
   }
 
   /// Returns the Shop.
@@ -315,8 +319,8 @@ class ShopifyStore with ShopifyError {
       ).collectionList[0];
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return Collection.fromGraphJson({});
   }
 
   /// Returns a collection by id.
@@ -375,7 +379,11 @@ class ShopifyStore with ShopifyError {
         (result.data ?? const {})['collections'] ?? {},
       ));
       collectionList.addAll(tempCollection.collectionList);
-      cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (tempCollection.collectionList.isEmpty) break;
+      cursor = collectionList.last.cursor;
     } while ((tempCollection.hasNextPage == true));
     return collectionList;
   }
@@ -452,11 +460,13 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList.addAll(
-        Collection.fromGraphJson(result.data!).products.productList,
-      );
-      collection = (Collection.fromGraphJson(result.data!));
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      collection = Collection.fromGraphJson(result.data!);
+      productList.addAll(collection.products.productList);
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (collection.products.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while (collection.products.hasNextPage == true);
     return productList;
   }
@@ -550,13 +560,16 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
   Future<List<Product>> getAllProductsOnQuery(
-    String cursor,
+    String startCursor,
     String query, {
     SortKeyProduct? sortKey,
     bool reverse = false,
     List<MetafieldIdentifier>? metafields,
   }) async {
-    String? cursor;
+    // Resume paging from the caller's cursor. Previously a local `cursor`
+    // shadowed the parameter, so the argument was silently discarded and every
+    // call restarted from the first page.
+    String? cursor = startCursor.isEmpty ? null : startCursor;
     List<Product> productList = [];
     Products products;
     WatchQueryOptions _options;
@@ -577,13 +590,13 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList.addAll(
-        (Products.fromGraphJson((result.data!)['products'])).productList,
-      );
-      products = (Products.fromGraphJson(
-        (result.data ?? const {})['products'],
-      ));
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      products = Products.fromGraphJson((result.data ?? const {})['products']);
+      productList.addAll(products.productList);
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (products.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while (products.hasNextPage == true);
     return productList;
   }

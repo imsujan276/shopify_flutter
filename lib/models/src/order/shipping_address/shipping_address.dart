@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'shipping_address.freezed.dart';
@@ -9,12 +11,22 @@ part 'shipping_address.g.dart';
 abstract class ShippingAddress with _$ShippingAddress {
   /// the shipping address constructor
   const factory ShippingAddress({
-    required String name,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String name,
     required String id,
-    required String lastName,
-    required String address1,
-    required String city,
-    required String country,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String lastName,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String address1,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String city,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String country,
     String? firstName,
     String? address2,
     String? company,

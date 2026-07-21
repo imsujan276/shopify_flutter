@@ -67,6 +67,31 @@ These are the five possible instances, each contains different methods which wil
 
 The goal is to make creating an mobile app from your Shopify website easier.
 
+##### Error handling
+
+Every method throws a `ShopifyException` when a call fails — whether Shopify
+returned GraphQL/user errors, or the request never completed (no connectivity,
+timeout, HTTP error). One `catch` covers both:
+
+```dart
+try {
+  final products = await ShopifyStore.instance.getAllProducts();
+} on ShopifyException catch (e) {
+  // e.key       -> the operation, e.g. 'cartLinesAdd'
+  // e.errorKey  -> the kind of error, e.g. 'userErrors'
+  // e.errors    -> the messages Shopify returned
+  print(e);
+}
+```
+
+`ShopifyException` is exported from `package:shopify_flutter/shopify_flutter.dart`.
+
+> **Changed in 3.1.0.** Failed requests previously threw a bare `String` — which
+> is not an `Exception`, so `on Exception catch` did not catch it, and for
+> connectivity errors the thrown value was an empty string with the real cause
+> discarded. If you relied on catching a `String`, switch to `ShopifyException`.
+> Code using a bare `catch (e)` keeps working.
+
 ##### Shopify Auth
 ```dart
   ShopifyAuth shopifyAuth = ShopifyAuth.instance;

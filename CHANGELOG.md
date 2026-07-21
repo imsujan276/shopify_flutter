@@ -1,3 +1,32 @@
+# 3.1.0
+
+Code-review fixes. No changes to the shape of any response, and no public model
+types changed — the parsing fixes below use defaults, so existing code keeps
+compiling.
+
+Several Storefront fields are nullable but were parsed into non-null Dart
+fields. Each one threw a `TypeError` on a legitimate response; where the throw
+happened inside a `try` that returned an empty list, the data was silently
+dropped instead. Verified against the live 2026-07 schema by introspection.
+
+* **A null `quantityAvailable` no longer wipes a product's variants.** `ProductVariant.quantityAvailable` is nullable — Shopify only returns it when the storefront token carries `unauthenticated_read_product_inventory`. Parsing it into a non-null `int` threw, and `_getProductVariants` swallowed the error and returned `[]`, so affected stores got products with **no variants, `price` 0.0 and no error**. Null is now reported as `0`.
+* **`Product.isAvailableForSale` no longer requires `quantityAvailable > 0`.** That test marked purchasable products unavailable in two common cases: stores without the inventory scope (where the value is unknown), and stores that allow overselling — "continue selling when out of stock" reports a *negative* quantity while `availableForSale` stays `true`. It now follows `ProductVariant.availableForSale`, which Shopify documents as the non-null, authoritative flag that already accounts for the store's inventory policy. Products that are genuinely unavailable still report `false`.
+* **Metafields are no longer dropped on unwrapped payloads.** `_getMetafieldList` (on both `Product` and `Collection`) read `json['node']['metafields']` inside the branch that is only reached when there *is* no `'node'` key, so it always produced `[]`. This is the path `getProductByHandle` and `getCollectionByHandle` use, meaning requested metafields never arrived.
+* **Orders with a null `financialStatus`, `subtotalPrice`, `customerUrl` or `totalTax` parse again.** All four are nullable on the Storefront API (a fully discounted order returns no tax), and a single such order previously threw and failed the entire order list. Missing money values become a zero amount that keeps the order's own currency code; missing strings become `''`. `Order.totalRefunded` is now correctly nullable-safe as well — it is non-null in the schema but was parsed unguarded.
+* **Unpublished pages parse again.** `Page.onlineStoreUrl` is null when a page isn't published to the Online Store channel; one such page failed `getAllPages`.
+* **Addresses with null optional fields parse again.** Only `id` is non-null on Storefront `MailingAddress`, but `ShippingAddress` required `name`, `lastName`, `address1`, `city` and `country`, and `MailingAddress` required `address1`, `city` and `country` — so a single-name entry or a digital-goods order threw.
+
+* **A failed access-token renewal no longer signs the user out.** `_renewAccessToken` never checked for errors and fell back to an empty token, which `_setShopifyUser` then treated as "no session" and deleted from memory *and* from disk. An offline or rate-limited refresh therefore logged the user out silently, with no error surfaced and no way back except re-entering credentials. Renewal now raises a `ShopifyException`; `currentUser(forceRefresh: true)` keeps the existing session when only the renewal fails.
+* **Network failures are now reported instead of discarded.** `checkForError` threw `errorMessages.join('\n')` — a bare `String`, which is not an `Exception`, so it defeated both `on ShopifyException` and `on Exception` handlers and escaped as an unhandled error. For socket errors, timeouts and HTTP failures `graphqlErrors` is empty, so the thrown value was the *empty string* and the underlying cause was lost entirely. It now throws a `ShopifyException` that includes the `linkException` detail.
+  * **Breaking if you relied on it:** failures that previously threw a `String` now throw `ShopifyException`. Code using bare `catch (e)` is unaffected.
+* Removed three unreachable fallbacks in `ShopifyStore` (`getProductRecommendations`, `getCollectionsByIds`, `getCollectionByHandle`). On any failure they logged the real cause, discarded it, then returned `Product.fromGraphJson({})` / `Collection.fromJson({})` — values that cannot be constructed and always threw a `TypeError` from outside the `try`. The original exception now propagates.
+* `getAllOrders` (both `ShopifyOrder` and the deprecated `ShopifyCheckout` copy) sent its read-only `query` document through `mutate()`, which bypasses the cache and ignores `ShopifyConfig.fetchPolicy`. It now uses `query()`. Server behaviour is unchanged — the document already declared `query getOrders`.
+* The four eager pagination loops now stop when a page returns no items. Previously a `hasNextPage: true` response with an empty edge list left the cursor unchanged and the loop re-issued the identical request forever.
+* `ShopifyException` is now exported from `package:shopify_flutter/shopify_flutter.dart`. Catching the package's own error type previously required importing `mixins/src/shopify_error.dart` — reaching into `src/`.
+* `AttributeInput` is now exported. It is required by `CartInput.attributes`, `CartLineUpdateInput.attributes` and `ShopifyCart.updateCartAttributes`, but was missing from the barrel, so `updateCartAttributes` could not be called without a `src/` import.
+* Fixed `getAllProductsOnQuery` silently discarding its `cursor` argument: a local `String? cursor` shadowed the parameter, so every call restarted from the first page instead of resuming. An empty string still means "from the beginning".
+* `checkForError` no longer returns successfully when the mutation payload is missing. A null `data`, or a null payload for the requested key, now raises a `ShopifyException` instead of letting the caller dereference the absent payload and get an opaque `TypeError`.
+* Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse (including per-variant `copyWith`) twice per page.
 # 3.0.1
 Added language code getter/setter in shopify_localization
 

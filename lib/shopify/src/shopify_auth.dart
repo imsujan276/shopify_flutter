@@ -240,12 +240,16 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Helper method for extracting the customerAccessToken and Expiration date from the mutation.
+  ///
+  /// The inner lookups are null-safe: a partial-error response can omit the
+  /// mutation key entirely, which previously raised a [NoSuchMethodError]
+  /// instead of a usable error.
   AccessTokenWithExpDate _extractAccessTokenWithExpDate(
     Map<String, dynamic>? mutationData,
     String mutation,
   ) {
     return AccessTokenWithExpDate.fromMap(
-      mutationData?[mutation]['customerAccessToken'] ?? {},
+      mutationData?[mutation]?['customerAccessToken'] ?? {},
     );
   }
 
@@ -276,8 +280,26 @@ class ShopifyAuth with ShopifyError {
         document: gql(customerAccessTokenRenewMutation),
         variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessTokenWithExpDate(
+    // A failed renewal (offline, rate-limited, rejected token) used to fall
+    // through as an empty AccessTokenWithExpDate. Callers then handed that to
+    // _setShopifyUser, whose null-branch deletes the session from memory and
+    // from disk — silently signing the user out. Fail loudly instead so the
+    // caller can keep the existing token.
+    checkForError(
+      result,
+      key: 'customerAccessTokenRenew',
+      errorKey: 'userErrors',
+    );
+    final renewed = _extractAccessTokenWithExpDate(
         result.data, "customerAccessTokenRenew");
+    if (renewed.accessToken == null || renewed.expiresAt == null) {
+      throw const ShopifyException(
+        'customerAccessTokenRenew',
+        'userErrors',
+        errors: ['Access token renewal returned no token'],
+      );
+    }
+    return renewed;
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -312,8 +334,14 @@ class ShopifyAuth with ShopifyError {
     checkForError(result);
     ShopifyUser user = ShopifyUser.fromGraphJson(
         (result.data ?? const {})['customer'] ?? const {});
-    final updatedAccessToken = await _renewAccessToken(accessToken);
-    await _setShopifyUser(updatedAccessToken, user);
+    try {
+      final updatedAccessToken = await _renewAccessToken(accessToken);
+      await _setShopifyUser(updatedAccessToken, user);
+    } on ShopifyException catch (e) {
+      // The customer fetch succeeded, so keep the session on the existing
+      // token rather than dropping the user because renewal happened to fail.
+      log('Error renewing token: $e');
+    }
     return user;
   }
 

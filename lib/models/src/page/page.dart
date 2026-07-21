@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'page.freezed.dart';
@@ -18,7 +20,9 @@ abstract class Page with _$Page {
     required String id,
     required String title,
     required DateTime updatedAt,
-    required String onlineStoreUrl,
+
+    /// Nullable on the Storefront API; empty string when absent.
+    @JsonKey(defaultValue: '') required String onlineStoreUrl,
   }) = _Page;
 
   /// The Page from graph json
@@ -26,7 +30,7 @@ abstract class Page with _$Page {
         id: (json['node'] ?? {})['id'],
         handle: (json['node'] ?? {})['handle'],
         title: (json['node'] ?? {})['title'],
-        onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'],
+        onlineStoreUrl: (json['node'] ?? {})['onlineStoreUrl'] ?? '',
         body: (json['node'] ?? {})['body'],
         bodySummary: (json['node'] ?? {})['bodySummary'],
         createdAt: DateTime.parse(((json['node'] ?? const {})['createdAt'])),

@@ -8,9 +8,9 @@ part of 'order.dart';
 
 _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
   id: json['id'] as String,
-  email: json['email'] as String,
+  email: json['email'] as String? ?? '',
   currencyCode: json['currencyCode'] as String,
-  customerUrl: json['customerUrl'] as String,
+  customerUrl: json['customerUrl'] as String? ?? '',
   lineItems: LineItemsOrder.fromJson(json['lineItems'] as Map<String, dynamic>),
   name: json['name'] as String,
   orderNumber: (json['orderNumber'] as num).toInt(),
@@ -26,15 +26,13 @@ _Order _$OrderFromJson(Map<String, dynamic> json) => _Order(
           json['billingAddress'] as Map<String, dynamic>,
         ),
   statusUrl: json['statusUrl'] as String,
-  subtotalPrice: PriceV2.fromJson(
-    json['subtotalPrice'] as Map<String, dynamic>,
-  ),
+  subtotalPrice: _priceOrZero(json['subtotalPrice']),
   totalPrice: PriceV2.fromJson(json['totalPrice'] as Map<String, dynamic>),
   totalShippingPrice: PriceV2.fromJson(
     json['totalShippingPrice'] as Map<String, dynamic>,
   ),
-  totalTax: PriceV2.fromJson(json['totalTax'] as Map<String, dynamic>),
-  financialStatus: json['financialStatus'] as String,
+  totalTax: _priceOrZero(json['totalTax']),
+  financialStatus: json['financialStatus'] as String? ?? '',
   fulfillmentStatus: json['fulfillmentStatus'] as String,
   totalRefunded: json['totalRefunded'] == null
       ? null

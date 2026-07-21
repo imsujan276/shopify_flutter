@@ -1,3 +1,5 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:shopify_flutter/models/src/product/price_v_2/price_v_2.dart';
 import 'package:shopify_flutter/models/src/product/selected_option/selected_option.dart';
 import 'package:shopify_flutter/models/src/product/selling_plan_allocation/selling_plan_allocation.dart';
@@ -25,7 +27,20 @@ abstract class ProductVariant with _$ProductVariant {
     required bool availableForSale,
     required bool requiresShipping,
     required String id,
-    required int quantityAvailable,
+
+    /// The inventory available for this variant.
+    ///
+    /// Storefront `ProductVariant.quantityAvailable` is nullable: it is only
+    /// returned when the storefront token carries the
+    /// `unauthenticated_read_product_inventory` scope, and is `null` otherwise.
+    /// A null therefore means "not exposed", not "out of stock", and is
+    /// reported here as `0`. Use [availableForSale] to decide whether a variant
+    /// can be bought — Shopify documents it as the authoritative, non-null flag
+    /// and it already accounts for the store's inventory policy.
+    ///
+    /// This value can also be negative when the store allows overselling
+    /// ("continue selling when out of stock").
+    @JsonKey(defaultValue: 0) required int quantityAvailable,
     String? sku,
     PriceV2? unitPrice,
     UnitPriceMeasurement? unitPriceMeasurement,
@@ -58,7 +73,8 @@ abstract class ProductVariant with _$ProductVariant {
       availableForSale: nodeJson['availableForSale'],
       requiresShipping: nodeJson['requiresShipping'],
       id: nodeJson['id'],
-      quantityAvailable: nodeJson['quantityAvailable'],
+      // null when the token lacks the inventory scope — see the field doc.
+      quantityAvailable: nodeJson['quantityAvailable'] ?? 0,
       sku: nodeJson['sku'],
       unitPrice: nodeJson['unitPrice'] != null
           ? PriceV2.fromJson(nodeJson['unitPrice'])

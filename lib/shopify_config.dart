@@ -23,6 +23,9 @@ class ShopifyConfig {
   /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
   static String? _storefrontAccessToken;
 
+  /// Your own unique access key found on your Shopify dashboard under apps -> manage private apps -> your-app-name .
+  static String? _adminAccessToken;
+
   /// Your store url.
   ///
   /// eg: "shopname.myshopify.com"
@@ -39,6 +42,12 @@ class ShopifyConfig {
 
   /// The GraphQlClient used for communication with the Storefront API.
   static GraphQLClient? get graphQLClient => _graphQLClient;
+
+  /// The GraphQlClient used for communication with the Storefront API.
+  static GraphQLClient? _graphQLClientAdmin;
+
+  /// The GraphQlClient used for communication with the Storefront API.
+  static GraphQLClient? get graphQLClientAdmin => _graphQLClientAdmin;
 
   /// The Storefront API Version.
   static String get apiVersion => _storefrontApiVersion;
@@ -68,6 +77,8 @@ class ShopifyConfig {
   ///
   /// IMPORTANT: preferably call this inside the main function or at least before instantiating other Shopify classes.
   ///
+  /// [adminAccessToken] is optional, but required for some admin API calls like deleteCustomer.
+  ///
   /// [storefrontApiVersion] is optional, but defaults to "2026-07".
   ///
   /// This package requires Storefront API "2026-07" or newer: the cart queries
@@ -91,6 +102,9 @@ class ShopifyConfig {
   /// `HiveStore` for disk persistence) for the Storefront API client.
   /// Defaults to a new in-memory [GraphQLCache] when omitted.
   ///
+  /// [adminCache] is optional. Inject a custom [GraphQLCache] for the Admin
+  /// API client. Defaults to a new in-memory [GraphQLCache] when omitted.
+  ///
   /// [queryRequestTimeout] overrides the per-request timeout on the underlying `graphql`
   /// package, which otherwise applies a 5 s default that frequently trips on mobile
   /// networks and can surface as a "Future already completed" crash when a late HTTP
@@ -98,13 +112,16 @@ class ShopifyConfig {
   static void setConfig({
     required String storefrontAccessToken,
     required String storeUrl,
+    String? adminAccessToken,
     String storefrontApiVersion = "2026-07",
     CachePolicy? cachePolicy,
     String? language,
     GraphQLCache? storefrontCache,
+    GraphQLCache? adminCache,
     Duration queryRequestTimeout = const Duration(seconds: 30),
   }) {
     _storefrontAccessToken = storefrontAccessToken;
+    _adminAccessToken = adminAccessToken;
     _storeUrl = !storeUrl.contains('http') ? 'https://$storeUrl' : storeUrl;
     _storefrontApiVersion = storefrontApiVersion;
     _fetchPolicy = cachePolicy;
@@ -119,5 +136,19 @@ class ShopifyConfig {
       cache: storefrontCache ?? GraphQLCache(),
       queryRequestTimeout: queryRequestTimeout,
     );
+
+    _graphQLClientAdmin = _adminAccessToken == null
+        ? null
+        : GraphQLClient(
+            link: HttpLink(
+              '$_storeUrl/admin/api/$_storefrontApiVersion/graphql.json',
+              defaultHeaders: {
+                'X-Shopify-Access-Token': _adminAccessToken!,
+                'Accept-Language': language ?? 'en',
+              },
+            ),
+            cache: adminCache ?? GraphQLCache(),
+            queryRequestTimeout: queryRequestTimeout,
+          );
   }
 }

@@ -23,6 +23,9 @@ void main() {
     storefrontAccessToken: '*******************',
     storeUrl: '*****.myshopify.com',
 
+    // Optional | Needed only if needed to call admin api
+    adminAccessToken: "shpat_*******************", 
+
     // optional | default: 2026-07
     storefrontApiVersion: '2026-07',
 
@@ -37,6 +40,10 @@ void main() {
     // via HiveStore from graphql_flutter).
     storefrontCache: GraphQLCache(store: await HiveStore.open()),
 
+    // optional | default: in-memory GraphQLCache()
+    // Inject a custom GraphQLCache for the Admin client.
+    adminCache: GraphQLCache(store: await HiveStore.open(boxName: 'admin')),
+
     // optional | default: 30s
     queryRequestTimeout: const Duration(seconds: 30)
   );
@@ -45,13 +52,14 @@ void main() {
 }
 ```
 
-> **This package talks to the Storefront API only.** Admin API support was removed in 4.0.0: an Admin token grants broad read/write access to the whole shop and can be extracted from any distributed app binary, so it does not belong in a client. Perform admin operations (deleting a customer, reading shop settings, etc.) from your own backend.
+> `adminAccessToken` is only required for admin api calls like `deleteCustomer()`. 
+If you are not using that function, you may not need to provide it.
 
 > `storefrontApiVersion` default vesion is set to '2026-07'. This package requires **2026-07 or newer** (the cart operations rely on fields added in 2026-07). Shopify supports each version for 12 months after release and then falls forward to the oldest supported version, so prefer keeping this current.
 
 > `language` defaults to 'en'. It is the default locale/language of the store. Only takes effect if the store supports provided language code.
 
-> `storefrontCache` lets you supply a `GraphQLCache` from `graphql_flutter` so query results can be persisted to disk (e.g. via `HiveStore`) and survive app restarts. When omitted, fresh in-memory caches are created as before.
+> `storefrontCache` / `adminCache` let you supply a `GraphQLCache` from `graphql_flutter` so query results can be persisted to disk (e.g. via `HiveStore`) and survive app restarts. When omitted, fresh in-memory caches are created as before.
 
 <hr>
 
@@ -107,6 +115,8 @@ try {
   Future<void> sendPasswordResetEmail({required String email})
 
   Future<ShopifyUser?> currentUser({bool forceRefresh = false})
+
+  Future<void> deleteCustomer({required String userId})
 
   Future<String?> get currentCustomerAccessToken
 
@@ -363,11 +373,13 @@ Example to get metafields in product
   Future<Map<String, dynamic>?> customQuery({
     required String gqlQuery, 
     Map<String, dynamic> variables = const {}, 
+    bool adminAccess = false
   })
 
   Future<Map<String, dynamic>?> customMutation({
     required String gqlMutation, 
     Map<String, dynamic> variables = const {}, 
+    bool adminAccess = false
   })
 ```
 

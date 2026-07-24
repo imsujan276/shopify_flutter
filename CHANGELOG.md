@@ -1,17 +1,23 @@
 # 4.0.0
 
-Removes two API surfaces that cannot or should not be used from a client, plus a
+Removes the Checkout API, which no longer exists on the Storefront API, plus a
 round of parsing and error-handling fixes.
 
 ### Breaking
 
 * **Checkout API removed.** Shopify [deprecated it in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), removed the checkout types in 2024-07 and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025), so none of this worked on a supported API version. Gone: `ShopifyCheckout`, 26 GraphQL documents, and the checkout-only models (`Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, the checkout `Attribute`) plus `JsonHelper.lineItems`.
   * **Migration:** use `ShopifyCart` and send the buyer to `cart.checkoutUrl`, Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api). Mobile apps can also use the Checkout Sheet Kit.
-* **Admin API removed.** An Admin token grants broad read/write access to the whole shop and can be extracted from any distributed binary, so it does not belong in a client — perform admin operations from your own backend. Gone: `setConfig`'s `adminAccessToken` and `adminCache`, the `graphQLClientAdmin` getter and the admin client, `ShopifyAuth.deleteCustomer` with its `customerDelete` mutation, and the `adminAccess` flag on `ShopifyCustom.customQuery`/`customMutation`. This also drops a latent bug: the admin client built its URL from `storefrontApiVersion`, pinning the independently versioned Admin API to a Storefront version.
 * **Failures throw `ShopifyException` instead of a bare `String`.** `checkForError` threw `errorMessages.join('\n')`, which is not an `Exception`, so it defeated both `on ShopifyException` and `on Exception` and escaped as an unhandled error. For socket errors, timeouts and HTTP failures `graphqlErrors` is empty, so the thrown value was the *empty string* and the cause was lost entirely; the `linkException` detail is now included. Code using a bare `catch (e)` is unchanged.
 * **Twelve methods narrowed from `Future<List<X>?>` to `Future<List<X>>`** — every return path already produced a non-null list: `getAllBlogs`, `getXArticlesSorted`, `getAllOrders`, `getAllPages`, `getProductsByIds`, `getNProducts`, `getProductRecommendations`, `getCollectionsByIds`, `getXCollectionsAndNProductsSorted`, `getXProductsAfterCursorWithinCollection`, `searchProducts`, `getXProductsOnQueryAfterCursor`. Existing calls still compile; delete any `?? []`, which now warns as dead code.
 * **`Product.isAvailableForSale` no longer requires `quantityAvailable > 0`.** That marked purchasable products unavailable both on stores without the `unauthenticated_read_product_inventory` scope (where the value is null) and on stores that allow overselling, which report a *negative* quantity while `availableForSale` stays `true`. It now follows `ProductVariant.availableForSale`, the non-null authoritative flag.
 * **`MailingAddress` moved** from `src/checkout/` to `src/mailing_address/`. Only a deep `src/` import is affected.
+
+### Admin API
+
+Unchanged and still supported — `adminAccessToken`, `ShopifyAuth.deleteCustomer` and `adminAccess` on `ShopifyCustom.customQuery`/`customMutation` all remain. `deleteCustomer` backs the account-deletion flow the Play Store requires when an app offers sign-up/sign-in.
+
+* Two admin paths now fail with a `ShopifyException` naming the missing config instead of an opaque error: `deleteCustomer` threw a bare `String`, and `adminAccess: true` without an admin token threw `Null check operator used on a null value`.
+* **Note:** an Admin token grants shop-wide read/write and can be extracted from a distributed binary, so treat it as a deliberate trade-off — prefer a backend proxy where the flow allows it, and scope the token to only what it needs.
 
 ### Fixed
 

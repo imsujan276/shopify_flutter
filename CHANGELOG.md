@@ -28,6 +28,7 @@ round of parsing and error-handling fixes.
 * **Eager pagination loops now stop on an empty page.** A `hasNextPage: true` response with no edges left the cursor unchanged and re-issued the same request forever.
 * **Session writes are awaited.** `_setShopifyUser` never awaited its `SharedPreferences` writes, so awaiting a sign-in or sign-out did not guarantee the token had reached, or left, disk.
 * **`ShopifyException` and `AttributeInput` are now exported.** Both previously required reaching into `src/` — `updateCartAttributes` could not be called without one.
+* `signInWithEmailAndPassword` now surfaces Shopify's actual reason for a failed sign-in — a wrong password (`customerUserErrors: UNIDENTIFIED_CUSTOMER`), an unactivated account, rate limiting, or a missing access scope — instead of collapsing every failure to `Exception('Invalid credentials')`. The `customerAccessTokenCreate` mutation now requests `customerUserErrors`, and `_createAccessToken` runs `checkForError`.
 * Two admin misconfiguration paths now raise a `ShopifyException` naming the missing config instead of an opaque error — `deleteCustomer` threw a bare `String`, and `adminAccess: true` without an admin token threw `Null check operator used on a null value`.
 * Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse twice per page.
 

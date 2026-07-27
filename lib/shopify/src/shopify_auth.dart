@@ -221,6 +221,15 @@ class ShopifyAuth with ShopifyError {
         document: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient!.mutate(_options);
+    // Surface Shopify's real reason — a wrong password (customerUserErrors:
+    // UNIDENTIFIED_CUSTOMER), an unactivated account, rate limiting, or a
+    // missing access scope (a top-level error) — instead of the blanket
+    // "Invalid credentials" the caller falls back to when no token comes back.
+    checkForError(
+      result,
+      key: 'customerAccessTokenCreate',
+      errorKey: 'customerUserErrors',
+    );
     return _extractAccessTokenWithExpDate(
         result.data, "customerAccessTokenCreate");
   }

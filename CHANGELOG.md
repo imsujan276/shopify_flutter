@@ -5,19 +5,12 @@ round of parsing and error-handling fixes.
 
 ### Breaking
 
-* **Checkout API removed.** Shopify [deprecated it in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), removed the checkout types in 2024-07 and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025), so none of this worked on a supported API version. Gone: `ShopifyCheckout`, 26 GraphQL documents, and the checkout-only models (`Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, the checkout `Attribute`) plus `JsonHelper.lineItems`.
+* **Checkout API removed.** Shopify [deprecated it in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), removed the checkout types in 2024-07 and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025), so none of this worked on a supported API version — and pinning `storefrontApiVersion` to an old checkout-era version (≤ 2024-04) does not bring it back, because Shopify falls forward from sunset versions to a supported one whose schema has no `Checkout` type (verified: `__type(name: "Checkout")` is null on every version from 2024-01 onward). Gone: `ShopifyCheckout`, 26 GraphQL documents, and the checkout-only models (`Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, the checkout `Attribute`) plus `JsonHelper.lineItems`.
   * **Migration:** use `ShopifyCart` and send the buyer to `cart.checkoutUrl`, Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api). Mobile apps can also use the Checkout Sheet Kit. The example app's cart tab shows the full flow: a Checkout button opens `cart.checkoutUrl` in a webview (`checkout_webview.dart`) and reports success back to the cart.
 * **Failures throw `ShopifyException` instead of a bare `String`.** `checkForError` threw `errorMessages.join('\n')`, which is not an `Exception`, so it defeated both `on ShopifyException` and `on Exception` and escaped as an unhandled error. For socket errors, timeouts and HTTP failures `graphqlErrors` is empty, so the thrown value was the *empty string* and the cause was lost entirely; the `linkException` detail is now included. Code using a bare `catch (e)` is unchanged.
 * **Twelve methods narrowed from `Future<List<X>?>` to `Future<List<X>>`** — every return path already produced a non-null list: `getAllBlogs`, `getXArticlesSorted`, `getAllOrders`, `getAllPages`, `getProductsByIds`, `getNProducts`, `getProductRecommendations`, `getCollectionsByIds`, `getXCollectionsAndNProductsSorted`, `getXProductsAfterCursorWithinCollection`, `searchProducts`, `getXProductsOnQueryAfterCursor`. Existing calls still compile; delete any `?? []`, which now warns as dead code.
 * **`Product.isAvailableForSale` no longer requires `quantityAvailable > 0`.** That marked purchasable products unavailable both on stores without the `unauthenticated_read_product_inventory` scope (where the value is null) and on stores that allow overselling, which report a *negative* quantity while `availableForSale` stays `true`. It now follows `ProductVariant.availableForSale`, the non-null authoritative flag.
 * **`MailingAddress` moved** from `src/checkout/` to `src/mailing_address/`. Only a deep `src/` import is affected.
-
-### Admin API
-
-Unchanged and still supported — `adminAccessToken`, `ShopifyAuth.deleteCustomer` and `adminAccess` on `ShopifyCustom.customQuery`/`customMutation` all remain. `deleteCustomer` backs the account-deletion flow the Play Store requires when an app offers sign-up/sign-in.
-
-* Two admin paths now fail with a `ShopifyException` naming the missing config instead of an opaque error: `deleteCustomer` threw a bare `String`, and `adminAccess: true` without an admin token threw `Null check operator used on a null value`.
-* **Note:** an Admin token grants shop-wide read/write and can be extracted from a distributed binary, so treat it as a deliberate trade-off — prefer a backend proxy where the flow allows it, and scope the token to only what it needs.
 
 ### Fixed
 
@@ -35,6 +28,7 @@ Unchanged and still supported — `adminAccessToken`, `ShopifyAuth.deleteCustome
 * **Eager pagination loops now stop on an empty page.** A `hasNextPage: true` response with no edges left the cursor unchanged and re-issued the same request forever.
 * **Session writes are awaited.** `_setShopifyUser` never awaited its `SharedPreferences` writes, so awaiting a sign-in or sign-out did not guarantee the token had reached, or left, disk.
 * **`ShopifyException` and `AttributeInput` are now exported.** Both previously required reaching into `src/` — `updateCartAttributes` could not be called without one.
+* Two admin misconfiguration paths now raise a `ShopifyException` naming the missing config instead of an opaque error — `deleteCustomer` threw a bare `String`, and `adminAccess: true` without an admin token threw `Null check operator used on a null value`.
 * Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse twice per page.
 
 ### Dependencies

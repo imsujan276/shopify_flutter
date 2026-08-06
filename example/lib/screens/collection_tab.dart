@@ -173,7 +173,7 @@ class CollectionDetailScreenState extends State<CollectionDetailScreen> {
       );
       if (mounted) {
         setState(() {
-          this.products = products ?? [];
+          this.products = products;
           _isLoading = false;
         });
       }

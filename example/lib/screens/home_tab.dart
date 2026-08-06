@@ -59,7 +59,7 @@ class HomeTabState extends State<HomeTab> {
       final bestSellingProducts = await shopifyStore.getNProducts(10);
       if (mounted) {
         setState(() {
-          products = bestSellingProducts ?? [];
+          products = bestSellingProducts;
           _isLoading = false;
         });
       }

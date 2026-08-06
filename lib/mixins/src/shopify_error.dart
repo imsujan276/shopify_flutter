@@ -2,22 +2,41 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 /// A mixin to handle errors from shopify
 mixin ShopifyError {
-  /// throws a [OperationException] if the operation was wrong
-  /// throws a [ShopifyException] if shopify reports an error
+  /// throws a [ShopifyException] if the operation failed or shopify reports an
+  /// error.
   void checkForError(QueryResult queryResult, {String? key, String? errorKey}) {
     if (queryResult.hasException) {
-      if (queryResult.exception is OperationException) {
-        final graphqlErrors = queryResult.exception!.graphqlErrors;
-        final List<String> errorMessages =
-            graphqlErrors.map((error) => error.message).toList();
-        throw errorMessages.join('\n');
+      final exception = queryResult.exception!;
+      final List<String> errorMessages =
+          exception.graphqlErrors.map((error) => error.message).toList();
+      // `linkException` carries socket errors, timeouts and HTTP failures. In
+      // those cases `graphqlErrors` is empty, so reporting only the GraphQL
+      // errors would discard the real cause entirely.
+      if (errorMessages.isEmpty && exception.linkException != null) {
+        errorMessages.add(exception.linkException.toString());
       }
-      throw queryResult.exception!;
+      if (errorMessages.isEmpty) errorMessages.add(exception.toString());
+      throw ShopifyException(
+        key ?? 'operation',
+        errorKey ?? 'graphQLErrors',
+        errors: errorMessages,
+      );
     }
     if (key != null && errorKey != null) {
-      Map<String, Object?> data = queryResult.data as Map<String, Object?>;
-      Map<String, dynamic>? content = data[key] as Map<String, dynamic>?;
-      if (content == null) return;
+      final Map<String, Object?>? data = queryResult.data;
+      // A null payload for the requested key means the operation did not
+      // produce a result. Report it rather than returning as if it succeeded —
+      // callers otherwise dereference the missing payload and get an opaque
+      // TypeError instead of the actual failure.
+      if (data == null) {
+        throw ShopifyException(key, errorKey,
+            errors: const ['No data returned from Shopify']);
+      }
+      final Map<String, dynamic>? content = data[key] as Map<String, dynamic>?;
+      if (content == null) {
+        throw ShopifyException(key, errorKey,
+            errors: ['No "$key" payload returned from Shopify']);
+      }
       List? errors = content[errorKey] as List<dynamic>?;
       if (errors != null && errors.isNotEmpty) {
         final List<dynamic> errorMessages = errors

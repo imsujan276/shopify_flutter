@@ -15,7 +15,19 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProductVariant {
 
- PriceV2 get price; String get title; double get weight; String get weightUnit; bool get availableForSale; bool get requiresShipping; String get id; int get quantityAvailable; String? get sku; PriceV2? get unitPrice; UnitPriceMeasurement? get unitPriceMeasurement; List<SelectedOption>? get selectedOptions; PriceV2? get compareAtPrice; ShopifyImage? get image; Product? get product; List<SellingPlanAllocation> get sellingPlanAllocations;
+ PriceV2 get price; String get title; double get weight; String get weightUnit; bool get availableForSale; bool get requiresShipping; String get id;/// The inventory available for this variant.
+///
+/// Storefront `ProductVariant.quantityAvailable` is nullable: it is only
+/// returned when the storefront token carries the
+/// `unauthenticated_read_product_inventory` scope, and is `null` otherwise.
+/// A null therefore means "not exposed", not "out of stock", and is
+/// reported here as `0`. Use [availableForSale] to decide whether a variant
+/// can be bought — Shopify documents it as the authoritative, non-null flag
+/// and it already accounts for the store's inventory policy.
+///
+/// This value can also be negative when the store allows overselling
+/// ("continue selling when out of stock").
+@JsonKey(defaultValue: 0) int get quantityAvailable; String? get sku; PriceV2? get unitPrice; UnitPriceMeasurement? get unitPriceMeasurement; List<SelectedOption>? get selectedOptions; PriceV2? get compareAtPrice; ShopifyImage? get image; Product? get product; List<SellingPlanAllocation> get sellingPlanAllocations;
 /// Create a copy of ProductVariant
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +60,7 @@ abstract mixin class $ProductVariantCopyWith<$Res>  {
   factory $ProductVariantCopyWith(ProductVariant value, $Res Function(ProductVariant) _then) = _$ProductVariantCopyWithImpl;
 @useResult
 $Res call({
- PriceV2 price, String title, double weight, String weightUnit, bool availableForSale, bool requiresShipping, String id, int quantityAvailable, String? sku, PriceV2? unitPrice, UnitPriceMeasurement? unitPriceMeasurement, List<SelectedOption>? selectedOptions, PriceV2? compareAtPrice, ShopifyImage? image, Product? product, List<SellingPlanAllocation> sellingPlanAllocations
+ PriceV2 price, String title, double weight, String weightUnit, bool availableForSale, bool requiresShipping, String id,@JsonKey(defaultValue: 0) int quantityAvailable, String? sku, PriceV2? unitPrice, UnitPriceMeasurement? unitPriceMeasurement, List<SelectedOption>? selectedOptions, PriceV2? compareAtPrice, ShopifyImage? image, Product? product, List<SellingPlanAllocation> sellingPlanAllocations
 });
 
 
@@ -237,7 +249,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id,  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id, @JsonKey(defaultValue: 0)  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProductVariant() when $default != null:
 return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.availableForSale,_that.requiresShipping,_that.id,_that.quantityAvailable,_that.sku,_that.unitPrice,_that.unitPriceMeasurement,_that.selectedOptions,_that.compareAtPrice,_that.image,_that.product,_that.sellingPlanAllocations);case _:
@@ -258,7 +270,7 @@ return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.avai
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id,  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id, @JsonKey(defaultValue: 0)  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)  $default,) {final _that = this;
 switch (_that) {
 case _ProductVariant():
 return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.availableForSale,_that.requiresShipping,_that.id,_that.quantityAvailable,_that.sku,_that.unitPrice,_that.unitPriceMeasurement,_that.selectedOptions,_that.compareAtPrice,_that.image,_that.product,_that.sellingPlanAllocations);case _:
@@ -278,7 +290,7 @@ return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.avai
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id,  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( PriceV2 price,  String title,  double weight,  String weightUnit,  bool availableForSale,  bool requiresShipping,  String id, @JsonKey(defaultValue: 0)  int quantityAvailable,  String? sku,  PriceV2? unitPrice,  UnitPriceMeasurement? unitPriceMeasurement,  List<SelectedOption>? selectedOptions,  PriceV2? compareAtPrice,  ShopifyImage? image,  Product? product,  List<SellingPlanAllocation> sellingPlanAllocations)?  $default,) {final _that = this;
 switch (_that) {
 case _ProductVariant() when $default != null:
 return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.availableForSale,_that.requiresShipping,_that.id,_that.quantityAvailable,_that.sku,_that.unitPrice,_that.unitPriceMeasurement,_that.selectedOptions,_that.compareAtPrice,_that.image,_that.product,_that.sellingPlanAllocations);case _:
@@ -293,7 +305,7 @@ return $default(_that.price,_that.title,_that.weight,_that.weightUnit,_that.avai
 @JsonSerializable()
 
 class _ProductVariant extends ProductVariant {
-  const _ProductVariant({required this.price, required this.title, required this.weight, required this.weightUnit, required this.availableForSale, required this.requiresShipping, required this.id, required this.quantityAvailable, this.sku, this.unitPrice, this.unitPriceMeasurement, final  List<SelectedOption>? selectedOptions, this.compareAtPrice, this.image, this.product, final  List<SellingPlanAllocation> sellingPlanAllocations = const []}): _selectedOptions = selectedOptions,_sellingPlanAllocations = sellingPlanAllocations,super._();
+  const _ProductVariant({required this.price, required this.title, required this.weight, required this.weightUnit, required this.availableForSale, required this.requiresShipping, required this.id, @JsonKey(defaultValue: 0) required this.quantityAvailable, this.sku, this.unitPrice, this.unitPriceMeasurement, final  List<SelectedOption>? selectedOptions, this.compareAtPrice, this.image, this.product, final  List<SellingPlanAllocation> sellingPlanAllocations = const []}): _selectedOptions = selectedOptions,_sellingPlanAllocations = sellingPlanAllocations,super._();
   factory _ProductVariant.fromJson(Map<String, dynamic> json) => _$ProductVariantFromJson(json);
 
 @override final  PriceV2 price;
@@ -303,7 +315,19 @@ class _ProductVariant extends ProductVariant {
 @override final  bool availableForSale;
 @override final  bool requiresShipping;
 @override final  String id;
-@override final  int quantityAvailable;
+/// The inventory available for this variant.
+///
+/// Storefront `ProductVariant.quantityAvailable` is nullable: it is only
+/// returned when the storefront token carries the
+/// `unauthenticated_read_product_inventory` scope, and is `null` otherwise.
+/// A null therefore means "not exposed", not "out of stock", and is
+/// reported here as `0`. Use [availableForSale] to decide whether a variant
+/// can be bought — Shopify documents it as the authoritative, non-null flag
+/// and it already accounts for the store's inventory policy.
+///
+/// This value can also be negative when the store allows overselling
+/// ("continue selling when out of stock").
+@override@JsonKey(defaultValue: 0) final  int quantityAvailable;
 @override final  String? sku;
 @override final  PriceV2? unitPrice;
 @override final  UnitPriceMeasurement? unitPriceMeasurement;
@@ -360,7 +384,7 @@ abstract mixin class _$ProductVariantCopyWith<$Res> implements $ProductVariantCo
   factory _$ProductVariantCopyWith(_ProductVariant value, $Res Function(_ProductVariant) _then) = __$ProductVariantCopyWithImpl;
 @override @useResult
 $Res call({
- PriceV2 price, String title, double weight, String weightUnit, bool availableForSale, bool requiresShipping, String id, int quantityAvailable, String? sku, PriceV2? unitPrice, UnitPriceMeasurement? unitPriceMeasurement, List<SelectedOption>? selectedOptions, PriceV2? compareAtPrice, ShopifyImage? image, Product? product, List<SellingPlanAllocation> sellingPlanAllocations
+ PriceV2 price, String title, double weight, String weightUnit, bool availableForSale, bool requiresShipping, String id,@JsonKey(defaultValue: 0) int quantityAvailable, String? sku, PriceV2? unitPrice, UnitPriceMeasurement? unitPriceMeasurement, List<SelectedOption>? selectedOptions, PriceV2? compareAtPrice, ShopifyImage? image, Product? product, List<SellingPlanAllocation> sellingPlanAllocations
 });
 
 

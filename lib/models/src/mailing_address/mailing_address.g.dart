@@ -9,9 +9,9 @@ part of 'mailing_address.dart';
 _MailingAddress _$MailingAddressFromJson(Map<String, dynamic> json) =>
     _MailingAddress(
       id: json['id'] as String,
-      address1: json['address1'] as String,
-      city: json['city'] as String,
-      country: json['country'] as String,
+      address1: json['address1'] as String? ?? '',
+      city: json['city'] as String? ?? '',
+      country: json['country'] as String? ?? '',
       zip: json['zip'] as String?,
       lastName: json['lastName'] as String?,
       name: json['name'] as String?,

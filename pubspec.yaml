@@ -1,6 +1,6 @@
 name: shopify_flutter
 description: A Flutter package to seamlessly connect your Shopify store with your app.
-version: 3.0.1
+version: 4.0.0
 repository: https://github.com/imsujan276/shopify_flutter
 issue_tracker: https://github.com/imsujan276/shopify_flutter/issues
 
@@ -26,13 +26,11 @@ dependencies:
   graphql_flutter: ^5.3.0
   freezed_annotation: ^3.1.0
   json_annotation: ^4.12.0
-  json_serializable: ^6.14.0
   shared_preferences: ^2.5.5
   # Keep the floor at 0.20.2: flutter_localizations (Flutter SDK) pins intl to
   # exactly 0.20.2, so a higher floor makes this package unresolvable in any app
   # that uses localizations.
   intl: ">=0.20.2 <0.21.2"
-  url_launcher: ^6.3.2
 
 dev_dependencies:
   flutter_test:
@@ -40,6 +38,9 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   # dart run build_runner watch --delete-conflicting-outputs
   build_runner: ^2.15.1
+  # Codegen only — must stay a dev dependency so consumers don't pull the
+  # build toolchain (and its analyzer pin) into their runtime graph.
+  json_serializable: ^6.14.0
   freezed: ^3.2.5
   # No explicit `analyzer` pin: nothing here imports it directly, it is only a
   # transitive codegen dependency. Pinning it (e.g. ^10.2.0, which needs

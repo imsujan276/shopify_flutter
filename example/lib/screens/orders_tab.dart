@@ -37,7 +37,7 @@ class _OrdersTabState extends State<OrdersTab> {
         accessToken!,
       );
       setState(() {
-        orders = allOrders ?? [];
+        orders = allOrders;
       });
     }
   }

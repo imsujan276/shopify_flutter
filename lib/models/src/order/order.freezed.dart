@@ -15,7 +15,13 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Order {
 
- String get id; String get email; String get currencyCode; String get customerUrl; LineItemsOrder get lineItems; String get name; int get orderNumber; String get processedAt; ShippingAddress? get shippingAddress; ShippingAddress? get billingAddress; String get statusUrl; PriceV2 get subtotalPrice; PriceV2 get totalPrice; PriceV2 get totalShippingPrice; PriceV2 get totalTax; String get financialStatus; String get fulfillmentStatus; PriceV2? get totalRefunded; String? get phone; String? get cursor; String? get canceledAt; String? get cancelReason; List<SuccessfulFullfilment>? get successfulFulfillments;
+ String get id;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get email; String get currencyCode;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get customerUrl; LineItemsOrder get lineItems; String get name; int get orderNumber; String get processedAt; ShippingAddress? get shippingAddress; ShippingAddress? get billingAddress; String get statusUrl;/// Nullable on the Storefront API; zero amount when absent.
+@JsonKey(fromJson: _priceOrZero) PriceV2 get subtotalPrice; PriceV2 get totalPrice; PriceV2 get totalShippingPrice;/// Nullable on the Storefront API; zero amount when absent.
+@JsonKey(fromJson: _priceOrZero) PriceV2 get totalTax;/// Nullable on the Storefront API (for example on unpaid orders); empty
+/// string when absent.
+@JsonKey(defaultValue: '') String get financialStatus; String get fulfillmentStatus; PriceV2? get totalRefunded; String? get phone; String? get cursor; String? get canceledAt; String? get cancelReason; List<SuccessfulFullfilment>? get successfulFulfillments;
 /// Create a copy of Order
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +54,7 @@ abstract mixin class $OrderCopyWith<$Res>  {
   factory $OrderCopyWith(Order value, $Res Function(Order) _then) = _$OrderCopyWithImpl;
 @useResult
 $Res call({
- String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice, PriceV2 totalTax, String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
+ String id,@JsonKey(defaultValue: '') String email, String currencyCode,@JsonKey(defaultValue: '') String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl,@JsonKey(fromJson: _priceOrZero) PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice,@JsonKey(fromJson: _priceOrZero) PriceV2 totalTax,@JsonKey(defaultValue: '') String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
 });
 
 
@@ -256,7 +262,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(defaultValue: '')  String email,  String currencyCode, @JsonKey(defaultValue: '')  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl, @JsonKey(fromJson: _priceOrZero)  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice, @JsonKey(fromJson: _priceOrZero)  PriceV2 totalTax, @JsonKey(defaultValue: '')  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
 return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
@@ -277,7 +283,7 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(defaultValue: '')  String email,  String currencyCode, @JsonKey(defaultValue: '')  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl, @JsonKey(fromJson: _priceOrZero)  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice, @JsonKey(fromJson: _priceOrZero)  PriceV2 totalTax, @JsonKey(defaultValue: '')  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)  $default,) {final _that = this;
 switch (_that) {
 case _Order():
 return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
@@ -297,7 +303,7 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String email,  String currencyCode,  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl,  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice,  PriceV2 totalTax,  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(defaultValue: '')  String email,  String currencyCode, @JsonKey(defaultValue: '')  String customerUrl,  LineItemsOrder lineItems,  String name,  int orderNumber,  String processedAt,  ShippingAddress? shippingAddress,  ShippingAddress? billingAddress,  String statusUrl, @JsonKey(fromJson: _priceOrZero)  PriceV2 subtotalPrice,  PriceV2 totalPrice,  PriceV2 totalShippingPrice, @JsonKey(fromJson: _priceOrZero)  PriceV2 totalTax, @JsonKey(defaultValue: '')  String financialStatus,  String fulfillmentStatus,  PriceV2? totalRefunded,  String? phone,  String? cursor,  String? canceledAt,  String? cancelReason,  List<SuccessfulFullfilment>? successfulFulfillments)?  $default,) {final _that = this;
 switch (_that) {
 case _Order() when $default != null:
 return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.lineItems,_that.name,_that.orderNumber,_that.processedAt,_that.shippingAddress,_that.billingAddress,_that.statusUrl,_that.subtotalPrice,_that.totalPrice,_that.totalShippingPrice,_that.totalTax,_that.financialStatus,_that.fulfillmentStatus,_that.totalRefunded,_that.phone,_that.cursor,_that.canceledAt,_that.cancelReason,_that.successfulFulfillments);case _:
@@ -312,13 +318,15 @@ return $default(_that.id,_that.email,_that.currencyCode,_that.customerUrl,_that.
 @JsonSerializable()
 
 class _Order extends Order {
-  const _Order({required this.id, required this.email, required this.currencyCode, required this.customerUrl, required this.lineItems, required this.name, required this.orderNumber, required this.processedAt, required this.shippingAddress, required this.billingAddress, required this.statusUrl, required this.subtotalPrice, required this.totalPrice, required this.totalShippingPrice, required this.totalTax, required this.financialStatus, required this.fulfillmentStatus, this.totalRefunded, this.phone, this.cursor, this.canceledAt, this.cancelReason, final  List<SuccessfulFullfilment>? successfulFulfillments}): _successfulFulfillments = successfulFulfillments,super._();
+  const _Order({required this.id, @JsonKey(defaultValue: '') required this.email, required this.currencyCode, @JsonKey(defaultValue: '') required this.customerUrl, required this.lineItems, required this.name, required this.orderNumber, required this.processedAt, required this.shippingAddress, required this.billingAddress, required this.statusUrl, @JsonKey(fromJson: _priceOrZero) required this.subtotalPrice, required this.totalPrice, required this.totalShippingPrice, @JsonKey(fromJson: _priceOrZero) required this.totalTax, @JsonKey(defaultValue: '') required this.financialStatus, required this.fulfillmentStatus, this.totalRefunded, this.phone, this.cursor, this.canceledAt, this.cancelReason, final  List<SuccessfulFullfilment>? successfulFulfillments}): _successfulFulfillments = successfulFulfillments,super._();
   factory _Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 
 @override final  String id;
-@override final  String email;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String email;
 @override final  String currencyCode;
-@override final  String customerUrl;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String customerUrl;
 @override final  LineItemsOrder lineItems;
 @override final  String name;
 @override final  int orderNumber;
@@ -326,11 +334,15 @@ class _Order extends Order {
 @override final  ShippingAddress? shippingAddress;
 @override final  ShippingAddress? billingAddress;
 @override final  String statusUrl;
-@override final  PriceV2 subtotalPrice;
+/// Nullable on the Storefront API; zero amount when absent.
+@override@JsonKey(fromJson: _priceOrZero) final  PriceV2 subtotalPrice;
 @override final  PriceV2 totalPrice;
 @override final  PriceV2 totalShippingPrice;
-@override final  PriceV2 totalTax;
-@override final  String financialStatus;
+/// Nullable on the Storefront API; zero amount when absent.
+@override@JsonKey(fromJson: _priceOrZero) final  PriceV2 totalTax;
+/// Nullable on the Storefront API (for example on unpaid orders); empty
+/// string when absent.
+@override@JsonKey(defaultValue: '') final  String financialStatus;
 @override final  String fulfillmentStatus;
 @override final  PriceV2? totalRefunded;
 @override final  String? phone;
@@ -380,7 +392,7 @@ abstract mixin class _$OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
   factory _$OrderCopyWith(_Order value, $Res Function(_Order) _then) = __$OrderCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String email, String currencyCode, String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl, PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice, PriceV2 totalTax, String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
+ String id,@JsonKey(defaultValue: '') String email, String currencyCode,@JsonKey(defaultValue: '') String customerUrl, LineItemsOrder lineItems, String name, int orderNumber, String processedAt, ShippingAddress? shippingAddress, ShippingAddress? billingAddress, String statusUrl,@JsonKey(fromJson: _priceOrZero) PriceV2 subtotalPrice, PriceV2 totalPrice, PriceV2 totalShippingPrice,@JsonKey(fromJson: _priceOrZero) PriceV2 totalTax,@JsonKey(defaultValue: '') String financialStatus, String fulfillmentStatus, PriceV2? totalRefunded, String? phone, String? cursor, String? canceledAt, String? cancelReason, List<SuccessfulFullfilment>? successfulFulfillments
 });
 
 

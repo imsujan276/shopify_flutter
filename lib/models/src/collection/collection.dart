@@ -87,7 +87,11 @@ abstract class Collection with _$Collection {
         // remove null entries from the list
         return metafields;
       } else if (json['metafields'] != null) {
-        final metafields = ((json['node']?['metafields'] ?? []) as List)
+        // This branch is only reached when there is no 'node' key, so the
+        // metafields must be read off `json` itself — reading json['node']
+        // here silently returned an empty list for every unwrapped payload
+        // (e.g. the getProductByHandle / getCollectionByHandle path).
+        final metafields = ((json['metafields'] ?? []) as List)
             .map((v) => Metafield.fromGraphJson(v ?? const {}))
             .toList();
         // remove null entries from the list

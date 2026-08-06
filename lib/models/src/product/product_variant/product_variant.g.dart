@@ -15,7 +15,7 @@ _ProductVariant _$ProductVariantFromJson(Map<String, dynamic> json) =>
       availableForSale: json['availableForSale'] as bool,
       requiresShipping: json['requiresShipping'] as bool,
       id: json['id'] as String,
-      quantityAvailable: (json['quantityAvailable'] as num).toInt(),
+      quantityAvailable: (json['quantityAvailable'] as num?)?.toInt() ?? 0,
       sku: json['sku'] as String?,
       unitPrice: json['unitPrice'] == null
           ? null

@@ -68,7 +68,11 @@ class ShopifyStore with ShopifyError {
       ));
 
       productList += tempProduct.productList;
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (tempProduct.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while ((tempProduct.hasNextPage == true));
     return productList;
   }
@@ -113,7 +117,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Returns the Products associated to the given id's in [idList]
-  Future<List<Product>?> getProductsByIds(
+  Future<List<Product>> getProductsByIds(
     List<String> idList, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -188,7 +192,7 @@ class ShopifyStore with ShopifyError {
   ///  SortKey.PRICE,
   ///  SortKey.ID,
   ///  SortKey.RELEVANCE,
-  Future<List<Product>?> getNProducts(
+  Future<List<Product>> getNProducts(
     int n, {
     bool? reverse,
     SortKeyProduct sortKey = SortKeyProduct.PRODUCT_TYPE,
@@ -217,7 +221,7 @@ class ShopifyStore with ShopifyError {
   }
 
   /// Returns a list of recommended [Product] by given id.
-  Future<List<Product>?> getProductRecommendations(
+  Future<List<Product>> getProductRecommendations(
     String productId, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -245,12 +249,12 @@ class ShopifyStore with ShopifyError {
       return Products.fromGraphJson(tempProducts).productList;
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return [Product.fromGraphJson({})];
   }
 
   /// Returns a List of [Collection]
-  Future<List<Collection>?> getCollectionsByIds(
+  Future<List<Collection>> getCollectionsByIds(
     List<String> idList, {
     List<MetafieldIdentifier>? metafields,
   }) async {
@@ -275,8 +279,8 @@ class ShopifyStore with ShopifyError {
       return Collections.fromGraphJson(tempCollection).collectionList;
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return [Collection.fromJson({})];
   }
 
   /// Returns the Shop.
@@ -315,8 +319,8 @@ class ShopifyStore with ShopifyError {
       ).collectionList[0];
     } catch (e) {
       log(e.toString());
+      rethrow;
     }
-    return Collection.fromGraphJson({});
   }
 
   /// Returns a collection by id.
@@ -324,24 +328,26 @@ class ShopifyStore with ShopifyError {
     String collectionId, {
     List<MetafieldIdentifier>? metafields,
   }) async {
-    try {
-      final WatchQueryOptions _options = WatchQueryOptions(
-        document: gql(getCollectionsByIdsQuery),
-        variables: {
-          'ids': [collectionId],
-          'metafields': metafields != null
-              ? metafields.map((e) => e.toJson()).toList()
-              : [],
-        },
-        fetchPolicy: ShopifyConfig.fetchPolicy,
-      );
-      final QueryResult result = await _graphQLClient!.query(_options);
-      checkForError(result);
-      return Collection.fromGraphJson(result.data!);
-    } catch (e) {
-      log(e.toString());
-    }
-    return null;
+    final WatchQueryOptions _options = WatchQueryOptions(
+      document: gql(getCollectionsByIdsQuery),
+      variables: {
+        'ids': [collectionId],
+        'metafields': metafields != null
+            ? metafields.map((e) => e.toJson()).toList()
+            : [],
+      },
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    // `nodes(ids:)` yields [null] for an id that doesn't resolve. Detect that
+    // explicitly and return null only for a genuine "not found" — this used to
+    // be reached by letting the parse throw and swallowing it, which made a
+    // failed request (bad token, no connectivity) indistinguishable from a
+    // missing collection.
+    final nodes = result.data?['nodes'] as List?;
+    if (nodes == null || nodes.isEmpty || nodes.first == null) return null;
+    return Collection.fromGraphJson(result.data!);
   }
 
   /// Returns all available collections.
@@ -375,7 +381,11 @@ class ShopifyStore with ShopifyError {
         (result.data ?? const {})['collections'] ?? {},
       ));
       collectionList.addAll(tempCollection.collectionList);
-      cursor = collectionList.isNotEmpty ? collectionList.last.cursor : '';
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (tempCollection.collectionList.isEmpty) break;
+      cursor = collectionList.last.cursor;
     } while ((tempCollection.hasNextPage == true));
     return collectionList;
   }
@@ -383,7 +393,7 @@ class ShopifyStore with ShopifyError {
   /// Returns N products from each X collections.
   ///
   /// Tip: When editing Collections you can choose on which channel or app you want to make them available.
-  Future<List<Collection>?> getXCollectionsAndNProductsSorted(
+  Future<List<Collection>> getXCollectionsAndNProductsSorted(
     int n,
     int x, {
     SortKeyProductCollection sortKeyProductCollection =
@@ -452,11 +462,13 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList.addAll(
-        Collection.fromGraphJson(result.data!).products.productList,
-      );
-      collection = (Collection.fromGraphJson(result.data!));
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      collection = Collection.fromGraphJson(result.data!);
+      productList.addAll(collection.products.productList);
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (collection.products.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while (collection.products.hasNextPage == true);
     return productList;
   }
@@ -479,7 +491,7 @@ class ShopifyStore with ShopifyError {
   /// 1. https://shopify.dev/docs/custom-storefronts/building-with-the-storefront-api/products-collections/filter-products#step-1-query-products
   ///
   /// 2. https://shopify.dev/docs/api/storefront/2026-07/input-objects/productfilter
-  Future<List<Product>?> getXProductsAfterCursorWithinCollection(
+  Future<List<Product>> getXProductsAfterCursorWithinCollection(
     String id,
     int limit, {
     String? startCursor,
@@ -515,7 +527,7 @@ class ShopifyStore with ShopifyError {
   /// Returns the first [limit] Products after the given [startCursor].
   ///
   /// [limit] has to be in the range of 0 and 250.
-  Future<List<Product>?> searchProducts(
+  Future<List<Product>> searchProducts(
     String query, {
     int limit = 15,
     String? startCursor,
@@ -550,13 +562,16 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets all [Product] from a [query] search sorted by [sortKey].
   Future<List<Product>> getAllProductsOnQuery(
-    String cursor,
+    String startCursor,
     String query, {
     SortKeyProduct? sortKey,
     bool reverse = false,
     List<MetafieldIdentifier>? metafields,
   }) async {
-    String? cursor;
+    // Resume paging from the caller's cursor. Previously a local `cursor`
+    // shadowed the parameter, so the argument was silently discarded and every
+    // call restarted from the first page.
+    String? cursor = startCursor.isEmpty ? null : startCursor;
     List<Product> productList = [];
     Products products;
     WatchQueryOptions _options;
@@ -577,13 +592,13 @@ class ShopifyStore with ShopifyError {
       );
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
-      productList.addAll(
-        (Products.fromGraphJson((result.data!)['products'])).productList,
-      );
-      products = (Products.fromGraphJson(
-        (result.data ?? const {})['products'],
-      ));
-      cursor = productList.isNotEmpty ? productList.last.cursor : '';
+      products = Products.fromGraphJson((result.data ?? const {})['products']);
+      productList.addAll(products.productList);
+      // A page with no items cannot advance the cursor; without this the
+      // loop would re-issue the identical request forever if Shopify ever
+      // reports hasNextPage with an empty edge list.
+      if (products.productList.isEmpty) break;
+      cursor = productList.last.cursor;
     } while (products.hasNextPage == true);
     return productList;
   }
@@ -591,7 +606,7 @@ class ShopifyStore with ShopifyError {
   /// Returns a List of [Product].
   ///
   /// Gets [limit] amount of [Product] from the [query] search, sorted by [sortKey].
-  Future<List<Product>?> getXProductsOnQueryAfterCursor(
+  Future<List<Product>> getXProductsOnQueryAfterCursor(
     String query,
     int limit,
     String? cursor, {

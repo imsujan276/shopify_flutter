@@ -139,7 +139,7 @@ class BlogTabState extends State<BlogTab> {
       final p = await shopifyPage.getAllPages();
       if (mounted) {
         setState(() {
-          pages = p ?? [];
+          pages = p;
           _isPagesLoading = false;
         });
       }
@@ -163,7 +163,7 @@ class BlogTabState extends State<BlogTab> {
       final b = await shopifyBlog.getAllBlogs();
       if (mounted) {
         setState(() {
-          blogs = b ?? [];
+          blogs = b;
           _isBlogsLoading = false;
         });
       }

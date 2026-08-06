@@ -63,9 +63,34 @@ If you are not using that function, you may not need to provide it.
 
 <hr>
 
-These are the five possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
+These are the possible instances, each contains different methods which will help you with working with the Shopify Storefront API.
 
 The goal is to make creating an mobile app from your Shopify website easier.
+
+##### Error handling
+
+Every method throws a `ShopifyException` when a call fails — whether Shopify
+returned GraphQL/user errors, or the request never completed (no connectivity,
+timeout, HTTP error). One `catch` covers both:
+
+```dart
+try {
+  final products = await ShopifyStore.instance.getAllProducts();
+} on ShopifyException catch (e) {
+  // e.key       -> the operation, e.g. 'cartLinesAdd'
+  // e.errorKey  -> the kind of error, e.g. 'userErrors'
+  // e.errors    -> the messages Shopify returned
+  print(e);
+}
+```
+
+`ShopifyException` is exported from `package:shopify_flutter/shopify_flutter.dart`.
+
+> **Changed in 3.1.0.** Failed requests previously threw a bare `String` — which
+> is not an `Exception`, so `on Exception catch` did not catch it, and for
+> connectivity errors the thrown value was an empty string with the real cause
+> discarded. If you relied on catching a `String`, switch to `ShopifyException`.
+> Code using a bare `catch (e)` keeps working.
 
 ##### Shopify Auth
 ```dart
@@ -89,7 +114,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 
   Future<void> sendPasswordResetEmail({required String email})
 
-  Future<ShopifyUser> currentUser({bool forceRefresh = false})
+  Future<ShopifyUser?> currentUser({bool forceRefresh = false})
 
   Future<void> deleteCustomer({required String userId})
 
@@ -120,7 +145,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
 
   Future<Shop> getShop()
 
-  Future<Collection> getCollectionById(String collectionId)
+  Future<Collection?> getCollectionById(String collectionId)
 
   Future<List<Collection>> getAllCollections()
 
@@ -148,7 +173,7 @@ The goal is to make creating an mobile app from your Shopify website easier.
     Map<String, dynamic>? filters
   )
 
-  Future<List<Product>?> searchProducts(
+  Future<List<Product>> searchProducts(
     String query, 
     {
       int limit = 15, 
@@ -179,7 +204,7 @@ Example to get metafields in product
 ```dart
   ShopifyCart shopifyCart = ShopifyCart.instance;
 
-  Future<Cart> getCartById(String cartId, {bool reverse = false})
+  Future<Cart?> getCartById(String cartId, {bool reverse = false})
 
   Future<Cart> createCart(CartInput cartInput)
 
@@ -210,6 +235,14 @@ Example to get metafields in product
   Future<Cart> updateCartDiscountCodes({ 
     required String cartId, 
     required List<String> discountCodes,
+    bool reverse = false,
+  })
+
+  /// Adds delivery addresses to an existing cart.
+  /// Replaces the removed `buyerIdentity.deliveryAddressPreferences`.
+  Future<Cart> addDeliveryAddresses({
+    required String cartId,
+    required List<CartSelectableAddressInput> addresses,
     bool reverse = false,
   })
 
@@ -262,7 +295,7 @@ Example to get metafields in product
     bool? acceptsMarketing
   })
 
-  Future<void> customerAddressCreate({
+  Future<Address> customerAddressCreate({
     String? address1, 
     String? address2, 
     String? company, 
@@ -319,7 +352,7 @@ Example to get metafields in product
 ```dart
   ShopifyLocalization shopifyLocalizatoin = ShopifyLocalization.instance;
 
-  Future<List<Page>> getLocalization()
+  Future<Localization> getLocalization()
 
   // Used to change currency units. eg: "US", "NP", "JP" etc. Only takes effect if the store supports provided currency.
   void setCountryCode(String? countryCode)
@@ -388,5 +421,5 @@ Everybody can contribute and is invited to do so!
 **Important:** 
 If you add a new field to a model please consider also adding this to every mutation/query that is associated with the model.
 
-**Example:** Adding a new field to Checkout which is the webUrl, now you will need to go through the various queries/mutations and search for "Checkout" and add webUrl to each one of those.
+**Example:** adding a new field to `Cart` means going through every cart query/mutation in `lib/graphql_operations/storefront/` and adding it to each one.
 (adding a new field to a Model also requires you to update the fromJson)

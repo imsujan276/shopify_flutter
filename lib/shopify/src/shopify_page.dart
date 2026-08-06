@@ -20,7 +20,7 @@ class ShopifyPage with ShopifyError {
   /// Returns a List of [Page].
   ///
   /// Returns All [Page] of the Shop.
-  Future<List<Page>?> getAllPages({
+  Future<List<Page>> getAllPages({
     SortKeyPage sortKeyPage = SortKeyPage.ID,
     bool reversePages = false,
     String? pagesQuery,

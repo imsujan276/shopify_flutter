@@ -23,7 +23,7 @@ class ProductDetailScreenState extends State<ProductDetailScreen> {
   Future<void> fetchProductDetails() async {
     final shopifyStore = ShopifyStore.instance;
     final productDetails = await shopifyStore.getProductsByIds([product.id]);
-    for (final Product productDetails in (productDetails ?? [])) {
+    for (final Product productDetails in productDetails) {
       final variants = productDetails.productVariants;
       for (var variant in variants) {
         log('Variant SellingPlanAllocation: ${variant.sellingPlanAllocations}');

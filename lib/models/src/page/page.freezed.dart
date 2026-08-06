@@ -15,7 +15,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Page {
 
- String get body; String get bodySummary; DateTime get createdAt; String get handle; String get id; String get title; DateTime get updatedAt; String get onlineStoreUrl;
+ String get body; String get bodySummary; DateTime get createdAt; String get handle; String get id; String get title; DateTime get updatedAt;/// Nullable on the Storefront API; empty string when absent.
+@JsonKey(defaultValue: '') String get onlineStoreUrl;
 /// Create a copy of Page
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +49,7 @@ abstract mixin class $PageCopyWith<$Res>  {
   factory $PageCopyWith(Page value, $Res Function(Page) _then) = _$PageCopyWithImpl;
 @useResult
 $Res call({
- String body, String bodySummary, DateTime createdAt, String handle, String id, String title, DateTime updatedAt, String onlineStoreUrl
+ String body, String bodySummary, DateTime createdAt, String handle, String id, String title, DateTime updatedAt,@JsonKey(defaultValue: '') String onlineStoreUrl
 });
 
 
@@ -160,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt,  String onlineStoreUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt, @JsonKey(defaultValue: '')  String onlineStoreUrl)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Page() when $default != null:
 return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.id,_that.title,_that.updatedAt,_that.onlineStoreUrl);case _:
@@ -181,7 +182,7 @@ return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt,  String onlineStoreUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt, @JsonKey(defaultValue: '')  String onlineStoreUrl)  $default,) {final _that = this;
 switch (_that) {
 case _Page():
 return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.id,_that.title,_that.updatedAt,_that.onlineStoreUrl);case _:
@@ -201,7 +202,7 @@ return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt,  String onlineStoreUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String body,  String bodySummary,  DateTime createdAt,  String handle,  String id,  String title,  DateTime updatedAt, @JsonKey(defaultValue: '')  String onlineStoreUrl)?  $default,) {final _that = this;
 switch (_that) {
 case _Page() when $default != null:
 return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.id,_that.title,_that.updatedAt,_that.onlineStoreUrl);case _:
@@ -216,7 +217,7 @@ return $default(_that.body,_that.bodySummary,_that.createdAt,_that.handle,_that.
 @JsonSerializable()
 
 class _Page extends Page {
-  const _Page({required this.body, required this.bodySummary, required this.createdAt, required this.handle, required this.id, required this.title, required this.updatedAt, required this.onlineStoreUrl}): super._();
+  const _Page({required this.body, required this.bodySummary, required this.createdAt, required this.handle, required this.id, required this.title, required this.updatedAt, @JsonKey(defaultValue: '') required this.onlineStoreUrl}): super._();
   factory _Page.fromJson(Map<String, dynamic> json) => _$PageFromJson(json);
 
 @override final  String body;
@@ -226,7 +227,8 @@ class _Page extends Page {
 @override final  String id;
 @override final  String title;
 @override final  DateTime updatedAt;
-@override final  String onlineStoreUrl;
+/// Nullable on the Storefront API; empty string when absent.
+@override@JsonKey(defaultValue: '') final  String onlineStoreUrl;
 
 /// Create a copy of Page
 /// with the given fields replaced by the non-null parameter values.
@@ -261,7 +263,7 @@ abstract mixin class _$PageCopyWith<$Res> implements $PageCopyWith<$Res> {
   factory _$PageCopyWith(_Page value, $Res Function(_Page) _then) = __$PageCopyWithImpl;
 @override @useResult
 $Res call({
- String body, String bodySummary, DateTime createdAt, String handle, String id, String title, DateTime updatedAt, String onlineStoreUrl
+ String body, String bodySummary, DateTime createdAt, String handle, String id, String title, DateTime updatedAt,@JsonKey(defaultValue: '') String onlineStoreUrl
 });
 
 

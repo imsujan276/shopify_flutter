@@ -221,6 +221,15 @@ class ShopifyAuth with ShopifyError {
         document: gql(customerAccessTokenCreate),
         variables: {'email': email, 'password': password});
     final QueryResult result = await _graphQLClient!.mutate(_options);
+    // Surface Shopify's real reason — a wrong password (customerUserErrors:
+    // UNIDENTIFIED_CUSTOMER), an unactivated account, rate limiting, or a
+    // missing access scope (a top-level error) — instead of the blanket
+    // "Invalid credentials" the caller falls back to when no token comes back.
+    checkForError(
+      result,
+      key: 'customerAccessTokenCreate',
+      errorKey: 'customerUserErrors',
+    );
     return _extractAccessTokenWithExpDate(
         result.data, "customerAccessTokenCreate");
   }
@@ -240,12 +249,16 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Helper method for extracting the customerAccessToken and Expiration date from the mutation.
+  ///
+  /// The inner lookups are null-safe: a partial-error response can omit the
+  /// mutation key entirely, which previously raised a [NoSuchMethodError]
+  /// instead of a usable error.
   AccessTokenWithExpDate _extractAccessTokenWithExpDate(
     Map<String, dynamic>? mutationData,
     String mutation,
   ) {
     return AccessTokenWithExpDate.fromMap(
-      mutationData?[mutation]['customerAccessToken'] ?? {},
+      mutationData?[mutation]?['customerAccessToken'] ?? {},
     );
   }
 
@@ -276,8 +289,26 @@ class ShopifyAuth with ShopifyError {
         document: gql(customerAccessTokenRenewMutation),
         variables: {'customerAccessToken': customerAccessToken});
     final QueryResult result = await _graphQLClient!.mutate(_options);
-    return _extractAccessTokenWithExpDate(
+    // A failed renewal (offline, rate-limited, rejected token) used to fall
+    // through as an empty AccessTokenWithExpDate. Callers then handed that to
+    // _setShopifyUser, whose null-branch deletes the session from memory and
+    // from disk — silently signing the user out. Fail loudly instead so the
+    // caller can keep the existing token.
+    checkForError(
+      result,
+      key: 'customerAccessTokenRenew',
+      errorKey: 'userErrors',
+    );
+    final renewed = _extractAccessTokenWithExpDate(
         result.data, "customerAccessTokenRenew");
+    if (renewed.accessToken == null || renewed.expiresAt == null) {
+      throw const ShopifyException(
+        'customerAccessTokenRenew',
+        'userErrors',
+        errors: ['Access token renewal returned no token'],
+      );
+    }
+    return renewed;
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
@@ -312,8 +343,14 @@ class ShopifyAuth with ShopifyError {
     checkForError(result);
     ShopifyUser user = ShopifyUser.fromGraphJson(
         (result.data ?? const {})['customer'] ?? const {});
-    final updatedAccessToken = await _renewAccessToken(accessToken);
-    await _setShopifyUser(updatedAccessToken, user);
+    try {
+      final updatedAccessToken = await _renewAccessToken(accessToken);
+      await _setShopifyUser(updatedAccessToken, user);
+    } on ShopifyException catch (e) {
+      // The customer fetch succeeded, so keep the session on the existing
+      // token rather than dropping the user because renewal happened to fail.
+      log('Error renewing token: $e');
+    }
     return user;
   }
 
@@ -327,20 +364,32 @@ class ShopifyAuth with ShopifyError {
         accessTokenWithExpDate.expiresAt == null) {
       _shopifyUser.remove(ShopifyConfig.storeUrl);
       _currentCustomerAccessToken.remove(ShopifyConfig.storeUrl);
-      _prefs.remove(_shopifyKey);
-      _prefs.remove(ShopifyConfig.storeUrl!);
+      // Awaited so the caller can rely on the token actually being gone from
+      // disk once this future completes — an un-awaited remove let
+      // signOutCurrentUser return with the token still persisted.
+      await _prefs.remove(_shopifyKey);
+      await _prefs.remove(ShopifyConfig.storeUrl!);
     } else {
       _shopifyUser[ShopifyConfig.storeUrl] = shopifyUser;
       _currentCustomerAccessToken[ShopifyConfig.storeUrl] =
           accessTokenWithExpDate.toJson();
-      _prefs.setString(
+      await _prefs.setString(
           ShopifyConfig.storeUrl!, accessTokenWithExpDate.toJson());
     }
   }
 
   /// Delete current user and clears it from the disk cache.
   Future<void> deleteCustomer({required String userId}) async {
-    if (_graphQLClientAdmin == null) throw 'Admin access token is not provided';
+    if (_graphQLClientAdmin == null) {
+      throw const ShopifyException(
+        'customerDelete',
+        'userErrors',
+        errors: [
+          'Admin access token is not provided. Pass adminAccessToken to '
+              'ShopifyConfig.setConfig to use admin API calls.'
+        ],
+      );
+    }
     final MutationOptions _options = MutationOptions(
       document: gql(customerDeleteMutation),
       variables: {'id': userId},

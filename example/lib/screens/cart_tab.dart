@@ -5,8 +5,6 @@ import 'package:example/constants.dart';
 import 'package:example/extension.dart';
 import 'package:example/screens/checkout_webview.dart';
 import 'package:flutter/material.dart';
-import 'package:shopify_flutter/mixins/src/shopify_error.dart';
-import 'package:shopify_flutter/models/src/cart/inputs/attribute_input/attribute_input.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 /// The first variant that can actually be bought, or null if none can.
@@ -107,7 +105,7 @@ class _CartTabState extends State<CartTab> {
   void getNProducts() {
     shopifyStore.getNProducts(10).then((value) {
       setState(() {
-        products = value ?? [];
+        products = value;
       });
     });
   }
@@ -387,10 +385,6 @@ class _CartInfoState extends State<CartInfo> {
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
-                IconButton(
-                  onPressed: onCheckoutTap,
-                  icon: const Icon(Icons.logout),
-                ),
               ],
             ),
           ),
@@ -470,6 +464,27 @@ class _CartInfoState extends State<CartInfo> {
               ),
             ),
           ),
+          // Checkout with the Cart API: Shopify hosts the checkout, and
+          // `cart.checkoutUrl` is the URL to send the buyer to. There is no
+          // checkout mutation to call — the Storefront Checkout API was shut
+          // down in April 2025. Open it in a webview (as here), an external
+          // browser, or Shopify's Checkout Sheet Kit.
+          if (cart.lines.isNotEmpty)
+            SafeArea(
+              minimum: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+              child: SizedBox(
+                width: double.infinity,
+                child: FilledButton.icon(
+                  onPressed: onCheckoutTap,
+                  icon: const Icon(Icons.shopping_cart_checkout),
+                  label: Text(
+                    cart.cost == null
+                        ? 'Checkout'
+                        : 'Checkout · ${cart.cost!.totalAmount.formattedPrice}',
+                  ),
+                ),
+              ),
+            ),
         ],
       ),
     );

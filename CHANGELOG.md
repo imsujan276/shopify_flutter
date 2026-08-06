@@ -1,5 +1,45 @@
+# 4.0.0
+
+Removes the Checkout API, which no longer exists on the Storefront API, plus a
+round of parsing and error-handling fixes.
+
+### Breaking
+
+* **Checkout API removed.** Shopify [deprecated it in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), removed the checkout types in 2024-07 and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025), so none of this worked on a supported API version — and pinning `storefrontApiVersion` to an old checkout-era version (≤ 2024-04) does not bring it back, because Shopify falls forward from sunset versions to a supported one whose schema has no `Checkout` type (verified: `__type(name: "Checkout")` is null on every version from 2024-01 onward). Gone: `ShopifyCheckout`, 26 GraphQL documents, and the checkout-only models (`Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, the checkout `Attribute`) plus `JsonHelper.lineItems`.
+  * **Migration:** use `ShopifyCart` and send the buyer to `cart.checkoutUrl`, Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api). Mobile apps can also use the Checkout Sheet Kit. The example app's cart tab shows the full flow: a Checkout button opens `cart.checkoutUrl` in a webview (`checkout_webview.dart`) and reports success back to the cart.
+* **Failures throw `ShopifyException` instead of a bare `String`.** `checkForError` threw `errorMessages.join('\n')`, which is not an `Exception`, so it defeated both `on ShopifyException` and `on Exception` and escaped as an unhandled error. For socket errors, timeouts and HTTP failures `graphqlErrors` is empty, so the thrown value was the *empty string* and the cause was lost entirely; the `linkException` detail is now included. Code using a bare `catch (e)` is unchanged.
+* **Twelve methods narrowed from `Future<List<X>?>` to `Future<List<X>>`** — every return path already produced a non-null list: `getAllBlogs`, `getXArticlesSorted`, `getAllOrders`, `getAllPages`, `getProductsByIds`, `getNProducts`, `getProductRecommendations`, `getCollectionsByIds`, `getXCollectionsAndNProductsSorted`, `getXProductsAfterCursorWithinCollection`, `searchProducts`, `getXProductsOnQueryAfterCursor`. Existing calls still compile; delete any `?? []`, which now warns as dead code.
+* **`Product.isAvailableForSale` no longer requires `quantityAvailable > 0`.** That marked purchasable products unavailable both on stores without the `unauthenticated_read_product_inventory` scope (where the value is null) and on stores that allow overselling, which report a *negative* quantity while `availableForSale` stays `true`. It now follows `ProductVariant.availableForSale`, the non-null authoritative flag.
+* **`MailingAddress` moved** from `src/checkout/` to `src/mailing_address/`. Only a deep `src/` import is affected.
+
+### Fixed
+
+* **A failed access-token renewal no longer signs the user out.** `_renewAccessToken` never checked for errors and fell back to an empty token, which `_setShopifyUser` treated as "no session" and deleted from memory *and* disk — an offline or rate-limited refresh silently logged the user out with no way back except re-entering credentials.
+* **A null `quantityAvailable` no longer wipes a product's variants.** The field is nullable, was parsed into a non-null `int`, and the resulting error was swallowed by `_getProductVariants`, so affected stores got products with no variants and `price` 0.0. Null now reads as `0`.
+* **Nullable Storefront fields no longer throw while parsing.** `Order.financialStatus`/`subtotalPrice`/`customerUrl`/`totalTax` (a fully discounted order returns no tax) previously failed the entire order list; `Page.onlineStoreUrl` is null for unpublished pages; only `id` is non-null on `MailingAddress`, yet `ShippingAddress` required `name`, `lastName`, `address1`, `city` and `country`.
+* **Metafields are no longer dropped on unwrapped payloads.** `_getMetafieldList` (on `Product` and `Collection`) read `json['node']['metafields']` inside the branch reached only when there is no `'node'` key, so `getProductByHandle` and `getCollectionByHandle` never returned the metafields they requested.
+* **`getCollectionById` no longer reports failures as "not found".** It swallowed every error into `null`, making a bad token indistinguishable from a missing collection — and the not-found case worked only by letting the parse throw and discarding it. It now detects the unresolved node and returns `null` only for that.
+* **`Collections.fromGraphJson` no longer throws without `pageInfo`.** `hasNextPage` had no default, unlike `Products` and `Orders`, so `getCollectionsByIds` threw `type 'Null' is not a subtype of type 'bool'`.
+* **Deprecated currency codes replaced.** The symbol table listed `BYR`, `STD` and `VEF` but not their successors `BYN`, `STN` and `VES`, so those stores formatted every price as `"null12.50"`. Unknown codes now fall back to the ISO code.
+* **Removed three unreachable fallbacks** in `getProductRecommendations`, `getCollectionsByIds` and `getCollectionByHandle`. They discarded the real cause and returned values that cannot be constructed, always throwing a `TypeError` from outside the `try`.
+* **`checkForError` no longer passes a missing payload.** A null `data`, or a null payload for the requested key, now raises instead of letting the caller dereference it into an opaque `TypeError`.
+* **`getAllProductsOnQuery` ignored its `cursor` argument** — a local `String? cursor` shadowed the parameter, so every call restarted from page one.
+* **`getAllOrders` sent a read-only query through `mutate()`**, bypassing the cache and ignoring `ShopifyConfig.fetchPolicy`. It now uses `query()`.
+* **Eager pagination loops now stop on an empty page.** A `hasNextPage: true` response with no edges left the cursor unchanged and re-issued the same request forever.
+* **Session writes are awaited.** `_setShopifyUser` never awaited its `SharedPreferences` writes, so awaiting a sign-in or sign-out did not guarantee the token had reached, or left, disk.
+* **`ShopifyException` and `AttributeInput` are now exported.** Both previously required reaching into `src/` — `updateCartAttributes` could not be called without one.
+* `signInWithEmailAndPassword` now surfaces Shopify's actual reason for a failed sign-in — a wrong password (`customerUserErrors: UNIDENTIFIED_CUSTOMER`), an unactivated account, rate limiting, or a missing access scope — instead of collapsing every failure to `Exception('Invalid credentials')`. The `customerAccessTokenCreate` mutation now requests `customerUserErrors`, and `_createAccessToken` runs `checkForError`.
+* Two admin misconfiguration paths now raise a `ShopifyException` naming the missing config instead of an opaque error — `deleteCustomer` threw a bare `String`, and `adminAccess: true` without an admin token threw `Null check operator used on a null value`.
+* Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse twice per page.
+
+### Dependencies
+
+* `json_serializable` moved from `dependencies` to `dev_dependencies`. It is a codegen tool with no runtime import, but as a regular dependency it pulled `analyzer`, `build`, `build_config`, `dart_style`, `source_gen`, `source_helper`, `pub_semver` and `pubspec_parse` into the runtime graph of every consuming app — and its `analyzer` pin is exactly what makes this package hard to resolve on older Flutter SDKs. The runtime closure is now just `graphql_flutter`, `freezed_annotation`, `json_annotation`, `shared_preferences` and `intl`.
+* `url_launcher` removed — unused by the package and by the example.
+
 # 3.0.1
 Added language code getter/setter in shopify_localization
+
 
 # 3.0.0
 Removes every deprecated Storefront API field the package still queried, migrating to the 2026-07 replacements. Because several of these change the shape of the public Dart models, this is a breaking release. **This version now requires Storefront API `2026-07` or newer** (it relies on `Cart.lines.discountAllocations(lineLevelOnly:)` and cart-level `delivery`, both added in 2026-07); the default `storefrontApiVersion` is already `2026-07`.

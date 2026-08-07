@@ -1,10 +1,8 @@
-# 4.0.0
-
+## 4.0.0
 Removes the Checkout API, which no longer exists on the Storefront API, plus a
 round of parsing and error-handling fixes.
 
 ### Breaking
-
 * **Checkout API removed.** Shopify [deprecated it in 2024-04](https://shopify.dev/changelog/deprecation-of-checkout-apis), removed the checkout types in 2024-07 and [shut the endpoints off on April 1, 2025](https://shopify.dev/changelog/checkout-apis-will-be-shut-down-april-1-2025), so none of this worked on a supported API version — and pinning `storefrontApiVersion` to an old checkout-era version (≤ 2024-04) does not bring it back, because Shopify falls forward from sunset versions to a supported one whose schema has no `Checkout` type (verified: `__type(name: "Checkout")` is null on every version from 2024-01 onward). Gone: `ShopifyCheckout`, 26 GraphQL documents, and the checkout-only models (`Checkout`, `TokanizedCheckout`, `AppliedGiftCards`, `AvailableShippingRates`, `ShippingRates`, `LineItem`, `LineItems`, `ProductVariantCheckout`, the checkout `Attribute`) plus `JsonHelper.lineItems`.
   * **Migration:** use `ShopifyCart` and send the buyer to `cart.checkoutUrl`, Shopify's [documented replacement](https://shopify.dev/docs/storefronts/headless/building-with-the-storefront-api/cart/migrate-to-cart-api). Mobile apps can also use the Checkout Sheet Kit. The example app's cart tab shows the full flow: a Checkout button opens `cart.checkoutUrl` in a webview (`checkout_webview.dart`) and reports success back to the cart.
 * **Failures throw `ShopifyException` instead of a bare `String`.** `checkForError` threw `errorMessages.join('\n')`, which is not an `Exception`, so it defeated both `on ShopifyException` and `on Exception` and escaped as an unhandled error. For socket errors, timeouts and HTTP failures `graphqlErrors` is empty, so the thrown value was the *empty string* and the cause was lost entirely; the `linkException` detail is now included. Code using a bare `catch (e)` is unchanged.
@@ -13,7 +11,6 @@ round of parsing and error-handling fixes.
 * **`MailingAddress` moved** from `src/checkout/` to `src/mailing_address/`. Only a deep `src/` import is affected.
 
 ### Fixed
-
 * **A failed access-token renewal no longer signs the user out.** `_renewAccessToken` never checked for errors and fell back to an empty token, which `_setShopifyUser` treated as "no session" and deleted from memory *and* disk — an offline or rate-limited refresh silently logged the user out with no way back except re-entering credentials.
 * **A null `quantityAvailable` no longer wipes a product's variants.** The field is nullable, was parsed into a non-null `int`, and the resulting error was swallowed by `_getProductVariants`, so affected stores got products with no variants and `price` 0.0. Null now reads as `0`.
 * **Nullable Storefront fields no longer throw while parsing.** `Order.financialStatus`/`subtotalPrice`/`customerUrl`/`totalTax` (a fully discounted order returns no tax) previously failed the entire order list; `Page.onlineStoreUrl` is null for unpublished pages; only `id` is non-null on `MailingAddress`, yet `ShippingAddress` required `name`, `lastName`, `address1`, `city` and `country`.
@@ -33,18 +30,22 @@ round of parsing and error-handling fixes.
 * Removed a duplicate parse of the same response in `getAllProductsFromCollectionById` and `getAllProductsOnQuery`, which ran the full product/variant parse twice per page.
 
 ### Dependencies
-
 * `json_serializable` moved from `dependencies` to `dev_dependencies`. It is a codegen tool with no runtime import, but as a regular dependency it pulled `analyzer`, `build`, `build_config`, `dart_style`, `source_gen`, `source_helper`, `pub_semver` and `pubspec_parse` into the runtime graph of every consuming app — and its `analyzer` pin is exactly what makes this package hard to resolve on older Flutter SDKs. The runtime closure is now just `graphql_flutter`, `freezed_annotation`, `json_annotation`, `shared_preferences` and `intl`.
 * `url_launcher` removed — unused by the package and by the example.
 
-# 3.0.1
+### Migration guide
+* Remove any `ShopifyCheckout` references — code cleanup only; Shopify removed checkout server-side (endpoints shut off April 2025), so it works on no API version regardless of what `storefrontApiVersion` you set.
+* Replace `on String catch` on a failed call with `on ShopifyException catch` (a bare `catch (e)` is unchanged).
+* Delete any `?? []` after the twelve now-non-null list methods.
+* Update deep `MailingAddress` imports: `src/checkout/mailing_address/…` → `src/mailing_address/…`.
+
+## 3.0.1
 Added language code getter/setter in shopify_localization
 
-
-# 3.0.0
+## 3.0.0
 Removes every deprecated Storefront API field the package still queried, migrating to the 2026-07 replacements. Because several of these change the shape of the public Dart models, this is a breaking release. **This version now requires Storefront API `2026-07` or newer** (it relies on `Cart.lines.discountAllocations(lineLevelOnly:)` and cart-level `delivery`, both added in 2026-07); the default `storefrontApiVersion` is already `2026-07`.
 
-Breaking model changes:
+### Breaking
 * `ShopifyImage.originalSrc` → **`ShopifyImage.url`** (`Image.originalSrc`/`src` were deprecated in favour of `url`). Affects every image across products, collections, articles and media.
 * `Option.values` (`List<String>`) → **`Option.optionValues`** (`List<ProductOptionValue>`, each with `id` + `name`). New exported model `ProductOptionValue`. Mirrors `ProductOption.values` → `optionValues` in the API.
 * `Order.subtotalPriceV2`/`totalPriceV2`/`totalShippingPriceV2`/`totalTaxV2`/`totalRefundedV2` → **`subtotalPrice`/`totalPrice`/`totalShippingPrice`/`totalTax`/`totalRefunded`** (the `*V2` money fields were deprecated).
@@ -56,7 +57,8 @@ Breaking model changes:
   * New `ShopifyCart.addDeliveryAddresses(cartId:, addresses:)` (mutation `cartDeliveryAddressesAdd`) to add delivery addresses to an existing cart; `updateBuyerIdentityInCart` no longer accepts addresses.
 * Removed the `Market` model and its export, and the `market` field on `Localization` and `Country` (`Localization.market`/`Country.market` were deprecated with no Storefront replacement).
 
-Other:
+### Changed
+* `cartDiscountCodesUpdate`: optional warnings (`CartWarningCode` `errorCode` + localized `message`) surfaced on `CartDiscountCode`. When a discount code is not applicable, the payload-level `warnings` (`errorCode`/`errorMessage`) are attached to the corresponding `CartDiscountCode` via `copyWith` after parsing. These fields are absent from the `discountCodes` JSON, so `fromJson` leaves them null.
 * Line-level `discountAllocations` now requests `lineLevelOnly: false` so order-level allocations are included, and the deprecated cart-level `Cart.discountAllocations` selection was dropped (use the per-line allocations).
 * Internal query fields migrated with no public-API impact: `Image` `originalSrc`→`url` in all documents, `ProductVariant.priceV2`/`compareAtPriceV2`→`price`/`compareAtPrice`, and `productByHandle`/`blogByHandle`/`pageByHandle`→`product`/`blog`/`page`.
 * Updated the default `storefrontApiVersion` from **2024-07** to **2026-07**. 2024-07 has been sunset since July 2025; Shopify serves requests for an unsupported version from the oldest supported version instead, so callers relying on the default were silently drifting across versions as each one sunset. Callers that already pass `storefrontApiVersion` explicitly should ensure it is `2026-07` or newer (see the requirement above).
@@ -68,100 +70,93 @@ Other:
 * Example app: builds on the Java 25 / AGP 9 toolchain (Gradle 9.6.1, AGP 9.3.0, built-in Kotlin); removed the hard-coded `price` filter on the collection tab that made collections appear empty; and fixed the Blog/Pages tabs spinning forever on a failed fetch (they now clear the spinner and show the error — e.g. a missing `unauthenticated_read_content` scope — or an empty state).
 * Example app: the cart tab added `productVariants.first` regardless of whether that variant was purchasable. Shopify creates a line for an unavailable variant with `quantity: 0` and reports no `userErrors`, so on stores whose first variant is out of stock every add showed up as a `0x` line and the +/- buttons appeared dead. It now adds the first variant with `availableForSale == true`, marks out-of-stock products and lines, and reports it when Shopify clamps a requested quantity. (Pre-existing behaviour, not specific to 2026-07.)
 
-Migration guide:
+### Migration guide
 * Replace `image.originalSrc` with `image.url`.
 * Replace `option.values` (strings) with `option.optionValues.map((v) => v.name)`.
 * Replace `order.totalPriceV2` etc. with `order.totalPrice` (drop the `V2` suffix).
 * Replace `CartBuyerIdentityInput(deliveryAddressPreferences: [...])` with either `CartInput(delivery: CartDeliveryInput(addresses: [...]))` on create, or `ShopifyCart.addDeliveryAddresses(...)` on an existing cart, and read addresses back from `cart.delivery`.
 * Remove any use of `localization.market` / `country.market`.
 
-# 2.8.3
-* `cartDiscountCodesUpdate`: optional warnings (`CartWarningCode` `errorCode` + localized `message`) surfaced on `CartDiscountCode`. When a discount code is not applicable, the payload-level `warnings` (`errorCode`/`errorMessage`) are attached to the corresponding `CartDiscountCode` via `copyWith` after parsing. These fields are absent from the `discountCodes` JSON, so `fromJson` leaves them null.
-
-# 2.8.2
+## 2.8.2
 * Fix Shopify-side validation error `Nullability mismatch on variable $discountCodes and argument discountCodes ([String!] / [String!]!)` from `ShopifyCart.updateCartDiscountCodes` against newer Storefront API versions (e.g. `2026-01`) that promoted the `cartDiscountCodesUpdate` argument from `[String!]` to `[String!]!`. The SDK's mutation document still declared the variable as the older nullable type, so the server rejected the request. Promoted the variable to `[String!]!`. Per the GraphQL spec ("All Variable Usages Are Allowed"), a non-null variable is also valid for the older nullable argument shape, so this change is forward- and backward-compatible across Storefront API versions; the Dart caller signature (`required List<String> discountCodes`) already enforces non-null.
 
-# 2.8.1
+## 2.8.1
 * Added `queryRequestTimeout` to `ShopifyConfig.setConfig` to set the GraphQL query timeout. `GraphQLClient` default timeout of 5s causes issue on late HTTP requests
 
-# 2.8.0
+## 2.8.0
 * Added `storefrontCache` and `adminCache` optional parameters to `ShopifyConfig.setConfig`, allowing callers to inject a custom `GraphQLCache` (e.g. backed by `HiveStore` for disk persistence) for the Storefront and Admin API clients. Defaults preserve the previous in-memory behaviour.
 
-# 2.7.0
+## 2.7.0
 * Added category information in all product related gql.
 * Updated example to show the product category
 
-# 2.6.3
+## 2.6.3
 * Updated the "if" conditions with the null aware operator "?"
 
-# 2.6.1
+## 2.6.1
 * [Update dependencies and upgrade to next freezed version](https://github.com/imsujan276/shopify_flutter/pull/133)
 * Upgraded example app android platform
 
-# 2.6.0
+## 2.6.0
 * Removed published and updated date from product
 
-# 2.5.6
+## 2.5.6
 * Added `sellingPlanAllocations` to the Order Item Variant
 
-# 2.5.5
+## 2.5.5
 * [GraphQL Intl plugin compatibility](https://github.com/imsujan276/shopify_flutter/pull/120)
 * [Generate toJson for nested models](https://github.com/imsujan276/shopify_flutter/pull/121)
 * Updated example app
 
-# 2.5.4
+## 2.5.4
 * Update type of `adjustmentPercentage` to `num` so that it works for both **int** and **double** data types
 
-# 2.5.3
+## 2.5.3
 * Added `reverse` flag in cart
   - If the `reverse` is set to true, the line items in the cart will be in reverse order.
 
-# 2.5.2
+## 2.5.2
 * Made phone number option on user/customer creation
 * Better error handling
 * Updated readme file for better experience
 
-# 2.5.1
+## 2.5.1
 * `updateCartAttributes()` mutation fix
 
-# 2.5.0
-* Added 
+## 2.5.0
+* Added
   - `attributes` to cart
   - `attributes` to cart line items
   - `updateCartAttributes()` to update the attributes associated to cart
 
-# 2.4.0
-* [Added metafield support](https://github.com/imsujan276/shopify_flutter/pull/112) to products and collections 
+## 2.4.0
+* [Added metafield support](https://github.com/imsujan276/shopify_flutter/pull/112) to products and collections
 
-# 2.3.3
+## 2.3.3
 * Minor fixes in product selling plan allocations
 
-# 2.3.1
+## 2.3.1
 * Upgraded SDK version to '>=3.3.0 <4.0.0'
 * Upgraded Intl version
 
-# 2.3.0
+## 2.3.0
 * Added Selling Plan Allocations in product variants
 
-
-# 2.2.8
+## 2.2.8
 * Cart Line Input Model updated
 
-
-# 2.2.7
+## 2.2.7
 * Cart Customer: made properties nullable
   - phone, email, firstName and lastName
 
-
-# 2.2.6
+## 2.2.6
 * Cart issue resolved when passed customer access token
 
-
-# 2.2.5
+## 2.2.5
 * Resolved cartline issue when adding line items
 * Upgraded `flutter_inappwebview` to latest in example app
 
-# 2.2.3
+## 2.2.3
 * Added cart line cost in cart line items Graph Query
 
 ## 2.2.1
@@ -171,14 +166,13 @@ Migration guide:
 
 ## 2.2.0
 * Added a feature to set the desired country code to display the prices
-  - In `ShopifyConfig`, set the decired county code to property `countryCode`. 
+  - In `ShopifyConfig`, set the decired county code to property `countryCode`.
     - If left null, the shopify default price currency will be applied
     - If set as 'NP', all the prices will be in the form of `Nepali Rupees`
 * Updated example app to reflect the changes.
 
 ## 2.1.2
 * made phone as required while creating user using `createUserWithEmailAndPassword`
-
 
 ## 2.1.1
 * ability to get the cached current user or updated user from `ShopifyAuth.currentUser` using a boolean value of **forceRefresh**
@@ -192,8 +186,7 @@ Migration guide:
 * Added code comments for better pub score
 
 ## 2.0.0
-##### Major Updates:
-* Depreciated **ShopifyCheckout** from Shopify API version **2024-07**
+* Deprecated **ShopifyCheckout** from Shopify API version **2024-07**
 * Introduced **ShopifyCart** to perform cart operation
 * Introduced **ShopifyOrder** to access customer orders
 
@@ -205,7 +198,7 @@ Migration guide:
 * [Fix blogByHandle query](https://github.com/imsujan276/shopify_flutter/pull/72)
 
 ## 1.5.19
-* minor update in example and getAllOrders 
+* minor update in example and getAllOrders
 
 ## 1.5.18
 * increase the number of varients in products
@@ -223,7 +216,7 @@ Migration guide:
 
 ## 1.5.14
 * added cursor to the `getSearchedProducts` query.
-  
+
 ## 1.5.13
 * null check for shipping address in orders
 * made first name nullable in shipping address
@@ -231,11 +224,9 @@ Migration guide:
 ## 1.5.12
 * User nullable issue when calling `currentUser()` after signup
   * [Issue 50](https://github.com/imsujan276/shopify_flutter/issues/50)
-  
-  
+
 ## 1.5.11
 * formatted code using `dart format .` to increase pub score
-
 
 ## 1.5.10
 * updated `checkoutCompleteWithTokenizedPaymentV3()` to return `TokanizedCheckout` model
@@ -271,7 +262,7 @@ Migration guide:
 * updated dependencies to match latest flutter 3.16.5
 
 ## 1.5.1
-* updated getAllCollections 
+* updated getAllCollections
 * optimized auto-generated files
 
 ## 1.5.0
@@ -286,13 +277,12 @@ Migration guide:
 ## 1.4.2
 * Minor fixes
 
-
 ## 1.4.1
-* Fixed issues 
+* Fixed issues
   * [Product fromJson/toJson ](https://github.com/imsujan276/shopify_flutter/issues/24)
 
 ## 1.4.0
-* Fixed issues 
+* Fixed issues
   * [Typecast error](https://github.com/imsujan276/shopify_flutter/issues/25)
   * [Include selectedOptions on ProductVariantCheckout in Order](https://github.com/imsujan276/shopify_flutter/issues/26)
   * [getAllOrdersQuery is missing product fields for lineItem variants](https://github.com/imsujan276/shopify_flutter/issues/27)
@@ -304,12 +294,10 @@ Migration guide:
 ## 1.3.0
 * added search product query and option for filters in `searchProducts` and `getXProductsAfterCursorWithinCollection`.
 
-
 ## 1.2.0
 * phone and acceptsMarketing can be passed in createUserWithEmailAndPassword
 * bug fixes
 * updated code documentation
-
 
 ## 1.1.3
 * now you can get the token with expiry date and get the boolean status of access token expiration
@@ -319,16 +307,16 @@ Migration guide:
 
 ## 1.1.1
 * issue fixed
-  - checkoutCompleteWithTokenizedPaymentV3 'Field 'payment' doesn't exist 
-  
+  - checkoutCompleteWithTokenizedPaymentV3 'Field 'payment' doesn't exist
+
 ## 1.1.0
-* added ShopifyCustom to give the suer an ability to create custom query and mutations that are not available in the package 
+* added ShopifyCustom to give the suer an ability to create custom query and mutations that are not available in the package
 
 ## 1.0.19
-* updated readme 
+* updated readme
 
 ## 1.0.18
-* updated signup and readme 
+* updated signup and readme
 
 ## 1.0.17
 * checkoutDiscountCodeApply returns Checkout object
@@ -359,7 +347,7 @@ Migration guide:
 
 ## 1.0.8
 * Fixed error getting in order history when the the purchased product is archieved
-* added billingAddress in getAllOrdersQuery and orders 
+* added billingAddress in getAllOrdersQuery and orders
 
 ## 1.0.7
 * Bug fixes in registeration
@@ -383,14 +371,14 @@ Migration guide:
 * add 'isAvailableForSale' in product and CustomerUpdate bug fixes
 
 ## 1.0.0
-* updated shopify config to add admin access token. 
-* delete customer mutation 
+* updated shopify config to add admin access token.
+* delete customer mutation
 
 ## 0.0.4
-* added payment status and fulfilment status in order  
+* added payment status and fulfilment status in order
 
 ## 0.0.3
-* Bug fixes in order, product and checkout models. 
+* Bug fixes in order, product and checkout models.
 
 ## 0.0.2
 * Added comments, Readme and example update

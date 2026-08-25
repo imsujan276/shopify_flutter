@@ -1,3 +1,6 @@
+## 4.0.1
+Example app migrated to `material_ui`. Material and Cupertino were decoupled from the Flutter SDK in 3.47 into the standalone `material_ui` / `cupertino_ui` packages, so the example now imports `package:material_ui/material_ui.dart` instead of `package:flutter/material.dart`. The library itself is untouched and its constraints are unchanged; only the example's floor moves, to Dart 3.12 / Flutter 3.44 — what `material_ui` 1.0.0 requires.
+
 ## 4.0.0
 Removes the Checkout API, which no longer exists on the Storefront API, plus a
 round of parsing and error-handling fixes.

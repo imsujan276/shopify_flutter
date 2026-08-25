@@ -1,5 +1,5 @@
 import 'package:alerter/alerter.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 extension BuildContextExt on BuildContext {
   void showSnackBar(String message) {

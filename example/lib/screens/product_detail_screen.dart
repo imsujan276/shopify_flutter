@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 class ProductDetailScreen extends StatefulWidget {

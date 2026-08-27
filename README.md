@@ -131,6 +131,8 @@ try {
 
   Future<List<Product>> getProductsByIds(List<String> productIds)
 
+  Future<List<ProductVariant>> getVariantsByIds(List<String> idList)
+
   Future<List<Product>> getXProductsAfterCursor(
     int limit,
     String startCursor

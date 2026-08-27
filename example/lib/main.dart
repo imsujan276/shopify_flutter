@@ -1,5 +1,5 @@
 import 'package:example/screens/cart_tab.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 

@@ -8,6 +8,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_collec
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_product_by_handle.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_product_recommendations.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_products_by_ids.dart';
+import 'package:shopify_flutter/graphql_operations/storefront/queries/get_variants_by_ids.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_shop.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_products_after_cursor.dart';
@@ -17,6 +18,7 @@ import 'package:shopify_flutter/graphql_operations/storefront/queries/get_x_prod
 import 'package:shopify_flutter/mixins/src/shopify_error.dart';
 import 'package:shopify_flutter/models/src/collection/collections/collections.dart';
 import 'package:shopify_flutter/models/src/product/metafield_identifier/metafield_identifier.dart';
+import 'package:shopify_flutter/models/src/product/product_variant/product_variant.dart';
 import 'package:shopify_flutter/models/src/product/product.dart';
 import 'package:shopify_flutter/models/src/product/products/products.dart';
 import 'package:shopify_flutter/models/src/shop/shop.dart';
@@ -148,6 +150,33 @@ class ShopifyStore with ShopifyError {
     };
     productList = Products.fromGraphJson(newResponse).productList;
     return productList;
+  }
+
+  /// Returns a List of [ProductVariant].
+  ///
+  /// Returns the variants for [idList], priced in the market that
+  /// [ShopifyLocalization.countryCode] selects — the presentment price, not
+  /// the shop-currency one.
+  ///
+  /// Takes **variant** ids (`gid://shopify/ProductVariant/…`), unlike
+  /// [getProductsByIds], whose query matches `... on Product` and would return
+  /// empty entries for them rather than an error. Ids that don't resolve to a
+  /// variant are skipped, because `nodes` is polymorphic and yields null.
+  Future<List<ProductVariant>> getVariantsByIds(List<String> idList) async {
+    if (idList.isEmpty) return [];
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getVariantsByIdsQuery),
+      variables: {'ids': idList, 'country': ShopifyLocalization.countryCode},
+      fetchPolicy: ShopifyConfig.fetchPolicy,
+    );
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+
+    final nodes = (result.data ?? const {})['nodes'] as List<dynamic>? ?? [];
+    return [
+      for (final node in nodes)
+        if (node != null) ProductVariant.fromJson(node as Map<String, dynamic>),
+    ];
   }
 
   /// Returns Product.

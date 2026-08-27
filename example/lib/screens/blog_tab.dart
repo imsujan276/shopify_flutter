@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Page;
+import 'package:material_ui/material_ui.dart' hide Page;
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 

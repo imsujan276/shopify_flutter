@@ -4,7 +4,7 @@ import 'dart:math' hide log;
 import 'package:example/constants.dart';
 import 'package:example/extension.dart';
 import 'package:example/screens/checkout_webview.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:shopify_flutter/shopify_flutter.dart';
 
 /// The first variant that can actually be bought, or null if none can.

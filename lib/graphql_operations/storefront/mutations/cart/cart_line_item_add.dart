@@ -1,6 +1,6 @@
 /// mutation to add a line item to the cart
 const String addLineItemToCartMutation = r'''
-mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineInput!]!, $reverse: Boolean!) @inContext(country: $country) {
+mutation cartLineItemAdd($includeProductDetails: Boolean!, $country: CountryCode, $cartId: ID!, $lines: [CartLineInput!]!, $reverse: Boolean!) @inContext(country: $country) {
   cartLinesAdd(cartId: $cartId, lines: $lines) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartLineItemAdd($country: CountryCode, $cartId: ID!, $lines: [CartLineI
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

@@ -24,17 +24,26 @@ class ShopifyCart with ShopifyError {
 
   GraphQLClient? get _graphQLClient => ShopifyConfig.graphQLClient;
 
+  /// When [includeProductDetails] is false, each line's
+  /// `merchandise.product` omits its full `variants` and `media` lists (the bulk
+  /// of the payload). `product.title`/`handle`/`images` are still returned, but
+  /// the getters derived from variants — `product.price`, `formattedPrice`,
+  /// `isAvailableForSale` — become 0/false. Read price and availability from the
+  /// line's `merchandise` (`.price`, `.availableForSale`) instead. Available on
+  /// every cart method; defaults to true (full payload, unchanged behaviour).
+  /// TODO(5.0): flip the default to false — the product block is otherwise unused.
   /// Returns a [Cart] object.
   ///
   /// Returns the [Cart] object of the Cart with the [cartId].
   ///
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
-  Future<Cart?> getCartById(String cartId, {bool reverse = false}) async {
+  Future<Cart?> getCartById(String cartId, {bool reverse = false, bool includeProductDetails = true}) async {
     final cartById = WatchQueryOptions(
       document: gql(getCartByIdQuery),
       variables: {
         'id': cartId,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
       fetchPolicy: ShopifyConfig.fetchPolicy,
@@ -50,7 +59,7 @@ class ShopifyCart with ShopifyError {
   }
 
   /// create cart
-  Future<Cart> createCart(CartInput cartInput) async {
+  Future<Cart> createCart(CartInput cartInput, {bool includeProductDetails = true}) async {
     final data = {
       'discountCodes': cartInput.discountCodes,
       'lines': cartInput.lines.map((e) => e?.toJson()).toList(),
@@ -64,6 +73,7 @@ class ShopifyCart with ShopifyError {
       variables: {
         'input': data,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(createCart);
@@ -78,6 +88,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> addLineItemsToCart({
     required String cartId,
+    bool includeProductDetails = true,
     required List<CartLineUpdateInput> cartLineInputs,
     bool reverse = false,
   }) async {
@@ -92,6 +103,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'lines': lineInputs,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
     );
@@ -107,6 +119,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> removeLineItemsFromCart({
     required String cartId,
+    bool includeProductDetails = true,
     required List<String> lineIds,
     bool reverse = false,
   }) async {
@@ -116,6 +129,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'lineIds': lineIds,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
     );
@@ -131,6 +145,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateLineItemsInCart({
     required String cartId,
+    bool includeProductDetails = true,
     required List<CartLineUpdateInput> cartLineInputs,
     bool reverse = false,
   }) async {
@@ -141,6 +156,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'lines': lineInputs,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
     );
@@ -156,6 +172,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateNoteInCart({
     required String cartId,
+    bool includeProductDetails = true,
     required String note,
     bool reverse = false,
   }) async {
@@ -165,6 +182,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'note': note,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse,
       },
     );
@@ -180,6 +198,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateCartDiscountCodes({
     required String cartId,
+    bool includeProductDetails = true,
     required List<String> discountCodes,
     bool reverse = false,
     bool includeWarnings = false,
@@ -190,6 +209,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'discountCodes': discountCodes,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
     );
@@ -232,6 +252,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateBuyerIdentityInCart({
     required String cartId,
+    bool includeProductDetails = true,
     required CartBuyerIdentityInput buyerIdentity,
     bool reverse = false,
   }) async {
@@ -247,6 +268,7 @@ class ShopifyCart with ShopifyError {
           'customerAccessToken': buyerIdentity.customerAccessToken,
         },
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(updateBuyerIdentity);
@@ -267,6 +289,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> addDeliveryAddresses({
     required String cartId,
+    bool includeProductDetails = true,
     required List<CartSelectableAddressInput> addresses,
     bool reverse = false,
   }) async {
@@ -277,6 +300,7 @@ class ShopifyCart with ShopifyError {
         'addresses': addresses.map((e) => e.toJson()).toList(),
         'reverse': reverse,
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
       },
     );
     QueryResult result = await _graphQLClient!.mutate(addAddresses);
@@ -293,6 +317,7 @@ class ShopifyCart with ShopifyError {
   /// If the [reverse] is set to true, the line items in the cart will be in reverse order.
   Future<Cart> updateCartAttributes({
     required String cartId,
+    bool includeProductDetails = true,
     required List<AttributeInput> attributes,
     bool reverse = false,
   }) async {
@@ -302,6 +327,7 @@ class ShopifyCart with ShopifyError {
         'cartId': cartId,
         'attributes': attributes.map((e) => e.toJson()).toList(),
         'country': ShopifyLocalization.countryCode,
+        'includeProductDetails': includeProductDetails,
         'reverse': reverse
       },
     );

@@ -1,6 +1,6 @@
 /// mutation to update the note of a cart
 const String updateNoteInCartMutation = r'''
-mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
+mutation cartNoteUpdate($includeProductDetails: Boolean!, $cartId: ID!, $note: String!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartNoteUpdate(cartId: $cartId, note: $note) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode, $re
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartNoteUpdate($cartId: ID!, $note: String!, $country: CountryCode, $re
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

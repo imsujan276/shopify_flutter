@@ -1,7 +1,7 @@
 /// head of the cart discount codes mutation (everything up to and including userErrors);
 /// assembled with the optional warnings fragment by [updateCartDiscountCodesMutation].
 const String _updateCartDiscountCodesHead = r'''
-mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
+mutation cartDiscountCodesUpdate($includeProductDetails: Boolean!, $cartId: ID!, $discountCodes: [String!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
     cart {
       id
@@ -236,7 +236,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -364,7 +364,7 @@ mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!, $coun
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

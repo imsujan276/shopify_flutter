@@ -1,6 +1,6 @@
 /// mutation to create a cart
 const String cartCreateMutation = r'''
-mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(country: $country) {
+mutation cartCreate($includeProductDetails: Boolean!, $country: CountryCode, $input: CartInput!) @inContext(country: $country) {
   cartCreate(input: $input) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(countr
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartCreate($country: CountryCode, $input: CartInput!) @inContext(countr
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

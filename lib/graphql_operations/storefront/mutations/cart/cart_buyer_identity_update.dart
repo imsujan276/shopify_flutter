@@ -1,6 +1,6 @@
 /// mutation to update the buyer identity of the cart
 const String cartBuyerIdentityUpdate = r'''
-mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!, $reverse: Boolean!) @inContext(country: $country){
+mutation cartBuyerIdentityUpdate($includeProductDetails: Boolean!, $country: CountryCode, $cartId: ID!, $buyerIdentity: CartBuyerIdentityInput!, $reverse: Boolean!) @inContext(country: $country){
   cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIden
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartBuyerIdentityUpdate($country: CountryCode, $cartId: ID!, $buyerIden
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

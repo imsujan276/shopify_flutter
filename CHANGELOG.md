@@ -1,17 +1,10 @@
+## 4.2.0
+* Cart methods accept `includeProductDetails` (default `true`) — pass `false` to skip each line's parent-product `variants`/`media` blocks, cutting the cart payload ~78%. `merchandise.price`/`title` and `product.title`/`images` are unaffected; the variant-derived getters `product.price`/`isAvailableForSale` read 0/false when lean, so read those from `merchandise`. Default flips to lean in 5.0.
+* Raises the declared SDK floor to Dart 3.9 / Flutter 3.35 — what the dependencies (`shared_preferences`, `json_annotation`, `intl`) already require; the previous `>=1.17.0` was stale.
+
 ## 4.1.0
-Adds `ShopifyStore.getVariantsByIds`, a variant-level price lookup.
-
-`getProductsByIds` matches `... on Product`, so passing variant ids returns empty entries rather than an error, and the
-product queries cannot stand in either: `getProductsQuery` nests `products(first: 250)` -> `variants(first: 250)` ->
-`sellingPlanAllocations(first: 250)`, which is orders of magnitude past the Storefront API's 1000-point query-cost
-limit and comes back as a bare "Internal error". The new query selects no nested connections, so it costs roughly one
-point per id.
-
-Like the other queries it runs under `@inContext(country:)`, so the prices are the presentment prices for the market
-`ShopifyLocalization.countryCode` selects. Ids that don't resolve to a variant are skipped.
-
-## 4.0.1
-Example app migrated to `material_ui`. Material and Cupertino were decoupled from the Flutter SDK in 3.47 into the standalone `material_ui` / `cupertino_ui` packages, so the example now imports `package:material_ui/material_ui.dart` instead of `package:flutter/material.dart`. The library itself is untouched and its constraints are unchanged; only the example's floor moves, to Dart 3.12 / Flutter 3.44 — what `material_ui` 1.0.0 requires.
+* Adds `ShopifyStore.getVariantsByIds`, a variant-level price lookup. `getProductsByIds` matches `... on Product`, so passing variant ids returns empty entries rather than an error, and the product queries cannot stand in either: `getProductsQuery` nests `products(first: 250)` -> `variants(first: 250)` -> `sellingPlanAllocations(first: 250)`, which is orders of magnitude past the Storefront API's 1000-point query-cost limit and comes back as a bare "Internal error". The new query selects no nested connections, so it costs roughly one point per id. Like the other queries it runs under `@inContext(country:)`, so the prices are the presentment prices for the market `ShopifyLocalization.countryCode` selects. Ids that don't resolve to a variant are skipped.
+* Example app migrated to `material_ui`. Material and Cupertino were decoupled from the Flutter SDK in 3.47 into the standalone `material_ui` / `cupertino_ui` packages, so the example now imports `package:material_ui/material_ui.dart` instead of `package:flutter/material.dart`. The library itself is untouched and its constraints are unchanged; only the example's floor moves, to Dart 3.12 / Flutter 3.44 — what `material_ui` 1.0.0 requires.
 
 ## 4.0.0
 Removes the Checkout API, which no longer exists on the Storefront API, plus a

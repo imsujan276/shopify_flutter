@@ -1,6 +1,6 @@
 /// mutation to remove a line item from the cart
 const String removeLineItemFromCartMutation = r'''
-mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!, $reverse: Boolean!) @inContext(country: $country) {
+mutation cartLinesRemove($includeProductDetails: Boolean!, $country: CountryCode, $cartId: ID!, $lineIds: [ID!]!, $reverse: Boolean!) @inContext(country: $country) {
   cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!, 
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartLinesRemove($country: CountryCode, $cartId: ID!, $lineIds: [ID!]!, 
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

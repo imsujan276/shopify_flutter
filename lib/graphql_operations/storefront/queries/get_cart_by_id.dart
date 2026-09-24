@@ -1,6 +1,6 @@
 /// query to get cart by id
 const String getCartByIdQuery = r'''
-query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(country: $country) {
+query cart($includeProductDetails: Boolean!, $country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(country: $country) {
   cart(id: $id) {
       id
       checkoutUrl
@@ -234,7 +234,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -362,7 +362,7 @@ query cart($country: CountryCode, $id: ID!, $reverse: Boolean!) @inContext(count
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

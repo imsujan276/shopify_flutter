@@ -1,6 +1,6 @@
 /// mutation to update a line item in the cart
 const String updateLineItemInCartMutation = r'''
-mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineUpdateInput!]!, $reverse: Boolean!) @inContext(country: $country) {
+mutation cartLinesUpdate($includeProductDetails: Boolean!, $country: CountryCode, $cartId: ID!, $lines: [CartLineUpdateInput!]!, $reverse: Boolean!) @inContext(country: $country) {
   cartLinesUpdate(cartId: $cartId, lines: $lines) {
     cart {
       id
@@ -235,7 +235,7 @@ mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineU
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -363,7 +363,7 @@ mutation cartLinesUpdate($country: CountryCode, $cartId: ID!, $lines: [CartLineU
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt

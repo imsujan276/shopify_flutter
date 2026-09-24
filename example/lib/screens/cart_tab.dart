@@ -70,7 +70,12 @@ class _CartTabState extends State<CartTab> {
       ],
     );
     try {
-      cart = await shopifyCart.createCart(cartInput);
+      // includeProductDetails: false skips each line's parent-product variants/media (~78% smaller payload).
+      // This example reads titles/prices from `merchandise` (see the cart list below), so lean is enough — and
+      // reading them there is what keeps this code correct after 5.0, where lean becomes the default. If you need
+      // a line's parent-product `variants`/`media` (and the variant-derived `product.price`/`isAvailableForSale`),
+      // drop the argument to fetch the full product.
+      cart = await shopifyCart.createCart(cartInput, includeProductDetails: false);
       setState(() {});
       logCartInfo(cart!);
     } on ShopifyException catch (error) {
@@ -86,7 +91,7 @@ class _CartTabState extends State<CartTab> {
 
   void getCartById(String cartId) async {
     try {
-      final cartResponse = await shopifyCart.getCartById(cartId);
+      final cartResponse = await shopifyCart.getCartById(cartId, includeProductDetails: false);
       setState(() {
         cart = cartResponse;
       });
@@ -134,6 +139,7 @@ class _CartTabState extends State<CartTab> {
       final updatedCart = await shopifyCart.addLineItemsToCart(
         cartId: cart!.id,
         cartLineInputs: [cartLineInput],
+        includeProductDetails: false,
       );
       setState(() {
         cart = updatedCart;
@@ -260,6 +266,7 @@ class _CartInfoState extends State<CartInfo> {
       final updatedCart = await shopifyCart.removeLineItemsFromCart(
         cartId: cart.id,
         lineIds: [lineId],
+        includeProductDetails: false,
       );
       setState(() {
         cart = updatedCart;
@@ -301,6 +308,7 @@ class _CartInfoState extends State<CartInfo> {
       final updatedCart = await shopifyCart.updateLineItemsInCart(
         cartId: cart.id,
         cartLineInputs: [cartLineInput],
+        includeProductDetails: false,
       );
       setState(() {
         cart = updatedCart;
@@ -334,6 +342,7 @@ class _CartInfoState extends State<CartInfo> {
       final updatedCart = await shopifyCart.updateNoteInCart(
         cartId: cart.id,
         note: noteCtrl.text.trim(),
+        includeProductDetails: false,
       );
       setState(() {
         cart = updatedCart;
@@ -541,11 +550,13 @@ class _BuyerIndetityState extends State<BuyerIndetity> {
           phone: randomPhone(),
           countryCode: buyerIndetity?.countryCode,
         ),
+        includeProductDetails: false,
       );
       // Delivery addresses moved off the buyer identity in the 2026-07
       // Storefront API. Add them to the cart directly instead.
       await shopifyCart.addDeliveryAddresses(
         cartId: cart.id,
+        includeProductDetails: false,
         addresses: [
           const CartSelectableAddressInput(
             selected: true,

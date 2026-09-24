@@ -1,7 +1,7 @@
 /// mutation to add delivery addresses to a cart
 ///
 /// Replaces the deprecated `buyerIdentity.deliveryAddressPreferences` input.
-const String cartDeliveryAddressesAddMutation = r'''mutation cartDeliveryAddressesAdd($cartId: ID!, $addresses: [CartSelectableAddressInput!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
+const String cartDeliveryAddressesAddMutation = r'''mutation cartDeliveryAddressesAdd($includeProductDetails: Boolean!, $cartId: ID!, $addresses: [CartSelectableAddressInput!]!, $country: CountryCode, $reverse: Boolean!)  @inContext(country: $country) {
   cartDeliveryAddressesAdd(cartId: $cartId, addresses: $addresses) {
     cart {
       id
@@ -236,7 +236,7 @@ const String cartDeliveryAddressesAddMutation = r'''mutation cartDeliveryAddress
                         name
                       }
                       } 
-                  variants(first: 250) {
+                  variants(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         id
@@ -364,7 +364,7 @@ const String cartDeliveryAddressesAddMutation = r'''mutation cartDeliveryAddress
                       }
                     }
                   }
-                  media(first: 250) {
+                  media(first: 250) @include(if: $includeProductDetails) {
                     edges {
                       node {
                         alt
